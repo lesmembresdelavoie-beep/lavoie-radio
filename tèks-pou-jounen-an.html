@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tèks pou Jounen an · La Voie · lavoie.world</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2)}
+.logo{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:#c9a84c;text-decoration:none;letter-spacing:0.1em}
+.logo span{display:block;font-size:0.65rem;color:#e8cb7a;opacity:0.7;letter-spacing:0.25em}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.65rem;color:#b8c8dc;text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#e8cb7a}
+.nav-btn{font-family:'Cinzel',serif;font-size:0.65rem;padding:0.45rem 1.2rem;border:1px solid #c9a84c;color:#c9a84c;text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;transition:all 0.2s}
+.nav-btn:hover{background:#c9a84c;color:#060d1a}
+.page-header{min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(30,77,153,0.55) 0%,transparent 70%),linear-gradient(180deg,#020810 0%,#060d1a 100%)}
+.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
+.page-header-inner{position:relative;z-index:1}
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.7;text-transform:uppercase;margin-bottom:1.4rem}
+.breadcrumb a{color:inherit;text-decoration:none}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(2rem,6vw,4.5rem);font-weight:700;color:#e8cb7a;letter-spacing:0.06em;line-height:1.05}
+.page-title-creole{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.5rem);color:#c9a84c;opacity:0.8;margin-top:0.5rem;letter-spacing:0.08em}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2vw,1.2rem);color:#e8f0f8;opacity:0.65;margin-top:0.8rem}
+.page-body{max-width:860px;margin:0 auto;padding:5rem 2rem 8rem}
+.imaj-hero{position:relative;width:100%;max-width:860px;margin:0 auto 2.5rem;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);box-shadow:0 8px 40px rgba(6,13,26,0.8)}
+.imaj-hero img{width:100%;max-height:480px;object-fit:cover;display:block;transition:transform 0.5s ease}
+.imaj-hero:hover img{transform:scale(1.02)}
+.imaj-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 2rem;background:linear-gradient(to top,rgba(6,13,26,0.92) 0%,transparent 100%)}
+.imaj-ref-overlay{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;color:#e8cb7a;text-transform:uppercase;opacity:0.9}
+.date-badge{text-align:center;margin-bottom:3rem}
+.date-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.35em;color:#c9a84c;text-transform:uppercase;opacity:0.7;margin-bottom:0.5rem}
+.date-value{font-family:'Cinzel',serif;font-size:1.2rem;color:#e8cb7a;letter-spacing:0.15em;margin-bottom:0.4rem}
+.date-secondaire{font-family:'EB Garamond',serif;font-style:italic;font-size:0.92rem;color:#b8c8dc;opacity:0.65;letter-spacing:0.05em}
+.date-line{width:80px;height:1px;background:linear-gradient(to right,transparent,#c9a84c,transparent);margin:0.8rem auto 0}
+.teks-card{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));border:1px solid rgba(201,168,76,0.25);border-top:3px solid #c9a84c;padding:3rem 2.5rem;margin-bottom:2.5rem;position:relative}
+.teks-card::before{content:'';position:absolute;top:-1px;left:3rem;right:3rem;height:2px;background:linear-gradient(to right,transparent,#c9a84c,transparent)}
+.teks-ref{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.28em;color:#c9a84c;text-transform:uppercase;margin-bottom:2rem;text-align:center;opacity:0.85}
+.langue-bloc{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,0.1)}
+.langue-bloc:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.langue-tag{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.25rem 0.8rem;border:1px solid rgba(201,168,76,0.3);color:#c9a84c;margin-bottom:0.9rem}
+.langue-tag.creole{border-color:rgba(184,200,220,0.4);color:#b8c8dc}
+.langue-tag.francais{border-color:rgba(201,168,76,0.4);color:#e8cb7a}
+.langue-tag.ibri{border-color:rgba(247,237,204,0.3);color:#f7edcc}
+.langue-texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.4rem);line-height:1.85;color:#e8f0f8;opacity:0.92}
+.langue-texte.ibri-text{font-style:normal;font-size:clamp(1rem,2vw,1.25rem);opacity:0.82;color:#f7edcc;letter-spacing:0.02em}
+.ornement{text-align:center;color:#c9a84c;font-size:0.62rem;letter-spacing:0.6em;opacity:0.35;margin:2rem 0}
+.commentaire-card{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.15);border-left:3px solid #c9a84c;padding:2rem 2.5rem;margin-bottom:3rem}
+.commentaire-titre{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.28em;color:#c9a84c;text-transform:uppercase;margin-bottom:1rem}
+.commentaire-auteur{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;color:#c9a84c;opacity:0.6;margin-bottom:0.8rem;text-transform:uppercase}
+.commentaire-texte{font-family:'EB Garamond',serif;font-size:clamp(1rem,1.8vw,1.12rem);line-height:1.95;color:#e8f0f8;opacity:0.85}
+.archives-section{margin-top:4rem}
+.archives-titre{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:#c9a84c;text-transform:uppercase;opacity:0.7;margin-bottom:1.5rem;text-align:center}
+.archives-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.archive-card{background:linear-gradient(135deg,rgba(13,35,71,0.35),rgba(6,13,26,0.5));border:1px solid rgba(201,168,76,0.1);padding:1.4rem;transition:all 0.25s}
+.archive-card:hover{border-color:rgba(201,168,76,0.3)}
+.archive-date{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:#c9a84c;opacity:0.65;text-transform:uppercase;margin-bottom:0.5rem}
+.archive-ref{font-family:'Cinzel',serif;font-size:0.82rem;color:#e8cb7a;margin-bottom:0.4rem}
+.archive-extrait{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:#e8f0f8;opacity:0.65;line-height:1.6}
+.page-nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,168,76,0.15);padding-top:3rem;margin-top:3rem;flex-wrap:wrap;gap:1rem}
+.page-nav a{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#c9a84c;text-decoration:none;padding:0.75rem 1.6rem;border:1px solid rgba(201,168,76,0.3);transition:all 0.25s}
+.page-nav a:hover{background:#c9a84c;color:#060d1a}
+footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid rgba(201,168,76,0.1);padding:3rem 2rem 2rem;text-align:center}
+.footer-logo{font-family:'Cinzel',serif;font-size:1.2rem;color:#c9a84c;letter-spacing:0.15em;margin-bottom:0.2rem}
+.footer-domain{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.38;margin-bottom:1.8rem}
+.footer-nav{display:flex;flex-wrap:wrap;gap:0.7rem 2rem;justify-content:center;list-style:none;margin-bottom:1.5rem}
+.footer-nav a{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#e8f0f8;text-decoration:none;opacity:0.38;transition:all 0.2s}
+.footer-nav a:hover{opacity:1;color:#c9a84c}
+.footer-copy{font-family:'EB Garamond',serif;font-size:0.78rem;color:#e8f0f8;opacity:0.2}
+@media(max-width:768px){nav{padding:0.9rem 1.2rem}.nav-links{display:none}.page-body{padding:3rem 1.4rem 6rem}.teks-card{padding:2rem 1.5rem}.commentaire-card{padding:1.5rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">La Voie<span>lavoie.world</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+    <li><a href="lexique.html">Lexique</a></li>
+    <li><a href="radio.html">Radio</a></li>
+    <li><a href="teks-jounen.html" class="active">Tèks Jounen an</a></li>
+    <li><a href="soutenir.html">Soutenir</a></li>
+  </ul>
+  <a href="soutenir.html" class="nav-btn">Soutenir La Voie</a>
+</nav>
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;✦&nbsp; Tèks pou Jounen an</p>
+    <h1 class="page-title">Tèks pou Jounen an</h1>
+    <p class="page-title-creole">Texte du Jour · Dabar Ha'Yom</p>
+    <p class="page-subtitle">Chak jou, yon Pawòl nan Ketubim Qadoshim pou mache nan La Voie</p>
+  </div>
+</header>
+<div class="page-body">
+  <div class="imaj-hero">
+    <img src="imaj-jounen.jpg" alt="Tèks pou Jounen an" id="imaj-jounen" onerror="this.parentElement.style.display='none'"/>
+    <div class="imaj-overlay">
+      <p class="imaj-ref-overlay">Tehillim 73:28</p>
+    </div>
+  </div>
+  <div class="date-badge">
+    <p class="date-label">✦ Jounen jodi a · Yom Ha'Zeh · Kalandriye Ibriy Restaure</p>
+    <p class="date-value" id="dateAujourdhui"></p>
+    <p class="date-secondaire" id="dateSecondaire"></p>
+    <div class="date-line"></div>
+  </div>
+  <div class="teks-card">
+    <p class="teks-ref">Tehillim 73:28 · Ketubim Qadoshim</p>
+    <div class="langue-bloc">
+      <span class="langue-tag creole">✦ Kreyòl Ayisyen</span>
+      <p class="langue-texte">« Pwoche bò kote 'Èlohim bon pou mwen. »</p>
+    </div>
+    <div class="langue-bloc">
+      <span class="langue-tag francais">✦ Français</span>
+      <p class="langue-texte">« Mais pour moi, m'approcher de 'Èlohim est ce qui est bon. »</p>
+    </div>
+    <div class="langue-bloc">
+      <span class="langue-tag ibri">✦ Ibriy Translittéré</span>
+      <p class="langue-texte ibri-text">« Va·ani qirvat 'Èlohim li tov. »</p>
+    </div>
+  </div>
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="commentaire-card">
+    <p class="commentaire-titre">✦ Kontèks ak Meditasyon — Tehillim 73</p>
+    <p class="commentaire-auteur">— B'neiYah · Les Membres de La Voie</p>
+    <p class="commentaire-texte">
+      Tehillim 73 la se yon chante Asaf. Nan kòmansman chante a, Asaf te boulvèse paske li t ap gade moun mechan yo sanble ap reyisi pandan anpil moun k ap chèche fè sa ki dwat ap soufri. Sa te fè l poze kesyon sou jistis ak sou valè yon mòd devi ki rete atache ak Yahawah.<br><br>
+      Pandan l t ap reflechi sou sitiyasyon sa a, li te vin konprann siksè moun mechan yo pa dire pou toutan e objektif Yahawah pou moun ki rete atache ak Li pi gran lontan pase avantaj tanporè yo. Se apre refleksyon sa a li rive nan konklizyon sa a : <em>« Pwoche bò kote 'Èlohim bon pou mwen. »</em><br><br>
+      Pawòl sa yo montre Asaf te konprann pi gwo byen yon moun kapab genyen se pa richès, pouvwa oswa popilarite, men yon relasyon sere avèk Yahawah. Menm lè sikonstans yo pa toujou fasil, pwoche bò kote Yahawah toujou pote benefis ki depase tout lòt bagay.<br><br>
+      <strong style="color:#f7edcc">Aplikasyon pratik pou Les Membres de La Voie :</strong><br><br>
+      Gen moman kote yon tal'mid kapab wè moun ki pa enterese nan Dabar Yahawah a sanble ap reyisi pandan li menm ap travèse eprèv. Men, menm jan ak Asaf, li bezwen gade bagay yo avèk yon vizyon ki pi laj. Sa ki vrèman gen valè se pa sa yon moun posede, men relasyon l genyen ak Ha-Bôre a.<br><br>
+      Pwoche bò kote Yahawah mande pou yon moun kontinye chèche konnen volonte Li, reflechi sou Dabar Li, fè Teshoubah lè sa nesesè epi kontinye mache nan chemen Yahushuʿaḥ a chak jou. Pi gwo byen yon tal'mid kapab genyen se pa sa li posede — men pwoksimite li ak Yahawah.
+    </p>
+  </div>
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="archives-section">
+    <p class="archives-titre">✦ Archives — Tèks anvan yo</p>
+    <div class="archives-grid">
+      <div class="archive-card">
+        <p class="archive-date">Yèsodi · Yè</p>
+        <p class="archive-ref">Maʿasei 1:8</p>
+        <p class="archive-extrait">« Vous serez mes témoins — Edhim — jusqu'aux extrémités de la terre. »</p>
+      </div>
+      <div class="archive-card">
+        <p class="archive-date">Shiloshi · Anvan yè</p>
+        <p class="archive-ref">Mattiyahu 28:19</p>
+        <p class="archive-extrait">« Allez, faites des tal'midim de toutes les nations... »</p>
+      </div>
+      <div class="archive-card">
+        <p class="archive-date">Revi'i · 3 jou pase</p>
+        <p class="archive-ref">Tehillim 119:105</p>
+        <p class="archive-extrait">« Ta parole est une lampe à mes pieds, une lumière sur mon sentier. »</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-nav">
+    <a href="index.html">← Accueil</a>
+    <a href="radio.html">La Voie Radio →</a>
+  </div>
+</div>
+<footer>
+  <p class="footer-logo">La Voie</p>
+  <p class="footer-domain">lavoie.world</p>
+  <ul class="footer-nav">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+    <li><a href="lexique.html">Lexique</a></li>
+    <li><a href="radio.html">Radio</a></li>
+    <li><a href="teks-jounen.html">Tèks Jounen an</a></li>
+    <li><a href="ressources.html">Ressources</a></li>
+    <li><a href="soutenir.html">Soutenir</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
+</footer>
+<script>
+const TEKS_DATA = {
+  mois_ibri:"Siban",
+  jour_ibri:13,
+  annee_ibri:5786,
+  soir_debut:"30 me 2026",
+  soir_fin:"31 me 2026",
+  jour_gregorien:"30 me 2026"
+};
+const dateEl = document.getElementById('dateAujourdhui');
+const dateSecEl = document.getElementById('dateSecondaire');
+if(dateEl) dateEl.textContent = `${TEKS_DATA.jour_ibri} ${TEKS_DATA.mois_ibri} ${TEKS_DATA.annee_ibri}`;
+if(dateSecEl) dateSecEl.textContent = `Kalandriye Ibriy Restaure · Swa ${TEKS_DATA.soir_debut} → Swa ${TEKS_DATA.soir_fin} · Repè : ${TEKS_DATA.jour_gregorien}`;
+</script>
+</body>
+</html>
