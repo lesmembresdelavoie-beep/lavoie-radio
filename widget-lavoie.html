@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Voie — Widget Calendrier</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root {
+    --bleu-nuit: #0a0e1a;
+    --bleu-profond: #0d1530;
+    --or: #c9a84c;
+    --or-clair: #e8c96a;
+    --or-pale: #f5e6b8;
+    --ivoire: #faf4e6;
+    --blanc: #ffffff;
+    --gris-bleu: #2a3555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: transparent;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  .widget {
+    width: 320px;
+    background: linear-gradient(160deg, #0d1530 0%, #060b18 60%, #0d1530 100%);
+    border: 1px solid var(--or);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(201,168,76,0.15),
+      0 8px 40px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(201,168,76,0.2);
+    position: relative;
+  }
+
+  .widget::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+  }
+
+  .header {
+    padding: 14px 18px 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--or);
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .menorah {
+    font-size: 20px;
+    line-height: 1;
+    margin: 5px 0 3px;
+    filter: drop-shadow(0 0 6px rgba(201,168,76,0.5));
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .date-section {
+    padding: 16px 18px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .yom-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--or);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 5px;
+  }
+
+  .date-hebrew-large {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--or-clair);
+    line-height: 1;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+    margin-bottom: 2px;
+  }
+
+  .date-month {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .date-greg {
+    font-size: 11px;
+    color: rgba(245,230,184,0.55);
+    font-style: italic;
+  }
+
+  .transition-bar {
+    margin: 10px 18px 4px;
+    padding: 8px 12px;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sun-icon { font-size: 14px; }
+
+  .transition-text {
+    font-size: 11px;
+    color: var(--or-pale);
+    flex: 1;
+  }
+
+  .transition-text strong { color: var(--or-clair); font-weight: 500; }
+
+  .transition-countdown {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    color: var(--or);
+    font-weight: 600;
+    background: rgba(201,168,76,0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid rgba(201,168,76,0.3);
+    white-space: nowrap;
+    min-width: 55px;
+    text-align: center;
+  }
+
+  .clocks-section {
+    padding: 12px 18px 16px;
+  }
+
+  .clocks-title {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--or);
+    text-transform: uppercase;
+    opacity: 0.6;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .clocks-grid {
+    display: flex;
+    gap: 10px;
+  }
+
+  .clock-card {
+    flex: 1;
+    background: rgba(13,21,48,0.8);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 3px;
+    padding: 10px 8px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clock-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+    opacity: 0.4;
+  }
+
+  .clock-flag { font-size: 16px; margin-bottom: 3px; display: block; }
+
+  .clock-city {
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: var(--or);
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .clock-time {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ivoire);
+    letter-spacing: 1px;
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .clock-seconds {
+    font-size: 11px;
+    color: var(--or);
+    opacity: 0.6;
+    font-family: 'Cinzel', serif;
+    display: block;
+  }
+
+  .clock-date-greg {
+    font-size: 9px;
+    color: rgba(245,230,184,0.45);
+    font-style: italic;
+    margin-top: 3px;
+    display: block;
+  }
+
+  .footer {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 8px 18px;
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 9px;
+    color: rgba(201,168,76,0.45);
+    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .colon { display: inline-block; animation: pulse-dot 1s step-start infinite; }
+</style>
+</head>
+<body>
+
+<div class="widget">
+  <div class="header">
+    <div class="logo-text">La Voie · הַדֶּרֶךְ</div>
+    <div class="menorah">🕎</div>
+  </div>
+
+  <div class="date-section">
+    <div class="yom-label" id="yom-name">—</div>
+    <div class="date-hebrew-large" id="heb-day">—</div>
+    <div class="date-month" id="heb-month">Siban · סִיוָן</div>
+    <div class="date-greg" id="greg-date">—</div>
+  </div>
+
+  <div style="padding: 0 0 4px;">
+    <div class="transition-bar">
+      <span class="sun-icon">🌅</span>
+      <span class="transition-text">Fin du jour au coucher</span>
+      <span class="transition-countdown" id="countdown">--:--:--</span>
+    </div>
+  </div>
+
+  <div class="clocks-section">
+    <div class="clocks-title">Heures en direct</div>
+    <div class="clocks-grid">
+      <div class="clock-card">
+        <span class="clock-flag">🇮🇱</span>
+        <span class="clock-city">Yeroushalaim</span>
+        <span class="clock-time" id="il-time">--<span class="colon">:</span>--</span>
+        <span class="clock-seconds" id="il-sec">--</span>
+        <span class="clock-date-greg" id="il-date"></span>
+      </div>
+      <div class="clock-card">
+        <span class="clock-flag">🇺🇸</span>
+        <span class="clock-city">Indianapolis</span>
+        <span class="clock-time" id="us-time">--<span class="colon">:</span>--</span>
+        <span class="clock-seconds" id="us-sec">--</span>
+        <span class="clock-date-greg" id="us-date"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">lavoie.world · La Voie Radio</div>
+  </div>
+</div>
+
+<script>
+const MONTHS = [
+  'Abib','Ziw','Siban','Tamouz','Av','Eloul',
+  'Tichri','Marchechvan','Kislev','Tevet','Chevat','Adar'
+];
+const MONTHS_HEB = [
+  'אָבִיב','זִיו','סִיוָן','תַּמּוּז','אָב','אֱלוּל',
+  'תִּשְׁרֵי','מַרְחֶשְׁוָן','כִּסְלֵו','טֵבֵת','שְׁבָט','אֲדָר'
+];
+const DAYS_FR = ['Yôm Rishon','Yôm Bet','Yôm Guimel','Yôm Daleth','Yôm Hamishi','Yôm Shishi','Shabbat'];
+
+const SUNSET_IL_BY_MONTH = [
+  16*60+45, 17*60+15, 17*60+45, 19*60+15, 19*60+40, 19*60+45,
+  19*60+30, 19*60+00, 18*60+15, 17*60+30, 16*60+50, 16*60+40
+];
+const SUNSET_US_BY_MONTH = [
+  17*60+20, 17*60+55, 19*60+25, 20*60+00, 20*60+25, 20*60+30,
+  20*60+20, 19*60+55, 19*60+15, 18*60+30, 17*60+55, 17*60+20
+];
+
+function getLocalMinutes(date, tz) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false
+  }).formatToParts(date);
+  return parseInt(parts.find(p=>p.type==='hour').value)*60 + parseInt(parts.find(p=>p.type==='minute').value);
+}
+
+function getLocalMonth(date, tz) {
+  return parseInt(new Intl.DateTimeFormat('en-US', {
+    timeZone: tz, month: '2-digit'
+  }).format(date)) - 1;
+}
+
+function getHebDate(now) {
+  const moisIL = getLocalMonth(now, 'Asia/Jerusalem');
+  const sunsetILMin = SUNSET_IL_BY_MONTH[moisIL];
+  const decalageMs = sunsetILMin * 60 * 1000;
+  const anchorUTC = new Date('2026-03-19T15:45:00Z');
+  const nowAligned = new Date(now.getTime() - decalageMs);
+  const anchorAligned = new Date(anchorUTC.getTime() - sunsetILMin * 60 * 1000);
+  const diffDays = Math.floor((nowAligned - anchorAligned) / 86400000);
+  if (diffDays < 0) return { day: '--', monthIdx: 0 };
+  return { day: (diffDays % 30) + 1, monthIdx: Math.floor(diffDays / 30) };
+}
+
+function formatTime(date, tz) {
+  return new Intl.DateTimeFormat('fr-FR', {
+    timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false
+  }).format(date);
+}
+
+function formatSec(date, tz) {
+  return new Intl.DateTimeFormat('fr-FR', {
+    timeZone: tz, second: '2-digit'
+  }).format(date);
+}
+
+function formatDateShort(date, tz) {
+  return new Intl.DateTimeFormat('fr-FR', {
+    timeZone: tz, weekday: 'short', day: 'numeric', month: 'short'
+  }).format(date);
+}
+
+function getSunsetCountdown(now) {
+  const tz = 'America/Indiana/Indianapolis';
+  const moisUS = getLocalMonth(now, tz);
+  const sunsetUSMin = SUNSET_US_BY_MONTH[moisUS];
+  const nowUSMin = getLocalMinutes(now, tz);
+  const sec = parseInt(new Intl.DateTimeFormat('en-US', {
+    timeZone: tz, second: '2-digit'
+  }).format(now));
+  let diffSec = nowUSMin < sunsetUSMin
+    ? (sunsetUSMin - nowUSMin) * 60 - sec
+    : (24 * 60 - nowUSMin + sunsetUSMin) * 60 - sec;
+  if (diffSec < 0) diffSec = 0;
+  const h = Math.floor(diffSec / 3600);
+  const m = Math.floor((diffSec % 3600) / 60);
+  const s = diffSec % 60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function tick() {
+  const now = new Date();
+
+  const ilFull = formatTime(now, 'Asia/Jerusalem').split(':');
+  const usFull = formatTime(now, 'America/Indiana/Indianapolis').split(':');
+
+  document.getElementById('il-time').innerHTML = `${ilFull[0]}<span class="colon">:</span>${ilFull[1]}`;
+  document.getElementById('us-time').innerHTML = `${usFull[0]}<span class="colon">:</span>${usFull[1]}`;
+  document.getElementById('il-sec').textContent = formatSec(now, 'Asia/Jerusalem') + 's';
+  document.getElementById('us-sec').textContent = formatSec(now, 'America/Indiana/Indianapolis') + 's';
+  document.getElementById('il-date').textContent = formatDateShort(now, 'Asia/Jerusalem');
+  document.getElementById('us-date').textContent = formatDateShort(now, 'America/Indiana/Indianapolis');
+
+  const heb = getHebDate(now);
+  document.getElementById('heb-day').textContent = heb.day;
+  document.getElementById('heb-month').textContent =
+    MONTHS[heb.monthIdx] + ' · ' + MONTHS_HEB[heb.monthIdx];
+
+  const moisIL = getLocalMonth(now, 'Asia/Jerusalem');
+  const sunsetILMin = SUNSET_IL_BY_MONTH[moisIL];
+  const nowILMin = getLocalMinutes(now, 'Asia/Jerusalem');
+  let refDate = nowILMin >= sunsetILMin ? new Date(now.getTime() + 86400000) : now;
+
+  const dow = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Indiana/Indianapolis', weekday: 'short'
+  }).format(refDate);
+  const dowMap = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  document.getElementById('yom-name').textContent = DAYS_FR[dowMap[dow]] || '';
+
+  document.getElementById('greg-date').textContent = now.toLocaleDateString('fr-FR', {
+    day: 'numeric', month: 'long', year: 'numeric',
+    timeZone: 'America/Indiana/Indianapolis'
+  });
+
+  document.getElementById('countdown').textContent = getSunsetCountdown(now);
+}
+
+tick();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
