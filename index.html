@@ -1225,7 +1225,7 @@
         16*60+35, // Desanm  — 16:35
       ];
       const koucheSolèy = KOUCHE_SOLÈY[mwaG - 1];
-      const lèYeruStr = now.toLocaleString('fr-FR', { timeZone: 'Asia/Jerusalem', hour: 'numeric', minute: 'numeric', hour12: false });
+      const lèYeruStr = now.toLocaleString('fr-FR', { timeZone: 'America/Indiana/Indianapolis', hour: 'numeric', minute: 'numeric', hour12: false });
       const [lèH, lèM] = lèYeruStr.split(':').map(n => parseInt(n) || 0);
       const lèMinutes = lèH * 60 + lèM;
 
