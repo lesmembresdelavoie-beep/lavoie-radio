@@ -1203,7 +1203,7 @@
       const leIndy = now.toLocaleTimeString('fr-FR', { ...optionsLe, timeZone: 'America/Indiana/Indianapolis' });
 
       // Jwenn dat Yeroushalayim pou kalandriye Ibriy
-      const datParts = new Intl.DateTimeFormat('fr-FR', { ...optionsDat, timeZone: 'Asia/Jerusalem' }).formatToParts(now);
+      const datParts = new Intl.DateTimeFormat('fr-FR', { ...optionsDat, timeZone: 'America/Indiana/Indianapolis' }).formatToParts(now);
       const jouG = parseInt(datParts.find(p => p.type === 'day').value);
       const mwaG = parseInt(datParts.find(p => p.type === 'month').value);
       const aneG = parseInt(datParts.find(p => p.type === 'year').value);
@@ -1211,22 +1211,22 @@
       // Kouche solèy Yeroushalayim (minit apre minwi) — mwayèn pa mwa
       // Sous: timeanddate.com Yeroushalayim
       const KOUCHE_SOLÈY = [
-        16*60+45, // Janvye  — 16:45
-        17*60+15, // Fevriye — 17:15
-        17*60+45, // Mas     — 17:45
-        19*60+15, // Avril   — 19:15 (DST)
-        19*60+45, // Me      — 19:45
-        19*60+45, // Jen     — 19:45
-        20*60+10, // Jiyè    — 20:10
-        19*60+40, // Out     — 19:40
-        18*60+50, // Septanm — 18:50
-        18*60+00, // Oktòb   — 18:00
-        16*60+50, // Novanm  — 16:50
-        16*60+35, // Desanm  — 16:35
+17*60+20, // Janvye  — 17:20
+17*60+55, // Fevriye — 17:55
+19*60+25, // Mas     — 19:25
+20*60+00, // Avril   — 20:00
+20*60+25, // Me      — 20:25
+20*60+30, // Jen     — 20:30
+20*60+20, // Jiyè    — 20:20
+19*60+55, // Out     — 19:55
+19*60+15, // Septanm — 19:15
+18*60+30, // Oktòb   — 18:30
+17*60+55, // Novanm  — 17:55
+17*60+20, // Desanm  — 17:20
       ];
       const koucheSolèy = KOUCHE_SOLÈY[mwaG - 1];
-      const lèYeruStr = now.toLocaleString('fr-FR', { timeZone: 'America/Indiana/Indianapolis', hour: 'numeric', minute: 'numeric', hour12: false });
-      const [lèH, lèM] = lèYeruStr.split(':').map(n => parseInt(n) || 0);
+      const lèIndyStr = now.toLocaleString('fr-FR', { timeZone: 'America/Indiana/Indianapolis', hour: 'numeric', minute: 'numeric', hour12: false });
+      const [lèH, lèM] = lèIndyStr.split(':').map(n => parseInt(n) || 0);
       const lèMinutes = lèH * 60 + lèM;
 
       let jouCalc = jouG, mwaCalc = mwaG, aneCalc = aneG;
