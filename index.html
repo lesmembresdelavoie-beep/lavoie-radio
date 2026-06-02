@@ -208,6 +208,28 @@
     .footer-copy { font-family: 'EB Garamond', serif; font-size: 0.82rem; color: var(--parchemin); opacity: 0.3; }
     .footer-verse { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.92rem; color: var(--or-pale); opacity: 0.45; margin-bottom: 1.2rem; }
 
+    /* DATE/TIME NAV */
+    .nav-datetime {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-family: 'Cinzel', serif;
+      line-height: 1.3;
+    }
+    #nav-date {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--or);
+      opacity: 0.85;
+      text-transform: uppercase;
+    }
+    #nav-time {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      color: var(--or-clair);
+      font-weight: 600;
+    }
+
     /* KÉPHA */
 
     body { background: #0b1220; font-family: Georgia, serif; }
@@ -462,7 +484,10 @@
       <li><a href="#">Calendrier</a></li>
       <li><a href="radio.html">Radio</a></li>
     </ul>
-    <a href="https://t.me/lesmembresdelavoie" target="_blank" class="nav-cta">Rejoindre</a>
+    <div class="nav-datetime">
+      <span id="nav-date"></span>
+      <span id="nav-time"></span>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -638,6 +663,35 @@
     </ul>
     <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
   </footer>
+
+<script>
+  // Calendrier lunisolaire La Voie
+  // Ancre : 1 Abib = 20 mars 2026, mois de 30 jours, jour commence au soir
+  const MOIS = ['Abib','Ziw','Siban','Rebiʿi','Ab','Eloul','Ethanim','Boul','Kislew','Tebeth','Shebat','Adar'];
+  const ANCRE = new Date(2026, 2, 20); // 20 mars 2026 = 1 Abib
+
+  function getBiblicalDate() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const diffMs = today - ANCRE;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    if (diffDays < 0) return '';
+    const moisIndex = Math.floor(diffDays / 30) % 12;
+    const jourDuMois = (diffDays % 30) + 1;
+    return jourDuMois + ' ' + MOIS[moisIndex];
+  }
+
+  function updateClock() {
+    const now = new Date();
+    const dateOptions = { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const biblical = getBiblicalDate();
+    document.getElementById('nav-date').textContent = biblical + ' · ' + now.toLocaleDateString('fr-FR', dateOptions);
+    document.getElementById('nav-time').textContent = now.toLocaleTimeString('fr-FR', timeOptions);
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
 
 <!-- BOUTON KÉPHA -->
 <div id="kepha-btn" onclick="kephaToggle()" title="Parler avec Képha">
