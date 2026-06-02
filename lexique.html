@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lexique Officiel — La Voie · lavoie.world</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bleu-nuit: #0b1220; --bleu-royal: #1a2e5a; --or: #c8a84b;
+      --or-clair: #e4c97e; --or-pale: #f5e8c0; --parchemin: #f8f3e8;
+      --parchemin2: #ede5d0; --blanc-chaud: #fdfaf4; --texte: #1c1a14;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'EB Garamond', Georgia, serif; background: var(--bleu-nuit); color: var(--parchemin); overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(11,18,32,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,168,75,0.18); }
+    .nav-logo { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--or); letter-spacing: 0.12em; text-decoration: none; }
+    .nav-logo span { color: var(--or-clair); font-weight: 400; font-size: 0.72rem; display: block; letter-spacing: 0.25em; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.14em; color: var(--parchemin2); text-decoration: none; text-transform: uppercase; opacity: 0.8; transition: color 0.2s, opacity 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--or-clair); opacity: 1; }
+    .nav-cta { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.5rem 1.3rem; border: 1px solid var(--or); color: var(--or); text-decoration: none; transition: all 0.25s; }
+    .nav-cta:hover { background: var(--or); color: var(--bleu-nuit); }
+    .page-header { min-height: 48vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 50% 20%, rgba(26,46,90,0.75) 0%, transparent 70%); }
+    .page-header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 4rem; background: linear-gradient(to bottom, var(--or), transparent); }
+    .page-header-inner { position: relative; z-index: 1; }
+    .breadcrumb { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--or); opacity: 0.7; text-transform: uppercase; margin-bottom: 1.4rem; }
+    .breadcrumb a { color: inherit; text-decoration: none; }
+    .page-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 700; color: var(--or-clair); letter-spacing: 0.06em; line-height: 1.05; }
+    .page-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--parchemin); opacity: 0.75; margin-top: 1rem; }
+    .principe-banner { background: var(--parchemin); color: var(--texte); padding: 3rem 2rem; text-align: center; border-top: 3px solid var(--or); border-bottom: 3px solid var(--or); }
+    .principe-inner { max-width: 780px; margin: 0 auto; }
+    .principe-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--or); text-transform: uppercase; margin-bottom: 0.8rem; }
+    .principe-texte { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--bleu-royal); line-height: 1.85; }
+    .principe-texte strong { color: var(--bleu-nuit); font-style: normal; }
+    .page-body { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 210px 1fr; padding: 0 2rem; }
+    .sidebar { padding: 4rem 2rem 4rem 0; position: sticky; top: 80px; align-self: start; border-right: 1px solid rgba(200,168,75,0.15); max-height: calc(100vh - 100px); overflow-y: auto; }
+    .sidebar-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--or); text-transform: uppercase; margin-bottom: 1rem; opacity: 0.7; }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 0.1rem; }
+    .sidebar-nav a { font-family: 'EB Garamond', serif; font-size: 0.85rem; color: var(--parchemin); opacity: 0.5; text-decoration: none; padding: 0.3rem 0.7rem; border-left: 2px solid transparent; display: block; transition: all 0.2s; }
+    .sidebar-nav a:hover { opacity: 0.95; border-left-color: var(--or); color: var(--or-pale); padding-left: 1rem; }
+    .main-content { padding: 4rem 0 7rem 4rem; }
+    .intro-bloc { max-width: 700px; margin-bottom: 3.5rem; }
+    .intro-titre { font-family: 'Cinzel', serif; font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 600; color: var(--or-clair); margin-bottom: 0.5rem; }
+    .intro-line { width: 60px; height: 1px; background: linear-gradient(to right, var(--or), transparent); margin-bottom: 1.4rem; }
+    .intro-texte { font-family: 'EB Garamond', serif; font-size: 1.05rem; line-height: 1.9; color: var(--parchemin); opacity: 0.85; margin-bottom: 1rem; }
+    .categorie { margin-bottom: 4rem; scroll-margin-top: 90px; }
+    .categorie-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(200,168,75,0.2); }
+    .categorie-num { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--or); opacity: 0.65; text-transform: uppercase; white-space: nowrap; }
+    .categorie-titre { font-family: 'Cinzel', serif; font-size: clamp(0.95rem, 2vw, 1.25rem); font-weight: 600; color: var(--or-clair); letter-spacing: 0.05em; }
+    .encadre-doctrinal { background: rgba(26,46,90,0.45); border: 1px solid rgba(200,168,75,0.22); border-left: 3px solid var(--or); padding: 1.4rem 1.6rem; margin: 0 0 1.8rem; max-width: 700px; }
+    .encadre-doctrinal-titre { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.25em; color: var(--or); text-transform: uppercase; margin-bottom: 0.6rem; }
+    .encadre-doctrinal-texte { font-family: 'EB Garamond', serif; font-size: 1rem; color: var(--parchemin); opacity: 0.88; line-height: 1.8; }
+    .encadre-doctrinal-texte strong { color: var(--or-pale); font-weight: 500; }
+    .entree { display: grid; grid-template-columns: 220px 1fr; border-bottom: 1px solid rgba(200,168,75,0.1); transition: background 0.2s; }
+    .entree:first-of-type { border-top: 1px solid rgba(200,168,75,0.1); }
+    .entree:hover { background: rgba(200,168,75,0.04); }
+    .entree-traditionnel { padding: 1.1rem 1.3rem 1.1rem 0; border-right: 1px solid rgba(200,168,75,0.1); }
+    .entree-traditionnel-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; color: rgba(200,168,75,0.45); text-transform: uppercase; margin-bottom: 0.2rem; }
+    .entree-traditionnel-val { font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.98rem; color: var(--parchemin); opacity: 0.45; line-height: 1.4; }
+    .entree-restaure { padding: 1.1rem 0 1.1rem 1.5rem; }
+    .entree-restaure-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--or); text-transform: uppercase; margin-bottom: 0.2rem; }
+    .entree-restaure-val { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 1.8vw, 1.2rem); font-weight: 600; color: var(--or-clair); letter-spacing: 0.02em; line-height: 1.3; margin-bottom: 0.35rem; }
+    .entree-note { font-family: 'EB Garamond', serif; font-size: 0.9rem; color: var(--parchemin); opacity: 0.66; line-height: 1.62; font-style: italic; }
+    .entree-contexte { font-family: 'Cinzel', serif; font-size: 0.54rem; letter-spacing: 0.15em; color: var(--or); opacity: 0.52; text-transform: uppercase; margin-top: 0.28rem; }
+    .mois-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem; max-width: 700px; margin: 1rem 0; }
+    .mois-card { background: rgba(200,168,75,0.06); border: 1px solid rgba(200,168,75,0.18); border-top: 2px solid var(--or); padding: 0.9rem 1rem; }
+    .mois-num { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.2em; color: var(--or); opacity: 0.6; margin-bottom: 0.2rem; }
+    .mois-nom { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: var(--or-clair); }
+    .ornement { text-align: center; color: var(--or); font-size: 0.65rem; letter-spacing: 0.6em; opacity: 0.4; margin: 2.8rem 0; }
+    .page-nav { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(200,168,75,0.2); padding-top: 3rem; margin-top: 2rem; flex-wrap: wrap; gap: 1rem; max-width: 700px; }
+    .page-nav a { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or); text-decoration: none; padding: 0.75rem 1.6rem; border: 1px solid rgba(200,168,75,0.35); transition: all 0.25s; }
+    .page-nav a:hover { background: var(--or); color: var(--bleu-nuit); }
+    footer { background: #07101e; border-top: 1px solid rgba(200,168,75,0.15); padding: 3rem 2rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--or); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+    .footer-domain { font-family: 'Cinzel', serif; font-size: 0.66rem; letter-spacing: 0.3em; color: var(--or); opacity: 0.5; margin-bottom: 1.5rem; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center; list-style: none; margin-bottom: 1.8rem; }
+    .footer-nav a { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--parchemin); text-decoration: none; opacity: 0.45; transition: opacity 0.2s, color 0.2s; }
+    .footer-nav a:hover { opacity: 1; color: var(--or); }
+    .footer-copy { font-family: 'EB Garamond', serif; font-size: 0.8rem; color: var(--parchemin); opacity: 0.28; }
+    @media (max-width: 860px) {
+      .page-body { grid-template-columns: 1fr; padding: 0 1.4rem; }
+      .sidebar { display: none; }
+      .main-content { padding: 3rem 0 5rem; }
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .entree { grid-template-columns: 1fr; }
+      .entree-traditionnel { border-right: none; border-bottom: 1px dashed rgba(200,168,75,0.15); padding-bottom: 0.7rem; }
+      .entree-restaure { padding: 0.7rem 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">La Voie<span>lavoie.world</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+    <li><a href="#">Enseignements</a></li>
+    <li><a href="#">Ketubim Qadoshim</a></li>
+    <li><a href="#" class="active">Lexique</a></li>
+    <li><a href="#">Calendrier</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Rejoindre</a>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;✦&nbsp; Lexique Officiel</p>
+    <h1 class="page-title">Lexique Officiel<br>de La Voie</h1>
+    <p class="page-subtitle">Les noms portent une identité. Les mots façonnent la compréhension.</p>
+  </div>
+</header>
+
+<div class="principe-banner">
+  <div class="principe-inner">
+    <p class="principe-label">✦ Principe fondateur</p>
+    <p class="principe-texte">
+      Ce lexique n'est pas une liste de substitutions arbitraires. C'est un acte de <strong>restauration</strong> —
+      rendre aux termes scripturaires leur sens originel, leur identité ibriyim, leur poids doctrinal.
+      Chaque terme banni l'est parce qu'il porte une altération. Chaque terme restauré est un acte de fidélité
+      aux Ketubim Qadoshim. Ce lexique est vivant — il sera enrichi au fil de l'enseignement de la Qehilah.
+    </p>
+  </div>
+</div>
+
+<div class="page-body">
+  <aside class="sidebar">
+    <p class="sidebar-label">Catégories</p>
+    <ul class="sidebar-nav">
+      <li><a href="#noms-divins">I. Shemôth Qadoshim</a></li>
+      <li><a href="#communaute">II. Communauté & lieux</a></li>
+      <li><a href="#liens-fraternels">III. Liens fraternels</a></li>
+      <li><a href="#foi-pratique">IV. Foi & pratique</a></li>
+      <li><a href="#ministeres">V. Ministères & fonctions</a></li>
+      <li><a href="#temple">VI. Temple & culte</a></li>
+      <li><a href="#ecrits">VII. Les Écrits</a></li>
+      <li><a href="#calendrier">VIII. Calendrier lunisolaire</a></li>
+      <li><a href="#gouvernance">IX. Gouvernance</a></li>
+      <li><a href="#proclamation">X. Proclamation & prophétie</a></li>
+      <li><a href="#vocabulaire-spirituel">XI. Vocabulaire roḥanit</a></li>
+      <li><a href="#termes-sensibles">XII. Termes sensibles</a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="intro-bloc">
+      <h2 class="intro-titre">Un vocabulaire restauré, cohérent et vivant</h2>
+      <div class="intro-line"></div>
+      <p class="intro-texte">
+        Les termes listés comme <em>bannis</em> ne le sont pas par polémique — mais parce qu'ils portent
+        des couches d'altération doctrinale, culturelle ou institutionnelle incompatibles avec la fidélité
+        aux Ketubim Qadoshim. Chaque terme restauré est un acte de précision et de fidélité.
+      </p>
+    </div>
+
+    <!-- I. NOMS DIVINS -->
+    <section class="categorie" id="noms-divins">
+      <div class="categorie-header"><span class="categorie-num">Catégorie I</span><h2 class="categorie-titre">Shemôth Qadoshim</h2></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Dieu</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Èlohim</p><p class="entree-note">Nom générique désignant la divinité. Ce qu'Il est — distinct de Son Nom propre.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">L'Éternel / Jéhovah / le Seigneur (Père)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Yahawah</p><p class="entree-note">Nom propre du Père — restitution du Tétragramme originel effacé dans les traductions.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Seigneur (titre général)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Adôn / Adoni</p><p class="entree-note">Titre ibriy d'autorité. <em>Adôn</em> en référence générale, <em>Adoni</em> en adresse directe.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Jésus / Jésus-Christ</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Yahushuʿah / Yahushuʿah Ha'Mashiaḥ</p><p class="entree-note">Nom ibriy du Fils — « Yahawah sauve ». <em>Ha'Mashiaḥ</em> : l'Oint.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Esprit-Saint</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Rouaḥ Ha'Qadosh / Rouaḥ</p><p class="entree-note"><em>Rouaḥ</em> : souffle, esprit. <em>Ha'Qadosh</em> : le Saint, le Séparé.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Divin / Divine</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Qadosh / Roḥani / Elyôn</p><p class="entree-note"><em>Qadosh</em> : saint. <em>Roḥani</em> : d'ordre roḥanit. <em>Elyôn</em> : le Très-Haut.</p><p class="entree-contexte">Qadosh (sainteté) / Roḥani (nature) / Elyôn (souveraineté)</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Ciel / Cieux</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Shamayim</p><p class="entree-note">Terme ibriy originel — les cieux dans toute leur dimension cosmique, roḥanit et eschatologique.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Céleste</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Shamayique</p><p class="entree-note">Ce qui appartient aux Shamayim ou en provient.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Gloire / Glorieux</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Kabôd</p><p class="entree-note">Poids, éclat, présence manifeste de Yahawah. Réservé à ce qui Lui appartient.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Royaume / Royale</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Malkouwt</p><p class="entree-note">Règne, royauté, souveraineté de Yahawah — présent et à venir.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- II. COMMUNAUTÉ & LIEUX -->
+    <section class="categorie" id="communaute">
+      <div class="categorie-header"><span class="categorie-num">Catégorie II</span><h2 class="categorie-titre">Communauté & lieux</h2></div>
+      <div class="encadre-doctrinal"><p class="encadre-doctrinal-titre">✦ Distinction fondamentale</p><p class="encadre-doctrinal-texte"><strong>Qehilah</strong> : l'assemblée vivante des Membres de La Voie. <strong>Beth HaKnesset</strong> : le lieu physique où la Qehilah se réunit. Le peuple n'est pas le bâtiment.</p></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Église (corps)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Qehilah</p><p class="entree-note">L'assemblée convoquée — l'ensemble vivant des Membres de La Voie. Non une institution : un corps.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Église (bâtiment)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Beth HaKnesset</p><p class="entree-note">Maison de rassemblement — le lieu physique où la Qehilah se réunit.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Disciple / Disciples</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Tal'mid / Tal'midim</p><p class="entree-note">Celui qui apprend en marchant avec le Maître — imite sa vie autant que son enseignement.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Chrétien(s)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Mashiyḥ / Mashiyḥim</p><p class="entree-note">De la racine ibriyim — celui du Mashiaḥ. Précède la translitération grecque <em>christianos</em>.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Bible / Biblique</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Ketubim Qadoshim</p><p class="entree-note"><em>Ketubim</em> : écrits. <em>Qadoshim</em> : saints, consacrés. L'intégralité des Écrits inspirés de Yahawah.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- III. LIENS FRATERNELS -->
+    <section class="categorie" id="liens-fraternels">
+      <div class="categorie-header"><span class="categorie-num">Catégorie III</span><h2 class="categorie-titre">Liens fraternels</h2></div>
+      <div class="encadre-doctrinal"><p class="encadre-doctrinal-titre">✦ Note doctrinale</p><p class="encadre-doctrinal-texte">La Voie n'utilise pas les mots <em>frère</em>, <em>sœur</em>, <em>fraternité</em> dans leur sens générique français. Elle utilise les termes ibriyim originaux — porteurs d'un sens plus précis et plus profond.</p></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Frère</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Akh</p><p class="entree-note">Frère — membre masculin de La Voie. Terme d'adresse et d'identité au sein de la Qehilah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Frères (pluriel)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Akhim</p><p class="entree-note">Pluriel de Akh — les frères de la Qehilah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Mes frères (adresse)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Akhimi</p><p class="entree-note">Forme d'adresse affectueuse — « mes frères » — utilisée dans l'enseignement et la communication au sein de La Voie.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Sœur</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Akhot</p><p class="entree-note">Sœur — membre féminine de La Voie.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Sœurs (pluriel)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Akhayot</p><p class="entree-note">Pluriel de Akhot — les sœurs de la Qehilah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Amour fraternel</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Aḥawā</p><p class="entree-note">L'amour fraternel profond qui unit les membres de La Voie — bien au-delà d'un sentiment superficiel.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Fraternité (lien communautaire)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Ḥaberout</p><p class="entree-note">Le compagnonnage, l'appartenance à une même communauté — le lien structurel de la Qehilah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Lien fraternel</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Kesher Akhim</p><p class="entree-note">Le lien concret entre les Akhim — connexion vivante entre les membres masculins de La Voie.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Fraternité (relation profonde)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Lebanah</p><p class="entree-note">La relation profonde, intime et qadoshah entre les Akhim et les Akhayot de la Qehilah — signe visible de l'Aḥawā qui habite les Membres de La Voie.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- IV. FOI & PRATIQUE -->
+    <section class="categorie" id="foi-pratique">
+      <div class="categorie-header"><span class="categorie-num">Catégorie IV</span><h2 class="categorie-titre">Foi & pratique</h2></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Foi</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Emounah</p><p class="entree-note">Fidélité active, confiance ancrée, constance dans l'obéissance — bien plus qu'une croyance intellectuelle.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Prière</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Téfilah</p><p class="entree-note">L'acte de s'adresser à Yahawah — intercession, supplication, action de grâce.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Prier</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Hitpalel</p><p class="entree-note">Forme verbale ibriyim — s'intercéder, s'approcher de Yahawah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Baptême / Baptisé(e)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Tebilah / Thabalé</p><p class="entree-note"><em>Tebilah</em> : l'immersion. <em>Thabalé</em> : celui/celle qui a été immergé(e).</p><p class="entree-contexte">Tebilah (acte) / Thabalé (personne immergée)</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Rançon</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Kopher</p><p class="entree-note">Le prix de la délivrance — le Kopher de Yahushuʿah Ha'Mashiaḥ payé sur le ʿÈts pour la Néfèsh de tout homme.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Salut / Sauver</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Délivrance / Délivrer</p><p class="entree-note">La délivrance accomplie par Yahushuʿah Ha'Mashiaḥ — dégagé des connotations institutionnelles.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Âme</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Néfèsh</p><p class="entree-note">L'être vivant dans sa totalité, le souffle de vie — plus précis que le concept grec d'« âme ».</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Sainteté</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Qadoshout</p><p class="entree-note">La sainteté — l'état de ce qui est séparé, consacré, mis à part pour Yahawah. Terme ibriy translittéré-francisé de La Voie.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Saint(e)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Qadosh / Qadoshah</p><p class="entree-note"><em>Qadosh</em> (m.) / <em>Qadoshah</em> (f.) : séparé(e), consacré(e), mis(e) à part pour Yahawah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Sauveur</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Moshiaḥ</p><p class="entree-note">Le Sauveur, le Délivreur — distinct de <em>Mashiaḥ</em> (l'Oint). <em>Moshiaḥ</em> désigne la fonction de délivrance accomplie par Yahushuʿah Ha'Mashiaḥ.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Paix / Salutation</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Shalôm / tranquillité</p><p class="entree-note"><em>Shalôm</em> : plénitude, intégralité — scripturaire et salutation. <em>Tranquillité</em> : usage pastoral.</p><p class="entree-contexte">Shalôm (scripturaire) / tranquillité (pastoral)</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Péché</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Devyasyon</p><p class="entree-note">Déviation — tout écart de La Voie prescrite par Yahawah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Ange / Anges / Angélique</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Mal'ak / Mal'akim / Mal'aki</p><p class="entree-note"><em>Mal'ak</em> : messager envoyé. <em>Mal'akim</em> : pluriel. <em>Mal'aki</em> : adjectif.</p><p class="entree-contexte">Mal'ak (sing.) / Mal'akim (plur.) / Mal'aki (adj.)</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- V. MINISTÈRES & FONCTIONS -->
+    <section class="categorie" id="ministeres">
+      <div class="categorie-header"><span class="categorie-num">Catégorie V</span><h2 class="categorie-titre">Ministères & fonctions</h2></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Apôtre</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Shilliaḥ</p><p class="entree-note">Celui qui est envoyé, mandaté avec une mission définie.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Pasteur</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Roʿeh</p><p class="entree-note">Berger — conduire, nourrir, protéger la Qehilah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Ancien / Presbytre</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Zaqen</p><p class="entree-note">Homme de maturité reconnu — conseil, discernement, garde doctrinale.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Évêque / Superviseur</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Paqid</p><p class="entree-note">Celui qui surveille et supervise — sans hiérarchie ecclésiastique institutionnelle.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- VI. TEMPLE & CULTE -->
+    <section class="categorie" id="temple">
+      <div class="categorie-header"><span class="categorie-num">Catégorie VI</span><h2 class="categorie-titre">Temple & culte</h2></div>
+      <div class="encadre-doctrinal"><p class="encadre-doctrinal-titre">✦ Principe</p><p class="encadre-doctrinal-texte">Pour les termes du Beit HaMiqdash et du culte lévitique, La Voie conserve les termes ibriyim originaux tels qu'ils apparaissent dans les Ketubim Qadoshim.</p></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Temple</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Beit HaMiqdash</p><p class="entree-note">Maison du Lieu Saint — le Temple de Yahawah à Yeroushalayim.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Grand Prêtre</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Kohen HaGadol</p><p class="entree-note">Le Kohen principal, médiateur entre le peuple et Yahawah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Prêtre / Prêtrise</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Kohen / Kehounah</p><p class="entree-note"><em>Kohen</em> : prêtre. <em>Kehounah</em> : la charge sacerdotale.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Le Saint des Saints</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Qodesh HaQodashim</p><p class="entree-note">Le lieu le plus saint du Beit HaMiqdash — où résidait la présence de Yahawah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Sacrifice / Offrande</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Qorban / Qorbanot</p><p class="entree-note"><em>Qorban</em> : singulier — ce qui est présenté, approché. <em>Qorbanot</em> : pluriel.</p><p class="entree-contexte">Qorban (sing.) / Qorbanot (plur.)</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Autel</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Mizbeaḥ</p><p class="entree-note">L'autel du service lévitique.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Arche de l'Alliance</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Arôn HaBrit</p><p class="entree-note">Le coffre sacré — symbole de la présence de Yahawah au sein de Son peuple.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme traduit</p><p class="entree-traditionnel-val">Lévite / Lévites</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme ibriy original</p><p class="entree-restaure-val">Lewi / Lewiyim</p><p class="entree-note">La tribu consacrée au service de Yahawah.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- VII. LES ÉCRITS -->
+    <section class="categorie" id="ecrits">
+      <div class="categorie-header"><span class="categorie-num">Catégorie VII</span><h2 class="categorie-titre">Les Écrits</h2></div>
+      <div class="encadre-doctrinal"><p class="encadre-doctrinal-titre">✦ Note doctrinale</p><p class="encadre-doctrinal-texte">La Voie ne parle pas d'« Ancien » et de « Nouveau » Testament — termes qui impliquent une rupture ou un remplacement. Elle utilise des formulations qui expriment la <strong>continuité</strong> et le <strong>renouvellement</strong> de la Berit de Yahawah.</p></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Ancien Testament</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Berit Meḥoudashah</p><p class="entree-note">Alliance Renouvelée — non une ancienne alliance dépassée, mais le fondement vivant et toujours valide de la relation de Yahawah avec Son peuple. Conforme à Yirmeyahu 31.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Nouveau Testament</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Berit Ḥadashah</p><p class="entree-note">Nouvelle Alliance — l'accomplissement et le renouvellement de la Berit en Yahushuʿah Ha'Mashiaḥ. Non une rupture : une plénitude.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- VIII. CALENDRIER -->
+    <section class="categorie" id="calendrier">
+      <div class="categorie-header"><span class="categorie-num">Catégorie VIII</span><h2 class="categorie-titre">Calendrier lunisolaire</h2></div>
+      <div class="encadre-doctrinal"><p class="encadre-doctrinal-titre">✦ Note</p><p class="encadre-doctrinal-texte">La Voie utilise le calendrier lunisolaire scripturaire. L'année commence au mois d'<strong>Abib</strong>, à l'équinoxe de printemps, conformément aux Ketubim Qadoshim. Les noms des mois sont les noms ibriyim originaux.</p></div>
+      <div class="mois-grid">
+        <div class="mois-card"><p class="mois-num">Mois 1</p><p class="mois-nom">Abib</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 2</p><p class="mois-nom">Ziw</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 3</p><p class="mois-nom">Siban</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 4</p><p class="mois-nom">Rebiʿi</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 5</p><p class="mois-nom">Ab</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 6</p><p class="mois-nom">Eloul</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 7</p><p class="mois-nom">Ethanim</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 8</p><p class="mois-nom">Boul</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 9</p><p class="mois-nom">Kislew</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 10</p><p class="mois-nom">Tebeth</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 11</p><p class="mois-nom">Shebat</p></div>
+        <div class="mois-card"><p class="mois-num">Mois 12</p><p class="mois-nom">Adar</p></div>
+      </div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- IX. GOUVERNANCE -->
+    <section class="categorie" id="gouvernance">
+      <div class="categorie-header"><span class="categorie-num">Catégorie IX</span><h2 class="categorie-titre">Gouvernance</h2></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Théocratie</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">ʾÉlmemshalah</p><p class="entree-note">Le règne souverain de Yahawah — la gouvernance établie par Yahawah sur Sa Qehilah et sur toute la création. Exemple d'usage : <em>« La Qehilah de Yahushuʿah se soumet à l'ʾÉlmemshalah du Malkouwt de Yahawah. »</em></p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- X. PROCLAMATION & PROPHÉTIE -->
+    <section class="categorie" id="proclamation">
+      <div class="categorie-header"><span class="categorie-num">Catégorie X</span><h2 class="categorie-titre">Proclamation & prophétie</h2></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Évangile / Bonne Nouvelle</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Besorah Tobah</p><p class="entree-note"><em>Besorah</em> : annonce. <em>Tobah</em> : bonne, excellente. Le message de la délivrance en Yahushuʿah Ha'Mashiaḥ.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Évangéliste</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Mébassar</p><p class="entree-note">Celui qui proclame la Besorah Tobah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Évangéliser</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Bassar</p><p class="entree-note">Verbe ibriy originel : proclamer, annoncer la Besorah Tobah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Évangélique</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Mébassérique</p><p class="entree-note">Relatif à la Besorah Tobah et à sa proclamation.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Prophète / Prophètes</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Nabiʾ / Nabiʾim</p><p class="entree-note">Celui que Yahawah a appelé à parler en Son Nom. <em>Nabiʾim</em> : pluriel.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Prophétie</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Nebuʾah</p><p class="entree-note">La parole inspirée prononcée par le Nabiʾ — révélation de Yahawah transmise par Son serviteur.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Prophétiser</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Nabaʾ</p><p class="entree-note">Parler sous l'inspiration de Yahawah, proclamer Sa Nebuʾah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Prophétique</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Nabique</p><p class="entree-note">Relatif à la Nebuʾah ou au ministère du Nabiʾ.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- XI. VOCABULAIRE ROḤANIT -->
+    <section class="categorie" id="vocabulaire-spirituel">
+      <div class="categorie-header"><span class="categorie-num">Catégorie XI</span><h2 class="categorie-titre">Vocabulaire roḥanit</h2></div>
+      <div class="encadre-doctrinal"><p class="encadre-doctrinal-titre">✦ Principe linguistique de La Voie</p><p class="encadre-doctrinal-texte">La Voie ne dit pas « spirituel », « spiritualité », « spirituellement ». Elle construit ses formes à partir de la racine ibriyim <em>rouaḥ</em> — cohérence linguistique et doctrinale à la fois.</p></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Spirituel(le)</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Roḥanit</p><p class="entree-note">Adjectif — ce qui est de l'ordre du Rouaḥ, ce qui appartient à la dimension du Rouaḥ.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Spiritualité</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Roḥanité</p><p class="entree-note">La dimension roḥanit de la vie du Tal'mid — son rapport vivant avec le Rouaḥ Ha'Qadosh de Yahawah.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Spirituellement</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Roḥanitement</p><p class="entree-note">Adverbe — d'une manière roḥanit, selon le Rouaḥ.</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Mystique / Mystère</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Sod / Nistar / Avodah Roḥanit</p><p class="entree-note"><em>Sod</em> : révélation cachée. <em>Nistar</em> : dimension voilée. <em>Avodah roḥanit</em> : service roḥanit actif.</p><p class="entree-contexte">Sod (révélation) / Nistar (voilé) / Avodah Roḥanit (service)</p></div></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Théologie</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">Torat Yahawah / Ḥokhmat Yahawah</p><p class="entree-note"><em>Torat Yahawah</em> : l'enseignement de Yahawah. <em>Ḥokhmat Yahawah</em> : la sagesse de Yahawah.</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- XII. TERMES SENSIBLES -->
+    <section class="categorie" id="termes-sensibles">
+      <div class="categorie-header"><span class="categorie-num">Catégorie XII</span><h2 class="categorie-titre">Termes sensibles</h2></div>
+      <div class="entree"><div class="entree-traditionnel"><p class="entree-traditionnel-label">Terme banni</p><p class="entree-traditionnel-val">Croix</p></div><div class="entree-restaure"><p class="entree-restaure-label">Terme restauré</p><p class="entree-restaure-val">ʿÈts / Poteau de supplice / Instrument d'exécution</p><p class="entree-note"><em>ʿÈts</em> : terme ibriy — bois, arbre, poteau. Le grec <em>stauros</em> désigne un poteau vertical. <em>ʿÈts</em> dans les citations scripturaires.</p><p class="entree-contexte">ʿÈts (scripturaire) / Poteau de supplice ou Instrument d'exécution (enseignement)</p></div></div>
+    </section>
+
+    <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <div class="encadre-doctrinal" style="max-width:700px; background: linear-gradient(135deg, rgba(26,46,90,0.55) 0%, rgba(11,18,32,0.7) 100%);">
+      <p class="encadre-doctrinal-titre">✦ Ce lexique est vivant</p>
+      <p class="encadre-doctrinal-texte">
+        La liste n'est pas exhaustive. Elle sera enrichie et complétée au fil de l'enseignement de la Qehilah.
+        Chaque terme ajouté passe par la même rigueur : fidélité aux Ketubim Qadoshim, cohérence doctrinale,
+        utilité pour l'ensemble des Membres de La Voie.<br><br>
+        Lorsque vous citez les Ketubim Qadoshim, utilisez les termes restaurés.
+        Lorsque vous vous adressez à ceux qui ne connaissent pas encore La Voie, expliquez avec douceur —
+        chaque terme est une porte.
+      </p>
+    </div>
+
+    <div class="page-nav">
+      <a href="qui-sommes-nous.html">← Qui sommes-nous</a>
+      <a href="#">Ketubim Qadoshim →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p class="footer-logo">La Voie</p>
+  <p class="footer-domain">lavoie.world</p>
+  <ul class="footer-nav">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+    <li><a href="#">Enseignements</a></li>
+    <li><a href="#">Ketubim Qadoshim</a></li>
+    <li><a href="#">Lexique</a></li>
+    <li><a href="#">Calendrier</a></li>
+    <li><a href="#">Rejoindre</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
