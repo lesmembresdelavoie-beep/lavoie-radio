@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soutenir La Voie — Offrandes Volontaires</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bleu-nuit:  #060d1a;
+      --bleu-royal: #0d2347;
+      --bleu-moyen: #1a3a6e;
+      --or:         #c9a84c;
+      --or-clair:   #e8cb7a;
+      --or-pale:    #f7edcc;
+      --argent:     #b8c8dc;
+      --parchemin:  #e8f0f8;
+      --tab-h:      64px;
+      --top-h:      56px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--bleu-nuit);
+      color: var(--parchemin);
+      overflow-x: hidden;
+      padding-bottom: var(--tab-h);
+    }
+
+    /* TOP BAR */
+    #top-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--top-h);
+      background: rgba(6,13,26,0.97);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.2rem; z-index: 500; backdrop-filter: blur(8px);
+    }
+    #top-bar a.back {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.15em; color: var(--or); text-decoration: none;
+      text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s;
+    }
+    #top-bar a.back:hover { opacity: 1; }
+    #top-logo {
+      font-family: 'Cinzel', serif; font-size: 1.05rem;
+      color: var(--or); letter-spacing: 0.2em;
+      text-decoration: none; text-transform: uppercase;
+    }
+
+    main { padding-top: var(--top-h); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(180deg, rgba(13,35,71,0.95) 0%, rgba(6,13,26,0.98) 100%);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      padding: 3.5rem 1.4rem 3rem;
+      text-align: center;
+    }
+    .hero-ornement {
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.35em; color: var(--or); text-transform: uppercase;
+      opacity: 0.65; margin-bottom: 1rem;
+    }
+    .hero-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      color: var(--or-clair); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--argent); max-width: 580px; margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .hero-verset {
+      font-style: italic; font-size: 1.05rem;
+      color: var(--or-pale); max-width: 480px;
+      margin: 0 auto 0.4rem; line-height: 1.65;
+    }
+    .hero-ref {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.2em; color: var(--or); text-transform: uppercase;
+      opacity: 0.7; margin-bottom: 2.2rem;
+    }
+    .divider {
+      width: 60px; height: 1px; margin: 1.5rem auto;
+      background: linear-gradient(to right, transparent, var(--or), transparent);
+    }
+
+    /* BOUTON DON */
+    .don-btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+    .btn-don {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: 'Cinzel', serif; font-size: 0.75rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 1rem 2.4rem;
+      background: linear-gradient(135deg, var(--or), var(--or-clair));
+      color: var(--bleu-nuit); font-weight: 700;
+      text-decoration: none; border-radius: 2px;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+      transition: all 0.25s;
+    }
+    .btn-don:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.5); }
+    .btn-don-note {
+      font-size: 0.78rem; color: var(--argent); opacity: 0.6;
+      font-style: italic;
+    }
+    .secure-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--argent); opacity: 0.5;
+      border: 1px solid rgba(184,200,220,0.2);
+      padding: 0.3rem 0.8rem; border-radius: 1px;
+    }
+
+    /* POURQUOI */
+    .section {
+      padding: 3.5rem 1.4rem;
+      max-width: 860px; margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.28em; color: var(--or);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      color: var(--or-pale); line-height: 1.25; margin-bottom: 1rem;
+    }
+    .section-line {
+      width: 50px; height: 1px; margin-bottom: 1.8rem;
+      background: linear-gradient(to right, var(--or), transparent);
+    }
+    .intro-p {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--parchemin); opacity: 0.85; margin-bottom: 1rem;
+      max-width: 680px;
+    }
+
+    /* GRILLE PROJETS */
+    .projets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 2rem;
+    }
+    @media(max-width: 700px) { .projets-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width: 420px) { .projets-grid { grid-template-columns: 1fr; } }
+    .projet-card {
+      background: rgba(13,35,71,0.4);
+      border: 1px solid rgba(201,168,76,0.14);
+      border-radius: 3px; padding: 1.2rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .projet-card:hover {
+      border-color: rgba(201,168,76,0.35);
+      background: rgba(13,35,71,0.65);
+    }
+    .projet-icon { font-size: 1.6rem; margin-bottom: 0.6rem; display: block; }
+    .projet-titre {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      color: var(--or-pale); letter-spacing: 0.07em;
+      margin-bottom: 0.35rem;
+    }
+    .projet-desc {
+      font-size: 0.88rem; line-height: 1.6;
+      color: var(--argent); opacity: 0.75;
+    }
+
+    /* VISION */
+    .vision-band {
+      background: linear-gradient(135deg, rgba(13,35,71,0.6), rgba(6,13,26,0.7));
+      border-top: 1px solid rgba(201,168,76,0.12);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      padding: 3rem 1.4rem; text-align: center;
+    }
+    .vision-texte {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: var(--or-pale); line-height: 1.75;
+      max-width: 640px; margin: 0 auto 1rem;
+    }
+
+    /* DON FINAL CTA */
+    .cta-final {
+      padding: 3.5rem 1.4rem; text-align: center;
+    }
+    .cta-final .section-title { margin-bottom: 0.5rem; }
+    .cta-final p {
+      font-size: 1rem; color: var(--argent); opacity: 0.7;
+      margin-bottom: 2rem; font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(4,8,16,0.98);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 2rem 1.4rem; text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cinzel', serif; font-size: 1.1rem;
+      color: var(--or-clair); letter-spacing: 0.2em; margin-bottom: 0.3rem;
+    }
+    .footer-copy {
+      font-size: 0.78rem; color: var(--argent); opacity: 0.35;
+    }
+
+    /* TAB BAR */
+    #tab-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--tab-h);
+      background: rgba(6,13,26,0.97);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      display: flex; align-items: stretch;
+      z-index: 500; backdrop-filter: blur(10px);
+    }
+    .tab-item {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.2rem;
+      text-decoration: none; color: var(--argent); opacity: 0.5;
+      transition: opacity 0.2s, color 0.2s; padding: 0.4rem 0;
+      position: relative;
+    }
+    .tab-item:hover, .tab-item.active { opacity: 1; color: var(--or-clair); }
+    .tab-item.active::after {
+      content: ''; position: absolute;
+      top: 0; left: 20%; right: 20%; height: 2px;
+      background: var(--or); border-radius: 0 0 2px 2px;
+    }
+    .tab-icon { font-size: 1.25rem; line-height: 1; }
+    .tab-label {
+      font-family: 'Cinzel', serif; font-size: 0.42rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div id="top-bar">
+    <a href="index.html" class="back">← Accueil</a>
+    <a href="index.html" id="top-logo">La Voie</a>
+    <span style="width:80px"></span>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <p class="hero-ornement">✦ Ha-Derekh · La Voie · The Way ✦</p>
+      <a href="https://buy.stripe.com/dRm8wI2ag8PA9qZeCPao800" target="_blank" style="display:inline-block;margin-bottom:1rem;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="veuve-offrande.jpg" alt="La veuve généreuse" style="width:90px;height:90px;border-radius:16px;object-fit:cover;border:2px solid rgba(201,168,76,0.4);box-shadow:0 4px 20px rgba(201,168,76,0.25)" />
+      </a>
+      <h1 class="hero-title">Soutenir l'Œuvre</h1>
+      <p class="hero-subtitle">
+        Les offrandes volontaires soutiennent La Voie Radio, Képha, lavoie.world,
+        les publications, les enseignements et les ressources mises gratuitement à disposition.
+      </p>
+      <div class="divider"></div>
+      <p class="hero-verset">« Que chacun donne comme il l'a résolu en son cœur, sans tristesse ni contrainte ; car Yahawah aime celui qui donne avec joie. »</p>
+      <p class="hero-ref">— 2 Qorintiyim 9:7</p>
+      <div class="don-btn-wrap">
+        <a href="https://buy.stripe.com/dRm8wI2ag8PA9qZeCPao800" target="_blank" class="btn-don">
+          🤲 Faire une offrande volontaire
+        </a>
+        <span class="btn-don-note">Nous ne pratiquons ni collecte obligatoire, ni dîme imposée.</span>
+        <span class="secure-badge">🔒 Paiement sécurisé · Stripe</span>
+      </div>
+    </div>
+
+    <!-- POURQUOI -->
+    <div class="section">
+      <p class="section-label">✦ Pourquoi soutenir</p>
+      <h2 class="section-title">💝 Ce que vos offrandes<br>rendent possible</h2>
+      <div class="section-line"></div>
+      <p class="intro-p">
+        Chacun des projets ci-dessous est développé et maintenu grâce à des offrandes libres.
+        Rien n'est imposé — chacun contribue selon ce que Yahawah a mis dans son cœur.
+      </p>
+      <div class="projets-grid">
+        <div class="projet-card">
+          <span class="projet-icon">📻</span>
+          <p class="projet-titre">La Voie Radio</p>
+          <p class="projet-desc">Diffusion continue d'enseignements, de proclamations et de musique de louange en français et créole haïtien.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">🤖</span>
+          <p class="projet-titre">Développement de Képha</p>
+          <p class="projet-desc">L'assistant biblique de La Voie — continuellement enrichi pour répondre aux questions des tal'midim.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">🌍</span>
+          <p class="projet-titre">lavoie.world</p>
+          <p class="projet-desc">Hébergement, développement et maintenance du portail numérique de la Qehilah.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">📚</span>
+          <p class="projet-titre">Publications</p>
+          <p class="projet-desc">Lexique restauré, ressources d'étude, documents liturgiques et outils pédagogiques mis gratuitement à disposition.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">🎙️</span>
+          <p class="projet-titre">Bodcast</p>
+          <p class="projet-desc">Productions audio — enseignements approfondis, chroniques et séries thématiques sur les Ketubim Qadoshim.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">📺</span>
+          <p class="projet-titre">TéléLaVoie</p>
+          <p class="projet-desc">Canal vidéo d'enseignements, de proclamations et de célébrations — pour les tal'midim partout dans le monde.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">🎥</span>
+          <p class="projet-titre">LaVoieMeet</p>
+          <p class="projet-desc">Espace de rencontre virtuel pour les Qehilot — étude commune, Shabbat en ligne, rassemblements des Mo'adim.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">👥</span>
+          <p class="projet-titre">Soutien aux Qehilot</p>
+          <p class="projet-desc">Accompagnement des assemblées locales — ressources, outils et soutien pour les communautés en formation.</p>
+        </div>
+        <div class="projet-card">
+          <span class="projet-icon">📅</span>
+          <p class="projet-titre">Calendrier Biblique</p>
+          <p class="projet-desc">Développement et mise à jour du calendrier des Fêtes de Yahawah — Mo'adim, Shabbat et compte de l'Omer.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISION -->
+    <div class="vision-band">
+      <p style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:1rem">✦ Notre vision ✦</p>
+      <p class="vision-texte">
+        Notre objectif est de mettre gratuitement à la disposition du plus grand nombre
+        des ressources, enseignements, émissions, outils numériques et espaces d'échange
+        fondés sur les Ketubim Qadoshim.<br><br>
+        Ce travail mondial est possible grâce aux offrandes et au soutien volontaire
+        de ceux qui aiment La Voie.
+      </p>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="cta-final">
+      <p class="section-label" style="text-align:center">✦ Participer</p>
+      <h2 class="section-title">Chacun donne selon<br>ce qu'il a décidé dans son cœur</h2>
+      <p>Aucune somme n'est trop petite. Toute offrande compte.</p>
+      <div class="don-btn-wrap">
+        <a href="https://buy.stripe.com/dRm8wI2ag8PA9qZeCPao800" target="_blank" class="btn-don">
+          🤲 Faire une offrande volontaire
+        </a>
+        <span class="secure-badge">🔒 Paiement sécurisé · Stripe · Aucune donnée bancaire partagée</span>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="footer-logo">La Voie</p>
+      <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
+    </footer>
+
+  </main>
+
+  <!-- TAB BAR -->
+  <nav id="tab-bar">
+    <a href="index.html" class="tab-item">
+      <span class="tab-icon">🏠</span>
+      <span class="tab-label">Accueil</span>
+    </a>
+    <a href="tèks-pou-jounen-an.html" class="tab-item">
+      <span class="tab-icon">📖</span>
+      <span class="tab-label">Tèks</span>
+    </a>
+    <a href="radio.html" class="tab-item">
+      <span class="tab-icon">📻</span>
+      <span class="tab-label">Radio</span>
+    </a>
+    <a href="lexique.html" class="tab-item">
+      <span class="tab-icon">📜</span>
+      <span class="tab-label">Lexique</span>
+    </a>
+    <a href="offrandes.html" class="tab-item active">
+      <span class="tab-icon">🤲</span>
+      <span class="tab-label">Soutenir</span>
+    </a>
+  </nav>
+
+</body>
+</html>
