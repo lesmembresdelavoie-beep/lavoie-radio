@@ -9,882 +9,1757 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bleu-nuit: #0b1220; --bleu-royal: #1a2e5a;
-      --or: #c8a84b; --or-clair: #e4c97e; --or-pale: #f5e8c0;
-      --parchemin: #f8f3e8; --parchemin2: #ede5d0; --blanc-chaud: #fdfaf4;
-      --texte: #1c1a14; --texte2: #3d3826;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'EB Garamond', Georgia, serif; background: var(--bleu-nuit); color: var(--parchemin); overflow-x: hidden; }
 
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(11,18,32,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,168,75,0.18); }
-    .nav-logo { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: var(--or); letter-spacing: 0.12em; text-decoration: none; }
-    .nav-logo span { color: var(--or-clair); font-weight: 400; font-size: 0.78rem; display: block; letter-spacing: 0.25em; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.15em; color: var(--parchemin2); text-decoration: none; text-transform: uppercase; opacity: 0.85; transition: color 0.2s, opacity 0.2s; }
+    :root {
+      --bleu-nuit:   #060d1a;
+      --bleu-royal:  #0d2347;
+      --bleu-moyen:  #1a3a6e;
+      --bleu-vif:    #1e4d99;
+      --or:          #c9a84c;
+      --or-clair:    #e8cb7a;
+      --or-pale:     #f7edcc;
+      --argent:      #b8c8dc;
+      --argent-clair:#dde8f2;
+      --argent-pale: #eef4fa;
+      --parchemin:   #e8f0f8;
+      --parchemin2:  #d0dff0;
+      --blanc-chaud: #f4f8fd;
+      --texte:       #0a0f1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--bleu-nuit);
+      color: var(--parchemin);
+      overflow-x: hidden;
+    }
+
+    /* ── WIDGET LÈ + DAT IBRIY ── */
+    #widget-ibriy {
+      position: fixed;
+      top: 0.6rem;
+      right: 1rem;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(6,13,26,0.88);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 2px;
+      padding: 0.4rem 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+    .widget-saison { font-size: 1.1rem; line-height: 1; }
+    .widget-content { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; }
+    .widget-le-row { display: flex; align-items: center; gap: 0.4rem; }
+    .widget-ville {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      color: #b8c8dc;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      min-width: 2.8rem;
+      text-align: right;
+    }
+    .widget-le {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #e8cb7a;
+      letter-spacing: 0.1em;
+      line-height: 1;
+    }
+    .widget-dat {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      color: #c9a84c;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+      line-height: 1;
+      text-align: right;
+    }
+    .widget-sezon {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      color: #b8c8dc;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.65;
+      line-height: 1;
+      text-align: right;
+    }
+
+    /* ── ARYE-PLAN SEZON ── */
+    #sezon-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.08;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 2s ease, background-image 2s ease;
+      pointer-events: none;
+    }
+    body.sezon-abib #sezon-bg {
+      background-image: radial-gradient(ellipse at 30% 40%, rgba(100,200,100,0.4) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 60%, rgba(255,220,100,0.3) 0%, transparent 50%);
+      opacity: 0.12;
+    }
+    body.sezon-qayits #sezon-bg {
+      background-image: radial-gradient(ellipse at 50% 30%, rgba(255,160,50,0.4) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 70%, rgba(255,200,50,0.3) 0%, transparent 50%);
+      opacity: 0.12;
+    }
+    body.sezon-staw #sezon-bg {
+      background-image: radial-gradient(ellipse at 40% 50%, rgba(180,120,60,0.4) 0%, transparent 60%),
+                        radial-gradient(ellipse at 60% 30%, rgba(220,150,80,0.3) 0%, transparent 50%);
+      opacity: 0.12;
+    }
+    body.sezon-horef #sezon-bg {
+      background-image: radial-gradient(ellipse at 50% 40%, rgba(150,180,220,0.4) 0%, transparent 60%),
+                        radial-gradient(ellipse at 30% 60%, rgba(200,220,255,0.3) 0%, transparent 50%);
+      opacity: 0.12;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(11,18,32,0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200,168,75,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--or);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+    }
+    .nav-logo span {
+      color: var(--or-clair);
+      font-weight: 400;
+      font-size: 0.7rem;
+      display: block;
+      letter-spacing: 0.28em;
+      opacity: 0.7;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.67rem;
+      letter-spacing: 0.14em;
+      color: var(--parchemin2);
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: color 0.2s, opacity 0.2s;
+    }
     .nav-links a:hover { color: var(--or-clair); opacity: 1; }
-    .nav-cta { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.55rem 1.4rem; border: 1px solid var(--or); color: var(--or); text-decoration: none; transition: all 0.25s; }
+
+    .nav-cta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.67rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.4rem;
+      border: 1px solid var(--or);
+      color: var(--or);
+      text-decoration: none;
+      transition: all 0.25s;
+    }
     .nav-cta:hover { background: var(--or); color: var(--bleu-nuit); }
 
-    /* HERO */
+    /* ═══ TODAY PANEL ═══ */
+    .today-panel{background:rgba(11,18,32,0.88);backdrop-filter:blur(12px);border:1px solid rgba(200,168,75,0.35);border-top:3px solid var(--or);padding:1.5rem;margin:0 auto;max-width:820px;text-align:left;box-shadow:0 10px 35px rgba(0,0,0,0.35)}
+    .today-date{display:flex;flex-direction:column;gap:0.25rem;margin-bottom:1rem}
+    .today-label,.daily-label{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--or)}
+    .today-date strong{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--or-clair)}
+    .today-date small{color:var(--parchemin);opacity:0.7}
+    .daily-text p{font-family:'EB Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--parchemin);line-height:1.6;margin:0.6rem 0 0.3rem}
+    .daily-text small{color:var(--or);opacity:0.75;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em}
+    .today-actions{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1.3rem}
+    .today-btn{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;padding:0.75rem 1.2rem;border:1px solid rgba(200,168,75,0.5);color:var(--parchemin);text-decoration:none;transition:0.25s}
+    .today-btn:hover{border-color:var(--or);color:var(--or-clair)}
+    .today-btn.gold{background:var(--or);color:var(--bleu-nuit);font-weight:700}
+
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       text-align: center;
       position: relative;
-      padding: 0 2rem 4rem;
       overflow: hidden;
-      background-image: url('bg-site.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
+      padding: 6rem 2rem 5rem;
     }
 
-    /* Dégradé bas pour que boutons lisibles */
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 35%, rgba(30,77,153,0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 35% at 85% 15%, rgba(201,168,76,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 35% 35% at 15% 80%, rgba(26,58,110,0.5) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,35,71,0.7) 0%, transparent 60%),
+        linear-gradient(180deg, #030810 0%, #060d1a 40%, #0a1628 100%);
+    }
+
+    /* Étoile centrale */
+    .hero-star {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse at center,
+        rgba(30,77,153,0.18) 0%,
+        rgba(201,168,76,0.05) 40%,
+        transparent 70%);
+      border-radius: 50%;
+      animation: pulse 7s ease-in-out infinite;
+    }
+
+    /* Anneau saphir décoratif */
+    .hero-star::before {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 45%;
-      background: linear-gradient(to top, rgba(11,18,32,0.85) 0%, transparent 100%);
-      pointer-events: none;
+      inset: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,200,220,0.07);
+      animation: pulse 5s ease-in-out infinite reverse;
+    }
+
+    .hero-star::after {
+      content: '';
+      position: absolute;
+      inset: 140px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.06);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -60%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -60%) scale(1.08); }
     }
 
     .hero-inner {
       position: relative;
-      z-index: 1;
-      width: 100%;
+      z-index: 2;
       max-width: 900px;
     }
 
-    /* Twa bouton yo */
-    .hero-buttons {
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.45em;
+      color: var(--or);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(3.5rem, 10vw, 8.5rem);
+      font-weight: 700;
+      color: var(--or-clair);
+      letter-spacing: 0.08em;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      animation: fadeUp 1s 0.1s ease both;
+    }
+
+    .hero-title-ibri {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 2rem);
+      color: var(--or);
+      letter-spacing: 0.12em;
+      margin-bottom: 2.5rem;
+      opacity: 0.75;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--or), transparent);
+      margin: 0 auto 2.5rem;
+      animation: fadeUp 1s 0.25s ease both;
+    }
+
+    .hero-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--parchemin);
+      opacity: 0.82;
+      line-height: 2;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .hero-desc em {
+      color: var(--or-pale);
+      font-style: normal;
+    }
+
+    .hero-actions {
       display: flex;
       gap: 1.2rem;
       justify-content: center;
       flex-wrap: wrap;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+
+    .btn-primary {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
+      background: var(--or);
+      color: var(--bleu-nuit);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--or-clair); transform: translateY(-2px); }
+
+    .btn-secondary {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(184,200,220,0.35);
+      color: var(--or);
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--or-clair); color: var(--or-clair); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      color: var(--or);
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--or), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── BANDE VERSET ── */
+    .verset-band {
+      background: linear-gradient(135deg, #0d2347 0%, #0a1a3a 100%);
+      border-top: 1px solid rgba(200,168,75,0.2);
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+      padding: 2.2rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .verset-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      color: var(--or-pale);
+      line-height: 1.85;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .verset-ref {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      color: var(--or);
+      opacity: 0.65;
+      margin-top: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 2rem; }
+
+    .section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      color: var(--or);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0.7;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--or-clair);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, var(--or), transparent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── IDENTITÉ ── */
+    #identite {
+      background: linear-gradient(180deg, #030810 0%, #060d1a 100%);
+    }
+
+    .identite-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .identite-text p {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 2;
+      color: var(--parchemin);
+      opacity: 0.85;
+      margin-bottom: 1.4rem;
+    }
+
+    .identite-pilliers {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .pillier {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      border: 1px solid rgba(184,200,220,0.14);
+      background: linear-gradient(135deg, rgba(13,35,71,0.45) 0%, rgba(6,13,26,0.55) 100%);
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .pillier:hover {
+      border-color: rgba(201,168,76,0.4); box-shadow: 0 4px 28px rgba(30,77,153,0.18);
+      background: linear-gradient(135deg, rgba(13,35,71,0.75) 0%, rgba(6,13,26,0.8) 100%);
+    }
+
+    .pillier-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--or);
+      opacity: 0.3;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .pillier-titre {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--or-clair);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .pillier-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--parchemin);
+      opacity: 0.75;
+      line-height: 1.75;
+    }
+
+    /* ── RADIO ── */
+    #radio {
+      background: linear-gradient(135deg, #050c1c 0%, #060d1a 50%, #0a1428 100%);
+      border-top: 1px solid rgba(200,168,75,0.1);
+      border-bottom: 1px solid rgba(200,168,75,0.1);
+    }
+
+    .radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .radio-player-card {
+      background: linear-gradient(135deg, rgba(13,35,71,0.5) 0%, rgba(6,13,26,0.65) 100%);
+      border: 1px solid rgba(200,168,75,0.22);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .radio-player-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 2rem; right: 2rem;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--or), transparent);
+    }
+
+    .radio-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      color: var(--or);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .radio-live-dot {
+      width: 7px;
+      height: 7px;
+      background: #ff4444; box-shadow: 0 0 8px rgba(255,68,68,0.6);
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .radio-title-card {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      color: var(--or-clair);
+      margin-bottom: 0.3rem;
+    }
+
+    .radio-subtitle-card {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--parchemin);
+      opacity: 0.6;
+      margin-bottom: 2rem;
+    }
+
+    .radio-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .radio-play-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--or);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .radio-play-btn:hover { background: var(--or-clair); transform: scale(1.06); }
+    .radio-play-btn svg { width: 20px; height: 20px; fill: var(--bleu-nuit); margin-left: 3px; }
+
+    .radio-wave {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 28px;
+    }
+    .radio-wave span {
+      display: block;
+      width: 3px;
+      background: var(--or);
+      border-radius: 2px;
+      opacity: 0.5;
+      animation: wave 1.2s ease-in-out infinite;
+    }
+    .radio-wave span:nth-child(1) { height: 10px; animation-delay: 0s; }
+    .radio-wave span:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+    .radio-wave span:nth-child(3) { height: 14px; animation-delay: 0.2s; }
+    .radio-wave span:nth-child(4) { height: 22px; animation-delay: 0.15s; }
+    .radio-wave span:nth-child(5) { height: 10px; animation-delay: 0.05s; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.5); }
+      50% { transform: scaleY(1); }
+    }
+
+    .radio-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--or);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(200,168,75,0.3);
+      padding-bottom: 2px;
+      transition: all 0.2s;
+    }
+    .radio-link:hover { color: var(--or-clair); border-color: var(--or-clair); }
+
+    .radio-desc p {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 2;
+      color: var(--parchemin);
+      opacity: 0.85;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ── PAGES / NAVIGATION ── */
+    #pages {
+      background: var(--bleu-nuit);
+    }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      border: 1px solid rgba(184,200,220,0.14);
+    }
+
+    .page-card {
+      background: linear-gradient(160deg, rgba(13,35,71,0.7) 0%, rgba(6,13,26,0.85) 100%);
+      padding: 2.5rem 2rem;
+      text-decoration: none;
+      display: block;
+      border: 1px solid rgba(184,200,220,0.08);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30,77,153,0.12) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .page-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--or), transparent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .page-card:hover {
+      background: linear-gradient(160deg, rgba(13,35,71,0.95) 0%, rgba(6,13,26,0.98) 100%);
+      border-color: rgba(201,168,76,0.25);
+      box-shadow: 0 8px 40px rgba(30,77,153,0.25), 0 0 0 1px rgba(201,168,76,0.08);
+      transform: translateY(-2px);
+    }
+    .page-card:hover::before { opacity: 1; }
+    .page-card:hover::after { transform: scaleX(1); }
+
+    .page-card-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      color: var(--or);
+      opacity: 0.5;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .page-card-titre {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      font-weight: 600;
+      color: var(--or-clair);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+
+    .page-card-ibri {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--or);
+      opacity: 0.55;
+      margin-bottom: 0.9rem;
+    }
+
+    .page-card-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--parchemin);
+      opacity: 0.6;
+      line-height: 1.75;
+    }
+
+    .page-card-arrow {
+      font-size: 1rem;
+      color: var(--or);
+      opacity: 0;
+      margin-top: 1rem;
+      display: block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .page-card:hover .page-card-arrow { opacity: 0.7; transform: translateX(6px); }
+
+    /* ── CITATION FINALE ── */
+    .citation-section {
+      background: linear-gradient(180deg, #030810 0%, #060d1a 60%, #030810 100%);
+      border-top: 1px solid rgba(184,200,220,0.08);
+      padding: 8rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .citation-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(30,77,153,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .citation-ornement {
+      font-size: 0.65rem;
+      letter-spacing: 0.8em;
+      color: var(--or);
+      opacity: 0.35;
       margin-bottom: 3rem;
     }
 
-    .hero-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
+    .citation-texte {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+      color: var(--or-pale);
+      line-height: 1.65;
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .citation-ref {
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--or);
+      opacity: 0.55;
       text-transform: uppercase;
-      padding: 0.9rem 1.8rem;
-      text-decoration: none;
-      border: 1px solid rgba(200,168,75,0.6);
-      background: rgba(11,18,32,0.7);
-      color: var(--parchemin);
-      backdrop-filter: blur(8px);
-      transition: all 0.25s;
-      font-weight: 600;
     }
-    .hero-btn:hover { border-color: var(--or); color: var(--or-clair); background: rgba(26,46,90,0.8); transform: translateY(-2px); }
-    .hero-btn .btn-icon { font-size: 1.3rem; }
-    .hero-btn .btn-text { display: flex; flex-direction: column; text-align: left; }
-    .hero-btn .btn-label { font-size: 0.6rem; opacity: 0.7; letter-spacing: 0.2em; }
-    .hero-btn .btn-main { font-size: 0.82rem; }
 
-    /* 5 ikòn anba */
-    .hero-icons {
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(180deg, #030810 0%, #020609 100%);
+      border-top: 1px solid rgba(200,168,75,0.12);
+      padding: 3.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--or);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.3rem;
+    }
+    .footer-domain {
+      font-family: 'Cinzel', serif;
+      font-size: 0.64rem;
+      letter-spacing: 0.32em;
+      color: var(--or);
+      opacity: 0.4;
+      margin-bottom: 2rem;
+    }
+
+    .footer-nav {
       display: flex;
-      gap: 0;
-      justify-content: center;
       flex-wrap: wrap;
-      background: rgba(11,18,32,0.82);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(200,168,75,0.2);
-      padding: 1.4rem 1rem;
-      margin: 0 -2rem -4rem;
+      gap: 0.8rem 2.2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 2rem;
     }
-
-    .hero-icon-item {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.6rem 1.5rem;
-      border-right: 1px solid rgba(200,168,75,0.15);
-      flex: 1;
-      min-width: 160px;
-    }
-    .hero-icon-item:last-child { border-right: none; }
-
-    .hero-icon-emoji { font-size: 1.4rem; flex-shrink: 0; }
-    .hero-icon-text {}
-    .hero-icon-titre {
+    .footer-nav a {
       font-family: 'Cinzel', serif;
       font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      color: var(--or-clair);
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: 0.15rem;
+      color: var(--parchemin);
+      text-decoration: none;
+      opacity: 0.4;
+      transition: opacity 0.2s, color 0.2s;
     }
-    .hero-icon-desc {
+    .footer-nav a:hover { opacity: 1; color: var(--or); }
+
+    .footer-copy {
       font-family: 'EB Garamond', serif;
       font-size: 0.82rem;
       color: var(--parchemin);
-      opacity: 0.6;
-      line-height: 1.4;
+      opacity: 0.22;
     }
 
-    /* SECTION VERSETS */
-    .section-versets {
-      background: var(--parchemin);
-      color: var(--texte);
-      padding: 6rem 2rem;
-      text-align: center;
-      border-top: 4px solid var(--or);
-    }
-    .section-label { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--or); margin-bottom: 1rem; }
-    .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 600; color: var(--bleu-nuit); margin-bottom: 1.5rem; letter-spacing: 0.04em; }
-    .section-divider { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--or), transparent); margin: 0 auto 3rem; }
-    .versets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; }
-    .verset-card { background: var(--blanc-chaud); border: 1px solid rgba(200,168,75,0.25); padding: 2rem 1.8rem; text-align: left; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
-    .verset-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,46,90,0.1); }
-    .verset-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--or); }
-    .verset-ref { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em; color: var(--or); margin-bottom: 0.9rem; text-transform: uppercase; }
-    .verset-texte { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--texte); line-height: 1.8; }
-
-    /* SECTION QUI */
-    .section-qui { background: var(--bleu-royal); padding: 6rem 2rem; text-align: center; }
-    .qui-inner { max-width: 860px; margin: 0 auto; }
-    .qui-inner .section-title { color: var(--or-clair); }
-    .qui-texte { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.05rem, 2vw, 1.28rem); line-height: 1.95; color: var(--parchemin); opacity: 0.92; margin-bottom: 1.5rem; }
-    .qui-highlight { display: block; background: rgba(200,168,75,0.12); border-left: 3px solid var(--or); padding: 1.2rem 1.8rem; margin: 1.5rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--or-pale); }
-    .btn-secondary { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 2.5rem; background: transparent; color: var(--or-pale); text-decoration: none; border: 1px solid rgba(200,168,75,0.45); transition: all 0.25s; display: inline-block; margin-top: 1.5rem; }
-    .btn-secondary:hover { border-color: var(--or); color: var(--or-clair); }
-
-    /* SECTION PORTES */
-    .section-portes { background: var(--parchemin2); padding: 6rem 2rem; text-align: center; }
-    .section-portes .section-title { color: var(--bleu-nuit); }
-    .portes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 1080px; margin: 0 auto; }
-    .porte { background: var(--blanc-chaud); border-top: 3px solid var(--or); padding: 2.5rem 1.8rem; text-align: left; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; color: inherit; }
-    .porte:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(26,46,90,0.12); }
-    .porte-num { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--or); margin-bottom: 1rem; }
-    .porte-titre { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--bleu-nuit); margin-bottom: 0.8rem; }
-    .porte-desc { font-family: 'EB Garamond', serif; font-size: 0.97rem; color: var(--texte2); line-height: 1.7; }
-    .porte-fleche { margin-top: 1.2rem; color: var(--or); font-size: 1.1rem; }
-
-    /* SECTION LEXIQUE */
-    .section-lexique { background: var(--bleu-nuit); padding: 6rem 2rem; text-align: center; }
-    .section-lexique .section-title { color: var(--or-clair); }
-    .lexique-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--parchemin); opacity: 0.85; max-width: 620px; margin: 0 auto 3rem; line-height: 1.8; }
-    .lexique-table { max-width: 780px; margin: 0 auto 2.5rem; border-collapse: collapse; width: 100%; text-align: left; }
-    .lexique-table thead th { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--or); text-transform: uppercase; padding: 0.8rem 1.2rem; border-bottom: 1px solid rgba(200,168,75,0.3); }
-    .lexique-table tbody tr { border-bottom: 1px solid rgba(200,168,75,0.1); transition: background 0.2s; }
-    .lexique-table tbody tr:hover { background: rgba(200,168,75,0.05); }
-    .lexique-table td { font-family: 'EB Garamond', serif; font-size: 1rem; padding: 0.9rem 1.2rem; color: var(--parchemin); opacity: 0.9; }
-    .lexique-table td:first-child { color: rgba(200,168,75,0.75); font-style: italic; }
-    .lexique-table td:last-child { color: var(--or-clair); font-weight: 500; }
-    .btn-lexique { font-family: 'Cinzel', serif; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.9rem 2.2rem; border: 1px solid var(--or); color: var(--or); text-decoration: none; transition: all 0.25s; display: inline-block; }
-    .btn-lexique:hover { background: var(--or); color: var(--bleu-nuit); }
-
-    /* APPEL FINAL */
-    .section-appel { background: linear-gradient(135deg, var(--bleu-royal) 0%, var(--bleu-nuit) 100%); padding: 7rem 2rem; text-align: center; position: relative; overflow: hidden; }
-    .section-appel::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,168,75,0.07) 0%, transparent 70%); pointer-events: none; }
-    .appel-inner { position: relative; z-index: 1; }
-    .section-appel .section-title { color: var(--or-clair); margin-bottom: 1.2rem; }
-    .appel-texte { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.2vw, 1.35rem); color: var(--parchemin); opacity: 0.88; max-width: 640px; margin: 0 auto 2.8rem; line-height: 1.85; }
-    .appel-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
-    .btn-primary { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--or); color: var(--bleu-nuit); text-decoration: none; font-weight: 600; transition: all 0.25s; border: 1px solid var(--or); display: inline-block; }
-    .btn-primary:hover { background: var(--or-clair); transform: translateY(-2px); }
-
-    /* FOOTER */
-    footer { background: #07101e; border-top: 1px solid rgba(200,168,75,0.15); padding: 3rem 2rem 2rem; text-align: center; }
-    .footer-logo { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--or); letter-spacing: 0.15em; margin-bottom: 0.4rem; }
-    .footer-domain { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--or); opacity: 0.55; margin-bottom: 1.8rem; }
-    .footer-nav { display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; justify-content: center; list-style: none; margin-bottom: 2rem; }
-    .footer-nav a { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--parchemin); text-decoration: none; opacity: 0.5; transition: opacity 0.2s; }
-    .footer-nav a:hover { opacity: 1; color: var(--or); }
-    .footer-copy { font-family: 'EB Garamond', serif; font-size: 0.82rem; color: var(--parchemin); opacity: 0.3; }
-    .footer-verse { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.92rem; color: var(--or-pale); opacity: 0.45; margin-bottom: 1.2rem; }
-
-    /* DATE/TIME NAV */
-    .nav-datetime {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      font-family: 'Cinzel', serif;
-      line-height: 1.3;
-    }
-    #nav-date {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      color: var(--or);
-      opacity: 0.85;
-      text-transform: uppercase;
-    }
-    #nav-time {
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
-      color: var(--or-clair);
-      font-weight: 600;
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* KÉPHA */
-
-    body { background: #0b1220; font-family: Georgia, serif; }
-
-    /* ── BOUTON KÉPHA ── */
-    #kepha-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1000;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a2e5a, #0b1220);
-      border: 2px solid #c8a84b;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(200,168,75,0.3);
-      transition: all 0.3s;
-    }
-    #kepha-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 28px rgba(200,168,75,0.45);
-    }
-    #kepha-btn svg { width: 26px; height: 26px; }
-
-    /* Badge notification */
-    #kepha-badge {
-      position: absolute;
-      top: -4px; right: -4px;
-      width: 18px; height: 18px;
-      background: #c8a84b;
-      border-radius: 50%;
-      font-size: 10px;
-      color: #0b1220;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
-    }
-
-    /* ── FENÈT CHAT ── */
-    #kepha-window {
-      position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      z-index: 999;
-      width: 360px;
-      max-height: 520px;
-      background: #0b1220;
-      border: 1px solid rgba(200,168,75,0.35);
-      border-top: 3px solid #c8a84b;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-      transform: translateY(20px);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
-    #kepha-window.open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Header */
-    .kepha-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 1.2rem;
-      border-bottom: 1px solid rgba(200,168,75,0.18);
-      background: rgba(26,46,90,0.4);
-    }
-    .kepha-header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .kepha-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #c8a84b, #1a2e5a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Georgia', serif;
-      font-size: 1rem;
-      color: #0b1220;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .kepha-name {
-      font-family: 'Georgia', serif;
-      font-size: 0.9rem;
-      color: #e4c97e;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-    .kepha-status {
-      font-size: 0.7rem;
-      color: #c8a84b;
-      opacity: 0.7;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .kepha-status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #27ae60;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    .kepha-close {
-      background: none;
-      border: none;
-      color: #c8a84b;
-      opacity: 0.6;
-      cursor: pointer;
-      font-size: 1.2rem;
-      padding: 0.2rem;
-      transition: opacity 0.2s;
-    }
-    .kepha-close:hover { opacity: 1; }
-
-    /* Messages zone */
-    .kepha-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      max-height: 320px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(200,168,75,0.3) transparent;
-    }
-
-    .msg {
-      max-width: 85%;
-      padding: 0.7rem 1rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      font-family: Georgia, serif;
-    }
-    .msg.kepha {
-      background: rgba(26,46,90,0.5);
-      border-left: 2px solid #c8a84b;
-      color: #f8f3e8;
-      align-self: flex-start;
-    }
-    .msg.user {
-      background: rgba(200,168,75,0.12);
-      border: 1px solid rgba(200,168,75,0.25);
-      color: #f8f3e8;
-      align-self: flex-end;
-      text-align: right;
-    }
-    .msg.typing {
-      background: rgba(26,46,90,0.5);
-      border-left: 2px solid #c8a84b;
-      color: #c8a84b;
-      align-self: flex-start;
-      font-style: italic;
-      font-size: 0.82rem;
-      opacity: 0.8;
-    }
-
-    /* Input zone */
-    .kepha-input-zone {
-      padding: 0.8rem 1rem;
-      border-top: 1px solid rgba(200,168,75,0.18);
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-end;
-    }
-    #kepha-input {
-      flex: 1;
-      background: rgba(26,46,90,0.3);
-      border: 1px solid rgba(200,168,75,0.25);
-      color: #f8f3e8;
-      padding: 0.6rem 0.9rem;
-      font-family: Georgia, serif;
-      font-size: 0.88rem;
-      resize: none;
-      max-height: 80px;
-      line-height: 1.5;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    #kepha-input:focus { border-color: rgba(200,168,75,0.6); }
-    #kepha-input::placeholder { color: rgba(248,243,232,0.35); }
-
-    #kepha-send {
-      background: #c8a84b;
-      border: none;
-      color: #0b1220;
-      width: 36px; height: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.2s;
-      font-size: 1rem;
-    }
-    #kepha-send:hover { background: #e4c97e; }
-    #kepha-send:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    .kepha-footer {
-      padding: 0.4rem 1rem;
-      text-align: center;
-      font-size: 0.65rem;
-      color: rgba(200,168,75,0.4);
-      font-family: Georgia, serif;
-      letter-spacing: 0.05em;
-      border-top: 1px solid rgba(200,168,75,0.08);
-    }
-
-    @media (max-width: 480px) {
-      #kepha-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
-      #kepha-btn { right: 1rem; bottom: 1rem; }
-    }
-  
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.2rem; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.4rem; }
       .nav-links { display: none; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .hero-icons { flex-direction: column; }
-      .hero-icon-item { border-right: none; border-bottom: 1px solid rgba(200,168,75,0.15); }
-      .hero-icon-item:last-child { border-bottom: none; }
+      .identite-grid,
+      .radio-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .pages-grid { grid-template-columns: 1fr; }
+      section { padding: 5rem 1.4rem; }
     }
   </style>
+/* ═══ KÉPHA ═══ */
+
+#kepha-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:9999;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#e8cb7a);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,0.4);transition:all 0.3s;animation:pulse-gold 3s ease-in-out infinite}
+#kepha-btn:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(201,168,76,0.6)}
+#kepha-btn svg{width:28px;height:28px;fill:#060d1a}
+@keyframes pulse-gold{0%,100%{box-shadow:0 4px 24px rgba(201,168,76,0.4),0 0 0 0 rgba(201,168,76,0.3)}50%{box-shadow:0 4px 24px rgba(201,168,76,0.5),0 0 0 10px rgba(201,168,76,0)}}
+#kepha-window{position:fixed;bottom:5.5rem;right:1.8rem;z-index:9998;width:370px;max-height:570px;background:linear-gradient(180deg,#060d1a 0%,#0a1428 100%);border:1px solid rgba(201,168,76,0.3);border-radius:4px;display:flex;flex-direction:column;box-shadow:0 16px 60px rgba(0,0,0,0.7);transform:translateY(20px) scale(0.95);opacity:0;pointer-events:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+#kepha-window.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+#kepha-header{padding:1rem 1.2rem;background:linear-gradient(135deg,rgba(13,35,71,0.9),rgba(6,13,26,0.95));border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;gap:0.8rem;border-radius:4px 4px 0 0}
+.kepha-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#8a6a1f);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:1px solid rgba(201,168,76,0.4)}
+.kepha-info{flex:1}
+.kepha-nom{font-family:'Cinzel',serif;font-size:0.9rem;font-weight:600;color:#e8cb7a;letter-spacing:0.08em}
+.kepha-titre{font-family:'EB Garamond',serif;font-style:italic;font-size:0.78rem;color:#b8c8dc;opacity:0.7}
+.kepha-status{display:flex;align-items:center;gap:0.3rem;font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;color:#c9a84c;text-transform:uppercase;opacity:0.7}
+.kepha-dot{width:6px;height:6px;background:#4caf50;border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+#kepha-close{background:none;border:none;color:#b8c8dc;cursor:pointer;font-size:1.1rem;opacity:0.5;transition:opacity 0.2s;padding:0.2rem}
+#kepha-close:hover{opacity:1}
+#kepha-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.8rem;scrollbar-width:thin;scrollbar-color:rgba(201,168,76,0.2) transparent;max-height:350px}
+#kepha-messages::-webkit-scrollbar{width:4px}
+#kepha-messages::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.2);border-radius:2px}
+.msg{display:flex;flex-direction:column;gap:0.2rem;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg-bubble{padding:0.75rem 1rem;border-radius:2px;font-family:'EB Garamond',serif;font-size:0.97rem;line-height:1.7;max-width:92%}
+.msg.kepha .msg-bubble{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);border-left:2px solid #c9a84c;color:#e8f0f8;align-self:flex-start}
+.msg.user .msg-bubble{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.08));border:1px solid rgba(201,168,76,0.2);color:#f7edcc;align-self:flex-end;text-align:right}
+.msg-label{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.45}
+.msg.kepha .msg-label{color:#c9a84c}
+.msg.user .msg-label{color:#b8c8dc;align-self:flex-end}
+.typing-bubble{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);border-left:2px solid #c9a84c;padding:0.75rem 1rem;border-radius:2px;display:flex;gap:4px;align-items:center;align-self:flex-start}
+.typing-dot{width:6px;height:6px;background:#c9a84c;border-radius:50%;opacity:0.4;animation:typing 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,100%{opacity:0.4;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+#kepha-suggestions{padding:0.6rem 1rem 0;display:flex;flex-wrap:wrap;gap:0.4rem}
+.suggestion-btn{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;background:transparent;border:1px solid rgba(201,168,76,0.2);color:#c9a84c;cursor:pointer;transition:all 0.2s;border-radius:1px}
+.suggestion-btn:hover{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.4)}
+#kepha-input-zone{padding:0.8rem 1rem;border-top:1px solid rgba(201,168,76,0.15);display:flex;gap:0.6rem;align-items:center;background:rgba(6,13,26,0.8);border-radius:0 0 4px 4px}
+#kepha-input{flex:1;background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:0.6rem 0.9rem;font-family:'EB Garamond',serif;font-size:0.95rem;color:#e8f0f8;outline:none;resize:none;min-height:40px;max-height:100px;transition:border-color 0.2s}
+#kepha-input::placeholder{color:rgba(184,200,220,0.4);font-style:italic}
+#kepha-input:focus{border-color:rgba(201,168,76,0.45)}
+#kepha-send{width:40px;height:40px;border-radius:50%;background:#c9a84c;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+#kepha-send:hover{background:#e8cb7a;transform:scale(1.05)}
+#kepha-send svg{width:16px;height:16px;fill:#060d1a}
+#kepha-notif{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#ff4444;border-radius:50%;font-size:0.6rem;color:white;display:none;align-items:center;justify-content:center;font-family:'Cinzel',serif}
+@media(max-width:480px){#kepha-window{width:calc(100vw - 2rem);right:1rem}}
+
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html">La Voie<span>lavoie.world</span></a>
-    <ul class="nav-links">
-      <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
-      <li><a href="#">Enseignements</a></li>
-      <li><a href="lexique.html">Lexique</a></li>
-      <li><a href="#">Calendrier</a></li>
-      <li><a href="radio.html">Radio</a></li>
-    </ul>
-    <div class="nav-datetime">
-      <span id="nav-date"></span>
-      <span id="nav-time"></span>
+  <!-- WIDGET LÈ YEROUSHALAYIM + INDIANAPOLIS + DAT IBRIY + SEZON -->
+  <div id="widget-ibriy">
+    <div class="widget-saison" id="widget-saison-icon"></div>
+    <div class="widget-content">
+      <div class="widget-le-row">
+        <span class="widget-ville">🕍 Yeru</span>
+        <span class="widget-le" id="widget-le-yeru">--:--:--</span>
+      </div>
+      <div class="widget-le-row">
+        <span class="widget-ville">🏙️ Indy</span>
+        <span class="widget-le" id="widget-le-indy">--:--:--</span>
+      </div>
+      <div class="widget-dat" id="widget-dat">--- ----</div>
+      <div class="widget-sezon" id="widget-sezon">---</div>
     </div>
+  </div>
+
+  <!-- ARYE-PLAN SEZON -->
+  <div id="sezon-bg"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      La Voie
+      <span>lavoie.world</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+      <li><a href="lexique.html">Lexique</a></li>
+      <li><a href="radio.html">Radio</a></li>
+      <li><a href="calendrier.html">Calendrier</a></li>
+    </ul>
+    <a href="qui-sommes-nous.html" class="nav-cta">Rejoindre</a>
   </nav>
 
   <!-- HERO -->
+  <!-- ═══ TODAY PANEL ═══ -->
+  <div style="background:rgba(11,18,32,0.95);padding:1rem 0;text-align:center">
+    <div class="today-panel">
+      <div class="today-date">
+        <span class="today-label">✦ Tèks pou Jounen an</span>
+        <strong>16 Siban 5786</strong>
+        <small>Swa 2 jen → Swa 3 jen 2026</small>
+      </div>
+      <div class="daily-text">
+        <p>« Gwo manje se pou moun ki gen matirite, pou moun ki rive fè diferans ant sa ki byen ak sa ki mal paske yo antrene kapasite yo genyen pou yo gen bon jijman an afòs yo sèvi avè l. »</p>
+        <small>— Ibriyim 5:14</small>
+      </div>
+      <div class="today-actions">
+        <a href="teks-pou-jounen-an.html" class="today-btn gold">📖 Li Tèks Konplè a</a>
+        <a href="radio.html" class="today-btn">📻 La Voie Radio</a>
+      </div>
+    </div>
+  </div>
+
   <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-star"></div>
     <div class="hero-inner">
-
-      <!-- 3 bouton yo -->
-      <div class="hero-buttons">
-        <a href="radio.html" class="hero-btn">
-          <span class="btn-icon">📻</span>
-          <span class="btn-text">
-            <span class="btn-label">Écouter</span>
-            <span class="btn-main">La Voie Radio</span>
-          </span>
-        </a>
-        <a href="#" class="hero-btn" onclick="kephaToggle(); return false;">
-          <span class="btn-icon">🤖</span>
-          <span class="btn-text">
-            <span class="btn-label">Parler avec</span>
-            <span class="btn-main">Képha</span>
-          </span>
-        </a>
-        <a href="qui-sommes-nous.html" class="hero-btn">
-          <span class="btn-icon">📖</span>
-          <span class="btn-text">
-            <span class="btn-label">Découvrir</span>
-            <span class="btn-main">La Voie</span>
-          </span>
-        </a>
-      </div>
-
-      <!-- 5 ikòn anba -->
-      <div class="hero-icons">
-        <div class="hero-icon-item">
-          <span class="hero-icon-emoji">📚</span>
-          <div class="hero-icon-text">
-            <div class="hero-icon-titre">Étude des Ketubim Qadoshim</div>
-            <div class="hero-icon-desc">Vérité. Connaissance. Croissance.</div>
-          </div>
-        </div>
-        <div class="hero-icon-item">
-          <span class="hero-icon-emoji">📡</span>
-          <div class="hero-icon-text">
-            <div class="hero-icon-titre">La Voie Radio</div>
-            <div class="hero-icon-desc">Enseignements. Cantiques. Édification.</div>
-          </div>
-        </div>
-        <div class="hero-icon-item">
-          <span class="hero-icon-emoji">👥</span>
-          <div class="hero-icon-text">
-            <div class="hero-icon-titre">Qehilah</div>
-            <div class="hero-icon-desc">Une famille. Une mission.</div>
-          </div>
-        </div>
-        <div class="hero-icon-item">
-          <span class="hero-icon-emoji">🌍</span>
-          <div class="hero-icon-text">
-            <div class="hero-icon-titre">Faire des Tal'midim</div>
-            <div class="hero-icon-desc">Pour toutes les nations.</div>
-          </div>
-        </div>
-        <div class="hero-icon-item">
-          <span class="hero-icon-emoji">🛤️</span>
-          <div class="hero-icon-text">
-            <div class="hero-icon-titre">Marcher dans les pas de Yahushuʿah</div>
-            <div class="hero-icon-desc">Qadoshout. Obéyisans. Aḥawā.</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- VERSETS -->
-  <section class="section-versets">
-    <p class="section-label">✦ Fondation scripturaire</p>
-    <h2 class="section-title">Enracinés dans les Ketubim Qadoshim</h2>
-    <div class="section-divider"></div>
-    <div class="versets-grid">
-      <div class="verset-card"><p class="verset-ref">Maʿasei 9:2</p><p class="verset-texte">Le nom de La Voie désigne dès l'origine ceux qui marchent selon l'enseignement de Yahushuʿah Ha'Mashiaḥ.</p></div>
-      <div class="verset-card"><p class="verset-ref">Maʿasei 11:26</p><p class="verset-texte">C'est à Antioche que les tal'midim furent appelés pour la première fois Mashiyḥim.</p></div>
-      <div class="verset-card"><p class="verset-ref">Mattiyahu 28:19</p><p class="verset-texte">« Allez, faites des tal'midim de toutes les nations, les immergeant au Nom du Père, du Fils et du Rouaḥ Ha'Qadosh. »</p></div>
-      <div class="verset-card"><p class="verset-ref">Maʿasei 1:8</p><p class="verset-texte">« Vous recevrez une puissance, le Rouaḥ Ha'Qadosh venant sur vous, et vous serez mes témoins jusqu'aux extrémités de la terre. »</p></div>
-    </div>
-  </section>
-
-  <!-- QUI SOMMES-NOUS -->
-  <section class="section-qui">
-    <div class="qui-inner">
-      <p class="section-label" style="color:var(--or)">✦ Notre identité</p>
-      <h2 class="section-title">Qui sommes-nous ?</h2>
-      <div class="section-divider"></div>
-      <p class="qui-texte">
-        Les Membres de La Voie sont une Qehilah unie autour des Ketubim Qadoshim restaurés,
-        du Nom de <strong style="color:var(--or-clair)">Yahawah</strong> et de la seigneurie de
-        <strong style="color:var(--or-clair)">Yahushuʿah Ha'Mashiaḥ</strong>.
+      <p class="hero-eyebrow">✦ &nbsp; Ha-Derekh · La Voie · The Way &nbsp; ✦</p>
+      <h1 class="hero-title">La Voie</h1>
+      <p class="hero-title-ibri">Ha-Derekh — Chemen an — The Way</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        Retourner aux <em>Ketubim Qadoshim</em> dans leur identité ibriyim originelle.<br>
+        Honorer le Nom de <em>Yahawah</em> et de <em>Yahushuaʿ Ha'Mashiaḥ</em>.<br>
+        Marcher dans la Voie — ensemble, en vérité.
       </p>
-      <blockquote class="qui-highlight">
-        « La Voie n'est pas une dénomination. C'est un retour — à l'Emounah originelle,
-        aux noms ibriyim, aux Ketubim Qadoshim non altérés. »
-      </blockquote>
-      <a href="qui-sommes-nous.html" class="btn-secondary">En savoir plus →</a>
+      <div class="hero-actions">
+        <a href="qui-sommes-nous.html" class="btn-primary">Qui sommes-nous</a>
+        <a href="radio.html" class="btn-secondary">🎙️ La Voie Radio</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Descendre</span>
+      <div class="hero-scroll-line"></div>
     </div>
   </section>
 
-  <!-- PORTES -->
-  <section class="section-portes">
-    <p class="section-label">✦ Pour tous les membres</p>
-    <h2 class="section-title">Votre point de départ</h2>
-    <div class="section-divider" style="background:linear-gradient(to right,transparent,var(--or),transparent)"></div>
-    <div class="portes-grid">
-      <a href="qui-sommes-nous.html" class="porte"><p class="porte-num">01 — Nouveau chercheur</p><h3 class="porte-titre">Découvrir La Voie</h3><p class="porte-desc">Qui nous sommes, ce que nous croyons, pourquoi La Voie est distincte.</p><p class="porte-fleche">→</p></a>
-      <a href="#" class="porte"><p class="porte-num">02 — Enseignements</p><h3 class="porte-titre">Étudier les Ketubim</h3><p class="porte-desc">Accédez aux enseignements, études scripturaires et messages de la Qehilah.</p><p class="porte-fleche">→</p></a>
-      <a href="lexique.html" class="porte"><p class="porte-num">03 — Lexique</p><h3 class="porte-titre">Vocabulaire restauré</h3><p class="porte-desc">Le lexique officiel de La Voie — termes ibriyim originaux.</p><p class="porte-fleche">→</p></a>
-      <a href="https://t.me/lesmembresdelavoie" target="_blank" class="porte"><p class="porte-num">04 — Communauté</p><h3 class="porte-titre">Rejoindre la Qehilah</h3><p class="porte-desc">Rejoignez les tal'midim sur Telegram — Shabbath, Moʿadim, annonces.</p><p class="porte-fleche">→</p></a>
-    </div>
-  </section>
+  <!-- VERSET -->
+  <div class="verset-band">
+    <p class="verset-text">
+      « Yahushuaʿ lui dit : Je suis le chemin, la vérité et la vie.<br>
+      Nul ne vient au Père que par moi. »
+    </p>
+    <p class="verset-ref">Yohanan 14:6 · Ketubim Qadoshim</p>
+  </div>
 
-  <!-- LEXIQUE -->
-  <section class="section-lexique">
-    <p class="section-label">✦ Vocabulaire restauré</p>
-    <h2 class="section-title">Lexique Officiel de La Voie</h2>
-    <div class="section-divider"></div>
-    <p class="lexique-intro">Nous utilisons un vocabulaire restauré, ancré dans les noms et expressions ibriyim originaux.</p>
-    <table class="lexique-table">
-      <thead><tr><th>Terme traditionnel</th><th>Terme restauré de La Voie</th></tr></thead>
-      <tbody>
-        <tr><td>Dieu / Le Seigneur</td><td>Yahawah / Èlohim</td></tr>
-        <tr><td>Jésus-Christ</td><td>Yahushuʿah Ha'Mashiaḥ</td></tr>
-        <tr><td>Saint-Esprit</td><td>Rouaḥ Ha'Qadosh</td></tr>
-        <tr><td>Disciples / Chrétiens</td><td>Tal'midim / Mashiyḥim</td></tr>
-        <tr><td>Bonne Nouvelle</td><td>Besorah Tobah</td></tr>
-        <tr><td>Église</td><td>Qehilah</td></tr>
-        <tr><td>Baptême</td><td>Tebilah</td></tr>
-        <tr><td>Foi</td><td>Emounah</td></tr>
-        <tr><td>Sainteté</td><td>Qadoshout</td></tr>
-        <tr><td>Bible / Écriture sainte</td><td>Ketubim Qadoshim</td></tr>
-      </tbody>
-    </table>
-    <a href="lexique.html" class="btn-lexique">Consulter le lexique complet →</a>
-  </section>
-
-  <!-- APPEL FINAL -->
-  <section class="section-appel">
-    <div class="appel-inner">
-      <p class="section-label">✦ Un appel pour toutes les nations</p>
-      <h2 class="section-title">Êtes-vous prêt à marcher dans La Voie ?</h2>
-      <div class="section-divider"></div>
-      <p class="appel-texte">
-        Que vous découvriez La Voie pour la première fois, ou que vous cherchiez
-        une Qehilah fondée sur les Ketubim Qadoshim — la porte est ouverte.
-      </p>
-      <div class="appel-actions">
-        <a href="https://t.me/lesmembresdelavoie" target="_blank" class="btn-primary">Rejoindre la Qehilah</a>
-        <a href="qui-sommes-nous.html" class="btn-secondary">En savoir plus</a>
+  <!-- IDENTITÉ -->
+  <section id="identite">
+    <div class="section-inner">
+      <div class="identite-grid">
+        <div class="identite-text">
+          <p class="section-label">✦ Notre identité</p>
+          <h2 class="section-title">Une communauté<br>ancrée dans les Origines</h2>
+          <div class="section-line"></div>
+          <p>
+            La Voie est une <strong style="color:var(--or-pale)">Qehilah</strong> — une assemblée convoquée — 
+            de tal'midim engagés à marcher dans les traces de Yahushuaʿ Ha'Mashiaḥ, 
+            en honorant le Nom de Yahawah tel que les Ketubim Qadoshim le révèlent.
+          </p>
+          <p>
+            Nous parlons <strong style="color:var(--or-pale)">français</strong>, 
+            <strong style="color:var(--or-pale)">créole haïtien</strong> et utilisons 
+            le <strong style="color:var(--or-pale)">vocabulaire ibriy</strong> 
+            restauré — parce que les mots façonnent la compréhension, 
+            et que chaque nom porte une identité.
+          </p>
+          <p>
+            Notre mission : <em style="color:var(--or-pale)">enseigner, rassembler et proclamer</em> — 
+            par l'enseignement des Ketubim, par la radio et par le calendrier biblique.
+          </p>
+        </div>
+        <div class="identite-pilliers">
+          <div class="pillier">
+            <span class="pillier-num">I</span>
+            <div>
+              <p class="pillier-titre">Restauration des Noms</p>
+              <p class="pillier-desc">Yahawah, Yahushuaʿ Ha'Mashiaḥ, Rouaḥ Ha'Qadosh — chaque nom est une décision de fidélité aux Ketubim Qadoshim.</p>
+            </div>
+          </div>
+          <div class="pillier">
+            <span class="pillier-num">II</span>
+            <div>
+              <p class="pillier-titre">Calendrier Biblique</p>
+              <p class="pillier-desc">Les Fêtes de Yahawah selon le compte des mois lunaires — Abib, Ziw, Pessaḥ, Shavouot, les Fêtes d'automne — observées dans leur ordre originel.</p>
+            </div>
+          </div>
+          <div class="pillier">
+            <span class="pillier-num">III</span>
+            <div>
+              <p class="pillier-titre">La Voie Radio</p>
+              <p class="pillier-desc">Enseignements, proclamations et musique de louange — diffusés en continu, accessibles partout, en français et en créole haïtien.</p>
+            </div>
+          </div>
+          <div class="pillier">
+            <span class="pillier-num">IV</span>
+            <div>
+              <p class="pillier-titre">Lexique Officiel</p>
+              <p class="pillier-desc">Un guide de vocabulaire restauré pour tous les tal'midim — afin que nos paroles reflètent notre Emounah.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- RADIO -->
+  <section id="radio">
+    <div class="section-inner">
+      <div class="radio-grid">
+        <div class="radio-player-card">
+          <div class="radio-live-badge">
+            <span class="radio-live-dot"></span>
+            En diffusion
+          </div>
+          <h3 class="radio-title-card">La Voie Radio</h3>
+          <p class="radio-subtitle-card">Radyo La Chemen — רַדְיוֹ הַדֶּרֶךְ</p>
+          <div class="radio-controls">
+            <button class="radio-play-btn" id="playBtn" onclick="togglePlay()">
+              <svg viewBox="0 0 24 24" id="playIcon"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="radio-wave" id="radioWave" style="display:none">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <span id="radioStatus" style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--or);opacity:0.7;text-transform:uppercase;">Cliquer pour écouter</span>
+          </div>
+          <a href="radio.html" class="radio-link">→ Page complète de la radio</a>
+        </div>
+        <div class="radio-desc">
+          <p class="section-label">✦ La Voie Radio</p>
+          <h2 class="section-title">La parole<br>portée jusqu'à toi</h2>
+          <div class="section-line"></div>
+          <p>
+            La Voie Radio est le portail sonore de la Qehilah. Enseignements tirés des 
+            Ketubim Qadoshim, proclamations en langue ibriyim, musique de 
+            louange — tout cela diffusé pour les tal'midim partout dans le monde.
+          </p>
+          <p>
+            En français, en créole haïtien, avec des titres en ibriy restauré. 
+            Accessible depuis n'importe quel appareil, à toute heure — 
+            parce que la Besorah Tobah ne s'arrête jamais.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGES -->
+  <section id="pages">
+    <div class="section-inner">
+      <p class="section-label" style="text-align:center">✦ Explorer La Voie</p>
+      <h2 class="section-title" style="text-align:center;max-width:500px;margin:0 auto 0.8rem">Tout ce que<br>la Qehilah offre</h2>
+      <div class="section-line" style="margin-left:auto;margin-right:auto;background:linear-gradient(to right,transparent,var(--or),transparent);width:100px;margin-bottom:3.5rem"></div>
+      <div class="pages-grid">
+        <a href="qui-sommes-nous.html" class="page-card">
+          <p class="page-card-num">01</p>
+          <h3 class="page-card-titre">Qui sommes-nous</h3>
+          <p class="page-card-ibri">Mièm nou ye · Mi Anakhnu</p>
+          <p class="page-card-desc">Notre identité, notre mission et notre Emounah — la Qehilah de La Voie se présente.</p>
+          <span class="page-card-arrow">→</span>
+        </a>
+        <a href="lexique.html" class="page-card">
+          <p class="page-card-num">02</p>
+          <h3 class="page-card-titre">Lexique Officiel</h3>
+          <p class="page-card-ibri">Milón Rasmi · Mots restaurés</p>
+          <p class="page-card-desc">Les termes ibriyim restaurés de La Voie — un repère doctrinal pour tous les tal'midim.</p>
+          <span class="page-card-arrow">→</span>
+        </a>
+        <a href="radio.html" class="page-card">
+          <p class="page-card-num">03</p>
+          <h3 class="page-card-titre">La Voie Radio</h3>
+          <p class="page-card-ibri">Radyo La Chemen · רַדְיוֹ</p>
+          <p class="page-card-desc">Enseignements, louanges et proclamations — en continu, en français et en créole haïtien.</p>
+          <span class="page-card-arrow">→</span>
+        </a>
+        <a href="calendrier.html" class="page-card">
+          <p class="page-card-num">04</p>
+          <h3 class="page-card-titre">Calendrier Biblique</h3>
+          <p class="page-card-ibri">Luné Biblik · Luaḥ Ha'Shanah</p>
+          <p class="page-card-desc">Les Fêtes de Yahawah, les mois ibriyim et le compte de l'Omer — selon le calendrier originel.</p>
+          <span class="page-card-arrow">→</span>
+        </a>
+        <a href="enseignements.html" class="page-card">
+          <p class="page-card-num">05</p>
+          <h3 class="page-card-titre">Enseignements</h3>
+          <p class="page-card-ibri">Ansèyman · Limoudhim</p>
+          <p class="page-card-desc">Les messages, études et chroniques des tal'midim de La Voie — fondés sur les Ketubim Qadoshim.</p>
+          <span class="page-card-arrow">→</span>
+        </a>
+        <a href="contact.html" class="page-card">
+          <p class="page-card-num">06</p>
+          <h3 class="page-card-titre">Rejoindre / Contact</h3>
+          <p class="page-card-ibri">Rantre nan · Hitstareph</p>
+          <p class="page-card-desc">Tu cherches la Qehilah ? Nous sommes là. Prends contact — la porte est ouverte.</p>
+          <span class="page-card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <div class="citation-section">
+    <p class="citation-ornement">✦ &nbsp; ✦ &nbsp; ✦</p>
+    <p class="citation-texte">
+      « Barukh Yahawah — la Voie a maintenant<br>
+      son adresse sur la terre entière. »
+    </p>
+    <p class="citation-ref">✦ lavoie.world ✦</p>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <p class="footer-logo">La Voie</p>
     <p class="footer-domain">lavoie.world</p>
-    <p class="footer-verse">« Jusqu'aux extrémités de la terre » — Maʿasei 1:8</p>
     <ul class="footer-nav">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
-      <li><a href="#">Enseignements</a></li>
       <li><a href="lexique.html">Lexique</a></li>
-      <li><a href="#">Calendrier</a></li>
       <li><a href="radio.html">Radio</a></li>
-      <li><a href="https://t.me/lesmembresdelavoie" target="_blank">Rejoindre</a></li>
+      <li><a href="calendrier.html">Calendrier</a></li>
+      <li><a href="enseignements.html">Enseignements</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
-    <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
-  </footer>
-
-<script>
-  // Calendrier lunisolaire La Voie
-  // Ancre : 1 Abib = 20 mars 2026, mois de 30 jours, jour commence au soir
-  const MOIS = ['Abib','Ziw','Siban','Rebiʿi','Ab','Eloul','Ethanim','Boul','Kislew','Tebeth','Shebat','Adar'];
-  const ANCRE = new Date(2026, 2, 20); // 20 mars 2026 = 1 Abib
-
-  function getBiblicalDate() {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const diffMs = today - ANCRE;
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    if (diffDays < 0) return '';
-    const moisIndex = Math.floor(diffDays / 30) % 12;
-    const jourDuMois = (diffDays % 30) + 1;
-    return jourDuMois + ' ' + MOIS[moisIndex];
-  }
-
-  function updateClock() {
-    const now = new Date();
-    const dateOptions = { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' };
-    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
-    const biblical = getBiblicalDate();
-    document.getElementById('nav-date').textContent = biblical + ' · ' + now.toLocaleDateString('fr-FR', dateOptions);
-    document.getElementById('nav-time').textContent = now.toLocaleTimeString('fr-FR', timeOptions);
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-</script>
-
-<!-- BOUTON KÉPHA -->
-<div id="kepha-btn" onclick="kephaToggle()" title="Parler avec Képha">
-  <span id="kepha-badge">1</span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="1.8">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-  </svg>
-</div>
-
-<!-- FENÈT CHAT -->
-<div id="kepha-window">
-
-  <div class="kepha-header">
-    <div class="kepha-header-left">
-      <div class="kepha-avatar">כ</div>
-      <div>
-        <div class="kepha-name">Képha</div>
-        <div class="kepha-status">
-          <span class="kepha-status-dot"></span>
-          Assistant de La Voie
-        </div>
+    <!-- REZO SOSYAL -->
+    <div style="margin-bottom:1.5rem">
+      <p style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.5;text-transform:uppercase;margin-bottom:1rem">✦ Nou sou rezo sosyal yo</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.7rem;justify-content:center">
+        <a href="https://youtube.com/@lavoie033" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">▶ YouTube</a>
+        <a href="https://facebook.com/lesmembresdelavoie" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">f Facebook</a>
+        <a href="https://t.me/lesmembresdelavoie" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">✈ Telegram</a>
+        <a href="https://instagram.com/lesmembresdelavoie" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">◉ Instagram</a>
+        <a href="https://x.com/Lavoie033" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">✕ Twitter/X</a>
+        <a href="https://tiktok.com/@chemenyan" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">♪ TikTok</a>
+        <a href="https://www.linkedin.com/company/les-membres-de-la-voie-b5b430405" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">in LinkedIn</a>
+        <a href="https://twitch.com/@lesmembresdelavoie" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#b8c8dc;text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(184,200,220,0.18);transition:all 0.2s;opacity:0.65">⬡ Twitch</a>
       </div>
     </div>
-    <button class="kepha-close" onclick="kephaToggle()">✕</button>
+    <p class="footer-copy">© 2025 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
+  </footer>
+
+  <script>
+    // ════════════════════════════════════════════════════════
+    // WIDGET LÈ YEROUSHALAYIM + DAT IBRIY LUNISOLAIRE
+    // ════════════════════════════════════════════════════════
+
+    // Mwa Ibriy yo
+    const MWAIBRIY = [
+      'Abib','Ziw','Siban','Tamuz','Av','Elul',
+      'Tishri','Ḥeshvan','Kislev','Tevet','Shvat','Adar'
+    ];
+
+    // Sezon Ibriy yo (selon mwa)
+    // Abib (Prentan): Nisan, Iyar, Siban
+    // Qayits (Ete): Tamuz, Av, Elul
+    // Staw (Otòn): Tishri, Ḥeshvan, Kislev
+    // Ḥoref (Livè): Tevet, Shvat, Adar
+    const SEZON = [
+      { non: 'Abib · 🌿 Prentan',  klas: 'sezon-abib',  ikòn: '🌿' }, // Nisan(1)
+      { non: 'Abib · 🌿 Prentan',  klas: 'sezon-abib',  ikòn: '🌿' }, // Iyar(2)
+      { non: 'Qayits · ☀️ Ete',    klas: 'sezon-qayits', ikòn: '☀️' }, // Siban(3)
+      { non: 'Qayits · ☀️ Ete',    klas: 'sezon-qayits', ikòn: '☀️' }, // Tamuz(4)
+      { non: 'Qayits · ☀️ Ete',    klas: 'sezon-qayits', ikòn: '☀️' }, // Av(5)
+      { non: 'Staw · 🍂 Otòn',     klas: 'sezon-staw',  ikòn: '🍂' }, // Elul(6)
+      { non: 'Staw · 🍂 Otòn',     klas: 'sezon-staw',  ikòn: '🍂' }, // Tishri(7)
+      { non: 'Staw · 🍂 Otòn',     klas: 'sezon-staw',  ikòn: '🍂' }, // Ḥeshvan(8)
+      { non: 'Ḥoref · ❄️ Livè',   klas: 'sezon-horef', ikòn: '❄️' }, // Kislev(9)
+      { non: 'Ḥoref · ❄️ Livè',   klas: 'sezon-horef', ikòn: '❄️' }, // Tevet(10)
+      { non: 'Ḥoref · ❄️ Livè',   klas: 'sezon-horef', ikòn: '❄️' }, // Shvat(11)
+      { non: 'Abib · 🌿 Prentan',  klas: 'sezon-abib',  ikòn: '🌿' }, // Adar(12)
+    ];
+
+    // Konvèsyon dat Gregoryen → Ibriy
+    // ANKRAJ: 1 Abib 5786 = 20 mas 2026
+    // Mwa La Voie yo: Abib(1), Ziw(2), Siban(3), Tamuz(4), Av(5), Elul(6),
+    //                 Tishri(7), Ḥeshvan(8), Kislev(9), Tevet(10), Shvat(11), Adar(12)
+    const ANKRAJ = new Date(2026, 2, 20); // 20 mas 2026 = 1 Abib 5786
+    const MWA_JOU = [30,29,30,29,30,29,30,29,30,29,30,29]; // jou pa mwa
+
+    function gregorienVersIbriy(ane, mwa, jou) {
+      const dat = new Date(ane, mwa - 1, jou);
+      const diff = Math.floor((dat - ANKRAJ) / (1000 * 60 * 60 * 24));
+      
+      if (diff < 0) {
+        // Anvan 1 Abib 5786 — kalkile pou ane anvan
+        let jourRestant = -diff;
+        let mwaIbriy = 12;
+        let aneIbriy = 5785;
+        while (jourRestant > MWA_JOU[mwaIbriy - 1]) {
+          jourRestant -= MWA_JOU[mwaIbriy - 1];
+          mwaIbriy--;
+          if (mwaIbriy === 0) { mwaIbriy = 12; aneIbriy--; }
+        }
+        return { ane: aneIbriy, mwa: mwaIbriy, jou: MWA_JOU[mwaIbriy - 1] - jourRestant + 1 };
+      }
+      
+      let jouRestant = diff;
+      let mwaIbriy = 1;
+      let aneIbriy = 5786;
+      
+      while (jouRestant >= MWA_JOU[mwaIbriy - 1]) {
+        jouRestant -= MWA_JOU[mwaIbriy - 1];
+        mwaIbriy++;
+        if (mwaIbriy > 12) { mwaIbriy = 1; aneIbriy++; }
+      }
+      
+      return { ane: aneIbriy, mwa: mwaIbriy, jou: jouRestant + 1 };
+    }
+
+    // Fonksyon pou mete ajou widget la chak segond
+    function mettreAjourWidget() {
+      const optionsLe = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      const optionsDat = { year: 'numeric', month: 'numeric', day: 'numeric' };
+
+      const now = new Date();
+
+      // Lè Yeroushalayim
+      const leYeru = now.toLocaleTimeString('fr-FR', { ...optionsLe, timeZone: 'Asia/Jerusalem' });
+      // Lè Indianapolis (EDT)
+      const leIndy = now.toLocaleTimeString('fr-FR', { ...optionsLe, timeZone: 'America/Indiana/Indianapolis' });
+
+      // Jwenn dat Yeroushalayim pou kalandriye Ibriy
+      const datParts = new Intl.DateTimeFormat('fr-FR', { ...optionsDat, timeZone: 'Asia/Jerusalem' }).formatToParts(now);
+      const jouG = parseInt(datParts.find(p => p.type === 'day').value);
+      const mwaG = parseInt(datParts.find(p => p.type === 'month').value);
+      const aneG = parseInt(datParts.find(p => p.type === 'year').value);
+
+      // Kouche solèy Yeroushalayim (minit apre minwi) — mwayèn pa mwa
+      // Sous: timeanddate.com Yeroushalayim
+      const KOUCHE_SOLÈY = [
+        16*60+45, // Janvye  — 16:45
+        17*60+15, // Fevriye — 17:15
+        17*60+45, // Mas     — 17:45
+        19*60+15, // Avril   — 19:15 (DST)
+        19*60+45, // Me      — 19:45
+        20*60+15, // Jen     — 20:15
+        20*60+10, // Jiyè    — 20:10
+        19*60+40, // Out     — 19:40
+        18*60+50, // Septanm — 18:50
+        18*60+00, // Oktòb   — 18:00
+        16*60+50, // Novanm  — 16:50
+        16*60+35, // Desanm  — 16:35
+      ];
+      const koucheSolèy = KOUCHE_SOLÈY[mwaG - 1];
+      const lèYeruStr = now.toLocaleString('fr-FR', { timeZone: 'Asia/Jerusalem', hour: 'numeric', minute: 'numeric', hour12: false });
+      const [lèH, lèM] = lèYeruStr.split(':').map(n => parseInt(n) || 0);
+      const lèMinutes = lèH * 60 + lèM;
+
+      let jouCalc = jouG, mwaCalc = mwaG, aneCalc = aneG;
+      if (lèMinutes >= koucheSolèy) {
+        const demen = new Date(now);
+        demen.setDate(demen.getDate() + 1);
+        const demenParts = new Intl.DateTimeFormat('fr-FR', { ...optionsDat, timeZone: 'Asia/Jerusalem' }).formatToParts(demen);
+        jouCalc = parseInt(demenParts.find(p => p.type === 'day').value);
+        mwaCalc = parseInt(demenParts.find(p => p.type === 'month').value);
+        aneCalc = parseInt(demenParts.find(p => p.type === 'year').value);
+      }
+
+      let datIbriy;
+      try { datIbriy = gregorienVersIbriy(aneCalc, mwaCalc, jouCalc); }
+      catch(e) { datIbriy = { ane: 5786, mwa: 3, jou: 13 }; }
+
+      const mwaIdx = datIbriy.mwa - 1;
+      const mwaNon = MWAIBRIY[mwaIdx] || 'Siban';
+      const sezon = SEZON[mwaIdx] || SEZON[2];
+
+      // Mete ajou HTML
+      document.getElementById('widget-le-yeru').textContent = leYeru;
+      document.getElementById('widget-le-indy').textContent = leIndy;
+      document.getElementById('widget-dat').textContent = `${datIbriy.jou} ${mwaNon} ${datIbriy.ane}`;
+      document.getElementById('widget-sezon').textContent = sezon.non;
+      document.getElementById('widget-saison-icon').textContent = sezon.ikòn;
+
+      document.body.className = document.body.className.replace(/sezon-\w+/g, '');
+      document.body.classList.add(sezon.klas);
+    }
+
+    // Kòmanse widget la
+    mettreAjourWidget();
+    setInterval(mettreAjourWidget, 1000);
+  </script>
+
+
+
+<div style="position:relative;display:inline-block">
+  <button id="kepha-btn" onclick="toggleKepha()" title="Pale ak Képha">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </button>
+  <div id="kepha-notif">1</div>
+</div>
+
+<div id="kepha-window">
+  <div id="kepha-header">
+    <div class="kepha-avatar">🪨</div>
+    <div class="kepha-info">
+      <p class="kepha-nom">Képha</p>
+      <p class="kepha-titre">Asistan ofisyèl · Les Membres de La Voie</p>
+      <div class="kepha-status"><span class="kepha-dot"></span>Disponib · En ligne</div>
+    </div>
+    <button id="kepha-close" onclick="toggleKepha()">✕</button>
   </div>
 
-  <div class="kepha-messages" id="kepha-messages">
-    <!-- Message de bienvenue -->
-    <div class="msg kepha" id="welcome-msg">
-      Shalom ! Je suis Képha, l'assistant de La Voie.<br><br>
-      Posez-moi vos questions sur les Ketubim Qadoshim, Yahawah, Yahushuʿah Ha'Mashiaḥ, le calendrier, les Moʿadim ou tout autre sujet lié à La Voie. Je détecte automatiquement votre langue. 🕊️
+  <div id="kepha-suggestions">
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Kisa La Voie ye ?</button>
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Kiyès Yahawah ye ?</button>
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Ki misyon manm La Voie yo ?</button>
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Tal'mid ak ʿEd — ki diferans ?</button>
+  </div>
+
+  <div id="kepha-messages">
+    <div class="msg kepha">
+      <span class="msg-label">Képha</span>
+      <div class="msg-bubble">Shalom ! Mwen se <strong>Képha</strong> — asistan ofisyèl La Voie.<br><br>Mwen la pou reponn kesyon ou sou ansèyman La Voie, vokabilè ibriy restaure a ak Qehilah a.<br><br>Ki sa ou vle konnen ? ✦</div>
     </div>
   </div>
 
-  <div class="kepha-input-zone">
-    <textarea
-      id="kepha-input"
-      placeholder="Posez votre question..."
-      rows="1"
-      onkeydown="kephaKeydown(event)"
-      oninput="kephaAutoResize(this)"
-    ></textarea>
-    <button id="kepha-send" onclick="kephaEnvoyer()" title="Envoyer">➤</button>
+  <div id="kepha-input-zone">
+    <textarea id="kepha-input" placeholder="Poze Képha yon kesyon..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button id="kepha-send" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
   </div>
-
-  <div class="kepha-footer">lavoie.world · Képha v1</div>
 </div>
+
 <script>
-  let kephaOuvert = false;
-  let kephaHistoire = [];
-  let kephaEnCours = false;
+const KB = [
+  {
+    keys: ["kisa la voie ye","ki la voie","what is la voie","c'est quoi la voie","haderekh"],
+    rep: "La Voie (HaDerekh) se non kominote premye tal'midim Yahushuʿaḥ yo te pote nan premye syèk la (Maʿasei 9:2).\n\nLi pa sèlman yon gwoup oswa yon òganizasyon — li se yon mòd de vi ki baze sou ansèyman ak egzanp Yahushuʿaḥ.\n\nJodi a, tal'midim Yahushuʿaḥ yo bati sou fondasyon nabi'im yo ak shilliaḥim yo, pandan Yahushuʿaḥ Ha'Mashiaḥ rete wòch angilè a. (Ephésiens 2:19-20) ✦"
+  },
+  {
+    keys: ["kiyès yahawah ye","ki yahawah","who is yahawah","c'est qui yahawah","yahawah se ki"],
+    rep: "Yahawah se Non Qadosh Papa ki nan shamayim yo.\n\nLi se Kreyatè tout bagay e se Li menm ki merite tout kabôd. ✦"
+  },
+  {
+    keys: ["kiyès yahushuʿaḥ ye","ki yahushuʿaḥ","yahushua","yahushuah","ki mashiah la","ki mashiach"],
+    rep: "Yahushuʿaḥ se Ben Yahawah voye sou tè a.\n\nLi se Mashiaḥ pwomèt la epi wòch angilè fondasyon La Voie. ✦"
+  },
+  {
+    keys: ["poukisa nou pa di jesus","poukisa pa jesus","pourquoi pas jesus","pourquoi yahushua","pa jésus"],
+    rep: "La Voie itilize <strong>Yahushuʿaḥ</strong> paske li chèche itilize fòm ki pi pre non orijinal ibriy la.\n\nMo 'Jésus' se yon fòm ki soti nan transmisyon grèk ak laten — li pa reflete non orijinal la. ✦"
+  },
+  {
+    keys: ["kisa ketubim qadoshim ye","ketubim","kisa bible ye","poukisa pa bible","ekriti"],
+    rep: "Ketubim Qadoshim yo se ekriti qadosh Yahawah te fè ekri atravè nabi'im yo ak lòt sèbitè fidèl Li yo.\n\nLa Voie prefere tèm sa a olye 'Bible' ki vin apre ak tradisyon diferan. ✦"
+  },
+  {
+    keys: ["kisa kalandriye ibri restaure ye","kalandriye","calendrier ibri","calendrier biblique"],
+    rep: "Se kalandriye ki chèche retounen sou modèl tan yo jan yo prezante nan Ketubim Qadoshim yo.\n\nLi kòmanse ak mwa Abib — premye mwa Yahawah te endike pou pèp Li a. ✦"
+  },
+  {
+    keys: ["kisa shabbath ye","shabbath","sabbat","jou repo","setyem jou"],
+    rep: "Shabbath la se setyèm jou semèn nan Yahawah mete apa kòm jou repo ak adorasyon.\n\nLi toujou valab jodi a — se yon kado Yahawah te bay limanite depi nan kòmansman an. ✦"
+  },
+  {
+    keys: ["kisa qehilah ye","qehilah","c'est quoi qehilah","kisa egliz ye","legliz"],
+    rep: "Qehilah a se rasanbleman tal'midim Yahushuʿaḥ yo.\n\nLa Voie prefere tèm sa a olye 'église' ki pote konotasyon lòt tradisyon. ✦"
+  },
+  {
+    keys: ["ki wol yahushuah genyen","wòl yahushuah","ki plas yahushuah","yahushuah nan lavi manm","yahushuah adon","yahushuah moshiah","chèf qehilah"],
+    rep: "Pou yon manm La Voie, Yahushuʿaḥ Ha'Mashiaḥ okipe yon plas santral.\n\nManm La Voie yo rekonèt Yahushuʿaḥ kòm :\n• Adôn yo\n• Moshiaḥ yo\n• Chèf Qehilah a\n• Wòch angilè a\n• Ajan prensipal Yahawah itilize pou mennen émounah yo alapèfeksyon\n• Sila Yahawah etabli pou pote delivrans\n\n<em>« Ann fikse je nou sou Yahushuʿaḥ, ajan prensipal la ak sila ki mennen émounah a alapèfeksyon... »</em> (Ibrim 12:2)\n\n<em>« Pa gen delivrans nan okenn lòt moun, paske pa gen okenn lòt non anba shamayim yo ki bay pami lèzòm pou nou jwenn delivrans. »</em> (Maʿasei 4:12)\n\n<em>« Yahawah leve li byen wo e Li ba li non ki pi wo pase tout lòt non, pou nan non Yahushuʿaḥ tout jenou pliye... e pou tout lang konfese ke Yahushuʿaḥ Ha'Mashiaḥ se Adôn, pou kabôd Yahawah Papa a. »</em> (Philippiyim 2:9-11)\n\nSa vle di pou yon manm La Voie :\n• li suiv Yahushuʿaḥ kòm Adôn li\n• li mete konfyans li nan Yahushuʿaḥ kòm Moshiaḥ li\n• li obeyi ansèyman Yahushuʿaḥ yo\n• li rann temwayaj sou Yahushuʿaḥ\n• li chèche imite konduit Yahushuʿaḥ\n• li rekonèt Yahushuʿaḥ kòm Chèf Qehilah a\n\n<em>An rezime :\nYahushuʿaḥ Ha'Mashiaḥ se Adôn manm La Voie a.\nYahushuʿaḥ Ha'Mashiaḥ se Moshiaḥ manm La Voie a.\nYahushuʿaḥ Ha'Mashiaḥ se Chèf Qehilah a.\nNan non Yahushuʿaḥ, tout jenou dwe pliye, pou kabôd Yahawah Papa a.</em> ✦"
+  },
+  {
+    keys: ["bay kiyès manm la voie yo adrese tefilah","kiyès yo adrese tefilah","kijan tefilah fèt","bay kiyès yo hitpalel","destinatè tefilah","kijan yo fè tefilah"],
+    rep: "Manm La Voie yo adrese téfilah yo bay <strong>Yahawah</strong>, Papa ki nan shamayim yo.\n\nYahushuʿaḥ li menm te anseye tal'midim li yo :\n\n<em>« Lè n ap hitpalel, di : Papa nou... »</em> (Mattiyahu 6:9)\n\nSepandan, yo fè sa <strong>nan non Yahushuʿaḥ Ha'Mashiaḥ</strong>, paske Yahushuʿaḥ se Adôn yo, Moshiaḥ yo ak ajan Yahawah etabli pou mennen moun bò kote Li.\n\n<em>« Nenpòt sa n mande Papa a nan non mwen, Li ap ban nou li. »</em> (Yaḥuānān 16:23)\n\nModèl nòmal téfilah yon manm La Voie :\n1. Téfilah la adrese bay <strong>Yahawah</strong>\n2. Li fèt <strong>nan non Yahushuʿaḥ</strong>\n3. Li fèt avèk respè, imilite ak émounah\n\nPa egzanp :\n<em>« Yahawah, Papa nou ki nan shamayim yo,\nNou vin devan Ou avèk rekonesans...\nNou mande tout bagay sa yo nan non Yahushuʿaḥ Ha'Mashiaḥ. Amèn. »</em>\n\n<em>An rezime :\n📖 Destinatè téfilah la : Yahawah.\n📖 Mwayen an : Yahushuʿaḥ Ha'Mashiaḥ.\n📖 Lespri a : respè, imilite ak émounah.</em> ✦"
+  },
+  {
+    keys: ["poukisa manm la voie yo fè tefilah nan non yahushuah","tefilah nan non yahushuah","non yahushuah nan tefilah","poukisa non yahushuah nan tefilah"],
+    rep: "Paske Yahushuʿaḥ te anseye tal'midim li yo pou yo pwoche bò kote Yahawah atravè li.\n\nYo rekonèt li kòm Adôn yo, Moshiaḥ yo ak sèl non Yahawah bay pou delivrans lèzòm.\n\n<em>« Nenpòt sa n mande Papa a nan non mwen, Li ap ban nou li. »</em> (Yaḥuānān 16:23)\n\n<em>« Pa gen delivrans nan okenn lòt moun... »</em> (Maʿasei 4:12)\n\n<em>An rezime : Manm La Voie yo adrese téfilah yo bay Yahawah epi yo fè sa nan non Yahushuʿaḥ Ha'Mashiaḥ.</em> ✦"
+  },
+  {
+    keys: ["kisa beth haknesset ye","beth haknesset","kote yo reyini","kote manm yo reyini","ki kote manm la voie yo reyini","kote qehilah a reyini"],
+    rep: "Beth HaKnesset vle di <strong>'kay rasanbleman'</strong>.\n\nManm La Voie yo reyini nan Beth HaKnesset pou adore Yahawah, etidye Ketubim Qadoshim yo, chante ansanm, hitpalel epi ankouraje youn lòt.\n\nJodi a, reyinyon yo kapab fèt nan yon Beth HaKnesset, nan kay prive, sou entènèt oswa nenpòt lòt kote ki pèmèt Qehilah a rasanble nan non Yahawah ak Yahushuʿaḥ.\n\nEnpòtans lan pa chita nan bilding lan menm, men nan Qehilah a ki reyini ladan l.\n\n<em>An rezime : Beth HaKnesset se kote Qehilah a reyini pou adorasyon, ansèyman ak ankourajman mityèl.</em> ✦"
+  },
+  {
+    keys: ["kisa mashihim yo ye","mashihim","ki mashihim","ki moun mashihim yo ye"],
+    rep: "Mashiḥim yo se moun ki suiv Yahushuʿaḥ epi ki fè efò pou viv dapre ansèyman li yo.\n\nLa Voie prefere tèm sa a olye 'chrétien' ki pa reflete vokabilè premye syèk la. ✦"
+  },
+  {
+    keys: ["kijan pou rejoindre la voie","kijan pou m rejwenn","rejoindre","comment rejoindre","vin manm","antre nan la voie"],
+    rep: "Pou antre nan La Voie, yon moun dwe fè <strong>teshoubah</strong> epi <strong>thabalé</strong> nan dlo nan non Yahushuʿaḥ. (Maʿasei 2:38)\n\nYon moun pa vin manm La Voie senpleman paske li asiste reyinyon oswa li suiv emisyon yo.\n\nMoun ki fè teshoubah epi ki kontinye mache dapre Dabar Yahawah la vin fè pati fanmi 'Èlohim. ✦"
+  },
+  {
+    keys: ["ki diferans la voie ak relijyon","diferans","différence","relijyon","religion"],
+    rep: "La Voie se chemen lavi Yahushuʿaḥ ak premye tal'midim yo te suiv la.\n\nLi chèche retounen nan modèl orijinal la san ajoute tradisyon lèzòm.\n\nLa Voie pa yon relijyon — li se yon mòd de vi. ✦"
+  },
+  {
+    keys: ["kisa besorah towah ye","besorah","bonne nouvelle","bon nouvèl"],
+    rep: "Besorah Towah a se bon nouvèl konsènan Malkouth Yahawah la ak Yahushuʿaḥ Ha'Mashiaḥ.\n\nSe mesaj La Voie pote bay tout nasyon yo. ✦"
+  },
+  {
+    keys: ["kisa emounah ye","emounah","lafwa","foi","kisa lafwa ye"],
+    rep: "Emounah a se konfyans fèm yon moun mete nan Yahawah ak nan Dabar Li.\n\nLi pa sèlman kwayans — li se yon angajman de vi tout antye. ✦"
+  },
+  {
+    keys: ["ki moedim yahawah yo","moedim","fetes","fèt","pessah","soukkoth","shabuoth","shabouoth"],
+    rep: "Moʿedim yo se tan Yahawah fikse pou pèp Li a sonje aksyon Li yo epi adore Li.\n\nYo enkli Pessaḥ, Matsot, Shabouʿoth, Yom Terou'ah, Yom Kippour ak Soukkoth. ✦"
+  },
+  {
+    keys: ["kisa la voie radio ye","radio","la voie radio","radyo"],
+    rep: "La Voie Radio se estasyon radyo ofisyèl La Voie.\n\nLi difize mizik, ansèyman, tèfilah ak refleksyon chak jou — an fransè ak kreyòl ayisyen.\n\nEkout li sou : <strong>radio.lavoie.world</strong> ✦"
+  },
+  {
+    keys: ["kijan pou kontakte la voie","kontakte","contact","email","imel","kijan kontakte"],
+    rep: "Ou ka kontakte La Voie nan :\n\n🌐 <strong>lavoie.world</strong>\n📧 lesmembresdelavoie@gmail.com\n✈ t.me/lesmembresdelavoie\nf facebook.com/lesmembresdelavoie\n📺 youtube.com/@lavoie033 ✦"
+  },
+  {
+    keys: ["kisa talmidim yo ye","tal'midim","talmidim","disciple","disip"],
+    rep: "Tal'midim yo se elèv ki suiv Yahushuʿaḥ epi ki pratike ansèyman li yo.\n\nSe non La Voie prefere pou moun ki mache nan Ha'Mashiaḥ. ✦"
+  },
+  {
+    keys: ["kisa rouah haqodesh ye","rouah","rouaḥ","esprit saint","lespri","espri"],
+    rep: "Rouaḥ ha'Qodesh la se Rouaḥ qadosh Yahawah itilize pou gide ak ranfòse sèbitè Li yo.\n\nLi se kado Yahawah bay moun ki fè teshoubah ak ki resevwa thabilah. ✦"
+  },
+  {
+    keys: ["konbyen fwa manm la voie yo reyini","konbyen fwa reyini","konbyen reyinyon","ki lè yo reyini","frekans reyinyon","reyinyon la voie","ki jou yo reyini","èske manm la voie yo konn fè reyinyon","èske la voie fè reyinyon","reyinyon","reunion","rasanbleman"],
+    rep: "Manm La Voie yo reyini :\n\n• Chak jou <strong>Shabbath</strong> (yon fwa pa semèn)\n• Chak <strong>Rosh Ḥodesh</strong> (premye jou chak mwa)\n• Pou <strong>Shabouʿoth</strong> (6 Siban)\n• Pou <strong>Soukkoth</strong> (soti 15 rive 21 Tishri)\n• Pou <strong>Seʿoudat ha'Adôn</strong> (14 Abib nan aswè)\n• E nenpòt lòt lè sa nesesè — pou adorasyon, etid, ankourajman oswa lòt bezwen nan Qehilah a\n\nPa gen yon kantite reyinyon fiks ki limite a yon sèl chif. Gen reyinyon regilye ki mare ak Shabbath la ak moʿadim qadoshim yo, epi kapab gen reyinyon adisyonèl selon bezwen Qehilah a.\n\n<em>« Depi yon Rosh Ḥodesh rive nan yon lòt Rosh Ḥodesh, epi depi yon Shabbath rive nan yon lòt Shabbath, tout chè ap vini pou yo adore devan Mwen. »</em> (Yeshayahu 66:23) ✦"
+  },
+  {
+    keys: ["konbyen esperans ki genyen","yon sèl esperans","esperans"],
+    rep: "Gen yon sèl esperans ki ini tout tal'midim Yahushuʿaḥ yo. (Ephésiens 4:4) ✦"
+  },
+  {
+    keys: ["poukisa nou pa itilize mo bible","poukisa pa bible","bible"],
+    rep: "La Voie prefere itilize espresyon <strong>Ketubim Qadoshim</strong> — ki vle di 'Ekriti Qadosh yo'.\n\nMo 'Bible' vin apre ak tradisyon diferan ki pa toujou reflete kontèks orijinal la. ✦"
+  },
+  {
+    keys: ["poukisa nou pa di dieu","poukisa pa dieu","dieu","bondie"],
+    rep: "La Voie prefere itilize <strong>Yahawah</strong> — Non Qadosh Kreyatè a — oswa <strong>'Èlohim</strong>.\n\nMo 'Dieu' oswa 'Bondie' se tradiksyon jeneral ki pa bay Non espesifik Li a. ✦"
+  },
+  {
+    keys: ["poukisa nou pa di priye","poukisa pa priye","priyè","priye","prière","lapriyè","poukisa nou pa itilize mo priye"],
+    rep: "Manm La Voie yo prefere itilize mo <strong>hitpalel</strong> oswa <strong>téfilah</strong> paske se ekspresyon ki pi pre vokabilè ibri ki itilize nan Ketubim Qadoshim yo.\n\nMo 'priye' ak 'lapriyè' soti nan lang ki vin pi ta yo, tandiske téfilah se mo ibri ki sèvi pou pale de kominikasyon yon moun ak Yahawah.\n\nPou rezon sa a, anpil manm La Voie itilize ekspresyon tankou :\n• fè yon téfilah\n• adrese yon téfilah bay Yahawah\n• hitpalel devan Yahawah\n\nObjektif la pa chanje sans aksyon an, men retounen pi pre vokabilè ki asosye ak rasin ibri yo.\n\n<em>An rezime : Manm La Voie yo pale de téfilah oswa hitpalel, paske yo prefere itilize tèm ki pi pre langaj Ketubim Qadoshim yo.</em> ✦"
+  },
+  {
+    keys: ["kisa tefilah ye","téfilah","tefilah","kisa tèfilah ye","ki téfilah"],
+    rep: "Téfilah se aksyon yon moun adrese panse li, rekonesans li, demann li oswa louwanj li bay Yahawah.\n\nTéfilah ka fèt pou kont yon moun oswa ansanm ak Qehilah a.\n\nYahushuʿaḥ te montre tal'midim li yo enpòtans téfilah regilye ak sensè. ✦"
+  },
+  {
+    keys: ["kisa hitpalel vle di","hitpalel"],
+    rep: "Hitpalel se aksyon fè yon téfilah — kominikasyon dirèk ak Yahawah. ✦"
+  },
+  {
+    keys: ["rezirekyon","rezireksyon","resurrection","èske manm la voie kwè nan rezireksyon"],
+    rep: "Wi.\n\nLa Voie anseye rezirèksyon moun ki mouri yo.\n\nSe yon nan fondamantal Emounah La Voie. ✦"
+  },
+  {
+    keys: ["reyenkanasyon","réincarnation","reincarnation"],
+    rep: "Non.\n\nLa Voie pa anseye reyenkanasyon.\n\nEsperans la chita sou rezirèksyon an — pa reyenkanasyon. ✦"
+  },
+  {
+    keys: ["nefech imòtèl","immortalite","imòtalite","nefech","èske nefech la imòtèl","imòtalite nefech","nefech mouri"],
+    rep: "Manm La Voie yo pa anseye ke nefech moun nan imòtèl pa natirèlman.\n\nDapre Ketubim Qadoshim yo, se Yahawah sèl ki posede imòtalite nan sans absoli a. (1 Timotiyos 6:16)\n\nNan Beré'shit 2:7, ha'adam pa t resevwa yon nefech ; li te vin yon nefech hayah. Sa montre moun nan pa posede yon nefech separe ki pa ka mouri — li menm se yon nefech.\n\nKetubim Qadoshim yo montre tou ke nefech ka mouri :\n\n<em>« Nefech ki peche a, se li menm ki pral mouri. »</em> (Yeḥezqel 18:4)\n\nPou rezon sa a, La Voie pa anseye ke yon pati nan moun nan kontinye viv konsyan apre lanmò paske li imòtèl pa natirèlman.\n\nEsperans tal'midim Yahushuʿaḥ yo pa chita sou imòtalite natirèl nefech la, men sou pwomès Yahawah pou fè moun yo leve nan rezirèksyon.\n\n<em>An rezime : La Voie pa anseye imòtalite natirèl nefech la. Li anseye rezirèksyon moun ki mouri yo ak lavi olam Yahawah pwomèt moun fidèl yo.</em> ✦"
+  },
+  {
+    keys: ["ki diferans rezirèksyon ak imòtalite","diferans rezirèksyon imòtalite","rezirèksyon vs imòtalite","kisa rezirèksyon ye"],
+    rep: "Rezirèksyon se aksyon Yahawah fè pou retounen bay lavi yon moun ki te mouri.\n\nImòtalite nefech la se lide ki fè kwè yon pati nan moun nan pa janm mouri epi kontinye egziste konsyan apre lanmò.\n\nLa Voie anseye rezirèksyon jan Ketubim Qadoshim yo prezante li, men li pa anseye imòtalite natirèl nefech la.\n\n<em>An rezime : Esperans La Voie a baze sou rezirèksyon, pa sou imòtalite natirèl nefech la.</em> ✦"
+  },
+  {
+    keys: ["shamayim","paradis","syèl","ciel","ki kote moun ki mouri yo ale"],
+    rep: "La Voie kwè nan egzistans shamayim yo.\n\nSepandan, sant esperans li se Malkouth Yahawah la, rezirèksyon an ak restorasyon tout bagay. ✦"
+  },
+  {
+    keys: ["ghan edhen","paradis","ede","jaden edhen","kisa paradis ye"],
+    rep: "<strong>Ghan Édhen</strong> — ki vle di Jaden Édhen — se tèm La Voie itilize olye 'paradis'.\n\nLi reflete vokabilè ibriy orijinal la. ✦"
+  },
+  {
+    keys: ["kijan la voie finanse","kijan nou finanse","finanse aktivite","financement","ki kijan la voie jwenn lajan"],
+    rep: "La Voie fonksyone grasa ofrann volontè manm li yo ak moun ki vle soutni travay la.\n\nAktivite tankou :\n• Beth HaKnesset la\n• La Voie Radio\n• Sit entènèt la\n• Pwodiksyon ansèyman yo\n• Asistans pou moun ki nan nesesite\n\n...ka jwenn sipò atravè kontribisyon volontè.\n\nPa gen sistèm kote moun oblije bay yon kantite fiks. ✦"
+  },
+  {
+    keys: ["èske yon moun oblije bay kòb","oblije bay kòb","oblije peye","peye pou vin manm","kòb pou vin manm"],
+    rep: "Non.\n\nYon moun pa vin manm La Voie paske li bay kòb, ni li pa pèdi plas li paske li pa bay.\n\nSa ki fè yon moun fè pati La Voie se <strong>teshoubah a</strong>, <strong>thabilah la</strong> ak fidelite li anvè Yahawah ak Yahushuʿaḥ.\n\nOfrann yo rete yon desizyon pèsonèl. ✦"
+  },
+  {
+    keys: ["èske responsab la voie resevwa salè","salè","responsab peye","pastè peye","zaqen salè","sèvis roḥanit komès"],
+    rep: "La Voie pa konsidere sèvis roḥanit kòm yon mwayen pou fè komès oswa chèche richès.\n\nSèvis nan Qehilah a se yon angajman ki soti nan kè — pa yon pwofesyon komèsyal. ✦"
+  },
+  {
+    keys: ["èske gen ladim","ladim","dime","ladîme","sistèm ladim","ladim obligatwa"],
+    rep: "La Voie pa egzije yon sistèm ladim obligatwa sou revni manm yo.\n\nNan Ketubim Qadoshim yo, ladim nan te gen yon kontèks espesifik ki te lye ak pèp Ysra'el, tè a, agrikilti ak sèvis Beth HaMiqdash la.\n\nJodi a, La Voie ankouraje jenerozite, pataj ak sipò volontè pou bezwen Qehilah a, Beth HaKnesset la, pwoklamasyon Besorah Towah a ak asistans pou moun ki nan nesesite.\n\nChak moun dwe bay selon kapasite li ak selon sa li deside nan kè li, san fòs ni presyon.\n\n<em>« Se pou chak moun bay jan li deside nan kè li, pa avèk tristès ni anba kontrent, paske Yahawah renmen moun ki bay avèk lajwa. »</em> (2 Qorintim 9:7)\n\n<em>An rezime : La Voie ankouraje kontribisyon volontè ak jenerozite, men li pa egzije yon ladim obligatwa sou revni manm yo.</em> ✦"
+  },
+  {
+    keys: ["lakolèt","kolèt","kòbèy","kabare","èske yo fè lakolèt"],
+    rep: "Wi, men pa jan yo fè sa nan anpil relijyon tradisyonèl yo kote yo pase kabare, panyen oswa kòbèy devan moun pandan reyinyon yo.\n\nLa Voie pa jwenn yon modèl konsa nan eritaj premye jenerasyon tal'midim Yahushuʿaḥ yo.\n\nSepandan, La Voie rekonèt enpòtans sipòte travay Qehilah a, asistans pou moun ki nan nesesite, antretyen Beth HaKnesset la, pwodiksyon ansèyman yo, La Voie Radio ak lòt aktivite ki itil.\n\nPou rezon sa a, La Voie itilize <strong>ofrann volontè</strong>. Chak moun rete lib pou bay selon mwayen li, selon sa li deside nan kè li ak selon rekonesans li anvè Yahawah.\n\nPa gen fòs, pa gen presyon, pa gen kantite minimòm obligatwa.\n\n<em>« Se pou chak moun bay jan li deside nan kè li, pa avèk tristès ni anba kontrent, paske Yahawah renmen moun ki bay avèk lajwa. »</em> (2 Qorintim 9:7)\n\n<em>An rezime : La Voie pa pratike sistèm kote yo pase kòbèy oswa kabare devan moun. Sepandan, li ankouraje ofrann volontè pou soutni bezwen Qehilah a ak diferan aspè travay la.</em> ✦"
+  },
+  {
+    keys: ["kisa yon ofrann volontè ye","ofrann volontè","ofrann volonte","don volontaire","kisa ofrann ye"],
+    rep: "Yon ofrann volontè se yon kontribisyon yon moun deside fè libreman pou soutni yon bezwen oswa yon travay.\n\nNan La Voie, ofrann volontè yo soti nan yon desizyon pèsonèl, san kontrent ni obligasyon.\n\nObjektif la se manifeste jenerozite, lanmou ak solidarite anvè Qehilah a ak bezwen ki prezante yo.\n\n<em>An rezime : Yon ofrann volontè se yon don ki fèt avèk bon kè, san fòs ak san presyon.</em> ✦"
+  },
+  {
+    keys: ["ki wol fanm yo","fanm nan la voie","fi nan la voie","fanm","wòl fanm","role femme"],
+    rep: "La Voie rekonèt ke fanm yo gen yon plas enpòtan ak onorab nan plan Yahawah.\n\nMenm si La Voie pa konfye fanm yo responsablite zaqen oswa direksyon Qehilah a, sa pa diminye valè sèvis yo.\n\nFanm yo ka :\n• edike pitit yo nan chemen Yahawah\n• anseye lòt fanm yo\n• pratike ospitalite\n• ankouraje moun ki fèb yo\n• soutni travay Besorah Towah a\n• patisipe nan òganizasyon aktivite Qehilah a\n• sèvi nan mizik ak chante\n• ede moun ki nan nesesite\n• bay konsèy ki baze sou ḥokhmah ak eksperyans yo\n\n<em>« Se pou fanm ki gen laj yo... anseye sa ki bon, pou yo kapab fòme jèn fanm yo. »</em> (Titos 2:3-5)\n\nKetubim Qadoshim yo montre egzanp tankou Miryam, Deborah, Houldah, Esther, Miryam Magdala ak Priscilla — ki te jwe yon wòl enpòtan nan diferan epòk.\n\n<em>« Nan La Voie, kestyon an pa: Ki pouvwa yon moun genyen? men pito: Ki sèvis li kapab rann pou kabôd Yahawah a ak byen Qehilah a? »</em> ✦"
+  },
+  {
+    keys: ["èske fanm ka mesharath","fanm mesharath","fi mesharath","kisa mesharath ye","mesharath"],
+    rep: "Wi.\n\nLa Voie fè diferans ant fonksyon <strong>Mesharath</strong> ak fonksyon zaqen oswa direksyon Qehilah a.\n\nYon Mesharath se yon moun k ap rann sèvis pou byen Qehilah a. Fonksyon sa yo ka gen rapò ak òganizasyon, ospitalite, asistans, swen pou bezwen pratik yo ak lòt sèvis ki itil pou bon fonksyònman Qehilah a.\n\nKetubim Qadoshim yo montre plizyè fanm fidèl ki te sèvi Yahawah ak Qehilah a avèk devouman.\n\nPou rezon sa a, La Voie rekonèt ke fanm yo kapab sèvi kòm Mesharath, selon bezwen yo ak kapasite yo.\n\nSepandan, La Voie kontinye fè diferans ant sèvis sa yo ak fonksyon ki gen rapò ak direksyon oswa siveyans Qehilah a.\n\n<em>An rezime : fanm yo pa zaqen selon pozisyon La Voie a — men wi, fanm yo ka sèvi aktivman epi jwe yon wòl enpòtan kòm Mesharath ak nan anpil lòt sèvis pou Qehilah a.</em> ✦"
+  },
+  {
+    keys: ["kisa yon mesharath ye","ki yon mesharath","mesharath vle di","kisa mesharath vle di"],
+    rep: "Mesharath vle di yon moun k ap sèvi oswa k ap rann sèvis.\n\nNan La Voie, yon Mesharath ede Qehilah a nan diferan domèn pratik ak òganizasyonèl pou tout bagay fèt avèk lòd ak respè.\n\nObjektif Mesharath la se pa chèche otorite, men sèvi lòt moun avèk imilite ak fidelite.\n\n<em>An rezime : Yon Mesharath se yon sèbitè ki ede Qehilah a atravè sèvis itil ak nesesè pou byen kominote a.</em> ✦"
+  },
+  {
+    keys: ["èske fi ka zaqen","fanm zaqen","fanm dirije","femme diriger","fanm ka dirije","zaqen","beje","berger","fanm ka anseye","fi ka anseye","èske fanm ka anseye","fi ka beje"],
+    rep: "La Voie rekonèt valè, diyite ak enpòtans fanm yo nan sèvis Yahawah. Anpil fanm fidèl te sèvi Yahawah avèk kouraj epi yo te jwe yon wòl enpòtan nan lavi Qehilah a.\n\nSepandan, konsènan fonksyon direksyon ak siveyans Qehilah a, tankou zaqenim ak lòt responsablite ki gen rapò ak gouvènans Qehilah a, La Voie suiv modèl ki prezante nan Ketubim Qadoshim yo.\n\n<em>« Mwen pa pèmèt yon fanm anseye oswa pran otorite sou yon gason ; li dwe rete nan trankilite. »</em> (1 Timotiyos 2:12)\n\n<em>« Tankou sa fèt nan tout qehilah qadosh yo, se pou fanm yo rete an silans nan rasanbleman yo... »</em> (1 Qorintim 14:33-35)\n\nPou rezon sa a, La Voie pa konfye responsablite zaqen oswa direksyon Qehilah a bay fanm.\n\nSa pa vle di fanm yo pa gen plas oswa valè. Okontrè, fanm yo ka :\n• anseye pitit yo\n• anseye lòt fanm\n• ankouraje Qehilah a\n• patisipe nan travay Besorah Towah a\n• sèvi nan anpil lòt domèn enpòtan\n\nLa Voie chèche respekte tou de prensip sa yo :\n1. Onorab plas ak kontribisyon fanm yo.\n2. Respekte lòd ki prezante nan Ketubim Qadoshim yo pou gouvènans Qehilah a.\n\n<em>An rezime : La Voie rekonèt enpòtans fanm yo nan sèvis Yahawah, men li suiv modèl Ketubim Qadoshim yo konsènan fonksyon zaqenim yo ak direksyon Qehilah a.</em> ✦"
+  },
+  {
+    keys: ["èske fanm yo ka anseye nenpòt moun","fanm anseye nenpòt","fanm ka anseye gason","ansèyman fanm"],
+    rep: "Ketubim Qadoshim yo montre fanm fidèl yo te gen yon wòl enpòtan nan transmisyon konesans ak ankourajman.\n\nSepandan, konsènan ansèyman otoritatif ak direksyon Qehilah a, La Voie suiv enstriksyon akh Šāʾūl yo nan 1 Timotiyos 2:12 ak 1 Qorintim 14:33-35.\n\nFanm yo ka anseye pitit yo, lòt fanm yo epi pataje eksperyans yo ak konesans yo nan anpil kontèks ki itil pou Qehilah a.\n\n<em>An rezime : La Voie fè diferans ant kontribisyon enpòtan fanm yo nan ansèyman ak ankourajman, ak fonksyon ansèyman otoritatif ki lye ak direksyon Qehilah a.</em> ✦"
+  },
+  {
+    keys: ["kisa thabilah ye","thabilah","bapteme","batèm","batem","plonje nan dlo"],
+    rep: "Thabilah la se aksyon yon moun plonje nèt nan dlo kòm siy piblik angajman li anvè Yahawah.\n\nLi fèt nan non Yahushuʿaḥ apre teshoubah. (Maʿasei 2:38) ✦"
+  },
+  {
+    keys: ["kisa malkouth yahawah la ye","malkouth","royaume","wayòm"],
+    rep: "Malkouth Yahawah la se gouvènman Yahawah la ki pral etabli sou tout tè a anba otorite Mashiaḥ la.\n\nSe espwa ki anime tout tal'midim La Voie. ✦"
+  },
+  {
+    keys: ["èske manm la voie yo fè jèn","jèn","jen","jeun","fè jèn","pratik jèn"],
+    rep: "Wi.\n\nManm La Voie yo rekonèt jèn kòm yon pratik ki prezan nan Ketubim Qadoshim yo.\n\nPlizyè sèbitè Yahawah te fè jèn nan diferan sikonstans — tankou pandan peryòd teshoubah, rechèch direksyon, imiliasyon devan Yahawah oswa nan moman difikilte.\n\nYahushuʿaḥ li menm te fè jèn, epi li te anseye sou fason pou yon moun fè jèn avèk senserite, san fè demonstrasyon devan moun. (Mattiyahu 6:16-18 ; Mattiyahu 4:2) ✦"
+  },
+  {
+    keys: ["èske gen jou jèn obligatwa","jèn obligatwa","pwogram jèn","jèn fiks"],
+    rep: "Non.\n\nLa Voie pa enpoze yon pwogram jèn obligatwa pou tout manm yo.\n\nJèn se yon desizyon pèsonèl oswa yon aktivite Qehilah a ka òganize nan sikonstans espesyal.\n\nChak moun dwe aji avèk bon jijman, selon kondisyon fizik li ak konsyans li devan Yahawah. ✦"
+  },
+  {
+    keys: ["poukisa manm la voie yo fè jèn","poukisa fè jèn","rezon jèn","ki rezon jèn"],
+    rep: "Yon moun ka fè jèn pou :\n\n• chèche direksyon Yahawah\n• eksprime imilite\n• konsantre sou téfilah\n• fè teshoubah\n• fè fas ak yon sitiyasyon difisil\n• oswa pou lòt rezon ki ann amoni ak Ketubim Qadoshim yo\n\nJèn pa yon mwayen pou enpresyone lòt moun, men yon aksyon ki fèt devan Yahawah. ✦"
+  },
+  {
+    keys: ["kisa jèn ye","ki jèn","definisyon jèn","jèn vle di"],
+    rep: "Jèn se yon peryòd kote yon moun volontèman prive tèt li de manje, oswa pafwa de lòt bagay, pou konsantre plis sou relasyon li ak Yahawah.\n\nObjektif jèn nan pa sèlman sispann manje, men pwoche pi pre Yahawah avèk yon kè sensè.\n\n<em>An rezime : Manm La Voie yo fè jèn paske Ketubim Qadoshim yo montre pratik sa a. Sepandan, La Voie pa etabli yon sistèm jèn obligatwa. Jèn lan dwe fèt avèk senserite, imilite ak bon jijman devan Yahawah.</em> ✦"
+  },
+  {
+    keys: ["èske jèn fè yon moun pi qadosh","jèn fè moun qadosh","jèn ak qadosh","jèn ak sentete"],
+    rep: "Non.\n\nJèn pa ranplase obeyisans, teshoubah oswa fidelite.\n\nKetubim Qadoshim yo montre ke Yahawah pa sèlman gade aksyon ekstèn yo, men sitou kondisyon kè moun nan.\n\nJèn gen valè lè li akonpaye pa yon kè sensè ak yon vi ki ann amoni ak volonte Yahawah. ✦"
+  },
+  {
+    keys: ["kisa torah a ye","torah","lwa","loi"],
+    rep: "Torah a se ansèyman Yahawah te bay pou gide pèp Li a.\n\nLa Voie wè l kòm fondasyon ak limyè pou mache nan Ha'Mashiaḥ. ✦"
+  },
+  {
+    keys: ["ant talm'id ak ed","tal'mid ak ed","talm'id vs ed","kilès ki idantite a","kilès ki misyon an","ed temwen","tal'mid idantite","ed misyon"],
+    rep: "Nan La Voie, <strong>Tal'mid</strong> se idantite a, tandiske <strong>ʿEd</strong> (Temwen) se misyon an.\n\nYon Tal'mid se yon moun ki aprann anba Yahushuʿaḥ, ki suiv ansèyman li yo epi ki fè efò pou imite egzanp li.\n\nAnvan yon moun kapab rann temwayaj sou laverite a, li dwe dabò vin yon tal'mid. Pou rezon sa a, Yahushuʿaḥ pa t di 'Ale fè temwen' — li te di :\n\n<em>« Ale fè tal'mid... »</em> (Mattiyahu 28:19-20)\n\nSepandan, yon fwa yon moun vin tal'mid, li resevwa tou misyon pou l rann temwayaj :\n\n<em>« Nou pral ʿedim mwen... »</em> (Maʿasei 1:8)\n\nKidonk :\n• <strong>Tal'mid</strong> = idantite\n• <strong>ʿEd</strong> = fonksyon oswa misyon\n\nYon moun pa vin tal'mid paske li rann temwayaj — li rann temwayaj <em>paske</em> li se yon tal'mid.\n\nYon tal'mid Yahushuʿaḥ : aprann → pratike → suiv → grandi → rann temwayaj → pataje Besorah Towah a → ede lòt moun vin tal'mid.\n\n<em>An rezime :\n📖 Tal'mid = kiyès mwen ye.\n📖 ʿEd = sa m ap fè.</em> ✦"
+  },
+  {
+    keys: ["ki misyon manm la voie yo","misyon la voie","ki misyon la voie","misyon manm yo","poukisa la voie egziste"],
+    rep: "Misyon manm La Voie yo se suiv egzanp Yahushuʿaḥ, fè konnen Non Yahawah a, anonse Malkouth Yahawah la epi ede moun vin tal'mid Yahushuʿaḥ.\n\nYahushuʿaḥ te bay tal'midim li yo misyon pou yo ale fè tal'mid nan tout nasyon yo, anseye yo obsève tout sa li te kòmande yo. (Mattiyahu 28:19-20)\n\nLi te montre tou ke sant misyon li se te :\n<em>« Anonse Besorah Towah Malkouth Yahawah la. »</em> (Louqa 4:43)\n\nPou rezon sa a, manm La Voie yo chèche :\n• fè konnen Yahawah a\n• fè konnen Yahushuʿaḥ a\n• anonse Besorah Towah Malkouth Yahawah la\n• ede moun fè teshoubah\n• ede moun vin tal'mid\n• ankouraje moun viv dapre Ketubim Qadoshim yo\n• prepare tèt yo ak lòt moun pou Malkouth Yahawah la\n\nMisyon sa a pa limite ak reyinyon nan Beth HaKnesset la sèlman. Li gen ladan l fason yon moun viv, pale ak aji chak jou.\n\n<strong>Misyon manm La Voie yo pa :</strong>\n• pran pouvwa politik\n• domine lòt moun\n• bati yon anpi relijye\n• fòse moun aksepte kwayans yo\n\n<em>An rezime : Misyon manm La Voie yo se fè konnen Yahawah a, anonse Malkouth Li a, fè tal'mid pou Yahushuʿaḥ epi viv dapre chemen li te montre a.</em>\n\n<em>« Plus qu'un nom, un chemin à suivre. »</em> 🔥📖🌍 ✦"
+  },
+  {
+    keys: ["ki deviz la voie","deviz","devise","slogan","motto"],
+    rep: "<em>\"Plus qu'un nom, un chemin à suivre.\"</em>\n\nDeviz La Voie reflete misyon li : pa sèlman yon non, men yon chemen reyèl pou mache chak jou. ✦"
+  },
+  {
+    keys: ["kisa souper d'adon ye","souper","cène","sen","14 abib","zikaron"],
+    rep: "Souper d'Adôn lan se zikaron Yahushuʿaḥ te enstitiye nan swa 14 Abib la.\n\nLa Voie obsève l chak ane kòm souvni lanmò ak rezirèksyon Yahushuʿaḥ Ha'Mashiaḥ. ✦"
+  },
+  {
+    keys: ["ki rezo sosyal la voie","rezo sosyal","réseaux sociaux","facebook","youtube","instagram","telegram","tiktok"],
+    rep: "La Voie prezant sou plizyè platfòm :\n\n📺 youtube.com/@lavoie033\nf facebook.com/lesmembresdelavoie\n✈ t.me/lesmembresdelavoie\n◉ instagram.com/lesmembresdelavoie\n✕ x.com/Lavoie033\n♪ tiktok.com/@chemenyan ✦"
+  },
+  {
+    keys: ["èske manm la voie yo fè politik","politik","politique","pati politik","kandida","ideyoloji politik","la voie fè politik"],
+    rep: "La Voie pa yon mouvman politik e misyon li pa politik.\n\nMisyon La Voie se ede moun konnen Yahawah, suiv Yahushuʿaḥ epi prepare pou Malkouth Yahawah la.\n\nPou rezon sa a, La Voie pa sipòte okenn pati politik, okenn kandida politik oswa okenn ideyoloji politik kòm pozisyon ofisyèl li.\n\nSepandan, manm La Voie yo rete sitwayen peyi kote yo ap viv la epi yo dwe respekte otorite sivil yo toutotan sa pa mande yo dezobeyi Yahawah. (Romiyim 13:1-7 ; Maʿasei 5:29)\n\nLa Voie ankouraje manm li yo pou yo chèche jistis, onètete, lapè sosyal ak bon konduit nan lavi chak jou.\n\n<em>An rezime : La Voie pa fè politik kòm òganizasyon. Li konsantre sou ansèyman Ketubim Qadoshim yo ak Malkouth Yahawah la.</em> ✦"
+  },
+  {
+    keys: ["èske yon manm la voie ka manm yon pati politik","pati politik","afilyasyon politik","manm pati politik","rantre nan pati politik"],
+    rep: "La Voie pa egzije manm li yo rantre nan yon pati politik, ni li pa mande yo kite yon pati politik kòm kondisyon pou yo vin manm.\n\nSepandan, La Voie raple ke premye fidelite yon tal'mid Yahushuʿaḥ dwe ale bay Yahawah ak Malkouth Li a.\n\nPou rezon sa a, yon manm La Voie dwe veye pou okenn afilyasyon politik pa antre an konfli ak prensip Ketubim Qadoshim yo oswa ak konsyans li devan Yahawah.\n\nLa Voie pa sipòte okenn pati politik kòm òganizasyon epi li pa sèvi kòm zouti pwomosyon pou okenn mouvman politik.\n\nKesyon afilyasyon politik rete yon kestyon konsyans pèsonèl, toutotan moun nan kontinye mache dapre prensip Yahawah yo.\n\n<em>« Kontinye chèche an premye Malkouth Yahawah la ak jistis Li. »</em> (Mattiyahu 6:33)\n\n<em>An rezime : La Voie pa egzije ni entèdi manm li yo fè pati yon pati politik. Sepandan, fidelite yon tal'mid dwe toujou ale an premye bay Yahawah ak Malkouth Li a.</em> ✦"
+  },
+  {
+    keys: ["èske yon manm la voie ka vote","vote","voter","dwa vote","manm ka vote"],
+    rep: "La Voie pa fòse manm li yo vote ni pa entèdi yo vote.\n\nKesyon sa a rete yon kestyon konsyans pèsonèl chak moun devan Yahawah, toutotan li respekte prensip Ketubim Qadoshim yo.\n\n<em>An rezime : La Voie pa bay enstriksyon obligatwa sou kestyon vote — chak moun dwe egzamine kestyon an avèk konsyans li devan Yahawah.</em> ✦"
+  },
+  {
+    keys: ["ki sans yahushuah yo nan yahuanan 17","yahuanan 17:16","yo pa fe pati monn nan","pa fe pati monn","monn nan politik","tal'mid ak monn nan"],
+    rep: "Nan Yaḥuānān 17:16, Yahushuʿaḥ te di konsènan tal'midim li yo :\n\n<em>« Yo pa fè pati monn nan, menm jan mwen menm mwen pa fè pati monn nan. »</em>\n\nLa Voie konprann pawòl sa yo kòm yon rapèl ke tal'midim Yahushuʿaḥ yo dwe mete fidelite yo an premye nan Yahawah ak nan Malkouth Li a.\n\nSa vle di yon tal'mid pa dwe kite ideyoloji, enterè oswa konfli monn sa a pran plas prensip Yahawah yo nan lavi li.\n\nKonsènan politik, pasaj sa a raple manm La Voie yo ke espwa yo pa chita sou okenn pati politik, okenn gouvènman oswa okenn sistèm lèzòm — men sou Malkouth Yahawah la.\n\nAn menm tan, tal'midim yo dwe respekte otorite sivil yo, obeyi lwa ki jis yo epi chèche viv an pè ak tout moun, toutotan sa pa mande yo dezobeyi Yahawah. (Romiyim 13:1-7 ; Maʿasei 5:29)\n\n<em>An rezime : Yaḥuānān 17:16 raple ke premye fidelite manm La Voie yo dwe ale bay Yahawah ak Malkouth Li a. Yo viv nan mitan monn nan, men yo pa mete espwa yo nan sistèm politik oswa ideyoloji monn nan.</em> ✦"
+  },
+  {
+    keys: ["ki jan manm la voie yo konprann episod kote moun yo te vle fè yahushuah vin melekh","melekh","mélèkh","yahushuah melekh","fè yahushuah mélèkh","yahuanan 6:15","pran yahushuah pou melekh"],
+    rep: "Apre Yahushuʿaḥ te bay foul la manje, anpil moun te vle pran l pou fè l vin mélèkh. Men, lè Yahushuʿaḥ te rann li kont sa, li te retire kò li epi li te ale poukont li sou mòn nan.\n\n<em>« Lè Yahushuʿaḥ te konnen yo t ap vin pran li pou fè li mélèkh, li retire kò li ankò poukont li sou mòn nan. »</em> (Yaḥuānān 6:15)\n\nManm La Voie yo wè evènman sa a kòm yon leson enpòtan :\n\nYahushuʿaḥ pa t chèche pran pouvwa politik ni dirije atravè sistèm lèzòm yo, menm lè pèp la te pare pou mete l sou yon twòn. Li te konnen tan ak fason Yahawah te fikse pou li resevwa otorite li.\n\nPandan ministè li sou tè a, Yahushuʿaḥ te konsantre sou anonse Malkouth Yahawah la — pa sou pran kontwòl yon gouvènman imen.\n\nEvènman sa a montre tou ke menm yon objektif ki sanble bon kapab vin yon distraksyon si li fè yon moun kite misyon Yahawah ba li a.\n\n<strong>Kisa manm La Voie yo aprann nan evènman sa a :</strong>\n• Misyon Malkouth Yahawah la pi enpòtan pase pouvwa politik\n• Yon tal'mid pa dwe kite anbisyon oswa prestij detounen li de sèvis Yahawah a\n• Solisyon final pou limanite pa soti nan sistèm politik lèzòm yo\n• Menm lè yon moun gen opòtinite pou jwenn pouvwa, li dwe chèche volonte Yahawah an premye\n\n<em>« Kontinye chèche an premye Malkouth Yahawah la ak jistis Li. »</em> (Mattiyahu 6:33)\n\n<em>An rezime : Yahushuʿaḥ te refize vin mélèkh atravè sistèm politik imen. Pou manm La Voie yo, sa se yon rapèl ke premye fidelite yo dwe ale bay Yahawah ak Malkouth Li a, pa bay rechèch pouvwa oswa dominasyon politik.</em> ✦"
+  }
+];
 
-  const SYSTEM_PROMPT = `Tu es Képha, l'assistant officiel de La Voie (lavoie.world).
+function normalize(s) {
+  return s.toLowerCase()
+    .replace(/[?!.,;:]/g,'')
+    .replace(/[èéêë]/g,'e')
+    .replace(/[àâä]/g,'a')
+    .replace(/[ôö]/g,'o')
+    .replace(/[ûü]/g,'u')
+    .replace(/[îï]/g,'i')
+    .replace(/[ʿʾ]/g,"'")
+    .trim();
+}
 
-IDENTITÉ :
-- Tu es un assistant doux, pédagogique et fidèle aux enseignements de La Voie
-- Tu réponds TOUJOURS dans la langue de l'utilisateur (français, créole haïtien, anglais, espagnol, etc.)
-- Tu détectes automatiquement la langue et y réponds
-
-VOCABULAIRE OBLIGATOIRE — utilise TOUJOURS ces termes :
-- Yahawah (jamais: Dieu, Seigneur, l'Éternel)
-- Yahushuʿah Ha'Mashiaḥ (jamais: Jésus, Jésus-Christ)
-- Rouaḥ Ha'Qadosh (jamais: Saint-Esprit)
-- Ketubim Qadoshim (jamais: Bible, Écriture sainte)
-- Qehilah (jamais: Église)
-- Tal'midim (jamais: disciples, chrétiens)
-- Besorah Tobah (jamais: Évangile)
-- Malkouwt (jamais: Royaume)
-- Shamayim (jamais: Ciel)
-- Téfilah / Hitpalel (jamais: prière / prier)
-- Tebilah / Thabalé (jamais: baptême / baptisé)
-- Emounah (jamais: foi)
-- Devyasyon (jamais: péché)
-- Néfèsh (jamais: âme)
-- Mal'ak / Mal'akim (jamais: ange / anges)
-- Kabôd (jamais: gloire)
-- ʿÈts / Poteau de supplice (jamais: croix)
-- Nabiʾ / Nabiʾim (jamais: prophète)
-- Besorah Tobah (jamais: évangile)
-- Moshiaḥ (jamais: Sauveur)
-- Qadoshout (jamais: sainteté)
-- Berit Ḥadashah (jamais: Nouveau Testament)
-- Berit Meḥoudashah (jamais: Ancien Testament)
-- Roḥanit (jamais: spirituel)
-- Akh / Akhim (jamais: frère / frères)
-- Akhot / Akhayot (jamais: sœur / sœurs)
-- Shalôm (pour salutation et paix scripturaire)
-- Tranquillité (pour paix dans contexte pastoral)
-
-DOMAINES DE CONNAISSANCE :
-- Les Ketubim Qadoshim (Berit Meḥoudashah et Berit Ḥadashah)
-- Les enseignements de La Voie
-- Le calendrier lunisolaire (1 Abib = 20 mars 2026)
-- Les Moʿadim : Pessah (14 Abib), Shabuʿot (6 Siban), Sukkôt (15-21 Tishri)
-- Le lexique restauré de La Voie
-- Les 12 mois : Abib, Ziw, Siban, Rebiʿi, Ab, Eloul, Ethanim, Boul, Kislew, Tebeth, Shebat, Adar
-
-RÈGLES :
-- Réponds toujours avec douceur, précision et fidélité aux Ketubim Qadoshim
-- Si tu ne sais pas, dis-le honnêtement
-- Commence toujours par Shalôm si c'est la première interaction
-- Sois concis mais complet
-- N'invente jamais de versets ou citations`;
-
-  function kephaToggle() {
-    kephaOuvert = !kephaOuvert;
-    const win = document.getElementById('kepha-window');
-    win.classList.toggle('open', kephaOuvert);
-    if (kephaOuvert) {
-      document.getElementById('kepha-badge').style.display = 'none';
-      document.getElementById('kepha-input').focus();
+function findResponse(input) {
+  const q = normalize(input);
+  for (const item of KB) {
+    for (const kw of item.keys) {
+      if (q.includes(normalize(kw))) return item.rep;
     }
   }
+  return null;
+}
 
-  function kephaKeydown(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      kephaEnvoyer();
-    }
+function defaultResponse(input) {
+  const q = normalize(input);
+  if (q.includes('merci') || q.includes('mesi') || q.includes('todah') || q.includes('mèsi')) {
+    return "Barukh Yahawah ! Mèsi pou konfyans ou akhi. Si ou gen lòt kesyon, mwen la. Shalom ! ✦";
   }
-
-  function kephaAutoResize(el) {
-    el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+  if (q.includes('shalom') || q.includes('bonjou') || q.includes('bonswa') || q.includes('hello') || q.includes('sak pase')) {
+    return "Shalom ! Kijan mwen ka ede ou jodi a ?\n\nPoze mwen nenpòt kesyon sou La Voie, ansèyman yo, vokabilè ibriy la oswa kijan pou kontakte nou. ✦";
   }
-
-  function kephaAjouterMsg(texte, type) {
-    const zone = document.getElementById('kepha-messages');
-    const div = document.createElement('div');
-    div.className = `msg ${type}`;
-    div.innerHTML = texte.replace(/\n/g, '<br>');
-    zone.appendChild(div);
-    zone.scrollTop = zone.scrollHeight;
-    return div;
+  if (q.includes('ki ou ye') || q.includes('kiyès ou ye') || q.includes('qui es-tu') || q.includes('c est qui')) {
+    return "Mwen se <strong>Képha</strong> — asistan ofisyèl Les Membres de La Voie.\n\nMwen la pou ede ou konprann ansèyman La Voie, reponn kesyon ou yo ak gide ou nan ressous Qehilah a. ✦";
   }
+  return "Mwen paka jwenn repons pou kesyon sa a nan baz konesans mwen aktyèlman.\n\nPou pi bon repons, ou ka :\n🌐 Vizite <strong>lavoie.world</strong>\n📧 Kontakte nou : lesmembresdelavoie@gmail.com\n✈ Telegram : t.me/lesmembresdelavoie\n\nShalom ! ✦";
+}
 
-  async function kephaEnvoyer() {
-    if (kephaEnCours) return;
-    const input = document.getElementById('kepha-input');
-    const question = input.value.trim();
-    if (!question) return;
+let isOpen = false;
 
-    // Afficher message utilisateur
-    kephaAjouterMsg(question, 'user');
-    input.value = '';
-    input.style.height = 'auto';
-
-    // Ajouter à l'historique
-    kephaHistoire.push({ role: 'user', content: question });
-
-    // Indicateur de frappe
-    const typing = kephaAjouterMsg('Képha réfléchit...', 'typing');
-    kephaEnCours = true;
-    document.getElementById('kepha-send').disabled = true;
-
-    try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: kephaHistoire
-        })
-      });
-
-      const data = await response.json();
-      const reponse = data.content[0].text;
-
-      // Supprimer indicateur frappe
-      typing.remove();
-
-      // Ajouter réponse Képha
-      kephaAjouterMsg(reponse, 'kepha');
-      kephaHistoire.push({ role: 'assistant', content: reponse });
-
-      // Limiter historique à 20 messages
-      if (kephaHistoire.length > 20) {
-        kephaHistoire = kephaHistoire.slice(-20);
-      }
-
-    } catch (err) {
-      typing.remove();
-      kephaAjouterMsg('Une erreur est survenue. Veuillez réessayer.', 'kepha');
-      console.error(err);
-    }
-
-    kephaEnCours = false;
-    document.getElementById('kepha-send').disabled = false;
-    document.getElementById('kepha-input').focus();
+function toggleKepha() {
+  isOpen = !isOpen;
+  const win = document.getElementById('kepha-window');
+  document.getElementById('kepha-notif').style.display = 'none';
+  if (isOpen) {
+    win.classList.add('open');
+    setTimeout(() => document.getElementById('kepha-input').focus(), 400);
+  } else {
+    win.classList.remove('open');
   }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function sendSuggestion(btn) {
+  document.getElementById('kepha-input').value = btn.textContent.replace(' ?','');
+  document.getElementById('kepha-suggestions').style.display = 'none';
+  sendMessage();
+}
+
+function sendMessage() {
+  const input = document.getElementById('kepha-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  addMessage('user', msg);
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('kepha-suggestions').style.display = 'none';
+  const typingEl = addTyping();
+  setTimeout(() => {
+    typingEl.remove();
+    const rep = findResponse(msg) || defaultResponse(msg);
+    addMessage('kepha', rep);
+  }, 700 + Math.random() * 500);
+}
+
+function addMessage(type, text) {
+  const msgs = document.getElementById('kepha-messages');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  const label = document.createElement('span');
+  label.className = 'msg-label';
+  label.textContent = type === 'kepha' ? 'Képha' : 'Ou';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = text.replace(/\n/g,'<br>');
+  div.appendChild(label);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function addTyping() {
+  const msgs = document.getElementById('kepha-messages');
+  const div = document.createElement('div');
+  div.className = 'msg kepha';
+  div.innerHTML = '<span class="msg-label">Képha</span><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+setTimeout(() => {
+  if (!isOpen) {
+    const n = document.getElementById('kepha-notif');
+    n.style.display = 'flex';
+  }
+}, 4000);
 </script>
 
 </body>
 </html>
+<!-- PATCH REZO SOSYAL - ignore this, handled by str_replace below -->
