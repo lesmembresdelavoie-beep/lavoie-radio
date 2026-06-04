@@ -121,6 +121,64 @@
       filter: drop-shadow(0 4px 24px rgba(201,168,76,0.3));
     }
 
+    /* ══ PRODUCTIONS ══ */
+    #productions {
+      padding: 1.5rem 0 1.5rem 1rem;
+      background: rgba(6,13,26,0.98);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .prod-header {
+      padding: 0 1rem 0.8rem 0;
+    }
+    .prod-label {
+      font-family: 'Cinzel', serif; font-size: 0.52rem;
+      letter-spacing: 0.28em; color: var(--or);
+      text-transform: uppercase; opacity: 0.75;
+    }
+    .prod-scroll {
+      display: flex; gap: 0.9rem;
+      overflow-x: auto; padding-bottom: 0.5rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .prod-scroll::-webkit-scrollbar { display: none; }
+    .prod-card {
+      flex-shrink: 0; width: 150px; cursor: pointer;
+    }
+    .prod-thumb {
+      width: 150px; height: 90px;
+      background: linear-gradient(135deg, rgba(13,35,71,0.9), rgba(6,13,26,0.95));
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .prod-thumb::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+    }
+    .prod-card:hover .prod-thumb { border-color: rgba(201,168,76,0.4); }
+    .prod-play {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--or-clair);
+      padding-left: 3px;
+    }
+    .prod-titre {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      color: var(--or-pale); letter-spacing: 0.04em;
+      line-height: 1.4; margin-bottom: 0.2rem;
+    }
+    .prod-type {
+      font-size: 0.7rem; color: var(--argent); opacity: 0.55;
+      font-style: italic;
+    }
+
     /* ══ VERSET BANDE ══ */
     .verset-band {
       background: rgba(13,35,71,0.5);
@@ -325,9 +383,8 @@
       top: 0; left: 20%; right: 20%; height: 2px;
       background: var(--or); border-radius: 0 0 2px 2px;
     }
-    .tab-icon { line-height: 1; color: inherit; }
-    .tab-icon img { width: 22px; height: 22px; object-fit: cover; border-radius: 4px; opacity: 0.5; }
-    .tab-item.active .tab-icon img, .tab-item:hover .tab-icon img { opacity: 1; }
+    .tab-icon { line-height: 1; color: inherit; display:flex; align-items:center; justify-content:center; }
+    .tab-icon svg { transition: stroke 0.2s; }
     .tab-icon-emoji { font-size: 1.2rem; }
     .tab-label {
       font-family: 'Cinzel', serif; font-size: 0.4rem;
@@ -439,6 +496,48 @@
       </div>
     </section>
 
+    <!-- PRODUCTIONS -->
+    <section id="productions">
+      <div class="prod-header">
+        <span class="prod-label">✦ Dernières productions</span>
+      </div>
+      <div class="prod-scroll">
+
+        <div class="prod-card" onclick="openVideo('LeK3FUfedes')">
+          <div class="prod-thumb" style="background-image:url('video-yahawah-thumb.jpg');background-size:cover;background-position:center;">
+            <div class="prod-play">▶</div>
+          </div>
+          <p class="prod-titre">Papa a tande kri nou, fè l konfyans</p>
+          <p class="prod-type">Musique · La Voie</p>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <div class="prod-play">▶</div>
+          </div>
+          <p class="prod-titre">Présentation — La Voie Radio</p>
+          <p class="prod-type">Présentation · La Voie</p>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <div class="prod-play">▶</div>
+          </div>
+          <p class="prod-titre">Enseignement — Ketubim</p>
+          <p class="prod-type">Enseignement · La Voie</p>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <div class="prod-play">▶</div>
+          </div>
+          <p class="prod-titre">Louange — Shabbat</p>
+          <p class="prod-type">Musique · La Voie</p>
+        </div>
+
+      </div>
+    </section>
+
     <!-- VERSET BANDE -->
     <div class="verset-band">
       <p class="vb-texte">« Yahushuaʿ lui dit : Je suis le chemin, la vérité et la vie. Nul ne vient au Père que par moi. »</p>
@@ -539,28 +638,62 @@
 
   <!-- TAB BAR -->
   <nav id="tab-bar">
+
     <a href="index.html" class="tab-item active">
-      <span class="tab-icon tab-icon-emoji">🏠</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/>
+          <path d="M9 21V12h6v9"/>
+        </svg>
+      </span>
       <span class="tab-label">Accueil</span>
     </a>
-    <a href="tèks-pou-jounen-an.html" class="tab-item">
-      <span class="tab-icon tab-icon-emoji">📖</span>
-      <span class="tab-label">Tèks</span>
+
+    <a href="kq.html" class="tab-item">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          <line x1="9" y1="7" x2="15" y2="7"/>
+          <line x1="9" y1="11" x2="15" y2="11"/>
+        </svg>
+      </span>
+      <span class="tab-label">Ketubim</span>
     </a>
+
     <a href="radio.html" class="tab-item">
-      <span class="tab-icon tab-icon-emoji">📻</span>
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="9" width="20" height="13" rx="2"/>
+          <path d="M16 9V6a4 4 0 00-8 0v3"/>
+          <circle cx="12" cy="15" r="2"/>
+          <line x1="6" y1="9" x2="6" y2="9"/>
+        </svg>
+      </span>
       <span class="tab-label">Radio</span>
     </a>
-    <a href="kq.html" class="tab-item">
-      <span class="tab-icon tab-icon-emoji">📜</span>
-      <span class="tab-label">KQ</span>
-    </a>
+
     <a href="rassemblements.html" class="tab-item">
       <span class="tab-icon">
-        <img src="reunions-icon.png" alt="Réunions" style="width:24px;height:24px;border-radius:6px;object-fit:cover;opacity:0.5" class="tab-reunions-img"/>
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="7" r="3"/>
+          <circle cx="15" cy="7" r="3"/>
+          <path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/>
+          <line x1="9" y1="14" x2="15" y2="14"/>
+        </svg>
       </span>
       <span class="tab-label">Réunions</span>
     </a>
+
+    <a href="lexique.html" class="tab-item">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </span>
+      <span class="tab-label">Lexique</span>
+    </a>
+
   </nav>
 
   <!-- KÉPHA -->
@@ -674,5 +807,25 @@
   setTimeout(()=>{ if(!isOpen) document.getElementById('kepha-notif').style.display='flex'; },4000);
   </script>
 
+
+  <!-- VIDEO MODAL -->
+  <div id="modal-video" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:1rem" onclick="closeModal()">
+    <div onclick="event.stopPropagation()" style="width:100%;max-width:600px">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:4px;border:1px solid rgba(201,168,76,0.3)">
+        <iframe id="yt-player" style="position:absolute;top:0;left:0;width:100%;height:100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;color:var(--or);margin-top:0.8rem;text-transform:uppercase">Papa a tande kri nou, fè l konfyans · La Voie</p>
+    </div>
+  </div>
+  <script>
+  function openVideo(ytId) {
+    document.getElementById('yt-player').src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1';
+    document.getElementById('modal-video').style.display = 'flex';
+  }
+  function closeModal() {
+    document.getElementById('yt-player').src = '';
+    document.getElementById('modal-video').style.display = 'none';
+  }
+  </script>
 </body>
 </html>
