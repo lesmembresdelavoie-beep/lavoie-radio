@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Guide Officiel des Noms Propres · Ketubim Qadoshim · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden;padding-bottom:64px}
+
+.page-header{min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(30,77,153,0.55) 0%,transparent 70%),linear-gradient(180deg,#020810 0%,#060d1a 100%)}
+.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
+.page-header-inner{position:relative;z-index:1}
+.page-eyebrow{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.35em;color:var(--or);text-transform:uppercase;opacity:0.7;margin-bottom:0.8rem}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5vw,3.2rem);font-weight:700;color:#e8cb7a;letter-spacing:0.08em;line-height:1.15;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2vw,1.2rem);color:#c9a84c;opacity:0.8;margin-bottom:0.3rem}
+.page-sub2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.92rem;color:#e8f0f8;opacity:0.5}
+
+.page-body{max-width:860px;margin:0 auto;padding:4rem 2rem 6rem}
+@media(max-width:768px){.page-body{padding:3rem 1.2rem 5rem}}
+
+/* TABLE DES MATIÈRES */
+.toc{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.2);padding:1.8rem 2rem;margin-bottom:3.5rem}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);text-transform:uppercase;margin-bottom:1rem}
+.toc-liste{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.toc-liste li a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--argent);text-decoration:none;letter-spacing:0.05em;opacity:0.75;transition:opacity 0.2s}
+.toc-liste li a:hover{opacity:1;color:var(--or-clair)}
+.toc-liste li span{color:var(--or);opacity:0.45;margin-right:0.6rem}
+
+/* SECTIONS */
+.section{margin-bottom:3.5rem}
+.section-label{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.6rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--or-pale);margin-bottom:0.8rem;letter-spacing:0.06em}
+.section-line{width:50px;height:1px;background:linear-gradient(to right,var(--or),transparent);margin-bottom:1.6rem}
+.section p{font-size:1.02rem;line-height:1.88;color:#e8f0f8;opacity:0.85;margin-bottom:1rem}
+
+/* CONSIGNE */
+.consigne-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(13,35,71,0.5));border:1px solid rgba(201,168,76,0.35);border-left:4px solid var(--or);padding:1.6rem 1.8rem;margin-bottom:3rem}
+.consigne-box p{font-size:1.02rem;line-height:1.85;color:var(--or-pale);opacity:0.9;margin-bottom:0.7rem}
+.consigne-box p:last-child{margin-bottom:0}
+.consigne-box strong{color:var(--or-clair)}
+
+/* PRINCIPES LIST */
+.principes-liste{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem}
+.principes-liste li{display:flex;gap:0.8rem;align-items:flex-start;font-size:1rem;line-height:1.7;color:#e8f0f8;opacity:0.82}
+.principes-liste li::before{content:'✦';color:var(--or);opacity:0.6;flex-shrink:0;font-size:0.6rem;margin-top:0.35rem}
+
+/* TABLEAUX */
+.table-wrap{overflow-x:auto;margin-top:1rem}
+table{width:100%;border-collapse:collapse;font-size:0.92rem}
+thead th{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);background:rgba(13,35,71,0.8);padding:0.75rem 1rem;border-bottom:1px solid rgba(201,168,76,0.25);text-align:left}
+tbody tr{border-bottom:1px solid rgba(201,168,76,0.07);transition:background 0.15s}
+tbody tr:hover{background:rgba(13,35,71,0.4)}
+tbody td{padding:0.65rem 1rem;color:#e8f0f8;line-height:1.5}
+tbody td:first-child{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--or-pale);letter-spacing:0.04em}
+tbody td.ibri{direction:rtl;font-size:1rem;color:var(--or);opacity:0.6}
+tbody td.note{font-style:italic;font-size:0.88rem;opacity:0.65}
+
+/* INDEX ALPHABÉTIQUE */
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-top:1rem}
+@media(max-width:600px){.index-grid{grid-template-columns:repeat(2,1fr)}}
+.index-item{background:rgba(13,35,71,0.25);border:1px solid rgba(201,168,76,0.08);padding:0.5rem 0.8rem;transition:all 0.15s}
+.index-item:hover{background:rgba(13,35,71,0.5);border-color:rgba(201,168,76,0.25)}
+.index-nom{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or-pale);letter-spacing:0.04em}
+.index-fr{font-size:0.78rem;color:var(--argent);opacity:0.55;font-style:italic}
+
+/* RÈGLES CARD */
+.regle-card{background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.1rem 1.5rem;margin-bottom:0.8rem}
+.regle-titre{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;margin-bottom:0.5rem}
+.regle-texte{font-size:0.98rem;line-height:1.75;color:#e8f0f8;opacity:0.82}
+
+/* CITATION */
+.citation-finale{background:linear-gradient(135deg,rgba(13,35,71,0.5),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);padding:2.5rem;text-align:center;margin-top:3rem}
+.citation-finale p.texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.35rem);color:var(--or-pale);line-height:1.7;margin-bottom:0.6rem}
+.citation-finale p.ref{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;opacity:0.65}
+
+.ornement{text-align:center;color:var(--or);font-size:0.62rem;letter-spacing:0.6em;opacity:0.35;margin:2.5rem 0}
+
+/* TAB BAR */
+#tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0;position:relative}
+.tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--or);border-radius:0 0 2px 2px}
+.tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">✦ Ketubim Qadoshim · Édition La Voie ✦</p>
+    <h1 class="page-title">Guide Officiel<br>des Noms Propres</h1>
+    <p class="page-subtitle">Document de référence éditoriale</p>
+    <p class="page-sub2">lavoie.world · Les Tal'midim de Yahushuʿaḥ</p>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <!-- TABLE DES MATIÈRES -->
+  <div class="toc">
+    <p class="toc-titre">✦ Table des matières</p>
+    <ul class="toc-liste">
+      <li><a href="#preambule"><span>I</span>Préambule</a></li>
+      <li><a href="#principes"><span>II</span>Principes de restauration des noms</a></li>
+      <li><a href="#personnages"><span>III</span>Noms des personnages principaux</a></li>
+      <li><a href="#lieux"><span>IV</span>Noms des lieux</a></li>
+      <li><a href="#peuples"><span>V</span>Noms des peuples et groupes</a></li>
+      <li><a href="#regles"><span>VI</span>Règles d'utilisation dans l'édition</a></li>
+      <li><a href="#index"><span>VII</span>Index alphabétique général</a></li>
+      <li><a href="#conclusion"><span>VIII</span>Conclusion</a></li>
+    </ul>
+  </div>
+
+  <!-- CONSIGNE ÉDITORIALE -->
+  <div class="consigne-box">
+    <p><strong>Consigne éditoriale fondamentale</strong></p>
+    <p>Dans toute l'édition des Ketubim Qadoshim — Édition La Voie, <strong>la lettre « v » ne doit jamais être utilisée dans les translittérations ibri.</strong></p>
+    <p>Les formes retenues doivent respecter les conventions de translittération adoptées par La Voie et demeurer cohérentes dans l'ensemble du projet.</p>
+    <p>Les éléments théophores liés au Shem Qadosh doivent être identifiés et restitués avec le plus grand soin lorsqu'ils apparaissent dans les noms anciens.</p>
+  </div>
+
+  <!-- I. PRÉAMBULE -->
+  <div class="section" id="preambule">
+    <p class="section-label">Section I</p>
+    <h2 class="section-title">Préambule</h2>
+    <div class="section-line"></div>
+    <p>Les noms propres constituent l'un des éléments les plus significatifs de tout texte ancien. Ils portent en eux une identité, une histoire et souvent une signification profonde qui méritent d'être préservées avec soin.</p>
+    <p>Dans le cadre des Ketubim Qadoshim — Édition La Voie, la restauration de certains noms propres n'est pas une démarche arbitraire. Elle s'inscrit dans une volonté de fidélité historique, linguistique et contextuelle aux écrits sources, en reconnaissant que les formes transmises au fil des siècles ont parfois subi des altérations significatives.</p>
+    <p>L'uniformité dans l'ensemble de l'édition est essentielle. Un même nom doit être rendu de la même manière dans tous les livres, toutes les notes, tous les annexes et toutes les ressources publiées dans le cadre du projet. Cette cohérence est garante de la crédibilité éditoriale et du respect dû au lecteur.</p>
+    <p>Le présent guide constitue la référence officielle à laquelle tous les collaborateurs du projet doivent se conformer.</p>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- II. PRINCIPES -->
+  <div class="section" id="principes">
+    <p class="section-label">Section II</p>
+    <h2 class="section-title">Principes de restauration des noms</h2>
+    <div class="section-line"></div>
+    <p>La restauration des noms propres dans cette édition repose sur les principes suivants :</p>
+    <ul class="principes-liste">
+      <li>Recherche de la plus grande proximité possible avec les formes anciennes attestées dans les langues sources.</li>
+      <li>Respect des racines linguistiques ibri, araméennes et grecques selon le contexte de chaque nom.</li>
+      <li>Uniformité de translittération : les mêmes règles s'appliquent à l'ensemble des livres sans exception.</li>
+      <li>Cohérence de l'ensemble des noms de personnes, de lieux et de peuples dans toute l'édition.</li>
+      <li>Restauration des éléments théophores — notamment les formes liées au Shem Qadosh — lorsque cela est pertinent et attesté.</li>
+      <li>Absence de variations arbitraires d'un livre à l'autre : toute exception doit être justifiée et documentée.</li>
+      <li>La lettre « v » est exclue de toutes les translittérations ibri de cette édition.</li>
+    </ul>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- III. PERSONNAGES -->
+  <div class="section" id="personnages">
+    <p class="section-label">Section III</p>
+    <h2 class="section-title">Noms des personnages principaux</h2>
+    <div class="section-line"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Forme retenue</th>
+            <th>Forme française courante</th>
+            <th>Signification</th>
+            <th>Observations éditoriales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Yahushuʿaḥ</td><td>Jésus / Yeshua</td><td>Yahawah sauve</td><td>Élément théophore restauré ; forme la plus proche du nom original</td></tr>
+          <tr><td>Miryam</td><td>Marie</td><td>—</td><td>Forme ibri originale préservée</td></tr>
+          <tr><td>Yahusef</td><td>Joseph</td><td>Yahawah ajoute</td><td>Élément théophore restauré</td></tr>
+          <tr><td>Yaʿaqov</td><td>Jacques / Jacob</td><td>Il supplante</td><td>Forme ibri originale ; distingue le patriarche de l'apôtre selon contexte</td></tr>
+          <tr><td>Yaḥuānān</td><td>Jean</td><td>Yahawah fait grâce</td><td>Élément théophore restauré ; lettre « v » absente</td></tr>
+          <tr><td>Mattiyahu</td><td>Matthieu</td><td>Don de Yahawah</td><td>Élément théophore restauré</td></tr>
+          <tr><td>Marqos</td><td>Marc</td><td>—</td><td>Forme proche de la translittération grecque originale</td></tr>
+          <tr><td>Louqa</td><td>Luc</td><td>—</td><td>Forme proche du nom grec Loukas</td></tr>
+          <tr><td>Šaʾoul</td><td>Paul / Saul</td><td>Demandé</td><td>Nom ibri originel ; « Paul » est son nom romain</td></tr>
+          <tr><td>Képha</td><td>Pierre / Céphas</td><td>Roc / Pierre</td><td>Forme araméenne attestée dans les écrits</td></tr>
+          <tr><td>Timotheos</td><td>Timothée</td><td>Qui honore Elohim</td><td>Forme grecque originale préservée</td></tr>
+          <tr><td>Titos</td><td>Tite</td><td>—</td><td>Forme grecque originale préservée</td></tr>
+          <tr><td>Yehoudah</td><td>Judas / Jude</td><td>Loué</td><td>Distingué selon contexte : apôtre ou traître</td></tr>
+          <tr><td>Mosheh</td><td>Moïse</td><td>Tiré des eaux</td><td>Forme ibri originale</td></tr>
+          <tr><td>Dāwīd</td><td>David</td><td>Bien-aimé</td><td>Forme ibri avec voyelles longues préservées</td></tr>
+          <tr><td>Abraham</td><td>Abraham</td><td>Père d'une multitude</td><td>Forme universellement reconnue conservée</td></tr>
+          <tr><td>Yitsḥaq</td><td>Isaac</td><td>Il rit</td><td>Forme ibri originale avec ḥet préservé</td></tr>
+          <tr><td>Eliyahou</td><td>Élie</td><td>Mon Elohim est Yahawah</td><td>Élément théophore restauré</td></tr>
+          <tr><td>Yeshayahou</td><td>Ésaïe / Isaïe</td><td>Salut de Yahawah</td><td>Élément théophore restauré</td></tr>
+          <tr><td>Yirmeyahou</td><td>Jérémie</td><td>Yahawah élève</td><td>Élément théophore restauré</td></tr>
+          <tr><td>Yeḥezqel</td><td>Ézéchiel</td><td>Elohim fortifie</td><td>Forme ibri avec ḥet préservé</td></tr>
+          <tr><td>Daniyyel</td><td>Daniel</td><td>Elohim est mon juge</td><td>Forme ibri originale</td></tr>
+          <tr><td>Elishaʿ</td><td>Élisée</td><td>Mon Elohim sauve</td><td>Forme ibri originale avec ayin final</td></tr>
+          <tr><td>Shemouel</td><td>Samuel</td><td>Son nom est El</td><td>Forme ibri originale</td></tr>
+          <tr><td>Ḥanokh</td><td>Énoch</td><td>Initié / Dédié</td><td>Forme ibri avec ḥet initial préservé</td></tr>
+          <tr><td>Noaḥ</td><td>Noé</td><td>Repos / Consolation</td><td>Forme ibri avec ḥet final préservé</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- IV. LIEUX -->
+  <div class="section" id="lieux">
+    <p class="section-label">Section IV</p>
+    <h2 class="section-title">Noms des lieux</h2>
+    <div class="section-line"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Forme retenue</th>
+            <th>Forme française courante</th>
+            <th>Observations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Yarushalayim</td><td>Jérusalem</td><td>Forme ibri originale complète</td></tr>
+          <tr><td>Yehoudah</td><td>Judée / Juda</td><td>Région et tribu ; distinguer selon contexte</td></tr>
+          <tr><td>Shomron</td><td>Samarie</td><td>Forme ibri originale</td></tr>
+          <tr><td>Mitsrayim</td><td>Égypte</td><td>Nom ibri du pays</td></tr>
+          <tr><td>Bavel</td><td>Babylone</td><td>Forme ibri originale</td></tr>
+          <tr><td>Galil</td><td>Galilée</td><td>Forme ibri abrégée originale</td></tr>
+          <tr><td>Kéfar Naḥoum</td><td>Capharnaüm</td><td>Signifie : village de Naḥoum</td></tr>
+          <tr><td>Beit-Leḥem</td><td>Bethléem</td><td>Signifie : maison du pain</td></tr>
+          <tr><td>Natsereth</td><td>Nazareth</td><td>Forme ibri proche de l'original</td></tr>
+          <tr><td>Yarden</td><td>Jourdain</td><td>Forme ibri originale du fleuve</td></tr>
+          <tr><td>Tsor</td><td>Tyr</td><td>Forme ibri originale</td></tr>
+          <tr><td>Tsidon</td><td>Sidon</td><td>Forme ibri originale</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- V. PEUPLES -->
+  <div class="section" id="peuples">
+    <p class="section-label">Section V</p>
+    <h2 class="section-title">Noms des peuples et groupes</h2>
+    <div class="section-line"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Forme retenue</th>
+            <th>Forme française courante</th>
+            <th>Signification / Observations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Ibri</td><td>Hébreu</td><td>Celui qui traverse ; désigne le peuple et la langue</td></tr>
+          <tr><td>Yehoudim</td><td>Juifs</td><td>Forme ibri du pluriel de Yehoudah</td></tr>
+          <tr><td>Peroushim</td><td>Pharisiens</td><td>Signifie : les séparés</td></tr>
+          <tr><td>Tsedouqim</td><td>Sadducéens</td><td>Liés au nom Tsadoq (Zadok)</td></tr>
+          <tr><td>Shomronim</td><td>Samaritains</td><td>Habitants de Shomron</td></tr>
+          <tr><td>Goyim</td><td>Gentils / Nations</td><td>Terme ibri désignant les peuples non-yehoudim</td></tr>
+          <tr><td>Natsarim</td><td>Nazaréens</td><td>Désigne les premiers tal'midim de Yahushuʿaḥ</td></tr>
+          <tr><td>Mashiyaḥim</td><td>Messianiques / Chrétiens</td><td>Ceux qui reconnaissent Yahushuʿaḥ comme Ha'Mashiyaḥ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- VI. RÈGLES D'UTILISATION -->
+  <div class="section" id="regles">
+    <p class="section-label">Section VI</p>
+    <h2 class="section-title">Règles d'utilisation dans l'édition</h2>
+    <div class="section-line"></div>
+
+    <div class="regle-card">
+      <p class="regle-titre">Utilisation exclusive de la forme restaurée</p>
+      <p class="regle-texte">Dans le corps du texte traduit, les introductions des livres, les titres et les notes de bas de page, seule la forme restaurée doit être utilisée. Aucune forme française courante ne doit apparaître dans le texte principal.</p>
+    </div>
+
+    <div class="regle-card">
+      <p class="regle-titre">Mention de la forme française en note</p>
+      <p class="regle-texte">La forme française courante peut être mentionnée entre parenthèses lors de la première occurrence dans chaque livre ou section, afin d'aider le lecteur à établir la correspondance. Elle ne doit pas être répétée systématiquement.</p>
+    </div>
+
+    <div class="regle-card">
+      <p class="regle-titre">Gestion des citations</p>
+      <p class="regle-texte">Lorsqu'un auteur cite un écrit plus ancien, les noms propres présents dans la citation doivent également être rendus selon les formes restaurées de cette édition, afin de maintenir la cohérence du texte.</p>
+    </div>
+
+    <div class="regle-card">
+      <p class="regle-titre">Introductions des livres</p>
+      <p class="regle-texte">Les introductions de chaque livre utiliseront exclusivement les formes restaurées. Une note générale au début de l'édition informera le lecteur de la démarche adoptée.</p>
+    </div>
+
+    <div class="regle-card">
+      <p class="regle-titre">Annexes, cartes et glossaires</p>
+      <p class="regle-texte">Les annexes, cartes géographiques, tableaux généalogiques et glossaires utiliseront les formes restaurées comme entrées principales, avec indication de la forme française courante en correspondance.</p>
+    </div>
+
+    <div class="regle-card">
+      <p class="regle-titre">Uniformité sur lavoie.world</p>
+      <p class="regle-texte">Tous les contenus publiés sur lavoie.world — tèks pou jounen an, enseignements, études, lexique, ressources — doivent respecter les formes définies dans ce guide. Aucune exception ne sera tolérée sans justification documentée.</p>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- VII. INDEX ALPHABÉTIQUE -->
+  <div class="section" id="index">
+    <p class="section-label">Section VII</p>
+    <h2 class="section-title">Index alphabétique général</h2>
+    <div class="section-line"></div>
+    <div class="index-grid">
+      <div class="index-item"><p class="index-nom">Abraham</p><p class="index-fr">Abraham</p></div>
+      <div class="index-item"><p class="index-nom">Bavel</p><p class="index-fr">Babylone</p></div>
+      <div class="index-item"><p class="index-nom">Beit-Leḥem</p><p class="index-fr">Bethléem</p></div>
+      <div class="index-item"><p class="index-nom">Daniyyel</p><p class="index-fr">Daniel</p></div>
+      <div class="index-item"><p class="index-nom">Dāwīd</p><p class="index-fr">David</p></div>
+      <div class="index-item"><p class="index-nom">Eliyahou</p><p class="index-fr">Élie</p></div>
+      <div class="index-item"><p class="index-nom">Elishaʿ</p><p class="index-fr">Élisée</p></div>
+      <div class="index-item"><p class="index-nom">Galil</p><p class="index-fr">Galilée</p></div>
+      <div class="index-item"><p class="index-nom">Goyim</p><p class="index-fr">Gentils / Nations</p></div>
+      <div class="index-item"><p class="index-nom">Ḥanokh</p><p class="index-fr">Énoch</p></div>
+      <div class="index-item"><p class="index-nom">Ibri</p><p class="index-fr">Hébreu</p></div>
+      <div class="index-item"><p class="index-nom">Képha</p><p class="index-fr">Pierre / Céphas</p></div>
+      <div class="index-item"><p class="index-nom">Kéfar Naḥoum</p><p class="index-fr">Capharnaüm</p></div>
+      <div class="index-item"><p class="index-nom">Louqa</p><p class="index-fr">Luc</p></div>
+      <div class="index-item"><p class="index-nom">Marqos</p><p class="index-fr">Marc</p></div>
+      <div class="index-item"><p class="index-nom">Mashiyaḥim</p><p class="index-fr">Messianiques</p></div>
+      <div class="index-item"><p class="index-nom">Mattiyahu</p><p class="index-fr">Matthieu</p></div>
+      <div class="index-item"><p class="index-nom">Miryam</p><p class="index-fr">Marie</p></div>
+      <div class="index-item"><p class="index-nom">Mitsrayim</p><p class="index-fr">Égypte</p></div>
+      <div class="index-item"><p class="index-nom">Mosheh</p><p class="index-fr">Moïse</p></div>
+      <div class="index-item"><p class="index-nom">Natsereth</p><p class="index-fr">Nazareth</p></div>
+      <div class="index-item"><p class="index-nom">Natsarim</p><p class="index-fr">Nazaréens</p></div>
+      <div class="index-item"><p class="index-nom">Noaḥ</p><p class="index-fr">Noé</p></div>
+      <div class="index-item"><p class="index-nom">Peroushim</p><p class="index-fr">Pharisiens</p></div>
+      <div class="index-item"><p class="index-nom">Šaʾoul</p><p class="index-fr">Paul / Saul</p></div>
+      <div class="index-item"><p class="index-nom">Shemouel</p><p class="index-fr">Samuel</p></div>
+      <div class="index-item"><p class="index-nom">Shomron</p><p class="index-fr">Samarie</p></div>
+      <div class="index-item"><p class="index-nom">Shomronim</p><p class="index-fr">Samaritains</p></div>
+      <div class="index-item"><p class="index-nom">Timotheos</p><p class="index-fr">Timothée</p></div>
+      <div class="index-item"><p class="index-nom">Titos</p><p class="index-fr">Tite</p></div>
+      <div class="index-item"><p class="index-nom">Tsedouqim</p><p class="index-fr">Sadducéens</p></div>
+      <div class="index-item"><p class="index-nom">Tsidon</p><p class="index-fr">Sidon</p></div>
+      <div class="index-item"><p class="index-nom">Tsor</p><p class="index-fr">Tyr</p></div>
+      <div class="index-item"><p class="index-nom">Yaʿaqov</p><p class="index-fr">Jacques / Jacob</p></div>
+      <div class="index-item"><p class="index-nom">Yaḥuānān</p><p class="index-fr">Jean</p></div>
+      <div class="index-item"><p class="index-nom">Yahusef</p><p class="index-fr">Joseph</p></div>
+      <div class="index-item"><p class="index-nom">Yarden</p><p class="index-fr">Jourdain</p></div>
+      <div class="index-item"><p class="index-nom">Yarushalayim</p><p class="index-fr">Jérusalem</p></div>
+      <div class="index-item"><p class="index-nom">Yeḥezqel</p><p class="index-fr">Ézéchiel</p></div>
+      <div class="index-item"><p class="index-nom">Yehoudah</p><p class="index-fr">Judas / Judée</p></div>
+      <div class="index-item"><p class="index-nom">Yehoudim</p><p class="index-fr">Juifs</p></div>
+      <div class="index-item"><p class="index-nom">Yeshayahou</p><p class="index-fr">Ésaïe</p></div>
+      <div class="index-item"><p class="index-nom">Yirmeyahou</p><p class="index-fr">Jérémie</p></div>
+      <div class="index-item"><p class="index-nom">Yitsḥaq</p><p class="index-fr">Isaac</p></div>
+      <div class="index-item"><p class="index-nom">Yahushuʿaḥ</p><p class="index-fr">Jésus</p></div>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- VIII. CONCLUSION -->
+  <div class="section" id="conclusion">
+    <p class="section-label">Section VIII</p>
+    <h2 class="section-title">Conclusion</h2>
+    <div class="section-line"></div>
+    <p>Le présent guide constitue la référence officielle des noms propres pour l'ensemble des Ketubim Qadoshim — Édition La Voie.</p>
+    <p>Tous les livres, notes, annexes, cartes, lexiques, études et ressources publiés dans le cadre du projet devront respecter les conventions définies dans ce document, sans exception.</p>
+    <p>Toute proposition de modification ou d'ajout devra être soumise à l'équipe éditoriale de La Voie pour examen et validation avant toute application dans l'édition.</p>
+    <p>La recherche de fidélité aux textes anciens, la cohérence terminologique et le respect du lecteur demeurent les priorités absolues de cette édition.</p>
+    <div style="margin-top:2rem;text-align:right">
+      <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--or);opacity:0.75">Les Tal'midim de Yahushuʿaḥ</p>
+      <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;color:var(--or);opacity:0.55">La Voie · lavoie.world</p>
+    </div>
+  </div>
+
+  <!-- CITATION -->
+  <div class="citation-finale">
+    <p class="texte">« Examinez toutes choses ; retenez ce qui est bon. »</p>
+    <p class="ref">— 1 Thessalonikim 5:21</p>
+  </div>
+
+</div>
+
+<!-- TAB BAR -->
+<nav id="tab-bar">
+  <a href="index.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <span class="tab-label">Accueil</span>
+  </a>
+  <a href="tèks-pou-jounen-an.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+    <span class="tab-label">Ketubim</span>
+  </a>
+  <a href="radio.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+    <span class="tab-label">Radio</span>
+  </a>
+  <a href="rassemblements.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+    <span class="tab-label">Réunions</span>
+  </a>
+  <a href="kq.html" class="tab-item active">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="tab-label">Lexique</span>
+  </a>
+</nav>
+
+</body>
+</html>
