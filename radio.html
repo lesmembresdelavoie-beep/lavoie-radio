@@ -9,7 +9,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
 html{scroll-behavior:smooth}
-body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden;padding-bottom:64px}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2)}
 .logo{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:#c9a84c;text-decoration:none;letter-spacing:0.1em}
 .logo span{display:block;font-size:0.65rem;color:#e8cb7a;opacity:0.7;letter-spacing:0.25em}
@@ -70,7 +70,23 @@ footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid r
 </style>
 </head>
 <body>
-<nav>
+<div id="top-bar" style="position:fixed;top:0;left:0;right:0;height:52px;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 1rem;z-index:500;backdrop-filter:blur(8px)">
+  <div style="display:flex;flex-direction:column">
+    <span style="font-family:'Cinzel',serif;font-size:0.72rem;color:#e8cb7a;letter-spacing:0.1em" id="ibri-date-r">16 Siban 5786</span>
+    <span style="font-size:0.62rem;color:#b8c8dc;opacity:0.65">Swa 2 jen → Swa 3 jen 2026</span>
+  </div>
+  <div style="display:flex;gap:0.8rem;align-items:center">
+    <div style="display:flex;flex-direction:column;align-items:flex-end">
+      <span style="font-family:'Cinzel',serif;font-size:0.42rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a84c;opacity:0.6">Yeroushalaim</span>
+      <span style="font-family:'Cinzel',serif;font-size:0.78rem;color:#e8cb7a" id="clock-jer-r">--:--</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end">
+      <span style="font-family:'Cinzel',serif;font-size:0.42rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a84c;opacity:0.6">Indianapolis</span>
+      <span style="font-family:'Cinzel',serif;font-size:0.78rem;color:#e8cb7a" id="clock-ind-r">--:--</span>
+    </div>
+  </div>
+</div>
+<nav style="display:none">
   <a class="logo" href="index.html">La Voie<span>lavoie.world</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
@@ -78,9 +94,7 @@ footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid r
 [31/05/2026 09:02] Yahuānān B'neiYah: <li><a href="lexique.html">Lexique</a></li>
     <li><a href="radio.html" class="active">Radio</a></li>
     <li><a href="teks-pou-jounen-an.html">Tèks Jounen an</a></li>
-    <li><a href="soutenir.html">💝 Soutenir</a></li>
   </ul>
-  <a href="soutenir.html" class="nav-btn">💝 Soutenir La Voie</a>
 </nav>
 <header class="page-header">
   <div class="page-header-bg"></div>
@@ -88,7 +102,7 @@ footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid r
     <img src="logo-radio.jpg" alt="La Voie Radio" class="radio-logo-img"/>
     <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;✦&nbsp; La Voie Radio</p>
     <h1 class="page-title">🎙️ La Voie Radio</h1>
-    <p class="page-subtitle">Radyo La Chemen · רַדְיוֹ הַדֶּרֶךְ · Marchez dans la Lumière</p>
+    <p class="page-subtitle">Marchez dans la Lumière</p>
   </div>
 </header>
 <div class="page-body">
@@ -129,12 +143,11 @@ footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid r
     <li><a href="lexique.html">Lexique</a></li>
     <li><a href="radio.html">Radio</a></li>
     <li><a href="teks-pou-jounen-an.html">Tèks Jounen an</a></li>
-    <li><a href="soutenir.html">💝 Soutenir</a></li>
   </ul>
   <p class="footer-copy">© 2025 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
 </footer>
 <script>
-const FLUX = 'https://radio.lavoie.world/listen/httpsyoutube.comlavoie033/radio.mp3';
+const FLUX = 'https://streaming.citrus3.com/lavoieradio';
 let audio = null;
 let playing = false;
 function togglePlay(){
@@ -158,5 +171,39 @@ function togglePlay(){
 }
 function setVolume(v){ if(audio) audio.volume = v; }
 </script>
+  <!-- TAB BAR -->
+  <nav style="position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)">
+    <a href="index.html" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;padding:0.3rem 0">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      <span style="font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase">Accueil</span>
+    </a>
+    <a href="tèks-pou-jounen-an.html" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;padding:0.3rem 0">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+      <span style="font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase">Ketubim</span>
+    </a>
+    <a href="radio.html" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#e8cb7a;opacity:1;padding:0.3rem 0;position:relative">
+      <span style="position:absolute;top:0;left:20%;right:20%;height:2px;background:#c9a84c;border-radius:0 0 2px 2px"></span>
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+      <span style="font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase">Radio</span>
+    </a>
+    <a href="rassemblements.html" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;padding:0.3rem 0">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+      <span style="font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase">Réunions</span>
+    </a>
+    <a href="lexique.html" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;padding:0.3rem 0">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span style="font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase">Lexique</span>
+    </a>
+  </nav>
+
+  <script>
+  function updateClocksR() {
+    const now = new Date();
+    document.getElementById('clock-jer-r').textContent = new Intl.DateTimeFormat('fr-FR',{timeZone:'Asia/Jerusalem',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+    document.getElementById('clock-ind-r').textContent = new Intl.DateTimeFormat('fr-FR',{timeZone:'America/Indiana/Indianapolis',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+  }
+  updateClocksR(); setInterval(updateClocksR, 10000);
+  </script>
+
 </body>
 </html>
