@@ -3,261 +3,330 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Tèks pou Jounen an · La Voie · lavoie.world</title>
+<title>Tèks pou Jounen an · La Voie</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
 html{scroll-behavior:smooth}
-body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2)}
-.logo{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:#c9a84c;text-decoration:none;letter-spacing:0.1em}
-.logo span{display:block;font-size:0.65rem;color:#e8cb7a;opacity:0.7;letter-spacing:0.25em}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.65rem;color:#b8c8dc;text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;transition:color 0.2s}
-.nav-links a:hover,.nav-links a.active{color:#e8cb7a}
-.nav-btn{font-family:'Cinzel',serif;font-size:0.65rem;padding:0.45rem 1.2rem;border:1px solid #c9a84c;color:#c9a84c;text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;transition:all 0.2s}
-.nav-btn:hover{background:#c9a84c;color:#060d1a}
-.page-header{min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
-.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(30,77,153,0.55) 0%,transparent 70%),linear-gradient(180deg,#020810 0%,#060d1a 100%)}
-.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
-.page-header-inner{position:relative;z-index:1}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.7;text-transform:uppercase;margin-bottom:1.4rem}
-.breadcrumb a{color:inherit;text-decoration:none}
-.page-title{font-family:'Cinzel',serif;font-size:clamp(2rem,6vw,4.5rem);font-weight:700;color:#e8cb7a;letter-spacing:0.06em;line-height:1.05}
-.page-title-creole{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.5rem);color:#c9a84c;opacity:0.8;margin-top:0.5rem;letter-spacing:0.08em}
-.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2vw,1.2rem);color:#e8f0f8;opacity:0.65;margin-top:0.8rem}
-.page-body{max-width:860px;margin:0 auto;padding:5rem 2rem 8rem}
-.imaj-hero{position:relative;width:100%;max-width:860px;margin:0 auto 2.5rem;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);box-shadow:0 8px 40px rgba(6,13,26,0.8)}
-.imaj-hero img{width:100%;max-height:600px;object-fit:contain;display:block;transition:transform 0.5s ease}
-.imaj-hero:hover img{transform:scale(1.02)}
-.imaj-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 2rem;background:linear-gradient(to top,rgba(6,13,26,0.92) 0%,transparent 100%)}
-.imaj-ref-overlay{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;color:#e8cb7a;text-transform:uppercase;opacity:0.9}
-.date-badge{text-align:center;margin-bottom:3rem}
-.date-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.35em;color:#c9a84c;text-transform:uppercase;opacity:0.7;margin-bottom:0.5rem}
-.date-value{font-family:'Cinzel',serif;font-size:1.2rem;color:#e8cb7a;letter-spacing:0.15em;margin-bottom:0.4rem}
-.date-secondaire{font-family:'EB Garamond',serif;font-style:italic;font-size:0.92rem;color:#b8c8dc;opacity:0.65;letter-spacing:0.05em}
-.date-line{width:80px;height:1px;background:linear-gradient(to right,transparent,#c9a84c,transparent);margin:0.8rem auto 0}
-.teks-card{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));border:1px solid rgba(201,168,76,0.25);border-top:3px solid #c9a84c;padding:3rem 2.5rem;margin-bottom:2.5rem;position:relative}
-.teks-card::before{content:'';position:absolute;top:-1px;left:3rem;right:3rem;height:2px;background:linear-gradient(to right,transparent,#c9a84c,transparent)}
-.teks-ref{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.28em;color:#c9a84c;text-transform:uppercase;margin-bottom:2rem;text-align:center;opacity:0.85}
-.langue-bloc{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,0.1)}
-.langue-bloc:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.langue-tag{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.25rem 0.8rem;border:1px solid rgba(201,168,76,0.3);color:#c9a84c;margin-bottom:0.9rem}
-.langue-tag.creole{border-color:rgba(184,200,220,0.4);color:#b8c8dc}
-.langue-tag.francais{border-color:rgba(201,168,76,0.4);color:#e8cb7a}
-.langue-tag.ibri{border-color:rgba(247,237,204,0.3);color:#f7edcc}
-.langue-texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.4rem);line-height:1.85;color:#e8f0f8;opacity:0.92}
-.langue-texte.ibri-text{font-style:normal;font-size:clamp(1rem,2vw,1.25rem);opacity:0.82;color:#f7edcc;letter-spacing:0.02em}
-.ornement{text-align:center;color:#c9a84c;font-size:0.62rem;letter-spacing:0.6em;opacity:0.35;margin:2rem 0}
-.commentaire-card{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.15);border-left:3px solid #c9a84c;padding:2rem 2.5rem;margin-bottom:3rem}
-.commentaire-titre{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.28em;color:#c9a84c;text-transform:uppercase;margin-bottom:1rem}
-.commentaire-auteur{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;color:#c9a84c;opacity:0.6;margin-bottom:0.8rem;text-transform:uppercase}
-.commentaire-texte{font-family:'EB Garamond',serif;font-size:clamp(1rem,1.8vw,1.12rem);line-height:1.95;color:#e8f0f8;opacity:0.85}
-.archives-section{margin-top:4rem}
-.archives-titre{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:#c9a84c;text-transform:uppercase;opacity:0.7;margin-bottom:1.5rem;text-align:center}
-.archives-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
-.archive-card{background:linear-gradient(135deg,rgba(13,35,71,0.35),rgba(6,13,26,0.5));border:1px solid rgba(201,168,76,0.1);padding:1.4rem;transition:all 0.25s}
-.archive-card:hover{border-color:rgba(201,168,76,0.3)}
-.archive-date{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:#c9a84c;opacity:0.65;text-transform:uppercase;margin-bottom:0.5rem}
-.archive-ref{font-family:'Cinzel',serif;font-size:0.82rem;color:#e8cb7a;margin-bottom:0.4rem}
-.archive-extrait{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:#e8f0f8;opacity:0.65;line-height:1.6}
-.page-nav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,168,76,0.15);padding-top:3rem;margin-top:3rem;flex-wrap:wrap;gap:1rem}
-.page-nav a{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#c9a84c;text-decoration:none;padding:0.75rem 1.6rem;border:1px solid rgba(201,168,76,0.3);transition:all 0.25s}
-.page-nav a:hover{background:#c9a84c;color:#060d1a}
-footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid rgba(201,168,76,0.1);padding:3rem 2rem 2rem;text-align:center}
-.footer-logo{font-family:'Cinzel',serif;font-size:1.2rem;color:#c9a84c;letter-spacing:0.15em;margin-bottom:0.2rem}
-.footer-domain{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.38;margin-bottom:1.8rem}
-.footer-nav{display:flex;flex-wrap:wrap;gap:0.7rem 2rem;justify-content:center;list-style:none;margin-bottom:1.5rem}
-.footer-nav a{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#e8f0f8;text-decoration:none;opacity:0.38;transition:all 0.2s}
-.footer-nav a:hover{opacity:1;color:#c9a84c}
-.footer-copy{font-family:'EB Garamond',serif;font-size:0.78rem;color:#e8f0f8;opacity:0.2}
-@media(max-width:768px){nav{padding:0.9rem 1.2rem}.nav-links{display:none}.page-body{padding:3rem 1.4rem 6rem}.teks-card{padding:2rem 1.5rem}.commentaire-card{padding:1.5rem}}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden;padding-bottom:80px}
+
+/* TOP BAR */
+#top-bar{
+  position:fixed;top:0;left:0;right:0;height:52px;
+  background:rgba(6,13,26,0.97);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1rem;z-index:500;backdrop-filter:blur(8px);
+}
+.back-btn{
+  display:flex;align-items:center;gap:0.4rem;
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  letter-spacing:0.12em;color:var(--or);
+  text-decoration:none;text-transform:uppercase;
+  opacity:0.8;transition:opacity 0.2s;padding:0.4rem 0;
+}
+.back-btn:hover{opacity:1}
+.back-btn svg{width:16px;height:16px}
+
+.lang-btn{
+  display:flex;align-items:center;gap:0.3rem;
+  font-family:'Cinzel',serif;font-size:0.55rem;
+  letter-spacing:0.12em;color:var(--or);
+  border:1px solid rgba(201,168,76,0.35);
+  background:transparent;cursor:pointer;
+  padding:0.3rem 0.7rem;transition:all 0.2s;
+  text-transform:uppercase;
+}
+.lang-btn:hover{background:rgba(201,168,76,0.1)}
+.lang-btn svg{width:14px;height:14px}
+
+/* SLIDE-IN ANIMATION */
+.page-slide-in{
+  animation:slideIn 0.35s ease-out;
+}
+@keyframes slideIn{
+  from{transform:translateX(100vw);opacity:0}
+  to{transform:translateX(0);opacity:1}
+}
+
+/* MAIN */
+main{padding-top:52px}
+
+/* DATE SECTION */
+.date-section{
+  padding:2rem 1.4rem 1.5rem;
+  text-align:center;
+  background:linear-gradient(180deg,rgba(13,35,71,0.95) 0%,rgba(6,13,26,0.98) 100%);
+  border-bottom:1px solid rgba(201,168,76,0.12);
+}
+.date-label{
+  font-family:'Cinzel',serif;font-size:0.52rem;
+  letter-spacing:0.3em;color:var(--or);
+  text-transform:uppercase;opacity:0.65;margin-bottom:0.5rem;
+}
+.date-ibri{
+  font-family:'Cinzel',serif;font-size:1.5rem;
+  color:var(--or-clair);letter-spacing:0.1em;margin-bottom:0.2rem;
+}
+.date-yom{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.88rem;color:var(--argent);opacity:0.6;margin-bottom:0.2rem;
+}
+.date-greg{
+  font-size:0.75rem;color:var(--argent);opacity:0.5;font-style:italic;
+}
+.date-line{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--or),transparent);margin:0.8rem auto 0}
+
+/* TÈKS CARD */
+.teks-card{
+  background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));
+  border:1px solid rgba(201,168,76,0.25);border-top:3px solid var(--or);
+  margin:1.5rem 1.2rem;padding:1.8rem 1.4rem;position:relative;
+}
+.teks-ref{
+  font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.25em;
+  color:var(--or);text-transform:uppercase;margin-bottom:1.2rem;
+  text-align:center;opacity:0.85;
+}
+.teks-texte{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.1rem,2.5vw,1.35rem);line-height:1.8;
+  color:var(--or-pale);text-align:center;
+}
+
+/* ORNEMENT */
+.ornement{text-align:center;color:var(--or);font-size:0.6rem;letter-spacing:0.5em;opacity:0.3;margin:1.5rem 0}
+
+/* COMMENTAIRE */
+.commentaire-card{
+  background:rgba(13,35,71,0.35);
+  border:1px solid rgba(201,168,76,0.12);
+  border-left:3px solid var(--or);
+  margin:0 1.2rem 1.5rem;padding:1.4rem 1.4rem;
+}
+.commentaire-titre{
+  font-family:'Cinzel',serif;font-size:0.58rem;
+  letter-spacing:0.22em;color:var(--or);
+  text-transform:uppercase;margin-bottom:0.6rem;
+}
+.commentaire-auteur{
+  font-family:'Cinzel',serif;font-size:0.52rem;
+  letter-spacing:0.15em;color:var(--or);opacity:0.55;
+  margin-bottom:0.9rem;text-transform:uppercase;
+}
+.commentaire-texte{
+  font-size:1rem;line-height:1.88;
+  color:#e8f0f8;opacity:0.85;
+}
+.commentaire-texte p{margin-bottom:0.9rem}
+.commentaire-texte p:last-child{margin-bottom:0}
+
+/* LIY FINAL */
+.liy-final{
+  background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(13,35,71,0.4));
+  border:1px solid rgba(201,168,76,0.2);
+  margin:0 1.2rem 2rem;padding:1.2rem 1.4rem;text-align:center;
+}
+.liy-final-label{
+  font-family:'Cinzel',serif;font-size:0.5rem;
+  letter-spacing:0.25em;color:var(--or);text-transform:uppercase;
+  opacity:0.6;margin-bottom:0.5rem;
+}
+.liy-final-texte{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.05rem;line-height:1.7;color:var(--or-pale);
+}
+
+/* LANG OVERLAY */
+#lang-overlay{
+  display:none;position:fixed;inset:0;z-index:800;
+  background:rgba(6,13,26,0.85);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;
+}
+#lang-overlay.open{display:flex}
+.lang-panel{
+  background:rgba(13,35,71,0.95);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:4px;padding:1.8rem;
+  display:flex;flex-direction:column;gap:0.8rem;
+  min-width:220px;
+}
+.lang-panel p{
+  font-family:'Cinzel',serif;font-size:0.58rem;
+  letter-spacing:0.25em;color:var(--or);
+  text-transform:uppercase;opacity:0.7;margin-bottom:0.4rem;
+}
+.lang-opt{
+  display:flex;align-items:center;gap:0.8rem;
+  background:rgba(13,35,71,0.5);border:1px solid rgba(201,168,76,0.15);
+  padding:0.7rem 1rem;cursor:pointer;transition:all 0.2s;
+  color:var(--or-pale);font-size:1rem;
+}
+.lang-opt:hover,.lang-opt.active{background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.4)}
+.lang-opt .flag{font-size:1.3rem}
+.lang-opt .nom{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.08em}
 </style>
 </head>
-<body>
-<nav>
-  <a class="logo" href="index.html">La Voie<span>lavoie.world</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
-    <li><a href="lexique.html">Lexique</a></li>
-    <li><a href="radio.html">Radio</a></li>
-    <li><a href="teks-jounen.html" class="active">Tèks Jounen an</a></li>
-    <li><a href="soutenir.html">Soutenir</a></li>
-  </ul>
-  
-</nav>
-<header class="page-header">
-  <div class="page-header-inner">
-    <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;✦&nbsp; Tèks pou Jounen an</p>
-    <h1 class="page-title">Tèks pou Jounen an</h1>
-    <p class="page-title-creole">Texte du Jour · Dabar Ha'Yom</p>
-    <p class="page-subtitle">Chak jou, yon Pawòl nan Ketubim Qadoshim pou mache nan La Voie</p>
-  </div>
-</header>
-<div class="page-body">
-  <div class="imaj-hero">
-    <img src="imaj-jounen.jpg" alt="Tèks pou Jounen an" id="imaj-jounen" onerror="this.parentElement.style.display='none'"/>
-    <div class="imaj-overlay">
-      <p class="imaj-ref-overlay">Mattiyahu 12:41</p>
-    </div>
-  </div>
-  <div class="date-badge">
-    <p class="date-label">✦ Jounen jodi a · Yom Ha'Zeh · Kalandriye Ibriy Restaure</p>
-    <p class="date-value" id="dateAujourdhui"></p>
-    <p class="date-secondaire" id="dateSecondaire"></p>
+<body class="page-slide-in">
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <a href="index.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+    Accueil
+  </a>
+
+  <button class="lang-btn" onclick="toggleLang()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span id="lang-label">KW</span>
+  </button>
+</div>
+
+<main>
+  <!-- DATE -->
+  <div class="date-section">
+    <p class="date-label">✦ Tèks pou Jounen an · Dabar Ha'Yom</p>
+    <p class="date-ibri" id="pg-dat">...</p>
+    <p class="date-yom" id="pg-yom"></p>
+    <p class="date-greg" id="pg-greg"></p>
     <div class="date-line"></div>
   </div>
+
+  <!-- TÈKS -->
   <div class="teks-card">
-    <p class="teks-ref">Mattiyahu 12:41 · Ketubim Qadoshim</p>
-    <div class="langue-bloc">
-      <span class="langue-tag creole">✦ Kreyòl Ayisyen</span>
-      <p class="langue-texte">« Moun Ninbeh yo ap leve nan jijman ansanm ak jenerasyon sa a e y ap kondane l, paske yo te teshoubah apre yo te tande pawòl Yônah yo. Men, gade ! Gen yon moun ki pi enpòtan pase Yônah isit la. »</p>
-    </div>
-    <div class="langue-bloc">
-      <span class="langue-tag francais">✦ Français</span>
-      <p class="langue-texte">« Les hommes de Ninbeh se lèveront au jugement avec cette génération et la condamneront, car ils ont fait teshoubah à la prédication de Yônah. Et voici, il y a ici plus que Yônah. »</p>
-    </div>
+    <p class="teks-ref" id="pg-ref">...</p>
+    <p class="teks-texte" id="pg-texte"></p>
   </div>
+
   <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- KÒMANTÈ -->
   <div class="commentaire-card">
-    <p class="commentaire-titre">✦ Kontèks ak Meditasyon — Mattiyahu 12:41</p>
+    <p class="commentaire-titre">✦ Kontèks ak Meditasyon</p>
     <p class="commentaire-auteur">— B'neiYah · Les Membres de La Voie</p>
-    <p class="commentaire-texte">
-      Lè Yahushuʿah te pale de moun Ninbeh yo, li t ap reponn kèk moun nan jenerasyon pa l la ki te refize koute mesaj Yahawah a malgre tout prèv ak tout ansèyman yo te resevwa. Li te fè referans ak istwa Yônah a, lè Yahawah te voye nabi sa a nan vil Ninbeh pou avèti moun yo sou move chemen yo t ap suiv la. Malgre moun Ninbeh yo pa t fè pati pèp Yisra'el la e yo pa t gen menm nivo konesans ak anpil lòt moun, yo te reyaji avèk imilite lè yo te tande avètisman an. Yo te teshoubah, epi Yahawah te montre yo mizèrikòd li.<br><br>
-      Lide prensipal la se pa t fè lwanj moun Ninbeh yo kòm moun pafè, men mete aksan sou reyaksyon yo devan avètisman Yahawah la. Yo te dispoze chanje lè yo te konprann yo pa t sou bon chemen an. Okontrè, anpil moun nan jenerasyon Yahushuʿah a te refize koute menm lè yo te devan yon moun ki pi enpòtan pase Yônah.<br><br>
-      Lè Yahushuʿah di moun Ninbeh yo ap leve nan jijman an, sa montre Yahawah pa bliye moun ki te reyaji pozitivman devan Dabar Li a. Jijman Yahawah toujou chita sou jistis, ekite ak mizèrikòd. Li wè atitid chak moun, fason yo reyaji devan verite a ak sa yo fè ak konesans yo resevwa.<br><br>
-      <strong style="color:#f7edcc">Aplikasyon pratik pou Les Membres de La Voie :</strong><br><br>
-      Pou Les Membres de La Voie, pasaj sa a se yon rapèl pwisan sou enpòtans imilite ak teshoubah. Moun Ninbeh yo pa t gen tout kantite limyè ak konpreyansyon anpil moun genyen jodi a, men lè yo te tande avètisman Yahawah a, yo te aji. Se sa Yahushuʿah mete an valè.<br><br>
-      Jodi a tou, tal'midim Yahushuʿah yo bezwen evite pyèj ki fè yon moun kontan tande Dabar la san li pa kite l chanje lavi l. Vrè repons devan Dabar Yahawah a pa sèlman koute oswa aprann — se kite l transfòme e fasone fason n panse, pale ak aji.<br><br>
-      Pasaj la ankouraje Les Membres de La Voie pou yo toujou kenbe yon kè ki dispoze resevwa koreksyon, teshoubah lè sa nesesè epi ajiste chemen yo selon volonte Yahawah. Moun Ninbeh yo te jwenn favè pa paske yo te pafè, men paske yo te reyaji lè Yahawah te avèti yo.<br><br>
-      An menm tan, pawòl Yahushuʿah yo raple nou yon gwo privilèj nou genyen jodi a. Moun Ninbeh yo te tande yon sèl nabi — nou menm, nou gen aksè ak tout ansèyman Yahushuʿah yo ak Ketubim Qadoshim yo. Sa ba nou plis responsabilite pou n viv ann amoni ak sa n aprann yo. Moun Ninbeh yo te tande, yo te konprann, epi yo te teshoubah. Se menm atitid sa a Yahawah ap chèche jwenn lakay tout moun ki vle fè l plèzi yo jodi a.
-    </p>
+    <div class="commentaire-texte" id="pg-commentaire"></div>
   </div>
-  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
-  <div class="archives-section">
-    <p class="archives-titre">✦ Archives — Tèks anvan yo</p>
-    <div class="archives-grid">
-      <div class="archive-card">
-        <p class="archive-date">Yèsodi · Yè</p>
-        <p class="archive-ref">Maʿasei 1:8</p>
-        <p class="archive-extrait">« Vous serez mes témoins — Edhim — jusqu'aux extrémités de la terre. »</p>
-      </div>
-      <div class="archive-card">
-        <p class="archive-date">Shiloshi · Anvan yè</p>
-        <p class="archive-ref">Mattiyahu 28:19</p>
-        <p class="archive-extrait">« Allez, faites des tal'midim de toutes les nations... »</p>
-      </div>
-      <div class="archive-card">
-        <p class="archive-date">Revi'i · 3 jou pase</p>
-        <p class="archive-ref">Tehillim 119:105</p>
-        <p class="archive-extrait">« Ta parole est une lampe à mes pieds, une lumière sur mon sentier. »</p>
-      </div>
+
+  <!-- LIY FINAL -->
+  <div class="liy-final" id="pg-liy-wrap" style="display:none">
+    <p class="liy-final-label">💎 Liy final</p>
+    <p class="liy-final-texte" id="pg-liy"></p>
+  </div>
+
+</main>
+
+<!-- LANG OVERLAY -->
+<div id="lang-overlay" onclick="closeLang()">
+  <div class="lang-panel" onclick="event.stopPropagation()">
+    <p>✦ Chwazi lang</p>
+    <div class="lang-opt active" id="opt-kw" onclick="setLang('kw')">
+      <span class="flag">🇭🇹</span>
+      <span class="nom">Kreyòl Ayisyen</span>
     </div>
-  </div>
-  <div class="page-nav">
-    <a href="index.html">← Accueil</a>
-    <a href="radio.html">La Voie Radio →</a>
+    <div class="lang-opt" id="opt-fr" onclick="setLang('fr')">
+      <span class="flag">🇫🇷</span>
+      <span class="nom">Français</span>
+    </div>
   </div>
 </div>
-<footer>
-  <p class="footer-logo">La Voie</p>
-  <p class="footer-domain">lavoie.world</p>
-  <ul class="footer-nav">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
-    <li><a href="lexique.html">Lexique</a></li>
-    <li><a href="radio.html">Radio</a></li>
-    <li><a href="teks-pou-jounen-an.html">Tèks Jounen an</a></li>
-    <li><a href="ressources.html">Ressources</a></li>
-    <li><a href="soutenir.html">Soutenir</a></li>
-  </ul>
-  <p class="footer-copy">© 2025 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
-</footer>
+
 <script>
-// Kalandriye Siban 5786
-// 1 Siban = swa 18 me 2026 → swa 19 me 2026
-// Chak jou ibriy kòmanse swa (20:30 Indianapolis EDT)
-// SUNSET Indianapolis ≈ 20:30 EDT (UTC-4)
+const MOIS_NOM = {
+  '01':'janvye','02':'fevriye','03':'mas','04':'avril',
+  '05':'me','06':'jen','07':'jiyè','08':'out',
+  '09':'septanm','10':'oktòb','11':'novanm','12':'desanm'
+};
 
-const SIBAN = [
-  // [jourIbriy, soirDebut, soirFin, jourGreg]
-  [1,  "18 me",  "19 me",  "19 me"],
-  [2,  "19 me",  "20 me",  "20 me"],
-  [3,  "20 me",  "21 me",  "21 me"],
-  [4,  "21 me",  "22 me",  "22 me"],
-  [5,  "22 me",  "23 me",  "23 me"],
-  [6,  "23 me",  "24 me",  "24 me"],
-  [7,  "24 me",  "25 me",  "25 me"],
-  [8,  "25 me",  "26 me",  "26 me"],
-  [9,  "26 me",  "27 me",  "27 me"],
-  [10, "27 me",  "28 me",  "28 me"],
-  [11, "28 me",  "29 me",  "29 me"],
-  [12, "29 me",  "30 me",  "30 me"],
-  [13, "30 me",  "31 me",  "31 me"],
-  [14, "31 me",  "1 jen",  "1 jen"],
-  [15, "1 jen",  "2 jen",  "2 jen"],
-  [16, "2 jen",  "3 jen",  "3 jen"],
-  [17, "3 jen",  "4 jen",  "4 jen"],
-  [18, "4 jen",  "5 jen",  "5 jen"],
-  [19, "5 jen",  "6 jen",  "6 jen"],
-  [20, "6 jen",  "7 jen",  "7 jen"],
-  [21, "7 jen",  "8 jen",  "8 jen"],
-  [22, "8 jen",  "9 jen",  "9 jen"],
-  [23, "9 jen",  "10 jen", "10 jen"],
-  [24, "10 jen", "11 jen", "11 jen"],
-  [25, "11 jen", "12 jen", "12 jen"],
-  [26, "12 jen", "13 jen", "13 jen"],
-  [27, "13 jen", "14 jen", "14 jen"],
-  [28, "14 jen", "15 jen", "15 jen"],
-  [29, "15 jen", "16 jen", "16 jen"],
-  [30, "16 jen", "17 jen", "17 jen"],
-];
+let currentLang = localStorage.getItem('lv-lang') || 'kw';
+let currentJounen = null;
 
-function getJourIbriy() {
-  // Lè aktyèl Indianapolis (EDT = UTC-4)
+function getJourSiban() {
   const now = new Date();
   const indyStr = now.toLocaleString('en-US', {timeZone: 'America/Indiana/Indianapolis'});
   const indy = new Date(indyStr);
-  
-  const mwa = indy.getMonth() + 1; // 1=jan, 5=me, 6=jen
-  const jour = indy.getDate();
-  const lè = indy.getHours() + indy.getMinutes() / 60;
-  const aprèSolèy = lè >= 20.5; // 20:30 = solèy kouche
-
-  // Konvèti an "X me" oswa "X jen"
-  const nomMwa = {5: "me", 6: "jen"};
-  const jourGreg = jour + " " + (nomMwa[mwa] || "");
-
-  for (let i = 0; i < SIBAN.length; i++) {
-    const [jourIbri, soirDebut, soirFin, gregRef] = SIBAN[i];
-    
-    // Jou ibriy la kòmanse swa soirDebut
-    // Si nou apre solèy kouche nan soirDebut → se jou sa a
-    // Si nou anba solèy kouche → se jou anvan an toujou
-    
-    const debutJourGreg = soirDebut; // "18 me", "1 jen" etc.
-    
-    if (jourGreg === soirDebut && aprèSolèy) {
-      return SIBAN[i];
-    }
-    if (jourGreg === soirFin && !aprèSolèy) {
-      return SIBAN[i];
-    }
-  }
-  // Default - retounen 17 Siban si pa jwenn
-  return SIBAN[16];
+  const leHeure = indy.getHours() + indy.getMinutes() / 60;
+  const apres_soleil = leHeure >= 20.5;
+  const annee = indy.getFullYear();
+  const mois = String(indy.getMonth() + 1).padStart(2, '0');
+  const jou = String(indy.getDate()).padStart(2, '0');
+  return { datGreg: annee + '-' + mois + '-' + jou, apres_soleil };
 }
 
-const jounen = getJourIbriy();
-const [jourIbri, soirDebut, soirFin, gregRef] = jounen;
+function renderJounen(jounen, data) {
+  const lang = currentLang;
+  document.getElementById('pg-dat').textContent = jounen.jour + ' ' + data.mois + ' ' + data.annee;
+  document.getElementById('pg-ref').textContent = jounen.ref;
 
-const dateEl = document.getElementById('dateAujourdhui');
-const dateSecEl = document.getElementById('dateSecondaire');
+  // Texte selon lang
+  const texte = (lang === 'fr' && jounen.texte) ? jounen.texte : (jounen.texte_kw || jounen.texte);
+  document.getElementById('pg-texte').textContent = texte;
 
-if(dateEl) dateEl.textContent = `${jourIbri} Siban 5786`;
-if(dateSecEl) dateSecEl.textContent = `Kalandriye Ibriy Restaure · Swa ${soirDebut} 2026 → Swa ${soirFin} 2026`;
+  // Yom (nom jou)
+  const yomMap = {
+    'Yôm Rishon':'Dimanch','Yôm Shéni':'Lendi','Yôm Shlishi':'Madi',
+    'Yôm Rebi\'i':'Mèkredi','Yôm Hamishi':'Jedi','Yôm HaHakhana':'Vandredi','Shabbat':'Shabbat'
+  };
+  // Try to get yom from field if present
+  if (jounen.yom) document.getElementById('pg-yom').textContent = jounen.yom;
+  else document.getElementById('pg-yom').textContent = '';
+
+  // Greg
+  const [an1, m1, d1] = jounen.soir_debut.split('-');
+  const [an2, m2, d2] = jounen.soir_fin.split('-');
+  document.getElementById('pg-greg').textContent =
+    'Swa ' + parseInt(d1) + ' ' + MOIS_NOM[m1] + ' → Swa ' + parseInt(d2) + ' ' + MOIS_NOM[m2] + ' ' + an2;
+
+  // Kòmantè
+  const comm = jounen.commentaire || '';
+  const paras = comm.split('\n\n').filter(p => p.trim());
+  const commDiv = document.getElementById('pg-commentaire');
+  commDiv.innerHTML = paras.map(p => '<p>' + p.replace(/\n/g, '<br>') + '</p>').join('');
+
+  // Liy final
+  if (jounen.liy_final) {
+    document.getElementById('pg-liy').textContent = jounen.liy_final;
+    document.getElementById('pg-liy-wrap').style.display = 'block';
+  }
+
+  // Lang button
+  document.getElementById('lang-label').textContent = lang === 'fr' ? 'FR' : 'KW';
+  document.getElementById('opt-kw').classList.toggle('active', lang === 'kw');
+  document.getElementById('opt-fr').classList.toggle('active', lang === 'fr');
+}
+
+fetch('teks-jounen.json')
+  .then(r => r.json())
+  .then(data => {
+    const { datGreg, apres_soleil } = getJourSiban();
+    let jounen = null;
+    for (let i = 0; i < data.jours.length; i++) {
+      const j = data.jours[i];
+      if (j.soir_debut === datGreg && apres_soleil) { jounen = j; break; }
+      if (j.soir_fin === datGreg && !apres_soleil) { jounen = j; break; }
+    }
+    if (!jounen) jounen = data.jours[16]; // fallback 17 Siban
+    currentJounen = { jounen, data };
+    renderJounen(jounen, data);
+  })
+  .catch(() => {
+    document.getElementById('pg-dat').textContent = '17 Siban 5786';
+    document.getElementById('pg-ref').textContent = 'Mattiyahu 12:41';
+    document.getElementById('pg-texte').textContent = '« Moun Ninbeh yo ap leve nan jijman ansanm ak jenerasyon sa a. »';
+  });
+
+function toggleLang() {
+  document.getElementById('lang-overlay').classList.add('open');
+}
+function closeLang() {
+  document.getElementById('lang-overlay').classList.remove('open');
+}
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lv-lang', lang);
+  closeLang();
+  if (currentJounen) renderJounen(currentJounen.jounen, currentJounen.data);
+}
 </script>
 </body>
 </html>
