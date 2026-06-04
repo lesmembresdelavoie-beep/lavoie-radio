@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chronologie de l'Alliance Renouvelée · Ketubim Qadoshim · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden;padding-bottom:64px}
+
+.page-header{min-height:48vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(30,77,153,0.55) 0%,transparent 70%),linear-gradient(180deg,#020810 0%,#060d1a 100%)}
+.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
+.page-header-inner{position:relative;z-index:1}
+.page-eyebrow{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.35em;color:var(--or);text-transform:uppercase;opacity:0.7;margin-bottom:0.8rem}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4.5vw,3rem);font-weight:700;color:#e8cb7a;letter-spacing:0.08em;line-height:1.15;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2vw,1.2rem);color:#c9a84c;opacity:0.8;margin-bottom:0.3rem}
+.page-sub2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;color:#e8f0f8;opacity:0.5}
+
+.page-body{max-width:860px;margin:0 auto;padding:4rem 2rem 6rem}
+@media(max-width:768px){.page-body{padding:3rem 1.2rem 5rem}}
+
+/* TOC */
+.toc{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.2);padding:1.8rem 2rem;margin-bottom:3.5rem}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);text-transform:uppercase;margin-bottom:1rem}
+.toc-liste{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.toc-liste li a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--argent);text-decoration:none;letter-spacing:0.04em;opacity:0.75;transition:opacity 0.2s}
+.toc-liste li a:hover{opacity:1;color:var(--or-clair)}
+.toc-liste li span{color:var(--or);opacity:0.45;margin-right:0.6rem}
+
+/* SECTIONS */
+.section{margin-bottom:3.5rem}
+.section-label{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.6rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--or-pale);margin-bottom:0.8rem;letter-spacing:0.06em}
+.section-line{width:50px;height:1px;background:linear-gradient(to right,var(--or),transparent);margin-bottom:1.6rem}
+.section p{font-size:1.02rem;line-height:1.9;color:#e8f0f8;opacity:0.85;margin-bottom:1rem}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2.5rem;margin-top:1.2rem}
+.timeline::before{content:'';position:absolute;left:0.6rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.4) 5%,rgba(201,168,76,0.4) 95%,transparent)}
+.timeline-item{position:relative;margin-bottom:1.6rem}
+.timeline-item::before{content:'';position:absolute;left:-2.1rem;top:0.5rem;width:8px;height:8px;border-radius:50%;background:var(--or);opacity:0.7;box-shadow:0 0 6px rgba(201,168,76,0.4)}
+.timeline-item.majeur::before{width:12px;height:12px;left:-2.3rem;top:0.35rem;opacity:1;box-shadow:0 0 12px rgba(201,168,76,0.6)}
+.timeline-date{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;opacity:0.75;margin-bottom:0.2rem}
+.timeline-titre{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--or-pale);letter-spacing:0.05em;margin-bottom:0.3rem}
+.timeline-desc{font-size:0.97rem;line-height:1.75;color:#e8f0f8;opacity:0.78}
+
+/* TABLEAU */
+.table-wrap{overflow-x:auto;margin-top:1rem}
+table{width:100%;border-collapse:collapse;font-size:0.9rem}
+thead th{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--or);background:rgba(13,35,71,0.8);padding:0.75rem 0.9rem;border-bottom:1px solid rgba(201,168,76,0.25);text-align:left}
+tbody tr{border-bottom:1px solid rgba(201,168,76,0.07);transition:background 0.15s}
+tbody tr:hover{background:rgba(13,35,71,0.4)}
+tbody td{padding:0.6rem 0.9rem;color:#e8f0f8;line-height:1.5}
+tbody td:first-child{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--or-pale)}
+tbody td.date{color:var(--or);opacity:0.8;font-size:0.85rem;white-space:nowrap}
+tbody td.note{font-style:italic;font-size:0.85rem;opacity:0.65}
+
+/* RECAP VISUEL */
+.recap-timeline{display:flex;flex-direction:column;gap:0;margin-top:1rem}
+.recap-decade{display:flex;align-items:stretch;min-height:52px}
+.recap-annee{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--or);opacity:0.7;width:90px;flex-shrink:0;display:flex;align-items:center;letter-spacing:0.08em}
+.recap-ligne{display:flex;flex-direction:column;justify-content:center;border-left:2px solid rgba(201,168,76,0.25);padding:0.5rem 0 0.5rem 1.2rem;flex:1;gap:0.2rem}
+.recap-event{font-size:0.88rem;color:#e8f0f8;opacity:0.8;line-height:1.5}
+.recap-event.fort{color:var(--or-clair);opacity:1;font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.04em}
+
+/* LISTE */
+.liste-styled{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin:0.5rem 0 1rem}
+.liste-styled li{display:flex;gap:0.8rem;align-items:flex-start;font-size:1rem;line-height:1.75;color:#e8f0f8;opacity:0.83}
+.liste-styled li::before{content:'✦';color:var(--or);opacity:0.5;flex-shrink:0;font-size:0.55rem;margin-top:0.38rem}
+
+/* NOTE */
+.note-box{background:rgba(13,35,71,0.35);border:1px solid rgba(201,168,76,0.15);border-left:3px solid rgba(201,168,76,0.5);padding:1.1rem 1.5rem;margin:1rem 0}
+.note-box p{font-style:italic;font-size:0.95rem;line-height:1.75;color:var(--argent);opacity:0.8}
+
+.ornement{text-align:center;color:var(--or);font-size:0.62rem;letter-spacing:0.6em;opacity:0.35;margin:2.5rem 0}
+
+.citation-finale{background:linear-gradient(135deg,rgba(13,35,71,0.5),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);padding:2.5rem;text-align:center;margin-top:3rem}
+.citation-finale p.texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.35rem);color:var(--or-pale);line-height:1.7;margin-bottom:0.6rem}
+.citation-finale p.ref{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;opacity:0.65}
+
+/* TAB BAR */
+#tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0;position:relative}
+.tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--or);border-radius:0 0 2px 2px}
+.tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">✦ Ketubim Qadoshim · Édition La Voie ✦</p>
+    <h1 class="page-title">Chronologie Générale<br>de l'Alliance Renouvelée</h1>
+    <p class="page-subtitle">HaBerith haḤadashah</p>
+    <p class="page-sub2">lavoie.world · Les Tal'midim de Yahushuʿaḥ</p>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <div class="toc">
+    <p class="toc-titre">✦ Table des matières</p>
+    <ul class="toc-liste">
+      <li><a href="#intro"><span>1</span>Introduction</a></li>
+      <li><a href="#fondateurs"><span>2</span>Les événements fondateurs</a></li>
+      <li><a href="#qehilah"><span>3</span>Les débuts de la Qehilah</a></li>
+      <li><a href="#shaoul"><span>4</span>Šaʾoul — Voyages et ministère</a></li>
+      <li><a href="#ecrits"><span>5</span>Rédaction des principaux écrits</a></li>
+      <li><a href="#dernieres"><span>6</span>Dernières décennies du premier siècle</a></li>
+      <li><a href="#recap"><span>7</span>Tableau chronologique récapitulatif</a></li>
+      <li><a href="#conclusion"><span>8</span>Conclusion</a></li>
+    </ul>
+  </div>
+
+  <!-- 1. INTRODUCTION -->
+  <div class="section" id="intro">
+    <p class="section-label">Section 1</p>
+    <h2 class="section-title">Introduction</h2>
+    <div class="section-line"></div>
+
+    <p>Une chronologie est un outil indispensable pour situer les événements relatés dans les écrits de l'Alliance Renouvelée dans leur contexte historique. Elle permet de comprendre l'enchaînement des faits, de situer les lettres dans leur contexte de rédaction et de percevoir le développement progressif de la Qehilah à travers les premières décennies.</p>
+
+    <div class="note-box">
+      <p>Les datations proposées dans ce document sont des approximations fondées sur les données historiques disponibles, les recoupements entre les écrits et les sources extérieures. Elles ne prétendent pas à une précision absolue. Selon les auteurs et les méthodes utilisées, certaines dates peuvent varier de quelques années. L'objectif est d'offrir un cadre de référence utile, non une certitude chronologique définitive.</p>
+    </div>
+
+    <p>Les principes retenus pour l'établissement de cette chronologie sont les suivants :</p>
+    <ul class="liste-styled">
+      <li>Priorité aux données internes des Ketubim Qadoshim eux-mêmes.</li>
+      <li>Recoupement avec les sources historiques externes reconnues.</li>
+      <li>Indication systématique du degré d'approximation des datations proposées.</li>
+      <li>Cohérence avec l'ensemble de la présentation des Ketubim Qadoshim — Édition La Voie.</li>
+    </ul>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 2. ÉVÉNEMENTS FONDATEURS -->
+  <div class="section" id="fondateurs">
+    <p class="section-label">Section 2</p>
+    <h2 class="section-title">Les événements fondateurs</h2>
+    <div class="section-line"></div>
+
+    <div class="timeline">
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 6–4 av. l'ère commune</p>
+        <p class="timeline-titre">Naissance de Yaḥuānān haMatbil</p>
+        <p class="timeline-desc">Yaḥuānān naît de Zekaryahou et Elishéva, selon le récit de Louqa. Il est désigné comme le messager qui préparera le chemin devant Yahushuʿaḥ, selon l'annonce du prophète Yeshayahou.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 6–4 av. l'ère commune</p>
+        <p class="timeline-titre">Naissance de Yahushuʿaḥ</p>
+        <p class="timeline-desc">Yahushuʿaḥ naît à Beit-Leḥem de Miryam, par l'action du Rouaḥ haQadosh, sous le règne d'Hérode le Grand. Sa famille s'installe ensuite à Natsereth en Galil, après un séjour en Mitsrayim.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 27–28 de l'ère commune</p>
+        <p class="timeline-titre">Début du ministère de Yaḥuānān haMatbil</p>
+        <p class="timeline-desc">Yaḥuānān commence sa prédication au désert, appelant le peuple à la teshoubah et pratiquant l'immersion dans le Yarden. Sa proclamation attire de grandes foules et suscite l'attention des autorités religieuses.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 27–29 de l'ère commune</p>
+        <p class="timeline-titre">Immersion de Yahushuʿaḥ</p>
+        <p class="timeline-desc">Yahushuʿaḥ reçoit l'immersion de Yaḥuānān dans le Yarden. Le Rouaḥ haQadosh descend sur lui et la voix de Yahawah se fait entendre. Cet événement marque le début officiel de son ministère public.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 27–30 de l'ère commune</p>
+        <p class="timeline-titre">Début et développement du ministère de Yahushuʿaḥ</p>
+        <p class="timeline-desc">Yahushuʿaḥ appelle ses premiers tal'midim, parcourt la Galil et la Yehoudah, enseigne dans les synagogues, accomplit des guérisons et proclame la Besorah Towah du Royaume. Ses déplacements couvrent la Galil, la Shomron, la Yehoudah et les régions environnantes.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 30–33 de l'ère commune</p>
+        <p class="timeline-titre">Exécution à Yarushalayim</p>
+        <p class="timeline-desc">Yahushuʿaḥ est arrêté, jugé devant les autorités religieuses et devant Ponce Pilate, et exécuté à Yarushalayim lors de la fête de Pessaḥ. Cet événement s'accomplit selon les écrits des prophètes anciens.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 30–33 de l'ère commune</p>
+        <p class="timeline-titre">Résurrection</p>
+        <p class="timeline-desc">Le troisième jour après son exécution, Yahushuʿaḥ ressuscite d'entre les morts. Il apparaît à de nombreux témoins pendant quarante jours, confirmant l'accomplissement des Ketubim Qadoshim et instruisant ses tal'midim.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 30–33 de l'ère commune</p>
+        <p class="timeline-titre">Ascension</p>
+        <p class="timeline-desc">Quarante jours après sa résurrection, Yahushuʿaḥ monte vers Yahawah en présence de ses tal'midim. Il leur confie la mission de proclamer la Besorah Towah à toutes les nations et leur promet l'envoi du Rouaḥ haQadosh.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 3. DÉBUTS DE LA QEHILAH -->
+  <div class="section" id="qehilah">
+    <p class="section-label">Section 3</p>
+    <h2 class="section-title">Les débuts de la Qehilah</h2>
+    <div class="section-line"></div>
+
+    <div class="timeline">
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 30–33 de l'ère commune</p>
+        <p class="timeline-titre">Shabouʿot — Effusion du Rouaḥ haQadosh</p>
+        <p class="timeline-desc">Lors de la fête de Shabouʿot, le Rouaḥ haQadosh est répandu sur les tal'midim réunis à Yarushalayim. Képha proclame la Besorah Towah devant la foule. Environ trois mille personnes rejoignent la Qehilah ce jour-là.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">30–35 de l'ère commune</p>
+        <p class="timeline-titre">Premières prédications et expansion à Yarushalayim</p>
+        <p class="timeline-desc">Les tal'midim proclament la Besorah Towah dans les synagogues et sur le parvis du Temple. La Qehilah de Yarushalayim croît rapidement. Des guérisons et des prodiges attirent l'attention des autorités religieuses.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 33–36 de l'ère commune</p>
+        <p class="timeline-titre">Persécutions et mise à mort de Stéphanos</p>
+        <p class="timeline-desc">Les autorités religieuses commencent à persécuter les tal'midim. Stéphanos est lapidé — premier martyr de la Qehilah. Šaʾoul, alors Peroushi, participe à cette persécution avant sa propre rencontre avec Yahushuʿaḥ.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 34–36 de l'ère commune</p>
+        <p class="timeline-titre">Dispersion et expansion de la Besorah Towah</p>
+        <p class="timeline-desc">La persécution provoque la dispersion des tal'midim hors de Yarushalayim, ce qui contribue paradoxalement à l'expansion de la Besorah Towah dans la Yehoudah, la Shomron et jusqu'en Antioche de Syrie.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 4. ŠAʾOUL -->
+  <div class="section" id="shaoul">
+    <p class="section-label">Section 4</p>
+    <h2 class="section-title">Šaʾoul — Voyages et ministère</h2>
+    <div class="section-line"></div>
+
+    <div class="timeline">
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 33–36 de l'ère commune</p>
+        <p class="timeline-titre">Rencontre de Šaʾoul avec Yahushuʿaḥ</p>
+        <p class="timeline-desc">Sur le chemin de Damas, Šaʾoul rencontre Yahushuʿaḥ ressuscité. Cet événement transforme radicalement sa vie. Il passe un temps en Arabie et à Damas avant de se rendre à Yarushalayim pour rencontrer Képha et Yaʿaqov.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 46–48 de l'ère commune</p>
+        <p class="timeline-titre">Premier voyage missionnaire</p>
+        <p class="timeline-desc">Šaʾoul et Barnabas traversent Chypre, Antioche de Pisidie, Iconium, Lystre et Derbé. Des assemblées se forment dans chaque ville visitée. Ce voyage donne lieu à l'écriture de la lettre aux Galatim.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 49–52 de l'ère commune</p>
+        <p class="timeline-titre">Deuxième voyage missionnaire</p>
+        <p class="timeline-desc">Šaʾoul traverse la Macédoine et la Grèce — Philippes, Thessalonique, Béroée, Athènes, Corinthe. Il séjourne dix-huit mois à Corinthe et rédige les deux lettres aux Thessalonikim.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 53–57 de l'ère commune</p>
+        <p class="timeline-titre">Troisième voyage missionnaire</p>
+        <p class="timeline-desc">Šaʾoul séjourne près de trois ans à Ephèse, centre de son ministère en Asie. Il rédige les lettres aux Qorintiyim et aux Romiyim. Il retourne ensuite à Yarushalayim malgré les avertissements.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 57–59 de l'ère commune</p>
+        <p class="timeline-titre">Arrestation à Yarushalayim</p>
+        <p class="timeline-desc">Šaʾoul est arrêté dans l'enceinte du Temple à Yarushalayim. Il comparaît devant le Sanhédrin, puis devant les gouverneurs Félix et Festus. Il fait appel à César et est transféré à Rome.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 60–62 de l'ère commune</p>
+        <p class="timeline-titre">Première captivité à Rome</p>
+        <p class="timeline-desc">Šaʾoul est détenu à Rome dans des conditions relativement libres. Il rédige les lettres dites de captivité : Philippiyim, Qolossiyim, Philèmon et Ephesiyim. Il continue à recevoir des visiteurs et à enseigner.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 62–67 de l'ère commune</p>
+        <p class="timeline-titre">Dernières années et second emprisonnement</p>
+        <p class="timeline-desc">Après une probable libération, Šaʾoul poursuit son ministère, visite Timotheos et Titos et rédige les lettres pastorales. Un second emprisonnement à Rome précède sa mise à mort, vraisemblablement sous Néron.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 5. RÉDACTION DES ÉCRITS -->
+  <div class="section" id="ecrits">
+    <p class="section-label">Section 5</p>
+    <h2 class="section-title">Rédaction des principaux écrits</h2>
+    <div class="section-line"></div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Livre</th>
+            <th>Auteur</th>
+            <th>Date approx.</th>
+            <th>Contexte de rédaction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Yaʿaqov</td><td>Yaʿaqov</td><td class="date">Vers 45–50</td><td class="note">Première lettre circulaire ; destinée aux tal'midim dispersés</td></tr>
+          <tr><td>Galatim</td><td>Šaʾoul</td><td class="date">Vers 48–49</td><td class="note">Réponse à la controverse sur la Torah et la circoncision</td></tr>
+          <tr><td>1 Thessalonikim</td><td>Šaʾoul</td><td class="date">Vers 50–51</td><td class="note">Première lettre de Šaʾoul depuis Corinthe</td></tr>
+          <tr><td>2 Thessalonikim</td><td>Šaʾoul</td><td class="date">Vers 51–52</td><td class="note">Suite à des malentendus sur le retour de Yahushuʿaḥ</td></tr>
+          <tr><td>1 Qorintiyim</td><td>Šaʾoul</td><td class="date">Vers 53–54</td><td class="note">Réponse aux divisions et questions de l'assemblée de Corinthe</td></tr>
+          <tr><td>2 Qorintiyim</td><td>Šaʾoul</td><td class="date">Vers 55–56</td><td class="note">Défense de son apostolat ; appel à la réconciliation</td></tr>
+          <tr><td>Romiyim</td><td>Šaʾoul</td><td class="date">Vers 56–57</td><td class="note">Exposé systématique de la Besorah Towah depuis Corinthe</td></tr>
+          <tr><td>Philippiyim</td><td>Šaʾoul</td><td class="date">Vers 60–62</td><td class="note">Lettre d'encouragement depuis la captivité romaine</td></tr>
+          <tr><td>Qolossiyim</td><td>Šaʾoul</td><td class="date">Vers 60–62</td><td class="note">Réponse à des enseignements problématiques en Asie</td></tr>
+          <tr><td>Philèmon</td><td>Šaʾoul</td><td class="date">Vers 60–62</td><td class="note">Lettre personnelle concernant l'esclave Onésime</td></tr>
+          <tr><td>Ephesiyim</td><td>Šaʾoul</td><td class="date">Vers 60–62</td><td class="note">Lettre circulaire sur l'unité du Corps de Ha'Mashiyaḥ</td></tr>
+          <tr><td>Titos</td><td>Šaʾoul</td><td class="date">Vers 63–65</td><td class="note">Instructions pour l'organisation de la Qehilah en Crète</td></tr>
+          <tr><td>1 Timotheos</td><td>Šaʾoul</td><td class="date">Vers 63–65</td><td class="note">Instructions pastorales pour l'assemblée d'Ephèse</td></tr>
+          <tr><td>2 Timotheos</td><td>Šaʾoul</td><td class="date">Vers 66–67</td><td class="note">Dernière lettre depuis le second emprisonnement romain</td></tr>
+          <tr><td>Ibriyim</td><td>Incertain</td><td class="date">Vers 60–70</td><td class="note">Adressé à des croyants d'origine ibri ; avant 70 selon la plupart</td></tr>
+          <tr><td>Mattiyahu</td><td>Mattiyahu</td><td class="date">Vers 50–70</td><td class="note">Récit destiné à un public d'origine ibri</td></tr>
+          <tr><td>Marqos</td><td>Marqos</td><td class="date">Vers 50–65</td><td class="note">Premier récit rédigé ; lié au témoignage de Képha</td></tr>
+          <tr><td>Louqa</td><td>Louqa</td><td class="date">Vers 60–70</td><td class="note">Destiné à Théophile ; enquête rigoureuse sur les faits</td></tr>
+          <tr><td>Maʿasei</td><td>Louqa</td><td class="date">Vers 62–70</td><td class="note">Suite du récit de Louqa ; expansion de la Qehilah</td></tr>
+          <tr><td>Képha Aleph</td><td>Képha</td><td class="date">Vers 60–64</td><td class="note">Encouragements aux tal'midim dispersés sous la persécution</td></tr>
+          <tr><td>Képha Beth</td><td>Képha</td><td class="date">Vers 64–68</td><td class="note">Mise en garde contre les faux enseignants</td></tr>
+          <tr><td>Yehouda</td><td>Yehoudah</td><td class="date">Vers 65–80</td><td class="note">Exhortation à défendre la foi transmise</td></tr>
+          <tr><td>Yaḥuānān</td><td>Yaḥuānān</td><td class="date">Vers 85–95</td><td class="note">Récit théologique ; composé après les synoptiques</td></tr>
+          <tr><td>Yaḥuānān Aleph</td><td>Yaḥuānān</td><td class="date">Vers 85–95</td><td class="note">Lettre circulaire sur l'amour et la vérité</td></tr>
+          <tr><td>Yaḥuānān Beth</td><td>Yaḥuānān</td><td class="date">Vers 85–95</td><td class="note">Courte lettre à une assemblée spécifique</td></tr>
+          <tr><td>Yaḥuānān Guimel</td><td>Yaḥuānān</td><td class="date">Vers 85–95</td><td class="note">Lettre personnelle à Gaïos</td></tr>
+          <tr><td>Hazon</td><td>Yaḥuānān</td><td class="date">Vers 90–96</td><td class="note">Révélation reçue à Patmos ; adressée aux sept assemblées</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 6. DERNIÈRES DÉCENNIES -->
+  <div class="section" id="dernieres">
+    <p class="section-label">Section 6</p>
+    <h2 class="section-title">Dernières décennies du premier siècle</h2>
+    <div class="section-line"></div>
+
+    <div class="timeline">
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">66–70 de l'ère commune</p>
+        <p class="timeline-titre">Guerre judéo-romaine et destruction du Temple</p>
+        <p class="timeline-desc">La révolte contre Rome aboutit à la destruction du Temple de Yarushalayim en l'an 70. Cet événement capital marque une rupture historique majeure et confirme les avertissements prononcés par Yahushuʿaḥ dans ses enseignements.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">70–90 de l'ère commune</p>
+        <p class="timeline-titre">Développement des assemblées dans les nations</p>
+        <p class="timeline-desc">Les Qehilot continuent de se développer à travers l'Empire romain et au-delà. Les écrits circulent entre les assemblées. Des défis doctrinaux et organisationnels émergent, auxquels les lettres déjà rédigées apportent des réponses.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-date">Vers 85–95 de l'ère commune</p>
+        <p class="timeline-titre">Ministère de Yaḥuānān en Asie</p>
+        <p class="timeline-desc">Yaḥuānān, dernier survivant des tal'midim directs de Yahushuʿaḥ, exerce son ministère depuis Ephèse. Il rédige son récit et ses lettres. Il est exilé sur l'île de Patmos, où il reçoit la révélation de Hazon.</p>
+      </div>
+
+      <div class="timeline-item majeur">
+        <p class="timeline-date">Vers 90–96 de l'ère commune</p>
+        <p class="timeline-titre">Rédaction de Hazon</p>
+        <p class="timeline-desc">Depuis Patmos, Yaḥuānān reçoit et consigne la révélation adressée aux sept assemblées d'Asie et à l'ensemble de la Qehilah. Hazon vient conclure l'ensemble des Ketubim Qadoshim en ouvrant sur l'accomplissement final des promesses de Yahawah.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 7. RÉCAPITULATIF -->
+  <div class="section" id="recap">
+    <p class="section-label">Section 7</p>
+    <h2 class="section-title">Tableau chronologique récapitulatif</h2>
+    <div class="section-line"></div>
+
+    <div class="recap-timeline">
+      <div class="recap-decade">
+        <p class="recap-annee">~6–4 AEC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">Naissance de Yaḥuānān haMatbil et de Yahushuʿaḥ</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~27–29 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">Immersion · Début du ministère de Yahushuʿaḥ</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~30–33 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">Exécution · Résurrection · Ascension · Shabouʿot</p>
+          <p class="recap-event">Naissance de la Qehilah à Yarushalayim</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~33–40 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event">Persécutions · Martyre de Stéphanos · Conversion de Šaʾoul</p>
+          <p class="recap-event">Dispersion · Expansion en Shomron et à Antioche</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~46–52 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">1er et 2e voyages de Šaʾoul</p>
+          <p class="recap-event">Galatim · 1–2 Thessalonikim rédigés</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~53–57 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">3e voyage de Šaʾoul · Séjour à Ephèse</p>
+          <p class="recap-event">1–2 Qorintiyim · Romiyim rédigés</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~57–62 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">Arrestation de Šaʾoul · Captivité à Rome</p>
+          <p class="recap-event">Philippiyim · Qolossiyim · Philèmon · Ephesiyim rédigés</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~63–67 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event">Titos · 1–2 Timotheos rédigés · Képha Aleph et Beth</p>
+          <p class="recap-event fort">Mort de Šaʾoul et de Képha à Rome</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~66–70 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">Destruction du Temple de Yarushalayim</p>
+          <p class="recap-event">Rédaction des récits synoptiques (Mattiyahu · Marqos · Louqa · Maʿasei)</p>
+        </div>
+      </div>
+      <div class="recap-decade">
+        <p class="recap-annee">~85–96 EC</p>
+        <div class="recap-ligne">
+          <p class="recap-event fort">Ministère de Yaḥuānān en Asie · Exil à Patmos</p>
+          <p class="recap-event">Yaḥuānān · Yaḥuānān Aleph/Beth/Guimel · Hazon rédigés</p>
+          <p class="recap-event fort">Clôture des écrits de l'Alliance Renouvelée</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 8. CONCLUSION -->
+  <div class="section" id="conclusion">
+    <p class="section-label">Section 8</p>
+    <h2 class="section-title">Conclusion</h2>
+    <div class="section-line"></div>
+    <p>La chronologie présentée dans ce document offre un cadre historique permettant de situer les écrits de l'Alliance Renouvelée dans leur contexte d'origine. Elle ne prétend pas résoudre toutes les questions de datation qui restent ouvertes dans la recherche, mais vise à fournir au lecteur un repère utile pour sa lecture et son étude.</p>
+    <p>Comprendre dans quel contexte une lettre a été rédigée, à qui elle était adressée et quels événements l'ont précédée permet d'en saisir plus précisément le propos et d'éviter des interprétations hors contexte.</p>
+    <p>Nous encourageons chaque lecteur à continuer d'explorer ces questions avec sérieux, à comparer les passages et à examiner les écrits dans leur ensemble, selon l'esprit qui anime les Ketubim Qadoshim — Édition La Voie.</p>
+    <div style="margin-top:2rem;text-align:right">
+      <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--or);opacity:0.75">Les Tal'midim de Yahushuʿaḥ</p>
+      <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;color:var(--or);opacity:0.55">La Voie · lavoie.world</p>
+    </div>
+  </div>
+
+  <div class="citation-finale">
+    <p class="texte">« Examinez toutes choses ; retenez ce qui est bon. »</p>
+    <p class="ref">— 1 Thessalonikim 5:21</p>
+  </div>
+
+</div>
+
+<!-- TAB BAR -->
+<nav id="tab-bar">
+  <a href="index.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <span class="tab-label">Accueil</span>
+  </a>
+  <a href="tèks-pou-jounen-an.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+    <span class="tab-label">Ketubim</span>
+  </a>
+  <a href="radio.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+    <span class="tab-label">Radio</span>
+  </a>
+  <a href="rassemblements.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+    <span class="tab-label">Réunions</span>
+  </a>
+  <a href="kq.html" class="tab-item active">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="tab-label">Lexique</span>
+  </a>
+</nav>
+
+</body>
+</html>
