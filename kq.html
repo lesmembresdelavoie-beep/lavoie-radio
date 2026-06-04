@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ketubim Qadoshim · Selon La Voie · lavoie.world</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden;padding-bottom:64px}
+
+/* PAGE HEADER */
+.page-header{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(30,77,153,0.55) 0%,transparent 70%),linear-gradient(180deg,#020810 0%,#060d1a 100%)}
+.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
+.page-header-inner{position:relative;z-index:1}
+.page-eyebrow{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.35em;color:var(--or);text-transform:uppercase;opacity:0.7;margin-bottom:1rem}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;color:#e8cb7a;letter-spacing:0.08em;line-height:1.1;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.4rem);color:#c9a84c;opacity:0.8;margin-bottom:0.5rem}
+.page-sub2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.9rem,2vw,1.1rem);color:#e8f0f8;opacity:0.55}
+
+/* BODY */
+.page-body{max-width:800px;margin:0 auto;padding:4rem 2rem 6rem}
+@media(max-width:768px){.page-body{padding:3rem 1.4rem 5rem}}
+
+/* NOTE INTRO */
+.note-intro{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--or);padding:1.2rem 1.8rem;margin-bottom:3rem;text-align:center}
+.note-intro p{font-style:italic;font-size:1rem;line-height:1.7;color:var(--or-pale);opacity:0.85}
+
+/* AVANT-PROPOS */
+.avant-propos{margin-bottom:4rem}
+.section-label{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.7;margin-bottom:0.8rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,3vw,1.8rem);color:var(--or-pale);margin-bottom:1.5rem}
+.section-line{width:50px;height:1px;background:linear-gradient(to right,var(--or),transparent);margin-bottom:2rem}
+.ap-texte p{font-size:1.05rem;line-height:1.9;color:#e8f0f8;opacity:0.85;margin-bottom:1.2rem}
+.ap-signature{margin-top:2rem;text-align:right}
+.ap-signature p{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--or);opacity:0.75;margin-bottom:0.2rem}
+
+/* ORNEMENT */
+.ornement{text-align:center;color:var(--or);font-size:0.62rem;letter-spacing:0.6em;opacity:0.35;margin:2.5rem 0}
+
+/* TABLE DES LIVRES */
+.table-titre{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--or-clair);letter-spacing:0.1em;text-align:center;margin-bottom:0.4rem}
+.table-sous-titre{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--argent);opacity:0.6;text-align:center;margin-bottom:2.5rem}
+
+.partie{margin-bottom:2.5rem}
+.partie-header{background:linear-gradient(135deg,rgba(13,35,71,0.7),rgba(6,13,26,0.85));border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--or);padding:0.9rem 1.4rem;margin-bottom:0.8rem}
+.partie-num{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.25em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.2rem}
+.partie-titre{font-family:'Cinzel',serif;font-size:0.88rem;color:var(--or-pale);letter-spacing:0.06em}
+
+.livres-liste{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.livre-item{display:flex;align-items:baseline;gap:0.8rem;padding:0.55rem 1rem;background:rgba(13,35,71,0.2);border:1px solid rgba(201,168,76,0.08);transition:all 0.2s;cursor:pointer}
+.livre-item:hover{background:rgba(13,35,71,0.5);border-color:rgba(201,168,76,0.25)}
+.livre-num{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--or);opacity:0.5;min-width:24px;letter-spacing:0.1em}
+.livre-nom{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--or-pale);letter-spacing:0.05em;flex:1}
+.livre-ibri{font-size:0.85rem;color:var(--or);opacity:0.45;font-style:normal;direction:rtl}
+
+/* CITATION FINALE */
+.citation-finale{background:linear-gradient(135deg,rgba(13,35,71,0.5),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);padding:2.5rem;text-align:center;margin-top:3rem}
+.citation-finale p.texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--or-pale);line-height:1.7;margin-bottom:0.6rem}
+.citation-finale p.ref{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;opacity:0.65}
+
+/* TAB BAR */
+#tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0;position:relative}
+.tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--or);border-radius:0 0 2px 2px}
+.tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">✦ La Voie · lavoie.world ✦</p>
+    <h1 class="page-title">Ketubim Qadoshim</h1>
+    <p class="page-subtitle">Selon La Voie</p>
+    <p class="page-sub2">Écrits Sacrés · כְּתוּבִים קְדוֹשִׁים</p>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <!-- NOTE INTRO -->
+  <div class="note-intro">
+    <p>« Pour faciliter la compréhension du déroulement des événements, les livres de l'Alliance Renouvelée sont présentés dans cette édition selon leur place dans l'histoire plutôt que selon l'ordre traditionnel. »</p>
+  </div>
+
+  <!-- AVANT-PROPOS -->
+  <div class="avant-propos">
+    <p class="section-label">✦ Avant-propos</p>
+    <h2 class="section-title">Ketubim Qadoshim<br>Selon La Voie</h2>
+    <div class="section-line"></div>
+    <div class="ap-texte">
+      <p>Depuis des siècles, les écrits de l'Alliance Renouvelée sont généralement présentés selon un ordre traditionnel largement répandu dans le monde.</p>
+      <p>Dans cette édition des Ketubim Qadoshim — Selon La Voie, nous avons choisi une approche différente.</p>
+      <p>Notre objectif n'est pas de modifier le message des écrits, ni d'ajouter à ce qui a été transmis, mais de permettre au lecteur de suivre plus facilement le déroulement des événements, l'expansion de la Besorah Towah et le développement progressif des enseignements donnés aux assemblées du premier siècle.</p>
+      <p>Pour cette raison, les livres de l'Alliance Renouvelée (HaBerith haḤadashah) sont présentés selon leur place dans le récit historique général plutôt que selon l'ordre traditionnel.</p>
+      <p>Le lecteur découvrira d'abord les récits relatant la venue, l'enseignement, l'œuvre, la mort et la résurrection de Yahushuʿaḥ, puis l'expansion de la Qehilah naissante à travers les nations, avant de suivre les lettres adressées aux assemblées et aux responsables de celles-ci. Enfin, les derniers écrits de Yaḥuānān viendront conclure cette partie des Ketubim Qadoshim.</p>
+      <p>Cette organisation vise à offrir une lecture plus naturelle du développement de l'histoire et à replacer chaque écrit dans son contexte.</p>
+      <p>Les noms propres ont été restaurés selon les principes adoptés par cette édition lorsque cela a été jugé utile pour refléter davantage les formes anciennes. Certains termes traditionnellement employés ont également été remplacés par des expressions plus proches de leur contexte historique et linguistique.</p>
+      <p>Toutefois, cette édition ne prétend pas être au-dessus de l'examen. Au contraire, nous encourageons chaque lecteur à vérifier, comparer et examiner attentivement toutes choses à la lumière des Ketubim Qadoshim.</p>
+      <p>Lorsque certaines questions de traduction ou de contexte nécessitent des éclaircissements, des notes pourront être ajoutées afin d'aider le lecteur dans son étude.</p>
+      <p>Nous invitons chacun à parcourir ces écrits avec respect, discernement et humilité, en gardant à l'esprit que le but ultime n'est pas l'accumulation de connaissances, mais la mise en pratique du Dabar.</p>
+      <p>Puissent ces écrits être une source d'encouragement, d'instruction et de croissance pour tous ceux qui recherchent la vérité.</p>
+    </div>
+    <div class="ap-signature">
+      <p>Les Tal'midim de Yahushuʿaḥ</p>
+      <p>La Voie · lavoie.world</p>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- CHARTE DE TRADUCTION -->
+  <div class="avant-propos" id="charte">
+    <p class="section-label">✦ Charte de Traduction</p>
+    <h2 class="section-title">Ketubim Qadoshim<br>Édition La Voie</h2>
+    <div class="section-line"></div>
+
+    <div class="ap-texte">
+      <p><em>Les Ketubim Qadoshim — Édition La Voie sont le fruit d'une démarche de restauration, d'examen et de transmission des écrits anciens dans le respect de leur contexte historique, linguistique et culturel.</em></p>
+      <p>Cette édition a pour objectif de mettre à la disposition du lecteur un texte fidèle aux écrits sources tout en demeurant accessible à la lecture contemporaine. Elle ne vise ni à créer une nouvelle tradition, ni à imposer une interprétation particulière, mais à favoriser un retour attentif aux textes et à encourager l'examen personnel de chaque enseignement.</p>
+    </div>
+
+    <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem">
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">I · Objectif de l'édition</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Rechercher la fidélité aux textes sources · Préserver le sens original · Restituer les noms propres sous des formes proches de leurs racines anciennes · Rendre le texte accessible aux lecteurs francophones · Favoriser l'étude et la vérification personnelle · Maintenir une cohérence terminologique dans l'ensemble des livres.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">II · Fidélité textuelle</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">La traduction doit rechercher avant tout la fidélité au sens du texte source. Le traducteur s'efforcera de transmettre ce que le texte exprime sans y ajouter des idées étrangères ni retrancher des éléments significatifs. Lorsque plusieurs possibilités de traduction existent, la solution retenue sera celle qui paraît refléter le plus fidèlement l'intention du texte dans son contexte.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">III · Restauration des noms propres</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Les noms de personnes, de peuples et de lieux pourront être présentés sous des formes restaurées lorsque cela contribue à une meilleure proximité avec les langues anciennes. Une liste officielle des noms retenus sera maintenue afin d'assurer l'uniformité dans l'ensemble de l'édition.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">IV · Translittération</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Les règles de translittération adoptées par l'édition devront être appliquées de manière uniforme. La translittération doit rechercher la cohérence, la lisibilité et le respect des racines linguistiques. Aucune variation arbitraire ne devra être introduite d'un livre à l'autre.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">V · Vocabulaire de l'édition</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Certains termes pourront être conservés dans leur forme traditionnelle ibri lorsqu'ils expriment des réalités particulières difficiles à restituer pleinement dans une autre langue. Ces termes seront définis dans le Lexique officiel annexé à l'édition.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">VI · Citations et références</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Les citations d'écrits plus anciens devront être identifiées avec soin. Lorsque l'auteur cite ou fait allusion à un passage antérieur, cette relation pourra être signalée par une note explicative afin d'aider le lecteur à percevoir les liens entre les différents écrits.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">VII · Notes explicatives</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Les notes ont pour fonction d'éclairer le lecteur et non de diriger sa pensée. Elles peuvent notamment préciser un contexte historique, une difficulté linguistique, une expression particulière, une variante textuelle ou un renvoi vers un autre passage pertinent. Les notes doivent demeurer sobres, utiles et fondées sur des éléments vérifiables.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">VIII · Variantes textuelles</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Lorsque des différences significatives existent entre les témoins textuels disponibles, celles-ci pourront être signalées dans les notes. Le texte principal conservera la lecture retenue par l'équipe éditoriale, tandis que les variantes importantes seront présentées avec transparence.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">IX · Examen et vérification</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Cette édition encourage le lecteur à examiner personnellement les écrits. La consultation des textes, la comparaison des passages et l'étude attentive des contextes sont considérées comme des éléments essentiels de la démarche proposée.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">X · Uniformité éditoriale</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">Tous les livres de cette édition doivent respecter les mêmes principes de traduction, de translittération, de présentation et de terminologie. Cette uniformité vise à offrir au lecteur une expérience cohérente tout au long de son parcours dans les Ketubim Qadoshim.</p>
+      </div>
+
+      <div style="background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);border-left:3px solid var(--or);padding:1.2rem 1.6rem">
+        <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;margin-bottom:0.7rem">XI · Engagement éditorial</p>
+        <p style="font-size:1rem;line-height:1.8;color:#e8f0f8;opacity:0.82">L'équipe de La Voie reconnaît que toute œuvre de traduction demeure perfectible. Par conséquent, cette édition pourra faire l'objet de révisions, d'améliorations et de corrections futures. La recherche de fidélité au texte demeurera toujours prioritaire sur les habitudes, les traditions ou les préférences personnelles.</p>
+      </div>
+
+    </div>
+
+    <div class="ap-signature" style="margin-top:2rem">
+      <p>Les Tal'midim de Yahushuʿaḥ</p>
+      <p>La Voie · lavoie.world</p>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- TABLE DES LIVRES -->
+  <h2 class="table-titre">Table des Livres de l'Alliance Renouvelée</h2>
+  <p class="table-sous-titre">HaBerith haḤadashah</p>
+
+  <!-- PARTIE I -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Première Partie</p>
+      <p class="partie-titre">La venue et l'œuvre de Yahushuʿaḥ</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">1</span><span class="livre-nom">Mattiyahu</span><span class="livre-ibri">מַתָּי</span></li>
+      <li class="livre-item"><span class="livre-num">2</span><span class="livre-nom">Marqos</span><span class="livre-ibri">מַרְקוּס</span></li>
+      <li class="livre-item"><span class="livre-num">3</span><span class="livre-nom">Louqa</span><span class="livre-ibri">לוּקָא</span></li>
+      <li class="livre-item"><span class="livre-num">4</span><span class="livre-nom">Yaḥuānān</span><span class="livre-ibri">יוֹחָנָן</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE II -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Deuxième Partie</p>
+      <p class="partie-titre">La naissance et l'expansion de la Qehilah</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">5</span><span class="livre-nom">Maʿasei</span><span class="livre-ibri">מַעֲשֵׂי</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE III -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Troisième Partie</p>
+      <p class="partie-titre">Les premières exhortations aux assemblées</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">6</span><span class="livre-nom">Yaʿaqov</span><span class="livre-ibri">יַעֲקֹב</span></li>
+      <li class="livre-item"><span class="livre-num">7</span><span class="livre-nom">Galatim</span><span class="livre-ibri">גָּלַטִים</span></li>
+      <li class="livre-item"><span class="livre-num">8</span><span class="livre-nom">1 Thessalonikim</span><span class="livre-ibri">תֶּסָּלוֹנִיקִים א׳</span></li>
+      <li class="livre-item"><span class="livre-num">9</span><span class="livre-nom">2 Thessalonikim</span><span class="livre-ibri">תֶּסָּלוֹנִיקִים ב׳</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE IV -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Quatrième Partie</p>
+      <p class="partie-titre">Les voyages et l'enseignement de Šaʾoul</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">10</span><span class="livre-nom">1 Qorintiyim</span><span class="livre-ibri">קוֹרִינְתִים א׳</span></li>
+      <li class="livre-item"><span class="livre-num">11</span><span class="livre-nom">2 Qorintiyim</span><span class="livre-ibri">קוֹרִינְתִים ב׳</span></li>
+      <li class="livre-item"><span class="livre-num">12</span><span class="livre-nom">Romiyim</span><span class="livre-ibri">רוֹמִים</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE V -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Cinquième Partie</p>
+      <p class="partie-titre">Les lettres de captivité</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">13</span><span class="livre-nom">Philippiyim</span><span class="livre-ibri">פִּילִיפִּים</span></li>
+      <li class="livre-item"><span class="livre-num">14</span><span class="livre-nom">Qolossiyim</span><span class="livre-ibri">קוֹלוֹסִים</span></li>
+      <li class="livre-item"><span class="livre-num">15</span><span class="livre-nom">Philèmon</span><span class="livre-ibri">פִּילֵימוֹן</span></li>
+      <li class="livre-item"><span class="livre-num">16</span><span class="livre-nom">Ephesiyim</span><span class="livre-ibri">אֶפֶסִים</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE VI -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Sixième Partie</p>
+      <p class="partie-titre">Les exhortations aux responsables et aux assemblées</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">17</span><span class="livre-nom">Titos</span><span class="livre-ibri">טִיטוּס</span></li>
+      <li class="livre-item"><span class="livre-num">18</span><span class="livre-nom">1 Timotheos</span><span class="livre-ibri">טִימוֹתֵיאוּס א׳</span></li>
+      <li class="livre-item"><span class="livre-num">19</span><span class="livre-nom">2 Timotheos</span><span class="livre-ibri">טִימוֹתֵיאוּס ב׳</span></li>
+      <li class="livre-item"><span class="livre-num">20</span><span class="livre-nom">Ibriyim</span><span class="livre-ibri">עִבְרִים</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE VII -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Septième Partie</p>
+      <p class="partie-titre">Les écrits de Képha et Yehouda</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">21</span><span class="livre-nom">Képha Aleph</span><span class="livre-ibri">כֵּיפָא א׳</span></li>
+      <li class="livre-item"><span class="livre-num">22</span><span class="livre-nom">Képha Beth</span><span class="livre-ibri">כֵּיפָא ב׳</span></li>
+      <li class="livre-item"><span class="livre-num">23</span><span class="livre-nom">Yehouda</span><span class="livre-ibri">יְהוּדָה</span></li>
+    </ul>
+  </div>
+
+  <!-- PARTIE VIII -->
+  <div class="partie">
+    <div class="partie-header">
+      <p class="partie-num">Huitième Partie</p>
+      <p class="partie-titre">Les derniers écrits de Yaḥuānān</p>
+    </div>
+    <ul class="livres-liste">
+      <li class="livre-item"><span class="livre-num">24</span><span class="livre-nom">Yaḥuānān Aleph</span><span class="livre-ibri">יוֹחָנָן א׳</span></li>
+      <li class="livre-item"><span class="livre-num">25</span><span class="livre-nom">Yaḥuānān Beth</span><span class="livre-ibri">יוֹחָנָן ב׳</span></li>
+      <li class="livre-item"><span class="livre-num">26</span><span class="livre-nom">Yaḥuānān Guimel</span><span class="livre-ibri">יוֹחָנָן ג׳</span></li>
+      <li class="livre-item"><span class="livre-num">27</span><span class="livre-nom">Hazon</span><span class="livre-ibri">חָזוֹן</span></li>
+    </ul>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- CITATION FINALE -->
+  <div class="citation-finale">
+    <p class="texte">« Examinez toutes choses ; retenez ce qui est bon. »</p>
+    <p class="ref">— 1 Thessalonikim 5:21</p>
+  </div>
+
+</div>
+
+<!-- TAB BAR -->
+<nav id="tab-bar">
+  <a href="index.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <span class="tab-label">Accueil</span>
+  </a>
+  <a href="tèks-pou-jounen-an.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+    <span class="tab-label">Ketubim</span>
+  </a>
+  <a href="radio.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+    <span class="tab-label">Radio</span>
+  </a>
+  <a href="rassemblements.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+    <span class="tab-label">Réunions</span>
+  </a>
+  <a href="kq.html" class="tab-item active">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="tab-label">Lexique</span>
+  </a>
+</nav>
+
+</body>
+</html>
