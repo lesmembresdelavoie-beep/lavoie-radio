@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Introduction Générale à l'Alliance Renouvelée · Ketubim Qadoshim · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;background:#060d1a;color:#e8f0f8;overflow-x:hidden;padding-bottom:64px}
+
+.page-header{min-height:48vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 20%,rgba(30,77,153,0.55) 0%,transparent 70%),linear-gradient(180deg,#020810 0%,#060d1a 100%)}
+.page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
+.page-header-inner{position:relative;z-index:1}
+.page-eyebrow{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.35em;color:var(--or);text-transform:uppercase;opacity:0.7;margin-bottom:0.8rem}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4.5vw,3rem);font-weight:700;color:#e8cb7a;letter-spacing:0.08em;line-height:1.15;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,2vw,1.2rem);color:#c9a84c;opacity:0.8;margin-bottom:0.3rem}
+.page-sub2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.9rem;color:#e8f0f8;opacity:0.5}
+
+.page-body{max-width:820px;margin:0 auto;padding:4rem 2rem 6rem}
+@media(max-width:768px){.page-body{padding:3rem 1.2rem 5rem}}
+
+/* TABLE DES MATIÈRES */
+.toc{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.2);padding:1.8rem 2rem;margin-bottom:3.5rem}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);text-transform:uppercase;margin-bottom:1rem}
+.toc-liste{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.toc-liste li a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--argent);text-decoration:none;letter-spacing:0.04em;opacity:0.75;transition:opacity 0.2s}
+.toc-liste li a:hover{opacity:1;color:var(--or-clair)}
+.toc-liste li span{color:var(--or);opacity:0.45;margin-right:0.6rem}
+
+/* SECTIONS */
+.section{margin-bottom:3.5rem}
+.section-label{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.6rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--or-pale);margin-bottom:0.8rem;letter-spacing:0.06em}
+.section-line{width:50px;height:1px;background:linear-gradient(to right,var(--or),transparent);margin-bottom:1.6rem}
+.section p{font-size:1.03rem;line-height:1.9;color:#e8f0f8;opacity:0.85;margin-bottom:1rem}
+
+/* SOUS-SECTIONS */
+.sous-section{margin-bottom:1.8rem}
+.sous-titre{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--or-clair);text-transform:uppercase;margin-bottom:0.7rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,168,76,0.12)}
+
+/* LISTE */
+.liste-styled{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin:0.5rem 0 1rem}
+.liste-styled li{display:flex;gap:0.8rem;align-items:flex-start;font-size:1rem;line-height:1.75;color:#e8f0f8;opacity:0.83}
+.liste-styled li::before{content:'✦';color:var(--or);opacity:0.5;flex-shrink:0;font-size:0.55rem;margin-top:0.38rem}
+
+/* CITATION ENCADRÉE */
+.citation-box{background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.15);border-left:3px solid var(--or);padding:1.4rem 1.8rem;margin:1.5rem 0}
+.citation-box p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;line-height:1.75;color:var(--or-pale);opacity:0.9;margin-bottom:0.4rem}
+.citation-box span{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;color:var(--or);opacity:0.65;text-transform:uppercase}
+
+/* CARTE THÈME */
+.themes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:580px){.themes-grid{grid-template-columns:1fr}}
+.theme-card{background:rgba(13,35,71,0.3);border:1px solid rgba(201,168,76,0.12);padding:1.1rem 1.3rem}
+.theme-num{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;color:var(--or);opacity:0.5;margin-bottom:0.3rem}
+.theme-titre{font-family:'Cinzel',serif;font-size:0.75rem;color:var(--or-pale);letter-spacing:0.06em;margin-bottom:0.4rem}
+.theme-desc{font-size:0.92rem;line-height:1.65;color:var(--argent);opacity:0.75}
+
+/* LANGUE CARD */
+.langue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:1rem}
+@media(max-width:580px){.langue-grid{grid-template-columns:1fr}}
+.langue-card{background:rgba(13,35,71,0.35);border:1px solid rgba(201,168,76,0.15);border-top:2px solid var(--or);padding:1rem 1.2rem;text-align:center}
+.langue-nom{font-family:'Cinzel',serif;font-size:0.75rem;color:var(--or-clair);letter-spacing:0.08em;margin-bottom:0.4rem}
+.langue-desc{font-size:0.88rem;line-height:1.6;color:var(--argent);opacity:0.72}
+
+/* ORNEMENT */
+.ornement{text-align:center;color:var(--or);font-size:0.62rem;letter-spacing:0.6em;opacity:0.35;margin:2.5rem 0}
+
+/* CITATION FINALE */
+.citation-finale{background:linear-gradient(135deg,rgba(13,35,71,0.5),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);padding:2.5rem;text-align:center;margin-top:3rem}
+.citation-finale p.texte{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.35rem);color:var(--or-pale);line-height:1.7;margin-bottom:0.6rem}
+.citation-finale p.ref{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.22em;color:var(--or);text-transform:uppercase;opacity:0.65}
+
+/* TAB BAR */
+#tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0;position:relative}
+.tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--or);border-radius:0 0 2px 2px}
+.tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">✦ Ketubim Qadoshim · Édition La Voie ✦</p>
+    <h1 class="page-title">Introduction Générale<br>à l'Alliance Renouvelée</h1>
+    <p class="page-subtitle">HaBerith haḤadashah</p>
+    <p class="page-sub2">lavoie.world · Les Tal'midim de Yahushuʿaḥ</p>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <!-- TABLE DES MATIÈRES -->
+  <div class="toc">
+    <p class="toc-titre">✦ Table des matières</p>
+    <ul class="toc-liste">
+      <li><a href="#definition"><span>1</span>Qu'est-ce que l'Alliance Renouvelée ?</a></li>
+      <li><a href="#contexte"><span>2</span>Contexte historique</a></li>
+      <li><a href="#langues"><span>3</span>Langues du premier siècle</a></li>
+      <li><a href="#auteurs"><span>4</span>Les auteurs de l'Alliance Renouvelée</a></li>
+      <li><a href="#destinataires"><span>5</span>Les destinataires</a></li>
+      <li><a href="#organisation"><span>6</span>L'organisation des livres dans cette édition</a></li>
+      <li><a href="#themes"><span>7</span>Les thèmes majeurs de l'Alliance Renouvelée</a></li>
+      <li><a href="#utilisation"><span>8</span>Comment utiliser cette édition</a></li>
+      <li><a href="#conclusion"><span>9</span>Conclusion</a></li>
+    </ul>
+  </div>
+
+  <!-- 1. DÉFINITION -->
+  <div class="section" id="definition">
+    <p class="section-label">Section 1</p>
+    <h2 class="section-title">Qu'est-ce que l'Alliance Renouvelée ?</h2>
+    <div class="section-line"></div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Définition générale</p>
+      <p>L'Alliance Renouvelée — HaBerith haḤadashah — désigne l'ensemble des écrits qui témoignent de la venue de Yahushuʿaḥ Ha'Mashiyaḥ, de son enseignement, de son œuvre, de sa mort et de sa résurrection, ainsi que du développement des premières assemblées de ses tal'midim à travers les nations.</p>
+      <p>Ces écrits ne constituent pas une rupture avec les textes plus anciens des Ketubim Qadoshim, mais leur accomplissement et leur prolongement. Ils s'inscrivent dans la continuité d'une révélation progressive que Yahawah a accordée à son peuple au fil des générations.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Place dans les Ketubim Qadoshim</p>
+      <p>Dans l'édition des Ketubim Qadoshim — Édition La Voie, l'Alliance Renouvelée occupe la seconde grande partie de l'ensemble scripturaire. Elle fait suite aux écrits plus anciens qui annoncent, préfigurent et préparent la venue de Ha'Mashiyaḥ.</p>
+      <p>Ces vingt-sept écrits forment un ensemble cohérent, structuré autour de la personne de Yahushuʿaḥ, de l'expansion de la Besorah Towah et de la vie des premières assemblées.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Relation avec les écrits plus anciens</p>
+      <p>L'Alliance Renouvelée ne peut être lue isolément des écrits plus anciens. Ses auteurs citent, commentent et interprètent abondamment les textes antérieurs. Torat Mosheh, les Nevi'im et les Ketubim plus anciens forment le sol dans lequel s'enracinent les écrits de l'Alliance Renouvelée.</p>
+      <div class="citation-box">
+        <p>« Ne pensez pas que je sois venu abolir la Torah ou les Nevi'im. Je suis venu non pour abolir, mais pour accomplir. »</p>
+        <span>— Yahushuʿaḥ · Mattiyahu 5:17</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 2. CONTEXTE HISTORIQUE -->
+  <div class="section" id="contexte">
+    <p class="section-label">Section 2</p>
+    <h2 class="section-title">Contexte historique</h2>
+    <div class="section-line"></div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Situation politique du premier siècle</p>
+      <p>Les écrits de l'Alliance Renouvelée ont été composés au premier siècle de l'ère commune, dans un contexte politique, social et religieux particulièrement complexe. La région de Yehoudah et de Galil se trouvait sous domination romaine, une situation qui influençait profondément la vie quotidienne, les structures religieuses et les espérances du peuple.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Administration romaine</p>
+      <p>Rome administrait la région par l'intermédiaire de préfets et de procurateurs, dont la principale responsabilité était le maintien de l'ordre et la collecte des impôts. Cette administration tolérait dans une certaine mesure les pratiques religieuses locales, tout en imposant sa souveraineté politique et juridique. C'est dans ce contexte que Yahushuʿaḥ fut jugé et condamné par Ponce Pilate, représentant de l'autorité romaine.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Présence du Temple à Yarushalayim</p>
+      <p>Le Temple de Yarushalayim constituait le centre religieux, culturel et identitaire du peuple. Reconstruit et agrandi sous Hérode le Grand, il était le lieu des sacrifices, des fêtes et de la présence symbolique de Yahawah au milieu de son peuple. Sa destruction par les armées romaines en l'an 70 de l'ère commune marqua une rupture historique majeure, dont les échos se perçoivent dans plusieurs écrits de l'Alliance Renouvelée.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Divers courants religieux de l'époque</p>
+      <p>Le paysage religieux du premier siècle était marqué par la coexistence de plusieurs courants distincts :</p>
+      <ul class="liste-styled">
+        <li>Les <strong style="color:var(--or-pale)">Peroushim</strong> — attachés à la Torah orale et à la tradition des anciens.</li>
+        <li>Les <strong style="color:var(--or-pale)">Tsedouqim</strong> — liés à l'aristocratie sacerdotale, refusant la résurrection.</li>
+        <li>Les <strong style="color:var(--or-pale)">Zélotes</strong> — partisans d'une résistance armée contre Rome.</li>
+        <li>Les communautés du désert — comme celle de Qoumran — qui s'étaient retirées de la vie publique.</li>
+        <li>Les <strong style="color:var(--or-pale)">Natsarim</strong> — les tal'midim de Yahushuʿaḥ, considérés comme un courant particulier au sein du judaïsme du premier siècle.</li>
+      </ul>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Dispersion des Yehoudim dans les nations</p>
+      <p>Une part significative du peuple vivait déjà en dehors de la terre d'Yisra'el, dispersée dans les grandes villes de l'Empire romain — Alexandrie, Rome, Antioche, Corinthe — et plus loin encore vers l'est. Cette diaspora jouait un rôle important dans la diffusion des idées et constituera l'un des premiers terrains de l'expansion de la Besorah Towah.</p>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 3. LANGUES -->
+  <div class="section" id="langues">
+    <p class="section-label">Section 3</p>
+    <h2 class="section-title">Langues du premier siècle</h2>
+    <div class="section-line"></div>
+    <p>Le premier siècle était marqué par un plurilinguisme complexe. Plusieurs langues coexistaient dans la région, chacune ayant son rôle et son usage spécifique.</p>
+    <div class="langue-grid">
+      <div class="langue-card">
+        <p class="langue-nom">Ibri</p>
+        <p class="langue-desc">Langue sacrée des Ketubim Qadoshim, utilisée dans le culte, la prière et l'étude des textes. Certains écrits de l'Alliance Renouvelée reflètent une pensée profondément ibri même lorsqu'ils sont rédigés en grec.</p>
+      </div>
+      <div class="langue-card">
+        <p class="langue-nom">Araméen</p>
+        <p class="langue-desc">Langue vernaculaire de la population en Yehoudah et en Galil. Yahushuʿaḥ s'exprimait vraisemblablement en araméen dans ses enseignements quotidiens. Plusieurs expressions araméennes sont préservées dans les écrits grecs.</p>
+      </div>
+      <div class="langue-card">
+        <p class="langue-nom">Grec</p>
+        <p class="langue-desc">Langue commune de l'Empire romain — la koinè — utilisée pour la communication inter-régionale. La quasi-totalité des écrits de l'Alliance Renouvelée nous sont parvenus en grec, ce qui facilitait leur diffusion dans toutes les nations.</p>
+      </div>
+    </div>
+    <p style="margin-top:1.2rem">L'usage de ces différentes langues variait selon les contextes : le culte synagogal en ibri, la conversation quotidienne en araméen, la correspondance et la proclamation publique en grec. Cette réalité multilingue explique certaines nuances et difficultés de traduction rencontrées dans l'édition des Ketubim Qadoshim.</p>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 4. AUTEURS -->
+  <div class="section" id="auteurs">
+    <p class="section-label">Section 4</p>
+    <h2 class="section-title">Les auteurs de l'Alliance Renouvelée</h2>
+    <div class="section-line"></div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Présentation générale</p>
+      <p>Les écrits de l'Alliance Renouvelée proviennent de plusieurs auteurs distincts, liés par une foi commune en Yahushuʿaḥ Ha'Mashiyaḥ mais issus de milieux, de formations et de contextes très différents.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Diversité des profils</p>
+      <ul class="liste-styled">
+        <li><strong style="color:var(--or-pale)">Mattiyahu</strong> — collecteur d'impôts devenu tal'mid direct de Yahushuʿaḥ.</li>
+        <li><strong style="color:var(--or-pale)">Marqos</strong> — compagnon de Képha et de Šaʾoul, témoin indirect.</li>
+        <li><strong style="color:var(--or-pale)">Louqa</strong> — médecin de formation, compagnon de Šaʾoul, historien rigoureux.</li>
+        <li><strong style="color:var(--or-pale)">Yaḥuānān</strong> — tal'mid direct, témoin oculaire, auteur de cinq écrits.</li>
+        <li><strong style="color:var(--or-pale)">Šaʾoul</strong> — ancien Peroushi, formé à l'école de Gamli'el, auteur de la majorité des lettres.</li>
+        <li><strong style="color:var(--or-pale)">Képha</strong> — pêcheur, premier tal'mid appelé, pilier de la première assemblée.</li>
+        <li><strong style="color:var(--or-pale)">Yaʿaqov</strong> — frère de Yahushuʿaḥ, responsable de l'assemblée de Yarushalayim.</li>
+        <li><strong style="color:var(--or-pale)">Yehoudah</strong> — frère de Yahushuʿaḥ, auteur d'une courte mais dense exhortation.</li>
+      </ul>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Témoins directs et indirects</p>
+      <p>Certains auteurs ont été des témoins directs de la vie et de l'enseignement de Yahushuʿaḥ. D'autres, comme Louqa, ont rédigé leurs écrits après enquête et recueil de témoignages. Cette diversité de sources constitue une richesse pour la compréhension des événements et des enseignements transmis.</p>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 5. DESTINATAIRES -->
+  <div class="section" id="destinataires">
+    <p class="section-label">Section 5</p>
+    <h2 class="section-title">Les destinataires</h2>
+    <div class="section-line"></div>
+    <p>Les écrits de l'Alliance Renouvelée s'adressaient à des destinataires variés, ce qui explique en partie la diversité de leurs tons, styles et contenus.</p>
+    <ul class="liste-styled">
+      <li><strong style="color:var(--or-pale)">Assemblées locales</strong> — comme celles de Corinthe, d'Ephèse, de Philippes, de Thessalonique — qui recevaient des lettres répondant à leurs questions et difficultés spécifiques.</li>
+      <li><strong style="color:var(--or-pale)">Individus</strong> — tels que Timotheos, Titos et Philèmon — auxquels des instructions particulières et des encouragements personnels étaient adressés.</li>
+      <li><strong style="color:var(--or-pale)">Communautés dispersées</strong> — comme dans la lettre de Yaʿaqov ou les lettres de Képha — destinées aux tal'midim dispersés parmi les nations.</li>
+      <li><strong style="color:var(--or-pale)">Nations</strong> — la Besorah Towah était destinée à toutes les nations, conformément à l'envoi de Yahushuʿaḥ lui-même.</li>
+    </ul>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 6. ORGANISATION -->
+  <div class="section" id="organisation">
+    <p class="section-label">Section 6</p>
+    <h2 class="section-title">L'organisation des livres dans cette édition</h2>
+    <div class="section-line"></div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Pourquoi l'ordre traditionnel n'a pas été retenu</p>
+      <p>L'ordre traditionnel des livres de l'Alliance Renouvelée, bien qu'ancré dans l'histoire de la transmission des textes, ne reflète pas nécessairement l'ordre chronologique des événements ni celui de la rédaction des écrits. Il s'est constitué progressivement selon des critères qui ne correspondent pas toujours aux besoins pédagogiques du lecteur contemporain.</p>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Classement narratif adopté par La Voie</p>
+      <p>Dans cette édition, les livres sont présentés selon leur place dans le récit historique général :</p>
+      <ul class="liste-styled">
+        <li>D'abord, les quatre récits de la vie de Yahushuʿaḥ.</li>
+        <li>Puis le récit de l'expansion de la Qehilah naissante à travers les nations.</li>
+        <li>Ensuite, les premières lettres aux assemblées, ordonnées selon leur contexte historique.</li>
+        <li>Puis les lettres de captivité, les exhortations aux responsables et les écrits de Képha et Yehouda.</li>
+        <li>Enfin, les derniers écrits de Yaḥuānān, qui viennent conclure l'Alliance Renouvelée.</li>
+      </ul>
+    </div>
+
+    <div class="sous-section">
+      <p class="sous-titre">Avantages pédagogiques</p>
+      <p>Cette approche permet au lecteur de suivre le fil de l'histoire, de comprendre le développement progressif des assemblées et de situer chaque lettre dans son contexte. Elle favorise une lecture cohérente et une meilleure compréhension des liens entre les différents écrits.</p>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 7. THÈMES -->
+  <div class="section" id="themes">
+    <p class="section-label">Section 7</p>
+    <h2 class="section-title">Les thèmes majeurs de l'Alliance Renouvelée</h2>
+    <div class="section-line"></div>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <p class="theme-num">Thème I</p>
+        <p class="theme-titre">Venue de Yahushuʿaḥ</p>
+        <p class="theme-desc">L'incarnation, l'enseignement, les miracles, la mort et la résurrection de Yahushuʿaḥ Ha'Mashiyaḥ constituent le cœur et le fondement de tout l'édifice scripturaire de l'Alliance Renouvelée.</p>
+      </div>
+      <div class="theme-card">
+        <p class="theme-num">Thème II</p>
+        <p class="theme-titre">Expansion de la Besorah Towah</p>
+        <p class="theme-desc">La proclamation de la Besorah Towah — la Bonne Nouvelle — à toutes les nations, depuis Yarushalayim jusqu'aux extrémités de la terre, est le mouvement central qui anime les récits et les lettres.</p>
+      </div>
+      <div class="theme-card">
+        <p class="theme-num">Thème III</p>
+        <p class="theme-titre">Développement des assemblées</p>
+        <p class="theme-desc">La naissance, l'organisation, les difficultés et la croissance des premières Qehilot constituent un thème central des lettres, révélant la réalité concrète de la vie communautaire des premiers tal'midim.</p>
+      </div>
+      <div class="theme-card">
+        <p class="theme-num">Thème IV</p>
+        <p class="theme-titre">Exhortations aux croyants</p>
+        <p class="theme-desc">Une grande partie des écrits contient des appels à la fidélité, à la sainteté, à l'amour fraternel, à la persévérance et à la mise en pratique du Dabar — reflet de la vocation de chaque tal'mid.</p>
+      </div>
+      <div class="theme-card">
+        <p class="theme-num">Thème V</p>
+        <p class="theme-titre">Espérance future</p>
+        <p class="theme-desc">L'espérance du retour de Yahushuʿaḥ, de la résurrection et de l'accomplissement définitif des promesses de Yahawah traverse l'ensemble des écrits et constitue l'horizon vers lequel tout converge.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 8. UTILISATION -->
+  <div class="section" id="utilisation">
+    <p class="section-label">Section 8</p>
+    <h2 class="section-title">Comment utiliser cette édition</h2>
+    <div class="section-line"></div>
+    <ul class="liste-styled">
+      <li><strong style="color:var(--or-pale)">Lecture continue</strong> — Les livres peuvent être lus dans l'ordre proposé par cette édition, afin de suivre le fil narratif depuis la venue de Yahushuʿaḥ jusqu'aux derniers écrits de Yaḥuānān.</li>
+      <li><strong style="color:var(--or-pale)">Étude thématique</strong> — Le lecteur peut également choisir d'étudier les textes selon des thèmes particuliers, en se servant de la table des livres et des références croisées pour rassembler les passages pertinents.</li>
+      <li><strong style="color:var(--or-pale)">Utilisation du Lexique</strong> — Le Lexique officiel de La Voie fournit les définitions des termes ibri conservés dans le texte. Il constitue un outil indispensable pour les lecteurs souhaitant approfondir leur compréhension du vocabulaire restauré.</li>
+      <li><strong style="color:var(--or-pale)">Utilisation des notes</strong> — Les notes explicatives accompagnant certains passages visent à éclairer des difficultés linguistiques, historiques ou contextuelles. Elles ne constituent pas une interprétation définitive mais une aide à la réflexion.</li>
+      <li><strong style="color:var(--or-pale)">Vérification des références</strong> — Conformément à l'esprit de cette édition, le lecteur est encouragé à comparer les passages, à consulter les textes sources et à exercer son propre discernement à la lumière de l'ensemble des Ketubim Qadoshim.</li>
+    </ul>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- 9. CONCLUSION -->
+  <div class="section" id="conclusion">
+    <p class="section-label">Section 9</p>
+    <h2 class="section-title">Conclusion</h2>
+    <div class="section-line"></div>
+    <p>L'Alliance Renouvelée est un ensemble d'écrits d'une richesse exceptionnelle, portant témoignage de l'œuvre accomplie par Yahawah à travers Yahushuʿaḥ Ha'Mashiyaḥ et de la vie des premières communautés qui marchèrent dans la Voie.</p>
+    <p>Nous invitons chaque lecteur à aborder ces écrits avec respect, discernement et humilité. Non pas dans l'esprit de celui qui cherche à confirmer des idées préconçues, mais dans celui qui désire sincèrement examiner, comprendre et mettre en pratique ce que Yahawah a voulu transmettre à travers ces témoignages.</p>
+    <p>La connaissance des écrits n'est pas une fin en soi. Le but ultime est la transformation de la vie selon le Dabar, la marche dans la Voie de Yahushuʿaḥ et la fidélité au Nom de Yahawah.</p>
+    <div class="citation-box" style="margin-top:1.5rem">
+      <p>« Ne vous contentez pas d'entendre la Parole — mettez-la en pratique. »</p>
+      <span>— Yaʿaqov 1:22</span>
+    </div>
+    <div style="margin-top:2rem;text-align:right">
+      <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--or);opacity:0.75">Les Tal'midim de Yahushuʿaḥ</p>
+      <p style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;color:var(--or);opacity:0.55">La Voie · lavoie.world</p>
+    </div>
+  </div>
+
+  <!-- CITATION FINALE -->
+  <div class="citation-finale">
+    <p class="texte">« Examinez toutes choses ; retenez ce qui est bon. »</p>
+    <p class="ref">— 1 Thessalonikim 5:21</p>
+  </div>
+
+</div>
+
+<!-- TAB BAR -->
+<nav id="tab-bar">
+  <a href="index.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <span class="tab-label">Accueil</span>
+  </a>
+  <a href="tèks-pou-jounen-an.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+    <span class="tab-label">Ketubim</span>
+  </a>
+  <a href="radio.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+    <span class="tab-label">Radio</span>
+  </a>
+  <a href="rassemblements.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+    <span class="tab-label">Réunions</span>
+  </a>
+  <a href="kq.html" class="tab-item active">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="tab-label">Lexique</span>
+  </a>
+</nav>
+
+</body>
+</html>
