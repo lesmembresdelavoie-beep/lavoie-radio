@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>📻📺 La VR-TV — La Voie Radio-Télévision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bleu-nuit: #060d1e;
+  --bleu-royal: #0d2347;
+  --bleu-moyen: #1a3a6e;
+  --or: #c9a84c;
+  --or-clair: #e8c96a;
+  --or-pale: #f5e6b8;
+  --parchemin: #e8f0f8;
+  --parchemin2: #d0dff0;
+  --texte: #0a0f1a;
+  --argent: #b8c8dc;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--bleu-nuit);
+  color: var(--parchemin);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(6,13,30,0.95);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--or);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+
+.nav-logo img { height: 36px; }
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--parchemin2);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--or-clair); opacity: 1; }
+
+.nav-cta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--bleu-nuit);
+  background: var(--or);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--or-clair); }
+
+/* ── HERO VR-TV ── */
+.vrtv-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(13,35,71,0.6) 0%, transparent 50%),
+    linear-gradient(180deg, #04080f 0%, #060d1e 50%, #0a1428 100%);
+}
+
+.vrtv-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(201,168,76,0.01) 2px,
+    rgba(201,168,76,0.01) 4px
+  );
+  pointer-events: none;
+}
+
+.vrtv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--or);
+  text-transform: uppercase;
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.4rem 1.2rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  background: rgba(201,168,76,0.05);
+}
+
+.live-dot {
+  width: 7px; height: 7px;
+  background: #e63;
+  border-radius: 50%;
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.vrtv-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  color: var(--or-clair);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(201,168,76,0.2);
+}
+
+.vrtv-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: var(--or);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.vrtv-desc {
+  max-width: 600px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--argent);
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+.vrtv-icons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.vrtv-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.vrtv-icon-item:hover { opacity: 1; }
+
+.vrtv-icon-item span:first-child { font-size: 2rem; }
+
+.vrtv-icon-item span:last-child {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--or);
+  text-transform: uppercase;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+}
+
+.divider-ornament {
+  font-size: 1rem;
+  color: var(--or);
+  opacity: 0.6;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--or);
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--or-clair);
+  letter-spacing: 0.05em;
+}
+
+/* ── EN DIRECT ── */
+.direct-card {
+  background: linear-gradient(135deg, rgba(13,35,71,0.8), rgba(6,13,30,0.9));
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 4px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.direct-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+}
+
+.radio-player {
+  width: 100%;
+  max-width: 500px;
+}
+
+.radio-player audio {
+  width: 100%;
+  filter: sepia(0.3) saturate(0.8);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bleu-nuit);
+  background: var(--or);
+  padding: 0.8rem 2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover { background: var(--or-clair); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--or);
+  background: transparent;
+  padding: 0.75rem 1.8rem;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.4);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover { border-color: var(--or); color: var(--or-clair); }
+
+/* ── GRILLES ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+/* ── CARDS ── */
+.card {
+  background: rgba(13,35,71,0.5);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 3px;
+  padding: 1.8rem;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-2px);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+}
+
+.card-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--or-clair);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--argent);
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* ── ÉMISSIONS ── */
+.emission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.emission-card {
+  background: rgba(6,13,30,0.8);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 3px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+
+.emission-card:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.5);
+}
+
+.emission-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+
+.emission-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--or);
+  text-transform: uppercase;
+}
+
+/* ── ARCHIVES ── */
+.archives-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--argent);
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab.active, .tab:hover {
+  background: rgba(201,168,76,0.1);
+  border-color: rgba(201,168,76,0.5);
+  color: var(--or-clair);
+}
+
+/* ── LAVOIMEET ── */
+.meet-section {
+  background: linear-gradient(135deg, rgba(13,35,71,0.6), rgba(6,13,30,0.8));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+/* ── SOUTENIR ── */
+.soutenir-section {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(6,13,30,0.9));
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 4px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.soutenir-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+}
+
+.soutenir-text {
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--argent);
+  font-style: italic;
+}
+
+/* ── AVENIR ── */
+.avenir-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.avenir-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  background: rgba(13,35,71,0.3);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 3px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.avenir-item:hover { opacity: 1; }
+
+.avenir-item span:first-child { font-size: 1.3rem; }
+
+.avenir-item span:last-child {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--or);
+  text-transform: uppercase;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(201,168,76,0.4);
+  letter-spacing: 0.1em;
+  font-family: 'Cinzel', serif;
+}
+
+/* ── SÉPARATEUR DÉCORATIF ── */
+.sep {
+  text-align: center;
+  color: rgba(201,168,76,0.3);
+  font-size: 0.7rem;
+  letter-spacing: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* ── RESPONSIVE MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 0.8rem 1.2rem; }
+  .nav-links { display: none; }
+  .vrtv-hero { padding: 6rem 1.2rem 3rem; }
+  .section { padding: 3rem 1.2rem; }
+  .direct-card { padding: 1.5rem; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .emission-grid { grid-template-columns: repeat(2, 1fr); }
+  .avenir-grid { grid-template-columns: repeat(2, 1fr); }
+  .archives-tabs { gap: 0.4rem; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vrtv-badge { animation: fadeUp 0.6s ease both; }
+.vrtv-title { animation: fadeUp 0.6s 0.1s ease both; }
+.vrtv-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
+.vrtv-desc { animation: fadeUp 0.6s 0.3s ease both; }
+.vrtv-icons { animation: fadeUp 0.6s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo-site.jpg" alt="La Voie" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none">LA VOIE</span>
+    <span style="font-size:0.6rem;color:var(--or);opacity:0.6;display:block;letter-spacing:0.3em">LAVOIE.WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+    <li><a href="lexique.html">Lexique</a></li>
+    <li><a href="radio.html">Radio</a></li>
+    <li><a href="vr-tv.html" class="active">📻📺 La VR-TV</a></li>
+    <li><a href="calendrier.html">Calendrier</a></li>
+  </ul>
+  <a href="qui-sommes-nous.html" class="nav-cta">Rejoindre</a>
+</nav>
+
+<!-- HERO -->
+<section class="vrtv-hero">
+  <div class="vrtv-badge">
+    <div class="live-dot"></div>
+    Les Membres de La Voie · Pôle Audiovisuel
+  </div>
+  <h1 class="vrtv-title">📻📺 La VR-TV</h1>
+  <p class="vrtv-subtitle">La Voie Radio-Télévision</p>
+  <p class="vrtv-desc">
+    Centre officiel de diffusion des émissions, enseignements, annonces
+    et productions audiovisuelles de Les Membres de La Voie.
+  </p>
+  <div class="vrtv-icons">
+    <div class="vrtv-icon-item"><span>📡</span><span>En direct</span></div>
+    <div class="vrtv-icon-item"><span>📺</span><span>Productions</span></div>
+    <div class="vrtv-icon-item"><span>🎙️</span><span>Émissions</span></div>
+    <div class="vrtv-icon-item"><span>📚</span><span>Archives</span></div>
+    <div class="vrtv-icon-item"><span>🎥</span><span>LaVoieMeet</span></div>
+  </div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+    <a href="#direct" class="btn-primary">▶ Écouter maintenant</a>
+    <a href="#emissions" class="btn-secondary">Voir les émissions</a>
+  </div>
+</section>
+
+<!-- EN DIRECT -->
+<section class="section" id="direct">
+  <div class="section-header">
+    <div class="section-eyebrow">Diffusion continue</div>
+    <h2 class="section-title">📡 En Direct</h2>
+  </div>
+  <div class="direct-card">
+    <div class="vrtv-badge">
+      <div class="live-dot"></div>
+      La Voie Radio — En diffusion
+    </div>
+    <div class="radio-player">
+      <audio controls preload="none">
+        <source src="https://stream.citrus3.com:8062/stream" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio HTML5.
+      </audio>
+    </div>
+    <a href="https://stream.citrus3.com:8062/stream" class="btn-primary" target="_blank">▶ Écouter maintenant</a>
+    <p style="font-size:0.85rem;color:var(--argent);opacity:0.6;font-style:italic;">
+      Diffusions en direct des Mo'edim et événements spéciaux à venir
+    </p>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- DERNIÈRES PRODUCTIONS -->
+<section class="section" id="productions">
+  <div class="section-header">
+    <div class="section-eyebrow">Nouveautés</div>
+    <h2 class="section-title">📺 Dernières Productions</h2>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎬</div>
+      <div class="card-title">Tèks pou Jounen an</div>
+      <div class="card-desc">Méditation quotidienne sur les Ketubim Qadoshim dans leur identité ibriyim originelle.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📖</div>
+      <div class="card-title">Enseignement · Shavuôt</div>
+      <div class="card-desc">Les 50 jours de la Omer jusqu'à Shavuôt — signification et accomplissement.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🕎</div>
+      <div class="card-title">Annonce officielle</div>
+      <div class="card-desc">Calendrier des Mo'edim 5786 — dates et célébrations à venir pour la Qehilah.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎵</div>
+      <div class="card-title">Cantique · Psalm 92</div>
+      <div class="card-desc">Li Bon Pou N Chante Pou Yah — production musicale La Voie.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- ÉMISSIONS -->
+<section class="section" id="emissions">
+  <div class="section-header">
+    <div class="section-eyebrow">Programmation</div>
+    <h2 class="section-title">🎙️ Émissions</h2>
+  </div>
+  <div class="emission-grid">
+    <a href="teks-pou-jounen-an.html" class="emission-card">
+      <div class="emission-icon">📜</div>
+      <div class="emission-name">Tèks pou Jounen an</div>
+    </a>
+    <a href="#" class="emission-card">
+      <div class="emission-icon">📖</div>
+      <div class="emission-name">Enseignements</div>
+    </a>
+    <a href="#" class="emission-card">
+      <div class="emission-icon">🎤</div>
+      <div class="emission-name">Discours</div>
+    </a>
+    <a href="#" class="emission-card">
+      <div class="emission-icon">🙏</div>
+      <div class="emission-name">Téfilot</div>
+    </a>
+    <a href="#" class="emission-card">
+      <div class="emission-icon">🎵</div>
+      <div class="emission-name">Cantiques</div>
+    </a>
+    <a href="#" class="emission-card">
+      <div class="emission-icon">📢</div>
+      <div class="emission-name">Annonces</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- ARCHIVES -->
+<section class="section" id="archives">
+  <div class="section-header">
+    <div class="section-eyebrow">Médiathèque</div>
+    <h2 class="section-title">📚 Archives</h2>
+  </div>
+  <div class="archives-tabs">
+    <button class="tab active">Tout</button>
+    <button class="tab">2026</button>
+    <button class="tab">2025</button>
+    <button class="tab">Audio</button>
+    <button class="tab">Vidéo</button>
+    <button class="tab">Enseignements</button>
+    <button class="tab">Mo'edim</button>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🗂️</div>
+      <div class="card-title">Shavuôt 5786</div>
+      <div class="card-desc">Archives complètes des émissions et enseignements du Chag haBikkurim.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗂️</div>
+      <div class="card-title">Pessah 5786</div>
+      <div class="card-desc">Se'oudat ha'Adôn · Zikaron — archives de la célébration du 14 Abib.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗂️</div>
+      <div class="card-title">Tèks quotidiens</div>
+      <div class="card-desc">Collection complète des méditations quotidiennes de La Voie.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- LAVOIMEET -->
+<section class="section" id="meet">
+  <div class="section-header">
+    <div class="section-eyebrow">Réunions virtuelles</div>
+    <h2 class="section-title">🎥 LaVoieMeet</h2>
+  </div>
+  <div class="meet-section">
+    <div style="font-size:3rem;margin-bottom:1rem;">🎥</div>
+    <h3 style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--or-clair);margin-bottom:1rem;">
+      Réunions virtuelles de La Qehilah
+    </h3>
+    <p style="max-width:500px;margin:0 auto 2rem;font-size:1rem;color:var(--argent);line-height:1.7;font-style:italic;">
+      Rejoignez les assemblées virtuelles, les études de groupe et les célébrations des Mo'edim en ligne avec Les Membres de La Voie.
+    </p>
+    <a href="https://meet.jit.si/LaVoieMeet" target="_blank" class="btn-primary">
+      🎥 Rejoindre une réunion
+    </a>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- AVENIR -->
+<section class="section" id="avenir">
+  <div class="section-header">
+    <div class="section-eyebrow">Vision · Architecture future</div>
+    <h2 class="section-title">🌟 À Venir</h2>
+  </div>
+  <div class="avenir-grid">
+    <div class="avenir-item"><span>📺</span><span>TéléLaVoie</span></div>
+    <div class="avenir-item"><span>🎙️</span><span>Podcasts</span></div>
+    <div class="avenir-item"><span>📡</span><span>Directs vidéo</span></div>
+    <div class="avenir-item"><span>▶️</span><span>Chaîne YouTube</span></div>
+    <div class="avenir-item"><span>🕎</span><span>Mo'edim spéciaux</span></div>
+    <div class="avenir-item"><span>📚</span><span>Archives multimédias</span></div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- SOUTENIR -->
+<section class="section" id="soutenir">
+  <div class="soutenir-section">
+    <div style="font-size:2.5rem;margin-bottom:1rem;">🤲</div>
+    <h2 style="font-family:'Cinzel',serif;font-size:1.5rem;color:var(--or-clair);letter-spacing:0.05em;margin-bottom:0.5rem;">
+      Soutenir La VR-TV
+    </h2>
+    <p class="soutenir-text">
+      Les contributions volontaires soutiennent La VR-TV, La Voie Radio, les publications,
+      les réunions virtuelles et les projets de diffusion.
+    </p>
+    <a href="https://buy.stripe.com/dRm8wI2ag8PA9qZeCPao800" target="_blank" class="btn-primary">
+      🤲 Contribuer volontairement
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="sep">✦ · ✦ · ✦</div>
+  <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · La VR-TV</p>
+</footer>
+
+<script>
+// Tabs archives
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
