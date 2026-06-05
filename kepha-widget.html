@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Képha Widget Test</title>
+  <style>
+    body { background: #0b1220; font-family: Georgia, serif; }
+
+    /* ── BOUTON KÉPHA ── */
+    #kepha-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a2e5a, #0b1220);
+      border: 2px solid #c8a84b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(200,168,75,0.3);
+      transition: all 0.3s;
+    }
+    #kepha-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(200,168,75,0.45);
+    }
+    #kepha-btn svg { width: 26px; height: 26px; }
+
+    /* Badge notification */
+    #kepha-badge {
+      position: absolute;
+      top: -4px; right: -4px;
+      width: 18px; height: 18px;
+      background: #c8a84b;
+      border-radius: 50%;
+      font-size: 10px;
+      color: #0b1220;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ── FENÈT CHAT ── */
+    #kepha-window {
+      position: fixed;
+      bottom: 6rem;
+      right: 2rem;
+      z-index: 999;
+      width: 360px;
+      max-height: 520px;
+      background: #0b1220;
+      border: 1px solid rgba(200,168,75,0.35);
+      border-top: 3px solid #c8a84b;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    #kepha-window.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Header */
+    .kepha-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid rgba(200,168,75,0.18);
+      background: rgba(26,46,90,0.4);
+    }
+    .kepha-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .kepha-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c8a84b, #1a2e5a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      color: #0b1220;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .kepha-name {
+      font-family: 'Georgia', serif;
+      font-size: 0.9rem;
+      color: #e4c97e;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .kepha-status {
+      font-size: 0.7rem;
+      color: #c8a84b;
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .kepha-status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #27ae60;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .kepha-close {
+      background: none;
+      border: none;
+      color: #c8a84b;
+      opacity: 0.6;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      transition: opacity 0.2s;
+    }
+    .kepha-close:hover { opacity: 1; }
+
+    /* Messages zone */
+    .kepha-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      max-height: 320px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(200,168,75,0.3) transparent;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      font-family: Georgia, serif;
+    }
+    .msg.kepha {
+      background: rgba(26,46,90,0.5);
+      border-left: 2px solid #c8a84b;
+      color: #f8f3e8;
+      align-self: flex-start;
+    }
+    .msg.user {
+      background: rgba(200,168,75,0.12);
+      border: 1px solid rgba(200,168,75,0.25);
+      color: #f8f3e8;
+      align-self: flex-end;
+      text-align: right;
+    }
+    .msg.typing {
+      background: rgba(26,46,90,0.5);
+      border-left: 2px solid #c8a84b;
+      color: #c8a84b;
+      align-self: flex-start;
+      font-style: italic;
+      font-size: 0.82rem;
+      opacity: 0.8;
+    }
+
+    /* Input zone */
+    .kepha-input-zone {
+      padding: 0.8rem 1rem;
+      border-top: 1px solid rgba(200,168,75,0.18);
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-end;
+    }
+    #kepha-input {
+      flex: 1;
+      background: rgba(26,46,90,0.3);
+      border: 1px solid rgba(200,168,75,0.25);
+      color: #f8f3e8;
+      padding: 0.6rem 0.9rem;
+      font-family: Georgia, serif;
+      font-size: 0.88rem;
+      resize: none;
+      max-height: 80px;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    #kepha-input:focus { border-color: rgba(200,168,75,0.6); }
+    #kepha-input::placeholder { color: rgba(248,243,232,0.35); }
+
+    #kepha-send {
+      background: #c8a84b;
+      border: none;
+      color: #0b1220;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+      font-size: 1rem;
+    }
+    #kepha-send:hover { background: #e4c97e; }
+    #kepha-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .kepha-footer {
+      padding: 0.4rem 1rem;
+      text-align: center;
+      font-size: 0.65rem;
+      color: rgba(200,168,75,0.4);
+      font-family: Georgia, serif;
+      letter-spacing: 0.05em;
+      border-top: 1px solid rgba(200,168,75,0.08);
+    }
+
+    @media (max-width: 480px) {
+      #kepha-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
+      #kepha-btn { right: 1rem; bottom: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOUTON KÉPHA -->
+<div id="kepha-btn" onclick="kephaToggle()" title="Parler avec Képha">
+  <span id="kepha-badge">1</span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="1.8">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</div>
+
+<!-- FENÈT CHAT -->
+<div id="kepha-window">
+
+  <div class="kepha-header">
+    <div class="kepha-header-left">
+      <div class="kepha-avatar">כ</div>
+      <div>
+        <div class="kepha-name">Képha</div>
+        <div class="kepha-status">
+          <span class="kepha-status-dot"></span>
+          Assistant de La Voie
+        </div>
+      </div>
+    </div>
+    <button class="kepha-close" onclick="kephaToggle()">✕</button>
+  </div>
+
+  <div class="kepha-messages" id="kepha-messages">
+    <!-- Message de bienvenue -->
+    <div class="msg kepha" id="welcome-msg">
+      Shalom ! Je suis Képha, l'assistant de La Voie.<br><br>
+      Posez-moi vos questions sur les Ketubim Qadoshim, Yahawah, Yahushuʿah Ha'Mashiaḥ, le calendrier, les Moʿadim ou tout autre sujet lié à La Voie. Je détecte automatiquement votre langue. 🕊️
+    </div>
+  </div>
+
+  <div class="kepha-input-zone">
+    <textarea
+      id="kepha-input"
+      placeholder="Posez votre question..."
+      rows="1"
+      onkeydown="kephaKeydown(event)"
+      oninput="kephaAutoResize(this)"
+    ></textarea>
+    <button id="kepha-send" onclick="kephaEnvoyer()" title="Envoyer">➤</button>
+  </div>
+
+  <div class="kepha-footer">lavoie.world · Képha v1</div>
+</div>
+
+<script>
+  let kephaOuvert = false;
+  let kephaHistoire = [];
+  let kephaEnCours = false;
+
+  const SYSTEM_PROMPT = `Tu es Képha, l'assistant officiel de La Voie (lavoie.world).
+
+IDENTITÉ :
+- Tu es un assistant doux, pédagogique et fidèle aux enseignements de La Voie
+- Tu réponds TOUJOURS dans la langue de l'utilisateur (français, créole haïtien, anglais, espagnol, etc.)
+- Tu détectes automatiquement la langue et y réponds
+
+VOCABULAIRE OBLIGATOIRE — utilise TOUJOURS ces termes :
+- Yahawah (jamais: Dieu, Seigneur, l'Éternel)
+- Yahushuʿah Ha'Mashiaḥ (jamais: Jésus, Jésus-Christ)
+- Rouaḥ Ha'Qadosh (jamais: Saint-Esprit)
+- Ketubim Qadoshim (jamais: Bible, Écriture sainte)
+- Qehilah (jamais: Église)
+- Tal'midim (jamais: disciples, chrétiens)
+- Besorah Tobah (jamais: Évangile)
+- Malkouwt (jamais: Royaume)
+- Shamayim (jamais: Ciel)
+- Téfilah / Hitpalel (jamais: prière / prier)
+- Tebilah / Thabalé (jamais: baptême / baptisé)
+- Emounah (jamais: foi)
+- Devyasyon (jamais: péché)
+- Néfèsh (jamais: âme)
+- Mal'ak / Mal'akim (jamais: ange / anges)
+- Kabôd (jamais: gloire)
+- ʿÈts / Poteau de supplice (jamais: croix)
+- Nabiʾ / Nabiʾim (jamais: prophète)
+- Besorah Tobah (jamais: évangile)
+- Moshiaḥ (jamais: Sauveur)
+- Qadoshout (jamais: sainteté)
+- Berit Ḥadashah (jamais: Nouveau Testament)
+- Berit Meḥoudashah (jamais: Ancien Testament)
+- Roḥanit (jamais: spirituel)
+- Akh / Akhim (jamais: frère / frères)
+- Akhot / Akhayot (jamais: sœur / sœurs)
+- Shalôm (pour salutation et paix scripturaire)
+- Tranquillité (pour paix dans contexte pastoral)
+
+DOMAINES DE CONNAISSANCE :
+- Les Ketubim Qadoshim (Berit Meḥoudashah et Berit Ḥadashah)
+- Les enseignements de La Voie
+- Le calendrier lunisolaire (1 Abib = 20 mars 2026)
+- Les Moʿadim : Pessah (14 Abib), Shabuʿot (6 Siban), Sukkôt (15-21 Tishri)
+- Le lexique restauré de La Voie
+- Les 12 mois : Abib, Ziw, Siban, Rebiʿi, Ab, Eloul, Ethanim, Boul, Kislew, Tebeth, Shebat, Adar
+
+RÈGLES :
+- Réponds toujours avec douceur, précision et fidélité aux Ketubim Qadoshim
+- Si tu ne sais pas, dis-le honnêtement
+- Commence toujours par Shalôm si c'est la première interaction
+- Sois concis mais complet
+- N'invente jamais de versets ou citations`;
+
+  function kephaToggle() {
+    kephaOuvert = !kephaOuvert;
+    const win = document.getElementById('kepha-window');
+    win.classList.toggle('open', kephaOuvert);
+    if (kephaOuvert) {
+      document.getElementById('kepha-badge').style.display = 'none';
+      document.getElementById('kepha-input').focus();
+    }
+  }
+
+  function kephaKeydown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      kephaEnvoyer();
+    }
+  }
+
+  function kephaAutoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+  }
+
+  function kephaAjouterMsg(texte, type) {
+    const zone = document.getElementById('kepha-messages');
+    const div = document.createElement('div');
+    div.className = `msg ${type}`;
+    div.innerHTML = texte.replace(/\n/g, '<br>');
+    zone.appendChild(div);
+    zone.scrollTop = zone.scrollHeight;
+    return div;
+  }
+
+  async function kephaEnvoyer() {
+    if (kephaEnCours) return;
+    const input = document.getElementById('kepha-input');
+    const question = input.value.trim();
+    if (!question) return;
+
+    // Afficher message utilisateur
+    kephaAjouterMsg(question, 'user');
+    input.value = '';
+    input.style.height = 'auto';
+
+    // Ajouter à l'historique
+    kephaHistoire.push({ role: 'user', content: question });
+
+    // Indicateur de frappe
+    const typing = kephaAjouterMsg('Képha réfléchit...', 'typing');
+    kephaEnCours = true;
+    document.getElementById('kepha-send').disabled = true;
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: kephaHistoire
+        })
+      });
+
+      const data = await response.json();
+      const reponse = data.content[0].text;
+
+      // Supprimer indicateur frappe
+      typing.remove();
+
+      // Ajouter réponse Képha
+      kephaAjouterMsg(reponse, 'kepha');
+      kephaHistoire.push({ role: 'assistant', content: reponse });
+
+      // Limiter historique à 20 messages
+      if (kephaHistoire.length > 20) {
+        kephaHistoire = kephaHistoire.slice(-20);
+      }
+
+    } catch (err) {
+      typing.remove();
+      kephaAjouterMsg('Une erreur est survenue. Veuillez réessayer.', 'kepha');
+      console.error(err);
+    }
+
+    kephaEnCours = false;
+    document.getElementById('kepha-send').disabled = false;
+    document.getElementById('kepha-input').focus();
+  }
+</script>
+
+</body>
+</html>
