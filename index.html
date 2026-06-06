@@ -56,12 +56,12 @@
       display: flex; flex-direction: column; align-items: flex-end;
     }
     .clock-city {
-      font-family: 'Cinzel', serif; font-size: 0.42rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--or); opacity: 0.6;
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--or); opacity: 0.8;
     }
     .clock-time {
-      font-family: 'Cinzel', serif; font-size: 0.78rem;
+      font-family: 'Cinzel', serif; font-size: 0.92rem;
       color: var(--or-clair); letter-spacing: 0.05em;
     }
 
@@ -472,17 +472,17 @@
   <!-- TOP BAR -->
   <div id="top-bar">
     <div id="top-date">
-      <span class="ibri-date" id="ibri-date">...</span>
-      <span class="greg-date" id="greg-date">...</span>
+      <span class="ibri-date" id="ibri-date">19 Siban</span>
+      <span class="greg-date" id="greg-date">Swa 5 jen → Swa 6 jen 2026</span>
     </div>
     <div id="top-clocks">
       <div class="clock-item">
         <span class="clock-city">Yeroushalaim</span>
-        <span class="clock-time" id="clock-jer">--:--</span>
+        <span class="clock-time" id="clock-jer">00:00</span>
       </div>
       <div class="clock-item">
         <span class="clock-city">Indianapolis</span>
-        <span class="clock-time" id="clock-ind">--:--</span>
+        <span class="clock-time" id="clock-ind">00:00</span>
       </div>
     </div>
   </div>
@@ -748,12 +748,18 @@
 
   <script>
   // HORLOGES
+  function pad(n){return String(n).padStart(2,'0');}
   function updateClocks() {
     const now = new Date();
-    document.getElementById('clock-jer').textContent = new Intl.DateTimeFormat('fr-FR',{timeZone:'Asia/Jerusalem',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
-    document.getElementById('clock-ind').textContent = new Intl.DateTimeFormat('fr-FR',{timeZone:'America/Indiana/Indianapolis',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    // Yeroushalaim: UTC+3 (DST)
+    const jer = new Date(utc + 3 * 3600000);
+    // Indianapolis: UTC-4 (EDT)
+    const ind = new Date(utc - 4 * 3600000);
+    document.getElementById('clock-jer').textContent = pad(jer.getHours())+':'+pad(jer.getMinutes());
+    document.getElementById('clock-ind').textContent = pad(ind.getHours())+':'+pad(ind.getMinutes());
   }
-  updateClocks(); setInterval(updateClocks, 10000);
+  updateClocks(); setInterval(updateClocks, 5000);
 
   // ── TÈKS JOUNEN AN ──
   (function() {
