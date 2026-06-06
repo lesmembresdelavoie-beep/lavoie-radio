@@ -750,23 +750,25 @@
   // HORLOGES
   function pad(n){return String(n).padStart(2,'0');}
   function getTimeInZone(tz) {
-    const now = new Date();
-    const parts = new Intl.DateTimeFormat('en-US', {
-      timeZone: tz, hour: 'numeric', minute: 'numeric',
-      hour12: false
-    }).formatToParts(now);
-    let h = '00', m = '00';
-    parts.forEach(p => {
-      if (p.type === 'hour') h = pad(parseInt(p.value) % 24);
-      if (p.type === 'minute') m = pad(p.value);
-    });
-    return h + ':' + m;
+    try {
+      const now = new Date();
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz, hour: 'numeric', minute: 'numeric', hour12: false
+      }).formatToParts(now);
+      let h='00', m='00';
+      parts.forEach(p=>{
+        if(p.type==='hour') h=pad(parseInt(p.value)%24);
+        if(p.type==='minute') m=pad(p.value);
+      });
+      return h+':'+m;
+    } catch(e) { return '--:--'; }
   }
   function updateClocks() {
     document.getElementById('clock-jer').textContent = getTimeInZone('Asia/Jerusalem');
     document.getElementById('clock-ind').textContent = getTimeInZone('America/Indiana/Indianapolis');
   }
-  updateClocks(); setInterval(updateClocks, 5000);
+  updateClocks();
+  setInterval(updateClocks, 1000);
 
   // ── TÈKS JOUNEN AN ──
   (function() {
