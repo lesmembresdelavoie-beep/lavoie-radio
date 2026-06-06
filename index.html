@@ -749,15 +749,22 @@
   <script>
   // HORLOGES
   function pad(n){return String(n).padStart(2,'0');}
-  function updateClocks() {
+  function getTimeInZone(tz) {
     const now = new Date();
-    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-    // Yeroushalaim: UTC+3 (DST)
-    const jer = new Date(utc + 3 * 3600000);
-    // Indianapolis: UTC-4 (EDT)
-    const ind = new Date(utc - 4 * 3600000);
-    document.getElementById('clock-jer').textContent = pad(jer.getHours())+':'+pad(jer.getMinutes());
-    document.getElementById('clock-ind').textContent = pad(ind.getHours())+':'+pad(ind.getMinutes());
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, hour: 'numeric', minute: 'numeric',
+      hour12: false
+    }).formatToParts(now);
+    let h = '00', m = '00';
+    parts.forEach(p => {
+      if (p.type === 'hour') h = pad(parseInt(p.value) % 24);
+      if (p.type === 'minute') m = pad(p.value);
+    });
+    return h + ':' + m;
+  }
+  function updateClocks() {
+    document.getElementById('clock-jer').textContent = getTimeInZone('Asia/Jerusalem');
+    document.getElementById('clock-ind').textContent = getTimeInZone('America/Indiana/Indianapolis');
   }
   updateClocks(); setInterval(updateClocks, 5000);
 
