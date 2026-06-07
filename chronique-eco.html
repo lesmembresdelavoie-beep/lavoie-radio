@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chronique Économique · La Voie Radio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f5e6b8;
+  --bleu:#060d1e;--rouge:#e63030;--blanc:#f0f4f8;--gris:#8899aa;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bleu)}
+
+/* FOND ANIMÉ */
+body{
+  background:
+    repeating-linear-gradient(90deg,rgba(201,168,76,0.03) 0px,rgba(201,168,76,0.03) 1px,transparent 1px,transparent 60px),
+    repeating-linear-gradient(0deg,rgba(201,168,76,0.03) 0px,rgba(201,168,76,0.03) 1px,transparent 1px,transparent 60px),
+    radial-gradient(ellipse at 20% 50%,rgba(13,35,71,0.8) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 50%,rgba(13,35,71,0.6) 0%,transparent 60%),
+    linear-gradient(180deg,#02050f 0%,#060d1e 40%,#0a1530 100%);
+  font-family:'Barlow Condensed',sans-serif;
+  position:relative;
+}
+
+/* SCAN LINE */
+body::after{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.15) 3px,rgba(0,0,0,0.15) 4px);
+  pointer-events:none;z-index:999;
+}
+
+/* BANDEAU LATERAL GAUCHE */
+.bande-g{
+  position:fixed;left:0;top:0;bottom:0;width:8px;
+  background:repeating-linear-gradient(45deg,var(--or) 0px,var(--or) 8px,transparent 8px,transparent 16px);
+  opacity:0.5;
+}
+.bande-d{
+  position:fixed;right:0;top:0;bottom:0;width:8px;
+  background:repeating-linear-gradient(-45deg,var(--or) 0px,var(--or) 8px,transparent 8px,transparent 16px);
+  opacity:0.5;
+}
+
+/* TOP BAR */
+.top-bar{
+  position:fixed;top:0;left:8px;right:8px;height:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.5rem;
+  background:rgba(2,5,15,0.9);
+  border-bottom:2px solid var(--or);
+  z-index:100;
+}
+.live-badge{
+  display:flex;align-items:center;gap:0.5rem;
+  font-family:'Bebas Neue',sans-serif;font-size:0.95rem;
+  letter-spacing:0.2em;color:var(--rouge);
+}
+.live-dot{
+  width:9px;height:9px;background:var(--rouge);border-radius:50%;
+  animation:blink 1s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px var(--rouge)}50%{opacity:0.2;box-shadow:none}}
+
+.top-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1.1rem;
+  letter-spacing:0.25em;color:var(--or-clair);
+}
+.top-clock{
+  font-family:'Barlow Condensed',sans-serif;font-size:1rem;
+  font-weight:600;letter-spacing:0.1em;color:var(--blanc);
+  opacity:0.8;
+}
+
+/* MAIN */
+main{
+  position:fixed;top:52px;left:8px;right:8px;bottom:36px;
+  display:flex;flex-direction:column;
+  padding:1rem 1.5rem;gap:0.8rem;
+}
+
+/* TITRE SECTION */
+.titre-section{
+  display:flex;align-items:center;gap:1rem;
+  animation:fadeIn 0.8s ease-out;
+}
+.titre-label{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  color:var(--or-clair);letter-spacing:0.08em;
+  text-shadow:0 0 30px rgba(201,168,76,0.3);
+  line-height:1;
+}
+.titre-sub{
+  font-size:0.75rem;font-weight:300;letter-spacing:0.2em;
+  color:var(--gris);text-transform:uppercase;margin-top:0.2rem;
+}
+.titre-sep{
+  flex:1;height:2px;
+  background:linear-gradient(to right,var(--or),transparent);
+  opacity:0.4;
+}
+.date-badge{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.7rem;font-weight:600;letter-spacing:0.15em;
+  color:var(--or);background:rgba(201,168,76,0.08);
+  border:1px solid rgba(201,168,76,0.2);
+  padding:0.3rem 0.8rem;white-space:nowrap;
+}
+
+/* GRILLE TAUX */
+.taux-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0.5rem;
+  animation:slideUp 0.6s ease-out 0.3s both;
+}
+@media(max-width:768px){.taux-grid{grid-template-columns:repeat(3,1fr)}}
+
+.taux-card{
+  background:rgba(13,35,71,0.5);
+  border:1px solid rgba(201,168,76,0.15);
+  border-top:2px solid var(--or);
+  padding:0.7rem 0.8rem;
+  position:relative;overflow:hidden;
+  transition:all 0.3s;
+}
+.taux-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,168,76,0.04),transparent);
+}
+.taux-card:hover{border-color:rgba(201,168,76,0.4);background:rgba(13,35,71,0.7)}
+
+.taux-paire{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.85rem;letter-spacing:0.15em;
+  color:var(--gris);margin-bottom:0.3rem;
+}
+.taux-valeur{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.3rem,2.5vw,1.8rem);
+  color:var(--blanc);line-height:1;
+}
+.taux-chg{
+  font-size:0.65rem;font-weight:600;letter-spacing:0.08em;
+  margin-top:0.2rem;
+}
+.up{color:#3ecf8e}.dn{color:#e63030}.neu{color:var(--gris)}
+.taux-source{
+  font-size:0.5rem;letter-spacing:0.1em;
+  color:var(--gris);opacity:0.5;margin-top:0.3rem;
+  text-transform:uppercase;
+}
+
+/* SECTION PRESENTER + ANALYSE */
+.mid-section{
+  flex:1;display:flex;gap:0.8rem;min-height:0;
+  animation:slideUp 0.6s ease-out 0.5s both;
+}
+
+/* ZONE PRESENTER */
+.presenter-zone{
+  width:55%;
+  background:rgba(6,13,30,0.8);
+  border:1px solid rgba(201,168,76,0.2);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.presenter-zone::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,transparent,var(--or),transparent);
+}
+.presenter-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  opacity:0.3;
+}
+.presenter-placeholder svg{width:60px;height:60px;fill:var(--or)}
+.presenter-placeholder p{
+  font-family:'Bebas Neue',sans-serif;font-size:0.8rem;
+  letter-spacing:0.2em;color:var(--or);
+}
+.presenter-label{
+  position:absolute;bottom:0.5rem;left:0.8rem;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.15em;
+  color:var(--or);background:rgba(2,5,15,0.8);
+  padding:0.15rem 0.5rem;text-transform:uppercase;
+}
+
+/* ANALYSE */
+.analyse-zone{
+  flex:1;display:flex;flex-direction:column;gap:0.5rem;
+}
+
+.segment{
+  flex:1;
+  background:rgba(13,35,71,0.4);
+  border:1px solid rgba(201,168,76,0.1);
+  border-left:3px solid var(--or);
+  padding:0.7rem 1rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.segment-titre{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.75rem;letter-spacing:0.2em;
+  color:var(--or);margin-bottom:0.3rem;
+}
+.segment-texte{
+  font-size:0.75rem;font-weight:300;line-height:1.5;
+  color:var(--blanc);opacity:0.75;
+}
+
+/* WAVEFORM */
+.waveform{
+  display:flex;align-items:center;gap:3px;
+  position:absolute;top:0.5rem;right:0.8rem;
+  opacity:0.6;
+}
+.waveform span{
+  display:block;width:3px;border-radius:2px;
+  background:var(--or);
+  animation:wave 1.4s ease-in-out infinite;
+}
+.waveform span:nth-child(1){height:8px;animation-delay:0s}
+.waveform span:nth-child(2){height:16px;animation-delay:0.1s}
+.waveform span:nth-child(3){height:24px;animation-delay:0.2s}
+.waveform span:nth-child(4){height:12px;animation-delay:0.3s}
+.waveform span:nth-child(5){height:20px;animation-delay:0.15s}
+.waveform span:nth-child(6){height:8px;animation-delay:0.25s}
+@keyframes wave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(0.3)}}
+
+/* TICKER BAS */
+.ticker-bar{
+  position:fixed;bottom:0;left:8px;right:8px;height:36px;
+  background:var(--or);
+  display:flex;align-items:center;overflow:hidden;
+  z-index:100;
+}
+.ticker-label{
+  font-family:'Bebas Neue',sans-serif;font-size:0.85rem;
+  letter-spacing:0.2em;color:var(--bleu);
+  padding:0 1rem;white-space:nowrap;
+  border-right:2px solid rgba(6,13,30,0.3);
+  background:rgba(0,0,0,0.15);height:100%;
+  display:flex;align-items:center;flex-shrink:0;
+}
+.ticker-track{
+  display:flex;align-items:center;
+  animation:ticker 30s linear infinite;
+  white-space:nowrap;
+}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.8rem;font-weight:700;letter-spacing:0.08em;
+  color:var(--bleu);padding:0 1.5rem;
+}
+.ticker-sep{color:rgba(6,13,30,0.4);padding:0 0.3rem}
+
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="bande-g"></div>
+<div class="bande-d"></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    EN DIRECT
+  </div>
+  <div class="top-logo">📻 LA VOIE RADIO</div>
+  <div class="top-clock" id="clock">--:--</div>
+</div>
+
+<main>
+  <!-- TITRE -->
+  <div class="titre-section">
+    <div>
+      <div class="titre-label">Chronique Économique</div>
+      <div class="titre-sub">Marchés · Devises · Analyse · Tendances</div>
+    </div>
+    <div class="titre-sep"></div>
+    <div class="date-badge" id="dateBadge">-- --- 2026</div>
+  </div>
+
+  <!-- TAUX DU JOUR -->
+  <div class="taux-grid" id="tauxGrid">
+    <div class="taux-card">
+      <div class="taux-paire">USD / HTG</div>
+      <div class="taux-valeur" id="usd-htg">...</div>
+      <div class="taux-chg neu" id="usd-htg-c">—</div>
+      <div class="taux-source">Marché informel</div>
+    </div>
+    <div class="taux-card">
+      <div class="taux-paire">EUR / HTG</div>
+      <div class="taux-valeur" id="eur-htg">...</div>
+      <div class="taux-chg neu" id="eur-htg-c">—</div>
+      <div class="taux-source">Marché formel</div>
+    </div>
+    <div class="taux-card">
+      <div class="taux-paire">CAD / HTG</div>
+      <div class="taux-valeur" id="cad-htg">...</div>
+      <div class="taux-chg neu" id="cad-htg-c">—</div>
+      <div class="taux-source">Marché formel</div>
+    </div>
+    <div class="taux-card">
+      <div class="taux-paire">USD / DOP</div>
+      <div class="taux-valeur" id="usd-dop">...</div>
+      <div class="taux-chg neu" id="usd-dop-c">—</div>
+      <div class="taux-source">RD</div>
+    </div>
+    <div class="taux-card">
+      <div class="taux-paire">USD / BRL</div>
+      <div class="taux-valeur" id="usd-brl">...</div>
+      <div class="taux-chg neu" id="usd-brl-c">—</div>
+      <div class="taux-source">Brésil</div>
+    </div>
+    <div class="taux-card">
+      <div class="taux-paire">USD / CLP</div>
+      <div class="taux-valeur" id="usd-clp">...</div>
+      <div class="taux-chg neu" id="usd-clp-c">—</div>
+      <div class="taux-source">Chili</div>
+    </div>
+  </div>
+
+  <!-- MID: PRESENTER + ANALYSE -->
+  <div class="mid-section">
+    <!-- ZONE PRÉSENTATEUR -->
+    <div class="presenter-zone">
+      <div class="waveform">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
+      <div class="presenter-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+        <p>Zone Présentateur</p>
+      </div>
+      <div class="presenter-label">🎙️ La Voie Radio — Chronique Économique</div>
+    </div>
+
+    <!-- ANALYSE -->
+    <div class="analyse-zone">
+      <div class="segment">
+        <div class="segment-titre">📊 Marché Formel</div>
+        <div class="segment-texte" id="seg-formel">Taux officiels BRH · Banques commerciales · Transferts formels</div>
+      </div>
+      <div class="segment">
+        <div class="segment-titre">🏪 Marché Informel</div>
+        <div class="segment-texte" id="seg-informel">Cambistes · Rue · Taux parallèle · Diaspora</div>
+      </div>
+      <div class="segment">
+        <div class="segment-titre">📈 Analyse du Jour</div>
+        <div class="segment-texte" id="seg-analyse">Chargement de l'analyse...</div>
+      </div>
+      <div class="segment">
+        <div class="segment-titre">🔮 Tendances</div>
+        <div class="segment-texte" id="seg-tendance">Surveillance des marchés en cours...</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">📡 TAUX EN DIRECT</div>
+  <div style="overflow:hidden;flex:1">
+    <div class="ticker-track" id="ticker">
+      <span class="ticker-item">USD/HTG <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">EUR/HTG <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">CAD/HTG <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">USD/DOP <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">USD/BRL <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">USD/CLP <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">La Voie Radio — Chronique Économique <span class="ticker-sep">◆</span></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// HORLOGE
+function pad(n){return('0'+n).slice(-2)}
+function updateClock(){
+  try{
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat('en-US',{
+      timeZone:'America/Indiana/Indianapolis',
+      hour:'numeric',minute:'numeric',second:'numeric',hour12:false
+    }).formatToParts(now);
+    let h='00',m='00',s='00';
+    parts.forEach(p=>{
+      if(p.type==='hour') h=pad(parseInt(p.value)%24);
+      if(p.type==='minute') m=pad(p.value);
+      if(p.type==='second') s=pad(p.value);
+    });
+    document.getElementById('clock').textContent = h+':'+m+':'+s;
+  }catch(e){}
+}
+setInterval(updateClock,1000); updateClock();
+
+// DATE
+const mois=['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Aoû','Sep','Oct','Nov','Déc'];
+const now = new Date();
+document.getElementById('dateBadge').textContent =
+  now.getDate()+' '+mois[now.getMonth()]+' '+now.getFullYear();
+
+// TAUX — API gratuite open.er-api.com
+async function loadRates(){
+  try{
+    const r = await fetch('https://open.er-api.com/v6/latest/USD');
+    const d = await r.json();
+    if(!d.rates) throw new Error('No rates');
+    const rates = d.rates;
+    
+    // HTG pas toujours disponible — fallback taux indicatif
+    const htg = rates.HTG || 130;
+    const eur = rates.EUR || 0.92;
+    const cad = rates.CAD || 1.36;
+    const dop = rates.DOP || 59;
+    const brl = rates.BRL || 5.1;
+    const clp = rates.CLP || 950;
+
+    document.getElementById('usd-htg').textContent = htg.toFixed(1);
+    document.getElementById('eur-htg').textContent = (htg/eur).toFixed(1);
+    document.getElementById('cad-htg').textContent = (htg/cad).toFixed(1);
+    document.getElementById('usd-dop').textContent = dop.toFixed(2);
+    document.getElementById('usd-brl').textContent = brl.toFixed(4);
+    document.getElementById('usd-clp').textContent = Math.round(clp);
+
+    // Ticker mete ajou
+    const ticker = document.getElementById('ticker');
+    const items = [
+      `USD/HTG ${htg.toFixed(1)}`,
+      `EUR/HTG ${(htg/eur).toFixed(1)}`,
+      `CAD/HTG ${(htg/cad).toFixed(1)}`,
+      `USD/DOP ${dop.toFixed(2)}`,
+      `USD/BRL ${brl.toFixed(4)}`,
+      `USD/CLP ${Math.round(clp)}`,
+      'La Voie Radio — Chronique Économique'
+    ];
+    ticker.innerHTML = items.map(i=>`<span class="ticker-item">${i} <span class="ticker-sep">◆</span></span>`).join('')
+      + items.map(i=>`<span class="ticker-item">${i} <span class="ticker-sep">◆</span></span>`).join('');
+
+    // Analyse
+    document.getElementById('seg-analyse').textContent =
+      `Le dollar américain s'échange à ${htg.toFixed(0)} HTG. L'euro à ${(htg/eur).toFixed(0)} HTG. Le dollar canadien à ${(htg/cad).toFixed(0)} HTG.`;
+    document.getElementById('seg-tendance').textContent =
+      `Surveillance continue · Dernière mise à jour: ${new Date().toLocaleTimeString('fr-FR')}`;
+
+  }catch(e){
+    // Fallback valeurs indicatives
+    document.getElementById('usd-htg').textContent = '130.0';
+    document.getElementById('eur-htg').textContent = '141.3';
+    document.getElementById('cad-htg').textContent = '95.6';
+    document.getElementById('usd-dop').textContent = '59.25';
+    document.getElementById('usd-brl').textContent = '5.1042';
+    document.getElementById('usd-clp').textContent = '950';
+    document.getElementById('seg-analyse').textContent = 'Données indicatives · Connexion API en cours...';
+  }
+}
+
+loadRates();
+setInterval(loadRates, 300000); // mete ajou chak 5 minit
+</script>
+</body>
+</html>
