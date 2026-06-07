@@ -916,5 +916,87 @@
   })();
   </script>
 
+
+  <!-- KÉPHA SCRIPT -->
+  <script>
+  // ── KÉPHA ──
+  const KEPHA_REP = {
+    'la voie': 'La Voie (הַדֶּרֶךְ) se yon Qehilah — yon asanble tal'midim — ki mache nan tras Yahushuʿaḥ Ha'Mashiyaḥ, an respèk ak Non Yahawah jan Ketubim Qadoshim yo revele l. ✦',
+    'qui sommes': 'Nou se Les Membres de La Voie — yon Qehilah ki chèche retounen nan rasin ibriy la, avèk Shemôth Qadoshim yo, kalandriye lunisolè a ak Ketubim Qadoshim yo. ✦',
+    'yahawah': 'Yahawah se Non sakre Kreyatè a, jan li parèt nan Ketubim Qadoshim yo. Nou pa itilize "Jéhovah" ni "Seigneur" — nou retounen nan fòm ibriy orijinal la: Yahawah. ✦',
+    'yahushuah': 'Yahushuʿaḥ se Non ibriy Sila nou rele Seigneur a. Sa vle di: "Yahawah delivre". Nou pa itilize "Jésus" — nou retounen nan fòm ibriy orijinal la. ✦',
+    'kalandriye': 'Kalandriye lunisolè ibriy La Voie ankoure sou 1 Abib = 20 mas 2026 (aswè). Jou a kòmanse aswè — selon Bereshit 1. Nou nan mwa Siban kounye a. ✦',
+    'siban': 'Siban se 3yèm mwa nan kalandriye ibriy La Voie. Shabouʿot te tonbe 6 Siban. Nou kalkile kalandriye a selon krwasan lalin ak Indianapolis kòm referans. ✦',
+    'radio': 'La Voie Radio difize ansèyman Ketubim Qadoshim, mizik lwanj ak proklamasyon Besorah Tobah — an fransè ak kreyòl — 24h/24 sou radio.lavoie.world ✦',
+    'ketubim': 'Ketubim Qadoshim se non nou bay sa lòt moun rele "Bib" la. Li vle di "Écrits Saints" an ibriy. Édition La Voie itilize non restaure yo pou tout pèsonaj ak kote yo. ✦',
+    'lexique': 'Lexique Officiel La Voie disponib sou lavoie.world/lexique.html — li gen tout vokabilè ibriy restaure nou itilize, tankou: Qehilah, Tal'mid, Teshoubah, Besorah Tobah... ✦',
+    'telegram': 'Telegram La Voie: https://t.me/lesmembresdelavoie — Rejwenn kominote a pou resevwa ansèyman, tèks jounen an ak nouvèl. ✦',
+    'shabbat': 'Shabbat kòmanse aswè 6yèm jou (vandredi) epi fini aswè 7yèm jou (samdi). Se jou repo Yahawah selon Bereshit 2:2-3 ak Devarim 5:12-15. ✦',
+    'shabouot': 'Shabouʿot (Pentekòt) te tonbe 6 Siban 5786 — aswè 23 me 2026. Se fèt rekòt premye fwi yo ak donn Torah la sou Sinay. ✦',
+    'teshoubah': 'Teshoubah vle di "retounen" — retounen bò kote Yahawah avèk tout kè nou. Li pa sèlman "repantans" — li enplike yon chanjman reyèl nan direksyon lavi nou. ✦',
+    'besorah': 'Besorah Tobah vle di "Bon Nouvèl" — sa lòt moun rele "Évangile". Se mesaj Malkuwt Yahawah ak delivrans ki soti atravè Yahushuʿaḥ Ha'Mashiyaḥ. ✦',
+    'offrande': 'Nou pa fè ladim obligatwa. Nou ankouraje ofrann volontè selon kè chak moun — selon 2 Qorintiyim 9:7. Lyen pou kontribye: lavoie.world/offrandes.html ✦',
+    'meteo': 'Paj météo La Voie disponib nan menu ≡ — li montre tan pou Haïti, USA (Indianapolis), Canada, France ak RD — ak alèt move tan an tan reyèl. ✦',
+    'chronique': 'Chronique Économique La Voie disponib nan menu ≡ — li montre taux USD/HTG, EUR/HTG, CAD/HTG ak lòt monnaie an tan reyèl. ✦',
+    'default': 'Mèsi pou kesyon ou a. Pou plis enfòmasyon, ou ka kontakte nou sou Telegram: t.me/lesmembresdelavoie — oswa eksplore sit la via menu ≡. ✦'
+  };
+
+  function kepha_reponn(msg) {
+    const m = msg.toLowerCase();
+    for(const [key, rep] of Object.entries(KEPHA_REP)) {
+      if(key !== 'default' && m.includes(key)) return rep;
+    }
+    return KEPHA_REP['default'];
+  }
+
+  function toggleKepha() {
+    const w = document.getElementById('kepha-window');
+    w.classList.toggle('open');
+    const notif = document.getElementById('kepha-notif');
+    if(notif) notif.style.display = 'none';
+  }
+
+  function addMsg(texte, who) {
+    const zone = document.getElementById('kepha-messages');
+    const div = document.createElement('div');
+    div.className = 'msg ' + who;
+    div.innerHTML = '<span class="msg-label">' + (who==='kepha'?'Képha':'Ou') + '</span><div class="msg-bubble">' + texte + '</div>';
+    zone.appendChild(div);
+    zone.scrollTop = zone.scrollHeight;
+  }
+
+  function sendMessage() {
+    const inp = document.getElementById('kepha-input');
+    const msg = inp.value.trim();
+    if(!msg) return;
+    addMsg(msg, 'user');
+    inp.value = '';
+    inp.style.height = 'auto';
+    setTimeout(() => {
+      const rep = kepha_reponn(msg);
+      addMsg(rep, 'kepha');
+    }, 400);
+  }
+
+  function sendSuggestion(btn) {
+    const msg = btn.textContent;
+    document.getElementById('kepha-input').value = msg;
+    sendMessage();
+    document.getElementById('kepha-suggestions').style.display = 'none';
+  }
+
+  function handleKey(e) {
+    if(e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 90) + 'px';
+  }
+  </script>
+
 </body>
 </html>
