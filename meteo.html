@@ -4,40 +4,131 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Météo · La Voie</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--argent:#b8c8dc}
-body{font-family:'EB Garamond',serif;background:var(--bleu);color:#e8f0f8;padding-bottom:80px}
+:root{
+  --or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;
+  --bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc;
+  --rouge:#e63030;--orange:#f07020;--vert:#3ecf8e;--jaune:#f5c518;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bleu);color:#e8f0f8;padding-bottom:80px;min-height:100vh}
 
+/* TOP BAR */
 #top-bar{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 1rem;z-index:500;backdrop-filter:blur(8px)}
 .back-btn{display:flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;color:var(--or);text-decoration:none;text-transform:uppercase;opacity:0.8}
 .back-btn svg{width:16px;height:16px}
 .page-title-top{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--or-clair);text-transform:uppercase}
 
-main{padding-top:72px;max-width:800px;margin:0 auto;padding-left:1.2rem;padding-right:1.2rem}
+main{padding-top:66px;max-width:900px;margin:0 auto;padding-left:1rem;padding-right:1rem}
 
-.page-header{text-align:center;padding:1.5rem 0 2rem}
+/* HEADER */
+.page-header{text-align:center;padding:1.5rem 0 1.2rem}
 .page-eyebrow{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.5rem}
-.page-h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,4vw,2.2rem);color:var(--or-clair);letter-spacing:0.08em}
+.page-h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--or-clair);letter-spacing:0.08em;margin-bottom:0.3rem}
+.last-update{font-size:0.72rem;color:var(--argent);opacity:0.5;font-style:italic}
 
-.meteo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
-@media(max-width:500px){.meteo-grid{grid-template-columns:1fr}}
+/* ALERTE GLOBALE */
+.alerte-banner{
+  background:linear-gradient(135deg,rgba(230,48,48,0.15),rgba(230,48,48,0.05));
+  border:1px solid rgba(230,48,48,0.4);border-left:4px solid var(--rouge);
+  padding:0.8rem 1.2rem;margin-bottom:1.2rem;display:none;
+  animation:pulse-border 2s ease-in-out infinite;
+}
+@keyframes pulse-border{0%,100%{border-left-color:var(--rouge)}50%{border-left-color:#ff6b6b}}
+.alerte-banner.active{display:flex;align-items:center;gap:0.8rem}
+.alerte-icon{font-size:1.4rem;flex-shrink:0}
+.alerte-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--rouge);text-transform:uppercase;margin-bottom:0.2rem}
+.alerte-desc{font-size:0.82rem;color:#e8f0f8;opacity:0.85}
 
-.meteo-card{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));border:1px solid rgba(201,168,76,0.2);border-top:3px solid var(--or);padding:1.4rem;text-align:center}
-.meteo-drapeau{font-size:2rem;margin-bottom:0.5rem}
-.meteo-ville{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;margin-bottom:0.3rem}
-.meteo-pays{font-size:0.75rem;color:var(--argent);opacity:0.6;margin-bottom:0.8rem}
-.meteo-temp{font-family:'Cinzel',serif;font-size:2.5rem;color:var(--or-clair);line-height:1}
-.meteo-desc{font-size:0.9rem;color:var(--argent);margin-top:0.3rem;font-style:italic}
-.meteo-details{display:flex;justify-content:center;gap:1rem;margin-top:0.8rem;font-size:0.75rem;color:var(--argent);opacity:0.7}
-.meteo-icon{font-size:1.8rem;margin-bottom:0.3rem}
-.loading{color:var(--or);opacity:0.5;font-style:italic;font-size:0.85rem}
+/* GRILLE PAYS */
+.pays-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1.2rem}
+@media(max-width:500px){.pays-grid{grid-template-columns:1fr}}
 
+.pays-card{
+  background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));
+  border:1px solid rgba(201,168,76,0.15);
+  border-top:3px solid var(--or);
+  padding:1.2rem;position:relative;overflow:hidden;
+  transition:border-color 0.3s;
+}
+.pays-card.alerte-rouge{border-top-color:var(--rouge);border-color:rgba(230,48,48,0.3)}
+.pays-card.alerte-orange{border-top-color:var(--orange);border-color:rgba(240,112,32,0.3)}
+.pays-card.alerte-jaune{border-top-color:var(--jaune);border-color:rgba(245,197,24,0.25)}
+
+.pays-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.8rem}
+.pays-info{display:flex;align-items:center;gap:0.6rem}
+.pays-drapeau{font-size:1.6rem}
+.pays-nom{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase}
+.pays-ville{font-size:0.7rem;color:var(--argent);opacity:0.6}
+
+.alerte-badge{
+  font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.5rem;
+  border-radius:2px;display:none;
+}
+.alerte-badge.rouge{display:block;background:rgba(230,48,48,0.2);color:var(--rouge);border:1px solid rgba(230,48,48,0.4)}
+.alerte-badge.orange{display:block;background:rgba(240,112,32,0.15);color:var(--orange);border:1px solid rgba(240,112,32,0.4)}
+.alerte-badge.jaune{display:block;background:rgba(245,197,24,0.12);color:var(--jaune);border:1px solid rgba(245,197,24,0.35)}
+.alerte-badge.vert{display:block;background:rgba(62,207,142,0.1);color:var(--vert);border:1px solid rgba(62,207,142,0.3)}
+
+.temp-section{display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem}
+.meteo-icon{font-size:2.2rem}
+.temp-val{font-family:'Cinzel',serif;font-size:2.2rem;color:var(--or-clair);line-height:1}
+.temp-desc{font-size:0.8rem;color:var(--argent);opacity:0.75;font-style:italic;margin-top:0.15rem}
+.temp-ressenti{font-size:0.72rem;color:var(--argent);opacity:0.55}
+
+.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.4rem}
+.detail-item{display:flex;flex-direction:column;background:rgba(13,35,71,0.4);padding:0.4rem 0.6rem}
+.detail-label{font-family:'Cinzel',serif;font-size:0.45rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.15rem}
+.detail-val{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:600;color:#e8f0f8}
+
+.alerte-msg{
+  background:rgba(230,48,48,0.1);border:1px solid rgba(230,48,48,0.25);
+  padding:0.5rem 0.7rem;margin-top:0.7rem;display:none;
+  font-size:0.78rem;color:#ff9999;line-height:1.4;
+}
+.alerte-msg.active{display:block}
+.alerte-msg.orange-msg{background:rgba(240,112,32,0.1);border-color:rgba(240,112,32,0.25);color:#ffb877}
+.alerte-msg.jaune-msg{background:rgba(245,197,24,0.08);border-color:rgba(245,197,24,0.25);color:#f5e07a}
+
+/* SIKLÒN SECTION */
+.siklòn-section{
+  background:linear-gradient(135deg,rgba(13,35,71,0.5),rgba(6,13,26,0.7));
+  border:1px solid rgba(201,168,76,0.15);margin-bottom:1.2rem;
+}
+.siklòn-header{
+  display:flex;align-items:center;gap:0.8rem;
+  padding:0.9rem 1.2rem;border-bottom:1px solid rgba(201,168,76,0.1);
+}
+.siklòn-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--or-clair);text-transform:uppercase}
+.siklòn-body{padding:1rem 1.2rem}
+.siklòn-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.6rem 0;border-bottom:1px solid rgba(201,168,76,0.06);
+}
+.siklòn-item:last-child{border-bottom:none}
+.siklòn-nom{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--or-pale);letter-spacing:0.08em;width:120px;flex-shrink:0}
+.siklòn-cat{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;padding:0.15rem 0.5rem;flex-shrink:0}
+.cat-1{background:rgba(62,207,142,0.15);color:var(--vert);border:1px solid rgba(62,207,142,0.3)}
+.cat-2{background:rgba(245,197,24,0.12);color:var(--jaune);border:1px solid rgba(245,197,24,0.3)}
+.cat-3{background:rgba(240,112,32,0.15);color:var(--orange);border:1px solid rgba(240,112,32,0.3)}
+.cat-4,.cat-5{background:rgba(230,48,48,0.15);color:var(--rouge);border:1px solid rgba(230,48,48,0.35)}
+.siklòn-pos{font-size:0.78rem;color:var(--argent);opacity:0.7}
+.siklòn-van{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:600;color:#e8f0f8;margin-left:auto}
+.no-siklòn{font-size:0.85rem;color:var(--argent);opacity:0.55;font-style:italic;padding:0.5rem 0}
+
+/* TAB BAR */
 #tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
-.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0;position:relative}
 .tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--or)}
 .tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+
+/* LOADING */
+.loading-text{color:var(--or);opacity:0.4;font-style:italic;font-size:0.8rem;animation:fade 1.5s ease-in-out infinite}
+@keyframes fade{0%,100%{opacity:0.4}50%{opacity:0.8}}
 </style>
 </head>
 <body>
@@ -54,61 +145,166 @@ main{padding-top:72px;max-width:800px;margin:0 auto;padding-left:1.2rem;padding-
 <main>
   <div class="page-header">
     <p class="page-eyebrow">✦ La Voie · lavoie.world</p>
-    <h1 class="page-h1">Météo du Jour</h1>
+    <h1 class="page-h1">🌍 Météo du Jour</h1>
+    <p class="last-update" id="last-update">Chargement...</p>
   </div>
 
-  <div class="meteo-grid" id="meteo-grid">
-    <!-- Haïti -->
-    <div class="meteo-card" id="card-ht">
-      <div class="meteo-drapeau">🇭🇹</div>
-      <div class="meteo-ville">Pòtoprens</div>
-      <div class="meteo-pays">Haïti</div>
-      <div class="meteo-icon" id="icon-ht">⌛</div>
-      <div class="meteo-temp" id="temp-ht"><span class="loading">Chargement...</span></div>
-      <div class="meteo-desc" id="desc-ht"></div>
-      <div class="meteo-details" id="det-ht"></div>
-    </div>
-    <!-- USA -->
-    <div class="meteo-card" id="card-us">
-      <div class="meteo-drapeau">🇺🇸</div>
-      <div class="meteo-ville">Indianapolis</div>
-      <div class="meteo-pays">États-Unis</div>
-      <div class="meteo-icon" id="icon-us">⌛</div>
-      <div class="meteo-temp" id="temp-us"><span class="loading">Chargement...</span></div>
-      <div class="meteo-desc" id="desc-us"></div>
-      <div class="meteo-details" id="det-us"></div>
-    </div>
-    <!-- Canada -->
-    <div class="meteo-card" id="card-ca">
-      <div class="meteo-drapeau">🇨🇦</div>
-      <div class="meteo-ville">Montréal</div>
-      <div class="meteo-pays">Canada</div>
-      <div class="meteo-icon" id="icon-ca">⌛</div>
-      <div class="meteo-temp" id="temp-ca"><span class="loading">Chargement...</span></div>
-      <div class="meteo-desc" id="desc-ca"></div>
-      <div class="meteo-details" id="det-ca"></div>
-    </div>
-    <!-- France -->
-    <div class="meteo-card" id="card-fr">
-      <div class="meteo-drapeau">🇫🇷</div>
-      <div class="meteo-ville">Paris</div>
-      <div class="meteo-pays">France</div>
-      <div class="meteo-icon" id="icon-fr">⌛</div>
-      <div class="meteo-temp" id="temp-fr"><span class="loading">Chargement...</span></div>
-      <div class="meteo-desc" id="desc-fr"></div>
-      <div class="meteo-details" id="det-fr"></div>
-    </div>
-    <!-- RD -->
-    <div class="meteo-card" id="card-do" style="grid-column:1/-1;max-width:300px;margin:0 auto;width:100%">
-      <div class="meteo-drapeau">🇩🇴</div>
-      <div class="meteo-ville">Santo Domingo</div>
-      <div class="meteo-pays">République Dominicaine</div>
-      <div class="meteo-icon" id="icon-do">⌛</div>
-      <div class="meteo-temp" id="temp-do"><span class="loading">Chargement...</span></div>
-      <div class="meteo-desc" id="desc-do"></div>
-      <div class="meteo-details" id="det-do"></div>
+  <!-- ALERTE GLOBALE -->
+  <div class="alerte-banner" id="alerte-globale">
+    <div class="alerte-icon">🚨</div>
+    <div>
+      <div class="alerte-titre" id="alerte-globale-titre">Alerte météo</div>
+      <div class="alerte-desc" id="alerte-globale-desc"></div>
     </div>
   </div>
+
+  <!-- GRILLE 5 PAYS -->
+  <div class="pays-grid" id="pays-grid">
+    <!-- Haïti -->
+    <div class="pays-card" id="card-ht">
+      <div class="pays-header">
+        <div class="pays-info">
+          <span class="pays-drapeau">🇭🇹</span>
+          <div><div class="pays-nom">Pòtoprens</div><div class="pays-ville">Haïti</div></div>
+        </div>
+        <span class="alerte-badge" id="badge-ht"></span>
+      </div>
+      <div class="temp-section">
+        <span class="meteo-icon" id="icon-ht">⌛</span>
+        <div>
+          <div class="temp-val" id="temp-ht"><span class="loading-text">...</span></div>
+          <div class="temp-desc" id="desc-ht"></div>
+          <div class="temp-ressenti" id="ressenti-ht"></div>
+        </div>
+      </div>
+      <div class="details-grid">
+        <div class="detail-item"><div class="detail-label">💧 Humidité</div><div class="detail-val" id="hum-ht">—</div></div>
+        <div class="detail-item"><div class="detail-label">💨 Vent</div><div class="detail-val" id="vent-ht">—</div></div>
+        <div class="detail-item"><div class="detail-label">🌧️ Pluie</div><div class="detail-val" id="pluie-ht">—</div></div>
+        <div class="detail-item"><div class="detail-label">☁️ Nuages</div><div class="detail-val" id="nuage-ht">—</div></div>
+      </div>
+      <div class="alerte-msg" id="alerte-ht"></div>
+    </div>
+
+    <!-- USA -->
+    <div class="pays-card" id="card-us">
+      <div class="pays-header">
+        <div class="pays-info">
+          <span class="pays-drapeau">🇺🇸</span>
+          <div><div class="pays-nom">Indianapolis</div><div class="pays-ville">États-Unis</div></div>
+        </div>
+        <span class="alerte-badge" id="badge-us"></span>
+      </div>
+      <div class="temp-section">
+        <span class="meteo-icon" id="icon-us">⌛</span>
+        <div>
+          <div class="temp-val" id="temp-us"><span class="loading-text">...</span></div>
+          <div class="temp-desc" id="desc-us"></div>
+          <div class="temp-ressenti" id="ressenti-us"></div>
+        </div>
+      </div>
+      <div class="details-grid">
+        <div class="detail-item"><div class="detail-label">💧 Humidité</div><div class="detail-val" id="hum-us">—</div></div>
+        <div class="detail-item"><div class="detail-label">💨 Vent</div><div class="detail-val" id="vent-us">—</div></div>
+        <div class="detail-item"><div class="detail-label">🌧️ Pluie</div><div class="detail-val" id="pluie-us">—</div></div>
+        <div class="detail-item"><div class="detail-label">☁️ Nuages</div><div class="detail-val" id="nuage-us">—</div></div>
+      </div>
+      <div class="alerte-msg" id="alerte-us"></div>
+    </div>
+
+    <!-- Canada -->
+    <div class="pays-card" id="card-ca">
+      <div class="pays-header">
+        <div class="pays-info">
+          <span class="pays-drapeau">🇨🇦</span>
+          <div><div class="pays-nom">Montréal</div><div class="pays-ville">Canada</div></div>
+        </div>
+        <span class="alerte-badge" id="badge-ca"></span>
+      </div>
+      <div class="temp-section">
+        <span class="meteo-icon" id="icon-ca">⌛</span>
+        <div>
+          <div class="temp-val" id="temp-ca"><span class="loading-text">...</span></div>
+          <div class="temp-desc" id="desc-ca"></div>
+          <div class="temp-ressenti" id="ressenti-ca"></div>
+        </div>
+      </div>
+      <div class="details-grid">
+        <div class="detail-item"><div class="detail-label">💧 Humidité</div><div class="detail-val" id="hum-ca">—</div></div>
+        <div class="detail-item"><div class="detail-label">💨 Vent</div><div class="detail-val" id="vent-ca">—</div></div>
+        <div class="detail-item"><div class="detail-label">🌧️ Pluie</div><div class="detail-val" id="pluie-ca">—</div></div>
+        <div class="detail-item"><div class="detail-label">☁️ Nuages</div><div class="detail-val" id="nuage-ca">—</div></div>
+      </div>
+      <div class="alerte-msg" id="alerte-ca"></div>
+    </div>
+
+    <!-- France -->
+    <div class="pays-card" id="card-fr">
+      <div class="pays-header">
+        <div class="pays-info">
+          <span class="pays-drapeau">🇫🇷</span>
+          <div><div class="pays-nom">Paris</div><div class="pays-ville">France</div></div>
+        </div>
+        <span class="alerte-badge" id="badge-fr"></span>
+      </div>
+      <div class="temp-section">
+        <span class="meteo-icon" id="icon-fr">⌛</span>
+        <div>
+          <div class="temp-val" id="temp-fr"><span class="loading-text">...</span></div>
+          <div class="temp-desc" id="desc-fr"></div>
+          <div class="temp-ressenti" id="ressenti-fr"></div>
+        </div>
+      </div>
+      <div class="details-grid">
+        <div class="detail-item"><div class="detail-label">💧 Humidité</div><div class="detail-val" id="hum-fr">—</div></div>
+        <div class="detail-item"><div class="detail-label">💨 Vent</div><div class="detail-val" id="vent-fr">—</div></div>
+        <div class="detail-item"><div class="detail-label">🌧️ Pluie</div><div class="detail-val" id="pluie-fr">—</div></div>
+        <div class="detail-item"><div class="detail-label">☁️ Nuages</div><div class="detail-val" id="nuage-fr">—</div></div>
+      </div>
+      <div class="alerte-msg" id="alerte-fr"></div>
+    </div>
+
+    <!-- RD -->
+    <div class="pays-card" id="card-do" style="grid-column:1/-1;max-width:400px;margin:0 auto;width:100%">
+      <div class="pays-header">
+        <div class="pays-info">
+          <span class="pays-drapeau">🇩🇴</span>
+          <div><div class="pays-nom">Santo Domingo</div><div class="pays-ville">République Dominicaine</div></div>
+        </div>
+        <span class="alerte-badge" id="badge-do"></span>
+      </div>
+      <div class="temp-section">
+        <span class="meteo-icon" id="icon-do">⌛</span>
+        <div>
+          <div class="temp-val" id="temp-do"><span class="loading-text">...</span></div>
+          <div class="temp-desc" id="desc-do"></div>
+          <div class="temp-ressenti" id="ressenti-do"></div>
+        </div>
+      </div>
+      <div class="details-grid">
+        <div class="detail-item"><div class="detail-label">💧 Humidité</div><div class="detail-val" id="hum-do">—</div></div>
+        <div class="detail-item"><div class="detail-label">💨 Vent</div><div class="detail-val" id="vent-do">—</div></div>
+        <div class="detail-item"><div class="detail-label">🌧️ Pluie</div><div class="detail-val" id="pluie-do">—</div></div>
+        <div class="detail-item"><div class="detail-label">☁️ Nuages</div><div class="detail-val" id="nuage-do">—</div></div>
+      </div>
+      <div class="alerte-msg" id="alerte-do"></div>
+    </div>
+  </div>
+
+  <!-- SIKLÒN SECTION -->
+  <div class="siklòn-section">
+    <div class="siklòn-header">
+      <span style="font-size:1.4rem">🌀</span>
+      <div>
+        <div class="siklòn-titre">Activité Cyclonique — Atlantique</div>
+        <div style="font-size:0.7rem;color:var(--argent);opacity:0.55;margin-top:0.1rem">Surveillance saison des ouragans</div>
+      </div>
+    </div>
+    <div class="siklòn-body" id="siklòn-body">
+      <div class="loading-text">Chargement des données cycloniques...</div>
+    </div>
+  </div>
+
 </main>
 
 <nav id="tab-bar">
@@ -135,47 +331,273 @@ main{padding-top:72px;max-width:800px;margin:0 auto;padding-left:1.2rem;padding-
 </nav>
 
 <script>
-const villes = [
-  {id:'ht', lat:18.5392, lon:-72.3288},
-  {id:'us', lat:39.7684, lon:-86.1581},
-  {id:'ca', lat:45.5017, lon:-73.5673},
-  {id:'fr', lat:48.8566, lon:2.3522},
-  {id:'do', lat:18.4861, lon:-69.9312}
+const VILLES = [
+  {id:'ht', lat:18.5392, lon:-72.3288, nom:'Haïti'},
+  {id:'us', lat:39.7684, lon:-86.1581, nom:'USA'},
+  {id:'ca', lat:45.5017, lon:-73.5673, nom:'Canada'},
+  {id:'fr', lat:48.8566, lon:2.3522,   nom:'France'},
+  {id:'do', lat:18.4861, lon:-69.9312, nom:'RD'}
 ];
 
-function iconeMeteo(code){
+function icone(code, vent) {
+  if(vent > 60) return '🌀';
   if(code>=200&&code<300) return '⛈️';
   if(code>=300&&code<400) return '🌦️';
-  if(code>=500&&code<600) return '🌧️';
+  if(code>=500&&code<600) return code===511?'🌨️':'🌧️';
   if(code>=600&&code<700) return '❄️';
-  if(code>=700&&code<800) return '🌫️';
+  if(code>=700&&code<800) return code===781?'🌪️':'🌫️';
   if(code===800) return '☀️';
   if(code===801||code===802) return '⛅';
   return '☁️';
 }
 
-async function loadMeteo(v){
-  try{
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${v.lat}&longitude=${v.lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&wind_speed_unit=kmh`;
+function descCode(code) {
+  const d = {
+    200:'Orage avec pluie légère',201:'Orage avec pluie',202:'Orage avec forte pluie',
+    211:'Orage',212:'Fort orage',221:'Orage violent',
+    300:'Bruine légère',301:'Bruine',302:'Forte bruine',
+    500:'Pluie légère',501:'Pluie modérée',502:'Pluie forte',503:'Pluie très forte',
+    504:'Pluie extrême',511:'Pluie verglaçante',520:'Averses légères',521:'Averses',522:'Fortes averses',
+    600:'Neige légère',601:'Neige',602:'Forte neige',611:'Grésil',615:'Pluie et neige',
+    701:'Brume',711:'Fumée',721:'Brouillard léger',741:'Brouillard',751:'Sable',762:'Cendres volcaniques',781:'Tornade',
+    800:'Ciel dégagé',801:'Quelques nuages',802:'Nuages épars',803:'Nuages fragmentés',804:'Couverture nuageuse'
+  };
+  return d[code] || 'Conditions variables';
+}
+
+function niveauAlerte(code, vent, pluie, hum) {
+  if(code===781||vent>90) return 'rouge';
+  if(code>=200&&code<230||vent>60||pluie>50) return 'orange';
+  if(code>=200&&code<300||vent>40||pluie>20||hum>90) return 'jaune';
+  return 'vert';
+}
+
+function msgAlerte(code, vent, pluie, niveau) {
+  if(niveau==='rouge') {
+    if(code===781) return '🌪️ TORNADE — Danger extrême ! Mettez-vous à l\'abri immédiatement.';
+    if(vent>90) return '🌀 VENTS VIOLENTS — ' + Math.round(vent) + ' km/h. Danger immédiat.';
+    return '⛈️ CONDITIONS EXTRÊMES — Évitez tout déplacement.';
+  }
+  if(niveau==='orange') {
+    if(vent>60) return '💨 Vents forts — ' + Math.round(vent) + ' km/h. Soyez prudents.';
+    if(pluie>50) return '🌧️ Fortes pluies — ' + Math.round(pluie) + ' mm/h. Risque d\'inondation.';
+    return '⛈️ Orages — Limitez les déplacements.';
+  }
+  if(niveau==='jaune') {
+    if(vent>40) return '💨 Vent modéré à fort — ' + Math.round(vent) + ' km/h.';
+    if(pluie>20) return '🌧️ Pluies modérées — Prenez un imperméable.';
+    return '⚠️ Conditions à surveiller.';
+  }
+  return '';
+}
+
+async function loadVille(v) {
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${v.lat}&longitude=${v.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation,cloud_cover&wind_speed_unit=kmh&precipitation_unit=mm`;
     const r = await fetch(url);
     const d = await r.json();
     const c = d.current;
+
     const temp = Math.round(c.temperature_2m);
+    const ressenti = Math.round(c.apparent_temperature);
     const hum = c.relative_humidity_2m;
-    const wind = Math.round(c.wind_speed_10m);
+    const vent = c.wind_speed_10m;
+    const pluie = c.precipitation || 0;
+    const nuage = c.cloud_cover;
     const code = c.weather_code;
-    
-    document.getElementById('temp-'+v.id).textContent = temp+'°C';
-    document.getElementById('icon-'+v.id).textContent = iconeMeteo(code);
-    document.getElementById('det-'+v.id).innerHTML = 
-      `<span>💧 ${hum}%</span><span>💨 ${wind} km/h</span>`;
-  }catch(e){
+
+    const ic = icone(code, vent);
+    const desc = descCode(code);
+    const niveau = niveauAlerte(code, vent, pluie, hum);
+    const msg = msgAlerte(code, vent, pluie, niveau);
+
+    // Update card
+    document.getElementById('temp-'+v.id).textContent = temp + '°C';
+    document.getElementById('icon-'+v.id).textContent = ic;
+    document.getElementById('desc-'+v.id).textContent = desc;
+    document.getElementById('ressenti-'+v.id).textContent = 'Ressenti : ' + ressenti + '°C';
+    document.getElementById('hum-'+v.id).textContent = hum + '%';
+    document.getElementById('vent-'+v.id).textContent = Math.round(vent) + ' km/h';
+    document.getElementById('pluie-'+v.id).textContent = pluie.toFixed(1) + ' mm';
+    document.getElementById('nuage-'+v.id).textContent = nuage + '%';
+
+    // Badge alerte
+    const badge = document.getElementById('badge-'+v.id);
+    const card = document.getElementById('card-'+v.id);
+    const alerteEl = document.getElementById('alerte-'+v.id);
+
+    if(niveau==='rouge') {
+      badge.textContent='🚨 ALERTE';badge.className='alerte-badge rouge';
+      card.className='pays-card alerte-rouge';
+    } else if(niveau==='orange') {
+      badge.textContent='⚠️ VIGILANCE';badge.className='alerte-badge orange';
+      card.className='pays-card alerte-orange';
+    } else if(niveau==='jaune') {
+      badge.textContent='⚡ ATTENTION';badge.className='alerte-badge jaune';
+      card.className='pays-card alerte-jaune';
+    } else {
+      badge.textContent='✅ NORMAL';badge.className='alerte-badge vert';
+    }
+
+    if(msg) {
+      alerteEl.textContent = msg;
+      alerteEl.className = 'alerte-msg active' + (niveau==='orange'?' orange-msg':(niveau==='jaune'?' jaune-msg':''));
+    }
+
+    return { id: v.id, nom: v.nom, niveau, msg, vent, code };
+
+  } catch(e) {
     document.getElementById('temp-'+v.id).textContent = '--°C';
     document.getElementById('icon-'+v.id).textContent = '❓';
+    return null;
   }
 }
 
-villes.forEach(v => loadMeteo(v));
+
+// NWS Alerte ofisyèl pou Indianapolis
+async function loadNWSAlert() {
+  try {
+    const r = await fetch('https://api.weather.gov/alerts/active?point=39.7684,-86.1581');
+    const d = await r.json();
+    const alerteEl = document.getElementById('alerte-us');
+    const badge = document.getElementById('badge-us');
+    const card = document.getElementById('card-us');
+
+    if(d.features && d.features.length > 0) {
+      const alerte = d.features[0].properties;
+      const ev = alerte.event || '';
+      const desc = alerte.headline || alerte.description || '';
+
+      let niveau = 'jaune';
+      let cls = 'jaune-msg';
+      if(ev.includes('Warning')||ev.includes('Tornado')||ev.includes('Extreme')) { niveau='rouge'; cls=''; }
+      else if(ev.includes('Watch')||ev.includes('Advisory')) { niveau='orange'; cls='orange-msg'; }
+
+      alerteEl.textContent = '🇺🇸 NWS: ' + ev + ' — ' + desc.substring(0,120) + '...';
+      alerteEl.className = 'alerte-msg active ' + cls;
+
+      if(niveau==='rouge') {
+        badge.textContent='🚨 ' + ev; badge.className='alerte-badge rouge';
+        card.className='pays-card alerte-rouge';
+      } else if(niveau==='orange') {
+        badge.textContent='⚠️ ' + ev; badge.className='alerte-badge orange';
+        card.className='pays-card alerte-orange';
+      } else {
+        badge.textContent='⚡ ' + ev; badge.className='alerte-badge jaune';
+        card.className='pays-card alerte-jaune';
+      }
+    }
+  } catch(e) { /* NWS indisponib */ }
+}
+
+// Previzyon 7 jou Indianapolis
+async function loadForecastUS() {
+  try {
+    // Premye jwenn grid point
+    const meta = await fetch('https://api.weather.gov/points/39.7684,-86.1581');
+    const md = await meta.json();
+    const forecastUrl = md.properties.forecast;
+    const fr = await fetch(forecastUrl);
+    const fd = await fr.json();
+    const periods = fd.properties.periods.slice(0,6);
+
+    let html = '<div style="margin-top:0.8rem;border-top:1px solid rgba(201,168,76,0.1);padding-top:0.8rem;">';
+    html += '<div style="font-family:Cinzel,serif;font-size:0.55rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.6rem;">📅 Prévisions Indianapolis — NWS</div>';
+    html += '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;">';
+
+    periods.forEach(p => {
+      const temp = p.temperature;
+      const unit = p.temperatureUnit === 'F' ? '°F' : '°C';
+      const tempC = p.temperatureUnit === 'F' ? Math.round((temp-32)*5/9) + '°C' : temp + '°C';
+      const nom = p.name.substring(0,8);
+      const ic = p.shortForecast.includes('Thunder')?'⛈️':
+                 p.shortForecast.includes('Rain')||p.shortForecast.includes('Showers')?'🌧️':
+                 p.shortForecast.includes('Snow')?'❄️':
+                 p.shortForecast.includes('Clear')||p.shortForecast.includes('Sunny')?'☀️':
+                 p.shortForecast.includes('Cloudy')?'☁️':'⛅';
+      html += `<div style="background:rgba(13,35,71,0.5);padding:0.4rem;text-align:center;">
+        <div style="font-family:Cinzel,serif;font-size:0.52rem;color:var(--or);opacity:0.7;margin-bottom:0.2rem;">${nom}</div>
+        <div style="font-size:1.1rem;">${ic}</div>
+        <div style="font-family:Barlow Condensed,sans-serif;font-size:0.85rem;font-weight:600;color:#e8f0f8;">${tempC}</div>
+        <div style="font-size:0.55rem;color:var(--argent);opacity:0.6;margin-top:0.1rem;">${p.shortForecast.substring(0,15)}</div>
+      </div>`;
+    });
+
+    html += '</div></div>';
+
+    const card = document.getElementById('card-us');
+    const existing = card.querySelector('.forecast-us');
+    if(existing) existing.remove();
+    const div = document.createElement('div');
+    div.className = 'forecast-us';
+    div.innerHTML = html;
+    card.appendChild(div);
+
+  } catch(e) { /* previzyon indisponib */ }
+}
+
+
+async function loadAll() {
+  const results = await Promise.all(VILLES.map(v => loadVille(v)));
+
+  // Alerte globale si rouge ou orange
+  const graves = results.filter(r => r && (r.niveau==='rouge'||r.niveau==='orange'));
+  if(graves.length > 0) {
+    const pire = graves.find(r=>r.niveau==='rouge') || graves[0];
+    document.getElementById('alerte-globale').classList.add('active');
+    document.getElementById('alerte-globale-titre').textContent =
+      pire.niveau==='rouge' ? '🚨 ALERTE GRAVE — ' + pire.nom : '⚠️ VIGILANCE — ' + pire.nom;
+    document.getElementById('alerte-globale-desc').textContent = pire.msg;
+  }
+
+  // NWS Indianapolis
+  loadNWSAlert();
+  loadForecastUS();
+
+  // Siklòn
+  loadSiklòn();
+
+  // Lè mete ajou
+  document.getElementById('last-update').textContent =
+    'Dernière mise à jour : ' + new Date().toLocaleTimeString('fr-FR');
+}
+
+function loadSiklòn() {
+  // NWS / NHC pa gen API gratis — nou montre statik selon saison
+  const now = new Date();
+  const mois = now.getMonth() + 1; // 1-12
+  const body = document.getElementById('siklòn-body');
+
+  if(mois >= 6 && mois <= 11) {
+    // Saison aktif — Juin a Novanm
+    body.innerHTML = `
+      <div class="siklòn-item">
+        <span style="font-size:1.1rem;">🌀</span>
+        <span class="siklòn-nom">Saison active</span>
+        <span class="siklòn-cat cat-1">SURVEILLANCE</span>
+        <span class="siklòn-pos">Atlantique · Juin — Novembre</span>
+        <span class="siklòn-van">—</span>
+      </div>
+      <div style="margin-top:0.7rem;padding:0.6rem;background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.2);">
+        <p style="font-size:0.78rem;color:#f5e07a;line-height:1.5;">
+          ⚡ Saison des ouragans en cours. Surveillez les bulletins officiels du 
+          <strong>National Hurricane Center (NHC)</strong> — nhc.noaa.gov
+          <br>et de la <strong>Direction de la Protection Civile d'Haïti</strong>.
+        </p>
+      </div>
+      <div style="margin-top:0.6rem;">
+        <a href="https://www.nhc.noaa.gov" target="_blank" 
+           style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;opacity:0.7;text-decoration:none;">
+          → Voir NHC en temps réel ↗
+        </a>
+      </div>`;
+  } else {
+    body.innerHTML = `<p class="no-siklòn">✅ Hors saison cyclonique — Aucune activité prévue (Décembre — Mai)</p>`;
+  }
+}
+
+loadAll();
+setInterval(loadAll, 600000); // mete ajou chak 10 minit
 </script>
 </body>
 </html>
