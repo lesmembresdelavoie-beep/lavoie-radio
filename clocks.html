@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:transparent;
+  display:flex;gap:0.8rem;align-items:center;
+  justify-content:flex-end;
+  font-family:'Cinzel',serif;
+  padding:0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+.c{display:flex;flex-direction:column;align-items:flex-end}
+.city{font-size:0.42rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a84c;opacity:0.7}
+.time{font-size:0.92rem;color:#e8cb7a;letter-spacing:0.05em;font-weight:600}
+</style>
+</head>
+<body>
+<div class="c">
+  <span class="city">Yeroushalaim</span>
+  <span class="time" id="jer">--:--</span>
+</div>
+<div class="c">
+  <span class="city">Indianapolis</span>
+  <span class="time" id="ind">--:--</span>
+</div>
+<script>
+function pad(n){return('0'+n).slice(-2)}
+function tick(){
+  var now=new Date();
+  try{
+    var j=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jerusalem'}));
+    var i=new Date(now.toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
+    document.getElementById('jer').textContent=pad(j.getHours())+':'+pad(j.getMinutes());
+    document.getElementById('ind').textContent=pad(i.getHours())+':'+pad(i.getMinutes());
+  }catch(e){
+    document.getElementById('jer').textContent='ERR';
+    document.getElementById('ind').textContent='ERR';
+  }
+}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
