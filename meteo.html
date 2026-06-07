@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Météo · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--argent:#b8c8dc}
+body{font-family:'EB Garamond',serif;background:var(--bleu);color:#e8f0f8;padding-bottom:80px}
+
+#top-bar{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 1rem;z-index:500;backdrop-filter:blur(8px)}
+.back-btn{display:flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;color:var(--or);text-decoration:none;text-transform:uppercase;opacity:0.8}
+.back-btn svg{width:16px;height:16px}
+.page-title-top{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--or-clair);text-transform:uppercase}
+
+main{padding-top:72px;max-width:800px;margin:0 auto;padding-left:1.2rem;padding-right:1.2rem}
+
+.page-header{text-align:center;padding:1.5rem 0 2rem}
+.page-eyebrow{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.5rem}
+.page-h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,4vw,2.2rem);color:var(--or-clair);letter-spacing:0.08em}
+
+.meteo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+@media(max-width:500px){.meteo-grid{grid-template-columns:1fr}}
+
+.meteo-card{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));border:1px solid rgba(201,168,76,0.2);border-top:3px solid var(--or);padding:1.4rem;text-align:center}
+.meteo-drapeau{font-size:2rem;margin-bottom:0.5rem}
+.meteo-ville{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;margin-bottom:0.3rem}
+.meteo-pays{font-size:0.75rem;color:var(--argent);opacity:0.6;margin-bottom:0.8rem}
+.meteo-temp{font-family:'Cinzel',serif;font-size:2.5rem;color:var(--or-clair);line-height:1}
+.meteo-desc{font-size:0.9rem;color:var(--argent);margin-top:0.3rem;font-style:italic}
+.meteo-details{display:flex;justify-content:center;gap:1rem;margin-top:0.8rem;font-size:0.75rem;color:var(--argent);opacity:0.7}
+.meteo-icon{font-size:1.8rem;margin-bottom:0.3rem}
+.loading{color:var(--or);opacity:0.5;font-style:italic;font-size:0.85rem}
+
+#tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0}
+.tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <a href="index.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+    Accueil
+  </a>
+  <span class="page-title-top">🌤️ Météo</span>
+  <div style="width:60px"></div>
+</div>
+
+<main>
+  <div class="page-header">
+    <p class="page-eyebrow">✦ La Voie · lavoie.world</p>
+    <h1 class="page-h1">Météo du Jour</h1>
+  </div>
+
+  <div class="meteo-grid" id="meteo-grid">
+    <!-- Haïti -->
+    <div class="meteo-card" id="card-ht">
+      <div class="meteo-drapeau">🇭🇹</div>
+      <div class="meteo-ville">Pòtoprens</div>
+      <div class="meteo-pays">Haïti</div>
+      <div class="meteo-icon" id="icon-ht">⌛</div>
+      <div class="meteo-temp" id="temp-ht"><span class="loading">Chargement...</span></div>
+      <div class="meteo-desc" id="desc-ht"></div>
+      <div class="meteo-details" id="det-ht"></div>
+    </div>
+    <!-- USA -->
+    <div class="meteo-card" id="card-us">
+      <div class="meteo-drapeau">🇺🇸</div>
+      <div class="meteo-ville">Indianapolis</div>
+      <div class="meteo-pays">États-Unis</div>
+      <div class="meteo-icon" id="icon-us">⌛</div>
+      <div class="meteo-temp" id="temp-us"><span class="loading">Chargement...</span></div>
+      <div class="meteo-desc" id="desc-us"></div>
+      <div class="meteo-details" id="det-us"></div>
+    </div>
+    <!-- Canada -->
+    <div class="meteo-card" id="card-ca">
+      <div class="meteo-drapeau">🇨🇦</div>
+      <div class="meteo-ville">Montréal</div>
+      <div class="meteo-pays">Canada</div>
+      <div class="meteo-icon" id="icon-ca">⌛</div>
+      <div class="meteo-temp" id="temp-ca"><span class="loading">Chargement...</span></div>
+      <div class="meteo-desc" id="desc-ca"></div>
+      <div class="meteo-details" id="det-ca"></div>
+    </div>
+    <!-- France -->
+    <div class="meteo-card" id="card-fr">
+      <div class="meteo-drapeau">🇫🇷</div>
+      <div class="meteo-ville">Paris</div>
+      <div class="meteo-pays">France</div>
+      <div class="meteo-icon" id="icon-fr">⌛</div>
+      <div class="meteo-temp" id="temp-fr"><span class="loading">Chargement...</span></div>
+      <div class="meteo-desc" id="desc-fr"></div>
+      <div class="meteo-details" id="det-fr"></div>
+    </div>
+    <!-- RD -->
+    <div class="meteo-card" id="card-do" style="grid-column:1/-1;max-width:300px;margin:0 auto;width:100%">
+      <div class="meteo-drapeau">🇩🇴</div>
+      <div class="meteo-ville">Santo Domingo</div>
+      <div class="meteo-pays">République Dominicaine</div>
+      <div class="meteo-icon" id="icon-do">⌛</div>
+      <div class="meteo-temp" id="temp-do"><span class="loading">Chargement...</span></div>
+      <div class="meteo-desc" id="desc-do"></div>
+      <div class="meteo-details" id="det-do"></div>
+    </div>
+  </div>
+</main>
+
+<nav id="tab-bar">
+  <a href="index.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <span class="tab-label">Accueil</span>
+  </a>
+  <a href="tèks-pou-jounen-an.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    <span class="tab-label">Ketubim</span>
+  </a>
+  <a href="radio.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+    <span class="tab-label">Radio</span>
+  </a>
+  <a href="rassemblements.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+    <span class="tab-label">Réunions</span>
+  </a>
+  <a href="meteo.html" class="tab-item active">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    <span class="tab-label">Météo</span>
+  </a>
+</nav>
+
+<script>
+const villes = [
+  {id:'ht', lat:18.5392, lon:-72.3288},
+  {id:'us', lat:39.7684, lon:-86.1581},
+  {id:'ca', lat:45.5017, lon:-73.5673},
+  {id:'fr', lat:48.8566, lon:2.3522},
+  {id:'do', lat:18.4861, lon:-69.9312}
+];
+
+function iconeMeteo(code){
+  if(code>=200&&code<300) return '⛈️';
+  if(code>=300&&code<400) return '🌦️';
+  if(code>=500&&code<600) return '🌧️';
+  if(code>=600&&code<700) return '❄️';
+  if(code>=700&&code<800) return '🌫️';
+  if(code===800) return '☀️';
+  if(code===801||code===802) return '⛅';
+  return '☁️';
+}
+
+async function loadMeteo(v){
+  try{
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${v.lat}&longitude=${v.lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&wind_speed_unit=kmh`;
+    const r = await fetch(url);
+    const d = await r.json();
+    const c = d.current;
+    const temp = Math.round(c.temperature_2m);
+    const hum = c.relative_humidity_2m;
+    const wind = Math.round(c.wind_speed_10m);
+    const code = c.weather_code;
+    
+    document.getElementById('temp-'+v.id).textContent = temp+'°C';
+    document.getElementById('icon-'+v.id).textContent = iconeMeteo(code);
+    document.getElementById('det-'+v.id).innerHTML = 
+      `<span>💧 ${hum}%</span><span>💨 ${wind} km/h</span>`;
+  }catch(e){
+    document.getElementById('temp-'+v.id).textContent = '--°C';
+    document.getElementById('icon-'+v.id).textContent = '❓';
+  }
+}
+
+villes.forEach(v => loadMeteo(v));
+</script>
+</body>
+</html>

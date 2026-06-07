@@ -65,6 +65,62 @@
       color: var(--or-clair); letter-spacing: 0.05em;
     }
 
+
+    /* ══ MENU HAMBURGER ══ */
+    #menu-btn{
+      background:none;border:none;cursor:pointer;
+      display:flex;flex-direction:column;gap:5px;padding:4px;
+    }
+    #menu-btn span{
+      display:block;width:22px;height:2px;
+      background:var(--or);border-radius:2px;
+      transition:all 0.3s;
+    }
+    #menu-overlay{
+      display:none;position:fixed;inset:0;z-index:600;
+      background:rgba(2,5,15,0.97);backdrop-filter:blur(8px);
+      flex-direction:column;
+    }
+    #menu-overlay.open{display:flex}
+    .menu-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1rem 1.4rem;border-bottom:1px solid rgba(201,168,76,0.2);
+    }
+    .menu-logo{
+      font-family:'Cinzel',serif;font-size:0.9rem;
+      color:var(--or-clair);letter-spacing:0.15em;
+    }
+    .menu-close{
+      background:none;border:none;cursor:pointer;
+      font-size:1.5rem;color:var(--or);opacity:0.7;
+      padding:0.2rem 0.5rem;
+    }
+    .menu-liste{
+      flex:1;overflow-y:auto;padding:1rem 0;
+    }
+    .menu-item{
+      display:flex;align-items:center;gap:1rem;
+      padding:1rem 1.8rem;text-decoration:none;
+      border-bottom:1px solid rgba(201,168,76,0.06);
+      transition:background 0.2s;
+    }
+    .menu-item:hover{background:rgba(201,168,76,0.06)}
+    .menu-item-icon{font-size:1.3rem;width:32px;text-align:center}
+    .menu-item-texte{display:flex;flex-direction:column}
+    .menu-item-nom{
+      font-family:'Cinzel',serif;font-size:0.75rem;
+      letter-spacing:0.1em;color:var(--or-pale);
+    }
+    .menu-item-desc{
+      font-size:0.7rem;color:var(--argent);opacity:0.55;
+      margin-top:0.1rem;
+    }
+    .menu-section{
+      font-family:'Cinzel',serif;font-size:0.5rem;
+      letter-spacing:0.3em;color:var(--or);opacity:0.5;
+      text-transform:uppercase;padding:1rem 1.8rem 0.4rem;
+    }
+
     main { padding-top: var(--top-h); }
 
     /* ══ SLIDE TRANSITION ══ */
@@ -475,10 +531,15 @@
       <span class="ibri-date" id="ibri-date">20 Siban</span>
       <span class="greg-date" id="greg-date">Swa 6 jen → Swa 7 jen 2026</span>
     </div>
-    <div id="top-clocks">
-      <iframe src="clocks.html" scrolling="no" frameborder="0"
-        style="width:180px;height:44px;background:transparent;border:none;overflow:hidden">
-      </iframe>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <div id="top-clocks">
+        <iframe src="clocks.html" scrolling="no" frameborder="0"
+          style="width:180px;height:44px;background:transparent;border:none;overflow:hidden">
+        </iframe>
+      </div>
+      <button id="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 
