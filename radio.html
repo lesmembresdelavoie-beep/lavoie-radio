@@ -22,7 +22,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-header-bg{position:absolute;inset:0;background-image:url('bg-radio.jpg');background-size:cover;background-position:center;filter:brightness(0.35)}
 .page-header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:1px;height:4rem;background:linear-gradient(to bottom,#c9a84c,transparent)}
 .page-header-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
-.radio-logo-img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,0.4);margin-bottom:1.5rem;box-shadow:0 0 30px rgba(201,168,76,0.2)}
+.radio-logo-img{display:none}
 .breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.7;text-transform:uppercase;margin-bottom:1rem}
 .breadcrumb a{color:inherit;text-decoration:none}
 .page-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:700;color:#e8cb7a;letter-spacing:0.06em;line-height:1.05}
@@ -108,8 +108,8 @@ footer{background:linear-gradient(180deg,#020810,#010508);border-top:1px solid r
 <div class="page-body">
   <div class="radio-card">
     <div class="live-badge"><span class="live-dot"></span>En diffusion — Ap difize</div>
-    <h2 class="radio-titre">La Voie Radio</h2>
-    <p class="radio-sub">Enseignements · Louanges · Besorah Towah — 24h/24</p>
+    
+    
     <div class="controls">
       <button class="play-btn" id="playBtn" onclick="togglePlay()">
         <svg viewBox="0 0 24 24" id="playIcon"><polygon points="5,3 19,12 5,21"/></svg>
