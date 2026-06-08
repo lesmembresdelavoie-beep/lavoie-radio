@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nos Réunions · Beth HaKnesset · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--or:#c9a84c;--or-clair:#e8cb7a;--or-pale:#f7edcc;--bleu:#060d1a;--bleu2:#0d2347;--argent:#b8c8dc}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;background:var(--bleu);color:#e8f0f8;overflow-x:hidden;padding-bottom:80px}
+
+/* TOP BAR */
+#top-bar{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(6,13,26,0.97);border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 1rem;z-index:500;backdrop-filter:blur(8px)}
+.back-btn{display:flex;align-items:center;gap:0.4rem;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;color:var(--or);text-decoration:none;text-transform:uppercase;opacity:0.8}
+.back-btn svg{width:16px;height:16px}
+.page-title-top{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--or-clair);text-transform:uppercase}
+
+/* HERO — PHOTO BETH HAKNESSET */
+.hero{
+  margin-top:52px;
+  position:relative;height:85vh;min-height:500px;
+  overflow:hidden;display:flex;align-items:flex-end;
+}
+.hero-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  filter:brightness(0.55);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,13,26,0.98) 0%,rgba(6,13,26,0.4) 50%,transparent 100%);
+}
+.hero-content{
+  position:relative;z-index:1;
+  padding:2rem 1.4rem 2.5rem;width:100%;text-align:center;
+}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.35em;color:var(--or);text-transform:uppercase;opacity:0.75;margin-bottom:0.6rem}
+.hero-titre{font-family:'Cinzel',serif;font-size:clamp(1.8rem,6vw,3.5rem);color:var(--or-clair);letter-spacing:0.1em;line-height:1.1;margin-bottom:0.4rem}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.9rem,2vw,1.15rem);color:#e8f0f8;opacity:0.65}
+
+/* BODY */
+.page-body{max-width:820px;margin:0 auto;padding:3rem 1.2rem 4rem}
+
+/* CITATION INTRO */
+.citation-intro{
+  background:linear-gradient(135deg,rgba(13,35,71,0.5),rgba(6,13,26,0.7));
+  border:1px solid rgba(201,168,76,0.2);border-left:4px solid var(--or);
+  padding:1.5rem 1.8rem;margin-bottom:3rem;text-align:center;
+}
+.citation-intro p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;line-height:1.7;color:var(--or-pale);margin-bottom:0.4rem}
+.citation-intro span{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;opacity:0.65}
+
+/* SECTION */
+.section{margin-bottom:3rem}
+.section-label{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;opacity:0.65;margin-bottom:0.5rem}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--or-pale);margin-bottom:0.6rem;letter-spacing:0.06em}
+.section-line{width:50px;height:1px;background:linear-gradient(to right,var(--or),transparent);margin-bottom:1.5rem}
+.section p{font-size:1rem;line-height:1.85;color:#e8f0f8;opacity:0.85;margin-bottom:0.8rem}
+
+/* ORÈ CARDS */
+.ore-grid{display:flex;flex-direction:column;gap:0.8rem;margin-top:0.5rem}
+.ore-card{
+  background:rgba(13,35,71,0.4);
+  border:1px solid rgba(201,168,76,0.15);
+  border-left:3px solid var(--or);
+  padding:1rem 1.3rem;
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.ore-icon{font-size:1.4rem;flex-shrink:0;margin-top:0.1rem}
+.ore-titre{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--or-pale);letter-spacing:0.08em;margin-bottom:0.25rem}
+.ore-det{font-size:0.92rem;color:var(--argent);opacity:0.8;line-height:1.5}
+.ore-badge{
+  display:inline-block;
+  font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:0.15em;
+  color:var(--bleu);background:var(--or);
+  padding:0.15rem 0.5rem;margin-top:0.3rem;text-transform:uppercase;
+}
+
+/* MOADIM TABLE */
+.moadim-grid{display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem}
+.moadim-item{
+  display:flex;align-items:center;gap:0.8rem;
+  background:rgba(13,35,71,0.35);
+  border:1px solid rgba(201,168,76,0.1);
+  padding:0.7rem 1rem;
+}
+.moadim-icon{font-size:1.1rem;width:28px;text-align:center;flex-shrink:0}
+.moadim-nom{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or-pale);letter-spacing:0.06em;flex:1}
+.moadim-dat{font-size:0.82rem;color:var(--argent);opacity:0.7;text-align:right;font-style:italic}
+
+/* ONLINE */
+.online-card{
+  background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.8));
+  border:1px solid rgba(201,168,76,0.2);border-top:3px solid var(--or);
+  padding:1.5rem;margin-top:0.5rem;text-align:center;
+}
+.online-titre{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--or-clair);letter-spacing:0.1em;margin-bottom:0.5rem}
+.online-desc{font-size:0.92rem;color:var(--argent);opacity:0.8;line-height:1.6;margin-bottom:1rem}
+.online-btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;
+  color:var(--bleu);background:var(--or);
+  padding:0.6rem 1.4rem;text-decoration:none;text-transform:uppercase;
+  transition:background 0.2s;
+}
+.online-btn:hover{background:var(--or-clair)}
+
+/* PHOTO 2 */
+.photo2{width:100%;margin:2rem 0;position:relative}
+.photo2 img{width:100%;display:block}
+.photo2-caption{
+  background:rgba(6,13,26,0.9);
+  padding:0.8rem 1.2rem;
+  font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;
+  color:var(--or);text-transform:uppercase;text-align:center;opacity:0.8;
+}
+
+/* ORNEMENT */
+.ornement{text-align:center;color:var(--or);font-size:0.6rem;letter-spacing:0.5em;opacity:0.3;margin:2rem 0}
+
+/* TAB BAR */
+#tab-bar{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(6,13,26,0.97);border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:stretch;z-index:500;backdrop-filter:blur(10px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.15rem;text-decoration:none;color:#b8c8dc;opacity:0.45;transition:opacity 0.2s;padding:0.3rem 0;position:relative}
+.tab-item:hover,.tab-item.active{opacity:1;color:#e8cb7a}
+.tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--or)}
+.tab-label{font-family:'Cinzel',serif;font-size:0.4rem;letter-spacing:0.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <a href="index.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+    Accueil
+  </a>
+  <span class="page-title-top">👥 Nos Réunions</span>
+  <div style="width:60px"></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="1002282076.jpg" alt="Beth HaKnesset — Fasad" class="hero-img"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Les Membres de La Voie · Indianapolis</p>
+    <h1 class="hero-titre">Beth HaKnesset</h1>
+    <p class="hero-sub">Maison de Rassemblement des Tal'midim de Yahushuʿaḥ</p>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- CITATION -->
+  <div class="citation-intro">
+    <p>« Kote dezoutwa reyini nan Shem Mwen, Mwen la nan mitan yo. »</p>
+    <span>— Mattiyahu 18:20</span>
+  </div>
+
+  <!-- ORÈ REYINYON -->
+  <div class="section">
+    <p class="section-label">✦ Orè Regilye</p>
+    <h2 class="section-title">Reyinyon Chak Semèn</h2>
+    <div class="section-line"></div>
+    <div class="ore-grid">
+      <div class="ore-card">
+        <span class="ore-icon">🕯️</span>
+        <div>
+          <p class="ore-titre">Shabbat — Rasanbleman Prensipal</p>
+          <p class="ore-det">Chak semèn · Depi aswè 6yèm jou (vandredi) — Ha-hakhanah<br>Téfilah · Lecture Ketubim Qadoshim · Enseignement · Kantik</p>
+          <span class="ore-badge">Chak semèn</span>
+        </div>
+      </div>
+      <div class="ore-card">
+        <span class="ore-icon">📖</span>
+        <div>
+          <p class="ore-titre">Etid Dabar — Mitan Semèn</p>
+          <p class="ore-det">Etid apwofondi Ketubim Qadoshim yo · Diskisyon · Ankourajman</p>
+          <span class="ore-badge">Chak semèn</span>
+        </div>
+      </div>
+      <div class="ore-card">
+        <span class="ore-icon">🙏</span>
+        <div>
+          <p class="ore-titre">Téfilah Kolektif</p>
+          <p class="ore-det">Reyinyon lapriyè pou Qehilah la ak misyon proklamasyon an</p>
+          <span class="ore-badge">Mansyèl</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- MOADIM -->
+  <div class="section">
+    <p class="section-label">✦ Kalandriye Ibriy 5786</p>
+    <h2 class="section-title">Mo'adim Qadoshim</h2>
+    <div class="section-line"></div>
+    <p>Nou obsève Mo'adim (Fèt Yahawah) yo selon kalandriye lunisolè La Voie — 1 Abib = aswè 20 mas 2026.</p>
+    <div class="moadim-grid" style="margin-top:1rem">
+      <div class="moadim-item">
+        <span class="moadim-icon">🌿</span>
+        <span class="moadim-nom">Pessaḥ · Matsot · Bikourim</span>
+        <span class="moadim-dat">14-21 Abib · Mas/Avril 2026</span>
+      </div>
+      <div class="moadim-item">
+        <span class="moadim-icon">🔥</span>
+        <span class="moadim-nom">Shabouʿot</span>
+        <span class="moadim-dat">6 Siban · 23-24 Me 2026</span>
+      </div>
+      <div class="moadim-item">
+        <span class="moadim-icon">📯</span>
+        <span class="moadim-nom">Yom Terouah</span>
+        <span class="moadim-dat">1 Ethanim · Septanm 2026</span>
+      </div>
+      <div class="moadim-item">
+        <span class="moadim-icon">✦</span>
+        <span class="moadim-nom">Yom HaKipourim</span>
+        <span class="moadim-dat">10 Ethanim · Septanm 2026</span>
+      </div>
+      <div class="moadim-item">
+        <span class="moadim-icon">🌿</span>
+        <span class="moadim-nom">Soukot</span>
+        <span class="moadim-dat">15-21 Ethanim · Septanm/Oktòb 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- LOKASYON -->
+  <div class="section">
+    <p class="section-label">✦ Lokasyon</p>
+    <h2 class="section-title">Kote Nou Reyini</h2>
+    <div class="section-line"></div>
+    <p>Beth HaKnesset — Maison de Rassemblement des Tal'midim de Yahushuʿaḥ se kote fizik kote Qehilah La Voie reyini nan Indianapolis, Indiana.</p>
+    <div style="background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.15);padding:1.2rem 1.4rem;margin-top:0.8rem">
+      <p style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);letter-spacing:0.1em;margin-bottom:0.5rem">📍 Indianapolis, Indiana — USA</p>
+      <p style="font-size:0.92rem;color:var(--argent);opacity:0.75;line-height:1.6">Pou jwenn adrès egzak la — kontakte nou sou Telegram oswa via sit la.</p>
+      <a href="https://t.me/lesmembresdelavoie" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.8rem;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;color:var(--or);text-decoration:none;opacity:0.8">
+        ✈️ Telegram La Voie ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- PHOTO 2 -->
+  <div class="photo2">
+    <img src="1002286059.png" alt="Beth HaKnesset — Anndan"/>
+    <div class="photo2-caption">✦ Anndan Beth HaKnesset · Lieu de Téfilah, d'Abodah et d'Enseignement</div>
+  </div>
+
+  <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- ONLINE -->
+  <div class="section">
+    <p class="section-label">✦ Reyinyon Anliy</p>
+    <h2 class="section-title">Patisipe sou Entènèt</h2>
+    <div class="section-line"></div>
+    <p>Pou moun ki pa ka vini fizikman — nou gen opsyon pou patisipe sou entènèt via Zoom ak Telegram.</p>
+    <div class="online-card">
+      <p class="online-titre">🌐 Reyinyon Zoom — La Voie</p>
+      <p class="online-desc">Kontakte nou pou jwenn lyen Zoom a.<br>Disponib pou Shabbat ak lòt reyinyon espesyal yo.</p>
+      <a href="https://t.me/lesmembresdelavoie" target="_blank" class="online-btn">
+        ✈️ Kontakte nou sou Telegram
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- TAB BAR -->
+<nav id="tab-bar">
+  <a href="index.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    <span class="tab-label">Accueil</span>
+  </a>
+  <a href="tèks-pou-jounen-an.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    <span class="tab-label">Ketubim</span>
+  </a>
+  <a href="radio.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="13" rx="2"/><path d="M16 9V6a4 4 0 00-8 0v3"/><circle cx="12" cy="15" r="2"/></svg>
+    <span class="tab-label">Radio</span>
+  </a>
+  <a href="rassemblements.html" class="tab-item active">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="15" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6h6c3.3 0 6 2.7 6 6"/></svg>
+    <span class="tab-label">Réunions</span>
+  </a>
+  <a href="lexique.html" class="tab-item">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span class="tab-label">Lexique</span>
+  </a>
+</nav>
+
+</body>
+</html>
