@@ -1065,13 +1065,7 @@
     // Default
     return KEPHA_BASE[KEPHA_BASE.length-1].r;
   }
-  function kepha_reponn(msg) {
-    const m = msg.toLowerCase();
-    for(const [key, rep] of Object.entries(KEPHA_REP)) {
-      if(key !== 'default' && m.includes(key)) return rep;
-    }
-    return KEPHA_REP['default'];
-  }
+
 
   function toggleKepha() {
     const w = document.getElementById('kepha-window');
