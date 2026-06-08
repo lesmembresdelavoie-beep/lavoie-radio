@@ -550,11 +550,11 @@
     <div id="teks-jounen-wrap" style="background:linear-gradient(180deg,rgba(13,35,71,0.98) 0%,rgba(6,13,26,0.98) 100%);border-bottom:1px solid rgba(201,168,76,0.15);padding:1.6rem 1.4rem 1.4rem;text-align:center;position:relative">
       <a href="tèks-pou-jounen-an.html" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.8rem;text-decoration:none;padding:0.4rem 0.8rem;border-radius:2px;transition:background 0.2s" onmouseover="this.style.background='rgba(201,168,76,0.08)'" onmouseout="this.style.background='transparent'">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span id="tj-dat" style="font-family:'Cinzel',serif;font-size:1.1rem;color:#e8cb7a;letter-spacing:0.1em;font-weight:600">Yôm Rishon · 20 Siban</span>
+        <span id="tj-dat" style="font-family:'Cinzel',serif;font-size:1.1rem;color:#e8cb7a;letter-spacing:0.1em;font-weight:600">Yôm Shéni · 21 Siban</span>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.8"><polyline points="9,18 15,12 9,6"/></svg>
       </a>
-      <p id="tj-texte" style="font-style:italic;font-size:1.05rem;line-height:1.7;color:#f7edcc;max-width:600px;margin:0 auto 0.5rem;opacity:0.92">« Sèvi Yahawah ak kè kontan. Parèt devan l ak rèl lakontantman. »</p>
-      <p id="tj-ref" style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;color:#c9a84c;text-transform:uppercase;opacity:0.75">— Tehillim 100:2</p>
+      <p id="tj-texte" style="font-style:italic;font-size:1.05rem;line-height:1.7;color:#f7edcc;max-width:600px;margin:0 auto 0.5rem;opacity:0.92">« Se moun ki konn limit yo ki gen bon konprann. »</p>
+      <p id="tj-ref" style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;color:#c9a84c;text-transform:uppercase;opacity:0.75">— Mishlé 11:2</p>
     </div>
 
     <!-- HERO — LOGO -->
@@ -921,27 +921,142 @@
   <!-- KÉPHA SCRIPT -->
   <script>
   // ── KÉPHA ──
-  const KEPHA_REP = {
-    'la voie': 'La Voie (הַדֶּרֶךְ) se yon Qehilah — yon asanble tal'midim — ki mache nan tras Yahushuʿaḥ Ha'Mashiyaḥ, an respèk ak Non Yahawah jan Ketubim Qadoshim yo revele l. ✦',
-    'qui sommes': 'Nou se Les Membres de La Voie — yon Qehilah ki chèche retounen nan rasin ibriy la, avèk Shemôth Qadoshim yo, kalandriye lunisolè a ak Ketubim Qadoshim yo. ✦',
-    'yahawah': 'Yahawah se Non sakre Kreyatè a, jan li parèt nan Ketubim Qadoshim yo. Nou pa itilize "Jéhovah" ni "Seigneur" — nou retounen nan fòm ibriy orijinal la: Yahawah. ✦',
-    'yahushuah': 'Yahushuʿaḥ se Non ibriy Sila nou rele Seigneur a. Sa vle di: "Yahawah delivre". Nou pa itilize "Jésus" — nou retounen nan fòm ibriy orijinal la. ✦',
-    'kalandriye': 'Kalandriye lunisolè ibriy La Voie ankoure sou 1 Abib = 20 mas 2026 (aswè). Jou a kòmanse aswè — selon Bereshit 1. Nou nan mwa Siban kounye a. ✦',
-    'siban': 'Siban se 3yèm mwa nan kalandriye ibriy La Voie. Shabouʿot te tonbe 6 Siban. Nou kalkile kalandriye a selon krwasan lalin ak Indianapolis kòm referans. ✦',
-    'radio': 'La Voie Radio difize ansèyman Ketubim Qadoshim, mizik lwanj ak proklamasyon Besorah Tobah — an fransè ak kreyòl — 24h/24 sou radio.lavoie.world ✦',
-    'ketubim': 'Ketubim Qadoshim se non nou bay sa lòt moun rele "Bib" la. Li vle di "Écrits Saints" an ibriy. Édition La Voie itilize non restaure yo pou tout pèsonaj ak kote yo. ✦',
-    'lexique': 'Lexique Officiel La Voie disponib sou lavoie.world/lexique.html — li gen tout vokabilè ibriy restaure nou itilize, tankou: Qehilah, Tal'mid, Teshoubah, Besorah Tobah... ✦',
-    'telegram': 'Telegram La Voie: https://t.me/lesmembresdelavoie — Rejwenn kominote a pou resevwa ansèyman, tèks jounen an ak nouvèl. ✦',
-    'shabbat': 'Shabbat kòmanse aswè 6yèm jou (vandredi) epi fini aswè 7yèm jou (samdi). Se jou repo Yahawah selon Bereshit 2:2-3 ak Devarim 5:12-15. ✦',
-    'shabouot': 'Shabouʿot (Pentekòt) te tonbe 6 Siban 5786 — aswè 23 me 2026. Se fèt rekòt premye fwi yo ak donn Torah la sou Sinay. ✦',
-    'teshoubah': 'Teshoubah vle di "retounen" — retounen bò kote Yahawah avèk tout kè nou. Li pa sèlman "repantans" — li enplike yon chanjman reyèl nan direksyon lavi nou. ✦',
-    'besorah': 'Besorah Tobah vle di "Bon Nouvèl" — sa lòt moun rele "Évangile". Se mesaj Malkuwt Yahawah ak delivrans ki soti atravè Yahushuʿaḥ Ha'Mashiyaḥ. ✦',
-    'offrande': 'Nou pa fè ladim obligatwa. Nou ankouraje ofrann volontè selon kè chak moun — selon 2 Qorintiyim 9:7. Lyen pou kontribye: lavoie.world/offrandes.html ✦',
-    'meteo': 'Paj météo La Voie disponib nan menu ≡ — li montre tan pou Haïti, USA (Indianapolis), Canada, France ak RD — ak alèt move tan an tan reyèl. ✦',
-    'chronique': 'Chronique Économique La Voie disponib nan menu ≡ — li montre taux USD/HTG, EUR/HTG, CAD/HTG ak lòt monnaie an tan reyèl. ✦',
-    'default': 'Mèsi pou kesyon ou a. Pou plis enfòmasyon, ou ka kontakte nou sou Telegram: t.me/lesmembresdelavoie — oswa eksplore sit la via menu ≡. ✦'
-  };
+  // Base konesans Képha — 90+ repons ofisyèl La Voie
+  const KEPHA_BASE = [
+  // ── IDENTITE LA VOIE ──
+  { k: ['la voie','kisa la voie','what is la voie','ki sa la voie'],
+    r: "La Voie (הַדֶּרֶךְ — Ha-Derekh) se yon Qehilah — yon asanble tal'midim — ki mache nan tras Yahushuʿaḥ Ha'Mashiyaḥ, an respèk ak Non Yahawah jan Ketubim Qadoshim yo revele l. Nou itilize vokabilè ibriy restaure, nou obsève kalandriye lunisolè a epi nou pwoklamonn Besorah Tobah la an fransè ak kreyòl. ✦" },
+  { k: ['qui sommes nous','ki nou ye','identite','identité'],
+    r: "Nou se Les Membres de La Voie — tal'midim Yahushuʿaḥ ki chwazi retounen nan rasin ibriy Ketubim Qadoshim yo. Nou pa yon legliz tradisyonèl ni yon sèkt — nou se yon Qehilah ki chèche fidelite ak Dabar Yahawah la nan Non, nan kalandriye ak nan konduit. ✦" },
+  { k: ['mission','misyon','but','objektif'],
+    r: "Misyon La Voie se twa bagay : Anseye Dabar Yahawah la selon Ketubim Qadoshim yo. Reyini tal'midim yo nan Qehilah. Proklamonn Besorah Tobah la bay tout nasyon — atravè radyo, sit entènèt, piblikasyon ak temwayaj pèsonèl. ✦" },
+  { k: ["tal'mid","talmid",'disciple','talmi'],
+    r: "Yon Tal'mid se yon disip — yon moun ki pa sèlman koute ansèyman Yahushuʿaḥ yo men ki chèche viv yo. Diferans ant Tal'mid ak senpman kwayan a se ki Tal'mid la chwazi fòme lavi li selon modèl Mèt la. ✦" },
+  { k: ["tal'mid ak ed","tal'mid vs ed","ed ak talmid",'temwen'],
+    r: "Yon Tal'mid se yon disip ki ap fòme — li aprann, li pratike, li grandi. Yon ʿEd se yon temwen — yon moun ki ka temwaye sa li wè ak sa li konnen. Chak Tal'mid rele pou l vin yon ʿEd fidèl pou Yahawah ak Yahushuʿaḥ. ✦" },
 
+  // ── SHEMÔTH QADOSHIM ──
+  { k: ['yahawah','ki sa yahawah','non yahawah','nom de dieu'],
+    r: "Yahawah se Non sakre Kreyatè linivè a — jan li parèt nan Ketubim Qadoshim yo plis pase 6800 fwa. Nou pa itilize 'Dieu', 'Seigneur', 'Jéhovah' ni 'Élohim' pou ranplase l — Non Li a se Yahawah, epi nou pwononse l ak respè. ✦" },
+  { k: ['yahushuah','ki sa yahushuah','jezi','jesus','nom de jésus'],
+    r: "Yahushuʿaḥ se Non ibriy Sila nou te konnen kòm 'Jésus'. Sa vle di 'Yahawah delivre'. Non 'Jésus' se yon fòm grèk/latèn ki pa reflete Non orijinal la. Nou retounen nan Non ibriy la : Yahushuʿaḥ Ha'Mashiyaḥ. ✦" },
+  { k: ['mashiyah','mashiach','messie','kris','christ'],
+    r: "Ha'Mashiyaḥ vle di 'Sila ki Grès' — Oint Yahawah la. Yahushuʿaḥ se Ha'Mashiyaḥ ki akonpli pwofesi Ketubim Qadoshim yo, delivre nou nan konsekans devyasyon nou yo epi ki pral retounen tabli Malkouth Yahawah la. ✦" },
+  { k: ['rouah','esprit','saint','rouah haqadosh'],
+    r: "Rouaḥ HaQadosh se Souf/Espri Qadosh Yahawah la — Non ibriy li a vle di 'Souf Saint'. Li se Puisans ak Prezans Yahawah ki aji nan lavi tal'midim yo, ki anseye yo ak ki gide yo nan tout verite. ✦" },
+  { k: ['elohim','dieu','god'],
+    r: "Elohim se tèm ibriy ki vle di 'Dye/Dieu' — li ka refere ak Yahawah oswa ak lòt dye. Nan La Voie, nou itilize 'Yahawah' lè nou pale de Kreyatè a — pa 'Dieu' ni 'Seigneur' — pou evite konfizyon ak Non sakre a. ✦" },
+
+  // ── KETUBIM QADOSHIM ──
+  { k: ['ketubim','bib','bible','écriture','ekriti'],
+    r: "Ketubim Qadoshim vle di 'Écrits Saints' an ibriy — sa lòt moun rele 'Bible'. Édition La Voie itilize Non restaure yo pou tout pèsonaj, vil ak Mo'adim yo. Pa gen 'Jésus', 'Jérusalem', 'Moïse' — men Yahushuʿaḥ, Yarushalayim, Moshèh. ✦" },
+  { k: ['alliance renouvelee','berith','testament','nouvo testaman'],
+    r: "Nou pa itilize 'Ancien' ni 'Nouveau Testament'. Nou pale de HaBerith haYeshanah (Alliance Ancienne) ak HaBerith haḤadashah (Alliance Renouvelée) — de pati ki fòme yon sèl Dabar Yahawah konplè, pa kontradiksyon. ✦" },
+  { k: ['torah','lwa','loi','commandement'],
+    r: "Torah vle di 'Enseignement/Instruction' — pa sèlman 'Loi'. Yahushuʿaḥ pa t vini pou aboli Torah a men pou akonpli l (Mattiyahu 5:17). Tal'midim La Voie yo chèche viv prensip Torah a jan Yahushuʿaḥ te ensèye l. ✦" },
+
+  // ── KALANDRIYE ──
+  { k: ['kalandriye','calendrier','mois','lunisolaire'],
+    r: "Kalandriye lunisolè ibriy La Voie ankoure sou 1 Abib = aswè 20 mas 2026 (obs. krwasan lalin). Jou a kòmanse aswè — selon Bereshit 1. 12 mwa yo se : Abib, Ziw, Siban, Rebi'i, Ab, Eloul, Ethanim, Boul, Kislew, Tebeth, Shebat, Adar. ✦" },
+  { k: ['shabbat','sabat','repo','samdi'],
+    r: "Shabbat kòmanse aswè 6yèm jou (vandredi) epi fini aswè 7yèm jou (samdi). Se jou repo Yahawah selon Bereshit 2:2-3. Tal'midim La Voie yo obsève Shabbat kòm jou konsekre bay Yahawah — repo, etid Dabar la ak rasanbleman. ✦" },
+  { k: ['shabouot','chavouot','pentecote','fete'],
+    r: "Shabouʿot se Fèt Rekòt premye fwi yo ak dat donn Torah la sou Sinay. Nan 5786, li te tonbe 6 Siban — aswè 23 me 2026. Nan HaBerith haḤadashah, Shabouʿot make donn Rouaḥ HaQadosh la (Maʿasei 2). ✦" },
+  { k: ['pessah','pascha','paque','14 abib'],
+    r: "Pessaḥ se Fèt Souvni delivrans Yisra'el anba esklavaj Mitsrayim. Li tonbe 14 Abib chak ane. Yahushuʿaḥ te akonpli Pessaḥ kòm Agneau Yahawah lè l te sacrifye — Se'oudat ha'Adôn raple sa. ✦" },
+  { k: ['moadim','fetes','celebrations'],
+    r: "Mo'adim (Fèt Yahawah) yo se : Pessaḥ (14 Abib), Matsot (15-21 Abib), Bikourim, Shabouʿot (6 Siban), Yom Terouah, Yom HaKipourim, Soukot. Nou obsève yo selon kalandriye lunisolè a — pa selon kalandriye romen an. ✦" },
+
+  // ── DOKTRIN ──
+  { k: ['resurrection','rezireksyon','immortalite','immortalité','nanm'],
+    r: "La Voie ensèye rezirèksyon — pa imòtalite natirèl nanm nan. Selon Ketubim Qadoshim yo, mò yo dòmi nan kav yo jiska rezirèksyon. Se Yahawah ki ba lavi — pa nanm ki imòtèl pa nati li. Espwa nou se rezirèksyon nan Jou Yahawah la. ✦" },
+  { k: ['enfer','gehenne','gehinnom','feu eternel','kondanasyon'],
+    r: "La Voie pa ensèye yon kote tirans etènèl. Géhenne (Gehinnom) nan Ketubim Qadoshim yo se imaj destriksyon final — pa tirans etènèl. Konsekans final pou moun ki refize Yahawah se Lanmò Dezyèm nan — disparisyon konplè, pa soufrans etènèl. ✦" },
+  { k: ['trinite','trinité','trois personnes'],
+    r: "La Voie pa ensèye Trinite kòm yon doktrin. Shema Yisra'el (Devarim 6:4) deklare Yahawah se UN. Yahushuʿaḥ se Pitit Yahawah — pa Yahawah li menm. Rouaḥ HaQadosh se Puisans Yahawah a. Nou chèche fidelite ak tèks Ketubim Qadoshim yo. ✦" },
+  { k: ['kwa','croix','signe','symbole'],
+    r: "La Voie pa itilize kwa kòm senbòl. Kwa a se yon enstriman romani pou ekzekisyon — Ketubim Qadoshim yo pale de 'stauros' (pal/poto). Senbòl nou se Dabar Yahawah la menm — pa yon objè materyèl. ✦" },
+  { k: ['malkouth','royaume','régner','gouverner'],
+    r: "Malkouth Yahawah se Wayòm Yahawah a — objektif final tout istwa: etablisman otorite konplè Yahawah sou tè a, avèk Yahushuʿaḥ kòm Mélèkh (Wa). Tal'midim yo viv kounye a kòm sitwayen Malkouth sa a, pandan y ap tann akonplisman li. ✦" },
+  { k: ['politique','vote','voter','election','elas'],
+    r: "La Voie pa fòse manm li yo vote ni pa entèdi yo vote. Kesyon sa a rete yon kestyon konsyans pèsonèl chak moun devan Yahawah — toutotan li respekte prensip Ketubim Qadoshim yo. Fidelite yon tal'mid dwe toujou ale an premye bay Yahawah ak Malkouth Li a (Mattiyahu 6:33). ✦" },
+  { k: ['jèn','jeun','jeûne','fasting'],
+    r: "Jèn se yon pratik spiritiryèl nan La Voie — pa yon obligasyon obligatwa. Yahushuʿaḥ te ensèye jèn kòm yon pratik prive devan Yahawah (Mattiyahu 6:16-18). Chak tal'mid deside pou kont li, an konsyans devan Yahawah. ✦" },
+  { k: ['téfilah','tefila','priye','prière','lapriyè'],
+    r: "Téfilah (lapriyè) se kominikasyon dirèk ak Yahawah. La Voie ensèye pou adrese lapriyè bay Yahawah sèlman — nan Non Yahushuʿaḥ. Nou pa priye sen, mò, oswa imaj. Yahushuʿaḥ ban nou modèl lapriyè (Mattiyahu 6:9-13). ✦" },
+  { k: ['fanm','femme','role','zaqen','mesharath'],
+    r: "Nan La Voie, fanm gen yon wòl fondamantal. Wòl Zaqen (ansyen/lidè) yo rele pou gason selon Ketubim Qadoshim yo. Men fanm ka sèvi kòm Mesharath (minis/sèvitèz) — yo ka anseye, ankouraje, dirije travay ak sèvis. Chak moun itilize don Yahawah ba yo. ✦" },
+
+  // ── FINANS ──
+  { k: ['ladim','dime','dîme','obligatoire'],
+    r: "La Voie pa egzije ladim obligatwa. Ladim nan Ketubim Qadoshim yo te yon sistèm agrikòl pou soutni Levit yo nan kontèks Yisra'el ansyen. Kounye a nou ankouraje ofrann volontè ak kè kontan selon 2 Qorintiyim 9:7. ✦" },
+  { k: ['ofrann','offrande','don','contribution','soutenir'],
+    r: "Ofrann La Voie yo se volontè — jan kè chak moun di l. Nou pa fè presyon ni egzije. Kontribisyon yo soutni radyo a, sit entènèt la, piblikasyon yo ak misyon proklamasyon an. Lyen pou kontribye : lavoie.world/offrandes.html ✦" },
+  { k: ['salè','salaire','pasteur','rémunération'],
+    r: "La Voie pa gen salarite obligatwa pou manm li yo peye. Ansèyan yo ka resevwa sipò volontè selon kapasite Qehilah la — pa yon salè fixed. Prensip la se sèvis ak vokasyon — pa kòm yon metye pou fè lajan. ✦" },
+
+  // ── QEHILAH / RASANBLEMAN ──
+  { k: ['qehilah','eglise','assemblée','asanble'],
+    r: "Qehilah vle di 'asanble konvoke' — moun yo rele ansanm pou yon objektif. Se pa yon bilding ni yon enstitisyon — se tout tal'midim yo ki fòme Qehilah la ansanm. Beth HaKnesset se kote fizik kote nou reyini. ✦" },
+  { k: ['beth haknesset','temple','bâtiment','lokèl'],
+    r: "Beth HaKnesset (Maison de Rassemblement) se kote fizik kote tal'midim yo reyini pou etid, lapriyè ak adorasyon. Nou pa bezwen yon gwo bilding — Qehilah la ka reyini nenpòt kote Yahawah beni prezans yo. ✦" },
+  { k: ['reunion','réunion','reyinyon','frekans','frequence'],
+    r: "Tal'midim La Voie yo reyini chak semèn — an patikilye pou Shabbat. Gen tou etid Dabar la, lapriyè kolektif ak obsèvasyon Mo'adim yo. Frekans reyinyon yo depann de kapasite ak lokal Qehilah la. ✦" },
+  { k: ['bapteme','batèm','immersion','matbil'],
+    r: "Matbil (imèrsyon) se yon ak piblik fidèlite devan Yahawah — pa yon sakraman ki sove. Li sibolik — li montre mouri ak vye lavi a epi leve nan yon nouvo lavi nan Yahushuʿaḥ. Li fèt nan dlo kouri lè posib, nan Non Yahushuʿaḥ. ✦" },
+  { k: ['se oudat','seoudat','repas du seigneur','seder','eucharistie'],
+    r: "Se'oudat ha'Adôn se Repas Mèt la — souvni sakrifis Yahushuʿaḥ. Nou obsève l chak ane nan 14 Abib swa — selon ensèyman Yahushuʿaḥ. Se yon manje reyèl avèk pen san ledven ak ji rezen — pa yon sakraman ris. ✦" },
+
+  // ── VIE PRATIK ──
+  { k: ['nourriture','manje','kasher','porc','cochon'],
+    r: "La Voie ensèye prensip manje Ketubim Qadoshim yo — sans fòse moun. Devarim 14 ak Levitik 11 bay direktiv sou bèt ki pwòp ak ki pa pwòp. Chak tal'mid egzamine sa selon konsyans li ak konpreyansyon l nan Dabar la. ✦" },
+  { k: ['mariage','maryaj','couple','famille'],
+    r: "La Voie wè maryaj kòm yon alyans sakre ant yon gason ak yon fanm devan Yahawah — selon modèl Bereshit 2:24. Nou ankouraje tal'midim yo chèche patnè ki pataje menm foi ak valè yo. ✦" },
+  { k: ['politique','mélèkh','roi','pouvoir'],
+    r: "Yahushuʿaḥ te refize pou moun fè l vin mélèkh pandan ministè l (Yaḥuānān 6:15) — paske misyon l pa t pran kontwòl politik lèzòm yo. Tal'midim La Voie yo aprann ke Malkouth Yahawah depase nenpòt sistèm politik imen. ✦" },
+
+  // ── MEDIAS LA VOIE ──
+  { k: ['radio','la voie radio','emission','écouter'],
+    r: "La Voie Radio difize ansèyman Ketubim Qadoshim, mizik lwanj ak Besorah Tobah — an fransè ak kreyòl — 24h/24. Ou ka koute sou : lavoie.world/radio.html — oswa sou sit radio.lavoie.world ✦" },
+  { k: ['vr-tv','television','tv','video'],
+    r: "La VR-TV (La Voie Radio-Télévision) se platfòm odyo-viziyèl La Voie — pou emisyon, ansèyman, kantik ak anons. Ale sou : lavoie.world/vr-tv.html ✦" },
+  { k: ['telegram','reseau','reseaux sociaux','rejoindre','contact'],
+    r: "Pou rejwenn kominote La Voie sou Telegram : t.me/lesmembresdelavoie — Ou ka tou kontakte nou via sit la oswa voye yon mesaj sou rezo sosyal yo. ✦" },
+  { k: ['lexique','vocabulaire','terme','mot'],
+    r: "Lexique Officiel La Voie disponib sou lavoie.world/lexique.html — li gen tout vokabilè ibriy restaure nou itilize : Qehilah, Tal'mid, Teshoubah, Besorah Tobah, Malkouth, Mo'adim ak plis. ✦" },
+  { k: ['meteo','météo','temps','cyclone','ouragan'],
+    r: "Paj Météo La Voie disponib nan menu ≡ sou sit la — li montre kondisyon météyolojik pou Haïti, Indianapolis, Montréal, Paris ak Santo Domingo — ak alèt move tan an tan reyèl. ✦" },
+  { k: ['chronique economique','taux','change','goud','htg'],
+    r: "Chronique Économique La Voie disponib nan menu ≡ — li montre taux USD/HTG, EUR/HTG, CAD/HTG, USD/DOP, USD/BRL ak USD/CLP an tan reyèl. ✦" },
+
+  // ── TESHOUBAH / GRASA ──
+  { k: ['teshoubah','repantans','repentance','retounen'],
+    r: "Teshoubah vle di 'retounen' — retounen bò kote Yahawah avèk tout kè nou. Li pa sèlman 'repantans' — li enplike yon chanjman reyèl nan direksyon lavi nou. Yahawah resevwa tout moun ki retounen avèk senserite. ✦" },
+  { k: ['grasa','grace','miséricorde','padon','pardon'],
+    r: "Yahawah plen mizèrikòd — Li resevwa tout moun ki retounen bò kote Li avèk senserite. Grasa Li a pa bay lisans pou peche — men Li ba nou fòs pou chanje. Yaḥuānān 3:16 — Yahawah renmen lèzòm tèlman Li bay Pitit Li a. ✦" },
+  { k: ['salut','delivrance','sauvé','sove'],
+    r: "Delivrans nou soti nan Yahawah atravè Yahushuʿaḥ Ha'Mashiyaḥ — pa nan travay lèzòm yo. Se grasa emounah (konfyans aktif) nan sa Yahawah te fè atravè Yahushuʿaḥ — plis teshoubah reyèl — ke nou resevwa delivrans. ✦" },
+
+  // ── DEFAULT ──
+  { k: ['default'],
+    r: "Mèsi pou kesyon ou a. Pou plis enfòmasyon sou La Voie, ou ka eksplore sit la via menu ≡ — oswa kontakte nou sou Telegram : t.me/lesmembresdelavoie. Képha la pou ede w ! ✦" }
+];;
+
+  function kepha_reponn(msg) {
+    const m = msg.toLowerCase()
+      .replace(/[àáâãäå]/g,'a').replace(/[èéêë]/g,'e')
+      .replace(/[ìíîï]/g,'i').replace(/[òóôõö]/g,'o')
+      .replace(/[ùúûü]/g,'u').replace(/[ç]/g,'c');
+    
+    for(const entry of KEPHA_BASE) {
+      if(entry.k[0] === 'default') continue;
+      for(const kw of entry.k) {
+        if(m.includes(kw)) return entry.r;
+      }
+    }
+    // Default
+    return KEPHA_BASE[KEPHA_BASE.length-1].r;
+  }
   function kepha_reponn(msg) {
     const m = msg.toLowerCase();
     for(const [key, rep] of Object.entries(KEPHA_REP)) {
