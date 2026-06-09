@@ -884,13 +884,18 @@
     });
     const datGreg = annee + '-' + mois + '-' + jou;
 
+    // DEBUG — afficher les valeurs calculées
+    const dbg = document.createElement('div');
+    dbg.style.cssText = 'position:fixed;top:60px;left:0;right:0;background:#000;color:#0f0;font-size:11px;z-index:9999;padding:6px 10px;font-family:monospace;';
+    dbg.innerHTML = 'datGreg='+datGreg+' | hh='+hh+' mm='+mm+' | apSol='+apSol;
+    document.body.appendChild(dbg);
+
     let jounen = null;
     for(let i=0;i<data.jours.length;i++){
       const j=data.jours[i];
       if(j.soir_debut===datGreg&&apSol){jounen=j;break;}
       if(j.soir_fin===datGreg&&!apSol){jounen=j;break;}
     }
-    // Fallback: chercher par soir_fin seulement si rien trouvé
     if(!jounen){
       for(let i=0;i<data.jours.length;i++){
         if(data.jours[i].soir_fin===datGreg){jounen=data.jours[i];break;}
