@@ -871,15 +871,16 @@
     const leH = hh + mm / 60;
     const apSol = leH >= 20.5;
 
-    // Extraire date Indianapolis de façon fiable
-    const dateParts = new Intl.DateTimeFormat('en-CA', {
-      timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit'
+    // Extraire date Indianapolis de façon fiable (compatible tous navigateurs Android)
+    const datePartsRaw = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz,
+      year: 'numeric', month: 'numeric', day: 'numeric'
     }).formatToParts(now);
     let annee = '', mois = '', jou = '';
-    dateParts.forEach(p => {
+    datePartsRaw.forEach(p => {
       if (p.type === 'year')  annee = p.value;
-      if (p.type === 'month') mois  = p.value;
-      if (p.type === 'day')   jou   = p.value;
+      if (p.type === 'month') mois  = String(p.value).padStart(2,'0');
+      if (p.type === 'day')   jou   = String(p.value).padStart(2,'0');
     });
     const datGreg = annee + '-' + mois + '-' + jou;
 
