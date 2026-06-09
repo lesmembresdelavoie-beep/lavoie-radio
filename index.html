@@ -857,13 +857,31 @@
     if(typeof TEKS_DATA === 'undefined') return;
     const data = TEKS_DATA;
     const now = new Date();
-    const indy = new Date(now.toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
-    const leH = indy.getHours() + indy.getMinutes()/60;
+    const tz = 'America/Indiana/Indianapolis';
+
+    // Extraire heure/minute Indianapolis de façon fiable
+    const timeParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, hour: 'numeric', minute: 'numeric', hour12: false
+    }).formatToParts(now);
+    let hh = 0, mm = 0;
+    timeParts.forEach(p => {
+      if (p.type === 'hour')   hh = parseInt(p.value) % 24;
+      if (p.type === 'minute') mm = parseInt(p.value);
+    });
+    const leH = hh + mm / 60;
     const apSol = leH >= 20.5;
-    const annee = indy.getFullYear();
-    const mois = String(indy.getMonth()+1).padStart(2,'0');
-    const jou = String(indy.getDate()).padStart(2,'0');
-    const datGreg = annee+'-'+mois+'-'+jou;
+
+    // Extraire date Indianapolis de façon fiable
+    const dateParts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(now);
+    let annee = '', mois = '', jou = '';
+    dateParts.forEach(p => {
+      if (p.type === 'year')  annee = p.value;
+      if (p.type === 'month') mois  = p.value;
+      if (p.type === 'day')   jou   = p.value;
+    });
+    const datGreg = annee + '-' + mois + '-' + jou;
 
     let jounen = null;
     for(let i=0;i<data.jours.length;i++){
@@ -871,7 +889,13 @@
       if(j.soir_debut===datGreg&&apSol){jounen=j;break;}
       if(j.soir_fin===datGreg&&!apSol){jounen=j;break;}
     }
-    if(!jounen) jounen=data.jours[20];
+    // Fallback: chercher par soir_fin seulement si rien trouvé
+    if(!jounen){
+      for(let i=0;i<data.jours.length;i++){
+        if(data.jours[i].soir_fin===datGreg){jounen=data.jours[i];break;}
+      }
+    }
+    if(!jounen) jounen=data.jours[data.jours.length-1];
 
     const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
     const datRef=new Date(jounen[apSol?'soir_debut':'soir_fin']+'T12:00:00');
