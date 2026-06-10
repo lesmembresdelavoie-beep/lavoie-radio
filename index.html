@@ -522,73 +522,15 @@
     #kepha-send:hover { background:#e8cb7a; }
     #kepha-send svg { width:14px; height:14px; fill:#060d1a; }
     @media(max-width:420px){#kepha-window{width:calc(100vw - 1.6rem);right:0.8rem}}
-  
-    /* PUBLICATIONS SECTION */
-    .publications-section {
-      padding: 4rem 1.5rem;
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .pub-card {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      background: rgba(201,168,76,0.04);
-      border: 1px solid rgba(201,168,76,0.15);
-      border-left: 3px solid var(--or);
-      border-radius: 3px;
-      padding: 1.2rem 1.4rem;
-      margin-top: 1.5rem;
-      text-decoration: none;
-      transition: background 0.2s;
-      text-align: left;
-    }
-    .pub-card:hover { background: rgba(201,168,76,0.08); }
-    .pub-cover {
-      width: 64px;
-      height: 90px;
-      object-fit: cover;
-      border: 1px solid rgba(201,168,76,0.2);
-      flex-shrink: 0;
-    }
-    .pub-info { flex: 1; }
-    .pub-titre {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      color: var(--or-pale);
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
-    }
-    .pub-sous {
-      font-family: 'EB Garamond', 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 0.88rem;
-      color: rgba(247,237,204,0.55);
-      margin-bottom: 0.4rem;
-    }
-    .pub-auteur {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      color: var(--or);
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-    .pub-arrow {
-      font-size: 1.1rem;
-      color: var(--or);
-      opacity: 0.6;
-    }
-    </style>
+  </style>
 </head>
 <body>
 
   <!-- TOP BAR -->
   <div id="top-bar">
     <div id="top-date">
-      <span class="ibri-date" id="ibri-date">21 Siban</span>
-      <span class="greg-date" id="greg-date">Swa 7 jen → Swa 8 jen 2026</span>
+      <span class="ibri-date" id="ibri-date">…</span>
+      <span class="greg-date" id="greg-date">…</span>
     </div>
     <div style="display:flex;align-items:center;gap:0.8rem">
       <div id="top-clocks">
@@ -608,7 +550,7 @@
     <div id="teks-jounen-wrap" style="background:linear-gradient(180deg,rgba(13,35,71,0.98) 0%,rgba(6,13,26,0.98) 100%);border-bottom:1px solid rgba(201,168,76,0.15);padding:1.6rem 1.4rem 1.4rem;text-align:center;position:relative">
       <a href="tèks-pou-jounen-an.html" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.8rem;text-decoration:none;padding:0.4rem 0.8rem;border-radius:2px;transition:background 0.2s" onmouseover="this.style.background='rgba(201,168,76,0.08)'" onmouseout="this.style.background='transparent'">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span id="tj-dat" style="font-family:'Cinzel',serif;font-size:1.1rem;color:#e8cb7a;letter-spacing:0.1em;font-weight:600">Yôm Shéni · 21 Siban</span>
+        <span id="tj-dat" style="font-family:'Cinzel',serif;font-size:1.1rem;color:#e8cb7a;letter-spacing:0.1em;font-weight:600">…</span>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.8"><polyline points="9,18 15,12 9,6"/></svg>
       </a>
       <p id="tj-texte" style="font-style:italic;font-size:1.05rem;line-height:1.7;color:#f7edcc;max-width:600px;margin:0 auto 0.5rem;opacity:0.92">« Se moun ki konn limit yo ki gen bon konprann. »</p>
@@ -740,25 +682,6 @@
     </div>
 
     <!-- CITATION -->
-
-    <!-- PUBLICATIONS -->
-    <section class="publications-section">
-      <p class="section-label">✦ Publications</p>
-      <h2 class="section-title">Livres &amp; Études</h2>
-      <div class="section-line" style="margin:0 auto 0.5rem;"></div>
-      <p style="font-size:0.88rem;color:rgba(247,237,204,0.5);font-style:italic;margin-bottom:0.5rem;">Restaurer, vérifier, transmettre.</p>
-
-      <a href="restauration.html" class="pub-card">
-        <img class="pub-cover" src="restauration-cover.jpg" alt="Restauration" onerror="this.style.display='none'">
-        <div class="pub-info">
-          <div class="pub-titre">Restauration</div>
-          <div class="pub-sous">Ni innovation, ni réforme — rétablir l'ordre initial</div>
-          <div class="pub-auteur">Jean Wagner Guillaume</div>
-        </div>
-        <span class="pub-arrow">→</span>
-      </a>
-    </section>
-
     <div class="citation-section">
       <p style="font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.35em;color:var(--or);opacity:0.4;margin-bottom:1rem">✦ &nbsp; ✦ &nbsp; ✦</p>
       <p class="citation-texte">« Barukh Yahawah — la Voie a maintenant son adresse sur la terre entière. »</p>
@@ -776,7 +699,6 @@
         <li><a href="kq.html">KQ</a></li>
         <li><a href="rassemblements.html">Rassemblements</a></li>
         <li><a href="lexique.html">Lexique</a></li>
-        <li><a href="restauration.html">Publications</a></li>
         <li><a href="offrandes.html">Soutenir</a></li>
       </ul>
       <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · Tous droits réservés</p>
@@ -894,7 +816,6 @@
       <a href="kq.html" onclick="document.getElementById('menu-overlay').style.display='none'" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.8rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.06);"><span style="font-size:1.3rem;width:32px;text-align:center;">✦</span><span style="display:flex;flex-direction:column;"><span style="font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:0.1em;color:#f7edcc;">Ketubim Qadoshim</span><span style="font-size:0.7rem;color:#b8c8dc;opacity:0.55;">Édition La Voie</span></span></a>
       <a href="lexique.html" onclick="document.getElementById('menu-overlay').style.display='none'" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.8rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.06);"><span style="font-size:1.3rem;width:32px;text-align:center;">⭐</span><span style="display:flex;flex-direction:column;"><span style="font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:0.1em;color:#f7edcc;">Lexique Officiel</span><span style="font-size:0.7rem;color:#b8c8dc;opacity:0.55;">Vocabulaire restauré</span></span></a>
       <p style="font-family:Cinzel,serif;font-size:0.5rem;letter-spacing:0.3em;color:#c9a84c;opacity:0.5;text-transform:uppercase;padding:1rem 1.8rem 0.4rem;">Médias</p>
-      <a href="restauration.html" onclick="document.getElementById('menu-overlay').style.display='none'" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.8rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.06);"><span style="font-size:1.3rem;width:32px;text-align:center;">📖</span><span style="display:flex;flex-direction:column;"><span style="font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:0.1em;color:#f7edcc;">Publications</span><span style="font-size:0.7rem;color:#b8c8dc;opacity:0.55;">Livres & Études</span></span></a>
       <a href="radio.html" onclick="document.getElementById('menu-overlay').style.display='none'" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.8rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.06);"><span style="font-size:1.3rem;width:32px;text-align:center;">🎙️</span><span style="display:flex;flex-direction:column;"><span style="font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:0.1em;color:#f7edcc;">La Voie Radio</span><span style="font-size:0.7rem;color:#b8c8dc;opacity:0.55;">24h/24</span></span></a>
       <a href="vr-tv.html" onclick="document.getElementById('menu-overlay').style.display='none'" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.8rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.06);"><span style="font-size:1.3rem;width:32px;text-align:center;">📺</span><span style="display:flex;flex-direction:column;"><span style="font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:0.1em;color:#f7edcc;">La VR-TV</span><span style="font-size:0.7rem;color:#b8c8dc;opacity:0.55;">Productions · Émissions</span></span></a>
       <a href="chronique-eco.html" onclick="document.getElementById('menu-overlay').style.display='none'" style="display:flex;align-items:center;gap:1rem;padding:0.9rem 1.8rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.06);"><span style="font-size:1.3rem;width:32px;text-align:center;">📊</span><span style="display:flex;flex-direction:column;"><span style="font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:0.1em;color:#f7edcc;">Chronique Économique</span><span style="font-size:0.7rem;color:#b8c8dc;opacity:0.55;">Taux · Marchés</span></span></a>
@@ -936,12 +857,14 @@
     if(typeof TEKS_DATA === 'undefined') return;
     const data = TEKS_DATA;
     const now = new Date();
-    const indy = new Date(now.toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
-    const leH = indy.getHours() + indy.getMinutes()/60;
+    const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const indyMs = utcMs - (4 * 3600000);
+    const indy = new Date(indyMs);
+    const leH = indy.getUTCHours() + indy.getUTCMinutes()/60;
     const apSol = leH >= 20.5;
-    const annee = indy.getFullYear();
-    const mois = String(indy.getMonth()+1).padStart(2,'0');
-    const jou = String(indy.getDate()).padStart(2,'0');
+    const annee = indy.getUTCFullYear();
+    const mois = String(indy.getUTCMonth()+1).padStart(2,'0');
+    const jou = String(indy.getUTCDate()).padStart(2,'0');
     const datGreg = annee+'-'+mois+'-'+jou;
 
     let jounen = null;
@@ -969,8 +892,9 @@
   // AUTO-REFRESH 20:30
   (function(){
     function checkRefresh(){
-      const indy=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
-      const h=indy.getHours(),m=indy.getMinutes();
+      const _utcMs=Date.now()+(new Date().getTimezoneOffset()*60000);
+      const indy=new Date(_utcMs-(4*3600000));
+      const h=indy.getUTCHours(),m=indy.getUTCMinutes();
       if(h===20&&m>=30&&m<=31){window.location.reload();}
     }
     setInterval(checkRefresh,30000);
