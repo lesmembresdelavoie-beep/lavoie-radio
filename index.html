@@ -943,7 +943,7 @@
     if(!jounen) jounen=data.jours[20];
 
     const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
-    const datRef=new Date(jounen[apSol?'soir_debut':'soir_fin']+'T12:00:00');
+    const datRef=new Date(jounen.soir_fin+'T12:00:00');
     const nomJou=jSem[datRef.getDay()];
     const mn={'01':'janvye','02':'fevriye','03':'mas','04':'avril','05':'me','06':'jen','07':'jiyè','08':'out','09':'septanm','10':'oktòb','11':'novanm','12':'desanm'};
     const [,m1,d1]=jounen.soir_debut.split('-');
