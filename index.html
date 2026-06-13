@@ -575,17 +575,23 @@
     </style>
 </head>
 <body>
-  <div id="google_translate_element" style="position:fixed; bottom:70px; right:8px; z-index:9999;"></div>
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'fr',
-        includedLanguages: 'en,es,pt,ht,he,de,it',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- LANG SELECTOR -->
+  <style>
+    #lang-btn{background:none;border:1px solid rgba(201,168,76,0.4);border-radius:3px;color:#c9a84c;font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.1em;padding:0.25rem 0.5rem;cursor:pointer;display:flex;align-items:center;gap:0.3rem;transition:background 0.2s}
+    #lang-btn:hover{background:rgba(201,168,76,0.12)}
+    #lang-menu{display:none;position:absolute;top:48px;right:56px;background:#0d2347;border:1px solid rgba(201,168,76,0.3);border-radius:4px;z-index:10000;min-width:140px;box-shadow:0 4px 16px rgba(0,0,0,0.5)}
+    #lang-menu a{display:block;padding:0.5rem 1rem;color:#f7edcc;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.08em;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.08);transition:background 0.15s}
+    #lang-menu a:last-child{border-bottom:none}
+    #lang-menu a:hover{background:rgba(201,168,76,0.1);color:#e8cb7a}
+  </style>
+  <div id="lang-menu">
+    <a href="https://translate.google.com/translate?sl=fr&tl=en&u=https://lavoie.world/" target="_blank">🇺🇸 English</a>
+    <a href="https://translate.google.com/translate?sl=fr&tl=ht&u=https://lavoie.world/" target="_blank">🇭🇹 Kreyòl</a>
+    <a href="https://translate.google.com/translate?sl=fr&tl=es&u=https://lavoie.world/" target="_blank">🇪🇸 Español</a>
+    <a href="https://translate.google.com/translate?sl=fr&tl=pt&u=https://lavoie.world/" target="_blank">🇧🇷 Português</a>
+    <a href="https://translate.google.com/translate?sl=fr&tl=de&u=https://lavoie.world/" target="_blank">🇩🇪 Deutsch</a>
+    <a href="https://translate.google.com/translate?sl=fr&tl=it&u=https://lavoie.world/" target="_blank">🇮🇹 Italiano</a>
+  </div>
 
 
   <!-- TOP BAR -->
@@ -600,7 +606,8 @@
           style="width:180px;height:44px;background:transparent;border:none;overflow:hidden">
         </iframe>
       </div>
-      <button id="menu-btn" onclick="var o=document.getElementById('menu-overlay');o.style.display=o.style.display==='flex'?'none':'flex';" aria-label="Menu">
+      <button id="lang-btn" onclick="var m=document.getElementById('lang-menu');m.style.display=m.style.display==='block'?'none':'block'" aria-label="Langue">🌐</button>
+      <button id="menu-btn" onclick="var o=document.getElementById('menu-overlay');o.style.display=o.style.display==='flex'?'none':'flex';document.getElementById('lang-menu').style.display='none';" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
