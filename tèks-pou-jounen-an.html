@@ -259,7 +259,7 @@ function renderJounen(jounen, data) {
     const joursSemaine = ['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
     const _indyNow = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
     const apSol = (_indyNow.getHours() + _indyNow.getMinutes()/60) >= 20.5;
-    const datRef = new Date(jounen[apSol ? 'soir_debut' : 'soir_fin'] + 'T12:00:00');
+    const datRef = new Date(jounen.soir_fin + 'T12:00:00');
     const nomJou = joursSemaine[datRef.getDay()];
     document.getElementById('pg-dat').textContent = nomJou + ' · ' + jounen.jour + ' ' + data.mois;
   document.getElementById('pg-ref').textContent = jounen.ref;
