@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Calendrier Cultuel — Siban &amp; Rebi'i 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+body{
+  font-family:'Cormorant Garamond', serif;
+  margin:0; padding:30px;
+  background:#f3ecd8;
+}
+.month{
+  max-width:900px; margin:0 auto 50px auto;
+  border-radius:14px; overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,0.25);
+}
+.month h1{
+  font-family:'Cinzel Decorative', serif;
+  text-align:center; padding:22px 10px 14px;
+  margin:0; font-size:2.1em; letter-spacing:1px;
+}
+.month .sub{
+  text-align:center; font-style:italic; padding:10px; font-size:1.05em;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  padding:14px;
+}
+.cell{
+  border-radius:8px;
+  padding:14px 6px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:78px;
+}
+.daynum{
+  font-family:'Cinzel Decorative',serif;
+  font-size:2.1em;
+  line-height:1;
+}
+.greg{
+  font-size:0.72em;
+  opacity:0.65;
+  margin-top:6px;
+  letter-spacing:0.5px;
+}
+.today{ font-size:0.7em; font-weight:700; margin-top:4px; letter-spacing:1px; }
+
+/* SIBAN — bleu nuit / or royal / parchemin */
+#siban{ background:#f3ecd8; }
+#siban h1{ background:#1a2747; color:#d4af37; }
+#siban .sub{ background:#1a2747; color:#e8dcb5; }
+#siban .cell{ background:#fdf8ec; color:#1a2747; }
+#siban .greg{ color:#1a2747; }
+#siban .shabbat{ background:#d4af37; color:#1a2747; }
+#siban .shabbat .greg{ color:#1a2747; }
+#siban .today{ color:#7a1f1f; }
+
+/* REBI'I — parchemin / or foncé */
+#rebii{ background:#f3ecd8; }
+#rebii h1{ background:#4a3414; color:#c98a2b; }
+#rebii .sub{ background:#4a3414; color:#e6cfa3; }
+#rebii .cell{ background:#fdf6e6; color:#4a3414; }
+#rebii .greg{ color:#4a3414; }
+#rebii .shabbat{ background:#c98a2b; color:#fdf6e6; }
+#rebii .shabbat .greg{ color:#fdf6e6; }
+
+.empty{ visibility:hidden; }
+.weekhead{
+  display:grid; grid-template-columns:repeat(7,1fr);
+  gap:6px; padding:0 14px; margin-top:6px;
+}
+.weekhead div{
+  text-align:center; font-size:0.75em; letter-spacing:2px;
+  text-transform:uppercase; padding:4px 0; opacity:0.7;
+}
+#siban .weekhead .sham{ color:#1a2747; background:#d4af37; border-radius:6px; opacity:1; font-weight:600; }
+#rebii .weekhead .sham{ color:#fdf6e6; background:#c98a2b; border-radius:6px; opacity:1; font-weight:600; }
+</style>
+</head>
+<body>
+
+<!-- ================= SIBAN ================= -->
+<div class="month" id="siban">
+<h1>Siban — 3ᵉ Mois</h1>
+<div class="sub">30 jours — repère grégorien : 18 mai → 17 juin 2026 (coucher du soleil à coucher du soleil)</div>
+<div class="weekhead"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div class="sham">Shabbat</div></div>
+<div class="grid">
+<div class="cell empty"></div>
+<div class="cell empty"></div>
+<div class="cell"><div class="daynum">1</div><div class="greg">18 → 19 mai</div></div>
+<div class="cell"><div class="daynum">2</div><div class="greg">19 → 20 mai</div></div>
+<div class="cell"><div class="daynum">3</div><div class="greg">20 → 21 mai</div></div>
+<div class="cell"><div class="daynum">4</div><div class="greg">21 → 22 mai</div></div>
+<div class="cell shabbat"><div class="daynum">5</div><div class="greg">22 → 23 mai</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">6</div><div class="greg">23 → 24 mai</div></div>
+<div class="cell"><div class="daynum">7</div><div class="greg">24 → 25 mai</div></div>
+
+<div class="cell"><div class="daynum">8</div><div class="greg">25 → 26 mai</div></div>
+<div class="cell"><div class="daynum">9</div><div class="greg">26 → 27 mai</div></div>
+<div class="cell"><div class="daynum">10</div><div class="greg">27 → 28 mai</div></div>
+<div class="cell"><div class="daynum">11</div><div class="greg">28 → 29 mai</div></div>
+<div class="cell shabbat"><div class="daynum">12</div><div class="greg">29 → 30 mai</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">13</div><div class="greg">30 → 31 mai</div></div>
+<div class="cell"><div class="daynum">14</div><div class="greg">31 mai → 1 juin</div></div>
+
+<div class="cell"><div class="daynum">15</div><div class="greg">1 → 2 juin</div></div>
+<div class="cell"><div class="daynum">16</div><div class="greg">2 → 3 juin</div></div>
+<div class="cell"><div class="daynum">17</div><div class="greg">3 → 4 juin</div></div>
+<div class="cell"><div class="daynum">18</div><div class="greg">4 → 5 juin</div></div>
+<div class="cell shabbat"><div class="daynum">19</div><div class="greg">5 → 6 juin</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">20</div><div class="greg">6 → 7 juin</div></div>
+<div class="cell"><div class="daynum">21</div><div class="greg">7 → 8 juin</div></div>
+
+<div class="cell"><div class="daynum">22</div><div class="greg">8 → 9 juin</div></div>
+<div class="cell"><div class="daynum">23</div><div class="greg">9 → 10 juin</div></div>
+<div class="cell"><div class="daynum">24</div><div class="greg">10 → 11 juin</div></div>
+<div class="cell"><div class="daynum">25</div><div class="greg">11 → 12 juin</div></div>
+<div class="cell shabbat"><div class="daynum">26</div><div class="greg">12 → 13 juin</div><div class="today">SHABBAT · AUJOURD'HUI</div></div>
+<div class="cell"><div class="daynum">27</div><div class="greg">13 → 14 juin</div></div>
+<div class="cell"><div class="daynum">28</div><div class="greg">14 → 15 juin</div></div>
+
+<div class="cell"><div class="daynum">29</div><div class="greg">15 → 16 juin</div></div>
+<div class="cell"><div class="daynum">30</div><div class="greg">16 → 17 juin</div></div>
+</div>
+</div>
+
+<!-- ================= REBI'I ================= -->
+<div class="month" id="rebii">
+<h1>Rebi'i — 4ᵉ Mois</h1>
+<div class="sub">30 jours — repère grégorien : 17 juin → 17 juillet 2026 (coucher du soleil à coucher du soleil)</div>
+<div class="weekhead"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div class="sham">Shabbat</div></div>
+<div class="grid">
+<div class="cell empty"></div>
+<div class="cell empty"></div>
+<div class="cell empty"></div>
+<div class="cell empty"></div>
+<div class="cell"><div class="daynum">1</div><div class="greg">17 → 18 juin</div></div>
+<div class="cell"><div class="daynum">2</div><div class="greg">18 → 19 juin</div></div>
+<div class="cell shabbat"><div class="daynum">3</div><div class="greg">19 → 20 juin</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">4</div><div class="greg">20 → 21 juin</div></div>
+<div class="cell"><div class="daynum">5</div><div class="greg">21 → 22 juin</div></div>
+<div class="cell"><div class="daynum">6</div><div class="greg">22 → 23 juin</div></div>
+<div class="cell"><div class="daynum">7</div><div class="greg">23 → 24 juin</div></div>
+
+<div class="cell"><div class="daynum">8</div><div class="greg">24 → 25 juin</div></div>
+<div class="cell"><div class="daynum">9</div><div class="greg">25 → 26 juin</div></div>
+<div class="cell shabbat"><div class="daynum">10</div><div class="greg">26 → 27 juin</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">11</div><div class="greg">27 → 28 juin</div></div>
+<div class="cell"><div class="daynum">12</div><div class="greg">28 → 29 juin</div></div>
+<div class="cell"><div class="daynum">13</div><div class="greg">29 → 30 juin</div></div>
+<div class="cell"><div class="daynum">14</div><div class="greg">30 juin → 1 juil.</div></div>
+
+<div class="cell"><div class="daynum">15</div><div class="greg">1 → 2 juil.</div></div>
+<div class="cell"><div class="daynum">16</div><div class="greg">2 → 3 juil.</div></div>
+<div class="cell shabbat"><div class="daynum">17</div><div class="greg">3 → 4 juil.</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">18</div><div class="greg">4 → 5 juil.</div></div>
+<div class="cell"><div class="daynum">19</div><div class="greg">5 → 6 juil.</div></div>
+<div class="cell"><div class="daynum">20</div><div class="greg">6 → 7 juil.</div></div>
+<div class="cell"><div class="daynum">21</div><div class="greg">7 → 8 juil.</div></div>
+
+<div class="cell"><div class="daynum">22</div><div class="greg">8 → 9 juil.</div></div>
+<div class="cell"><div class="daynum">23</div><div class="greg">9 → 10 juil.</div></div>
+<div class="cell shabbat"><div class="daynum">24</div><div class="greg">10 → 11 juil.</div><div class="today">SHABBAT</div></div>
+<div class="cell"><div class="daynum">25</div><div class="greg">11 → 12 juil.</div></div>
+<div class="cell"><div class="daynum">26</div><div class="greg">12 → 13 juil.</div></div>
+<div class="cell"><div class="daynum">27</div><div class="greg">13 → 14 juil.</div></div>
+<div class="cell"><div class="daynum">28</div><div class="greg">14 → 15 juil.</div></div>
+
+<div class="cell"><div class="daynum">29</div><div class="greg">15 → 16 juil.</div></div>
+<div class="cell"><div class="daynum">30</div><div class="greg">16 → 17 juil.</div></div>
+</div>
+</div>
+
+</body>
+</html>
