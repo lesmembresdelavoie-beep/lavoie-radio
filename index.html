@@ -575,6 +575,18 @@
     </style>
 </head>
 <body>
+  <div id="google_translate_element" style="position:fixed; top:8px; right:8px; z-index:9999;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'en,es,pt,ht,he,de,it',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
   <!-- TOP BAR -->
   <div id="top-bar">
