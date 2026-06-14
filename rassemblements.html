@@ -117,11 +117,70 @@
   .beth-gallery{margin:2rem 0}
   .beth-photo{width:100%;display:block;margin-bottom:0.75rem;border:1px solid #2a2418}
   .beth-caption{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;color:#8a7a5a;text-transform:uppercase;text-align:center;margin-bottom:1.5rem}
+
+  /* ===== Programme des Rassemblements ===== */
+  .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+  @media(max-width:480px){.prog-grid{grid-template-columns:1fr}}
+  .prog-card{border:1px solid #2a2418;border-top:2px solid #d4af5a66;padding:1.1rem 1.25rem;background:rgba(212,175,90,0.02)}
+  .prog-card .p-name{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:#d4af5a;text-transform:uppercase;margin-bottom:0.5rem}
+  .prog-card .p-when{font-size:0.95rem;color:#e8dfc4;line-height:1.5;margin-bottom:0.3rem}
+  .prog-card .p-detail{font-size:0.85rem;color:#8a7a5a;line-height:1.5;font-style:italic}
+  .btn-row{display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;margin:1.75rem 0}
+  .btn-meet{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;padding:0.85rem 1.6rem;border:1px solid #d4af5a;color:#0a0a0f;background:#d4af5a;border-radius:2px;transition:opacity 0.2s}
+  .btn-meet:hover{opacity:0.85}
+  .btn-meet.alt{background:transparent;color:#d4af5a;border:1px solid #d4af5a66}
 </style>
 </head>
 <body>
 <div class="stars" id="stars"></div>
 <div class="page">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PROGRAMME DES RASSEMBLEMENTS               -->
+<!-- ══════════════════════════════════════════ -->
+<div class="part-divider" style="margin-top:0">
+  <div class="divider"><div class="divider-line"></div><div class="divider-star">✦</div><div class="divider-line"></div></div>
+  <div class="part-label">Programme des Rassemblements</div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-star">✦</div><div class="divider-line"></div></div>
+</div>
+<div class="verse-block">
+  <div class="verse-text">« N'abandonnons pas notre assemblée, comme c'est la coutume de quelques-uns ; mais exhortons-nous les uns les autres. »</div>
+  <div class="verse-ref">~ Iberim (Hébreux) 10:25</div>
+</div>
+<div class="intro-text">Tous les rendez-vous de La Qehilah selon les Moʿadim et le calendrier biblique — heures données pour Indianapolis.</div>
+
+<div class="prog-grid">
+  <div class="prog-card">
+    <div class="p-name">Shabbat</div>
+    <div class="p-when">Du vendredi 20:30 au samedi 20:30</div>
+    <div class="p-detail">Rassemblement / Téfilah célébré à la 3ème heure du jour (≈ 9h du matin)</div>
+  </div>
+  <div class="prog-card">
+    <div class="p-name">Rosh Ḥodesh</div>
+    <div class="p-when">1ᵉʳ jour de chaque mois</div>
+    <div class="p-detail">Rassemblement avec son propre programme. Prochain : 1 Rebiʿi — soir du 17 au 18 juin</div>
+  </div>
+  <div class="prog-card">
+    <div class="p-name">Seʿoudat Ha'Adôn</div>
+    <div class="p-when">14 Abib, chaque année</div>
+    <div class="p-detail">Cette année : soir du 2 avril</div>
+  </div>
+  <div class="prog-card">
+    <div class="p-name">Shabuʿot</div>
+    <div class="p-when">6 Siban, chaque année</div>
+    <div class="p-detail">Cette année : nuit du 23 au 24 mai</div>
+  </div>
+  <div class="prog-card" style="grid-column:1/-1">
+    <div class="p-name">Sukkot</div>
+    <div class="p-when">15 au 21 Tishri</div>
+    <div class="p-detail">Fête des Tabernacles — sept jours de rassemblement</div>
+  </div>
+</div>
+
+<div class="btn-row">
+  <a href="https://meet.jit.si/LesMembresDeLaVoieQehilah" target="_blank" class="btn-meet">🎥 LaVoieMeet — Rejoindre</a>
+  <a href="miqra-qadosh.html" class="btn-meet alt">📖 Miqra Qadosh</a>
+</div>
 
 <!-- ══════════════════════════════════════════ -->
 <div class="beth-gallery">
