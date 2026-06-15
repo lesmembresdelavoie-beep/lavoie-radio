@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Miqra Qadosh — Se'oudat ha'Adôn · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu-nuit:#0d2347;
+    --bleu-fonce:#0a1a35;
+    --or:#c9a84c;
+    --or-clair:#e8cb7a;
+    --parchemin:#f5efe2;
+    --parchemin2:#faf6ec;
+    --texte:#1a2a44;
+    --bois:#3a2a1c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:var(--bleu-fonce);
+    overflow:hidden;
+  }
+
+  .livre{
+    height:100vh;
+    width:100vw;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .page{
+    height:100vh;
+    width:100vw;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    background:var(--parchemin);
+  }
+
+  .page-num{
+    position:absolute;
+    top:1.1rem;
+    right:1.1rem;
+    width:34px;height:34px;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border:1px solid var(--or);
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;align-items:center;justify-content:center;
+    z-index:10;
+    border-radius:3px;
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom:0.9rem;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Cinzel',serif;
+    font-size:0.55rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--or);
+    opacity:0.55;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.3rem;
+  }
+  .scroll-hint svg{ animation: bob 1.8s ease-in-out infinite; width:16px;height:16px; }
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
+  .page:last-child .scroll-hint{display:none}
+
+  .page-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding:4rem 1.5rem 3.5rem;
+    overflow-y:auto;
+  }
+  .page-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(1.5rem,7vw,2.1rem);
+    color:var(--bleu-nuit);
+    letter-spacing:0.04em;
+    text-align:center;
+    margin-bottom:0.3rem;
+  }
+  .page-titre-sep{
+    width:60px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+    margin:0.6rem auto 1.6rem;
+  }
+
+  .page-2,.page-3,.page-4,.page-5,.page-6{
+    background:var(--parchemin);
+  }
+
+  .ornement-line{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin:1rem 0;
+  }
+  .ornement-line::before, .ornement-line::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+  }
+  .ornement-line span{
+    color:var(--or);
+    font-size:0.7rem;
+  }
+
+  @media (min-width:600px){
+    .page-content{ padding-left:2.5rem; padding-right:2.5rem; max-width:600px; margin:0 auto; width:100%; }
+  }
+
+  /* =========================================================
+     PAGE 1 — COUVERTURE
+  ========================================================= */
+  .page-1{
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2.5rem 1.6rem;
+    background: var(--bleu-nuit);
+    color:#fbf6e9;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .couv-cadre{
+    position:absolute;
+    inset:0.7rem;
+    border:2px solid var(--or);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .couv-cadre::before{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(201,168,76,0.4);
+    border-radius:2px;
+  }
+  .logo-cercle{
+    width:110px;height:110px;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    background:rgba(245,239,224,0.95);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.2rem;
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+  }
+  .logo-cercle img{
+    width:100%;height:100%;
+    object-fit:contain;
+    border-radius:50%;
+  }
+  .couv-lavoie{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.85rem,4vw,1.1rem);
+    color:var(--or-clair);
+    letter-spacing:0.25em;
+    margin-bottom:0.4rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-titre{
+    font-family:'Cinzel',serif;
+    font-weight:900;
+    font-size:clamp(2.4rem,12vw,3.8rem);
+    color:#fbf6e9;
+    letter-spacing:0.06em;
+    line-height:1.05;
+    position:relative;
+    z-index:1;
+  }
+  .couv-soustitre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(1.1rem,5.5vw,1.5rem);
+    color:var(--or);
+    letter-spacing:0.08em;
+    margin-top:0.7rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-soustitre2{
+    font-size:clamp(0.9rem,4vw,1.1rem);
+    color:#e8e2d4;
+    line-height:1.5;
+    margin-top:0.4rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-badge{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(0.78rem,3.6vw,0.95rem);
+    color:var(--bleu-nuit);
+    background:var(--or-clair);
+    padding:0.6rem 1.3rem;
+    margin-top:1.3rem;
+    border-radius:4px;
+    letter-spacing:0.05em;
+    text-align:center;
+    line-height:1.5;
+    position:relative;
+    z-index:1;
+  }
+  .couv-tag{
+    margin-top:0.9rem;
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .couv-sep{
+    width:90px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+    margin:1.2rem auto;
+    position:relative;
+    z-index:1;
+  }
+  .couv-verset{
+    font-style:italic;
+    font-size:clamp(0.85rem,3.8vw,1.05rem);
+    color:#e8e2d4;
+    line-height:1.7;
+    max-width:340px;
+    margin:0 auto 0.8rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-ref{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.25em;
+    color:var(--or);
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .couv-footer{
+    margin-top:1.6rem;
+    font-family:'Cinzel',serif;
+    font-size:clamp(0.78rem,3.6vw,0.95rem);
+    letter-spacing:0.15em;
+    color:var(--or-clair);
+    text-transform:uppercase;
+    line-height:1.7;
+    position:relative;
+    z-index:1;
+  }
+  .couv-footer-ref{
+    margin-top:0.3rem;
+    font-size:0.7rem;
+    color:var(--or);
+    letter-spacing:0.2em;
+    opacity:0.85;
+  }
+
+  /* =========================================================
+     PAGE 2 — DÉROULEMENT
+  ========================================================= */
+  .deroule-liste{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .deroule-item{
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+  }
+  .deroule-num{
+    flex-shrink:0;
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .deroule-texte{
+    flex:1;
+    padding-bottom:0.7rem;
+    border-bottom:1px dotted rgba(201,168,76,0.4);
+  }
+  .deroule-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.05em;
+    color:var(--bleu-nuit);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .deroule-sub{
+    font-size:0.95rem;
+    color:var(--texte);
+    opacity:0.85;
+    line-height:1.45;
+    margin-top:0.25rem;
+  }
+  .deroule-sub ul{ list-style:none; }
+  .deroule-sub li{ position:relative; padding-left:1rem; }
+  .deroule-sub li::before{ content:'•'; position:absolute; left:0; color:var(--or); }
+
+  /* =========================================================
+     PAGE 3 — LE SENS DU ZIKARON
+  ========================================================= */
+  .img-cadre{
+    width:100%;
+    border-radius:8px;
+    overflow:hidden;
+    margin:1rem 0;
+    border:1px solid rgba(201,168,76,0.3);
+  }
+  .img-cadre img{
+    width:100%;
+    display:block;
+  }
+  .lectures-fond{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.25em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.8rem;
+  }
+  .lectures-liste{
+    display:flex;
+    flex-direction:column;
+    gap:0.7rem;
+    margin-bottom:1rem;
+  }
+  .lecture-row{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    font-family:'Cinzel',serif;
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--bleu-nuit);
+  }
+  .lecture-row .ic{ color:var(--or); font-size:1.1rem; }
+  .zikaron-texte{
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--texte);
+    line-height:1.7;
+    text-align:center;
+    margin:1rem 0;
+  }
+  .citation-finale{
+    margin-top:1rem;
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.1rem;
+    background:rgba(201,168,76,0.06);
+    text-align:center;
+  }
+  .citation-finale p.texte{
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--bleu-nuit);
+    margin-bottom:0.4rem;
+    line-height:1.6;
+  }
+  .citation-finale p.ref{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+  }
+
+  /* =========================================================
+     PAGE 4 / 5 — LE PAIN / LA COUPE
+  ========================================================= */
+  .symbole-titre{
+    font-family:'Cinzel',serif;
+    font-weight:900;
+    font-size:clamp(1.8rem,9vw,2.6rem);
+    color:var(--bleu-nuit);
+    letter-spacing:0.08em;
+    text-align:center;
+    margin-bottom:0.8rem;
+  }
+  .symbole-icone{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--or);
+    color:var(--bleu-nuit);
+    display:flex;align-items:center;justify-content:center;
+    font-size:2rem;
+    margin:0 auto 1rem;
+  }
+  .symbole-img-pain{
+    width:160px;
+    margin:0 auto 1.2rem;
+    border-radius:12px;
+    overflow:hidden;
+    border:1.5px solid var(--or);
+    background:#fff;
+    box-shadow:0 4px 14px rgba(13,35,71,0.15);
+  }
+  .symbole-img-pain img{ width:100%; display:block; }
+  .symbole-action{
+    font-family:'Cinzel',serif;
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    color:var(--or);
+    text-transform:uppercase;
+    text-align:center;
+    line-height:1.6;
+    margin-bottom:0.5rem;
+  }
+  .symbole-partage{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:0.08em;
+    color:var(--bleu-nuit);
+    text-transform:uppercase;
+    text-align:center;
+    margin-bottom:1rem;
+  }
+  .symbole-section-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.1em;
+    color:var(--bleu-nuit);
+    text-transform:uppercase;
+    text-align:center;
+    margin-bottom:0.5rem;
+  }
+  .symbole-section-texte{
+    font-size:1rem;
+    color:var(--texte);
+    line-height:1.65;
+    text-align:center;
+    opacity:0.9;
+  }
+  .symbole-img{
+    width:100%;
+    border-radius:8px;
+    overflow:hidden;
+    margin:1.2rem 0;
+    border:1px solid rgba(201,168,76,0.3);
+  }
+  .symbole-img img{ width:100%; display:block; }
+  .musique-tag{
+    margin-top:auto;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    font-family:'Cinzel',serif;
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    text-align:center;
+    border-radius:4px;
+    padding:0.8rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.5rem;
+  }
+
+  /* =========================================================
+     PAGE 6 — CLÔTURE
+  ========================================================= */
+  .cloture-bloc{
+    margin-bottom:1.3rem;
+  }
+  .cloture-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.08em;
+    color:var(--bleu-nuit);
+    text-transform:uppercase;
+    margin-bottom:0.4rem;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .cloture-titre .ic{ color:var(--or); font-size:1.1rem; }
+  .cloture-texte{
+    font-size:1.02rem;
+    color:var(--texte);
+    line-height:1.65;
+  }
+  .cloture-img{
+    width:100%;
+    border-radius:8px;
+    overflow:hidden;
+    margin:1rem 0;
+    border:1px solid rgba(201,168,76,0.3);
+  }
+  .cloture-img img{ width:100%; display:block; }
+  .footer-devise{
+    margin-top:auto;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    text-align:center;
+    padding:1.2rem;
+    border-radius:6px;
+  }
+  .footer-devise-mots{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(0.75rem,3.5vw,0.95rem);
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--or);
+  }
+</style>
+</head>
+<body>
+
+<div class="livre">
+
+  <!-- ============ PAGE 1 — COUVERTURE ============ -->
+  <section class="page page-1">
+    <div class="couv-cadre"></div>
+    <div class="page-num">1</div>
+
+    <div class="logo-cercle">
+      <img src="logo_la_voie.png" alt="Les Membres de La Voie">
+    </div>
+
+    <p class="couv-lavoie">LA VOIE</p>
+    <h1 class="couv-titre">MIQRA<br>QADOSH</h1>
+    <p class="couv-soustitre">Se'oudat ha'Adôn</p>
+    <p class="couv-soustitre2">Zikaron du Qorban Kopher<br>de Yahushu'ah</p>
+
+    <div class="couv-badge">14 Abib — Lundi 22 mars 2027<br>Après le coucher du soleil</div>
+
+    <p class="couv-tag">Cérémonie intime et communautaire</p>
+
+    <div class="couv-sep"></div>
+
+    <p class="couv-verset">« Faites ceci en zikaron de moi. »</p>
+    <p class="couv-ref">Luqas 22:19</p>
+
+    <div class="couv-footer">Les Membres de La Voie</div>
+    <div class="couv-footer-ref">Ma'asei 9:2</div>
+
+    <div class="scroll-hint">
+      <span>Glisser pour continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 — DÉROULEMENT DE LA CÉRÉMONIE ============ -->
+  <section class="page page-2">
+    <div class="page-num">2</div>
+    <div class="page-content">
+      <h2 class="page-titre">Déroulement<br>de la cérémonie</h2>
+      <div class="page-titre-sep"></div>
+
+      <div class="deroule-liste">
+
+        <div class="deroule-item">
+          <div class="deroule-num">1</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">👥 Ouverture et accueil</div>
+            <div class="deroule-sub">
+              <ul>
+                <li>Chirat d'ouverture</li>
+                <li>Téfilah d'ouverture</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">2</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">📖 Sens du Zikaron</div>
+            <div class="deroule-sub">Lecture de :
+              <ul>
+                <li>Mattiyahu 26</li>
+                <li>Luqas 22</li>
+                <li>1 Qorintiyim 11:20–34</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">3</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🙏 Téfilah / Action de grâce sur le pain</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">4</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🍞 Partage du pain</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">5</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🙏 Téfilah / Action de grâce sur la coupe</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">6</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🍷 Partage de la coupe</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">7</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🧘 Moment de silence et méditation personnelle</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">8</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🖋️ Commentaire final</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">9</div>
+          <div class="deroule-texte">
+            <div class="deroule-titre">🎵 Chirat de louange</div>
+          </div>
+        </div>
+
+        <div class="deroule-item">
+          <div class="deroule-num">10</div>
+          <div class="deroule-texte" style="border-bottom:none;">
+            <div class="deroule-titre">🙏 Téfilah finale</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3 — LE SENS DU ZIKARON ============ -->
+  <section class="page page-3">
+    <div class="page-num">3</div>
+    <div class="page-content">
+      <h2 class="page-titre">Le sens<br>du Zikaron</h2>
+      <div class="page-titre-sep"></div>
+
+      <p class="lectures-fond">✦ Lectures fondatrices</p>
+      <div class="lectures-liste">
+        <div class="lecture-row"><span class="ic">📖</span> Mattiyahu 26</div>
+        <div class="lecture-row"><span class="ic">📖</span> Luqas 22</div>
+        <div class="lecture-row"><span class="ic">📖</span> 1 Qorintiyim 11:20–34</div>
+      </div>
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <p class="zikaron-texte">Le Se'oudat ha'Adôn est un commandement donné par Yahushu'ah pour que nous fassions ceci en zikaron de Lui.</p>
+
+      <div class="citation-finale">
+        <p class="texte">« Faites ceci en zikaron de moi. »</p>
+        <p class="ref">~ Luqas 22:19</p>
+      </div>
+
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 — LE PAIN ============ -->
+  <section class="page page-4">
+    <div class="page-num">4</div>
+    <div class="page-content">
+      <h2 class="page-titre">Le Pain</h2>
+      <div class="page-titre-sep"></div>
+
+      <div class="symbole-img-pain">
+        <img src="pain-matzah.png" alt="Pain sans levain - Matzah">
+      </div>
+      <p class="symbole-action">Téfilah / Action de grâce<br>sur le pain</p>
+      <p class="symbole-partage">Partage du pain</p>
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <p class="symbole-section-titre">Signification</p>
+      <p class="symbole-section-texte">Le pain sans levain que nous partageons est le zikaron du Qorban Kopher de Yahushu'ah, donné pour nous.</p>
+
+      <div class="musique-tag"><span>🎵</span> Musique de méditation (fond discret)</div>
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 5 — LA COUPE ============ -->
+  <section class="page page-5">
+    <div class="page-num">5</div>
+    <div class="page-content">
+      <h2 class="page-titre">La Coupe</h2>
+      <div class="page-titre-sep"></div>
+
+      <div class="symbole-icone">🍷</div>
+      <p class="symbole-action">Téfilah / Action de grâce<br>sur la coupe</p>
+      <p class="symbole-partage">Partage de la coupe</p>
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <p class="symbole-section-titre">Moment de silence</p>
+      <p class="symbole-section-texte">Temps de méditation et de réflexion personnelle.</p>
+
+      <div class="musique-tag"><span>🎵</span> Musique de méditation (fond discret)</div>
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 6 — CLÔTURE ============ -->
+  <section class="page page-6">
+    <div class="page-num">6</div>
+    <div class="page-content">
+      <h2 class="page-titre">Clôture</h2>
+      <div class="page-titre-sep"></div>
+
+      <div class="cloture-bloc">
+        <p class="cloture-titre"><span class="ic">🖋️</span> Commentaire final</p>
+        <p class="cloture-texte">Mise en évidence du sens du 14 Abib et du Zikaron.</p>
+      </div>
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <div class="cloture-bloc">
+        <p class="cloture-titre"><span class="ic">🎵</span> Chirat de louange</p>
+        <p class="cloture-texte">(Mattiyahu 26:30 ; Marqos 14:26)</p>
+      </div>
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <div class="cloture-bloc">
+        <p class="cloture-titre"><span class="ic">🙏</span> Téfilah finale</p>
+        <p class="cloture-texte">Remerciements à Abba Yah pour cette rencontre, pour le pain, pour la coupe et pour le Zikaron du Qorban Kopher de Yahushu'ah.</p>
+      </div>
+
+      <div class="footer-devise">
+        <p class="footer-devise-mots">La Vérité • La Parole • La Lumière</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
