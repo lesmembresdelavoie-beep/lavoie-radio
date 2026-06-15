@@ -11,8 +11,8 @@
     --bleu-fonce:#0a1a35;
     --or:#c9a84c;
     --or-clair:#e8cb7a;
-    --parchemin:#f5efe2;
-    --parchemin2:#faf6ec;
+    --parchemin:#faf6ec;
+    --parchemin2:#f5efe0;
     --texte:#1a2a44;
     --bois:#3a2a1c;
   }
@@ -27,14 +27,18 @@
   .livre{
     height:100vh;
     width:100vw;
-    overflow-y:scroll;
-    scroll-snap-type:y mandatory;
+    display:flex;
+    flex-direction:row;
+    overflow-x:scroll;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
   }
 
   .page{
     height:100vh;
     width:100vw;
+    flex:0 0 100vw;
     scroll-snap-align:start;
     scroll-snap-stop:always;
     display:flex;
@@ -63,48 +67,63 @@
   .scroll-hint{
     position:absolute;
     bottom:0.9rem;
-    left:50%;
-    transform:translateX(-50%);
+    right:0.9rem;
     font-family:'Cinzel',serif;
     font-size:0.55rem;
     letter-spacing:0.25em;
     text-transform:uppercase;
-    color:var(--or);
-    opacity:0.55;
+    color:var(--or-clair);
+    opacity:0.7;
     z-index:10;
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     align-items:center;
     gap:0.3rem;
   }
   .scroll-hint svg{ animation: bob 1.8s ease-in-out infinite; width:16px;height:16px; }
-  @keyframes bob{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
+  @keyframes bob{0%,100%{transform:translateX(0);opacity:0.4}50%{transform:translateX(6px);opacity:0.9}}
   .page:last-child .scroll-hint{display:none}
+
+  .header-bar{
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    padding:1.4rem 1.5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-shrink:0;
+    text-align:center;
+    justify-content:center;
+    position:relative;
+  }
+  .header-titre{
+    font-family:'Cinzel',serif;
+    font-weight:900;
+    font-size:clamp(1.4rem,7vw,2rem);
+    letter-spacing:0.1em;
+    color:#fbf6e9;
+    text-transform:uppercase;
+  }
+  .header-page-tag{
+    position:absolute;
+    top:0.7rem; left:50%;
+    transform:translateX(-50%);
+    font-family:'Cinzel',serif;
+    font-size:0.6rem;
+    letter-spacing:0.25em;
+    color:var(--or);
+    text-transform:uppercase;
+    border:1px solid var(--or);
+    padding:0.2rem 0.8rem;
+    border-radius:3px;
+  }
 
   .page-content{
     flex:1;
     display:flex;
     flex-direction:column;
-    padding:4rem 1.5rem 3.5rem;
+    padding:1.6rem 1.5rem 3.5rem;
     overflow-y:auto;
-  }
-  .page-titre{
-    font-family:'Cinzel',serif;
-    font-weight:700;
-    font-size:clamp(1.5rem,7vw,2.1rem);
-    color:var(--bleu-nuit);
-    letter-spacing:0.04em;
-    text-align:center;
-    margin-bottom:0.3rem;
-  }
-  .page-titre-sep{
-    width:60px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--or),transparent);
-    margin:0.6rem auto 1.6rem;
-  }
-
-  .page-2,.page-3,.page-4,.page-5,.page-6{
-    background:var(--parchemin);
   }
 
   .ornement-line{
@@ -206,6 +225,17 @@
     color:#e8e2d4;
     line-height:1.5;
     margin-top:0.4rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-edition{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.7rem,3.5vw,0.95rem);
+    color:var(--or);
+    letter-spacing:0.18em;
+    margin-top:0.6rem;
+    text-transform:uppercase;
     position:relative;
     z-index:1;
   }
@@ -421,15 +451,14 @@
     margin:0 auto 1rem;
   }
   .symbole-img-pain{
-    width:160px;
-    margin:0 auto 1.2rem;
-    border-radius:12px;
+    width:64px;height:64px;
+    margin:0 auto 1rem;
+    border-radius:50%;
+    background:var(--or);
     overflow:hidden;
-    border:1.5px solid var(--or);
-    background:#fff;
-    box-shadow:0 4px 14px rgba(13,35,71,0.15);
+    display:flex;align-items:center;justify-content:center;
   }
-  .symbole-img-pain img{ width:100%; display:block; }
+  .symbole-img-pain img{ width:78%; height:78%; object-fit:contain; display:block; }
   .symbole-action{
     font-family:'Cinzel',serif;
     font-size:0.85rem;
@@ -559,6 +588,7 @@
     <h1 class="couv-titre">MIQRA<br>QADOSH</h1>
     <p class="couv-soustitre">Se'oudat ha'Adôn</p>
     <p class="couv-soustitre2">Zikaron du Qorban Kopher<br>de Yahushu'ah</p>
+    <p class="couv-edition">Édition Annuelle</p>
 
     <div class="couv-badge">14 Abib — Lundi 22 mars 2027<br>Après le coucher du soleil</div>
 
@@ -573,17 +603,18 @@
     <div class="couv-footer-ref">Ma'asei 9:2</div>
 
     <div class="scroll-hint">
-      <span>Glisser pour continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>Glisser →</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
   </section>
 
   <!-- ============ PAGE 2 — DÉROULEMENT DE LA CÉRÉMONIE ============ -->
   <section class="page page-2">
     <div class="page-num">2</div>
+    <div class="header-bar">
+      <div class="header-titre">Déroulement<br>de la cérémonie</div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Déroulement<br>de la cérémonie</h2>
-      <div class="page-titre-sep"></div>
 
       <div class="deroule-liste">
 
@@ -673,17 +704,18 @@
       </div>
     </div>
     <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>Suite →</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
   </section>
 
   <!-- ============ PAGE 3 — LE SENS DU ZIKARON ============ -->
   <section class="page page-3">
     <div class="page-num">3</div>
+    <div class="header-bar">
+      <div class="header-titre">Le sens<br>du Zikaron</div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Le sens<br>du Zikaron</h2>
-      <div class="page-titre-sep"></div>
 
       <p class="lectures-fond">✦ Lectures fondatrices</p>
       <div class="lectures-liste">
@@ -703,17 +735,18 @@
 
     </div>
     <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>Suite →</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
   </section>
 
   <!-- ============ PAGE 4 — LE PAIN ============ -->
   <section class="page page-4">
     <div class="page-num">4</div>
+    <div class="header-bar">
+      <div class="header-titre">Le Pain</div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Le Pain</h2>
-      <div class="page-titre-sep"></div>
 
       <div class="symbole-img-pain">
         <img src="pain-matzah.png" alt="Pain sans levain - Matzah">
@@ -729,17 +762,18 @@
       <div class="musique-tag"><span>🎵</span> Musique de méditation (fond discret)</div>
     </div>
     <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>Suite →</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
   </section>
 
   <!-- ============ PAGE 5 — LA COUPE ============ -->
   <section class="page page-5">
     <div class="page-num">5</div>
+    <div class="header-bar">
+      <div class="header-titre">La Coupe</div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">La Coupe</h2>
-      <div class="page-titre-sep"></div>
 
       <div class="symbole-icone">🍷</div>
       <p class="symbole-action">Téfilah / Action de grâce<br>sur la coupe</p>
@@ -753,17 +787,18 @@
       <div class="musique-tag"><span>🎵</span> Musique de méditation (fond discret)</div>
     </div>
     <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      <span>Suite →</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </div>
   </section>
 
   <!-- ============ PAGE 6 — CLÔTURE ============ -->
   <section class="page page-6">
     <div class="page-num">6</div>
+    <div class="header-bar">
+      <div class="header-titre">Clôture</div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Clôture</h2>
-      <div class="page-titre-sep"></div>
 
       <div class="cloture-bloc">
         <p class="cloture-titre"><span class="ic">🖋️</span> Commentaire final</p>
