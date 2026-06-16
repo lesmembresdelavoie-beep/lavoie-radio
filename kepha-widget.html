@@ -1,433 +1,481 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Képha Widget Test</title>
-  <style>
-    body { background: #0b1220; font-family: Georgia, serif; }
-
-    /* ── BOUTON KÉPHA ── */
-    #kepha-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1000;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a2e5a, #0b1220);
-      border: 2px solid #c8a84b;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(200,168,75,0.3);
-      transition: all 0.3s;
-    }
-    #kepha-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 28px rgba(200,168,75,0.45);
-    }
-    #kepha-btn svg { width: 26px; height: 26px; }
-
-    /* Badge notification */
-    #kepha-badge {
-      position: absolute;
-      top: -4px; right: -4px;
-      width: 18px; height: 18px;
-      background: #c8a84b;
-      border-radius: 50%;
-      font-size: 10px;
-      color: #0b1220;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
-    }
-
-    /* ── FENÈT CHAT ── */
-    #kepha-window {
-      position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      z-index: 999;
-      width: 360px;
-      max-height: 520px;
-      background: #0b1220;
-      border: 1px solid rgba(200,168,75,0.35);
-      border-top: 3px solid #c8a84b;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-      transform: translateY(20px);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
-    #kepha-window.open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Header */
-    .kepha-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 1.2rem;
-      border-bottom: 1px solid rgba(200,168,75,0.18);
-      background: rgba(26,46,90,0.4);
-    }
-    .kepha-header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .kepha-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #c8a84b, #1a2e5a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Georgia', serif;
-      font-size: 1rem;
-      color: #0b1220;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .kepha-name {
-      font-family: 'Georgia', serif;
-      font-size: 0.9rem;
-      color: #e4c97e;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-    .kepha-status {
-      font-size: 0.7rem;
-      color: #c8a84b;
-      opacity: 0.7;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .kepha-status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #27ae60;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    .kepha-close {
-      background: none;
-      border: none;
-      color: #c8a84b;
-      opacity: 0.6;
-      cursor: pointer;
-      font-size: 1.2rem;
-      padding: 0.2rem;
-      transition: opacity 0.2s;
-    }
-    .kepha-close:hover { opacity: 1; }
-
-    /* Messages zone */
-    .kepha-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      max-height: 320px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(200,168,75,0.3) transparent;
-    }
-
-    .msg {
-      max-width: 85%;
-      padding: 0.7rem 1rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      font-family: Georgia, serif;
-    }
-    .msg.kepha {
-      background: rgba(26,46,90,0.5);
-      border-left: 2px solid #c8a84b;
-      color: #f8f3e8;
-      align-self: flex-start;
-    }
-    .msg.user {
-      background: rgba(200,168,75,0.12);
-      border: 1px solid rgba(200,168,75,0.25);
-      color: #f8f3e8;
-      align-self: flex-end;
-      text-align: right;
-    }
-    .msg.typing {
-      background: rgba(26,46,90,0.5);
-      border-left: 2px solid #c8a84b;
-      color: #c8a84b;
-      align-self: flex-start;
-      font-style: italic;
-      font-size: 0.82rem;
-      opacity: 0.8;
-    }
-
-    /* Input zone */
-    .kepha-input-zone {
-      padding: 0.8rem 1rem;
-      border-top: 1px solid rgba(200,168,75,0.18);
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-end;
-    }
-    #kepha-input {
-      flex: 1;
-      background: rgba(26,46,90,0.3);
-      border: 1px solid rgba(200,168,75,0.25);
-      color: #f8f3e8;
-      padding: 0.6rem 0.9rem;
-      font-family: Georgia, serif;
-      font-size: 0.88rem;
-      resize: none;
-      max-height: 80px;
-      line-height: 1.5;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    #kepha-input:focus { border-color: rgba(200,168,75,0.6); }
-    #kepha-input::placeholder { color: rgba(248,243,232,0.35); }
-
-    #kepha-send {
-      background: #c8a84b;
-      border: none;
-      color: #0b1220;
-      width: 36px; height: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.2s;
-      font-size: 1rem;
-    }
-    #kepha-send:hover { background: #e4c97e; }
-    #kepha-send:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    .kepha-footer {
-      padding: 0.4rem 1rem;
-      text-align: center;
-      font-size: 0.65rem;
-      color: rgba(200,168,75,0.4);
-      font-family: Georgia, serif;
-      letter-spacing: 0.05em;
-      border-top: 1px solid rgba(200,168,75,0.08);
-    }
-
-    @media (max-width: 480px) {
-      #kepha-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
-      #kepha-btn { right: 1rem; bottom: 1rem; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Képha — Asistan La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+#kepha-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:9999;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#e8cb7a);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,0.4);transition:all 0.3s;animation:pulse-gold 3s ease-in-out infinite}
+#kepha-btn:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(201,168,76,0.6)}
+#kepha-btn svg{width:28px;height:28px;fill:#060d1a}
+@keyframes pulse-gold{0%,100%{box-shadow:0 4px 24px rgba(201,168,76,0.4),0 0 0 0 rgba(201,168,76,0.3)}50%{box-shadow:0 4px 24px rgba(201,168,76,0.5),0 0 0 10px rgba(201,168,76,0)}}
+#kepha-window{position:fixed;bottom:5.5rem;right:1.8rem;z-index:9998;width:370px;max-height:570px;background:linear-gradient(180deg,#060d1a 0%,#0a1428 100%);border:1px solid rgba(201,168,76,0.3);border-radius:4px;display:flex;flex-direction:column;box-shadow:0 16px 60px rgba(0,0,0,0.7);transform:translateY(20px) scale(0.95);opacity:0;pointer-events:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+#kepha-window.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+#kepha-header{padding:1rem 1.2rem;background:linear-gradient(135deg,rgba(13,35,71,0.9),rgba(6,13,26,0.95));border-bottom:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;gap:0.8rem;border-radius:4px 4px 0 0}
+.kepha-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#8a6a1f);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:1px solid rgba(201,168,76,0.4)}
+.kepha-info{flex:1}
+.kepha-nom{font-family:'Cinzel',serif;font-size:0.9rem;font-weight:600;color:#e8cb7a;letter-spacing:0.08em}
+.kepha-titre{font-family:'EB Garamond',serif;font-style:italic;font-size:0.78rem;color:#b8c8dc;opacity:0.7}
+.kepha-status{display:flex;align-items:center;gap:0.3rem;font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;color:#c9a84c;text-transform:uppercase;opacity:0.7}
+.kepha-dot{width:6px;height:6px;background:#4caf50;border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+#kepha-close{background:none;border:none;color:#b8c8dc;cursor:pointer;font-size:1.1rem;opacity:0.5;transition:opacity 0.2s;padding:0.2rem}
+#kepha-close:hover{opacity:1}
+#kepha-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.8rem;scrollbar-width:thin;scrollbar-color:rgba(201,168,76,0.2) transparent;max-height:350px}
+#kepha-messages::-webkit-scrollbar{width:4px}
+#kepha-messages::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.2);border-radius:2px}
+.msg{display:flex;flex-direction:column;gap:0.2rem;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg-bubble{padding:0.75rem 1rem;border-radius:2px;font-family:'EB Garamond',serif;font-size:0.97rem;line-height:1.7;max-width:92%}
+.msg.kepha .msg-bubble{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);border-left:2px solid #c9a84c;color:#e8f0f8;align-self:flex-start}
+.msg.user .msg-bubble{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.08));border:1px solid rgba(201,168,76,0.2);color:#f7edcc;align-self:flex-end;text-align:right}
+.msg-label{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.45}
+.msg.kepha .msg-label{color:#c9a84c}
+.msg.user .msg-label{color:#b8c8dc;align-self:flex-end}
+.typing-bubble{background:linear-gradient(135deg,rgba(13,35,71,0.6),rgba(6,13,26,0.7));border:1px solid rgba(201,168,76,0.15);border-left:2px solid #c9a84c;padding:0.75rem 1rem;border-radius:2px;display:flex;gap:4px;align-items:center;align-self:flex-start}
+.typing-dot{width:6px;height:6px;background:#c9a84c;border-radius:50%;opacity:0.4;animation:typing 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,100%{opacity:0.4;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+#kepha-suggestions{padding:0.6rem 1rem 0;display:flex;flex-wrap:wrap;gap:0.4rem}
+.suggestion-btn{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;background:transparent;border:1px solid rgba(201,168,76,0.2);color:#c9a84c;cursor:pointer;transition:all 0.2s;border-radius:1px}
+.suggestion-btn:hover{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.4)}
+#kepha-input-zone{padding:0.8rem 1rem;border-top:1px solid rgba(201,168,76,0.15);display:flex;gap:0.6rem;align-items:center;background:rgba(6,13,26,0.8);border-radius:0 0 4px 4px}
+#kepha-input{flex:1;background:rgba(13,35,71,0.4);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:0.6rem 0.9rem;font-family:'EB Garamond',serif;font-size:0.95rem;color:#e8f0f8;outline:none;resize:none;min-height:40px;max-height:100px;transition:border-color 0.2s}
+#kepha-input::placeholder{color:rgba(184,200,220,0.4);font-style:italic}
+#kepha-input:focus{border-color:rgba(201,168,76,0.45)}
+#kepha-send{width:40px;height:40px;border-radius:50%;background:#c9a84c;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+#kepha-send:hover{background:#e8cb7a;transform:scale(1.05)}
+#kepha-send svg{width:16px;height:16px;fill:#060d1a}
+#kepha-notif{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:#ff4444;border-radius:50%;font-size:0.6rem;color:white;display:none;align-items:center;justify-content:center;font-family:'Cinzel',serif}
+@media(max-width:480px){#kepha-window{width:calc(100vw - 2rem);right:1rem}}
+</style>
 </head>
 <body>
 
-<!-- BOUTON KÉPHA -->
-<div id="kepha-btn" onclick="kephaToggle()" title="Parler avec Képha">
-  <span id="kepha-badge">1</span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="1.8">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-  </svg>
+<div style="position:relative;display:inline-block">
+  <button id="kepha-btn" onclick="toggleKepha()" title="Pale ak Képha">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </button>
+  <div id="kepha-notif">1</div>
 </div>
 
-<!-- FENÈT CHAT -->
 <div id="kepha-window">
-
-  <div class="kepha-header">
-    <div class="kepha-header-left">
-      <div class="kepha-avatar">כ</div>
-      <div>
-        <div class="kepha-name">Képha</div>
-        <div class="kepha-status">
-          <span class="kepha-status-dot"></span>
-          Assistant de La Voie
-        </div>
-      </div>
+  <div id="kepha-header">
+    <div class="kepha-avatar">🪨</div>
+    <div class="kepha-info">
+      <p class="kepha-nom">Képha</p>
+      <p class="kepha-titre">Asistan ofisyèl · Les Membres de La Voie</p>
+      <div class="kepha-status"><span class="kepha-dot"></span>Disponib · En ligne</div>
     </div>
-    <button class="kepha-close" onclick="kephaToggle()">✕</button>
+    <button id="kepha-close" onclick="toggleKepha()">✕</button>
   </div>
 
-  <div class="kepha-messages" id="kepha-messages">
-    <!-- Message de bienvenue -->
-    <div class="msg kepha" id="welcome-msg">
-      Shalom ! Je suis Képha, l'assistant de La Voie.<br><br>
-      Posez-moi vos questions sur les Ketubim Qadoshim, Yahawah, Yahushuʿah Ha'Mashiaḥ, le calendrier, les Moʿadim ou tout autre sujet lié à La Voie. Je détecte automatiquement votre langue. 🕊️
+  <div id="kepha-suggestions">
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Kisa La Voie ye ?</button>
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Kiyès Yahawah ye ?</button>
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Ki misyon manm La Voie yo ?</button>
+    <button class="suggestion-btn" onclick="sendSuggestion(this)">Tal'mid ak ʿEd — ki diferans ?</button>
+  </div>
+
+  <div id="kepha-messages">
+    <div class="msg kepha">
+      <span class="msg-label">Képha</span>
+      <div class="msg-bubble">Shalom ! Mwen se <strong>Képha</strong> — asistan ofisyèl La Voie.<br><br>Mwen la pou reponn kesyon ou sou ansèyman La Voie, vokabilè ibriy restaure a ak Qehilah a.<br><br>Ki sa ou vle konnen ? ✦</div>
     </div>
   </div>
 
-  <div class="kepha-input-zone">
-    <textarea
-      id="kepha-input"
-      placeholder="Posez votre question..."
-      rows="1"
-      onkeydown="kephaKeydown(event)"
-      oninput="kephaAutoResize(this)"
-    ></textarea>
-    <button id="kepha-send" onclick="kephaEnvoyer()" title="Envoyer">➤</button>
+  <div id="kepha-input-zone">
+    <textarea id="kepha-input" placeholder="Poze Képha yon kesyon..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button id="kepha-send" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
   </div>
-
-  <div class="kepha-footer">lavoie.world · Képha v1</div>
 </div>
 
 <script>
-  let kephaOuvert = false;
-  let kephaHistoire = [];
-  let kephaEnCours = false;
+const KB = [
+  {
+    keys: ["kisa la voie ye","ki la voie","what is la voie","c'est quoi la voie","haderekh"],
+    rep: "La Voie (HaDerekh) se non kominote premye tal'midim Yahushuʿaḥ yo te pote nan premye syèk la (Maʿasei 9:2).\n\nLi pa sèlman yon gwoup oswa yon òganizasyon — li se yon mòd de vi ki baze sou ansèyman ak egzanp Yahushuʿaḥ.\n\nJodi a, tal'midim Yahushuʿaḥ yo bati sou fondasyon nabi'im yo ak shilliaḥim yo, pandan Yahushuʿaḥ Ha'Mashiaḥ rete wòch angilè a. (Ephésiens 2:19-20) ✦"
+  },
+  {
+    keys: ["kiyès yahawah ye","ki yahawah","who is yahawah","c'est qui yahawah","yahawah se ki"],
+    rep: "Yahawah se Non Qadosh Papa ki nan shamayim yo.\n\nLi se Kreyatè tout bagay e se Li menm ki merite tout kabôd. ✦"
+  },
+  {
+    keys: ["kiyès yahushuʿaḥ ye","ki yahushuʿaḥ","yahushua","yahushuah","ki mashiah la","ki mashiach"],
+    rep: "Yahushuʿaḥ se Ben Yahawah voye sou tè a.\n\nLi se Mashiaḥ pwomèt la epi wòch angilè fondasyon La Voie. ✦"
+  },
+  {
+    keys: ["poukisa nou pa di jesus","poukisa pa jesus","pourquoi pas jesus","pourquoi yahushua","pa jésus"],
+    rep: "La Voie itilize <strong>Yahushuʿaḥ</strong> paske li chèche itilize fòm ki pi pre non orijinal ibriy la.\n\nMo 'Jésus' se yon fòm ki soti nan transmisyon grèk ak laten — li pa reflete non orijinal la. ✦"
+  },
+  {
+    keys: ["kisa ketubim qadoshim ye","ketubim","kisa bible ye","poukisa pa bible","ekriti"],
+    rep: "Ketubim Qadoshim yo se ekriti qadosh Yahawah te fè ekri atravè nabi'im yo ak lòt sèbitè fidèl Li yo.\n\nLa Voie prefere tèm sa a olye 'Bible' ki vin apre ak tradisyon diferan. ✦"
+  },
+  {
+    keys: ["kisa kalandriye ibri restaure ye","kalandriye","calendrier ibri","calendrier biblique"],
+    rep: "Se kalandriye ki chèche retounen sou modèl tan yo jan yo prezante nan Ketubim Qadoshim yo.\n\nLi kòmanse ak mwa Abib — premye mwa Yahawah te endike pou pèp Li a. ✦"
+  },
+  {
+    keys: ["kisa shabbath ye","shabbath","sabbat","jou repo","setyem jou"],
+    rep: "Shabbath la se setyèm jou semèn nan Yahawah mete apa kòm jou repo ak adorasyon.\n\nLi toujou valab jodi a — se yon kado Yahawah te bay limanite depi nan kòmansman an. ✦"
+  },
+  {
+    keys: ["kisa qehilah ye","qehilah","c'est quoi qehilah","kisa egliz ye","legliz"],
+    rep: "Qehilah a se rasanbleman tal'midim Yahushuʿaḥ yo.\n\nLa Voie prefere tèm sa a olye 'église' ki pote konotasyon lòt tradisyon. ✦"
+  },
+  {
+    keys: ["ki wol yahushuah genyen","wòl yahushuah","ki plas yahushuah","yahushuah nan lavi manm","yahushuah adon","yahushuah moshiah","chèf qehilah"],
+    rep: "Pou yon manm La Voie, Yahushuʿaḥ Ha'Mashiaḥ okipe yon plas santral.\n\nManm La Voie yo rekonèt Yahushuʿaḥ kòm :\n• Adôn yo\n• Moshiaḥ yo\n• Chèf Qehilah a\n• Wòch angilè a\n• Ajan prensipal Yahawah itilize pou mennen émounah yo alapèfeksyon\n• Sila Yahawah etabli pou pote delivrans\n\n<em>« Ann fikse je nou sou Yahushuʿaḥ, ajan prensipal la ak sila ki mennen émounah a alapèfeksyon... »</em> (Ibrim 12:2)\n\n<em>« Pa gen delivrans nan okenn lòt moun, paske pa gen okenn lòt non anba shamayim yo ki bay pami lèzòm pou nou jwenn delivrans. »</em> (Maʿasei 4:12)\n\n<em>« Yahawah leve li byen wo e Li ba li non ki pi wo pase tout lòt non, pou nan non Yahushuʿaḥ tout jenou pliye... e pou tout lang konfese ke Yahushuʿaḥ Ha'Mashiaḥ se Adôn, pou kabôd Yahawah Papa a. »</em> (Philippiyim 2:9-11)\n\nSa vle di pou yon manm La Voie :\n• li suiv Yahushuʿaḥ kòm Adôn li\n• li mete konfyans li nan Yahushuʿaḥ kòm Moshiaḥ li\n• li obeyi ansèyman Yahushuʿaḥ yo\n• li rann temwayaj sou Yahushuʿaḥ\n• li chèche imite konduit Yahushuʿaḥ\n• li rekonèt Yahushuʿaḥ kòm Chèf Qehilah a\n\n<em>An rezime :\nYahushuʿaḥ Ha'Mashiaḥ se Adôn manm La Voie a.\nYahushuʿaḥ Ha'Mashiaḥ se Moshiaḥ manm La Voie a.\nYahushuʿaḥ Ha'Mashiaḥ se Chèf Qehilah a.\nNan non Yahushuʿaḥ, tout jenou dwe pliye, pou kabôd Yahawah Papa a.</em> ✦"
+  },
+  {
+    keys: ["bay kiyès manm la voie yo adrese tefilah","kiyès yo adrese tefilah","kijan tefilah fèt","bay kiyès yo hitpalel","destinatè tefilah","kijan yo fè tefilah"],
+    rep: "Manm La Voie yo adrese téfilah yo bay <strong>Yahawah</strong>, Papa ki nan shamayim yo.\n\nYahushuʿaḥ li menm te anseye tal'midim li yo :\n\n<em>« Lè n ap hitpalel, di : Papa nou... »</em> (Mattiyahu 6:9)\n\nSepandan, yo fè sa <strong>nan non Yahushuʿaḥ Ha'Mashiaḥ</strong>, paske Yahushuʿaḥ se Adôn yo, Moshiaḥ yo ak ajan Yahawah etabli pou mennen moun bò kote Li.\n\n<em>« Nenpòt sa n mande Papa a nan non mwen, Li ap ban nou li. »</em> (Yaḥuānān 16:23)\n\nModèl nòmal téfilah yon manm La Voie :\n1. Téfilah la adrese bay <strong>Yahawah</strong>\n2. Li fèt <strong>nan non Yahushuʿaḥ</strong>\n3. Li fèt avèk respè, imilite ak émounah\n\nPa egzanp :\n<em>« Yahawah, Papa nou ki nan shamayim yo,\nNou vin devan Ou avèk rekonesans...\nNou mande tout bagay sa yo nan non Yahushuʿaḥ Ha'Mashiaḥ. Amèn. »</em>\n\n<em>An rezime :\n📖 Destinatè téfilah la : Yahawah.\n📖 Mwayen an : Yahushuʿaḥ Ha'Mashiaḥ.\n📖 Lespri a : respè, imilite ak émounah.</em> ✦"
+  },
+  {
+    keys: ["poukisa manm la voie yo fè tefilah nan non yahushuah","tefilah nan non yahushuah","non yahushuah nan tefilah","poukisa non yahushuah nan tefilah"],
+    rep: "Paske Yahushuʿaḥ te anseye tal'midim li yo pou yo pwoche bò kote Yahawah atravè li.\n\nYo rekonèt li kòm Adôn yo, Moshiaḥ yo ak sèl non Yahawah bay pou delivrans lèzòm.\n\n<em>« Nenpòt sa n mande Papa a nan non mwen, Li ap ban nou li. »</em> (Yaḥuānān 16:23)\n\n<em>« Pa gen delivrans nan okenn lòt moun... »</em> (Maʿasei 4:12)\n\n<em>An rezime : Manm La Voie yo adrese téfilah yo bay Yahawah epi yo fè sa nan non Yahushuʿaḥ Ha'Mashiaḥ.</em> ✦"
+  },
+  {
+    keys: ["kisa beth haknesset ye","beth haknesset","kote yo reyini","kote manm yo reyini","ki kote manm la voie yo reyini","kote qehilah a reyini"],
+    rep: "Beth HaKnesset vle di <strong>'kay rasanbleman'</strong>.\n\nManm La Voie yo reyini nan Beth HaKnesset pou adore Yahawah, etidye Ketubim Qadoshim yo, chante ansanm, hitpalel epi ankouraje youn lòt.\n\nJodi a, reyinyon yo kapab fèt nan yon Beth HaKnesset, nan kay prive, sou entènèt oswa nenpòt lòt kote ki pèmèt Qehilah a rasanble nan non Yahawah ak Yahushuʿaḥ.\n\nEnpòtans lan pa chita nan bilding lan menm, men nan Qehilah a ki reyini ladan l.\n\n<em>An rezime : Beth HaKnesset se kote Qehilah a reyini pou adorasyon, ansèyman ak ankourajman mityèl.</em> ✦"
+  },
+  {
+    keys: ["kisa mashihim yo ye","mashihim","ki mashihim","ki moun mashihim yo ye"],
+    rep: "Mashiḥim yo se moun ki suiv Yahushuʿaḥ epi ki fè efò pou viv dapre ansèyman li yo.\n\nLa Voie prefere tèm sa a olye 'chrétien' ki pa reflete vokabilè premye syèk la. ✦"
+  },
+  {
+    keys: ["kijan pou rejoindre la voie","kijan pou m rejwenn","rejoindre","comment rejoindre","vin manm","antre nan la voie"],
+    rep: "Pou antre nan La Voie, yon moun dwe fè <strong>teshoubah</strong> epi <strong>thabalé</strong> nan dlo nan non Yahushuʿaḥ. (Maʿasei 2:38)\n\nYon moun pa vin manm La Voie senpleman paske li asiste reyinyon oswa li suiv emisyon yo.\n\nMoun ki fè teshoubah epi ki kontinye mache dapre Dabar Yahawah la vin fè pati fanmi 'Èlohim. ✦"
+  },
+  {
+    keys: ["ki diferans la voie ak relijyon","diferans","différence","relijyon","religion"],
+    rep: "La Voie se chemen lavi Yahushuʿaḥ ak premye tal'midim yo te suiv la.\n\nLi chèche retounen nan modèl orijinal la san ajoute tradisyon lèzòm.\n\nLa Voie pa yon relijyon — li se yon mòd de vi. ✦"
+  },
+  {
+    keys: ["kisa besorah towah ye","besorah","bonne nouvelle","bon nouvèl"],
+    rep: "Besorah Towah a se bon nouvèl konsènan Malkouth Yahawah la ak Yahushuʿaḥ Ha'Mashiaḥ.\n\nSe mesaj La Voie pote bay tout nasyon yo. ✦"
+  },
+  {
+    keys: ["kisa emounah ye","emounah","lafwa","foi","kisa lafwa ye"],
+    rep: "Emounah a se konfyans fèm yon moun mete nan Yahawah ak nan Dabar Li.\n\nLi pa sèlman kwayans — li se yon angajman de vi tout antye. ✦"
+  },
+  {
+    keys: ["ki moedim yahawah yo","moedim","fetes","fèt","pessah","soukkoth","shabuoth","shabouoth"],
+    rep: "Moʿedim yo se tan Yahawah fikse pou pèp Li a sonje aksyon Li yo epi adore Li.\n\nYo enkli Pessaḥ, Matsot, Shabouʿoth, Yom Terou'ah, Yom Kippour ak Soukkoth. ✦"
+  },
+  {
+    keys: ["kisa la voie radio ye","radio","la voie radio","radyo"],
+    rep: "La Voie Radio se estasyon radyo ofisyèl La Voie.\n\nLi difize mizik, ansèyman, tèfilah ak refleksyon chak jou — an fransè ak kreyòl ayisyen.\n\nEkout li sou : <strong>radio.lavoie.world</strong> ✦"
+  },
+  {
+    keys: ["kijan pou kontakte la voie","kontakte","contact","email","imel","kijan kontakte"],
+    rep: "Ou ka kontakte La Voie nan :\n\n🌐 <strong>lavoie.world</strong>\n📧 lesmembresdelavoie@gmail.com\n✈ t.me/lesmembresdelavoie\nf facebook.com/lesmembresdelavoie\n📺 youtube.com/@lavoie033 ✦"
+  },
+  {
+    keys: ["kisa talmidim yo ye","tal'midim","talmidim","disciple","disip"],
+    rep: "Tal'midim yo se elèv ki suiv Yahushuʿaḥ epi ki pratike ansèyman li yo.\n\nSe non La Voie prefere pou moun ki mache nan Ha'Mashiaḥ. ✦"
+  },
+  {
+    keys: ["kisa rouah haqodesh ye","rouah","rouaḥ","esprit saint","lespri","espri"],
+    rep: "Rouaḥ ha'Qodesh la se Rouaḥ qadosh Yahawah itilize pou gide ak ranfòse sèbitè Li yo.\n\nLi se kado Yahawah bay moun ki fè teshoubah ak ki resevwa thabilah. ✦"
+  },
+  {
+    keys: ["konbyen fwa manm la voie yo reyini","konbyen fwa reyini","konbyen reyinyon","ki lè yo reyini","frekans reyinyon","reyinyon la voie","ki jou yo reyini","èske manm la voie yo konn fè reyinyon","èske la voie fè reyinyon","reyinyon","reunion","rasanbleman"],
+    rep: "Manm La Voie yo reyini :\n\n• Chak jou <strong>Shabbath</strong> (yon fwa pa semèn)\n• Chak <strong>Rosh Ḥodesh</strong> (premye jou chak mwa)\n• Pou <strong>Shabouʿoth</strong> (6 Siban)\n• Pou <strong>Soukkoth</strong> (soti 15 rive 21 Tishri)\n• Pou <strong>Seʿoudat ha'Adôn</strong> (14 Abib nan aswè)\n• E nenpòt lòt lè sa nesesè — pou adorasyon, etid, ankourajman oswa lòt bezwen nan Qehilah a\n\nPa gen yon kantite reyinyon fiks ki limite a yon sèl chif. Gen reyinyon regilye ki mare ak Shabbath la ak moʿadim qadoshim yo, epi kapab gen reyinyon adisyonèl selon bezwen Qehilah a.\n\n<em>« Depi yon Rosh Ḥodesh rive nan yon lòt Rosh Ḥodesh, epi depi yon Shabbath rive nan yon lòt Shabbath, tout chè ap vini pou yo adore devan Mwen. »</em> (Yeshayahu 66:23) ✦"
+  },
+  {
+    keys: ["konbyen esperans ki genyen","yon sèl esperans","esperans"],
+    rep: "Gen yon sèl esperans ki ini tout tal'midim Yahushuʿaḥ yo. (Ephésiens 4:4) ✦"
+  },
+  {
+    keys: ["poukisa nou pa itilize mo bible","poukisa pa bible","bible"],
+    rep: "La Voie prefere itilize espresyon <strong>Ketubim Qadoshim</strong> — ki vle di 'Ekriti Qadosh yo'.\n\nMo 'Bible' vin apre ak tradisyon diferan ki pa toujou reflete kontèks orijinal la. ✦"
+  },
+  {
+    keys: ["poukisa nou pa di dieu","poukisa pa dieu","dieu","bondie"],
+    rep: "La Voie prefere itilize <strong>Yahawah</strong> — Non Qadosh Kreyatè a — oswa <strong>'Èlohim</strong>.\n\nMo 'Dieu' oswa 'Bondie' se tradiksyon jeneral ki pa bay Non espesifik Li a. ✦"
+  },
+  {
+    keys: ["poukisa nou pa di priye","poukisa pa priye","priyè","priye","prière","lapriyè","poukisa nou pa itilize mo priye"],
+    rep: "Manm La Voie yo prefere itilize mo <strong>hitpalel</strong> oswa <strong>téfilah</strong> paske se ekspresyon ki pi pre vokabilè ibri ki itilize nan Ketubim Qadoshim yo.\n\nMo 'priye' ak 'lapriyè' soti nan lang ki vin pi ta yo, tandiske téfilah se mo ibri ki sèvi pou pale de kominikasyon yon moun ak Yahawah.\n\nPou rezon sa a, anpil manm La Voie itilize ekspresyon tankou :\n• fè yon téfilah\n• adrese yon téfilah bay Yahawah\n• hitpalel devan Yahawah\n\nObjektif la pa chanje sans aksyon an, men retounen pi pre vokabilè ki asosye ak rasin ibri yo.\n\n<em>An rezime : Manm La Voie yo pale de téfilah oswa hitpalel, paske yo prefere itilize tèm ki pi pre langaj Ketubim Qadoshim yo.</em> ✦"
+  },
+  {
+    keys: ["kisa tefilah ye","téfilah","tefilah","kisa tèfilah ye","ki téfilah"],
+    rep: "Téfilah se aksyon yon moun adrese panse li, rekonesans li, demann li oswa louwanj li bay Yahawah.\n\nTéfilah ka fèt pou kont yon moun oswa ansanm ak Qehilah a.\n\nYahushuʿaḥ te montre tal'midim li yo enpòtans téfilah regilye ak sensè. ✦"
+  },
+  {
+    keys: ["kisa hitpalel vle di","hitpalel"],
+    rep: "Hitpalel se aksyon fè yon téfilah — kominikasyon dirèk ak Yahawah. ✦"
+  },
+  {
+    keys: ["rezirekyon","rezireksyon","resurrection","èske manm la voie kwè nan rezireksyon"],
+    rep: "Wi.\n\nLa Voie anseye rezirèksyon moun ki mouri yo.\n\nSe yon nan fondamantal Emounah La Voie. ✦"
+  },
+  {
+    keys: ["reyenkanasyon","réincarnation","reincarnation"],
+    rep: "Non.\n\nLa Voie pa anseye reyenkanasyon.\n\nEsperans la chita sou rezirèksyon an — pa reyenkanasyon. ✦"
+  },
+  {
+    keys: ["nefech imòtèl","immortalite","imòtalite","nefech","èske nefech la imòtèl","imòtalite nefech","nefech mouri"],
+    rep: "Manm La Voie yo pa anseye ke nefech moun nan imòtèl pa natirèlman.\n\nDapre Ketubim Qadoshim yo, se Yahawah sèl ki posede imòtalite nan sans absoli a. (1 Timotiyos 6:16)\n\nNan Beré'shit 2:7, ha'adam pa t resevwa yon nefech ; li te vin yon nefech hayah. Sa montre moun nan pa posede yon nefech separe ki pa ka mouri — li menm se yon nefech.\n\nKetubim Qadoshim yo montre tou ke nefech ka mouri :\n\n<em>« Nefech ki peche a, se li menm ki pral mouri. »</em> (Yeḥezqel 18:4)\n\nPou rezon sa a, La Voie pa anseye ke yon pati nan moun nan kontinye viv konsyan apre lanmò paske li imòtèl pa natirèlman.\n\nEsperans tal'midim Yahushuʿaḥ yo pa chita sou imòtalite natirèl nefech la, men sou pwomès Yahawah pou fè moun yo leve nan rezirèksyon.\n\n<em>An rezime : La Voie pa anseye imòtalite natirèl nefech la. Li anseye rezirèksyon moun ki mouri yo ak lavi olam Yahawah pwomèt moun fidèl yo.</em> ✦"
+  },
+  {
+    keys: ["ki diferans rezirèksyon ak imòtalite","diferans rezirèksyon imòtalite","rezirèksyon vs imòtalite","kisa rezirèksyon ye"],
+    rep: "Rezirèksyon se aksyon Yahawah fè pou retounen bay lavi yon moun ki te mouri.\n\nImòtalite nefech la se lide ki fè kwè yon pati nan moun nan pa janm mouri epi kontinye egziste konsyan apre lanmò.\n\nLa Voie anseye rezirèksyon jan Ketubim Qadoshim yo prezante li, men li pa anseye imòtalite natirèl nefech la.\n\n<em>An rezime : Esperans La Voie a baze sou rezirèksyon, pa sou imòtalite natirèl nefech la.</em> ✦"
+  },
+  {
+    keys: ["shamayim","paradis","syèl","ciel","ki kote moun ki mouri yo ale"],
+    rep: "La Voie kwè nan egzistans shamayim yo.\n\nSepandan, sant esperans li se Malkouth Yahawah la, rezirèksyon an ak restorasyon tout bagay. ✦"
+  },
+  {
+    keys: ["ghan edhen","paradis","ede","jaden edhen","kisa paradis ye"],
+    rep: "<strong>Ghan Édhen</strong> — ki vle di Jaden Édhen — se tèm La Voie itilize olye 'paradis'.\n\nLi reflete vokabilè ibriy orijinal la. ✦"
+  },
+  {
+    keys: ["kijan la voie finanse","kijan nou finanse","finanse aktivite","financement","ki kijan la voie jwenn lajan"],
+    rep: "La Voie fonksyone grasa ofrann volontè manm li yo ak moun ki vle soutni travay la.\n\nAktivite tankou :\n• Beth HaKnesset la\n• La Voie Radio\n• Sit entènèt la\n• Pwodiksyon ansèyman yo\n• Asistans pou moun ki nan nesesite\n\n...ka jwenn sipò atravè kontribisyon volontè.\n\nPa gen sistèm kote moun oblije bay yon kantite fiks. ✦"
+  },
+  {
+    keys: ["èske yon moun oblije bay kòb","oblije bay kòb","oblije peye","peye pou vin manm","kòb pou vin manm"],
+    rep: "Non.\n\nYon moun pa vin manm La Voie paske li bay kòb, ni li pa pèdi plas li paske li pa bay.\n\nSa ki fè yon moun fè pati La Voie se <strong>teshoubah a</strong>, <strong>thabilah la</strong> ak fidelite li anvè Yahawah ak Yahushuʿaḥ.\n\nOfrann yo rete yon desizyon pèsonèl. ✦"
+  },
+  {
+    keys: ["èske responsab la voie resevwa salè","salè","responsab peye","pastè peye","zaqen salè","sèvis roḥanit komès"],
+    rep: "La Voie pa konsidere sèvis roḥanit kòm yon mwayen pou fè komès oswa chèche richès.\n\nSèvis nan Qehilah a se yon angajman ki soti nan kè — pa yon pwofesyon komèsyal. ✦"
+  },
+  {
+    keys: ["èske gen ladim","ladim","dime","ladîme","sistèm ladim","ladim obligatwa"],
+    rep: "La Voie pa egzije yon sistèm ladim obligatwa sou revni manm yo.\n\nNan Ketubim Qadoshim yo, ladim nan te gen yon kontèks espesifik ki te lye ak pèp Ysra'el, tè a, agrikilti ak sèvis Beth HaMiqdash la.\n\nJodi a, La Voie ankouraje jenerozite, pataj ak sipò volontè pou bezwen Qehilah a, Beth HaKnesset la, pwoklamasyon Besorah Towah a ak asistans pou moun ki nan nesesite.\n\nChak moun dwe bay selon kapasite li ak selon sa li deside nan kè li, san fòs ni presyon.\n\n<em>« Se pou chak moun bay jan li deside nan kè li, pa avèk tristès ni anba kontrent, paske Yahawah renmen moun ki bay avèk lajwa. »</em> (2 Qorintim 9:7)\n\n<em>An rezime : La Voie ankouraje kontribisyon volontè ak jenerozite, men li pa egzije yon ladim obligatwa sou revni manm yo.</em> ✦"
+  },
+  {
+    keys: ["lakolèt","kolèt","kòbèy","kabare","èske yo fè lakolèt"],
+    rep: "Wi, men pa jan yo fè sa nan anpil relijyon tradisyonèl yo kote yo pase kabare, panyen oswa kòbèy devan moun pandan reyinyon yo.\n\nLa Voie pa jwenn yon modèl konsa nan eritaj premye jenerasyon tal'midim Yahushuʿaḥ yo.\n\nSepandan, La Voie rekonèt enpòtans sipòte travay Qehilah a, asistans pou moun ki nan nesesite, antretyen Beth HaKnesset la, pwodiksyon ansèyman yo, La Voie Radio ak lòt aktivite ki itil.\n\nPou rezon sa a, La Voie itilize <strong>ofrann volontè</strong>. Chak moun rete lib pou bay selon mwayen li, selon sa li deside nan kè li ak selon rekonesans li anvè Yahawah.\n\nPa gen fòs, pa gen presyon, pa gen kantite minimòm obligatwa.\n\n<em>« Se pou chak moun bay jan li deside nan kè li, pa avèk tristès ni anba kontrent, paske Yahawah renmen moun ki bay avèk lajwa. »</em> (2 Qorintim 9:7)\n\n<em>An rezime : La Voie pa pratike sistèm kote yo pase kòbèy oswa kabare devan moun. Sepandan, li ankouraje ofrann volontè pou soutni bezwen Qehilah a ak diferan aspè travay la.</em> ✦"
+  },
+  {
+    keys: ["kisa yon ofrann volontè ye","ofrann volontè","ofrann volonte","don volontaire","kisa ofrann ye"],
+    rep: "Yon ofrann volontè se yon kontribisyon yon moun deside fè libreman pou soutni yon bezwen oswa yon travay.\n\nNan La Voie, ofrann volontè yo soti nan yon desizyon pèsonèl, san kontrent ni obligasyon.\n\nObjektif la se manifeste jenerozite, lanmou ak solidarite anvè Qehilah a ak bezwen ki prezante yo.\n\n<em>An rezime : Yon ofrann volontè se yon don ki fèt avèk bon kè, san fòs ak san presyon.</em> ✦"
+  },
+  {
+    keys: ["ki wol fanm yo","fanm nan la voie","fi nan la voie","fanm","wòl fanm","role femme"],
+    rep: "La Voie rekonèt ke fanm yo gen yon plas enpòtan ak onorab nan plan Yahawah.\n\nMenm si La Voie pa konfye fanm yo responsablite zaqen oswa direksyon Qehilah a, sa pa diminye valè sèvis yo.\n\nFanm yo ka :\n• edike pitit yo nan chemen Yahawah\n• anseye lòt fanm yo\n• pratike ospitalite\n• ankouraje moun ki fèb yo\n• soutni travay Besorah Towah a\n• patisipe nan òganizasyon aktivite Qehilah a\n• sèvi nan mizik ak chante\n• ede moun ki nan nesesite\n• bay konsèy ki baze sou ḥokhmah ak eksperyans yo\n\n<em>« Se pou fanm ki gen laj yo... anseye sa ki bon, pou yo kapab fòme jèn fanm yo. »</em> (Titos 2:3-5)\n\nKetubim Qadoshim yo montre egzanp tankou Miryam, Deborah, Houldah, Esther, Miryam Magdala ak Priscilla — ki te jwe yon wòl enpòtan nan diferan epòk.\n\n<em>« Nan La Voie, kestyon an pa: Ki pouvwa yon moun genyen? men pito: Ki sèvis li kapab rann pou kabôd Yahawah a ak byen Qehilah a? »</em> ✦"
+  },
+  {
+    keys: ["èske fanm ka mesharath","fanm mesharath","fi mesharath","kisa mesharath ye","mesharath"],
+    rep: "Wi.\n\nLa Voie fè diferans ant fonksyon <strong>Mesharath</strong> ak fonksyon zaqen oswa direksyon Qehilah a.\n\nYon Mesharath se yon moun k ap rann sèvis pou byen Qehilah a. Fonksyon sa yo ka gen rapò ak òganizasyon, ospitalite, asistans, swen pou bezwen pratik yo ak lòt sèvis ki itil pou bon fonksyònman Qehilah a.\n\nKetubim Qadoshim yo montre plizyè fanm fidèl ki te sèvi Yahawah ak Qehilah a avèk devouman.\n\nPou rezon sa a, La Voie rekonèt ke fanm yo kapab sèvi kòm Mesharath, selon bezwen yo ak kapasite yo.\n\nSepandan, La Voie kontinye fè diferans ant sèvis sa yo ak fonksyon ki gen rapò ak direksyon oswa siveyans Qehilah a.\n\n<em>An rezime : fanm yo pa zaqen selon pozisyon La Voie a — men wi, fanm yo ka sèvi aktivman epi jwe yon wòl enpòtan kòm Mesharath ak nan anpil lòt sèvis pou Qehilah a.</em> ✦"
+  },
+  {
+    keys: ["kisa yon mesharath ye","ki yon mesharath","mesharath vle di","kisa mesharath vle di"],
+    rep: "Mesharath vle di yon moun k ap sèvi oswa k ap rann sèvis.\n\nNan La Voie, yon Mesharath ede Qehilah a nan diferan domèn pratik ak òganizasyonèl pou tout bagay fèt avèk lòd ak respè.\n\nObjektif Mesharath la se pa chèche otorite, men sèvi lòt moun avèk imilite ak fidelite.\n\n<em>An rezime : Yon Mesharath se yon sèbitè ki ede Qehilah a atravè sèvis itil ak nesesè pou byen kominote a.</em> ✦"
+  },
+  {
+    keys: ["èske fi ka zaqen","fanm zaqen","fanm dirije","femme diriger","fanm ka dirije","zaqen","beje","berger","fanm ka anseye","fi ka anseye","èske fanm ka anseye","fi ka beje"],
+    rep: "La Voie rekonèt valè, diyite ak enpòtans fanm yo nan sèvis Yahawah. Anpil fanm fidèl te sèvi Yahawah avèk kouraj epi yo te jwe yon wòl enpòtan nan lavi Qehilah a.\n\nSepandan, konsènan fonksyon direksyon ak siveyans Qehilah a, tankou zaqenim ak lòt responsablite ki gen rapò ak gouvènans Qehilah a, La Voie suiv modèl ki prezante nan Ketubim Qadoshim yo.\n\n<em>« Mwen pa pèmèt yon fanm anseye oswa pran otorite sou yon gason ; li dwe rete nan trankilite. »</em> (1 Timotiyos 2:12)\n\n<em>« Tankou sa fèt nan tout qehilah qadosh yo, se pou fanm yo rete an silans nan rasanbleman yo... »</em> (1 Qorintim 14:33-35)\n\nPou rezon sa a, La Voie pa konfye responsablite zaqen oswa direksyon Qehilah a bay fanm.\n\nSa pa vle di fanm yo pa gen plas oswa valè. Okontrè, fanm yo ka :\n• anseye pitit yo\n• anseye lòt fanm\n• ankouraje Qehilah a\n• patisipe nan travay Besorah Towah a\n• sèvi nan anpil lòt domèn enpòtan\n\nLa Voie chèche respekte tou de prensip sa yo :\n1. Onorab plas ak kontribisyon fanm yo.\n2. Respekte lòd ki prezante nan Ketubim Qadoshim yo pou gouvènans Qehilah a.\n\n<em>An rezime : La Voie rekonèt enpòtans fanm yo nan sèvis Yahawah, men li suiv modèl Ketubim Qadoshim yo konsènan fonksyon zaqenim yo ak direksyon Qehilah a.</em> ✦"
+  },
+  {
+    keys: ["èske fanm yo ka anseye nenpòt moun","fanm anseye nenpòt","fanm ka anseye gason","ansèyman fanm"],
+    rep: "Ketubim Qadoshim yo montre fanm fidèl yo te gen yon wòl enpòtan nan transmisyon konesans ak ankourajman.\n\nSepandan, konsènan ansèyman otoritatif ak direksyon Qehilah a, La Voie suiv enstriksyon akh Šāʾūl yo nan 1 Timotiyos 2:12 ak 1 Qorintim 14:33-35.\n\nFanm yo ka anseye pitit yo, lòt fanm yo epi pataje eksperyans yo ak konesans yo nan anpil kontèks ki itil pou Qehilah a.\n\n<em>An rezime : La Voie fè diferans ant kontribisyon enpòtan fanm yo nan ansèyman ak ankourajman, ak fonksyon ansèyman otoritatif ki lye ak direksyon Qehilah a.</em> ✦"
+  },
+  {
+    keys: ["kisa thabilah ye","thabilah","bapteme","batèm","batem","plonje nan dlo"],
+    rep: "Thabilah la se aksyon yon moun plonje nèt nan dlo kòm siy piblik angajman li anvè Yahawah.\n\nLi fèt nan non Yahushuʿaḥ apre teshoubah. (Maʿasei 2:38) ✦"
+  },
+  {
+    keys: ["kilès lòt brebi yo ye","lòt brebi","yahuanan 10:16","lòt brebi yo","yon sèl bann mouton"],
+    rep: "Nan Yaḥuānān 10:16, Yahushuʿaḥ di :\n\n<em>« Mwen gen lòt brebi ki pa nan pak sa a ; fòk Mwen mennen yo tou. Yo pral tande vwa M, epi pral gen yon sèl bann mouton ak yon sèl bèje. »</em>\n\nDapre konpreyansyon La Voie, 'lòt brebi' yo se moun ki pa t fè pati premye gwoup Yehoudim ki t ap suiv Yahushuʿaḥ pandan sherout li sou tè a — men Yahawah te gen entansyon rasanble yo tou.\n\nReyalizasyon pwomès sa a fèt pa etap nan Maʿasei a :\n\n1. <strong>Shomronim yo</strong> — anba sherout Philipos, anpil ladan yo te aksepte Besorah Tobah a. (Maʿasei 8:4-17)\n\n2. <strong>Goyim yo atravè Képha</strong> — Képha te anonse Besorah Tobah a bay Cornelius ak fanmi l. (Maʿasei 10:1-48)\n\n3. <strong>Goyim yo atravè Šāʾūl</strong> — Šāʾūl te resevwa yon misyon espesyal pou pote Besorah Tobah a bay anpil nasyon. (Maʿasei 13:46-48 ; 26:15-18)\n\n<em>« Mwen pa wont Besorah Tobah la, paske li se pouvwa 'Èlohim pou delivrans tout moun ki kwè, Yehoudi an premye, epi Yawani an tou. »</em> (Romiyim 1:16)\n\nYahushuʿaḥ pa t anonse de pèp diferan ak de esperans diferan. Tout moun ki vin ini ak Mashiyaḥ la resevwa menm pwomès la :\n\n<em>« Si nou se pou Mashiyaḥ la, nou se desandans Abraham e nou se eritye dapre pwomès la. »</em> (Galatiyim 3:29)\n\n<em>An rezime : 'Lòt brebi' yo se Shomronim yo ak Goyim yo — tout moun ki aksepte Yahushuʿaḥ epi mache nan HaDerekh la rasanble ansanm pou fòme yon sèl qehilah, anba direksyon yon sèl bèje.</em> ✦"
+  },
+  {
+    keys: ["kisa malkouth yahawah la ye","malkouth","royaume","wayòm"],
+    rep: "Malkouth Yahawah la se gouvènman Yahawah la ki pral etabli sou tout tè a anba otorite Mashiaḥ la.\n\nSe espwa ki anime tout tal'midim La Voie. ✦"
+  },
+  {
+    keys: ["èske manm la voie yo fè jèn","jèn","jen","jeun","fè jèn","pratik jèn"],
+    rep: "Wi.\n\nManm La Voie yo rekonèt jèn kòm yon pratik ki prezan nan Ketubim Qadoshim yo.\n\nPlizyè sèbitè Yahawah te fè jèn nan diferan sikonstans — tankou pandan peryòd teshoubah, rechèch direksyon, imiliasyon devan Yahawah oswa nan moman difikilte.\n\nYahushuʿaḥ li menm te fè jèn, epi li te anseye sou fason pou yon moun fè jèn avèk senserite, san fè demonstrasyon devan moun. (Mattiyahu 6:16-18 ; Mattiyahu 4:2) ✦"
+  },
+  {
+    keys: ["èske gen jou jèn obligatwa","jèn obligatwa","pwogram jèn","jèn fiks"],
+    rep: "Non.\n\nLa Voie pa enpoze yon pwogram jèn obligatwa pou tout manm yo.\n\nJèn se yon desizyon pèsonèl oswa yon aktivite Qehilah a ka òganize nan sikonstans espesyal.\n\nChak moun dwe aji avèk bon jijman, selon kondisyon fizik li ak konsyans li devan Yahawah. ✦"
+  },
+  {
+    keys: ["poukisa manm la voie yo fè jèn","poukisa fè jèn","rezon jèn","ki rezon jèn"],
+    rep: "Yon moun ka fè jèn pou :\n\n• chèche direksyon Yahawah\n• eksprime imilite\n• konsantre sou téfilah\n• fè teshoubah\n• fè fas ak yon sitiyasyon difisil\n• oswa pou lòt rezon ki ann amoni ak Ketubim Qadoshim yo\n\nJèn pa yon mwayen pou enpresyone lòt moun, men yon aksyon ki fèt devan Yahawah. ✦"
+  },
+  {
+    keys: ["kisa jèn ye","ki jèn","definisyon jèn","jèn vle di"],
+    rep: "Jèn se yon peryòd kote yon moun volontèman prive tèt li de manje, oswa pafwa de lòt bagay, pou konsantre plis sou relasyon li ak Yahawah.\n\nObjektif jèn nan pa sèlman sispann manje, men pwoche pi pre Yahawah avèk yon kè sensè.\n\n<em>An rezime : Manm La Voie yo fè jèn paske Ketubim Qadoshim yo montre pratik sa a. Sepandan, La Voie pa etabli yon sistèm jèn obligatwa. Jèn lan dwe fèt avèk senserite, imilite ak bon jijman devan Yahawah.</em> ✦"
+  },
+  {
+    keys: ["èske jèn fè yon moun pi qadosh","jèn fè moun qadosh","jèn ak qadosh","jèn ak sentete"],
+    rep: "Non.\n\nJèn pa ranplase obeyisans, teshoubah oswa fidelite.\n\nKetubim Qadoshim yo montre ke Yahawah pa sèlman gade aksyon ekstèn yo, men sitou kondisyon kè moun nan.\n\nJèn gen valè lè li akonpaye pa yon kè sensè ak yon vi ki ann amoni ak volonte Yahawah. ✦"
+  },
+  {
+    keys: ["poukisa manm la voie yo pa itilize mo croix","croix","kwa","senbòl kwa","kwa kòm senbòl","enstriman egzekisyon"],
+    rep: "Manm La Voie yo chèche itilize vokabilè ki pi pre sa nou jwenn nan Ketubim Qadoshim yo ak nan lang orijinal yo.\n\nNan plizyè pasaj, mo yo itilize nan tèks yo fè referans ak yon poto, yon pyebwa, oswa yon enstriman egzekisyon — san yo pa toujou presize fòm jewometrik li.\n\nAnplis de sa, mo 'croix' pote anpil chaj istorik, relijye ak kiltirèl ki devlope pandan syèk yo e ki depase sa Ketubim Qadoshim yo di dirèkteman.\n\nPou manm La Voie yo, kestyon prensipal la pa :\n<em>« Ki fòm egzak enstriman egzekisyon an te genyen ? »</em>\n\nMen pito :\n<em>« Kisa lanmò Yahushuʿaḥ ak rezirèksyon li vle di pou limanite ? »</em>\n\nYo mete aksan sou :\n• obeyisans Yahushuʿaḥ anvè Yahawah\n• sakrifis li\n• delivrans Yahawah bay atravè li\n• rezirèksyon li\n• Malkouth Yahawah la\n\nLa Voie pa itilize kwa kòm senbòl ofisyèl li. Idantite La Voie pa bati sou yon senbòl materyèl, men sou Yahawah, Yahushuʿaḥ, Besorah Towah a ak chemen tal'mid yo dwe suiv la.\n\n<em>An rezime : Manm La Voie yo pa itilize mo 'croix' kòm yon tèm santral oswa yon senbòl ofisyèl — yo prefere mete aksan sou Yahushuʿaḥ, sakrifis li, rezirèksyon li ak Malkouth Yahawah la.</em> ✦"
+  },
+  {
+    keys: ["kisa torah a ye","torah","lwa","loi"],
+    rep: "Torah a se ansèyman Yahawah te bay pou gide pèp Li a.\n\nLa Voie wè l kòm fondasyon ak limyè pou mache nan Ha'Mashiaḥ. ✦"
+  },
+  {
+    keys: ["ant talm'id ak ed","tal'mid ak ed","talm'id vs ed","kilès ki idantite a","kilès ki misyon an","ed temwen","tal'mid idantite","ed misyon"],
+    rep: "Nan La Voie, <strong>Tal'mid</strong> se idantite a, tandiske <strong>ʿEd</strong> (Temwen) se misyon an.\n\nYon Tal'mid se yon moun ki aprann anba Yahushuʿaḥ, ki suiv ansèyman li yo epi ki fè efò pou imite egzanp li.\n\nAnvan yon moun kapab rann temwayaj sou laverite a, li dwe dabò vin yon tal'mid. Pou rezon sa a, Yahushuʿaḥ pa t di 'Ale fè temwen' — li te di :\n\n<em>« Ale fè tal'mid... »</em> (Mattiyahu 28:19-20)\n\nSepandan, yon fwa yon moun vin tal'mid, li resevwa tou misyon pou l rann temwayaj :\n\n<em>« Nou pral ʿedim mwen... »</em> (Maʿasei 1:8)\n\nKidonk :\n• <strong>Tal'mid</strong> = idantite\n• <strong>ʿEd</strong> = fonksyon oswa misyon\n\nYon moun pa vin tal'mid paske li rann temwayaj — li rann temwayaj <em>paske</em> li se yon tal'mid.\n\nYon tal'mid Yahushuʿaḥ : aprann → pratike → suiv → grandi → rann temwayaj → pataje Besorah Towah a → ede lòt moun vin tal'mid.\n\n<em>An rezime :\n📖 Tal'mid = kiyès mwen ye.\n📖 ʿEd = sa m ap fè.</em> ✦"
+  },
+  {
+    keys: ["ki misyon manm la voie yo","misyon la voie","ki misyon la voie","misyon manm yo","poukisa la voie egziste"],
+    rep: "Misyon manm La Voie yo se suiv egzanp Yahushuʿaḥ, fè konnen Non Yahawah a, anonse Malkouth Yahawah la epi ede moun vin tal'mid Yahushuʿaḥ.\n\nYahushuʿaḥ te bay tal'midim li yo misyon pou yo ale fè tal'mid nan tout nasyon yo, anseye yo obsève tout sa li te kòmande yo. (Mattiyahu 28:19-20)\n\nLi te montre tou ke sant misyon li se te :\n<em>« Anonse Besorah Towah Malkouth Yahawah la. »</em> (Louqa 4:43)\n\nPou rezon sa a, manm La Voie yo chèche :\n• fè konnen Yahawah a\n• fè konnen Yahushuʿaḥ a\n• anonse Besorah Towah Malkouth Yahawah la\n• ede moun fè teshoubah\n• ede moun vin tal'mid\n• ankouraje moun viv dapre Ketubim Qadoshim yo\n• prepare tèt yo ak lòt moun pou Malkouth Yahawah la\n\nMisyon sa a pa limite ak reyinyon nan Beth HaKnesset la sèlman. Li gen ladan l fason yon moun viv, pale ak aji chak jou.\n\n<strong>Misyon manm La Voie yo pa :</strong>\n• pran pouvwa politik\n• domine lòt moun\n• bati yon anpi relijye\n• fòse moun aksepte kwayans yo\n\n<em>An rezime : Misyon manm La Voie yo se fè konnen Yahawah a, anonse Malkouth Li a, fè tal'mid pou Yahushuʿaḥ epi viv dapre chemen li te montre a.</em>\n\n<em>« Plus qu'un nom, un chemin à suivre. »</em> 🔥📖🌍 ✦"
+  },
+  {
+    keys: ["ki deviz la voie","deviz","devise","slogan","motto"],
+    rep: "<em>\"Plus qu'un nom, un chemin à suivre.\"</em>\n\nDeviz La Voie reflete misyon li : pa sèlman yon non, men yon chemen reyèl pou mache chak jou. ✦"
+  },
+  {
+    keys: ["kisa souper d'adon ye","souper","cène","sen","14 abib","zikaron"],
+    rep: "Souper d'Adôn lan se zikaron Yahushuʿaḥ te enstitiye nan swa 14 Abib la.\n\nLa Voie obsève l chak ane kòm souvni lanmò ak rezirèksyon Yahushuʿaḥ Ha'Mashiaḥ. ✦"
+  },
+  {
+    keys: ["ki rezo sosyal la voie","rezo sosyal","réseaux sociaux","facebook","youtube","instagram","telegram","tiktok"],
+    rep: "La Voie prezant sou plizyè platfòm :\n\n📺 youtube.com/@lavoie033\nf facebook.com/lesmembresdelavoie\n✈ t.me/lesmembresdelavoie\n◉ instagram.com/lesmembresdelavoie\n✕ x.com/Lavoie033\n♪ tiktok.com/@chemenyan ✦"
+  },
+  {
+    keys: ["èske manm la voie yo fè politik","politik","politique","pati politik","kandida","ideyoloji politik","la voie fè politik"],
+    rep: "La Voie pa yon mouvman politik e misyon li pa politik.\n\nMisyon La Voie se ede moun konnen Yahawah, suiv Yahushuʿaḥ epi prepare pou Malkouth Yahawah la.\n\nPou rezon sa a, La Voie pa sipòte okenn pati politik, okenn kandida politik oswa okenn ideyoloji politik kòm pozisyon ofisyèl li.\n\nSepandan, manm La Voie yo rete sitwayen peyi kote yo ap viv la epi yo dwe respekte otorite sivil yo toutotan sa pa mande yo dezobeyi Yahawah. (Romiyim 13:1-7 ; Maʿasei 5:29)\n\nLa Voie ankouraje manm li yo pou yo chèche jistis, onètete, lapè sosyal ak bon konduit nan lavi chak jou.\n\n<em>An rezime : La Voie pa fè politik kòm òganizasyon. Li konsantre sou ansèyman Ketubim Qadoshim yo ak Malkouth Yahawah la.</em> ✦"
+  },
+  {
+    keys: ["èske yon manm la voie ka manm yon pati politik","pati politik","afilyasyon politik","manm pati politik","rantre nan pati politik"],
+    rep: "La Voie pa egzije manm li yo rantre nan yon pati politik, ni li pa mande yo kite yon pati politik kòm kondisyon pou yo vin manm.\n\nSepandan, La Voie raple ke premye fidelite yon tal'mid Yahushuʿaḥ dwe ale bay Yahawah ak Malkouth Li a.\n\nPou rezon sa a, yon manm La Voie dwe veye pou okenn afilyasyon politik pa antre an konfli ak prensip Ketubim Qadoshim yo oswa ak konsyans li devan Yahawah.\n\nLa Voie pa sipòte okenn pati politik kòm òganizasyon epi li pa sèvi kòm zouti pwomosyon pou okenn mouvman politik.\n\nKesyon afilyasyon politik rete yon kestyon konsyans pèsonèl, toutotan moun nan kontinye mache dapre prensip Yahawah yo.\n\n<em>« Kontinye chèche an premye Malkouth Yahawah la ak jistis Li. »</em> (Mattiyahu 6:33)\n\n<em>An rezime : La Voie pa egzije ni entèdi manm li yo fè pati yon pati politik. Sepandan, fidelite yon tal'mid dwe toujou ale an premye bay Yahawah ak Malkouth Li a.</em> ✦"
+  },
+  {
+    keys: ["èske yon manm la voie ka vote","vote","voter","dwa vote","manm ka vote"],
+    rep: "La Voie pa fòse manm li yo vote ni pa entèdi yo vote.\n\nKesyon sa a rete yon kestyon konsyans pèsonèl chak moun devan Yahawah, toutotan li respekte prensip Ketubim Qadoshim yo.\n\n<em>An rezime : La Voie pa bay enstriksyon obligatwa sou kestyon vote — chak moun dwe egzamine kestyon an avèk konsyans li devan Yahawah.</em> ✦"
+  },
+  {
+    keys: ["ki sans yahushuah yo nan yahuanan 17","yahuanan 17:16","yo pa fe pati monn nan","pa fe pati monn","monn nan politik","tal'mid ak monn nan"],
+    rep: "Nan Yaḥuānān 17:16, Yahushuʿaḥ te di konsènan tal'midim li yo :\n\n<em>« Yo pa fè pati monn nan, menm jan mwen menm mwen pa fè pati monn nan. »</em>\n\nLa Voie konprann pawòl sa yo kòm yon rapèl ke tal'midim Yahushuʿaḥ yo dwe mete fidelite yo an premye nan Yahawah ak nan Malkouth Li a.\n\nSa vle di yon tal'mid pa dwe kite ideyoloji, enterè oswa konfli monn sa a pran plas prensip Yahawah yo nan lavi li.\n\nKonsènan politik, pasaj sa a raple manm La Voie yo ke espwa yo pa chita sou okenn pati politik, okenn gouvènman oswa okenn sistèm lèzòm — men sou Malkouth Yahawah la.\n\nAn menm tan, tal'midim yo dwe respekte otorite sivil yo, obeyi lwa ki jis yo epi chèche viv an pè ak tout moun, toutotan sa pa mande yo dezobeyi Yahawah. (Romiyim 13:1-7 ; Maʿasei 5:29)\n\n<em>An rezime : Yaḥuānān 17:16 raple ke premye fidelite manm La Voie yo dwe ale bay Yahawah ak Malkouth Li a. Yo viv nan mitan monn nan, men yo pa mete espwa yo nan sistèm politik oswa ideyoloji monn nan.</em> ✦"
+  },
+  {
+    keys: ["ki jan manm la voie yo konprann episod kote moun yo te vle fè yahushuah vin melekh","melekh","mélèkh","yahushuah melekh","fè yahushuah mélèkh","yahuanan 6:15","pran yahushuah pou melekh"],
+    rep: "Apre Yahushuʿaḥ te bay foul la manje, anpil moun te vle pran l pou fè l vin mélèkh. Men, lè Yahushuʿaḥ te rann li kont sa, li te retire kò li epi li te ale poukont li sou mòn nan.\n\n<em>« Lè Yahushuʿaḥ te konnen yo t ap vin pran li pou fè li mélèkh, li retire kò li ankò poukont li sou mòn nan. »</em> (Yaḥuānān 6:15)\n\nManm La Voie yo wè evènman sa a kòm yon leson enpòtan :\n\nYahushuʿaḥ pa t chèche pran pouvwa politik ni dirije atravè sistèm lèzòm yo, menm lè pèp la te pare pou mete l sou yon twòn. Li te konnen tan ak fason Yahawah te fikse pou li resevwa otorite li.\n\nPandan ministè li sou tè a, Yahushuʿaḥ te konsantre sou anonse Malkouth Yahawah la — pa sou pran kontwòl yon gouvènman imen.\n\nEvènman sa a montre tou ke menm yon objektif ki sanble bon kapab vin yon distraksyon si li fè yon moun kite misyon Yahawah ba li a.\n\n<strong>Kisa manm La Voie yo aprann nan evènman sa a :</strong>\n• Misyon Malkouth Yahawah la pi enpòtan pase pouvwa politik\n• Yon tal'mid pa dwe kite anbisyon oswa prestij detounen li de sèvis Yahawah a\n• Solisyon final pou limanite pa soti nan sistèm politik lèzòm yo\n• Menm lè yon moun gen opòtinite pou jwenn pouvwa, li dwe chèche volonte Yahawah an premye\n\n<em>« Kontinye chèche an premye Malkouth Yahawah la ak jistis Li. »</em> (Mattiyahu 6:33)\n\n<em>An rezime : Yahushuʿaḥ te refize vin mélèkh atravè sistèm politik imen. Pou manm La Voie yo, sa se yon rapèl ke premye fidelite yo dwe ale bay Yahawah ak Malkouth Li a, pa bay rechèch pouvwa oswa dominasyon politik.</em> ✦"
+  }
+];
 
-  const SYSTEM_PROMPT = `Tu es Képha, l'assistant officiel de La Voie (lavoie.world).
+function normalize(s) {
+  return s.toLowerCase()
+    .replace(/[?!.,;:]/g,'')
+    .replace(/[èéêë]/g,'e')
+    .replace(/[àâä]/g,'a')
+    .replace(/[ôö]/g,'o')
+    .replace(/[ûü]/g,'u')
+    .replace(/[îï]/g,'i')
+    .replace(/[ʿʾ]/g,"'")
+    .trim();
+}
 
-IDENTITÉ :
-- Tu es un assistant doux, pédagogique et fidèle aux enseignements de La Voie
-- Tu réponds TOUJOURS dans la langue de l'utilisateur (français, créole haïtien, anglais, espagnol, etc.)
-- Tu détectes automatiquement la langue et y réponds
-
-VOCABULAIRE OBLIGATOIRE — utilise TOUJOURS ces termes :
-- Yahawah (jamais: Dieu, Seigneur, l'Éternel)
-- Yahushuʿah Ha'Mashiaḥ (jamais: Jésus, Jésus-Christ)
-- Rouaḥ Ha'Qadosh (jamais: Saint-Esprit)
-- Ketubim Qadoshim (jamais: Bible, Écriture sainte)
-- Qehilah (jamais: Église)
-- Tal'midim (jamais: disciples, chrétiens)
-- Besorah Tobah (jamais: Évangile)
-- Malkouwt (jamais: Royaume)
-- Shamayim (jamais: Ciel)
-- Téfilah / Hitpalel (jamais: prière / prier)
-- Tebilah / Thabalé (jamais: baptême / baptisé)
-- Emounah (jamais: foi)
-- Devyasyon (jamais: péché)
-- Néfèsh (jamais: âme)
-- Mal'ak / Mal'akim (jamais: ange / anges)
-- Kabôd (jamais: gloire)
-- ʿÈts / Poteau de supplice (jamais: croix)
-- Nabiʾ / Nabiʾim (jamais: prophète)
-- Besorah Tobah (jamais: évangile)
-- Moshiaḥ (jamais: Sauveur)
-- Qadoshout (jamais: sainteté)
-- Berit Ḥadashah (jamais: Nouveau Testament)
-- Berit Meḥoudashah (jamais: Ancien Testament)
-- Roḥanit (jamais: spirituel)
-- Akh / Akhim (jamais: frère / frères)
-- Akhot / Akhayot (jamais: sœur / sœurs)
-- Shalôm (pour salutation et paix scripturaire)
-- Tranquillité (pour paix dans contexte pastoral)
-
-DOMAINES DE CONNAISSANCE :
-- Les Ketubim Qadoshim (Berit Meḥoudashah et Berit Ḥadashah)
-- Les enseignements de La Voie
-- Le calendrier lunisolaire (1 Abib = 20 mars 2026)
-- Les Moʿadim : Pessah (14 Abib), Shabuʿot (6 Siban), Sukkôt (15-21 Tishri)
-- Le lexique restauré de La Voie
-- Les 12 mois : Abib, Ziw, Siban, Rebiʿi, Ab, Eloul, Ethanim, Boul, Kislew, Tebeth, Shebat, Adar
-
-RÈGLES :
-- Réponds toujours avec douceur, précision et fidélité aux Ketubim Qadoshim
-- Si tu ne sais pas, dis-le honnêtement
-- Commence toujours par Shalôm si c'est la première interaction
-- Sois concis mais complet
-- N'invente jamais de versets ou citations`;
-
-  function kephaToggle() {
-    kephaOuvert = !kephaOuvert;
-    const win = document.getElementById('kepha-window');
-    win.classList.toggle('open', kephaOuvert);
-    if (kephaOuvert) {
-      document.getElementById('kepha-badge').style.display = 'none';
-      document.getElementById('kepha-input').focus();
+function findResponse(input) {
+  const q = normalize(input);
+  for (const item of KB) {
+    for (const kw of item.keys) {
+      if (q.includes(normalize(kw))) return item.rep;
     }
   }
+  return null;
+}
 
-  function kephaKeydown(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      kephaEnvoyer();
-    }
+function defaultResponse(input) {
+  const q = normalize(input);
+  if (q.includes('merci') || q.includes('mesi') || q.includes('todah') || q.includes('mèsi')) {
+    return "Barukh Yahawah ! Mèsi pou konfyans ou akhi. Si ou gen lòt kesyon, mwen la. Shalom ! ✦";
   }
-
-  function kephaAutoResize(el) {
-    el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+  if (q.includes('shalom') || q.includes('bonjou') || q.includes('bonswa') || q.includes('hello') || q.includes('sak pase')) {
+    return "Shalom ! Kijan mwen ka ede ou jodi a ?\n\nPoze mwen nenpòt kesyon sou La Voie, ansèyman yo, vokabilè ibriy la oswa kijan pou kontakte nou. ✦";
   }
-
-  function kephaAjouterMsg(texte, type) {
-    const zone = document.getElementById('kepha-messages');
-    const div = document.createElement('div');
-    div.className = `msg ${type}`;
-    div.innerHTML = texte.replace(/\n/g, '<br>');
-    zone.appendChild(div);
-    zone.scrollTop = zone.scrollHeight;
-    return div;
+  if (q.includes('ki ou ye') || q.includes('kiyès ou ye') || q.includes('qui es-tu') || q.includes('c est qui')) {
+    return "Mwen se <strong>Képha</strong> — asistan ofisyèl Les Membres de La Voie.\n\nMwen la pou ede ou konprann ansèyman La Voie, reponn kesyon ou yo ak gide ou nan ressous Qehilah a. ✦";
   }
+  return "Mwen paka jwenn repons pou kesyon sa a nan baz konesans mwen aktyèlman.\n\nPou pi bon repons, ou ka :\n🌐 Vizite <strong>lavoie.world</strong>\n📧 Kontakte nou : lesmembresdelavoie@gmail.com\n✈ Telegram : t.me/lesmembresdelavoie\n\nShalom ! ✦";
+}
 
-  async function kephaEnvoyer() {
-    if (kephaEnCours) return;
-    const input = document.getElementById('kepha-input');
-    const question = input.value.trim();
-    if (!question) return;
+let isOpen = false;
 
-    // Afficher message utilisateur
-    kephaAjouterMsg(question, 'user');
-    input.value = '';
-    input.style.height = 'auto';
-
-    // Ajouter à l'historique
-    kephaHistoire.push({ role: 'user', content: question });
-
-    // Indicateur de frappe
-    const typing = kephaAjouterMsg('Képha réfléchit...', 'typing');
-    kephaEnCours = true;
-    document.getElementById('kepha-send').disabled = true;
-
-    try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: kephaHistoire
-        })
-      });
-
-      const data = await response.json();
-      const reponse = data.content[0].text;
-
-      // Supprimer indicateur frappe
-      typing.remove();
-
-      // Ajouter réponse Képha
-      kephaAjouterMsg(reponse, 'kepha');
-      kephaHistoire.push({ role: 'assistant', content: reponse });
-
-      // Limiter historique à 20 messages
-      if (kephaHistoire.length > 20) {
-        kephaHistoire = kephaHistoire.slice(-20);
-      }
-
-    } catch (err) {
-      typing.remove();
-      kephaAjouterMsg('Une erreur est survenue. Veuillez réessayer.', 'kepha');
-      console.error(err);
-    }
-
-    kephaEnCours = false;
-    document.getElementById('kepha-send').disabled = false;
-    document.getElementById('kepha-input').focus();
+function toggleKepha() {
+  isOpen = !isOpen;
+  const win = document.getElementById('kepha-window');
+  document.getElementById('kepha-notif').style.display = 'none';
+  if (isOpen) {
+    win.classList.add('open');
+    setTimeout(() => document.getElementById('kepha-input').focus(), 400);
+  } else {
+    win.classList.remove('open');
   }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function sendSuggestion(btn) {
+  document.getElementById('kepha-input').value = btn.textContent.replace(' ?','');
+  document.getElementById('kepha-suggestions').style.display = 'none';
+  sendMessage();
+}
+
+function sendMessage() {
+  const input = document.getElementById('kepha-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  addMessage('user', msg);
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('kepha-suggestions').style.display = 'none';
+  const typingEl = addTyping();
+  setTimeout(() => {
+    typingEl.remove();
+    const rep = findResponse(msg) || defaultResponse(msg);
+    addMessage('kepha', rep);
+  }, 700 + Math.random() * 500);
+}
+
+function addMessage(type, text) {
+  const msgs = document.getElementById('kepha-messages');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  const label = document.createElement('span');
+  label.className = 'msg-label';
+  label.textContent = type === 'kepha' ? 'Képha' : 'Ou';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.innerHTML = text.replace(/\n/g,'<br>');
+  div.appendChild(label);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function addTyping() {
+  const msgs = document.getElementById('kepha-messages');
+  const div = document.createElement('div');
+  div.className = 'msg kepha';
+  div.innerHTML = '<span class="msg-label">Képha</span><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+setTimeout(() => {
+  if (!isOpen) {
+    const n = document.getElementById('kepha-notif');
+    n.style.display = 'flex';
+  }
+}, 4000);
 </script>
-
 </body>
 </html>
