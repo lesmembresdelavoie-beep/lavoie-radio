@@ -958,10 +958,11 @@
     const [,m1,d1]=jounen.soir_debut.split('-');
     const [,m2,d2]=jounen.soir_fin.split('-');
 
-    document.getElementById('tj-dat').textContent=nomJou+' · '+jounen.jour+' '+data.mois;
+    const moisAfiche = jounen.mois || data.mois;
+    document.getElementById('tj-dat').textContent=nomJou+' · '+jounen.jour+' '+moisAfiche;
     document.getElementById('tj-texte').textContent=jounen.texte_kw||jounen.texte;
     document.getElementById('tj-ref').textContent='— '+jounen.ref;
-    document.getElementById('ibri-date').textContent=jounen.jour+' '+data.mois;
+    document.getElementById('ibri-date').textContent=jounen.jour+' '+moisAfiche;
     document.getElementById('greg-date').textContent='Swa '+parseInt(d1)+' '+mn[m1]+' → Swa '+parseInt(d2)+' '+mn[m2];
   })();
 
