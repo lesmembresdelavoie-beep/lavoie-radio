@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Mebasserim : des ʿEbedim consacrés à la proclamation de la Besorah Tobah — La Voie</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: #f5edd6;
+  color: #3b2a18;
+  margin: 0;
+  padding: 0;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+section.new-chapter {
+  border-top: 3px double #b8860b;
+  margin-top: 2rem;
+  padding-top: 3rem;
+}
+
+h1.section-title {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  color: #3b2a18;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3em;
+}
+h2.section-title {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  color: #3b2a18;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.3em;
+}
+.chap-subtitle {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 0.4rem;
+}
+p.subtitle {
+  text-align: center;
+  font-style: italic;
+  color: #6b4f2a;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+p { margin: 0 0 1em 0; text-align: justify; }
+
+figure.chapter-image, figure.inline-image {
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+figure.chapter-image img, figure.inline-image img {
+  max-width: 100%;
+  max-height: 620px;
+  border: 4px solid #b8860b;
+  border-radius: 4px;
+}
+figcaption {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: #6b4f2a;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+blockquote.scripture {
+  border-left: 4px solid #b8860b;
+  background: rgba(184,134,11,0.08);
+  margin: 1.5em 0;
+  padding: 0.8em 1.2em;
+  font-style: italic;
+}
+blockquote.scripture p { margin: 0 0 0.4em 0; text-align: left; }
+blockquote.scripture cite {
+  display: block;
+  text-align: right;
+  font-style: normal;
+  font-weight: 600;
+  color: #b8860b;
+}
+
+.point {
+  display: flex;
+  gap: 0.8rem;
+  margin: 1.2em 0;
+  align-items: flex-start;
+}
+.point-num {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #b8860b;
+  border: 2px solid #b8860b;
+  border-radius: 50%;
+  min-width: 2.1em;
+  height: 2.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+.point-text { text-align: justify; }
+
+ul.liste-simple { padding-left: 1.4em; margin: 0 0 1em 0; }
+ul.liste-simple li { margin-bottom: 0.4em; text-align: justify; }
+
+.recap {
+  background: #2b1d10;
+  color: #f5edd6;
+  border: 2px solid #b8860b;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 2em 0;
+}
+.recap h4 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  margin-top: 0;
+  border-bottom: 1px solid #b8860b;
+  padding-bottom: 0.3em;
+}
+.recap ul { margin: 0.5em 0; padding-left: 1.3em; }
+.recap li { margin-bottom: 0.3em; }
+.recap .refs { margin-top: 1em; font-size: 0.9rem; color: #d4af37; }
+.recap .refs strong { color: #d4af37; }
+
+.principe-fondamental {
+  background: #2b1d10;
+  color: #f5edd6;
+  border: 2px solid #b8860b;
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  margin: 2em 0;
+  text-align: center;
+}
+.principe-fondamental h3 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+}
+.principe-fondamental p { text-align: center; }
+
+/* Cover */
+.front-cover {
+  text-align: center;
+  border-top: none;
+  padding-top: 1rem;
+}
+.front-cover img {
+  max-width: 100%;
+  max-height: 680px;
+  border: 6px double #b8860b;
+  border-radius: 6px;
+}
+.front-cover .cover-caption {
+  margin-top: 1.5rem;
+  font-family: 'Cinzel', serif;
+}
+.front-cover h1 {
+  font-size: 2.1rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+  line-height: 1.3;
+}
+.front-cover .author { margin-top: 1rem; font-size: 1.1rem; }
+.front-cover .org { font-size: 0.95rem; color: #6b4f2a; margin-top: 0.8rem; }
+
+.back-link {
+  display: block;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: #b8860b;
+  text-decoration: none;
+  padding: 1.5rem 0 3rem;
+}
+.back-link:hover { color: #6b4f2a; }
+
+.ornement-sep {
+  text-align: center;
+  color: #b8860b;
+  letter-spacing: 0.5em;
+  margin: 0.5em 0 1.5em 0;
+  font-size: 0.9rem;
+}
+
+section.new-chapter { page-break-before: always; }
+.front-cover.new-chapter { page-break-before: avoid; }
+
+@media print {
+  section.new-chapter { border-top: none; }
+  body { font-size: 12pt; }
+  .back-link { display: none; }
+}
+</style>
+</head>
+<body>
+
+<section class="front-cover new-chapter">
+  <img src="00-cover.jpg" alt="Mebaserim de La Voie — deux par deux, en route pour proclamer la Besorah Tobah">
+  <div class="cover-caption">
+    <p class="org" style="font-size:1.05rem; margin-top:0.6rem;">Des ʿEbedim consacrés à la proclamation de la Besorah Tobah</p>
+    <p class="org">Qui sont-ils réellement selon les Ketubim Qadoshim&nbsp;?</p>
+  </div>
+  <blockquote class="scripture" style="margin-top:2rem; text-align:center;">
+    <p style="text-align:center;">« Il a donné les uns comme shilliaḥim, les autres comme nabi'im, les autres comme mebaserim, les autres comme roʿim et melammedim, pour le perfectionnement des qadoshim en vue de l'œuvre du service et de l'édification du corps de Mashiaḥ. »</p>
+    <cite>Éphésiyim 4:11-12</cite>
+  </blockquote>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">Introduction</h1>
+  <p>Dans de nombreuses traductions modernes, le mot Mebasser est rendu par « évangélisateur » ou « évangéliste ». Pourtant, ces expressions ne reflètent qu'imparfaitement la richesse du terme employé dans les Ketubim Qadoshim.</p>
+  <p>Le Mebasser n'est pas simplement un orateur religieux ou une personne qui parle des Écritures. Il est avant tout un porteur officiel d'une nouvelle extraordinaire venant de Yahawah, un ʿEbed Meqoudash, consacré pour faire connaître fidèlement la Besorah Tobah du Malkuwt et appeler les humains à revenir vers Yahawah.</p>
+  <p>Une question mérite alors d'être posée&nbsp;: tous les tal'midim sont-ils des Mebasserim, ou bien Yahawah réserve-t-Il cette fonction à certains serviteurs qu'Il met à part pour une œuvre particulière&nbsp;?</p>
+  <p>Les Ketubim Qadoshim nous apportent une réponse nuancée et profondément instructive.</p>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">1. Un mot aux racines profondes</h1>
+  <figure class="chapter-image">
+    <img src="01-mebasserim-maison-en-maison.jpg" alt="Deux Mebasserim de La Voie marchant de maison en maison, Ketubim en main">
+  </figure>
+  <p>Le terme Mebasser dérive de la racine hébraïque ב־ש־ר (B-S-R), qui signifie annoncer une bonne nouvelle, proclamer une délivrance ou apporter une nouvelle porteuse d'espérance.</p>
+  <p>De cette même racine proviennent les mots&nbsp;:</p>
+  <ul class="liste-simple">
+    <li>Besorah&nbsp;: la bonne nouvelle&nbsp;;</li>
+    <li>Mebasser&nbsp;: celui qui proclame cette bonne nouvelle&nbsp;;</li>
+    <li>Mebasseret&nbsp;: sa forme féminine.</li>
+  </ul>
+  <p>Le nabi Yeshaʿeyah s'écrie&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Qu'ils sont beaux sur les montagnes les pieds du mebasser qui annonce le shalôm, qui apporte une bonne nouvelle, qui proclame le salut et qui dit à Tsiyon&nbsp;: “Ton ’Èlohim règne&nbsp;!” »</p>
+    <cite>Yeshaʿeyah 52:7</cite>
+  </blockquote>
+  <p>De même&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Voici sur les montagnes les pieds du mebasser qui annonce une bonne nouvelle. »</p>
+    <cite>Naḥoum 1:15</cite>
+  </blockquote>
+  <p>Le Mebasser apparaît ainsi comme un envoyé officiel chargé d'une proclamation qui apporte l'espérance, annonce la royauté de Yahawah et invite les humains à accueillir Son salut.</p>
+  <figure class="inline-image">
+    <img src="02-messager-montagne.jpg" alt="Un messager debout sur une montagne annonçant la victoire à une cité lointaine">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">2. Tous les tal'midim rendent témoignage… mais tous ne sont pas Mebasserim</h1>
+  <p>Yahushuʿaḥ a confié à tous Ses tal'midim une responsabilité universelle&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Vous serez Mes témoins… »</p>
+    <cite>Maʿasei 1:8</cite>
+  </blockquote>
+  <p>Il leur ordonne également&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Allez donc et faites des tal'midim parmi toutes les nations. »</p>
+    <cite>Mattiyahu 28:19-20</cite>
+  </blockquote>
+  <p>Après la dispersion provoquée par la persécution, les Ketubim rapportent encore&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Ceux qui avaient été dispersés allaient de lieu en lieu en annonçant le Dabar. »</p>
+    <cite>Maʿasei 8:4</cite>
+  </blockquote>
+  <p>Ces passages montrent que tout tal'mid est appelé à rendre témoignage, à partager son espérance et à parler du Dabar Yah selon les occasions qui se présentent.</p>
+  <p>Cependant, rendre témoignage n'implique pas nécessairement recevoir la fonction particulière de Mebasser.</p>
+  <figure class="inline-image">
+    <img src="03-talmidim-temoignage.jpg" alt="Plusieurs tal'midim partageant naturellement la Besorah Tobah avec leurs proches et leurs voisins">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">3. Éphésiyim 4:11 révèle une fonction particulière</h1>
+  <p>Šāʾūl écrit&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Il a donné les uns comme shilliaḥim, les autres comme nabi'im, les autres comme mebaserim, les autres comme roʿim et melammedim. »</p>
+    <cite>Éphésiyim 4:11</cite>
+  </blockquote>
+  <p>Puis il précise immédiatement leur objectif&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« pour le perfectionnement des qadoshim, pour l'œuvre du service et pour l'édification du corps de Mashiaḥ. »</p>
+    <cite>Éphésiyim 4:12</cite>
+  </blockquote>
+  <p>L'expression « les uns… les autres… » montre clairement que Yahawah répartit diverses responsabilités au sein de la qehilah.</p>
+  <p>Tous ne sont pas shilliaḥim. Tous ne sont pas nabi'im. Tous ne sont pas roʿim. Tous ne sont pas melammedim. Et tous ne sont pas mebaserim.</p>
+  <p>Le Mebasser est donc un ʿEbed Meqoudash, appelé à consacrer d'une manière particulière son temps, ses forces et ses capacités à la proclamation fidèle de la Besorah Tobah.</p>
+  <figure class="inline-image">
+    <img src="04-assemblee-fonctions.jpg" alt="Une assemblée où l'on distingue visuellement différents serviteurs exerçant des fonctions complémentaires">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">4. Des ʿEbedim mis à part pour une œuvre spécifique</h1>
+  <p>Le livre des Maʿasei rapporte un événement remarquable&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Mettez-Moi à part Banabah et Šāʾūl pour l'œuvre à laquelle Je les ai appelés. »</p>
+    <cite>Maʿasei 13:2</cite>
+  </blockquote>
+  <p>Banabah et Šāʾūl étaient déjà des serviteurs fidèles. Pourtant, le Rouaḥ ha'Qodesh demanda qu'ils soient mis à part pour une mission spécifique.</p>
+  <p>Autre exemple significatif&nbsp;: Philippos est présenté comme&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Philippos, le Mebasser. »</p>
+    <cite>Maʿasei 21:8</cite>
+  </blockquote>
+  <p>Il s'agit du seul homme explicitement désigné par ce titre dans les Ketubim, ce qui confirme que le terme peut désigner une fonction reconnue et particulière au sein de la qehilah.</p>
+  <p>Ces exemples suggèrent fortement que les Mebasserim sont des ʿEbedim consacrés, appelés à vouer une part essentielle de leur vie à la proclamation de la Besorah Tobah.</p>
+  <figure class="inline-image">
+    <img src="05-banabah-shaul-mission.jpg" alt="Banabah et Šāʾūl recevant leur mission avant de partir annoncer la Besorah">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">5. Un Mebasser peut exercer plusieurs responsabilités</h1>
+  <p>Les fonctions décrites dans les Ketubim ne sont pas nécessairement exclusives.</p>
+  <ul class="liste-simple">
+    <li>Šāʾūl était shilliaḥ, mais aussi enseignant et proclamateur infatigable.</li>
+    <li>Képha était shilliaḥ et reçut également la responsabilité de prendre soin du troupeau de Yahushuʿaḥ.</li>
+    <li>Philippos est appelé Mebasser tout en exerçant d'autres formes de service.</li>
+  </ul>
+  <p>De même aujourd'hui, un tal'mid mashiyaḥ peut être simultanément&nbsp;:</p>
+  <ul class="liste-simple">
+    <li>paqid&nbsp;;</li>
+    <li>roʿi&nbsp;;</li>
+    <li>ha'msharet haʿozer&nbsp;;</li>
+    <li>et Mebasser,</li>
+  </ul>
+  <p>selon les dons reçus de Yahawah et les besoins de la qehilah.</p>
+  <p>Les responsabilités ne se concurrencent pas&nbsp;; elles se complètent harmonieusement pour l'édification du corps de Mashiaḥ.</p>
+  <figure class="inline-image">
+    <img src="06-serviteur-enseignant-proclamant.jpg" alt="Un même serviteur enseignant dans la qehilah puis allant proclamer la Besorah de maison en maison">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">6. Une définition proposée</h1>
+  <p>À la lumière de l'ensemble des Ketubim Qadoshim, nous proposons la définition suivante&nbsp;:</p>
+  <div class="principe-fondamental">
+    <p>Le Mebasser est un ʿEbed Meqoudash que Yahawah met à part afin de consacrer sa vie, d'une manière particulière, à la proclamation fidèle de la Besorah Tobah du Malkuwt, à l'appel à la teshoubah, au témoignage rendu à Yahushuʿaḥ et à l'édification de la qehilah selon le Dabar Yah.</p>
+  </div>
+  <p>Cette définition reconnaît simultanément deux vérités complémentaires&nbsp;:</p>
+  <ul class="liste-simple">
+    <li>tous les tal'midim sont appelés à rendre témoignage&nbsp;;</li>
+    <li>certains reçoivent un appel particulier à exercer la fonction de Mebasser.</li>
+  </ul>
+  <figure class="inline-image">
+    <img src="07-mebasserim-carte-monde.jpg" alt="Deux Mebasserim de La Voie parcourant villes et campagnes, avec une carte du monde en arrière-plan">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">Conclusion</h1>
+  <p>Les Mebasserim ne sont ni de simples conférenciers ni des prédicateurs occasionnels. Les Ketubim les présentent comme des ʿEbedim consacrés, mis à part pour annoncer fidèlement la Besorah Tobah et faire connaître le Malkuwt de Yahawah.</p>
+  <p>Leur objectif n'est pas d'acquérir une position ou des honneurs parmi les humains. Leur joie consiste à voir des hommes et des femmes découvrir le Dabar Yah, répondre à l'appel de la teshoubah et placer leur espérance dans les promesses du Malkuwt à venir.</p>
+  <p>Par leur fidélité, ils contribuent à l'édification de la qehilah et à l'accomplissement de la mission confiée par Yahawah.</p>
+  <figure class="inline-image">
+    <img src="08-mebasserim-deux-par-deux.jpg" alt="Des Mebasserim de La Voie, envoyés deux par deux, marchant vers des maisons, une discrète carte du monde en arrière-plan">
+  </figure>
+</section>
+
+<section class="new-chapter">
+  <h1 class="section-title">❖ Une invitation à répondre à l'appel</h1>
+  <p>Après avoir examiné ce que les Ketubim Qadoshim enseignent au sujet des Mebasserim, une question demeure pour chacun de nous.</p>
+  <p>Es-tu simplement un lecteur de la Besorah Tobah… ou Yahawah t'appelle-t-Il à en devenir un fidèle porteur&nbsp;?</p>
+  <p>Le Rouaḥ ha'Qodesh déclara&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Mettez-Moi à part Banabah et Šāʾūl pour l'œuvre à laquelle Je les ai appelés. »</p>
+    <cite>Maʿasei 13:2</cite>
+  </blockquote>
+  <p>Lorsque Yahawah chercha un volontaire, le nabi répondit&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Me voici&nbsp;! Envoie-moi. »</p>
+    <cite>Yeshaʿeyah 6:8</cite>
+  </blockquote>
+  <p>Et le dernier appel des Ketubim résonne encore aujourd'hui&nbsp;:</p>
+  <blockquote class="scripture">
+    <p>« Le Rouaḥ et l'Épouse disent&nbsp;: “Viens&nbsp;!” Que celui qui entend dise aussi&nbsp;: “Viens&nbsp;!” »</p>
+    <cite>Hazon 22:17</cite>
+  </blockquote>
+  <p>Alors, pose-toi ces questions&nbsp;:</p>
+  <ul class="liste-simple">
+    <li>Es-tu un ʿEbed Meqoudash consacré à la proclamation de la Besorah Tobah&nbsp;?</li>
+    <li>Es-tu un Mebasser appelé à annoncer le Malkuwt de Yahawah et à inviter les humains à la teshoubah&nbsp;?</li>
+    <li>As-tu discerné l'invitation que le Rouaḥ ha'Qodesh adresse à ton cœur&nbsp;?</li>
+  </ul>
+  <p>Si oui… l'acceptes-tu&nbsp;?</p>
+  <p>Car Yahawah continue de chercher des serviteurs fidèles, disponibles et courageux, prêts à porter Sa Besorah Tobah avec humilité, amour et persévérance jusqu'aux extrémités de la terre. 🌍📜</p>
+
+  <a href="index.html#publications" class="back-link">← Retour aux Publications</a>
+</section>
+
+</body>
+</html>
