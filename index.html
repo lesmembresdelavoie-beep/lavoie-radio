@@ -949,7 +949,22 @@
       if(j.soir_debut===datGreg&&apSol){jounen=j;break;}
       if(j.soir_fin===datGreg&&!apSol){jounen=j;break;}
     }
-    if(!jounen) jounen=data.jours[20];
+    if(!jounen) {
+      const last = data.jours[data.jours.length-1];
+      const addDaysStr = (s,n) => { const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); };
+      const diffDaysStr = (a,b) => Math.round((new Date(a+'T00:00:00Z') - new Date(b+'T00:00:00Z'))/86400000);
+      const targetSoirFin = apSol ? addDaysStr(datGreg,1) : datGreg;
+      const offset = diffDaysStr(targetSoirFin, last.soir_fin);
+      jounen = {
+        jour: last.jour + offset,
+        mois: last.mois || data.mois,
+        soir_debut: addDaysStr(last.soir_debut, offset),
+        soir_fin: targetSoirFin,
+        texte: last.texte,
+        texte_kw: last.texte_kw,
+        ref: last.ref
+      };
+    }
 
     const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
     const datRef=new Date(jounen.soir_fin+'T12:00:00');
