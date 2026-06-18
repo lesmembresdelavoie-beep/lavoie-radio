@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🎤 Discours — La VR-TV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bleu-nuit: #060d1e;
+  --bleu-royal: #0d2347;
+  --bleu-moyen: #1a3a6e;
+  --or: #c9a84c;
+  --or-clair: #e8c96a;
+  --or-pale: #f5e6b8;
+  --parchemin: #e8f0f8;
+  --parchemin2: #d0dff0;
+  --texte: #0a0f1a;
+  --argent: #b8c8dc;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--bleu-nuit);
+  color: var(--parchemin);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(6,13,30,0.95);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--or);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+
+.nav-logo img { height: 36px; }
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--parchemin2);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--or-clair); opacity: 1; }
+
+.nav-cta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--bleu-nuit);
+  background: var(--or);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--or-clair); }
+
+/* ── HEADER PAGE ── */
+.page-header {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9rem 2rem 3rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #04080f 0%, #060d1e 50%, #0a1428 100%);
+}
+
+.back-link {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--or);
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover { opacity: 1; }
+
+.page-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--or);
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--or-clair);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 40px rgba(201,168,76,0.2);
+}
+
+.page-desc {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--argent);
+  font-style: italic;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+  margin: 0 auto 3rem;
+  max-width: 900px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+}
+
+.divider-ornament {
+  font-size: 1rem;
+  color: var(--or);
+  opacity: 0.6;
+}
+
+/* ── DISCOURS LIST ── */
+.discours-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.discours-entry {
+  background: rgba(6,13,30,0.6);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.discours-entry-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--or-clair);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.discours-entry-sub {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--or);
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 1.5rem;
+}
+
+.discours-parts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.discours-part-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--argent);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  opacity: 0.8;
+}
+
+.discours-part video {
+  width: 100%;
+  border-radius: 3px;
+  background: #000;
+  display: block;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+
+.sep {
+  color: var(--or);
+  opacity: 0.4;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.footer-copy {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--parchemin2);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.2rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo-site.jpg" alt="La Voie" onerror="this.style.display='none';this.nextSibling.style.display='inline'">
+    <span style="display:none">LA VOIE</span>
+    <span style="font-size:0.6rem;color:var(--or);opacity:0.6;display:block;letter-spacing:0.3em">LAVOIE.WORLD</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="qui-sommes-nous.html">Qui sommes-nous</a></li>
+    <li><a href="lexique.html">Lexique</a></li>
+    <li><a href="radio.html">Radio</a></li>
+    <li><a href="vr-tv.html" class="active">📻📺 La VR-TV</a></li>
+    <li><a href="calendrier.html">Calendrier</a></li>
+  </ul>
+  <a href="qui-sommes-nous.html" class="nav-cta">Rejoindre</a>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+  <a href="vr-tv.html" class="back-link">← Retour à La VR-TV</a>
+  <div class="page-eyebrow">Émission · Discours</div>
+  <h1 class="page-title">🎤 Discours</h1>
+  <p class="page-desc">
+    Ansèyman ak diskou televize Les Membres de La Voie.
+  </p>
+</section>
+
+<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+
+<!-- LISTE DISKOU -->
+<div class="discours-list">
+
+  <div class="discours-entry">
+    <div class="discours-entry-title">Miqra Qadosh · Rosh Ḥodesh — Diskou</div>
+    <div class="discours-entry-sub">Emisyon televize mansyèl</div>
+    <div class="discours-parts">
+      <div class="discours-part">
+        <div class="discours-part-label">Pati 1</div>
+        <video controls preload="metadata" playsinline>
+          <source src="miqra-pati1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="discours-part">
+        <div class="discours-part-label">Pati 2</div>
+        <video controls preload="metadata" playsinline>
+          <source src="miqra-pati2.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="sep">✦ · ✦ · ✦</div>
+  <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · La VR-TV</p>
+</footer>
+
+</body>
+</html>
