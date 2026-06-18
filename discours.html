@@ -232,10 +232,6 @@ nav {
   display: block;
 }
 
-.discours-part video::-webkit-media-controls-overlay-play-button {
-  display: none;
-}
-
 /* ── FOOTER ── */
 footer {
   text-align: center;
@@ -306,7 +302,7 @@ footer {
     <div class="discours-entry-sub">Emisyon televize mansyèl</div>
     <div class="discours-parts">
       <div class="discours-part">
-        <video controls preload="metadata" playsinline>
+        <video id="discours-video" controls preload="metadata" playsinline>
           <source src="miqra-discours-complet.mp4" type="video/mp4" />
         </video>
       </div>
@@ -321,7 +317,7 @@ footer {
   <p class="footer-copy">© 2026 Les Membres de La Voie · lavoie.world · La VR-TV</p>
 </footer>
 
-<script src="intro-emission.js" data-video="vr-tv-intro.mp4" data-logo="📻📺 La VR-TV"></script>
+<script src="intro-emission.js" data-video="vr-tv-intro.mp4" data-logo="📻📺 La VR-TV" data-target="discours-video"></script>
 
 </body>
 </html>

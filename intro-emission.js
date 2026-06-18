@@ -13,10 +13,12 @@
               data-logo="📻📺 La VR-TV"></script>
 
    Atribi opsyonèl :
-   - data-video : chemen videyo entwo a (obligatwa)
-   - data-logo  : tèks ki parèt sou ekran "Antre" a (default : "📻📺 La VR-TV")
-   - data-key   : kle sessionStorage pèsonalize (default : baze sou non paj la,
-                  pou chak emisyon gen pwòp memwa "deja gade" pa li)
+   - data-video  : chemen videyo entwo a (obligatwa)
+   - data-logo   : tèks ki parèt sou ekran "Antre" a (default : "📻📺 La VR-TV")
+   - data-key    : kle sessionStorage pèsonalize (default : baze sou non paj la,
+                   pou chak emisyon gen pwòp memwa "deja gade" pa li)
+   - data-target : id videyo emisyon an — si prezan, videyo sa a lanse
+                   otomatikman e paj la defile rive sou li lè entwo a fini
    ═══════════════════════════════════════════════ */
 
 (function() {
@@ -24,6 +26,7 @@
   const videoSrc = thisScript.getAttribute('data-video');
   const logoText = thisScript.getAttribute('data-logo') || '📻📺 La VR-TV';
   const seenKey = thisScript.getAttribute('data-key') || ('lavoie_intro_seen_' + location.pathname);
+  const targetId = thisScript.getAttribute('data-target');
 
   if (!videoSrc) {
     console.warn('intro-emission.js: atribi data-video manke, entwo a pa ka demare.');
@@ -60,6 +63,17 @@
     overlay.classList.add('ie-fading');
     document.body.classList.remove('ie-active');
     setTimeout(() => { overlay.remove(); }, 650);
+
+    if (targetId) {
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.muted = false;
+        target.play().catch(() => {
+          // si lekti otomatik bloke, kite bouton play emisyon an disponib pou moun klike
+        });
+      }
+    }
   }
 
   startBtn.addEventListener('click', () => {
