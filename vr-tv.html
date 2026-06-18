@@ -491,6 +491,22 @@ nav {
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
   text-decoration: none;
+  position: relative;
+}
+
+.emission-badge-new {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #c9304a;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .emission-card:hover {
@@ -748,6 +764,12 @@ footer {
     <h2 class="section-title">📺 Dernières Productions</h2>
   </div>
   <div class="grid-2">
+    <a href="discours.html" class="card" style="text-decoration:none;color:inherit;display:block;border-color:rgba(201,168,76,0.5);position:relative;">
+      <span class="emission-badge-new">Nouvo</span>
+      <div class="card-icon">🎤</div>
+      <div class="card-title">Miqra Qadosh · Rosh Ḥodesh — Diskou</div>
+      <div class="card-desc">Emisyon televize mansyèl La Voie — gade diskou a kounye a.</div>
+    </a>
     <div class="card">
       <div class="card-icon">🎬</div>
       <div class="card-title">Tèks pou Jounen an</div>
@@ -789,6 +811,7 @@ footer {
       <div class="emission-name">Enseignements</div>
     </a>
     <a href="discours.html" class="emission-card">
+      <span class="emission-badge-new">Nouvo</span>
       <div class="emission-icon">🎤</div>
       <div class="emission-name">Discours</div>
     </a>
