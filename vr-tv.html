@@ -32,84 +32,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ── INTRO VIDEO OVERLAY ── */
-#vrtv-intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.6s ease;
-}
-
-#vrtv-intro-overlay.fading { opacity: 0; pointer-events: none; }
-
-#vrtv-intro-video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-}
-
-#vrtv-intro-gate {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 60%), #04080f;
-  cursor: pointer;
-}
-
-#vrtv-intro-gate .gate-logo {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(1.4rem, 5vw, 2.2rem);
-  color: var(--or-clair);
-  letter-spacing: 0.1em;
-  text-align: center;
-}
-
-#vrtv-intro-gate .gate-btn {
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--bleu-nuit);
-  background: var(--or);
-  padding: 0.9rem 2.2rem;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-
-#vrtv-intro-gate .gate-btn:hover { background: var(--or-clair); transform: translateY(-2px); }
-
-#vrtv-intro-skip {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--parchemin);
-  background: rgba(6,13,30,0.6);
-  border: 1px solid rgba(201,168,76,0.4);
-  padding: 0.6rem 1.2rem;
-  border-radius: 2px;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-}
-
-#vrtv-intro-skip:hover { background: rgba(201,168,76,0.2); }
-
-body.vrtv-intro-active { overflow: hidden; }
-
 
 nav {
   position: fixed;
@@ -670,18 +592,6 @@ footer {
 </head>
 <body>
 
-<!-- INTRO VIDEO (joue une fois par session) -->
-<div id="vrtv-intro-overlay" style="display:none;">
-  <div id="vrtv-intro-gate">
-    <div class="gate-logo">📻📺 La VR-TV</div>
-    <button class="gate-btn" id="vrtv-intro-start">▶ Antre</button>
-  </div>
-  <video id="vrtv-intro-video" playsinline preload="metadata" style="display:none;">
-    <source src="vr-tv-intro.mp4" type="video/mp4" />
-  </video>
-  <button id="vrtv-intro-skip" style="display:none;">Sote ⏭</button>
-</div>
-
 
 <!-- NAV -->
 <nav>
@@ -970,48 +880,6 @@ document.querySelectorAll('.tab').forEach(tab => {
     tab.classList.add('active');
   });
 });
-
-// Intro video — joue une fois par session, avec son (gate tap obligatoire)
-(function() {
-  const SEEN_KEY = 'lavoie_vrtv_intro_seen';
-  const overlay = document.getElementById('vrtv-intro-overlay');
-  const gate = document.getElementById('vrtv-intro-gate');
-  const startBtn = document.getElementById('vrtv-intro-start');
-  const video = document.getElementById('vrtv-intro-video');
-  const skipBtn = document.getElementById('vrtv-intro-skip');
-
-  if (sessionStorage.getItem(SEEN_KEY)) {
-    return; // déjà vu cette session — on n'affiche rien
-  }
-
-  overlay.style.display = 'flex';
-  document.body.classList.add('vrtv-intro-active');
-
-  function finish() {
-    sessionStorage.setItem(SEEN_KEY, '1');
-    overlay.classList.add('fading');
-    document.body.classList.remove('vrtv-intro-active');
-    setTimeout(() => { overlay.style.display = 'none'; }, 650);
-  }
-
-  startBtn.addEventListener('click', () => {
-    gate.style.display = 'none';
-    video.style.display = 'block';
-    skipBtn.style.display = 'block';
-    video.muted = false;
-    video.play().catch(() => {
-      // si le son est bloqué malgré le tap, on rejoue en muet plutôt que de bloquer
-      video.muted = true;
-      video.play();
-    });
-  });
-
-  video.addEventListener('ended', finish);
-  skipBtn.addEventListener('click', () => {
-    video.pause();
-    finish();
-  });
-})();
 </script>
 
 </body>
