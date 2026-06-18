@@ -916,7 +916,7 @@
     </nav>
   </div>
 
-  <script src="teks-data.js?v=4"></script>
+  <script src="teks-data.js?v=5"></script>
   <script>
   // HORLOGES
   function pad(n){return String(n).padStart(2,'0');}
@@ -958,23 +958,19 @@
       if(j.soir_fin===datGreg&&!apSol){jounen=j;break;}
     }
     if(!jounen) {
-      const last = data.jours[data.jours.length-1];
-      const addDaysStr = (s,n) => { const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); };
-      const diffDaysStr = (a,b) => Math.round((new Date(a+'T00:00:00Z') - new Date(b+'T00:00:00Z'))/86400000);
-      const targetSoirFin = apSol ? addDaysStr(datGreg,1) : datGreg;
-      const offset = diffDaysStr(targetSoirFin, last.soir_fin);
+      // Pa gen kontni pou jou sa a poko — pa envante, montre yon mesaj klè
       jounen = {
-        jour: last.jour + offset,
-        mois: last.mois || data.mois,
-        soir_debut: addDaysStr(last.soir_debut, offset),
-        soir_fin: targetSoirFin,
-        texte: last.texte,
-        texte_kw: last.texte_kw,
-        ref: last.ref
+        jour: '',
+        mois: '',
+        soir_debut: datGreg,
+        soir_fin: datGreg,
+        texte: '',
+        texte_kw: 'Tèks ap vini...',
+        ref: ''
       };
     }
 
-    const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
+    const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ereb Shabbath','Shabbat'];
     const datRef=new Date(jounen.soir_fin+'T12:00:00');
     const nomJou=jSem[datRef.getDay()];
     const mn={'01':'janvye','02':'fevriye','03':'mas','04':'avril','05':'me','06':'jen','07':'jiyè','08':'out','09':'septanm','10':'oktòb','11':'novanm','12':'desanm'};
@@ -982,11 +978,11 @@
     const [,m2,d2]=jounen.soir_fin.split('-');
 
     const moisAfiche = jounen.mois || data.mois;
-    document.getElementById('tj-dat').textContent=nomJou+' · '+jounen.jour+' '+moisAfiche;
+    document.getElementById('tj-dat').textContent = jounen.jour ? (nomJou+' · '+jounen.jour+' '+moisAfiche) : 'Tèks ap vini...';
     document.getElementById('tj-texte').textContent=jounen.texte_kw||jounen.texte;
-    document.getElementById('tj-ref').textContent='— '+jounen.ref;
-    document.getElementById('ibri-date').textContent=jounen.jour+' '+moisAfiche;
-    document.getElementById('greg-date').textContent='Swa '+parseInt(d1)+' '+mn[m1]+' → Swa '+parseInt(d2)+' '+mn[m2];
+    document.getElementById('tj-ref').textContent = jounen.ref ? ('— '+jounen.ref) : '';
+    document.getElementById('ibri-date').textContent = jounen.jour ? (jounen.jour+' '+moisAfiche) : '';
+    document.getElementById('greg-date').textContent = jounen.jour ? ('Swa '+parseInt(d1)+' '+mn[m1]+' → Swa '+parseInt(d2)+' '+mn[m2]) : '';
   })();
 
   // AUTO-REFRESH 20:30
