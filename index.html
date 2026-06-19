@@ -1264,7 +1264,8 @@
   <div id="popup-shabbath-box">
     <img src="ereb-shabbath.png" alt="Ereb Shabbath — La VR-TV">
     <button id="popup-shabbath-close" onclick="fermerPopupShabbath()" title="Fermer">✕</button>
-    <div id="popup-shabbath-timer">60s</div>
+    <div id="popup-shabbath-timer">90s</div>
+    <audio id="popup-shabbath-audio" src="ereb-shabbath-music.mp3" preload="auto"></audio>
   </div>
 </div>
 
@@ -1274,10 +1275,23 @@
 
   var overlay = document.getElementById('popup-shabbath-overlay');
   var timerEl = document.getElementById('popup-shabbath-timer');
-  var secondes = 60;
+  var audio   = document.getElementById('popup-shabbath-audio');
+  var secondes = 90;
   var intervalle;
 
   overlay.classList.add('visible');
+
+  // Lancer la musique (autoplay nécessite une interaction sur certains navigateurs)
+  var playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(function() {
+      // Si autoplay bloqué, on attend un clic sur le popup pour lancer
+      overlay.addEventListener('click', function onFirstClick() {
+        audio.play();
+        overlay.removeEventListener('click', onFirstClick);
+      });
+    });
+  }
 
   intervalle = setInterval(function() {
     secondes--;
@@ -1292,7 +1306,19 @@
 
 function fermerPopupShabbath() {
   clearInterval(window._popupShabbathIntervalle);
+  var audio   = document.getElementById('popup-shabbath-audio');
   var overlay = document.getElementById('popup-shabbath-overlay');
+  // Fade out audio sur 1s
+  var vol = audio.volume;
+  var fade = setInterval(function() {
+    vol = Math.max(0, vol - 0.08);
+    audio.volume = vol;
+    if (vol <= 0) {
+      clearInterval(fade);
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }, 80);
   overlay.classList.remove('visible');
   sessionStorage.setItem('shabbath-popup-seen', '1');
 }
