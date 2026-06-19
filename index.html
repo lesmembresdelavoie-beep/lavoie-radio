@@ -1258,35 +1258,7 @@
   border: 1px solid #c9a84c;
   letter-spacing: 0.08em;
 }
-#popup-tap-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(13,35,71,0.72);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 10px;
-  gap: 0.6rem;
-  transition: opacity 0.4s;
-}
-#popup-tap-overlay span.tap-icon {
-  font-size: 2.8rem;
-  animation: tapPulse 1.2s infinite;
-}
-#popup-tap-overlay span.tap-label {
-  font-family: 'Cinzel', serif;
-  color: #c9a84c;
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
-  text-align: center;
-  padding: 0 1rem;
-}
-@keyframes tapPulse {
-  0%, 100% { transform: scale(1);   opacity: 1; }
-  50%       { transform: scale(1.15); opacity: 0.7; }
-}
+
 </style>
 
 <div id="popup-shabbath-overlay">
@@ -1295,23 +1267,41 @@
     <button id="popup-shabbath-close" onclick="fermerPopupShabbath()" title="Fermer">✕</button>
     <div id="popup-shabbath-timer">90s</div>
     <audio id="popup-shabbath-audio" src="ereb-shabbath-music.mp3" preload="auto"></audio>
-    <div id="popup-tap-overlay" onclick="activerMusique()">
-      <span class="tap-icon">🎵</span>
-      <span class="tap-label">Appuyez pour écouter</span>
-    </div>
   </div>
 </div>
 
 <script>
 (function() {
-  if (sessionStorage.getItem('shabbath-popup-seen')) return;
+  // Parèt Ereb Shabbath : jedi 20:30 rive vandredi 20:30
+  var kounye   = new Date();
+  var jou      = kounye.getDay();
+  var minTotal = kounye.getHours() * 60 + kounye.getMinutes();
+  var min2030  = 20 * 60 + 30;
+
+  var montrPopup = false;
+  if (jou === 4 && minTotal >= min2030) montrPopup = true; // jedi >= 20:30
+  if (jou === 5 && minTotal <  min2030) montrPopup = true; // vandredi < 20:30
+  if (!montrPopup) return;
 
   var overlay  = document.getElementById('popup-shabbath-overlay');
   var timerEl  = document.getElementById('popup-shabbath-timer');
+  var audio    = document.getElementById('popup-shabbath-audio');
   var secondes = 90;
   var intervalle;
 
   overlay.classList.add('visible');
+
+  // Fade in muzik otomatikman
+  audio.volume = 0;
+  audio.play().catch(function(e) { console.log('Autoplay bloke:', e); });
+  var fadeIn = setInterval(function() {
+    if (audio.volume < 0.95) {
+      audio.volume = Math.min(1, audio.volume + 0.05);
+    } else {
+      audio.volume = 1;
+      clearInterval(fadeIn);
+    }
+  }, 150);
 
   intervalle = setInterval(function() {
     secondes--;
@@ -1323,15 +1313,6 @@
 
   window._popupShabbathIntervalle = intervalle;
 })();
-
-function activerMusique() {
-  var audio    = document.getElementById('popup-shabbath-audio');
-  var tapLayer = document.getElementById('popup-tap-overlay');
-  audio.play().then(function() {
-    tapLayer.style.opacity = '0';
-    setTimeout(function() { tapLayer.style.display = 'none'; }, 400);
-  }).catch(function(e) { console.log('Audio play error:', e); });
-}
 
 function fermerPopupShabbath() {
   clearInterval(window._popupShabbathIntervalle);
@@ -1348,7 +1329,6 @@ function fermerPopupShabbath() {
     }
   }, 80);
   overlay.classList.remove('visible');
-  sessionStorage.setItem('shabbath-popup-seen', '1');
 }
 </script>
 
