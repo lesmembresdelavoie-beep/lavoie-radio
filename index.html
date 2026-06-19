@@ -1258,6 +1258,35 @@
   border: 1px solid #c9a84c;
   letter-spacing: 0.08em;
 }
+#popup-tap-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,35,71,0.72);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  gap: 0.6rem;
+  transition: opacity 0.4s;
+}
+#popup-tap-overlay span.tap-icon {
+  font-size: 2.8rem;
+  animation: tapPulse 1.2s infinite;
+}
+#popup-tap-overlay span.tap-label {
+  font-family: 'Cinzel', serif;
+  color: #c9a84c;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 0 1rem;
+}
+@keyframes tapPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.15); opacity: 0.7; }
+}
 </style>
 
 <div id="popup-shabbath-overlay">
@@ -1266,6 +1295,10 @@
     <button id="popup-shabbath-close" onclick="fermerPopupShabbath()" title="Fermer">✕</button>
     <div id="popup-shabbath-timer">90s</div>
     <audio id="popup-shabbath-audio" src="ereb-shabbath-music.mp3" preload="auto"></audio>
+    <div id="popup-tap-overlay" onclick="activerMusique()">
+      <span class="tap-icon">🎵</span>
+      <span class="tap-label">Appuyez pour écouter</span>
+    </div>
   </div>
 </div>
 
@@ -1273,25 +1306,12 @@
 (function() {
   if (sessionStorage.getItem('shabbath-popup-seen')) return;
 
-  var overlay = document.getElementById('popup-shabbath-overlay');
-  var timerEl = document.getElementById('popup-shabbath-timer');
-  var audio   = document.getElementById('popup-shabbath-audio');
+  var overlay  = document.getElementById('popup-shabbath-overlay');
+  var timerEl  = document.getElementById('popup-shabbath-timer');
   var secondes = 90;
   var intervalle;
 
   overlay.classList.add('visible');
-
-  // Lancer la musique (autoplay nécessite une interaction sur certains navigateurs)
-  var playPromise = audio.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(function() {
-      // Si autoplay bloqué, on attend un clic sur le popup pour lancer
-      overlay.addEventListener('click', function onFirstClick() {
-        audio.play();
-        overlay.removeEventListener('click', onFirstClick);
-      });
-    });
-  }
 
   intervalle = setInterval(function() {
     secondes--;
@@ -1304,11 +1324,19 @@
   window._popupShabbathIntervalle = intervalle;
 })();
 
+function activerMusique() {
+  var audio    = document.getElementById('popup-shabbath-audio');
+  var tapLayer = document.getElementById('popup-tap-overlay');
+  audio.play().then(function() {
+    tapLayer.style.opacity = '0';
+    setTimeout(function() { tapLayer.style.display = 'none'; }, 400);
+  }).catch(function(e) { console.log('Audio play error:', e); });
+}
+
 function fermerPopupShabbath() {
   clearInterval(window._popupShabbathIntervalle);
   var audio   = document.getElementById('popup-shabbath-audio');
   var overlay = document.getElementById('popup-shabbath-overlay');
-  // Fade out audio sur 1s
   var vol = audio.volume;
   var fade = setInterval(function() {
     vol = Math.max(0, vol - 0.08);
