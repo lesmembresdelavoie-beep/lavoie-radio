@@ -1291,7 +1291,7 @@
 
   overlay.classList.add('visible');
 
-  // Fade in muzik otomatikman
+  // Fade in 90 segonn (20 etap x 4500ms = 90000ms)
   audio.volume = 0;
   audio.play().catch(function(e) { console.log('Autoplay bloke:', e); });
   var fadeIn = setInterval(function() {
@@ -1301,7 +1301,7 @@
       audio.volume = 1;
       clearInterval(fadeIn);
     }
-  }, 150);
+  }, 4500);
 
   intervalle = setInterval(function() {
     secondes--;
@@ -1318,16 +1318,17 @@ function fermerPopupShabbath() {
   clearInterval(window._popupShabbathIntervalle);
   var audio   = document.getElementById('popup-shabbath-audio');
   var overlay = document.getElementById('popup-shabbath-overlay');
+  // Fade out 90 segonn (20 etap x 4500ms = 90000ms)
   var vol = audio.volume;
   var fade = setInterval(function() {
-    vol = Math.max(0, vol - 0.08);
+    vol = Math.max(0, vol - 0.05);
     audio.volume = vol;
     if (vol <= 0) {
       clearInterval(fade);
       audio.pause();
       audio.currentTime = 0;
     }
-  }, 80);
+  }, 4500);
   overlay.classList.remove('visible');
 }
 </script>
