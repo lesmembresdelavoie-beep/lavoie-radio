@@ -1259,6 +1259,25 @@
   border: 1px solid #c9a84c;
   letter-spacing: 0.08em;
 }
+#popup-shabbath-play {
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  background: rgba(13,35,71,0.85);
+  color: #c9a84c;
+  border: 1px solid #c9a84c;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+#popup-shabbath-play:hover { background: #c9a84c; color: #0d2347; }
+#popup-shabbath-play.jouke { display: none; }
 
 </style>
 
@@ -1268,6 +1287,7 @@
     <button id="popup-shabbath-close" onclick="fermerPopupShabbath()" title="Fermer">✕</button>
     <div id="popup-shabbath-timer">90s</div>
     <audio id="popup-shabbath-audio" src="ereb-shabbath-music.mp3" preload="auto"></audio>
+    <button id="popup-shabbath-play" onclick="activerSon()" title="Écouter">▶</button>
   </div>
 </div>
 
@@ -1314,6 +1334,23 @@
 
   window._popupShabbathIntervalle = intervalle;
 })();
+
+function activerSon() {
+  var audio   = document.getElementById('popup-shabbath-audio');
+  var btnPlay = document.getElementById('popup-shabbath-play');
+  audio.volume = 0;
+  audio.play().then(function() {
+    btnPlay.classList.add('jouke');
+    var fadeIn = setInterval(function() {
+      if (audio.volume < 0.95) {
+        audio.volume = Math.min(1, audio.volume + 0.05);
+      } else {
+        audio.volume = 1;
+        clearInterval(fadeIn);
+      }
+    }, 4500);
+  }).catch(function(e) { console.log('Audio error:', e); });
+}
 
 function fermerPopupShabbath() {
   clearInterval(window._popupShabbathIntervalle);
