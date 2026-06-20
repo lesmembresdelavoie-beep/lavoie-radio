@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joyeux Shabbath — La Qehilah de Yaḥushuʿah</title>
+<style>
+*{box-sizing:border-box}
+html,body{
+  margin:0;width:100%;height:100%;overflow:hidden;
+  font-family:Georgia,"Times New Roman",serif;background:#111;color:#fff8e5;
+}
+.scene{
+  position:relative;width:100vw;height:100vh;overflow:hidden;
+  background:url("beth_haknesset_shabbath.png") center/cover no-repeat;
+}
+.scene::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 42%,rgba(255,190,70,.12),transparent 34%),
+             linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.25));
+  pointer-events:none;z-index:1;
+}
+.gate{position:absolute;inset:0;z-index:10;perspective:1500px}
+.door{
+  position:absolute;top:0;width:50.2%;height:100%;
+  background:
+    linear-gradient(90deg,rgba(35,18,8,.96),rgba(112,62,25,.96),rgba(72,35,13,.96)),
+    repeating-linear-gradient(90deg,transparent 0 42px,rgba(255,210,125,.08) 43px 45px);
+  border:3px solid rgba(185,130,50,.72);
+  box-shadow:inset 0 0 65px rgba(0,0,0,.55),0 0 35px rgba(0,0,0,.35);
+  transition:transform 2.55s cubic-bezier(.16,.8,.2,1);
+  backface-visibility:hidden;
+}
+.door.left{left:0;transform-origin:left center}
+.door.right{right:0;transform-origin:right center}
+.open .door.left{transform:rotateY(-118deg)}
+.open .door.right{transform:rotateY(118deg)}
+.door::before{
+  content:"";position:absolute;inset:6%;
+  border:2px solid rgba(225,172,80,.55);border-radius:18px;
+  box-shadow:inset 0 0 24px rgba(255,210,100,.13);
+}
+.door::after{
+  content:"";position:absolute;top:46%;width:20px;height:20px;border-radius:50%;
+  background:#d7a84d;box-shadow:0 0 16px rgba(255,210,100,.8);
+}
+.left::after{right:28px} .right::after{left:28px}
+.symbol{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:18px;color:#f3c968;text-align:center;
+  text-shadow:0 4px 18px rgba(0,0,0,.65);
+}
+.symbol .big{font-size:clamp(3rem,8vw,6rem)}
+.symbol .small{
+  font-size:clamp(1.1rem,3vw,1.8rem);padding:10px 20px;border-radius:999px;
+  border:1px solid rgba(230,180,80,.42);background:rgba(0,0,0,.28)
+}
+.invite{
+  position:absolute;left:50%;bottom:8vh;transform:translateX(-50%);
+  z-index:14;padding:14px 25px;border-radius:999px;
+  background:rgba(12,9,6,.76);border:1px solid rgba(235,190,90,.55);
+  box-shadow:0 0 35px rgba(235,180,75,.23);
+  color:#ffe2a0;font-size:clamp(1rem,3.3vw,1.45rem);text-align:center;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{50%{transform:translateX(-50%) scale(1.04)}}
+.open .invite{opacity:0;transition:.6s}
+.textbox{
+  position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:4vh 4vw;pointer-events:none;
+}
+.line{opacity:0;transform:translateY(30px) scale(.94);
+  text-shadow:0 5px 20px rgba(0,0,0,.7),0 0 20px rgba(230,170,70,.22);
+}
+.open .title{animation:zoomIn 1.55s cubic-bezier(.15,.85,.2,1.08) forwards 2.8s}
+.open .l1{animation:rise .85s ease forwards 4.25s}
+.open .l2{animation:rise .85s ease forwards 4.9s}
+.open .l3{animation:rise .85s ease forwards 5.55s}
+.open .l4{animation:rise .85s ease forwards 6.2s}
+.open .l5{animation:rise .85s ease forwards 6.85s}
+@keyframes rise{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes zoomIn{
+  0%{opacity:0;transform:scale(.18);filter:blur(7px)}
+  72%{opacity:1;transform:scale(1.14);filter:blur(0)}
+  100%{opacity:1;transform:scale(1)}
+}
+.title{font-size:clamp(3.4rem,11vw,8.2rem);font-weight:700;color:#ffd05f;line-height:.9;margin-bottom:18px}
+.l1,.l2,.l3,.l4,.l5{font-size:clamp(1.2rem,4vw,2.25rem);line-height:1.35;max-width:1050px;color:#fff7e6}
+.gold{color:#ffd05f}
+.petal{position:absolute;top:-12vh;z-index:9;pointer-events:none;opacity:.9;animation:fall linear infinite}
+@keyframes fall{from{transform:translateY(-12vh) translateX(0) rotate(0deg)}to{transform:translateY(115vh) translateX(55px) rotate(420deg)}}
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,215,105,.85);z-index:5;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.12;transform:scale(.6)}50%{opacity:1;transform:scale(1.7)}}
+.music{
+  position:absolute;right:14px;bottom:14px;z-index:20;border:none;border-radius:999px;
+  background:rgba(8,8,8,.72);border:1px solid rgba(230,180,80,.45);
+  color:#ffe4a2;padding:11px 16px;font-family:Georgia,serif;cursor:pointer;
+  opacity:0;transition:opacity .8s ease 2.2s;
+}
+.open .music{opacity:1}
+@media(max-width:700px){
+  .title{font-size:clamp(2.5rem,13vw,5rem)}
+  .l1,.l2,.l3,.l4,.l5{font-size:clamp(1rem,4.6vw,1.45rem)}
+}
+</style>
+</head>
+<body>
+<audio id="audio" loop preload="auto"><source src="erev_shabbat.mp3" type="audio/mpeg"></audio>
+<div class="scene" id="scene">
+  <div class="textbox">
+    <div class="line title">JOYEUX<br>SHABBATH</div>
+    <div class="line l1">La Qehilah de Yaḥushuʿah (La Voie)</div>
+    <div class="line l2">vous souhaite à toutes les <span class="gold">akhayot</span> et à tous les <span class="gold">akhim</span></div>
+    <div class="line l3">un <span class="gold">Joyeux Shabbath</span></div>
+    <div class="line l4">et que vous soyez bénis par <span class="gold">Yahawah</span></div>
+    <div class="line l5">au nom d’<span class="gold">Adôni Yaḥushuʿah</span>.</div>
+  </div>
+  <div class="gate" onclick="openCard()">
+    <div class="door left"><div class="symbol"><div class="big">🌿</div><div class="small">BETH HAKNESSET</div></div></div>
+    <div class="door right"><div class="symbol"><div class="big">🕎</div><div class="small">CLIQUEZ POUR ENTRER</div></div></div>
+  </div>
+  <div class="invite">Cliquez pour entrer et recevoir les souhaits du Shabbath</div>
+  <button class="music" onclick="toggleMusic(event)">🎶 Pause / Reprendre</button>
+</div>
+<script>
+// Kondisyon: vandredi 20:30 → samedi 20:29
+(function(){
+  var now=new Date();
+  var jou=now.getDay();
+  var min=now.getHours()*60+now.getMinutes();
+  var m2030=20*60+30;
+  var m2029=20*60+29;
+  var ok=false;
+  if(jou===5 && min>=m2030) ok=true; // vandredi >= 20:30
+  if(jou===6 && min< m2029) ok=true; // samedi < 20:29
+  if(!ok){ document.body.innerHTML=''; document.body.style.background='#111'; }
+})();
+
+const scene=document.getElementById("scene");
+const audio=document.getElementById("audio");
+let opened=false;
+const petals=["🌸","🌼","🌺","🌹","💮","🍂"];
+for(let i=0;i<145;i++){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.textContent=petals[Math.floor(Math.random()*petals.length)];
+  p.style.left=(Math.random()*100)+"vw";
+  p.style.animationDuration=(7+Math.random()*12)+"s";
+  p.style.animationDelay=(-Math.random()*14)+"s";
+  p.style.fontSize=(14+Math.random()*22)+"px";
+  document.body.appendChild(p);
+}
+for(let i=0;i<65;i++){
+  const s=document.createElement("div");
+  s.className="spark";
+  s.style.left=(Math.random()*100)+"vw";
+  s.style.top=(Math.random()*100)+"vh";
+  s.style.animationDelay=(Math.random()*4)+"s";
+  document.body.appendChild(s);
+}
+async function openCard(){
+  if(opened) return;
+  opened=true;
+  scene.classList.add("open");
+  try{audio.currentTime=0;audio.volume=.88;await audio.play();}catch(e){console.log(e)}
+}
+function toggleMusic(e){
+  e.stopPropagation();
+  if(audio.paused) audio.play(); else audio.pause();
+}
+</script>
+</body>
+</html>
