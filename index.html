@@ -907,7 +907,7 @@
     </nav>
   </div>
 
-  <script src="teks-data.js?v=3"></script>
+  <script src="teks-data.js?v=4"></script>
   <script>
   // HORLOGES
   function pad(n){return String(n).padStart(2,'0');}
@@ -943,12 +943,18 @@
     const datGreg = annee+'-'+mois+'-'+jou;
 
     let jounen = null;
-    for(let i=0;i<data.jours.length;i++){
-      const j=data.jours[i];
-      if(j.soir_debut===datGreg&&apSol){jounen=j;break;}
-      if(j.soir_fin===datGreg&&!apSol){jounen=j;break;}
+    let nomMois = null;
+    const liste = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
+    for(let m=0;m<liste.length;m++){
+      const mwa = liste[m];
+      for(let i=0;i<mwa.jours.length;i++){
+        const j=mwa.jours[i];
+        if(j.soir_debut===datGreg&&apSol){jounen=j;nomMois=mwa.mois;break;}
+        if(j.soir_fin===datGreg&&!apSol){jounen=j;nomMois=mwa.mois;break;}
+      }
+      if(jounen) break;
     }
-    if(!jounen) jounen=data.jours[20];
+    if(!jounen){jounen=liste[0].jours[20];nomMois=liste[0].mois;}
 
     const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
     const datRef=new Date(jounen.soir_fin+'T12:00:00');
@@ -957,7 +963,6 @@
     const [,m1,d1]=jounen.soir_debut.split('-');
     const [,m2,d2]=jounen.soir_fin.split('-');
 
-    const nomMois = jounen.mois || data.mois;
     document.getElementById('tj-dat').textContent=nomJou+' · '+jounen.jour+' '+nomMois;
     document.getElementById('tj-texte').textContent=jounen.texte_kw||jounen.texte;
     document.getElementById('tj-ref').textContent='— '+jounen.ref;
