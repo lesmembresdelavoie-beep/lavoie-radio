@@ -7,283 +7,81 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --bleu-nuit:#0d2347;
-  --or:#c9a84c;
-  --or-pale:#e8d08a;
-  --parchemin:#f5f0e8;
-  --texte:#1a1a2e;
-}
-
-html,body{
-  width:100%;height:100%;overflow:hidden;
-  background:var(--bleu-nuit);
-  font-family:'Cormorant Garamond',Georgia,serif;
-  color:var(--parchemin);
-}
-
-/* ===== ECRAN ACCUEIL ===== */
-#ecran-accueil{
-  position:fixed;inset:0;z-index:100;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:radial-gradient(ellipse at 50% 40%, #1a3a6b 0%, #0d2347 60%, #060f1e 100%);
-  transition:opacity 1.2s ease;
-}
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-pale:#e8d08a;--parchemin:#f5f0e8;}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bleu-nuit);font-family:'Cormorant Garamond',Georgia,serif;color:var(--parchemin);}
+#ecran-accueil{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 40%,#1a3a6b 0%,#0d2347 60%,#060f1e 100%);transition:opacity 1.2s ease;}
 #ecran-accueil.cache{opacity:0;pointer-events:none;}
-
 .accueil-menorah{font-size:clamp(2.5rem,8vw,4.5rem);margin-bottom:1.5rem;opacity:0.9;}
-.accueil-titre{
-  font-family:'Cinzel',serif;
-  font-size:clamp(1.2rem,4vw,2rem);
-  color:var(--or);
-  letter-spacing:0.2em;
-  text-align:center;
-  margin-bottom:0.5rem;
-}
-.accueil-sous{
-  font-size:clamp(0.9rem,2.5vw,1.1rem);
-  color:var(--or-pale);
-  letter-spacing:0.1em;
-  text-align:center;
-  margin-bottom:3rem;
-  font-style:italic;
-  opacity:0.8;
-}
-.accueil-btn{
-  padding:1rem 2.5rem;
-  border:1px solid var(--or);
-  border-radius:999px;
-  background:rgba(201,168,76,0.1);
-  color:var(--or-pale);
-  font-family:'Cinzel',serif;
-  font-size:clamp(0.85rem,2.5vw,1rem);
-  letter-spacing:0.15em;
-  cursor:pointer;
-  transition:all 0.3s;
-  animation:puls 2.2s ease-in-out infinite;
-}
-.accueil-btn:hover{background:rgba(201,168,76,0.25);transform:scale(1.04);}
+.accueil-titre{font-family:'Cinzel',serif;font-size:clamp(1.2rem,4vw,2rem);color:var(--or);letter-spacing:0.2em;text-align:center;margin-bottom:0.5rem;}
+.accueil-sous{font-size:clamp(0.9rem,2.5vw,1.1rem);color:var(--or-pale);letter-spacing:0.1em;text-align:center;margin-bottom:3rem;font-style:italic;opacity:0.8;}
+.accueil-btn{padding:1rem 2.5rem;border:1px solid var(--or);border-radius:999px;background:rgba(201,168,76,0.1);color:var(--or-pale);font-family:'Cinzel',serif;font-size:clamp(0.85rem,2.5vw,1rem);letter-spacing:0.15em;cursor:pointer;transition:all 0.3s;animation:puls 2.2s ease-in-out infinite;}
+.accueil-btn:hover{background:rgba(201,168,76,0.25);}
 @keyframes puls{50%{box-shadow:0 0 22px rgba(201,168,76,0.4);}}
-
-/* ===== SCENE PRINCIPALE ===== */
-#scene{
-  position:fixed;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:radial-gradient(ellipse at 50% 30%, #1a3a6b 0%, #0d2347 55%, #060f1e 100%);
-  overflow:hidden;
-}
-
-/* Étoiles */
-.etoile{
-  position:absolute;border-radius:50%;
-  background:rgba(232,208,138,0.7);
-  animation:scintille ease-in-out infinite;
-}
-@keyframes scintille{
-  0%,100%{opacity:0.15;transform:scale(0.8);}
-  50%{opacity:0.9;transform:scale(1.3);}
-}
-
-/* Ligne or décorative */
-.ligne-or{
-  position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:1px;height:100%;
-  background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.12),transparent);
-  pointer-events:none;
-}
-
-/* ===== CONTENEUR SLIDES ===== */
-#slides-wrap{
-  position:relative;z-index:10;
-  width:min(780px,92vw);
-  text-align:center;
-  padding:2rem 1.5rem;
-}
-
-/* SLIDE */
-.slide{
-  display:none;
-  flex-direction:column;align-items:center;justify-content:center;
-  gap:1.8rem;
-  opacity:0;
-  animation:slideIn 1.4s ease forwards;
-}
+#scene{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 30%,#1a3a6b 0%,#0d2347 55%,#060f1e 100%);overflow:hidden;}
+.etoile{position:absolute;border-radius:50%;background:rgba(232,208,138,0.7);animation:scintille ease-in-out infinite;}
+@keyframes scintille{0%,100%{opacity:0.15;transform:scale(0.8);}50%{opacity:0.9;transform:scale(1.3);}}
+.ligne-or{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.12),transparent);pointer-events:none;}
+#slides-wrap{position:relative;z-index:10;width:min(780px,92vw);text-align:center;padding:2rem 1.5rem;}
+.slide{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;opacity:0;animation:slideIn 1.4s ease forwards;}
 .slide.actif{display:flex;}
-@keyframes slideIn{
-  0%{opacity:0;transform:translateY(28px);}
-  100%{opacity:1;transform:translateY(0);}
-}
-@keyframes slideOut{
-  0%{opacity:1;transform:translateY(0);}
-  100%{opacity:0;transform:translateY(-24px);}
-}
+@keyframes slideIn{0%{opacity:0;transform:translateY(28px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes slideOut{0%{opacity:1;}100%{opacity:0;transform:translateY(-24px);}}
 .slide.sortant{animation:slideOut 0.9s ease forwards;}
-
-/* Badge jou */
-.badge-jou{
-  font-family:'Cinzel',serif;
-  font-size:clamp(0.65rem,2vw,0.8rem);
-  letter-spacing:0.22em;
-  color:var(--or);
-  border:1px solid rgba(201,168,76,0.4);
-  border-radius:999px;
-  padding:0.35rem 1.1rem;
-  background:rgba(201,168,76,0.08);
-  text-transform:uppercase;
-}
-
-/* Séparateur */
-.sep{
-  width:60px;height:1px;
-  background:linear-gradient(to right,transparent,var(--or),transparent);
-}
-
-/* Verset */
-.verset{
-  font-size:clamp(1.15rem,3.5vw,1.65rem);
-  font-style:italic;
-  line-height:1.65;
-  color:var(--parchemin);
-  max-width:680px;
-  text-shadow:0 2px 12px rgba(0,0,0,0.5);
-}
-
-/* Référence */
-.ref{
-  font-family:'Cinzel',serif;
-  font-size:clamp(0.7rem,2vw,0.85rem);
-  letter-spacing:0.18em;
-  color:var(--or-pale);
-  opacity:0.85;
-}
-
-/* Ornement */
+.badge-jou{font-family:'Cinzel',serif;font-size:clamp(0.65rem,2vw,0.8rem);letter-spacing:0.22em;color:var(--or);border:1px solid rgba(201,168,76,0.4);border-radius:999px;padding:0.35rem 1.1rem;background:rgba(201,168,76,0.08);text-transform:uppercase;}
+.sep{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--or),transparent);}
+.verset{font-size:clamp(1.15rem,3.5vw,1.65rem);font-style:italic;line-height:1.65;color:var(--parchemin);max-width:680px;text-shadow:0 2px 12px rgba(0,0,0,0.5);}
+.ref{font-family:'Cinzel',serif;font-size:clamp(0.7rem,2vw,0.85rem);letter-spacing:0.18em;color:var(--or-pale);opacity:0.85;}
 .ornement{font-size:1.2rem;color:var(--or);opacity:0.6;}
-
-/* Commentaire */
-.commentaire{
-  font-size:clamp(0.88rem,2.5vw,1.05rem);
-  line-height:1.85;
-  color:rgba(245,240,232,0.88);
-  max-width:680px;
-  text-align:justify;
-  hyphens:auto;
-  border-left:2px solid rgba(201,168,76,0.35);
-  padding-left:1.2rem;
-}
-
-/* Liy final */
-.liy-final{
-  font-size:clamp(0.9rem,2.5vw,1.08rem);
-  font-style:italic;
-  color:var(--or-pale);
-  max-width:620px;
-  line-height:1.6;
-  padding:1rem 1.5rem;
-  border:1px solid rgba(201,168,76,0.3);
-  border-radius:8px;
-  background:rgba(201,168,76,0.06);
-}
-.liy-final::before{content:"💎 ";opacity:0.9;}
-
-/* ===== NAVIGATION ===== */
-#nav-bas{
-  position:fixed;bottom:0;left:0;right:0;z-index:20;
-  display:flex;align-items:center;justify-content:center;
-  gap:1rem;padding:1.2rem 1rem 1.8rem;
-  background:linear-gradient(to top,rgba(6,15,30,0.95),transparent);
-}
-
-.btn-nav{
-  width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(201,168,76,0.5);
-  background:rgba(13,35,71,0.8);
-  color:var(--or-pale);font-size:1.1rem;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all 0.25s;
-}
+.commentaire{font-size:clamp(0.88rem,2.5vw,1.05rem);line-height:1.85;color:rgba(245,240,232,0.88);max-width:680px;text-align:justify;hyphens:auto;border-left:2px solid rgba(201,168,76,0.35);padding-left:1.2rem;}
+.liy-final{font-size:clamp(0.9rem,2.5vw,1.08rem);font-style:italic;color:var(--or-pale);max-width:620px;line-height:1.6;padding:1rem 1.5rem;border:1px solid rgba(201,168,76,0.3);border-radius:8px;background:rgba(201,168,76,0.06);}
+.liy-final::before{content:"💎 ";}
+.slide-illus img{width:min(400px,85vw);max-height:75vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,0.7),0 0 0 1px rgba(201,168,76,0.25);}
+#nav-bas{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:center;gap:1rem;padding:1.2rem 1rem 1.8rem;background:linear-gradient(to top,rgba(6,15,30,0.95),transparent);}
+.btn-nav{width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,168,76,0.5);background:rgba(13,35,71,0.8);color:var(--or-pale);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s;}
 .btn-nav:hover{background:rgba(201,168,76,0.2);border-color:var(--or);}
 .btn-nav:disabled{opacity:0.25;cursor:default;}
-
-#indicateur{
-  font-family:'Cinzel',serif;
-  font-size:0.72rem;letter-spacing:0.15em;
-  color:var(--or-pale);opacity:0.7;
-  min-width:60px;text-align:center;
-}
-
-/* Bouton muzik */
-#btn-muzik{
-  position:fixed;bottom:1.5rem;right:1.2rem;z-index:30;
-  width:40px;height:40px;border-radius:50%;
-  border:1px solid rgba(201,168,76,0.45);
-  background:rgba(13,35,71,0.85);
-  color:var(--or-pale);font-size:1rem;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all 0.3s;
-}
-#btn-muzik:hover{background:rgba(201,168,76,0.2);}
-
-/* Barre progression */
-#barre-prog{
-  position:fixed;top:0;left:0;height:2px;
-  background:linear-gradient(to right,var(--or),var(--or-pale));
-  transition:width 0.6s ease;z-index:30;
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-  .commentaire{text-align:left;}
-  #slides-wrap{padding:1.2rem 1rem;}
-}
+#indicateur{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.15em;color:var(--or-pale);opacity:0.7;min-width:60px;text-align:center;}
+#btn-muzik{position:fixed;bottom:1.5rem;right:1.2rem;z-index:30;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,168,76,0.45);background:rgba(13,35,71,0.85);color:var(--or-pale);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;}
+#barre-prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--or),var(--or-pale));transition:width 0.6s ease;z-index:30;}
+@media(max-width:600px){.commentaire{text-align:left;}#slides-wrap{padding:1.2rem 1rem;}}
 </style>
 </head>
 <body>
-
-<!-- Muzik -->
-<audio id="audio" loop preload="auto">
-  <source src="teks-jounen-muzik.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Ecran accueil -->
+<audio id="audio" loop preload="auto"><source src="teks-jounen-muzik.mp3" type="audio/mpeg"></audio>
 <div id="ecran-accueil">
   <div class="accueil-menorah">🕎</div>
   <div class="accueil-titre">TÈKS POU JOUNEN AN</div>
   <div class="accueil-sous">Les Membres de La Voie · lavoie.world</div>
   <button class="accueil-btn" onclick="demarrer()">✦ Antre nan meditasyon an ✦</button>
 </div>
-
-<!-- Scene principale -->
 <div id="scene">
   <div class="ligne-or"></div>
   <div id="barre-prog" style="width:0%"></div>
   <div id="slides-wrap"></div>
 </div>
-
-<!-- Navigation -->
 <div id="nav-bas">
   <button class="btn-nav" id="btn-prev" onclick="naviguer(-1)" disabled>‹</button>
   <span id="indicateur">1 / 1</span>
   <button class="btn-nav" id="btn-next" onclick="naviguer(1)">›</button>
 </div>
-
-<!-- Bouton muzik -->
-<button id="btn-muzik" onclick="toggleMuzik()" title="Muzik">🎵</button>
+<button id="btn-muzik" onclick="toggleMuzik()">🎵</button>
 
 <script src="teks-data.js?v=4"></script>
 <script>
-// ===== ETOILES =====
-const scene = document.getElementById('scene');
-for(let i=0;i<55;i++){
-  const e=document.createElement('div');
-  e.className='etoile';
-  const sz=Math.random()*2.5+0.8;
-  e.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}vw;top:${Math.random()*100}vh;animation-duration:${2.5+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
-  scene.appendChild(e);
-}
+// Map ilustrasyon pa jou Rebi'i
+const ILLUSTRASYON = {
+  "Rebi'i": {
+    4: 'illus-rebi-4.jpg',
+    5: 'illus-rebi-5.png'
+    // Lòt yo ap ajoute lè ou voye yo
+  }
+};
 
-// ===== TROUVER JOU AKTYÈL =====
+// Etoiles
+const scene=document.getElementById('scene');
+for(let i=0;i<55;i++){const e=document.createElement('div');e.className='etoile';const sz=Math.random()*2.5+0.8;e.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}vw;top:${Math.random()*100}vh;animation-duration:${2.5+Math.random()*4}s;animation-delay:${Math.random()*5}s`;scene.appendChild(e);}
+
+// Jwenn jou aktyèl
 function jwennJounen(){
   if(typeof TEKS_DATA==='undefined') return null;
   const liste=Array.isArray(TEKS_DATA)?TEKS_DATA:[TEKS_DATA];
@@ -291,96 +89,67 @@ function jwennJounen(){
   const apSol=now.getHours()*60+now.getMinutes()>=20*60+30;
   const pad=n=>String(n).padStart(2,'0');
   const datGreg=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
-
   for(const mwa of liste){
     for(const j of mwa.jours){
-      if(j.soir_debut===datGreg && apSol) return {jounen:j, mois:j.mois||mwa.mois};
-      if(j.soir_fin===datGreg && !apSol)  return {jounen:j, mois:j.mois||mwa.mois};
+      if(j.soir_debut===datGreg&&apSol) return {jounen:j,mois:j.mois||mwa.mois};
+      if(j.soir_fin===datGreg&&!apSol)  return {jounen:j,mois:j.mois||mwa.mois};
     }
   }
   return null;
 }
 
-// ===== CONSTRUIRE SLIDES =====
-const resultat = jwennJounen();
-let slides = [];
-let idxActif = 0;
+// Nom jou semèn La Voie
+const jSem=['Yôm Rishon','Yôm Sheni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ereb Shabbath','Shabbath'];
+const mapJou=[1,2,3,4,5,6,0];
+
+const resultat=jwennJounen();
+let slides=[];
+let idxActif=0;
 
 if(resultat){
-  const {jounen, mois} = resultat;
-  const jSem=['Yôm Rishon','Yôm Sheni','Yôm Shlishi','Yôm Rebi\'i','Yôm Hamishi','Ereb Shabbath','Shabbath'];
+  const {jounen,mois}=resultat;
   const now=new Date();
   const apSol=now.getHours()*60+now.getMinutes()>=20*60+30;
-  // Jou semèn (apre 20:30 se jou k ap vini)
-  let jIdx=new Date().getDay();
-  if(apSol) jIdx=(jIdx+1)%7;
-  // La semaine: 0=dim→Yôm Rishon convention La Voie: Shabbath=sam
-  const mapJou=[1,2,3,4,5,6,0]; // dim=Rishon...sam=Shabbath
-  const nomJou=jSem[mapJou[new Date().getDay()]] || '';
+  let jIdx=now.getDay(); if(apSol) jIdx=(jIdx+1)%7;
+  const nomJou=jSem[mapJou[now.getDay()]]||'';
   const badge=`${nomJou} · ${jounen.jour} ${mois}`;
 
-  // Slide 1 — Verset
-  slides.push({type:'verset', badge, texte:jounen.texte_kw||jounen.texte, ref:jounen.ref});
+  // Ilustrasyon si disponib
+  const illus = ILLUSTRASYON[mois] && ILLUSTRASYON[mois][jounen.jour];
+  if(illus) slides.push({type:'illus',badge,src:illus});
 
-  // Slides commentaire (1 paragraf = 1 slide)
+  // Vèsè
+  slides.push({type:'verset',badge,texte:jounen.texte_kw||jounen.texte,ref:jounen.ref});
+
+  // Kòmantè
   if(jounen.commentaire){
-    const parag=jounen.commentaire.split('\n\n').filter(p=>p.trim());
-    parag.forEach((p,i)=>{
-      slides.push({type:'commentaire', badge, texte:p.trim(), num:i+1, total:parag.length});
+    jounen.commentaire.split('\n\n').filter(p=>p.trim()).forEach((p,i,arr)=>{
+      slides.push({type:'commentaire',badge,texte:p.trim(),num:i+1,total:arr.length});
     });
   }
 
-  // Slide finale — liy final
-  if(jounen.liy_final){
-    slides.push({type:'liy_final', badge, texte:jounen.liy_final});
-  }
+  // Liy final
+  if(jounen.liy_final) slides.push({type:'liy_final',badge,texte:jounen.liy_final});
 } else {
-  slides.push({type:'verset', badge:'La Voie', texte:'Tèks pou jounen an ap vini...', ref:''});
+  slides.push({type:'verset',badge:'La Voie',texte:'Tèks pou jounen an ap vini...',ref:''});
 }
 
-// ===== RENDU SLIDE =====
 function rendSlide(idx){
   const wrap=document.getElementById('slides-wrap');
   const s=slides[idx];
   let html='';
-
-  if(s.type==='verset'){
-    html=`
-      <div class="badge-jou">${s.badge}</div>
-      <div class="sep"></div>
-      <div class="verset">${s.texte}</div>
-      ${s.ref?`<div class="ref">— ${s.ref}</div>`:''}
-      <div class="ornement">✦</div>
-    `;
+  if(s.type==='illus'){
+    html=`<div class="slide-illus"><img src="${s.src}" alt="Illustration ${s.badge}"/></div>`;
+  } else if(s.type==='verset'){
+    html=`<div class="badge-jou">${s.badge}</div><div class="sep"></div><div class="verset">${s.texte}</div>${s.ref?`<div class="ref">— ${s.ref}</div>`:''}<div class="ornement">✦</div>`;
   } else if(s.type==='commentaire'){
-    html=`
-      <div class="badge-jou">${s.badge} · ${s.num}/${s.total}</div>
-      <div class="sep"></div>
-      <div class="commentaire">${s.texte}</div>
-    `;
+    html=`<div class="badge-jou">${s.badge} · ${s.num}/${s.total}</div><div class="sep"></div><div class="commentaire">${s.texte}</div>`;
   } else if(s.type==='liy_final'){
-    html=`
-      <div class="badge-jou">${s.badge}</div>
-      <div class="sep"></div>
-      <div class="liy-final">${s.texte}</div>
-      <div class="ornement">✦ ✦ ✦</div>
-    `;
+    html=`<div class="badge-jou">${s.badge}</div><div class="sep"></div><div class="liy-final">${s.texte}</div><div class="ornement">✦ ✦ ✦</div>`;
   }
-
-  // Vye slide sortant
   const old=wrap.querySelector('.slide.actif');
-  if(old){
-    old.classList.remove('actif');
-    old.classList.add('sortant');
-    setTimeout(()=>old.remove(),900);
-  }
-
-  const div=document.createElement('div');
-  div.className='slide actif';
-  div.innerHTML=html;
-  wrap.appendChild(div);
-
-  // Barre + indicateur
+  if(old){old.classList.remove('actif');old.classList.add('sortant');setTimeout(()=>old.remove(),900);}
+  const div=document.createElement('div');div.className='slide actif';div.innerHTML=html;wrap.appendChild(div);
   const pct=((idx+1)/slides.length)*100;
   document.getElementById('barre-prog').style.width=pct+'%';
   document.getElementById('indicateur').textContent=`${idx+1} / ${slides.length}`;
@@ -388,38 +157,18 @@ function rendSlide(idx){
   document.getElementById('btn-next').disabled=(idx===slides.length-1);
 }
 
-function naviguer(dir){
-  const nv=idxActif+dir;
-  if(nv<0||nv>=slides.length) return;
-  idxActif=nv;
-  rendSlide(idxActif);
-}
+function naviguer(dir){const nv=idxActif+dir;if(nv<0||nv>=slides.length)return;idxActif=nv;rendSlide(idxActif);}
 
-// ===== MUZIK =====
 const audio=document.getElementById('audio');
 let muzikOn=false;
+function toggleMuzik(){if(muzikOn){audio.pause();muzikOn=false;document.getElementById('btn-muzik').textContent='🎵';}else{audio.play().catch(e=>console.log(e));muzikOn=true;document.getElementById('btn-muzik').textContent='🔇';}}
 
-function toggleMuzik(){
-  if(muzikOn){audio.pause();muzikOn=false;document.getElementById('btn-muzik').textContent='🎵';}
-  else{audio.play().catch(e=>console.log(e));muzikOn=true;document.getElementById('btn-muzik').textContent='🔇';}
-}
-
-// ===== DEMARRER =====
 function demarrer(){
   const ec=document.getElementById('ecran-accueil');
-  ec.classList.add('cache');
-  setTimeout(()=>ec.remove(),1300);
-  // Kòmanse muzik (volume dousman)
-  audio.volume=0;
-  audio.play().catch(e=>console.log(e));
-  muzikOn=true;
+  ec.classList.add('cache');setTimeout(()=>ec.remove(),1300);
+  audio.volume=0;audio.play().catch(e=>console.log(e));muzikOn=true;
   document.getElementById('btn-muzik').textContent='🔇';
-  let v=0;
-  const fi=setInterval(()=>{
-    v=Math.min(1,v+0.03);
-    audio.volume=v;
-    if(v>=1) clearInterval(fi);
-  },200);
+  let v=0;const fi=setInterval(()=>{v=Math.min(1,v+0.03);audio.volume=v;if(v>=1)clearInterval(fi);},200);
   rendSlide(0);
 }
 </script>
