@@ -74,12 +74,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bleu-nuit);fon
 const ILLUSTRASYON = {
   "Rebi'i": {
     4: 'illus-rebi-4.jpg',
-    5: 'illus-rebi-5.png'
+    5: 'illus-rebi-5.png',
+    6: 'illus-rebi-6.png'
   }
 };
 const VWA = {
   "Rebi'i": {
-    5: 'vwa-rebi-5.ogg'
+    5: 'vwa-rebi-5.ogg',
+    6: 'vwa-rebi-6.mp3'
   }
 };
 
@@ -208,7 +210,7 @@ function demarrer(){
   audio.volume=0;
   audio.play().catch(e=>console.log(e));muzikOn=true;
   document.getElementById('btn-muzik').textContent='🔇';
-  let v=0;const fi=setInterval(()=>{v=Math.min(0.25,v+0.01);audio.volume=v;if(v>=0.25)clearInterval(fi);},150);
+  let v=0;const fi=setInterval(()=>{v=Math.min(0.12,v+0.005);audio.volume=v;if(v>=0.12)clearInterval(fi);},150);
   // Vwa — kòmanse apre 1.5s
   const av=document.getElementById('audio-vwa');
   if(av.src && av.src!==window.location.href){
