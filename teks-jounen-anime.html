@@ -100,7 +100,20 @@ function jwennJounen(){
 
 // Nom jou semèn La Voie
 const jSem=['Yôm Rishon','Yôm Sheni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ereb Shabbath','Shabbath'];
-const mapJou=[1,2,3,4,5,6,0];
+// La Voie: dim=Rishon(0), lun=Sheni(1), mar=Shlishi(2), mer=Rebi'i(3), jed=Hamishi(4), ven=Ereb Shabbath(5), sam=Shabbath(6)
+// Apre 20:30, jou kalanbdriye a chanje
+function jwennNomJou(jounen){
+  // Pran nomJou dirèkteman nan done si li egziste
+  if(jounen.nomJou) return jounen.nomJou;
+  const now=new Date();
+  const apSol=now.getHours()*60+now.getMinutes()>=20*60+30;
+  // Si apSol, se jou ki kòmanse aswè a (soir_debut)
+  // Si pa apSol, se jou ki fini jodi a (soir_fin)
+  // Kalkile jou semèn selon soir_debut oswa soir_fin
+  const datRef = apSol ? new Date(jounen.soir_debut+'T21:00:00') : new Date(jounen.soir_fin+'T10:00:00');
+  const d = datRef.getDay(); // 0=dim...6=sam
+  return jSem[d===0?0:d===1?1:d===2?2:d===3?3:d===4?4:d===5?5:6];
+}
 
 const resultat=jwennJounen();
 let slides=[];
@@ -108,10 +121,7 @@ let idxActif=0;
 
 if(resultat){
   const {jounen,mois}=resultat;
-  const now=new Date();
-  const apSol=now.getHours()*60+now.getMinutes()>=20*60+30;
-  let jIdx=now.getDay(); if(apSol) jIdx=(jIdx+1)%7;
-  const nomJou=jSem[mapJou[now.getDay()]]||'';
+  const nomJou=jwennNomJou(jounen);
   const badge=`${nomJou} · ${jounen.jour} ${mois}`;
 
   // Ilustrasyon si disponib
