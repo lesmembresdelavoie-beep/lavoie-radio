@@ -1583,6 +1583,72 @@ function fermerPopupShabbath2(){
   document.getElementById('popup-shabbath2-overlay').classList.remove('visible');
 }
 </script>
+<!-- ========== POPUP TÈKS JOUNEN ANIMÉ ========== -->
+<style>
+#popup-teks-anime {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: #0d2347;
+}
+#popup-teks-anime.visible { display: block; }
+#popup-teks-anime iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+#popup-teks-anime-close {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 99999;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.5);
+  background: rgba(13,35,71,0.9);
+  color: #e8cb7a;
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+#popup-teks-anime.visible #popup-teks-anime-close { display: flex; }
+</style>
+
+<div id="popup-teks-anime">
+  <button id="popup-teks-anime-close" onclick="fermerTeksAnime()">✕</button>
+  <iframe id="popup-teks-anime-frame" src="" allowfullscreen></iframe>
+</div>
+
+<script>
+(function(){
+  // Parèt chak jou otomatikman — pa pandan Ereb Shabbath oswa Shabbath (popup yo deja la)
+  var now = new Date();
+  var jou = now.getDay();
+  var min = now.getHours()*60 + now.getMinutes();
+  var m2030 = 20*60+30;
+  var m2029 = 20*60+29;
+  // Pa parèt si Ereb Shabbath (jedi>=20:30 → vandredi<20:30) oswa Shabbath (vandredi>=20:30 → samedi<20:29)
+  var erebShabbath = (jou===4 && min>=m2030) || (jou===5 && min<m2030);
+  var shabbath     = (jou===5 && min>=m2030) || (jou===6 && min<m2029);
+  if(erebShabbath || shabbath) return;
+
+  var popup = document.getElementById('popup-teks-anime');
+  var frame = document.getElementById('popup-teks-anime-frame');
+  frame.src = 'teks-jounen-anime.html';
+  popup.classList.add('visible');
+})();
+
+function fermerTeksAnime(){
+  var popup = document.getElementById('popup-teks-anime');
+  var frame = document.getElementById('popup-teks-anime-frame');
+  popup.classList.remove('visible');
+  frame.src = '';
+}
+</script>
 
 </body>
 </html>
