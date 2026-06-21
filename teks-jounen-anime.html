@@ -48,6 +48,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bleu-nuit);fon
 </head>
 <body>
 <audio id="audio" loop preload="auto"><source src="teks-jounen-muzik.mp3" type="audio/mpeg"></audio>
+<audio id="audio-vwa" preload="auto"></audio>
 <div id="ecran-accueil">
   <div class="accueil-menorah">🕎</div>
   <div class="accueil-titre">TÈKS POU JOUNEN AN</div>
@@ -64,7 +65,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bleu-nuit);fon
   <span id="indicateur">1 / 1</span>
   <button class="btn-nav" id="btn-next" onclick="naviguer(1)">›</button>
 </div>
-<button id="btn-muzik" onclick="toggleMuzik()">🎵</button>
+<button id="btn-muzik" onclick="toggleMuzik()" title="Muzik">🎵</button>
+<button id="btn-vwa" onclick="toggleVwa()" title="Vwa" style="position:fixed;bottom:1.5rem;right:4rem;z-index:30;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,168,76,0.45);background:rgba(13,35,71,0.85);color:#e8d08a;font-size:1rem;cursor:pointer;display:none;align-items:center;justify-content:center;">🎙</button>
 
 <script src="teks-data.js?v=4"></script>
 <script>
@@ -73,7 +75,11 @@ const ILLUSTRASYON = {
   "Rebi'i": {
     4: 'illus-rebi-4.jpg',
     5: 'illus-rebi-5.png'
-    // Lòt yo ap ajoute lè ou voye yo
+  }
+};
+const VWA = {
+  "Rebi'i": {
+    5: 'vwa-rebi-5.ogg'
   }
 };
 
@@ -128,6 +134,14 @@ if(resultat){
   const illus = ILLUSTRASYON[mois] && ILLUSTRASYON[mois][jounen.jour];
   if(illus) slides.push({type:'illus',badge,src:illus});
 
+  // Chaje vwa si disponib
+  const vwaFichye = VWA[mois] && VWA[mois][jounen.jour];
+  if(vwaFichye){
+    const av = document.getElementById('audio-vwa');
+    av.src = vwaFichye;
+    document.getElementById('btn-vwa').style.display = 'flex';
+  }
+
   // Vèsè
   slides.push({type:'verset',badge,texte:jounen.texte_kw||jounen.texte,ref:jounen.ref});
 
@@ -173,12 +187,33 @@ const audio=document.getElementById('audio');
 let muzikOn=false;
 function toggleMuzik(){if(muzikOn){audio.pause();muzikOn=false;document.getElementById('btn-muzik').textContent='🎵';}else{audio.play().catch(e=>console.log(e));muzikOn=true;document.getElementById('btn-muzik').textContent='🔇';}}
 
+let vwaOn=false;
+function toggleVwa(){
+  const av=document.getElementById('audio-vwa');
+  const btn=document.getElementById('btn-vwa');
+  if(vwaOn){av.pause();vwaOn=false;btn.textContent='🎙';}
+  else{av.play().catch(e=>console.log(e));vwaOn=true;btn.textContent='⏸';}
+}
+
+// Lè vwa a fini — montre bouton play ankò
+document.getElementById('audio-vwa').addEventListener('ended',()=>{
+  document.getElementById('btn-vwa').textContent='🎙';
+  vwaOn=false;
+});
+
 function demarrer(){
   const ec=document.getElementById('ecran-accueil');
   ec.classList.add('cache');setTimeout(()=>ec.remove(),1300);
-  audio.volume=0;audio.play().catch(e=>console.log(e));muzikOn=true;
+  // Muzik background — volume ba (0.25)
+  audio.volume=0;
+  audio.play().catch(e=>console.log(e));muzikOn=true;
   document.getElementById('btn-muzik').textContent='🔇';
-  let v=0;const fi=setInterval(()=>{v=Math.min(1,v+0.03);audio.volume=v;if(v>=1)clearInterval(fi);},200);
+  let v=0;const fi=setInterval(()=>{v=Math.min(0.25,v+0.01);audio.volume=v;if(v>=0.25)clearInterval(fi);},150);
+  // Vwa — kòmanse apre 1.5s
+  const av=document.getElementById('audio-vwa');
+  if(av.src && av.src!==window.location.href){
+    setTimeout(()=>{ av.play().catch(e=>console.log(e)); },1500);
+  }
   rendSlide(0);
 }
 </script>
