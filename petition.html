@@ -365,9 +365,6 @@ function changerLang(lang){
   langActuelle = lang;
   document.getElementById('hero-banniere').src = BANNIERES[lang];
   document.getElementById('html-root').lang = lang;
-  // Chanje bannière selon lang
-  const bannières = {fr:'petition-banniere.jpg', en:'petition-banniere-en.jpg', es:'petition-banniere-es.jpg'};
-  document.querySelector('.hero-banniere').src = bannières[lang];
   // Boutons langue
   document.querySelectorAll('.lang-btn').forEach(b=>{
     b.classList.toggle('actif', b.textContent===lang.toUpperCase());
