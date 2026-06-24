@@ -76,14 +76,16 @@ const ILLUSTRASYON = {
     4: 'illus-rebi-4.jpg',
     5: 'illus-rebi-5.png',
     6: 'illus-rebi-6.png',
-    7: 'illus-rebi-7.png'
+    7: 'illus-rebi-7.png',
+    8: 'illus-rebi-8.png'
   }
 };
 const VWA = {
   "Rebi'i": {
     5: 'vwa-rebi-5.ogg',
     6: 'vwa-rebi-6.mp3',
-    7: 'vwa-rebi-7.mp3'
+    7: 'vwa-rebi-7.mp3',
+    8: 'vwa-rebi-8.mp3'
   }
 };
 
@@ -101,8 +103,8 @@ function jwennJounen(){
   const datGreg=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
   for(const mwa of liste){
     for(const j of mwa.jours){
-      if(j.soir_debut===datGreg&&apSol) return {jounen:j,mois:j.mois||mwa.mois};
-      if(j.soir_fin===datGreg&&!apSol)  return {jounen:j,mois:j.mois||mwa.mois};
+      if(j.soir_debut===datGreg && apSol) return {jounen:j, mois:mwa.mois};
+      if(j.soir_fin===datGreg && !apSol)  return {jounen:j, mois:mwa.mois};
     }
   }
   return null;
