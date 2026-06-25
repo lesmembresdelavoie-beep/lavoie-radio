@@ -335,18 +335,23 @@ main{
     </div>
   </div>
 
+  <!-- VIDÉO PRÉSENTATEUR — pleine largeur -->
+  <div style="width:100%;margin-bottom:0.8rem;border-radius:8px;overflow:hidden;background:#000;border:1px solid rgba(201,168,76,0.2);">
+    <video controls style="width:100%;display:block;" poster="https://img.youtube.com/vi/4DbzcnrxkOY/mqdefault.jpg">
+      <source src="chronique-presentateur.mp4" type="video/mp4"/>
+    </video>
+    <div style="padding:0.5rem 0.8rem;font-family:'Bebas Neue',sans-serif;font-size:0.75rem;letter-spacing:0.15em;color:var(--or);">🎙️ La Voie Radio — Chronique Économique</div>
+  </div>
+
   <!-- MID: PRESENTER + ANALYSE -->
   <div class="mid-section">
-    <!-- ZONE PRÉSENTATEUR -->
-    <div class="presenter-zone">
+    <!-- ZONE PRÉSENTATEUR (cachée — vidéo déplacée) -->
+    <div class="presenter-zone" style="display:none;">
       <div class="waveform">
         <span></span><span></span><span></span>
         <span></span><span></span><span></span>
       </div>
       <div class="presenter-placeholder" style="padding:0;overflow:hidden;border-radius:8px;background:#000;">
-        <video controls style="width:100%;display:block;border-radius:8px;" poster="https://img.youtube.com/vi/4DbzcnrxkOY/mqdefault.jpg">
-          <source src="chronique-presentateur.mp4" type="video/mp4"/>
-        </video>
       </div>
       <div class="presenter-label">🎙️ La Voie Radio — Chronique Économique</div>
     </div>
