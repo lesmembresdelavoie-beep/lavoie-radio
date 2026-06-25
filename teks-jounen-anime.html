@@ -218,9 +218,16 @@ function demarrer(){
   document.getElementById('btn-muzik').textContent='🔇';
   let v=0;const fi=setInterval(()=>{v=Math.min(0.12,v+0.005);audio.volume=v;if(v>=0.12)clearInterval(fi);},150);
   // Vwa — kòmanse apre 1.5s
+  // Vwa — kòmanse apre 1.5s sèlman si li deja chaje
   const av=document.getElementById('audio-vwa');
   if(av.src && av.src!==window.location.href){
-    setTimeout(()=>{ av.play().catch(e=>console.log(e)); },1500);
+    av.load();
+    setTimeout(()=>{
+      av.play().then(()=>{
+        vwaOn=true;
+        document.getElementById('btn-vwa').textContent='⏸';
+      }).catch(e=>console.log('Vwa:', e));
+    }, 1800);
   }
   rendSlide(0);
 }
