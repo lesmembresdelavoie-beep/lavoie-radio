@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Séismes — La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bleu:#0d2347;--or:#c9a84c;--or-pale:#e8d08a;--rouge:#e74c3c;--orange:#e67e22;--vert:#27ae60;}
+body{background:#0a1628;color:#e8e0d0;font-family:'Roboto',sans-serif;min-height:100vh;}
+
+/* Header */
+.header{background:linear-gradient(135deg,#0d2347,#1a3a6b);border-bottom:1px solid rgba(201,168,76,0.3);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.header-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--or);letter-spacing:0.15em;}
+.header-back{color:var(--or-pale);text-decoration:none;font-size:0.85rem;font-family:'Cinzel',serif;letter-spacing:0.1em;}
+
+/* Stats bar */
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.2);}
+.stat-box{background:#0d2347;padding:1rem;text-align:center;}
+.stat-num{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;}
+.stat-num.rouge{color:var(--rouge);}
+.stat-num.orange{color:var(--orange);}
+.stat-num.or{color:var(--or);}
+.stat-label{font-size:0.65rem;letter-spacing:0.12em;opacity:0.6;text-transform:uppercase;margin-top:0.2rem;}
+
+/* Filtres */
+.filtres{padding:1rem 1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.05);}
+.filtre-btn{padding:0.35rem 0.9rem;border-radius:999px;border:1px solid rgba(201,168,76,0.3);background:transparent;color:var(--or-pale);font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;}
+.filtre-btn.actif{background:var(--or);color:#0a1628;border-color:var(--or);}
+
+/* Titre section */
+.section-header{padding:1rem 1.5rem 0.5rem;display:flex;align-items:center;justify-content:space-between;}
+.section-header h2{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.15em;color:var(--or-pale);opacity:0.7;}
+.maj-time{font-size:0.65rem;color:rgba(232,208,138,0.4);font-style:italic;}
+
+/* Liste séismes */
+.seismes-liste{padding:0 1rem 2rem;}
+.seisme-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;margin-bottom:0.7rem;padding:1rem;display:flex;align-items:center;gap:1rem;transition:border-color 0.2s;}
+.seisme-card:hover{border-color:rgba(201,168,76,0.3);}
+.seisme-card.fort{border-left:3px solid var(--rouge);}
+.seisme-card.modere{border-left:3px solid var(--orange);}
+.seisme-card.faible{border-left:3px solid var(--vert);}
+
+.mag-badge{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;flex-shrink:0;}
+.mag-badge.fort{background:rgba(231,76,60,0.2);color:var(--rouge);border:2px solid var(--rouge);}
+.mag-badge.modere{background:rgba(230,126,34,0.2);color:var(--orange);border:2px solid var(--orange);}
+.mag-badge.faible{background:rgba(39,174,96,0.2);color:var(--vert);border:2px solid var(--vert);}
+
+.seisme-info{flex:1;min-width:0;}
+.seisme-lieu{font-weight:500;font-size:0.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0.3rem;}
+.seisme-meta{display:flex;gap:0.8rem;font-size:0.72rem;color:rgba(232,208,138,0.5);}
+.seisme-meta span{display:flex;align-items:center;gap:0.2rem;}
+
+.seisme-temps{font-size:0.68rem;color:rgba(232,208,138,0.4);text-align:right;white-space:nowrap;flex-shrink:0;}
+
+/* Loading */
+.loading{text-align:center;padding:3rem;color:rgba(232,208,138,0.4);}
+.loading-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--or);animation:pulse 1.4s ease-in-out infinite;}
+.loading-dot:nth-child(2){animation-delay:0.2s;}
+.loading-dot:nth-child(3){animation-delay:0.4s;}
+@keyframes pulse{0%,100%{opacity:0.3;transform:scale(0.8);}50%{opacity:1;transform:scale(1.2);}}
+
+/* Map mini */
+.map-section{padding:1rem 1.5rem;margin-bottom:0.5rem;}
+.map-container{border-radius:10px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);height:220px;}
+.map-container iframe{width:100%;height:100%;border:none;}
+
+/* Erreur */
+.erreur{text-align:center;padding:2rem;color:rgba(231,76,60,0.7);font-size:0.9rem;}
+
+/* Légende */
+.legende{padding:1rem 1.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;font-size:0.7rem;color:rgba(232,208,138,0.5);}
+.leg-item{display:flex;align-items:center;gap:0.4rem;}
+.leg-dot{width:10px;height:10px;border-radius:50%;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html" class="header-back">← La Voie</a>
+  <div class="header-title">🌍 SÉISMES</div>
+  <div style="font-size:0.65rem;color:rgba(232,208,138,0.4);" id="last-update">Chargement...</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-box">
+    <div class="stat-num rouge" id="stat-fort">—</div>
+    <div class="stat-label">M ≥ 6.0 (24h)</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num orange" id="stat-modere">—</div>
+    <div class="stat-label">M ≥ 4.5 (24h)</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num or" id="stat-total">—</div>
+    <div class="stat-label">Total (24h)</div>
+  </div>
+</div>
+
+<div class="filtres">
+  <button class="filtre-btn actif" onclick="filtrer('tous',this)">Tous</button>
+  <button class="filtre-btn" onclick="filtrer('fort',this)">M ≥ 6.0 🔴</button>
+  <button class="filtre-btn" onclick="filtrer('modere',this)">M 4.5–5.9 🟠</button>
+  <button class="filtre-btn" onclick="filtrer('faible',this)">M &lt; 4.5 🟢</button>
+</div>
+
+<div class="map-section">
+  <div class="map-container">
+    <iframe src="https://earthquake.usgs.gov/earthquakes/map/?extent=-89.99,-360&extent=89.99,360&range=day&magnitude=all&settings=true" title="Carte séismes USGS" loading="lazy"></iframe>
+  </div>
+</div>
+
+<div class="legende">
+  <div class="leg-item"><div class="leg-dot" style="background:var(--rouge)"></div> Fort (M ≥ 6.0)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--orange)"></div> Modéré (M 4.5–5.9)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--vert)"></div> Faible (M &lt; 4.5)</div>
+</div>
+
+<div class="section-header">
+  <h2>✦ DERNIERS SÉISMES — MONDE</h2>
+  <span class="maj-time" id="maj-time"></span>
+</div>
+
+<div class="seismes-liste" id="seismes-liste">
+  <div class="loading">
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+    <p style="margin-top:1rem;font-size:0.85rem;">Chargement des données USGS...</p>
+  </div>
+</div>
+
+<script>
+let tousSeismes = [];
+let filtreActif = 'tous';
+
+function getClasse(mag){
+  if(mag >= 6.0) return 'fort';
+  if(mag >= 4.5) return 'modere';
+  return 'faible';
+}
+
+function tempsRelatif(timestamp){
+  const diff = Date.now() - timestamp;
+  const min = Math.floor(diff/60000);
+  const h = Math.floor(min/60);
+  const j = Math.floor(h/24);
+  if(min < 1) return "À l'instant";
+  if(min < 60) return `Il y a ${min} min`;
+  if(h < 24) return `Il y a ${h}h${min%60>0?' '+min%60+'min':''}`;
+  return `Il y a ${j}j`;
+}
+
+function profondeur(depth){
+  if(depth < 30) return `🔴 ${depth} km (superficiel)`;
+  if(depth < 70) return `🟠 ${depth} km`;
+  return `🟢 ${depth} km`;
+}
+
+function afficherSeismes(liste){
+  const container = document.getElementById('seismes-liste');
+  if(!liste.length){
+    container.innerHTML = '<div class="erreur">Aucun séisme trouvé pour ce filtre.</div>';
+    return;
+  }
+  container.innerHTML = liste.map(s => {
+    const p = s.properties;
+    const mag = p.mag || 0;
+    const cl = getClasse(mag);
+    const lieu = p.place || 'Lieu inconnu';
+    const depth = s.geometry.coordinates[2];
+    return `
+      <div class="seisme-card ${cl}">
+        <div class="mag-badge ${cl}">${mag.toFixed(1)}</div>
+        <div class="seisme-info">
+          <div class="seisme-lieu">${lieu}</div>
+          <div class="seisme-meta">
+            <span>📍 ${profondeur(Math.round(depth))}</span>
+            ${p.tsunami ? '<span style="color:#e74c3c">⚠️ Alerte tsunami</span>' : ''}
+          </div>
+        </div>
+        <div class="seisme-temps">${tempsRelatif(p.time)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filtrer(type, btn){
+  filtreActif = type;
+  document.querySelectorAll('.filtre-btn').forEach(b => b.classList.remove('actif'));
+  btn.classList.add('actif');
+  let liste = tousSeismes;
+  if(type === 'fort') liste = tousSeismes.filter(s => s.properties.mag >= 6.0);
+  else if(type === 'modere') liste = tousSeismes.filter(s => s.properties.mag >= 4.5 && s.properties.mag < 6.0);
+  else if(type === 'faible') liste = tousSeismes.filter(s => s.properties.mag < 4.5);
+  afficherSeismes(liste);
+}
+
+async function chargerSeismes(){
+  try{
+    // USGS API — séismes des dernières 24h, toutes magnitudes
+    const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
+    const resp = await fetch(url);
+    const data = await resp.json();
+
+    tousSeismes = data.features
+      .filter(s => s.properties.mag !== null)
+      .sort((a,b) => b.properties.mag - a.properties.mag);
+
+    const fort = tousSeismes.filter(s => s.properties.mag >= 6.0).length;
+    const modere = tousSeismes.filter(s => s.properties.mag >= 4.5).length;
+
+    document.getElementById('stat-fort').textContent = fort;
+    document.getElementById('stat-modere').textContent = modere;
+    document.getElementById('stat-total').textContent = tousSeismes.length;
+
+    const now = new Date();
+    document.getElementById('last-update').textContent = now.toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'});
+    document.getElementById('maj-time').textContent = `Mis à jour à ${now.toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})}`;
+
+    afficherSeismes(tousSeismes);
+  } catch(e){
+    document.getElementById('seismes-liste').innerHTML = `
+      <div class="erreur">
+        ⚠️ Impossible de charger les données.<br>
+        <small>Vérifiez votre connexion Internet.</small><br><br>
+        <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank" style="color:var(--or-pale);">→ Voir sur USGS directement</a>
+      </div>`;
+  }
+}
+
+chargerSeismes();
+// Actualiser toutes les 5 minutes
+setInterval(chargerSeismes, 300000);
+</script>
+</body>
+</html>

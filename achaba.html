@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Achaba — La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bleu:#0d2347;--or:#c9a84c;--or-pale:#e8d08a;--parchemin:#f5f0e8;}
+body{background:#0a1628;color:#e8e0d0;font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh;}
+
+/* Header */
+.header{background:linear-gradient(135deg,#0d2347,#1a3a6b);border-bottom:1px solid rgba(201,168,76,0.3);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.header-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--or);letter-spacing:0.15em;}
+.header-back{color:var(--or-pale);text-decoration:none;font-size:0.85rem;font-family:'Cinzel',serif;letter-spacing:0.1em;}
+
+/* Hero */
+.hero{padding:2rem 1.5rem 1rem;text-align:center;}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--or);letter-spacing:0.1em;margin-bottom:0.5rem;}
+.hero p{font-size:1.05rem;color:rgba(232,208,138,0.7);font-style:italic;max-width:600px;margin:0 auto;}
+.sep{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--or),transparent);margin:1.2rem auto;}
+
+/* Description */
+.description{max-width:700px;margin:0 auto;padding:0 1.5rem 2rem;text-align:center;font-size:1.05rem;line-height:1.75;color:rgba(232,208,138,0.85);}
+
+/* Cards affiche */
+.affiche-section{padding:0 1rem 3rem;}
+.affiche-titre{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.18em;color:var(--or-pale);opacity:0.7;text-align:center;margin-bottom:1.2rem;padding:0 0.5rem;}
+
+.affiche-card{max-width:500px;margin:0 auto 2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.25);border-radius:12px;overflow:hidden;}
+.affiche-card img{width:100%;display:block;}
+.affiche-info{padding:1.2rem;}
+.affiche-pays{font-family:'Cinzel',serif;font-size:0.95rem;color:var(--or);letter-spacing:0.1em;margin-bottom:0.4rem;}
+.affiche-date{font-size:0.8rem;color:rgba(232,208,138,0.5);margin-bottom:0.8rem;}
+.affiche-texte{font-size:0.95rem;line-height:1.7;color:rgba(245,240,232,0.8);}
+
+/* Verset */
+.verset-achaba{background:rgba(13,35,71,0.6);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--or);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin:0 1rem 2rem;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--parchemin);}
+.verset-achaba cite{display:block;text-align:right;font-style:normal;font-size:0.75rem;color:var(--or);margin-top:0.5rem;font-family:'Cinzel',serif;letter-spacing:0.1em;}
+
+/* Vide / à venir */
+.a-venir{text-align:center;padding:2rem 1.5rem;color:rgba(232,208,138,0.35);font-style:italic;font-size:0.9rem;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html" class="header-back">← La Voie</a>
+  <div class="header-title">🤝 ACHABA</div>
+  <div></div>
+</div>
+
+<div class="hero">
+  <h1>Achaba</h1>
+  <p>Solidarité · Entraide · Compassion</p>
+  <div class="sep"></div>
+</div>
+
+<div class="description">
+  <p>L'Achaba est l'expression de notre amour fraternel pour tous ceux qui traversent des moments difficiles. Les Membres de La Voie se tiennent les uns aux côtés des autres — et aux côtés de toute âme qui souffre — avec compassion, respect et fidélité au Dabar Yah.</p>
+</div>
+
+<div class="verset-achaba">
+  « Portez les fardeaux les uns des autres, et vous accomplirez ainsi la Torah du Mashiaḥ. »
+  <cite>📖 Galates 6:2</cite>
+</div>
+
+<div class="affiche-section">
+  <p class="affiche-titre">✦ MESSAGE DE SOLIDARITÉ ✦</p>
+
+  <div class="affiche-card">
+    <img src="achaba-venezuela.jpg" alt="À nos Akhim du Venezuela — Solidarité suite au tremblement de terre du 24 juin 2026"/>
+    <div class="affiche-info">
+      <div class="affiche-pays">🇻🇪 Venezuela</div>
+      <div class="affiche-date">Tremblement de terre — Mercredi 24 juin 2026</div>
+      <div class="affiche-texte">Les Membres de La Voie expriment leur amour et leur solidarité à tous les akhim et akhayot du Venezuela touchés par le séisme du 24 juin 2026. Vous n'êtes pas seuls. Nos cœurs, nos prières et notre soutien vous accompagnent.</div>
+    </div>
+  </div>
+
+  <div class="a-venir">D'autres messages de solidarité seront publiés ici selon les besoins de la qehilah. ✦</div>
+</div>
+
+</body>
+</html>
