@@ -105,10 +105,12 @@ body{background:#0a1628;color:#e8e0d0;font-family:'Roboto',sans-serif;min-height
   <button class="filtre-btn" onclick="filtrer('faible',this)">M &lt; 4.5 🟢</button>
 </div>
 
-<div class="map-section">
-  <div class="map-container">
-    <iframe src="https://earthquake.usgs.gov/earthquakes/map/?extent=-89.99,-360&extent=89.99,360&range=day&magnitude=all&settings=true" title="Carte séismes USGS" loading="lazy"></iframe>
-  </div>
+<!-- Map link -->
+<div style="padding:1rem 1.5rem;margin-bottom:0.5rem;">
+  <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank" rel="noopener"
+     style="display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.9rem 1.5rem;border:1px solid rgba(201,168,76,0.4);border-radius:10px;background:rgba(201,168,76,0.06);color:var(--or-pale);font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.1em;text-decoration:none;transition:background 0.3s;">
+    🗺️ Voir la carte interactive USGS ↗
+  </a>
 </div>
 
 <div class="legende">
