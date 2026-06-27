@@ -1,523 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Miqra Qadosh ~ Shabbath | Les Membres de La Voie</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bleu-nuit: #0d2347;
-      --or: #c9a84c;
-      --or-clair: #e8d08a;
-      --parchemin: #f5f0e8;
-      --parchemin-fonce: #ede5d0;
-      --texte: #1a1a2e;
-      --blanc: #ffffff;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: var(--bleu-nuit);
-      color: var(--parchemin);
-      font-family: 'EB Garamond', Georgia, serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── HEADER ── */
-    .site-header {
-      background: linear-gradient(180deg, #060f1f 0%, var(--bleu-nuit) 100%);
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .site-header a {
-      color: var(--or);
-      text-decoration: none;
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-    .site-header a:hover { opacity: 1; }
-    .site-header span { color: rgba(201,168,76,0.4); font-size: 0.8rem; }
-
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 3rem 1.5rem 2rem;
-      position: relative;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 3rem;
-      background: linear-gradient(180deg, transparent, var(--or));
-    }
-
-    .menorah-icon {
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 1.2rem;
-      filter: drop-shadow(0 0 12px rgba(201,168,76,0.5));
-      animation: lueur 3s ease-in-out infinite alternate;
-    }
-    @keyframes lueur {
-      from { filter: drop-shadow(0 0 8px rgba(201,168,76,0.4)); }
-      to   { filter: drop-shadow(0 0 20px rgba(201,168,76,0.8)); }
-    }
-
-    .hero-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      color: var(--or);
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      opacity: 0.8;
-    }
-
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.6rem, 5vw, 2.4rem);
-      font-weight: 700;
-      color: var(--or-clair);
-      line-height: 1.2;
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.04em;
-    }
-
-    .hero-subtitle {
-      font-family: 'EB Garamond', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: rgba(245,240,232,0.7);
-      margin-bottom: 1.8rem;
-    }
-
-    .divider-or {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--or), transparent);
-      margin: 0 auto 1.8rem;
-    }
-
-    .hero-verse {
-      max-width: 480px;
-      margin: 0 auto;
-      font-style: italic;
-      font-size: 1rem;
-      color: rgba(245,240,232,0.65);
-      line-height: 1.7;
-    }
-    .hero-verse cite {
-      display: block;
-      margin-top: 0.4rem;
-      font-style: normal;
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--or);
-      opacity: 0.7;
-    }
-
-    /* ── PLAYER SECTION ── */
-    .player-section {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 1.2rem 4rem;
-    }
-
-    /* Player card */
-    .player-card {
-      background: linear-gradient(145deg, #0a1c3a 0%, #071429 100%);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-    }
-
-    /* Now playing display */
-    .now-playing {
-      background: linear-gradient(135deg, #060f1f 0%, #0d1f3c 100%);
-      padding: 1.5rem 1.5rem 1.2rem;
-      border-bottom: 1px solid rgba(201,168,76,0.15);
-      text-align: center;
-    }
-    .np-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--or);
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 0.5rem;
-    }
-    .np-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      color: var(--or-clair);
-      font-weight: 600;
-      line-height: 1.4;
-      min-height: 2.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .np-counter {
-      font-family: 'EB Garamond', serif;
-      font-size: 0.85rem;
-      color: rgba(245,240,232,0.4);
-      margin-top: 0.4rem;
-    }
-
-    /* Progress bar */
-    .progress-wrap {
-      padding: 1rem 1.5rem 0;
-    }
-    .progress-bar-bg {
-      height: 3px;
-      background: rgba(201,168,76,0.15);
-      border-radius: 2px;
-      cursor: pointer;
-      position: relative;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--or), var(--or-clair));
-      border-radius: 2px;
-      width: 0%;
-      transition: width 0.5s linear;
-    }
-    .progress-times {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      color: rgba(245,240,232,0.35);
-      margin-top: 0.35rem;
-      font-family: 'EB Garamond', serif;
-    }
-
-    /* Controls */
-    .controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1.2rem 1.5rem;
-    }
-    .btn-ctrl {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: rgba(245,240,232,0.5);
-      font-size: 1.3rem;
-      transition: color 0.2s, transform 0.15s;
-      padding: 0.3rem;
-      line-height: 1;
-    }
-    .btn-ctrl:hover { color: var(--or-clair); transform: scale(1.1); }
-
-    .btn-play-main {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--or) 0%, #a07830 100%);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--bleu-nuit);
-      box-shadow: 0 4px 16px rgba(201,168,76,0.35);
-      transition: transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-play-main:hover {
-      transform: scale(1.06);
-      box-shadow: 0 6px 24px rgba(201,168,76,0.55);
-    }
-    .btn-play-main:active { transform: scale(0.97); }
-
-    /* Playlist */
-    .playlist {
-      border-top: 1px solid rgba(201,168,76,0.12);
-      max-height: 320px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(201,168,76,0.3) transparent;
-    }
-    .playlist::-webkit-scrollbar { width: 4px; }
-    .playlist::-webkit-scrollbar-track { background: transparent; }
-    .playlist::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 2px; }
-
-    .playlist-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.75rem 1.2rem;
-      cursor: pointer;
-      border-bottom: 1px solid rgba(201,168,76,0.06);
-      transition: background 0.2s;
-    }
-    .playlist-item:hover { background: rgba(201,168,76,0.06); }
-    .playlist-item.active {
-      background: rgba(201,168,76,0.1);
-      border-left: 3px solid var(--or);
-    }
-    .playlist-item.active .pi-num { color: var(--or); }
-    .playlist-item.active .pi-name { color: var(--or-clair); }
-
-    .pi-num {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      color: rgba(245,240,232,0.25);
-      min-width: 22px;
-      text-align: right;
-    }
-    .pi-icon {
-      font-size: 0.8rem;
-      min-width: 16px;
-      text-align: center;
-      opacity: 0.6;
-    }
-    .playlist-item.active .pi-icon { opacity: 1; animation: pulse 1.2s ease-in-out infinite; }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
-    .pi-name {
-      font-family: 'EB Garamond', serif;
-      font-size: 0.92rem;
-      color: rgba(245,240,232,0.65);
-      line-height: 1.3;
-      flex: 1;
-    }
-
-    /* Footer note */
-    .player-footer {
-      padding: 0.8rem 1.5rem;
-      border-top: 1px solid rgba(201,168,76,0.1);
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(245,240,232,0.3);
-      font-family: 'EB Garamond', serif;
-      font-style: italic;
-    }
-
-    /* ── BACK LINK ── */
-    .back-link {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .back-link a {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      color: var(--or);
-      text-decoration: none;
-      opacity: 0.6;
-      transition: opacity 0.2s;
-    }
-    .back-link a:hover { opacity: 1; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 480px) {
-      .hero { padding: 2.5rem 1rem 1.5rem; }
-      .controls { gap: 1.2rem; }
-      .btn-play-main { width: 52px; height: 52px; font-size: 1.3rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miqra Qadosh — Shabbath</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+  :root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8c96a;--parchemin:#f5efe0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
+  .container{max-width:480px;width:100%;text-align:center}
+  .sep{color:var(--or);font-size:1.2rem;letter-spacing:.3em;margin-bottom:.5rem;font-family:'Cinzel',serif}
+  h1{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;color:var(--or);letter-spacing:.05em;margin-bottom:.3rem}
+  .subtitle{font-style:italic;color:var(--or-clair);font-size:1rem;margin-bottom:2.5rem;opacity:.85}
+  .player-card{background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:2rem 1.5rem;margin-bottom:1.5rem}
+  .track-number{font-family:'Cinzel',serif;font-size:.75rem;color:var(--or);opacity:.6;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+  .track-name{font-size:1.15rem;color:var(--parchemin);line-height:1.4;min-height:2.5em;margin-bottom:1.5rem;padding:0 .5rem}
+  .progress-wrap{background:rgba(255,255,255,.1);border-radius:99px;height:4px;margin-bottom:.5rem;cursor:pointer}
+  .progress-bar{background:var(--or);height:100%;border-radius:99px;width:0%;transition:width .5s linear;pointer-events:none}
+  .time-display{font-size:.8rem;opacity:.5;display:flex;justify-content:space-between;margin-bottom:1.5rem}
+  .controls{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
+  .btn-skip{background:none;border:none;color:var(--parchemin);opacity:.6;cursor:pointer;font-size:1.4rem;padding:.5rem;transition:opacity .2s}
+  .btn-skip:hover{opacity:1}.btn-skip:disabled{opacity:.2;cursor:default}
+  .btn-play{width:72px;height:72px;border-radius:50%;background:var(--or);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s;box-shadow:0 4px 20px rgba(201,168,76,.35)}
+  .btn-play:hover{background:var(--or-clair);transform:scale(1.05)}.btn-play:active{transform:scale(.97)}
+  .play-icon{color:var(--bleu-nuit);font-size:2rem;padding-left:3px}
+  .playlist-title{font-family:'Cinzel',serif;font-size:.7rem;color:var(--or);letter-spacing:.2em;opacity:.6;text-transform:uppercase;margin-bottom:.8rem;text-align:center}
+  .track-item{display:flex;align-items:center;gap:.75rem;padding:.45rem .5rem;border-radius:8px;cursor:pointer;transition:background .15s;font-size:.88rem;color:rgba(245,239,224,.55);text-align:left}
+  .track-item:hover{background:rgba(255,255,255,.05);color:var(--parchemin)}
+  .track-item.active{background:rgba(201,168,76,.12);color:var(--or-clair)}
+  .track-item.played{color:rgba(245,239,224,.3)}
+  .track-dot{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,.3);flex-shrink:0}
+  .track-item.active .track-dot{background:var(--or)}
+  .footer-note{margin-top:2rem;font-size:.78rem;opacity:.35;font-style:italic}
+</style>
 </head>
 <body>
-
-  <!-- Header nav -->
-  <header class="site-header">
-    <a href="index.html">⬅ Accueil</a>
-    <span>/</span>
-    <a href="rassemblements.html">Réunions</a>
-    <span>/</span>
-    <a href="#">Miqra Shabbath</a>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <span class="menorah-icon">🕯️</span>
-    <p class="hero-eyebrow">ʿAbodah de la Qehilah</p>
-    <h1 class="hero-title">Miqra Qadosh<br><span style="font-weight:400;font-size:0.75em;opacity:0.85;">~ Shabbath ~</span></h1>
-    <p class="hero-subtitle">Sèvis adorasyon Shabbath</p>
-    <div class="divider-or"></div>
-    <blockquote class="hero-verse">
-      « Si ou retouche pye w pou pa fè volonte w nan jou Shabbath mwen an, epi ou rele jou Shabbath la yon plezi... »
-      <cite>Yeshayah 58:13</cite>
-    </blockquote>
-  </section>
-
-  <!-- Player -->
-  <section class="player-section">
-    <div class="player-card">
-
-      <!-- Now playing -->
-      <div class="now-playing">
-        <p class="np-label">▸ Kounye a ap jwe</p>
-        <p class="np-title" id="npTitle">Chwazi kote pou kòmanse oswa peze ▶</p>
-        <p class="np-counter" id="npCounter">— / 19</p>
-      </div>
-
-      <!-- Progress -->
-      <div class="progress-wrap">
-        <div class="progress-bar-bg" id="progressBg">
-          <div class="progress-bar-fill" id="progressFill"></div>
-        </div>
-        <div class="progress-times">
-          <span id="timeElapsed">0:00</span>
-          <span id="timeDuration">–:––</span>
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <div class="controls">
-        <button class="btn-ctrl" id="btnPrev" title="Seksyon anvan" onclick="prevTrack()">⏮</button>
-        <button class="btn-play-main" id="btnPlay" onclick="togglePlay()">▶</button>
-        <button class="btn-ctrl" id="btnNext" title="Seksyon pwochen" onclick="nextTrack()">⏭</button>
-      </div>
-
-      <!-- Playlist -->
-      <div class="playlist" id="playlist"></div>
-
-      <div class="player-footer">
-        Sèvis la jwe nan lòd — Yahawah resevwa ʿAbodah nou an 🕯️
-      </div>
+<div class="container">
+  <div class="sep">✦ ✦ ✦</div>
+  <h1>Miqra Qadosh</h1>
+  <div class="subtitle">Shabbath — Service d'ʿAbodah</div>
+  <div class="player-card">
+    <div class="track-number" id="trackNum">— / 19</div>
+    <div class="track-name" id="trackName">Appuyez sur ▶ pour commencer le service</div>
+    <div class="progress-wrap" id="progressWrap"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="time-display"><span id="timeCurrent">0:00</span><span id="timeTotal">0:00</span></div>
+    <div class="controls">
+      <button class="btn-skip" id="btnPrev" onclick="prevTrack()" disabled>&#9664;&#9664;</button>
+      <button class="btn-play" id="btnPlay" onclick="togglePlay()"><span class="play-icon" id="playIcon">&#9654;</span></button>
+      <button class="btn-skip" id="btnNext" onclick="nextTrack()">&#9654;&#9654;</button>
     </div>
-
-    <div class="back-link">
-      <a href="rassemblements.html">↩ Retounen nan Réunions yo</a>
-    </div>
-  </section>
-
-  <!-- Hidden audio element -->
-  <audio id="audioPlayer" preload="none"></audio>
-
-  <script>
-    const tracks = [
-      { name: "Propos d'ouverture du Shabbath",                          icon: "🕯️", file: "audio/shabbath/Propos_d_ouverture_du_Shabbat_.mp3" },
-      { name: "An rasanble ansanm",                                       icon: "🤝", file: "audio/shabbath/An_rasanble_ansanm.mp3" },
-      { name: "Remerciement — Chirat Tehillah d'ouverture",               icon: "🎵", file: "audio/shabbath/Remerciement_pour_le_Chirat_Tehillah_d_ouverture_.mp3" },
-      { name: "Téfilah d'ouverture du Shabbath",                          icon: "🙏", file: "audio/shabbath/Téfilah_d_ouverture_du_Shabbath.mp3" },
-      { name: "Remerciement — Téfilah & invitation lecture Ketubim Qadoshim", icon: "📖", file: "audio/shabbath/Remerciement_pour_la_Téfilah_et_invitation_à_la_lecture_des_Ketoubim_Qadoshim_.mp3" },
-      { name: "Lecture — Mishlé 3 : 3 à 8",                              icon: "📜", file: "audio/shabbath/Lecture_de_Mishlé_3__3_a_8.mp3" },
-      { name: "Lecture — Yaḥuānān 13 : 17",                              icon: "📜", file: "audio/shabbath/Lecture_de_Yaḥuānān_13_verset_17.mp3" },
-      { name: "Transition — Les Rappels de Yah",                          icon: "🔔", file: "audio/shabbath/Transition_vers_les_rappels_de_Yah5_v2.mp3" },
-      { name: "Introduction — Les Rappels de Yah",                        icon: "📣", file: "audio/shabbath/Introduction___Les_Rappels_de_Yah_.mp3" },
-      { name: "Les réponses aux questions",                                icon: "💬", file: "audio/shabbath/Les_réponses_aux_questions___1_.mp3" },
-      { name: "Transition — Chirat de méditation",                        icon: "🎵", file: "audio/shabbath/Transition_vers_le_chirat_de_méditation_.mp3" },
-      { name: "Rapèl Yah yo fèm",                                         icon: "🎶", file: "audio/shabbath/Rapèl_Yah_yo_fèm.mp3" },
-      { name: "Transition — Enseignement principal",                       icon: "🔔", file: "audio/shabbath/Transition_vers_l_eEnseignement_principal_.mp3" },
-      { name: "La Confiance en Yahawah — obéissance au Dabar",            icon: "✨", file: "audio/shabbath/La_Confiance_en_Yahawah_se_manifeste_par_l_obéissance_au_Dabar.mp3" },
-      { name: "Transition — Chirat de clôture",                           icon: "🎵", file: "audio/shabbath/Transition_vers_le_Chirat_de_clôture_.mp3" },
-      { name: "Nou pa sèlman oditè",                                       icon: "🎶", file: "audio/shabbath/Nou_pa_sèlman_oditè.mp3" },
-      { name: "Transition — Téfilah de clôture",                          icon: "🔔", file: "audio/shabbath/Transition_vers_la_Téfilah_de_clôture_.mp3" },
-      { name: "Téfilah de clôture",                                        icon: "🙏", file: "audio/shabbath/Téfilah_de_clôture__1_.mp3" },
-      { name: "Communications & clôture de l'ʿAbodah",                    icon: "🕯️", file: "audio/shabbath/Communications_et_clôture_de_l_Abodah.mp3" },
-    ];
-
-    const audio    = document.getElementById('audioPlayer');
-    const btnPlay  = document.getElementById('btnPlay');
-    const npTitle  = document.getElementById('npTitle');
-    const npCounter= document.getElementById('npCounter');
-    const progFill = document.getElementById('progressFill');
-    const timeEl   = document.getElementById('timeElapsed');
-    const timeDur  = document.getElementById('timeDuration');
-    const playlist = document.getElementById('playlist');
-
-    let current = -1;
-    let isPlaying = false;
-
-    // Build playlist UI
-    tracks.forEach((t, i) => {
-      const item = document.createElement('div');
-      item.className = 'playlist-item';
-      item.id = 'pi-' + i;
-      item.innerHTML = `
-        <span class="pi-num">${String(i+1).padStart(2,'0')}</span>
-        <span class="pi-icon">${t.icon}</span>
-        <span class="pi-name">${t.name}</span>
-      `;
-      item.onclick = () => loadTrack(i, true);
-      playlist.appendChild(item);
-    });
-
-    function loadTrack(idx, autoplay = false) {
-      if (current >= 0) {
-        document.getElementById('pi-' + current)?.classList.remove('active');
-      }
-      current = idx;
-      const t = tracks[idx];
-      audio.src = t.file;
-      audio.load();
-      npTitle.textContent = t.name;
-      npCounter.textContent = `${idx + 1} / ${tracks.length}`;
-      document.getElementById('pi-' + idx)?.classList.add('active');
-      // scroll into view
-      document.getElementById('pi-' + idx)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      progFill.style.width = '0%';
-      timeEl.textContent = '0:00';
-      timeDur.textContent = '–:––';
-      if (autoplay) { audio.play(); isPlaying = true; btnPlay.textContent = '⏸'; }
-    }
-
-    function togglePlay() {
-      if (current === -1) { loadTrack(0, true); return; }
-      if (isPlaying) { audio.pause(); isPlaying = false; btnPlay.textContent = '▶'; }
-      else { audio.play(); isPlaying = true; btnPlay.textContent = '⏸'; }
-    }
-
-    function prevTrack() {
-      if (current <= 0) return;
-      loadTrack(current - 1, isPlaying);
-    }
-
-    function nextTrack() {
-      if (current >= tracks.length - 1) return;
-      loadTrack(current + 1, isPlaying);
-    }
-
-    // Auto-advance
-    audio.addEventListener('ended', () => {
-      if (current < tracks.length - 1) { loadTrack(current + 1, true); }
-      else { isPlaying = false; btnPlay.textContent = '▶'; }
-    });
-
-    // Progress
-    audio.addEventListener('timeupdate', () => {
-      if (!audio.duration) return;
-      const pct = (audio.currentTime / audio.duration) * 100;
-      progFill.style.width = pct + '%';
-      timeEl.textContent = fmt(audio.currentTime);
-      timeDur.textContent = fmt(audio.duration);
-    });
-
-    // Click progress bar
-    document.getElementById('progressBg').addEventListener('click', function(e) {
-      if (!audio.duration) return;
-      const rect = this.getBoundingClientRect();
-      const pct = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pct * audio.duration;
-    });
-
-    function fmt(s) {
-      const m = Math.floor(s / 60);
-      const sec = Math.floor(s % 60);
-      return m + ':' + String(sec).padStart(2, '0');
-    }
-  </script>
+  </div>
+  <div><div class="playlist-title">Programme du service</div><div id="playlist"></div></div>
+  <div class="footer-note">Les Membres de La Voie — lavoie.world</div>
+</div>
+<audio id="audioPlayer" preload="auto"></audio>
+<script>
+const tracks=[
+  {name:"Propos d'ouverture du Shabbath",src:"audio/shabbath/01.mp3"},
+  {name:"An rasanble ansanm",src:"audio/shabbath/02.mp3"},
+  {name:"Remerciement pour le Chirat Tehillah d'ouverture",src:"audio/shabbath/03.mp3"},
+  {name:"Téfilah d'ouverture du Shabbath",src:"audio/shabbath/04.mp3"},
+  {name:"Invitation à la lecture des Ketubim Qadoshim",src:"audio/shabbath/05.mp3"},
+  {name:"Lecture de Mishlé 3:3-8",src:"audio/shabbath/06.mp3"},
+  {name:"Lecture de Yaḥuānān 13:17",src:"audio/shabbath/07.mp3"},
+  {name:"Transition vers les Rappels de Yah",src:"audio/shabbath/08.mp3"},
+  {name:"Introduction — Les Rappels de Yah",src:"audio/shabbath/09.mp3"},
+  {name:"Rapèl Yah yo fèm",src:"audio/shabbath/10.mp3"},
+  {name:"Transition vers le Chirat de méditation",src:"audio/shabbath/11.mp3"},
+  {name:"Transition vers l'enseignement principal",src:"audio/shabbath/12.mp3"},
+  {name:"La Confiance en Yahawah — obéissance au Dabar",src:"audio/shabbath/13.mp3"},
+  {name:"Nou pa sèlman oditè",src:"audio/shabbath/14.mp3"},
+  {name:"Transition vers le Chirat de clôture",src:"audio/shabbath/15.mp3"},
+  {name:"Transition vers la Téfilah de clôture",src:"audio/shabbath/16.mp3"},
+  {name:"Téfilah de clôture",src:"audio/shabbath/17.mp3"},
+  {name:"Les réponses aux questions",src:"audio/shabbath/18.mp3"},
+  {name:"Communications et clôture de l'ʿAbodah",src:"audio/shabbath/19.mp3"}
+];
+let current=-1;
+const audio=document.getElementById('audioPlayer');
+function fmt(s){if(isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0')}
+function buildPlaylist(){const el=document.getElementById('playlist');el.innerHTML='';tracks.forEach((t,i)=>{const div=document.createElement('div');div.className='track-item';div.id='ti-'+i;div.innerHTML='<div class="track-dot"></div><span>'+t.name+'</span>';div.onclick=()=>loadTrack(i);el.appendChild(div)})}
+function loadTrack(idx){if(idx<0||idx>=tracks.length)return;if(current>=0){const p=document.getElementById('ti-'+current);if(p){p.classList.remove('active');p.classList.add('played')}}current=idx;audio.src=tracks[idx].src;document.getElementById('trackNum').textContent=(idx+1)+' / '+tracks.length;document.getElementById('trackName').textContent=tracks[idx].name;document.getElementById('progressBar').style.width='0%';document.getElementById('timeCurrent').textContent='0:00';document.getElementById('timeTotal').textContent='0:00';document.getElementById('btnPrev').disabled=idx===0;document.getElementById('btnNext').disabled=idx===tracks.length-1;const ti=document.getElementById('ti-'+idx);if(ti){ti.classList.add('active');ti.classList.remove('played')}audio.play().then(()=>{document.getElementById('playIcon').innerHTML='&#10074;&#10074;'}).catch(()=>{})}
+function togglePlay(){if(current===-1){loadTrack(0);return}if(audio.paused){audio.play();document.getElementById('playIcon').innerHTML='&#10074;&#10074;'}else{audio.pause();document.getElementById('playIcon').innerHTML='&#9654;'}}
+function nextTrack(){if(current<tracks.length-1)loadTrack(current+1)}
+function prevTrack(){if(current>0)loadTrack(current-1)}
+audio.addEventListener('timeupdate',()=>{if(audio.duration){document.getElementById('progressBar').style.width=(audio.currentTime/audio.duration*100)+'%';document.getElementById('timeCurrent').textContent=fmt(audio.currentTime);document.getElementById('timeTotal').textContent=fmt(audio.duration)}});
+audio.addEventListener('ended',()=>{if(current<tracks.length-1){loadTrack(current+1)}else{document.getElementById('playIcon').innerHTML='&#9654;';document.getElementById('trackName').textContent='Service terminé — Shabbath Shalom ✦'}});
+document.getElementById('progressWrap').addEventListener('click',e=>{if(!audio.duration)return;const rect=e.currentTarget.getBoundingClientRect();audio.currentTime=((e.clientX-rect.left)/rect.width)*audio.duration});
+buildPlaylist();
+</script>
 </body>
 </html>
