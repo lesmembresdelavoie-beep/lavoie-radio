@@ -602,11 +602,11 @@
     <div id="teks-jounen-wrap" style="background:linear-gradient(180deg,rgba(13,35,71,0.98) 0%,rgba(6,13,26,0.98) 100%);border-bottom:1px solid rgba(201,168,76,0.15);padding:1.6rem 1.4rem 1.4rem;text-align:center;position:relative">
       <a href="tèks-pou-jounen-an.html" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.8rem;text-decoration:none;padding:0.4rem 0.8rem;border-radius:2px;transition:background 0.2s" onmouseover="this.style.background='rgba(201,168,76,0.08)'" onmouseout="this.style.background='transparent'">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span id="tj-dat" style="font-family:'Cinzel',serif;font-size:1.1rem;color:#e8cb7a;letter-spacing:0.1em;font-weight:600">Yôm Shéni · 21 Siban</span>
+        <span id="tj-dat" style="font-family:'Cinzel',serif;font-size:1.1rem;color:#e8cb7a;letter-spacing:0.1em;font-weight:600">Yôm Rishon · 12 Rebi'i</span>
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.8"><polyline points="9,18 15,12 9,6"/></svg>
       </a>
-      <p id="tj-texte" style="font-style:italic;font-size:1.05rem;line-height:1.7;color:#f7edcc;max-width:600px;margin:0 auto 0.5rem;opacity:0.92">« Se moun ki konn limit yo ki gen bon konprann. »</p>
-      <p id="tj-ref" style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;color:#c9a84c;text-transform:uppercase;opacity:0.75">— Mishlé 11:2</p>
+      <p id="tj-texte" style="font-style:italic;font-size:1.05rem;line-height:1.7;color:#f7edcc;max-width:600px;margin:0 auto 0.5rem;opacity:0.92">« Mwen te montre nou nan tout bagay se pou nou travay di menm jan an pou nou ede moun ki fèb yo. »</p>
+      <p id="tj-ref" style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;color:#c9a84c;text-transform:uppercase;opacity:0.75">— Maʿasei 20:35</p>
       <a href="teks-jounen-anime.html" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.8rem;padding:0.45rem 1.1rem;border:1px solid rgba(201,168,76,0.4);border-radius:999px;background:rgba(201,168,76,0.08);color:#e8cb7a;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.12em;text-decoration:none;transition:background 0.3s;" onmouseover="this.style.background='rgba(201,168,76,0.18)'" onmouseout="this.style.background='rgba(201,168,76,0.08)'">✦ Meditasyon animée</a>
     </div>
 
@@ -992,7 +992,7 @@
       }
       if(jounen) break;
     }
-    if(!jounen){jounen=liste[0].jours[20];nomMois=liste[0].mois;}
+    if(!jounen) return;
 
     const jSem=['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ha-hakhanah','Shabbat'];
     const datRef=new Date(jounen.soir_fin+'T12:00:00');
