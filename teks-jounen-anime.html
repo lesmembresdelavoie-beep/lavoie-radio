@@ -238,6 +238,12 @@ function demarrer(){
   const av=document.getElementById('audio-vwa');
   if(av.src && av.src!==window.location.href){
     av.load();
+    // Bese mizik background lè vwa ap pale, releve l apre
+    av.addEventListener('play', ()=>{ if(muzikOn) audio.volume=0.04; });
+    av.addEventListener('ended', ()=>{ if(muzikOn){ let v=0.04; const fi=setInterval(()=>{v=Math.min(0.12,v+0.003);audio.volume=v;if(v>=0.12)clearInterval(fi);},100);} vwaOn=false; document.getElementById('btn-vwa').textContent='🎙'; });
+    av.addEventListener('pause', ()=>{ if(muzikOn && audio.volume<0.09){ let v=audio.volume; const fi=setInterval(()=>{v=Math.min(0.12,v+0.003);audio.volume=v;if(v>=0.12)clearInterval(fi);},100);} });
+    // Android duke — reprann mizik la si l sispann
+    audio.addEventListener('pause', ()=>{ if(muzikOn) setTimeout(()=>audio.play().catch(e=>{}), 200); });
     setTimeout(()=>{
       av.play().then(()=>{
         vwaOn=true;
