@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gouvernance — La Voie Assembly, Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bleu-nuit: #0d2347;
+  --bleu-mid: #122d57;
+  --or: #c9a84c;
+  --or-clair: #e8cb7a;
+  --parchemin: #f5efe0;
+  --argent: #c8d0dc;
+  --vert-direction: #1a5c3a;
+  --bleu-direction: #1a3d6b;
+  --or-direction: #7a5c10;
+  --violet-direction: #4a2070;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bleu-nuit);
+  color: var(--parchemin);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* ── HEADER ── */
+.page-header {
+  background: linear-gradient(to bottom, #060f1e, var(--bleu-nuit));
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+  padding: 3.5rem 1.5rem 2.5rem;
+  text-align: center;
+}
+.page-header .eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: var(--or);
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.page-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--or);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+.page-header .sub {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  color: var(--argent);
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+}
+.sep-or {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--or), transparent);
+  margin: 1.5rem auto 0;
+}
+
+/* ── NAV RETOUR ── */
+.nav-retour {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.nav-retour a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: var(--or);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.nav-retour a:hover { opacity: 1; }
+
+/* ── CONTENU ── */
+.contenu {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* Sections */
+.section { margin-bottom: 4rem; }
+.section-titre {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: var(--or);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.section p {
+  color: rgba(245,239,224,0.88);
+  margin-bottom: 1rem;
+  max-width: 720px;
+}
+
+/* ── INTRO BADGE ── */
+.badge-institution {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 999px;
+  padding: 0.4rem 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  color: var(--or-clair);
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+.badge-institution::before { content: "⚖"; font-size: 0.85rem; }
+
+/* ── ORGANIGRAMME ── */
+.organigramme-wrap {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.organigramme-wrap img {
+  width: 100%;
+  max-width: 780px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+.organigramme-caption {
+  font-size: 0.82rem;
+  color: var(--argent);
+  opacity: 0.6;
+  font-style: italic;
+  margin-top: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── TABLEAU DIRIGEANTS ── */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+thead tr {
+  background: rgba(201,168,76,0.12);
+}
+thead th {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--or);
+  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+tbody tr:hover { background: rgba(201,168,76,0.05); }
+tbody td {
+  padding: 0.85rem 1.2rem;
+  color: rgba(245,239,224,0.85);
+}
+tbody td:first-child {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  color: var(--or-clair);
+  letter-spacing: 0.08em;
+}
+.badge-nomme {
+  display: inline-block;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.82rem;
+  color: var(--or-clair);
+}
+.badge-designer {
+  display: inline-block;
+  background: rgba(200,208,220,0.08);
+  border: 1px solid rgba(200,208,220,0.2);
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.78rem;
+  color: var(--argent);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* ── DIRECTIONS ── */
+.directions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.direction-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 10px;
+  padding: 1.4rem 1.2rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.direction-card:hover {
+  background: rgba(201,168,76,0.06);
+  border-color: rgba(201,168,76,0.3);
+}
+.direction-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.direction-titre {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--or);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.direction-liste {
+  list-style: none;
+  padding: 0;
+}
+.direction-liste li {
+  font-size: 0.85rem;
+  color: rgba(245,239,224,0.7);
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.45;
+}
+.direction-liste li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  opacity: 0.5;
+}
+
+/* ── MISSION ── */
+.mission-bloc {
+  background: rgba(201,168,76,0.06);
+  border-left: 2px solid var(--or);
+  border-radius: 0 8px 8px 0;
+  padding: 1.2rem 1.5rem;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--or-clair);
+  margin-top: 0.5rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--argent);
+  opacity: 0.45;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+  .directions-grid { grid-template-columns: 1fr 1fr; }
+  .contenu { padding: 2rem 1rem 4rem; }
+}
+@media (max-width: 400px) {
+  .directions-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav-retour">
+  <a href="index.html">← Retour à l'accueil</a>
+</div>
+
+<header class="page-header">
+  <div class="eyebrow">La Voie Assembly, Inc. · Indiana, USA</div>
+  <h1>Gouvernance</h1>
+  <div class="sub">Organisation officielle · Structure de direction</div>
+  <div class="sep-or"></div>
+</header>
+
+<main class="contenu">
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="badge-institution">Organisation légalement constituée · État de l'Indiana</div>
+    <p>
+      La Voie Assembly, Inc. est une organisation officiellement constituée dans l'État de l'Indiana (États-Unis d'Amérique). Elle assure le cadre légal, institutionnel et administratif de la communauté des Membres de La Voie, en soutenant sa mission d'enseignement, de rassemblement et de service conformément aux principes des Ketubim Qadoshim.
+    </p>
+    <p>
+      La gouvernance de l'organisation repose sur un Conseil de direction composé de quatre fonctions dirigeantes, assisté de quatre directions opérationnelles couvrant l'ensemble des activités de la communauté.
+    </p>
+  </section>
+
+  <!-- ORGANIGRAMME -->
+  <section class="section">
+    <h2 class="section-titre">Organigramme du Conseil de direction</h2>
+    <div class="organigramme-wrap">
+      <img src="organigramme-conseil.jpg" alt="Organigramme du Conseil de direction — La Voie Assembly, Inc."/>
+      <p class="organigramme-caption">La Voie Assembly, Inc. — Conseil de direction et directions opérationnelles</p>
+    </div>
+  </section>
+
+  <!-- DIRIGEANTS -->
+  <section class="section">
+    <h2 class="section-titre">Composition actuelle du Conseil de direction</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Fonction</th>
+            <th>Titulaire</th>
+            <th>Rôle principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Président</td>
+            <td><span class="badge-nomme">Jean Wagner GUILLAUME</span></td>
+            <td>Représentation légale, vision et supervision globale</td>
+          </tr>
+          <tr>
+            <td>Vice-président</td>
+            <td><span class="badge-designer">À désigner</span></td>
+            <td>Assistance au Président, supervision des projets spéciaux</td>
+          </tr>
+          <tr>
+            <td>Secrétaire</td>
+            <td><span class="badge-designer">À désigner</span></td>
+            <td>Procès-verbaux, registres, conformité légale</td>
+          </tr>
+          <tr>
+            <td>Trésorier</td>
+            <td><span class="badge-designer">À désigner</span></td>
+            <td>Comptabilité, budget, rapports financiers</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DIRECTIONS -->
+  <section class="section">
+    <h2 class="section-titre">Directions opérationnelles</h2>
+    <div class="directions-grid">
+
+      <div class="direction-card">
+        <span class="direction-icon">📖</span>
+        <div class="direction-titre">Direction de l'Enseignement</div>
+        <ul class="direction-liste">
+          <li>Développement et diffusion des enseignements</li>
+          <li>Programme des rencontres et formations</li>
+          <li>Discipulat et formation des Tal'midim</li>
+          <li>Ressources pédagogiques</li>
+        </ul>
+      </div>
+
+      <div class="direction-card">
+        <span class="direction-icon">📡</span>
+        <div class="direction-titre">Direction des Médias</div>
+        <ul class="direction-liste">
+          <li>La Voie Radio</li>
+          <li>VR-TV</li>
+          <li>lavoie.world (site web)</li>
+          <li>Réseaux sociaux</li>
+          <li>Production de contenus</li>
+          <li>Publications et communications</li>
+        </ul>
+      </div>
+
+      <div class="direction-card">
+        <span class="direction-icon">🗂</span>
+        <div class="direction-titre">Direction Administrative</div>
+        <ul class="direction-liste">
+          <li>Gestion administrative générale</li>
+          <li>Correspondance</li>
+          <li>Ressources humaines</li>
+          <li>Organisation interne</li>
+          <li>Gestion des équipements et infrastructures</li>
+        </ul>
+      </div>
+
+      <div class="direction-card">
+        <span class="direction-icon">🤝</span>
+        <div class="direction-titre">Direction des Œuvres sociales</div>
+        <ul class="direction-liste">
+          <li>Assistance aux personnes dans le besoin</li>
+          <li>Coordination des actions de solidarité</li>
+          <li>Gestion des projets humanitaires</li>
+          <li>Partenariats et soutien communautaire</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section">
+    <h2 class="section-titre">Mission de l'organisation</h2>
+    <div class="mission-bloc">
+      « Annoncer la Vérité, Élever des disciples, Servir avec amour. »
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  La Voie Assembly, Inc. · Organisation légalement constituée · Indiana, USA · lavoie.world
+</footer>
+
+
+<div id="acces-gate" style="position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#060f1e 0%,#0d2347 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
+  <div style="text-align:center;max-width:380px;width:100%;">
+    <div style="font-family:'Cinzel',serif;font-size:1rem;color:#c9a84c;letter-spacing:0.3em;margin-bottom:0.5rem;">✦ LA VOIE ASSEMBLY ✦</div>
+    <h2 style="font-family:'Cinzel',serif;font-size:1.4rem;color:#f5efe0;margin-bottom:0.4rem;font-weight:600;">Accès restreint</h2>
+    <p style="font-family:'EB Garamond',serif;font-size:0.95rem;color:rgba(200,208,220,0.65);margin-bottom:2rem;font-style:italic;">Document institutionnel — membres du Conseil uniquement</p>
+    <div style="position:relative;margin-bottom:1rem;">
+      <span style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.1rem;">🔑</span>
+      <input id="kle-input" type="password" placeholder="Clé d'accès"
+        style="width:100%;padding:0.85rem 1rem 0.85rem 2.8rem;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.35);border-radius:8px;color:#f5efe0;font-family:'EB Garamond',serif;font-size:1rem;outline:none;letter-spacing:0.05em;"
+        onkeydown="if(event.key==='Enter')verifye()"/>
+    </div>
+    <div id="kle-erè" style="color:#e07070;font-size:0.85rem;margin-bottom:0.75rem;min-height:1.2em;font-style:italic;"></div>
+    <button onclick="verifye()"
+      style="width:100%;padding:0.85rem;background:linear-gradient(135deg,#c9a84c,#a07830);border:none;border-radius:8px;color:#0d2347;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.15em;cursor:pointer;font-weight:700;transition:opacity 0.2s;"
+      onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      ENTRER
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Check si deja otorize nan sesyon an
+  if(sessionStorage.getItem('lva-acces')==='ok'){
+    document.getElementById('acces-gate').style.display='none';
+  }
+})();
+function verifye(){
+  const kle=document.getElementById('kle-input').value;
+  const h=Array.from(kle).reduce((a,c)=>Math.imul(31,a)+c.charCodeAt(0)|0,0);
+  if(h===1166165311){
+    sessionStorage.setItem('lva-acces','ok');
+    const g=document.getElementById('acces-gate');
+    g.style.transition='opacity 0.6s';g.style.opacity='0';
+    setTimeout(()=>g.style.display='none',650);
+  } else {
+    const e=document.getElementById('kle-erè');
+    e.textContent='Clé incorrecte. Accès refusé.';
+    document.getElementById('kle-input').value='';
+    document.getElementById('kle-input').focus();
+    setTimeout(()=>e.textContent='',3000);
+  }
+}
+</script>
+</body>
+</html>
