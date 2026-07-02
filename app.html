@@ -555,11 +555,21 @@ document.getElementById('btn-menu').addEventListener('click', () => {
 function fermerMenu(){ tiroir.classList.remove('ouvert'); voile.classList.remove('ouvert'); }
 
 /* ================== TÈKS POU JOUNEN AN ==================
-   Li pran vrè tèks la nan teks-data.js (menm lojik ak
-   teks-jounen-anime.html : jou a chanje a 20:30).        */
-function jounenJodiA(){
-  if (typeof TEKS_DATA === 'undefined') return null;
-  const liste = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
+   Sous prensipal: done yo ANNDAN teks-jounen-anime.html
+   (kote B'neiYah mete yo ajou). Si sa pa mache: teks-data.js,
+   answit CONFIG. Jou a chanje a 20:30, menm règ ak sit la.  */
+async function chajeDoneTeks(){
+  try {
+    const r = await fetch('teks-jounen-anime.html', {cache:'no-store'});
+    const t = await r.text();
+    const m = t.match(/var\s+TEKS_DATA\s*=\s*(\[[\s\S]*?\}\s*\]\s*\}\s*\]);/);
+    if (m) return JSON.parse(m[1]);
+  } catch(e) {}
+  return (typeof TEKS_DATA !== 'undefined') ? TEKS_DATA : null;
+}
+function jounenJodiA(donnees){
+  if (!donnees) return null;
+  const liste = Array.isArray(donnees) ? donnees : [donnees];
   const now = new Date();
   const apSol = now.getHours()*60 + now.getMinutes() >= 20*60 + 30;
   const pad = n => String(n).padStart(2,'0');
@@ -572,8 +582,9 @@ function jounenJodiA(){
   }
   return null;
 }
-(function(){
-  const t = jounenJodiA();
+(async function(){
+  const donnees = await chajeDoneTeks();
+  const t = jounenJodiA(donnees);
   if (t) {
     document.getElementById('teks-citation').textContent = t.jounen.texte_kw || t.jounen.texte || CONFIG.teks.citation;
     document.getElementById('teks-ref').textContent = t.jounen.ref + " · " + t.jounen.jour + " " + t.mois;
