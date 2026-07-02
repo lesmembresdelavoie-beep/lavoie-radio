@@ -349,6 +349,7 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
       <input type="range" id="volume" min="0" max="1" step="0.01" value="0.85">
     </div>
+    <p class="note-flux"><a id="lyen-paj-radio" href="#" target="_blank" rel="noopener" style="color:var(--or);text-decoration:none">Louvri paj piblik radyo a ↗</a></p>
     <p class="note-flux" id="note-flux" style="display:none">Lyen radyo a poko konfigire. Kole lyen Caster.fm la nan <b>CONFIG.fluxRadio</b> anlè fichye a.</p>
   </div>
   <audio id="lecteur" preload="none"></audio>
@@ -507,7 +508,10 @@ const CONFIG = {
   fluxRadio: "https://radio.lavoie.world/listen/httpsyoutube.comlavoie033/radio.mp3",
 
   /* API AzuraCast "Now Playing" — pou afiche emisyon k ap jwe a otomatikman */
-  apiRadio: "https://radio.lavoie.world/api/nowplaying/1",
+  apiRadio: "https://radio.lavoie.world/api/nowplaying/httpsyoutube.comlavoie033",
+
+  /* Paj piblik radyo a (player AzuraCast) — pòt sekou si app la pa ka jwe */
+  pajRadio: "https://radio.lavoie.world/public/httpsyoutube.comlavoie033",
 
   /* Tèks Pou Jounen An (afiche sou Akèy la) */
   teks: {
@@ -633,7 +637,7 @@ btnLecture.addEventListener('click', async () => {
   } else {
     lecteur.src = CONFIG.fluxRadio;
     try { await lecteur.play(); majBoutonRadio(true); }
-    catch(e){ document.getElementById('note-flux').textContent = "Nou pa t ka louvri radyo a. Verifye estasyon an ap difize sou radio.lavoie.world, epi eseye ankò."; document.getElementById('note-flux').style.display='block'; }
+    catch(e){ const n=document.getElementById('note-flux'); n.innerHTML = 'Nou pa t ka jwe radyo a isit la. <a href="'+CONFIG.pajRadio+'" target="_blank" rel="noopener">Louvri paj radyo a dirèkteman ↗</a>'; n.style.display='block'; }
   }
 });
 function majBoutonRadio(actif){
@@ -679,6 +683,7 @@ async function majEmisyon(){
 }
 majEmisyon();
 setInterval(majEmisyon, 20000);
+document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
 
 /* ================== KALANDRIYE ================== */
 (function(){
