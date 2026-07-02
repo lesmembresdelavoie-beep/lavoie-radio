@@ -500,9 +500,8 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
    ========================================================== */
 const CONFIG = {
 
-  /* Lyen dirèk (stream) Caster.fm La Voie Radio a.
-     Egzanp : "https://xxxxx.caster.fm/stream" — kole l ant gimè yo. */
-  fluxRadio: "",
+  /* Lyen dirèk (stream) La Voie Radio a — AzuraCast */
+  fluxRadio: "https://radio.lavoie.world/listen/httpsyoutube.comlavoie033/radio.mp3",
 
   /* Tèks Pou Jounen An (afiche sou Akèy la) */
   teks: {
@@ -617,7 +616,7 @@ btnLecture.addEventListener('click', async () => {
   } else {
     lecteur.src = CONFIG.fluxRadio;
     try { await lecteur.play(); majBoutonRadio(true); }
-    catch(e){ document.getElementById('note-flux').textContent = "Nou pa t ka louvri flux la. Tcheke lyen an nan CONFIG.fluxRadio."; document.getElementById('note-flux').style.display='block'; }
+    catch(e){ document.getElementById('note-flux').textContent = "Nou pa t ka louvri radyo a. Verifye estasyon an ap difize sou radio.lavoie.world, epi eseye ankò."; document.getElementById('note-flux').style.display='block'; }
   }
 });
 function majBoutonRadio(actif){
