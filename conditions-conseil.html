@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Conditions requises — Conseil de direction · La Voie Assembly, Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--bleu-mid:#122d57;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.05rem;line-height:1.8;}
+
+/* NAV */
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+
+/* COUVERTURE */
+.couverture{background:linear-gradient(160deg,#060f1e 0%,#0d2347 50%,#0a1c38 100%);border-bottom:1px solid rgba(201,168,76,0.2);padding:4rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;}
+.doc-ref{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.35em;color:var(--or);opacity:0.5;text-transform:uppercase;margin-bottom:2rem;}
+.couverture-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or-clair);letter-spacing:0.15em;margin-bottom:1.5rem;}
+.couverture h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.25;max-width:640px;margin:0 auto 0.75rem;}
+.couverture .org{font-family:'Cinzel',serif;font-size:0.8rem;color:var(--argent);letter-spacing:0.2em;opacity:0.6;margin-bottom:2.5rem;}
+.couverture-sep{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.5rem;}
+.couverture-sep .ligne{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4));}
+.couverture-sep .ligne.r{background:linear-gradient(to left,transparent,rgba(201,168,76,0.4));}
+.couverture-sep .ornement{color:var(--or);font-size:0.8rem;opacity:0.6;}
+.couverture-intro{max-width:580px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.72);line-height:1.75;}
+
+/* CONTENU */
+.contenu{max-width:860px;margin:0 auto;padding:3.5rem 1.5rem 5rem;}
+
+/* SECTION */
+.section{margin-bottom:3.5rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.25em;color:var(--or);opacity:0.5;text-transform:uppercase;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.15);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.08rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+
+/* ENCADRÉ CONDITIONS */
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-radius:12px;padding:1.6rem 1.4rem;position:relative;overflow:hidden;}
+.encadre::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--or),rgba(201,168,76,0.2));border-radius:3px 0 0 3px;}
+.liste-conditions{list-style:none;padding:0;}
+.liste-conditions li{display:flex;align-items:flex-start;gap:0.8rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.85);font-size:1rem;line-height:1.55;}
+.liste-conditions li:last-child{border-bottom:none;}
+.liste-conditions li .puce{color:var(--or);opacity:0.5;font-size:1.1rem;line-height:1.45;flex-shrink:0;margin-top:0.05rem;}
+
+/* FONCTIONS SPÉCIFIQUES */
+.fonctions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.2rem;}
+.fonction-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.5rem 1.4rem;transition:border-color 0.25s,background 0.25s;}
+.fonction-card:hover{border-color:rgba(201,168,76,0.28);background:rgba(201,168,76,0.04);}
+.fonction-top{display:flex;align-items:center;gap:0.9rem;margin-bottom:1.1rem;padding-bottom:0.9rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.fonction-icon{width:38px;height:38px;border-radius:8px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.fonction-label{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;}
+.fonction-role{font-size:0.78rem;color:var(--argent);opacity:0.55;font-style:italic;margin-top:0.1rem;}
+.fonction-liste{list-style:none;padding:0;}
+.fonction-liste li{font-size:0.92rem;color:rgba(245,239,224,0.75);padding:0.28rem 0 0.28rem 1.1rem;position:relative;line-height:1.5;border-bottom:1px solid rgba(255,255,255,0.04);}
+.fonction-liste li:last-child{border-bottom:none;}
+.fonction-liste li::before{content:'—';position:absolute;left:0;color:var(--or);opacity:0.35;font-size:0.82rem;top:0.32rem;}
+
+/* ENGAGEMENT */
+.engagement-wrap{background:linear-gradient(135deg,rgba(201,168,76,0.07) 0%,rgba(201,168,76,0.02) 100%);border:1px solid rgba(201,168,76,0.22);border-radius:12px;padding:2rem 1.6rem;}
+.engagement-intro{font-size:0.97rem;color:rgba(245,239,224,0.8);margin-bottom:1.4rem;font-style:italic;border-left:2px solid rgba(201,168,76,0.3);padding-left:1rem;}
+.engagement-liste{list-style:none;padding:0;}
+.engagement-liste li{display:flex;align-items:flex-start;gap:0.85rem;padding:0.5rem 0;color:rgba(245,239,224,0.85);font-size:0.98rem;border-bottom:1px solid rgba(255,255,255,0.05);}
+.engagement-liste li:last-child{border-bottom:none;}
+.engagement-liste li .puce-or{color:var(--or);font-size:0.7rem;margin-top:0.45rem;flex-shrink:0;opacity:0.75;}
+.signature-note{margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.12);font-size:0.85rem;color:var(--argent);opacity:0.55;font-style:italic;text-align:center;}
+
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.35;letter-spacing:0.05em;}
+
+@media(max-width:640px){.fonctions-grid{grid-template-columns:1fr;}.contenu{padding:2rem 1rem 4rem;}.couverture{padding:3rem 1rem 2.5rem;}}
+</style>
+</head>
+<body>
+
+<div class="nav-retour"><a href="gouvernance.html">← Gouvernance</a></div>
+
+<header class="couverture">
+  <div class="doc-ref">La Voie Assembly, Inc. · Document de référence institutionnel</div>
+  <div class="couverture-badge">⚖️ Gouvernance officielle</div>
+  <h1>Conditions requises pour être membre du Conseil de direction</h1>
+  <div class="org">Président · Vice-président · Secrétaire · Trésorier</div>
+  <div class="couverture-sep">
+    <div class="ligne"></div>
+    <span class="ornement">✦ ✦ ✦</span>
+    <div class="ligne r"></div>
+  </div>
+  <p class="couverture-intro">
+    Le présent document définit les conditions requises pour accéder à toute fonction au sein du Conseil de direction de La Voie Assembly, Inc. Ces exigences s'appliquent à l'ensemble des membres du Conseil, indépendamment de la fonction exercée, sauf mention contraire.
+  </p>
+</header>
+
+<main class="contenu">
+
+  <!-- I -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Conditions fondamentales</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre">
+      <ul class="liste-conditions">
+        <li><span class="puce">·</span>Être un homme majeur.</li>
+        <li><span class="puce">·</span>Être membre actif de La Voie.</li>
+        <li><span class="puce">·</span>Être un tal'mid fidèle de Yahushuʿah.</li>
+        <li><span class="puce">·</span>Avoir reçu la tebilah au Nom de Yahushuʿah.</li>
+        <li><span class="puce">·</span>Accepter les Statuts de La Voie Assembly, Inc.</li>
+        <li><span class="puce">·</span>Accepter la Déclaration de Foi de La Voie.</li>
+        <li><span class="puce">·</span>Adhérer pleinement à la mission, à la vision et aux valeurs de La Voie.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- II -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Conditions roḥanit</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre">
+      <ul class="liste-conditions">
+        <li><span class="puce">·</span>Être un homme de téfilah.</li>
+        <li><span class="puce">·</span>Étudier régulièrement les Ketubim Qadoshim.</li>
+        <li><span class="puce">·</span>Marcher selon les enseignements de Yahushuʿah.</li>
+        <li><span class="puce">·</span>Enseigner par l'exemple.</li>
+        <li><span class="puce">·</span>Faire preuve de discernement.</li>
+        <li><span class="puce">·</span>Être humble.</li>
+        <li><span class="puce">·</span>Être patient.</li>
+        <li><span class="puce">·</span>Être attaché à la vérité.</li>
+        <li><span class="puce">·</span>Produire un bon témoignage par sa conduite quotidienne.</li>
+        <li><span class="puce">·</span>Ne jamais aller au-delà de ce qui est écrit.</li>
+        <li><span class="puce">·</span>Être un artisan de la restauration de la pensée ibrique.</li>
+        <li><span class="puce">·</span>Respecter et promouvoir le vocabulaire officiel adopté par La Voie.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- III -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Conditions morales</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre">
+      <ul class="liste-conditions">
+        <li><span class="puce">·</span>Être reconnu comme honnête.</li>
+        <li><span class="puce">·</span>Être reconnu comme intègre.</li>
+        <li><span class="puce">·</span>Être reconnu comme digne de confiance.</li>
+        <li><span class="puce">·</span>Être reconnu comme respectueux.</li>
+        <li><span class="puce">·</span>Être reconnu comme équilibré.</li>
+        <li><span class="puce">·</span>Être reconnu comme maître de lui-même.</li>
+        <li><span class="puce">·</span>Être exempt de scandale public.</li>
+        <li><span class="puce">·</span>Être fidèle à ses engagements.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- IV -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Conditions familiales</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre">
+      <ul class="liste-conditions">
+        <li><span class="puce">·</span>Lorsqu'il est marié, être fidèle à son épouse.</li>
+        <li><span class="puce">·</span>Exercer une bonne direction de son foyer.</li>
+        <li><span class="puce">·</span>Être un exemple pour sa famille.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- V -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Conditions administratives</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre">
+      <ul class="liste-conditions">
+        <li><span class="puce">·</span>Savoir travailler en équipe.</li>
+        <li><span class="puce">·</span>Respecter les décisions du Conseil de direction.</li>
+        <li><span class="puce">·</span>Préserver la confidentialité des informations internes.</li>
+        <li><span class="puce">·</span>Éviter tout conflit d'intérêts.</li>
+        <li><span class="puce">·</span>Être disponible pour les réunions officielles.</li>
+        <li><span class="puce">·</span>Respecter les Statuts, règlements et politiques internes de La Voie Assembly, Inc.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- VI — FONCTIONS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">Exigences particulières par fonction</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="fonctions-grid">
+
+      <div class="fonction-card">
+        <div class="fonction-top">
+          <div class="fonction-icon">👤</div>
+          <div>
+            <div class="fonction-label">Président</div>
+            <div class="fonction-role">Autorité suprême · Représentation légale</div>
+          </div>
+        </div>
+        <ul class="fonction-liste">
+          <li>Exercer un leadership équilibré.</li>
+          <li>Représenter officiellement La Voie Assembly, Inc.</li>
+          <li>Veiller au respect des Statuts.</li>
+          <li>Présider les réunions du Conseil.</li>
+          <li>Favoriser l'unité et la bonne gouvernance.</li>
+        </ul>
+      </div>
+
+      <div class="fonction-card">
+        <div class="fonction-top">
+          <div class="fonction-icon">🤝</div>
+          <div>
+            <div class="fonction-label">Vice-président</div>
+            <div class="fonction-role">Assistance · Suppléance · Développement</div>
+          </div>
+        </div>
+        <ul class="fonction-liste">
+          <li>Assister le Président.</li>
+          <li>Assurer son remplacement en cas d'absence.</li>
+          <li>Coordonner les missions qui lui sont confiées.</li>
+          <li>Contribuer activement au développement de La Voie.</li>
+        </ul>
+      </div>
+
+      <div class="fonction-card">
+        <div class="fonction-top">
+          <div class="fonction-icon">📋</div>
+          <div>
+            <div class="fonction-label">Secrétaire</div>
+            <div class="fonction-role">Archives · Procès-verbaux · Conformité</div>
+          </div>
+        </div>
+        <ul class="fonction-liste">
+          <li>Assurer la rédaction des procès-verbaux.</li>
+          <li>Conserver les archives officielles.</li>
+          <li>Gérer les documents administratifs.</li>
+          <li>Assurer le suivi des décisions du Conseil.</li>
+        </ul>
+      </div>
+
+      <div class="fonction-card">
+        <div class="fonction-top">
+          <div class="fonction-icon">📊</div>
+          <div>
+            <div class="fonction-label">Trésorier</div>
+            <div class="fonction-role">Finances · Budget · Conformité fiscale</div>
+          </div>
+        </div>
+        <ul class="fonction-liste">
+          <li>Gérer les finances avec intégrité.</li>
+          <li>Préparer les rapports financiers.</li>
+          <li>Assurer le suivi du budget.</li>
+          <li>Veiller à la conformité comptable et fiscale.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VII — ENGAGEMENT -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">VII</span>
+      <h2 class="section-titre">Charte d'engagement</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="engagement-wrap">
+      <p class="engagement-intro">
+        Avant son entrée en fonction, tout membre du Conseil de direction devra signer une Charte d'engagement par laquelle il s'engage notamment à :
+      </p>
+      <ul class="engagement-liste">
+        <li><span class="puce-or">✦</span>Respecter les Statuts de La Voie Assembly, Inc.</li>
+        <li><span class="puce-or">✦</span>Agir avec loyauté, intégrité et impartialité.</li>
+        <li><span class="puce-or">✦</span>Préserver la confidentialité des informations internes.</li>
+        <li><span class="puce-or">✦</span>Servir les intérêts de La Voie Assembly, Inc. avec responsabilité.</li>
+        <li><span class="puce-or">✦</span>Exercer ses fonctions dans un esprit de service.</li>
+      </ul>
+      <p class="signature-note">La signature de cette charte conditionne l'entrée en fonction de tout membre du Conseil de direction.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>La Voie Assembly, Inc. · Document de référence institutionnel · lavoie.world</footer>
+
+<div id="acces-gate" style="position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#060f1e 0%,#0d2347 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;">
+  <div style="text-align:center;max-width:380px;width:100%;">
+    <div style="font-family:'Cinzel',serif;font-size:1rem;color:#c9a84c;letter-spacing:0.3em;margin-bottom:0.5rem;">✦ LA VOIE ASSEMBLY ✦</div>
+    <h2 style="font-family:'Cinzel',serif;font-size:1.4rem;color:#f5efe0;margin-bottom:0.4rem;font-weight:600;">Accès restreint</h2>
+    <p style="font-family:'EB Garamond',serif;font-size:0.95rem;color:rgba(200,208,220,0.65);margin-bottom:2rem;font-style:italic;">Document institutionnel — membres du Conseil uniquement</p>
+    <div style="position:relative;margin-bottom:1rem;">
+      <span style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.1rem;">🔑</span>
+      <input id="kle-input" type="password" placeholder="Clé d'accès" style="width:100%;padding:0.85rem 1rem 0.85rem 2.8rem;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.35);border-radius:8px;color:#f5efe0;font-family:'EB Garamond',serif;font-size:1rem;outline:none;" onkeydown="if(event.key==='Enter')verifye()"/>
+    </div>
+    <div id="kle-ere" style="color:#e07070;font-size:0.85rem;margin-bottom:0.75rem;min-height:1.2em;font-style:italic;"></div>
+    <button onclick="verifye()" style="width:100%;padding:0.85rem;background:linear-gradient(135deg,#c9a84c,#a07830);border:none;border-radius:8px;color:#0d2347;font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.15em;cursor:pointer;font-weight:700;">ENTRER</button>
+  </div>
+</div>
+<script>
+(function(){if(sessionStorage.getItem('lva-acces')==='ok')document.getElementById('acces-gate').style.display='none';})();
+function verifye(){const k=document.getElementById('kle-input').value;const h=Array.from(k).reduce((a,c)=>Math.imul(31,a)+c.charCodeAt(0)|0,0);if(h===1166165311){sessionStorage.setItem('lva-acces','ok');const g=document.getElementById('acces-gate');g.style.transition='opacity 0.6s';g.style.opacity='0';setTimeout(()=>g.style.display='none',650);}else{const e=document.getElementById('kle-ere');e.textContent='Clé incorrecte. Accès refusé.';document.getElementById('kle-input').value='';setTimeout(()=>e.textContent='',3000);}}
+</script>
+</body>
+</html>
