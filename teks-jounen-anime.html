@@ -118,10 +118,9 @@ function jwennJounen(){
   if(typeof TEKS_DATA==='undefined') return null;
   const liste=Array.isArray(TEKS_DATA)?TEKS_DATA:[TEKS_DATA];
   const now=new Date();
-  const indy=new Date(now.toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
-  const apSol=indy.getHours()*60+indy.getMinutes()>=20*60+30;
+  const apSol=now.getHours()*60+now.getMinutes()>=20*60+30;
   const pad=n=>String(n).padStart(2,'0');
-  const datGreg=`${indy.getFullYear()}-${pad(indy.getMonth()+1)}-${pad(indy.getDate())}`;
+  const datGreg=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
   for(const mwa of liste){
     for(const j of mwa.jours){
       if(j.soir_debut===datGreg && apSol) return {jounen:j, mois:mwa.mois};
