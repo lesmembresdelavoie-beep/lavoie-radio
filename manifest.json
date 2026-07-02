@@ -1,0 +1,26 @@
+{
+  "name": "La Voie — Les Membres de La Voie",
+  "short_name": "La Voie",
+  "description": "La Parole. La Vérité. La Vie. — Radio, VR-TV, Ketubim Qadoshim, Kalandriye Ibri.",
+  "start_url": "app.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0b07",
+  "theme_color": "#0d0b07",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
