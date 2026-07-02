@@ -248,8 +248,8 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
 <!-- ========== PAGE AKÈY ========== -->
 <section class="page active" id="page-akey">
   <div class="salut">
-    <h1 id="salut-titre">Shalom, Shabach !</h1>
-    <p>Que le Shalom de Yahushuʿaḥ soit avec vous.</p>
+    <h1 id="salut-titre">Shalom !</h1>
+    <p>Que le Shalom de Yahushuʿaḥ Ha'Mashiyaḥ soit avec vous.</p>
   </div>
 
   <div class="carte-teks">
@@ -310,7 +310,7 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
     <a class="tuile" href="index.html#tefilot">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.5 3-4.5 5-4.5 9a4.5 4.5 0 0 0 9 0c0-4-3-6-4.5-9z"/><path d="M8 17c-1.6 1-2.5 2.4-2.5 4h13c0-1.6-.9-3-2.5-4"/></svg>
       <h4>TÉFILOT</h4>
-      <p>Demann lapriyè ak temwayaj</p>
+      <p>Voye Téfilot ak temwayaj</p>
     </a>
   </div>
 
@@ -337,8 +337,8 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
     <div class="ondes" id="ondes">
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
-    <div class="radio-nom">Lumière pour le chemin</div>
-    <div class="radio-sous">Avec Frère Shabach</div>
+    <div class="radio-nom">La Parole. La Vérité. La Vie.</div>
+    <div class="radio-sous">Emisyon ak ansèyman an dirèk</div>
     <div class="controles">
       <button class="btn-lecture" id="btn-lecture" aria-label="Écouter">
         <svg id="ic-jwe" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -369,7 +369,7 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
   <div class="liste-vedette">
     <a class="vignette" href="rassemblements.html#vrtv">
       <div class="visuel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 7h-3v10H6V10H3z"/></svg></div>
-      <h4>L'enseignement du Mashiyaḥ</h4>
+      <h4>L'enseignement de Yahushuʿaḥ Ha'Mashiyaḥ</h4>
     </a>
     <a class="vignette" href="rassemblements.html#moadim">
       <div class="visuel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 7c-3 0-5 2-5 5v8h10v-8c0-3-2-5-5-5zM8 13h8"/></svg></div>
@@ -506,6 +506,9 @@ const CONFIG = {
   /* Lyen dirèk (stream) La Voie Radio a — AzuraCast */
   fluxRadio: "https://radio.lavoie.world/listen/httpsyoutube.comlavoie033/radio.mp3",
 
+  /* API AzuraCast "Now Playing" — pou afiche emisyon k ap jwe a otomatikman */
+  apiRadio: "https://radio.lavoie.world/api/nowplaying/1",
+
   /* Tèks Pou Jounen An (afiche sou Akèy la) */
   teks: {
     citation: "« Yon lòt fwa ankò, mwen di nou : Si de nan nou sou tè a dakò sou sa y ap mande a, sa va fèt pou yo pa Papa m ki nan syèl la. »",
@@ -607,7 +610,7 @@ function jounenJodiA(donnees){
   const el = document.getElementById('salut-titre');
   if (j === 6)      el.textContent = "Shabbath Shalom !";
   else if (j === 5) el.textContent = "Shalom, Ereb Shabbath !";
-  else              el.textContent = "Shalom, Shabach !";
+  else              el.textContent = "Shalom !";
   el.title = noms[j];
 })();
 
@@ -641,6 +644,41 @@ function majBoutonRadio(actif){
 }
 document.getElementById('volume').addEventListener('input', e => lecteur.volume = e.target.value);
 lecteur.volume = 0.85;
+
+/* ---- "Now Playing" AzuraCast : afiche emisyon k ap jwe a ---- */
+async function majEmisyon(){
+  if (!CONFIG.apiRadio) return;
+  try {
+    const r = await fetch(CONFIG.apiRadio, {cache:'no-store'});
+    if (!r.ok) return;
+    const d = await r.json();
+    const nomEl  = document.querySelector('.radio-nom');
+    const sousEl = document.querySelector('.radio-sous');
+    const badge  = document.querySelector('.direct');
+
+    if (d.is_online === false) {
+      nomEl.textContent  = "La Parole. La Vérité. La Vie.";
+      sousEl.textContent = "Radyo a pa nan difizyon kounye a";
+      badge.style.background = "#5a5a5a";
+      badge.innerHTML = '<span class="point"></span> HORS LIGNE';
+      return;
+    }
+    badge.style.background = "";
+    badge.innerHTML = '<span class="point"></span> EN DIRECT';
+
+    const np = d.now_playing;
+    if (np && np.song) {
+      const titre   = (np.song.title  || "").trim();
+      let   artiste = (np.song.artist || "").trim();
+      if (d.live && d.live.is_live && d.live.streamer_name) artiste = d.live.streamer_name;
+      if (titre)   nomEl.textContent  = titre;
+      if (artiste) sousEl.textContent = artiste;
+      else if (titre) sousEl.textContent = "La Voie Radio";
+    }
+  } catch(e) {}
+}
+majEmisyon();
+setInterval(majEmisyon, 20000);
 
 /* ================== KALANDRIYE ================== */
 (function(){
