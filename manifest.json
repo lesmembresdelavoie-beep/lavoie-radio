@@ -1,7 +1,7 @@
 {
   "name": "La Voie — Les Membres de La Voie",
   "short_name": "La Voie",
-  "description": "La Parole. La Vérité. La Vie. — Radio, VR-TV, Ketubim Qadoshim, Kalandriye Ibri.",
+  "description": "Le Dabar. La Vérité. La Vie. — Radio, VR-TV, Ketubim Qadoshim, Kalandriye Ibri.",
   "start_url": "app.html",
   "scope": "./",
   "display": "standalone",
