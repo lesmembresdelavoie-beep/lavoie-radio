@@ -102,7 +102,7 @@ let current=-1;
 const audio=document.getElementById('audioPlayer');
 function fmt(s){if(isNaN(s)||!isFinite(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+String(sec).padStart(2,'0')}
 function buildPlaylist(){const el=document.getElementById('playlist');el.innerHTML='';tracks.forEach((t,i)=>{const div=document.createElement('div');div.className='track-item';div.id='ti-'+i;div.innerHTML='<div class="track-dot"></div><span>'+t.name+'</span>';div.onclick=()=>loadTrack(i);el.appendChild(div)})}
-function loadTrack(idx){if(idx<0||idx>=tracks.length)return;if(current>=0){const p=document.getElementById('ti-'+current);if(p){p.classList.remove('active');p.classList.add('played')}}current=idx;audio.src=tracks[idx].src;document.getElementById('trackNum').textContent=(idx+1)+' / '+tracks.length;document.getElementById('trackName').textContent=tracks[idx].name;document.getElementById('progressBar').style.width='0%';document.getElementById('timeCurrent').textContent='0:00';document.getElementById('timeTotal').textContent='0:00';document.getElementById('btnPrev').disabled=idx===0;document.getElementById('btnNext').disabled=idx===tracks.length-1;const ti=document.getElementById('ti-'+idx);if(ti){ti.classList.add('active');ti.classList.remove('played')}audio.play().then(()=>{document.getElementById('playIcon').innerHTML='&#10074;&#10074;'}).catch(()=>{})}
+function loadTrack(idx){if(idx<0||idx>=tracks.length)return;if(current>=0){const p=document.getElementById('ti-'+current);if(p){p.classList.remove('active');p.classList.add('played')}}current=idx;audio.src=tracks[idx].src;audio.load();document.getElementById('trackNum').textContent=(idx+1)+' / '+tracks.length;document.getElementById('trackName').textContent=tracks[idx].name;document.getElementById('progressBar').style.width='0%';document.getElementById('timeCurrent').textContent='0:00';document.getElementById('timeTotal').textContent='0:00';document.getElementById('btnPrev').disabled=idx===0;document.getElementById('btnNext').disabled=idx===tracks.length-1;const ti=document.getElementById('ti-'+idx);if(ti){ti.classList.add('active');ti.classList.remove('played')}audio.play().then(()=>{document.getElementById('playIcon').innerHTML='&#10074;&#10074;'}).catch(()=>{})}
 function togglePlay(){if(current===-1){loadTrack(0);return}if(audio.paused){audio.play();document.getElementById('playIcon').innerHTML='&#10074;&#10074;'}else{audio.pause();document.getElementById('playIcon').innerHTML='&#9654;'}}
 function nextTrack(){if(current<tracks.length-1)loadTrack(current+1)}
 function prevTrack(){if(current>0)loadTrack(current-1)}
@@ -112,7 +112,23 @@ document.getElementById('progressWrap').addEventListener('click',e=>{if(!audio.d
 buildPlaylist();
 function entrerAbodah(){
   document.getElementById('splash').style.display='none';
-  loadTrack(0);
+  current=-1;
+  const idx=0;
+  current=idx;
+  audio.src=tracks[idx].src;
+  audio.load();
+  document.getElementById('trackNum').textContent='1 / '+tracks.length;
+  document.getElementById('trackName').textContent=tracks[idx].name;
+  document.getElementById('btnPrev').disabled=true;
+  document.getElementById('btnNext').disabled=false;
+  const ti=document.getElementById('ti-0');
+  if(ti){ti.classList.add('active')}
+  audio.play().then(()=>{
+    document.getElementById('playIcon').innerHTML='&#10074;&#10074;';
+  }).catch(e=>{
+    document.getElementById('trackName').textContent='▶ Peze bouton play pou kòmanse';
+    console.error(e);
+  });
 }
 </script>
 </body>
