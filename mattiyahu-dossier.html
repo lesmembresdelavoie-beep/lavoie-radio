@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dossier Mattiyahu — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+<style>
+.doc-nav{display:flex;justify-content:space-between;align-items:center;padding:0.85rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.doc-nav a{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);text-decoration:none;letter-spacing:0.1em;opacity:0.6;}
+.doc-nav a:hover{opacity:1;}
+.chapitres-liste{list-style:none;padding:0;margin-top:0.5rem;}
+.chapitre-item{display:flex;align-items:center;gap:1rem;padding:0.7rem 0.8rem;border-radius:8px;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.15s;}
+.chapitre-item:hover{background:rgba(201,168,76,0.05);}
+.ch-num{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--or);opacity:0.5;min-width:20px;flex-shrink:0;}
+.ch-nom{flex:1;color:rgba(245,239,224,0.85);font-size:1rem;}
+.ch-lien{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or);opacity:0.5;letter-spacing:0.1em;}
+</style>
+</head><body>
+<div class="doc-nav">
+  <a href="table-livres.html">← Table des livres</a>
+  <a href="mattiyahu-identite.html">Chapitre I →</a>
+</div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Préliminaires</div>
+  <div class="couv-badge">⚜ Document de référence</div>
+  <h1 class="couv-h1">Dossier Mattiyahu</h1>
+  <div class="couv-h2">מַתִּתְיָהוּ · Récit de référence · Alliance Renouvelée</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+</header>
+<main class="contenu">
+
+<section class="section">
+<div class="section-header"><span class="section-num">Introduction</span><div class="section-ligne"></div></div>
+<div class="corps">
+<p>Le présent dossier constitue le document de référence officiel accompagnant le livre de Mattiyahu dans les Ketubim Qadoshim — Édition La Voie. Avant d'entreprendre la traduction du texte, il est indispensable d'en établir le cadre historique, linguistique et rédactionnel.</p>
+<p>Cette démarche répond à l'un des principes fondamentaux de l'Édition La Voie : <strong style="color:var(--or-clair)">aucun livre ne doit être traduit sans avoir d'abord été étudié dans son contexte.</strong> Ce dossier n'a pas pour vocation de défendre une tradition particulière ni d'imposer une interprétation. Son objectif est de présenter les données historiques, textuelles et linguistiques les mieux établies, afin d'offrir au lecteur les éléments nécessaires à une lecture éclairée.</p>
+</div>
+<div class="encadre"><ul class="liste">
+<li><span class="mk">·</span><span>Au contexte historique du premier siècle.</span></li>
+<li><span class="mk">·</span><span>À la pensée ibri des auteurs.</span></li>
+<li><span class="mk">·</span><span>Aux liens constants avec le Tanakh.</span></li>
+<li><span class="mk">·</span><span>Aux réalités culturelles de l'époque.</span></li>
+<li><span class="mk">·</span><span>Aux principaux défis de traduction propres au livre de Mattiyahu.</span></li>
+</ul></div>
+</section>
+
+<section class="section">
+<div class="section-header"><span class="section-num">I · Identification</span><div class="section-ligne"></div></div>
+<div class="grid-2">
+<div class="card"><div class="card-titre">Nom retenu</div><div class="card-corps">Mattiyahu — מַתִּתְיָהוּ<br/><em style="font-size:0.88rem;opacity:0.7;">« Don de Yahawah »</em></div></div>
+<div class="card"><div class="card-titre">Position</div><div class="card-corps">Premier livre de l'Alliance Renouvelée. Porte d'entrée des Ketubim Qadoshim.</div></div>
+<div class="card"><div class="card-titre">Genre</div><div class="card-corps">Récit historique et biographique. Lien profond avec le Tanakh.</div></div>
+<div class="card"><div class="card-titre">Particularité</div><div class="card-corps">Livre le plus riche en citations du Tanakh de toute l'Alliance Renouvelée.</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-header"><span class="section-num">Chapitres du dossier</span><div class="section-ligne"></div></div>
+<ul class="chapitres-liste">
+<li class="chapitre-item"><span class="ch-num">I</span><span class="ch-nom">L'identité de Mattiyahu</span><a class="ch-lien" href="mattiyahu-identite.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">II</span><span class="ch-nom">Les destinataires du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-destinataires.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">III</span><span class="ch-nom">Le but du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-but.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">IV</span><span class="ch-nom">Le contexte historique du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-contexte-historique.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">V</span><span class="ch-nom">Le contexte linguistique du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-contexte-linguistique.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">VI</span><span class="ch-nom">La structure littéraire du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-structure.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">VII</span><span class="ch-nom">Les principaux concepts du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-concepts.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">VIII</span><span class="ch-nom">Le Tanakh dans le Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-tanakh.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">IX</span><span class="ch-nom">Les défis de traduction du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-defis.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">X</span><span class="ch-nom">Les personnages du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-personnages.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">XI</span><span class="ch-nom">Les lieux du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-lieux.html">Consulter →</a></li>
+<li class="chapitre-item"><span class="ch-num">XII</span><span class="ch-nom">Atlas historique du Récit de Mattiyahu</span><a class="ch-lien" href="mattiyahu-atlas.html">Consulter →</a></li>
+</ul>
+</section>
+
+</main>
+<footer>Dossier Mattiyahu · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body></html>
