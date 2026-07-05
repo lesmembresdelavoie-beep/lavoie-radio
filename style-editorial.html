@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Le Style éditorial — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;}.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial normatif</div>
+  <div class="couv-badge">⚜ Charte de style rédactionnel</div>
+  <h1 class="couv-h1">Le Style éditorial</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document définit les règles officielles de rédaction applicables à l'ensemble des Ketubim Qadoshim — Édition La Voie. Son objectif est d'assurer une parfaite uniformité de style dans tous les livres, introductions, notes, annexes et publications officielles de La Voie.</p>
+</header>
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#principes">Les principes du style</a></li>
+      <li><a href="#temps">Les temps verbaux</a></li>
+      <li><a href="#vocabulaire">Le vocabulaire</a></li>
+      <li><a href="#citations">Les citations</a></li>
+      <li><a href="#notes">Les notes</a></li>
+      <li><a href="#introductions">Les introductions</a></li>
+      <li><a href="#tableaux">Les tableaux</a></li>
+      <li><a href="#typo">Les règles typographiques</a></li>
+      <li><a href="#conclusion">Conclusion</a></li></ol>
+  </nav>
+</div>
+<main class="contenu">
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <h2 class="section-titre">Préambule</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Une édition de référence ne peut se contenter d'une traduction fidèle du texte : elle doit aussi assurer une cohérence rédactionnelle parfaite dans l'ensemble de ses publications. La qualité d'une édition de référence se mesure non seulement à la fidélité de sa traduction, mais également à la rigueur et à l'uniformité de son style.</p><p>Le présent document définit les règles officielles de rédaction applicables à l'ensemble des Ketubim Qadoshim — Édition La Voie : texte traduit, notes, introductions, annexes et publications officielles. La cohérence du style contribue à la clarté, à la fidélité et à la qualité de l'édition dans son ensemble.</p></div>
+  </section>
+  <section class="section" id="principes">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Les principes du style</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Six principes régissent le style rédactionnel de l'Édition La Voie :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Clarté.</strong> Le texte doit être immédiatement compréhensible pour un lecteur attentif. Toute ambiguïté rédactionnelle évitable doit être levée, sans pour autant simplifier le texte au détriment de sa précision.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Simplicité.</strong> La formulation la plus simple qui rend fidèlement le sens est toujours préférable à une formulation complexe ou savante qui alourdit inutilement la lecture.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Précision.</strong> Chaque mot est choisi avec soin. La précision terminologique est une exigence fondamentale, en particulier pour les termes ibri translittérés et les termes théologiques.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité au texte.</strong> Le style de la traduction suit la structure et le rythme du texte source dans la mesure du possible, sans produire un français artificiel ou inintelligible.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Sobriété.</strong> L'édition évite les ornements stylistiques superflus, les répétitions inutiles et les développements qui débordent l'objectif pédagogique et informatif des notes et introductions.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Élégance rédactionnelle.</strong> La sobriété n'exclut pas l'élégance. L'Édition La Voie vise un style digne, lisible et respectueux de la nature des Écritures qu'elle traduit.</span></li></ul></div>
+  </section>
+  <section class="section" id="temps">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Les temps verbaux</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>La traduction privilégie le <strong style='color:var(--or-clair)'>présent narratif</strong> pour les récits historiques lorsque cela est cohérent avec le texte source et facilite la compréhension. Le passé simple est employé pour les séquences d'actions accomplies clairement délimitées dans le temps.</p><p>Le passé composé est évité dans la traduction du texte biblique, sauf lorsque le sens l'exige expressément. Les discours directs conservent les temps de la déclaration originelle. Dans les notes et introductions, le présent est le temps de référence pour les affirmations d'ordre général ; le passé simple ou imparfait est réservé aux descriptions d'événements historiques datés.</p></div>
+  </section>
+  <section class="section" id="vocabulaire">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Le vocabulaire</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie applique strictement les principes suivants en matière de vocabulaire :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Lexique Officiel.</strong> Tous les termes définis dans le Lexique Officiel de l'Édition La Voie sont employés selon les formes et les sens qui y sont établis, sans variation ni substitution non validée.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Termes restaurés.</strong> Les noms propres et les termes ibri restaurés sont toujours écrits dans leur forme validée. Aucune variante orthographique non officielle n'est admise.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Termes translittérés.</strong> Les termes ibri translittérés sont toujours présentés dans une typographie distincte et cohérente, selon les règles typographiques du présent document.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Termes français conservés.</strong> Les termes français courants retenus par l'édition lorsqu'ils rendent fidèlement le sens sont employés de manière uniforme et cohérente.</span></li></ul></div>
+  </section>
+  <section class="section" id="citations">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Les citations</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les citations suivent les règles suivantes :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Citations du Tanakh.</strong> Lorsqu'un auteur de l'Alliance Renouvelée cite le Tanakh, la citation est rendue selon la traduction retenue par l'Édition La Voie pour le passage correspondant.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Citations internes.</strong> Les renvois à d'autres passages de l'Alliance Renouvelée sont présentés selon le système de références standardisé de l'édition.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Citations littérales.</strong> Les citations intégrées dans le texte courant sont présentées entre guillemets français (« »). Les citations développées sur plusieurs lignes sont présentées en retrait selon les conventions typographiques de l'édition.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Références.</strong> Toute référence scripturaire suit la forme : Nom du livre · Chapitre:Verset(s). Ex. : Yaḥuānān 8:31–32.</span></li></ul></div>
+  </section>
+  <section class="section" id="notes">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Les notes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les notes sont rédigées dans un style concis, sobre et informatif, conforme aux principes définis dans la Politique Éditoriale des Notes. Elles n'emploient jamais de tournures polémiques, de jugements de valeur non fondés sur le texte ou de formulations susceptibles d'orienter artificiellement l'interprétation du lecteur.</p><p>Une note est rédigée à la troisième personne ou de manière impersonnelle. Elle n'exprime pas l'opinion personnelle du traducteur, mais les données objectives disponibles : données linguistiques, historiques, textuelles et scripturaires.</p></div>
+  </section>
+  <section class="section" id="introductions">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">Les introductions</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les introductions aux livres, aux chapitres et aux annexes suivent une structure commune :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Contexte général du livre ou de la section : auteur probable, destinataires, date et lieu de rédaction lorsque ces données sont disponibles.</span></li><li><span class="mk">·</span><span>Contexte historique et culturel dans lequel le texte s'inscrit.</span></li><li><span class="mk">·</span><span>Structure et organisation du livre ou de la section.</span></li><li><span class="mk">·</span><span>Thèmes principaux et fil directeur.</span></li><li><span class="mk">·</span><span>Liens avec le Tanakh et avec les autres livres de l'Alliance Renouvelée.</span></li><li><span class="mk">·</span><span>Particularités éditoriales ou textuelles propres au livre.</span></li></ul></div>
+  </section>
+  <section class="section" id="tableaux">
+    <div class="section-header">
+      <span class="section-num">VII</span>
+      <h2 class="section-titre">Les tableaux, chronologies et annexes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les tableaux, chronologies, cartes et annexes suivent les règles suivantes :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Les titres sont rédigés en Cinzel ou en petites capitales, selon la charte typographique de l'édition.</span></li><li><span class="mk">·</span><span>Les termes ibri translittérés sont présentés dans leur forme officielle, avec la typographie standardisée.</span></li><li><span class="mk">·</span><span>Les données historiques sont présentées avec rigueur et objectivité, sans interprétation non fondée.</span></li><li><span class="mk">·</span><span>Les chronologies respectent les systèmes de datation et les conventions adoptées par l'équipe éditoriale.</span></li><li><span class="mk">·</span><span>Les cartes géographiques restituent les noms de lieux dans leur forme ibri lorsque cela est possible.</span></li></ul></div>
+  </section>
+  <section class="section" id="typo">
+    <div class="section-header">
+      <span class="section-num">VIII</span>
+      <h2 class="section-titre">Les règles typographiques</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie applique les règles typographiques suivantes :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Majuscules.</strong> Le Nom de Yahawah et le nom de Yahushuʿaḥ sont toujours écrits avec leur initiale majuscule. Les titres divins (Mashiaḥ, Rouaḥ HaQadosh) suivent la même règle. Les noms communs traduits en français suivent les règles d'usage du français.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Italiques.</strong> Les termes ibri translittérés sont présentés en italique lors de leur définition ou de leur première occurrence dans un contexte non biblique. Dans le texte biblique lui-même, ils ne sont pas en italique.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Guillemets.</strong> Les guillemets français (« ») sont utilisés pour les citations et les discours directs. Les guillemets anglais sont réservés aux citations dans les citations.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Caractères ibri translittérés.</strong> Les diacritiques propres à la translittération ibri (ʿ, ḥ, ā, ū, etc.) sont systématiquement maintenus dans toute la typographie de l'édition.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Ponctuation.</strong> La ponctuation française standard est appliquée. Les tirets demi-cadratin (–) sont utilisés pour les plages de versets (8:31–32). Les points de suspension ne sont jamais employés dans le texte biblique sans indication explicite d'une ellipse textuelle.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Références scripturaires.</strong> Forme standardisée : Nom du livre abr. Chapitre:Verset. Ex. : Yah. 8:31 ou Yaḥuānān 8:31.</span></li></ul></div>
+  </section>
+<section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Le Style Éditorial constitue la référence officielle de rédaction pour toutes les publications des Ketubim Qadoshim — Édition La Voie. Son application rigoureuse garantit la cohérence, la clarté et la qualité de l'ensemble de cette édition.</p><p class="conclusion-p">Le présent document est pleinement cohérent avec la Charte de Traduction, le Principe Fondamental de Traduction, la Politique de Restauration des Noms et des Termes, la Politique Éditoriale des Notes et l'ensemble des documents fondateurs de l'Édition La Voie.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section>
+</main>
+<footer>Le Style éditorial · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Politique de révision et d'évolution — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document institutionnel éditorial</div>
+  <div class="couv-badge">⚜ Cadre de révision officiel</div>
+  <h1 class="couv-h1">La Politique de révision et d'évolution</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document définit les règles officielles concernant les révisions futures des Ketubim Qadoshim — Édition La Voie. Il établit une méthodologie claire permettant d'améliorer progressivement cette édition tout en préservant sa stabilité, sa cohérence et sa fidélité.</p>
+</header>
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#principes">Les principes de révision</a></li>
+      <li><a href="#motifs">Les motifs justifiant une révision</a></li>
+      <li><a href="#limites">Ce qui ne peut jamais justifier une révision</a></li>
+      <li><a href="#procedure">Procédure de validation</a></li>
+      <li><a href="#historique">Historique des révisions</a></li>
+      <li><a href="#numerotation">Numérotation des éditions</a></li>
+      <li><a href="#conclusion">Conclusion</a></li></ol>
+  </nav>
+</div>
+<main class="contenu">
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <h2 class="section-titre">Préambule</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Aucune traduction humaine ne peut prétendre à la perfection. Les Ketubim Qadoshim — Édition La Voie ne font pas exception. La recherche de fidélité est un travail permanent, qui doit pouvoir évoluer à mesure que la connaissance s'approfondit.</p><p>La présente politique établit le cadre officiel permettant d'améliorer progressivement cette édition, tout en préservant sa stabilité, sa cohérence et la continuité de ses principes fondateurs.</p></div>
+  </section>
+  <section class="section" id="principes">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Les principes de révision</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Toute révision doit être guidée par ces principes :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité accrue aux textes sources.</strong> Une révision n'est justifiée que si elle rapproche davantage le lecteur du sens du texte source.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Amélioration de la précision linguistique.</strong> Une meilleure compréhension d'un terme ibri, araméen ou grec peut justifier une révision.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Amélioration de la clarté.</strong> Une formulation plus claire pour le lecteur, sans modification du sens, peut être envisagée.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Amélioration de la cohérence éditoriale.</strong> Une incohérence terminologique identifiée constitue une révision légitime.</span></li></ul></div>
+  </section>
+  <section class="section" id="motifs">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Les motifs justifiant une révision</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Meilleure compréhension linguistique d'un terme, à la suite d'une étude approfondie.</span></li><li><span class="mk">·</span><span>Meilleure compréhension historique ou culturelle d'un passage.</span></li><li><span class="mk">·</span><span>Découverte ou réévaluation de données textuelles significatives.</span></li><li><span class="mk">·</span><span>Correction d'une erreur avérée de traduction, de transcription ou typographique.</span></li><li><span class="mk">·</span><span>Amélioration stylistique sans modification du sens ni trahison du texte source.</span></li></ul></div>
+  </section>
+  <section class="section" id="limites">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Ce qui ne peut jamais justifier une révision</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Les préférences personnelles, en l'absence d'argument textuel ou linguistique sérieux.</span></li><li><span class="mk">·</span><span>Les habitudes confessionnelles ou traditions d'interprétation contraires aux données textuelles.</span></li><li><span class="mk">·</span><span>Les pressions idéologiques, culturelles ou sociales extérieures à la démarche éditoriale.</span></li><li><span class="mk">·</span><span>Les effets de mode ou les évolutions du langage courant sans apport à la fidélité du texte.</span></li><li><span class="mk">·</span><span>Les considérations commerciales ou d'image, étrangères à l'objectif de fidélité.</span></li></ul></div>
+  </section>
+  <section class="section" id="procedure">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Procédure de validation</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="encadre"><div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">Étapes requises</div><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>1. Étude.</strong> Le passage concerné fait l'objet d'une étude approfondie : données linguistiques, témoins textuels, contexte historique.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>2. Comparaison.</strong> Les principales sources disponibles sont comparées.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>3. Justification.</strong> Une note de révision écrite expose les motifs et les arguments.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>4. Validation.</strong> La révision est soumise à l'équipe éditoriale pour examen et approbation.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>5. Intégration.</strong> Après validation, elle est intégrée dans la prochaine édition révisée avec mention dans l'historique.</span></li></ul></div>
+  </section>
+  <section class="section" id="historique">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Historique des révisions</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Chaque nouvelle édition publie un historique des principales modifications apportées par rapport à l'édition précédente, indiquant le passage concerné, la nature et les motifs de la modification.</p><p>Aucune modification significative ne peut être introduite sans être consignée dans cet historique. La transparence éditoriale est une exigence permanente de l'Édition La Voie.</p></div>
+  </section>
+  <section class="section" id="numerotation">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">Numérotation des éditions</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="table-wrap"><table>
+<thead><tr><th>Désignation</th><th>Nature</th><th>Conditions</th></tr></thead>
+<tbody>
+<tr><td>Première édition</td><td>Édition initiale officielle</td><td>Publication initiale</td></tr>
+<tr><td>Édition révisée</td><td>Révisions mineures intégrées</td><td>Corrections ponctuelles, améliorations stylistiques</td></tr>
+<tr><td>Deuxième édition</td><td>Révisions majeures</td><td>Modifications substantielles du texte ou du système éditorial</td></tr>
+<tr><td>Révision mineure</td><td>Correction ponctuelle</td><td>Signalée dans l'historique ; pas de changement de numéro d'édition</td></tr>
+<tr><td>Révision majeure</td><td>Modification d'ensemble</td><td>Passage à une nouvelle édition numérotée</td></tr>
+</tbody>
+</table></div>
+  </section>
+<section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Toute évolution des Ketubim Qadoshim — Édition La Voie doit avoir pour unique objectif de rapprocher davantage le lecteur du sens des Écritures, sans jamais compromettre les principes fondateurs de cette édition.</p><p class="conclusion-p">La révision n'est pas une remise en cause des fondements ; elle est leur approfondissement. Elle témoigne de l'engagement permanent de l'Édition La Voie pour la fidélité au Dabar de Yahawah.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section>
+</main>
+<footer>La Politique de révision et d'évolution · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>

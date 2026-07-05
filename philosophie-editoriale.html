@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Philosophie éditoriale — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Déclaration éditoriale officielle</div>
+  <div class="couv-badge">⚜ Fondements et orientations</div>
+  <h1 class="couv-h1">La Philosophie éditoriale</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document expose les fondements intellectuels, historiques, linguistiques et éditoriaux qui inspirent les Ketubim Qadoshim — Édition La Voie. Il constitue une déclaration officielle expliquant l'esprit dans lequel cette édition a été conçue.</p>
+</header>
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>      <li><a href="#preambule">Pourquoi une nouvelle édition ?</a></li>
+      <li><a href="#fidelite">Une démarche de fidélité</a></li>
+      <li><a href="#humilite">Une démarche d'humilité</a></li>
+      <li><a href="#examen">Une démarche d'examen</a></li>
+      <li><a href="#transparence">Une démarche de transparence</a></li>
+      <li><a href="#coherence">Une démarche de cohérence</a></li>
+      <li><a href="#evolutive">Une démarche évolutive</a></li>
+      <li><a href="#conclusion">Conclusion</a></li></ol>
+  </nav>
+</div>
+<main class="contenu">
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <h2 class="section-titre">Pourquoi une nouvelle édition ?</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'existence de nombreuses traductions françaises des Ketubim Qadoshim témoigne de l'effort constant des générations précédentes pour mettre les Écritures à la portée du plus grand nombre. Ces travaux méritent respect et reconnaissance. L'Édition La Voie ne cherche pas à les remplacer ni à les dévaluer.</p><p>Chaque génération peut cependant bénéficier de nouveaux travaux de traduction, à la lumière des connaissances linguistiques, historiques et textuelles disponibles. La compréhension des langues anciennes progresse. De nouveaux témoins textuels sont étudiés. La connaissance du contexte historique et culturel s'approfondit.</p><p>C'est dans cet esprit que les Ketubim Qadoshim — Édition La Voie ont été entrepris : par souci de mettre à la disposition des lecteurs une édition qui tienne compte de la pensée ibri originelle des Écritures et qui reflète un engagement sincère pour la fidélité au texte.</p></div>
+  </section>
+  <section class="section" id="fidelite">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Une démarche de fidélité</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>La fidélité constitue le fondement de l'Édition La Voie :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité aux Écritures.</strong> Le texte est traduit avec le souci constant de respecter ce que les Écritures affirment, sans addition, sans omission et sans atténuation.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité aux langues anciennes.</strong> Le sens des termes ibri, araméens et grecs est étudié avec rigueur, en tenant compte de leur usage dans les textes anciens.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité au contexte historique.</strong> Chaque passage est lu et traduit en tenant compte des réalités historiques de l'époque.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité au contexte culturel.</strong> Les pratiques et les modes de pensée propres au monde des Yehoudim du premier siècle sont pris en considération.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité à la pensée ibri.</strong> L'édition cherche à restituer la pensée ibri qui sous-tend les écrits de l'Alliance Renouvelée.</span></li></ul></div>
+  </section>
+  <section class="section" id="humilite">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Une démarche d'humilité</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie ne prétend pas être une traduction parfaite. Toute traduction est une œuvre humaine, portant inévitablement les limites de la connaissance et du discernement de ceux qui l'ont réalisée.</p><p>L'équipe éditoriale reconnaît que certains choix pourront être améliorés au fil du temps. Toute correction future fondée sur des arguments sérieux pourra être examinée selon la procédure définie dans la Politique de Révision et d'Évolution.</p></div><div class="citation-doc">Aucune traduction ne peut se substituer à l'Écriture elle-même. Elle en est le serviteur, non le maître.</div>
+  </section>
+  <section class="section" id="examen">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Une démarche d'examen</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie encourage activement le lecteur à examiner les textes par lui-même, à comparer les passages, à consulter les notes et à poursuivre son étude personnelle des Écritures.</p><p>Cette édition est conçue pour former un lecteur actif, capable d'examiner ce qu'il lit et d'approfondir sa compréhension.</p></div><div class="encadre"><div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">Le lecteur est encouragé à :</div><ul class="liste"><li><span class="mk">·</span><span>Examiner attentivement le texte traduit.</span></li><li><span class="mk">·</span><span>Consulter les notes pour approfondir la compréhension des termes et du contexte.</span></li><li><span class="mk">·</span><span>Comparer les passages entre eux, en suivant les renvois scripturaires.</span></li><li><span class="mk">·</span><span>Poursuivre son étude personnelle des Ketubim Qadoshim.</span></li></ul></div>
+  </section>
+  <section class="section" id="transparence">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Une démarche de transparence</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie s'engage à la transparence dans ses choix éditoriaux :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Les variantes textuelles significatives sont signalées dans les notes, sans orientation artificielle.</span></li><li><span class="mk">·</span><span>Les principaux choix de traduction sont expliqués et motivés.</span></li><li><span class="mk">·</span><span>Le texte biblique est clairement distingué des notes et des introductions.</span></li><li><span class="mk">·</span><span>L'historique des révisions est conservé et rendu accessible.</span></li></ul></div>
+  </section>
+  <section class="section" id="coherence">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Une démarche de cohérence</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'ensemble des livres de l'Édition La Voie obéit aux mêmes principes éditoriaux, linguistiques et typographiques. Cette cohérence garantit que le lecteur retrouve les mêmes repères d'un livre à l'autre, permettant une étude continue et progressive des Écritures.</p></div>
+  </section>
+  <section class="section" id="evolutive">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">Une démarche évolutive</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les Ketubim Qadoshim — Édition La Voie ne constituent pas une œuvre figée. Cette édition pourra être révisée lorsque des améliorations seront jugées nécessaires et fondées sur des arguments sérieux.</p><p>Les révisions futures devront toujours respecter les principes fondateurs définis dans les documents constitutifs de l'Édition La Voie. Chaque nouvelle édition sera publiée avec un historique des modifications.</p></div>
+  </section>
+<section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Les Ketubim Qadoshim — Édition La Voie sont conçus comme une œuvre de transmission fidèle des Écritures, au service des lecteurs désireux d'approfondir leur compréhension du texte dans son contexte historique, linguistique et culturel originel.</p><p class="conclusion-p">Cette édition n'est pas une fin en soi. Elle est un instrument mis au service du Dabar de Yahawah, afin que ce Dabar parvienne au lecteur avec la clarté et la profondeur qu'il mérite.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section>
+</main>
+<footer>La Philosophie éditoriale · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>

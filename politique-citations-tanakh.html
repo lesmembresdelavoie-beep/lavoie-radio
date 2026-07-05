@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Politique des citations du Tanakh — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style></head><body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial officiel</div><div class="couv-badge">⚜ Citations du Tanakh</div>
+  <h1 class="couv-h1">La Politique des citations du Tanakh</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document définit les principes officiels régissant les citations du Tanakh dans l'Alliance Renouvelée des Ketubim Qadoshim — Édition La Voie. Il constitue l'un des fondements méthodologiques de cette édition.</p>
+</header>
+<div class="toc-wrap"><nav class="toc"><div class="toc-titre">Table des matières</div><ol><li><a href="#preambule">Préambule</a></li>
+<li><a href="#objectifs">Les objectifs</a></li>
+<li><a href="#types">Types de citations</a></li>
+<li><a href="#traduction">Principes de traduction</a></li>
+<li><a href="#notes_cit">Notes explicatives</a></li>
+<li><a href="#renvois">Les renvois</a></li>
+<li><a href="#tableaux">Tableaux de correspondance</a></li>
+<li><a href="#uniformite">Uniformité éditoriale</a></li>
+<li><a href="#conclusion">Conclusion</a></li></ol></nav></div>
+<main class="contenu"><section class="section" id="preambule"><div class="section-header"><span class="section-num">Préambule</span><h2 class="section-titre">Préambule</h2><div class="section-ligne"></div></div><div class="corps"><p>Les auteurs de l'Alliance Renouvelée citent le Tanakh avec une fréquence et une précision remarquables. Ces citations ne sont pas de simples ornements rhétoriques : elles constituent la colonne vertébrale de leur argumentation, de leur proclamation et de leur enseignement. Comprendre l'Alliance Renouvelée exige de comprendre sa relation profonde avec le Tanakh.</p><p>Ces citations jouent un rôle fondamental dans la compréhension des Écritures. Elles révèlent comment les auteurs de l'Alliance Renouvelée lisaient le Tanakh, quels passages ils considéraient comme déterminants, et comment ils les interprétaient à la lumière des événements qu'ils avaient vécus.</p></div></section><section class="section" id="objectifs"><div class="section-header"><span class="section-num">I</span><h2 class="section-titre">Les objectifs</h2><div class="section-ligne"></div></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Préserver le lien organique entre le Tanakh et l'Alliance Renouvelée, en montrant que ces deux parties forment un seul ensemble cohérent.</span></li><li><span class="mk">·</span><span>Permettre au lecteur de retrouver facilement les textes cités, afin d'étudier la citation dans son contexte d'origine.</span></li><li><span class="mk">·</span><span>Mettre en évidence la continuité des Écritures à travers les différentes époques et les différents auteurs.</span></li><li><span class="mk">·</span><span>Faciliter l'étude comparative en offrant les repères nécessaires pour approfondir l'analyse de chaque citation.</span></li></ul></div></section><section class="section" id="types"><div class="section-header"><span class="section-num">II</span><h2 class="section-titre">Les différents types de citations</h2><div class="section-ligne"></div></div><div class="table-wrap"><table><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>Citation littérale</td><td>L'auteur reprend mot pour mot le texte du Tanakh, généralement selon la Septante ou le texte ibri.</td></tr><tr><td>Citation partielle</td><td>L'auteur ne cite qu'une partie du passage, en omettant volontairement certains éléments.</td></tr><tr><td>Citation adaptée</td><td>Le texte est légèrement modifié pour s'adapter au contexte de la citation.</td></tr><tr><td>Allusion</td><td>L'auteur évoque un passage sans le citer directement, présupposant que le lecteur le reconnaîtra.</td></tr><tr><td>Résumé</td><td>L'auteur condense le contenu d'un passage ou d'un ensemble de passages.</td></tr><tr><td>Accomplissement</td><td>Un événement est présenté comme la réalisation de ce qu'un passage du Tanakh avait annoncé.</td></tr><tr><td>Référence implicite</td><td>Le texte reflète la pensée ou le vocabulaire d'un passage du Tanakh sans le citer ni l'évoquer directement.</td></tr></tbody></table></div></section><section class="section" id="traduction"><div class="section-header"><span class="section-num">III</span><h2 class="section-titre">Les principes de traduction</h2><div class="section-ligne"></div></div><div class="corps"><p>Lorsqu'un auteur de l'Alliance Renouvelée cite le Tanakh, le traducteur est confronté à une double fidélité : fidélité au texte de l'Alliance Renouvelée tel qu'il est transmis, et fidélité au texte du Tanakh tel qu'il est cité.</p></div><div class="encadre"><div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">Principes retenus</div><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité au texte de l'Alliance Renouvelée.</strong> La citation est traduite selon le texte transmis dans les témoins de l'Alliance Renouvelée, même si elle diffère du texte du Tanakh.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité au texte du Tanakh.</strong> Lorsque la citation concorde avec le texte du Tanakh, elle est traduite en cohérence avec la traduction du Tanakh retenue par l'Édition La Voie.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Signalement des différences.</strong> Lorsque la citation de l'Alliance Renouvelée diffère significativement du texte du Tanakh, cette différence est signalée et expliquée dans une note.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Respect du contexte de la citation.</strong> L'intention de l'auteur dans le choix et l'utilisation de la citation est prise en considération dans le travail de traduction.</span></li></ul></div></section><section class="section" id="notes_cit"><div class="section-header"><span class="section-num">IV</span><h2 class="section-titre">Les notes explicatives</h2><div class="section-ligne"></div></div><div class="corps"><p>Une note accompagnera une citation dans les cas suivants :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Lorsque le contexte d'origine de la citation dans le Tanakh est essentiel à la compréhension du passage.</span></li><li><span class="mk">·</span><span>Lorsque la citation s'inscrit dans un contexte prophétique qui mérite d'être identifié et expliqué.</span></li><li><span class="mk">·</span><span>Lorsque la citation de l'Alliance Renouvelée diffère sensiblement du texte du Tanakh dans ses témoins principaux.</span></li><li><span class="mk">·</span><span>Lorsque des variantes textuelles significatives existent entre les différents témoins de la citation.</span></li></ul></div></section><section class="section" id="renvois"><div class="section-header"><span class="section-num">V</span><h2 class="section-titre">Les renvois</h2><div class="section-ligne"></div></div><div class="corps"><p>Chaque citation identifiée est accompagnée d'une référence précise au passage correspondant dans le Tanakh. Cette référence suit la forme standardisée de l'Édition La Voie.</p><p>Dans la version numérique publiée sur lavoie.world, chaque référence est un lien actif permettant au lecteur d'accéder directement au passage du Tanakh cité.</p></div></section><section class="section" id="tableaux"><div class="section-header"><span class="section-num">VI</span><h2 class="section-titre">Les tableaux de correspondance</h2><div class="section-ligne"></div></div><div class="corps"><p>Pour chaque livre de l'Alliance Renouvelée, un tableau de correspondance recense l'ensemble des citations du Tanakh identifiées : passage cité, référence dans le Tanakh, type de citation et note associée le cas échéant.</p><p>Ces tableaux constituent une ressource pédagogique précieuse pour le lecteur qui souhaite étudier l'utilisation du Tanakh dans l'Alliance Renouvelée de manière systématique.</p></div></section><section class="section" id="uniformite"><div class="section-header"><span class="section-num">VII</span><h2 class="section-titre">Uniformité éditoriale</h2><div class="section-ligne"></div></div><div class="corps"><p>Les règles définies dans le présent document s'appliquent uniformément à l'ensemble des livres des Ketubim Qadoshim. Aucune exception n'est admise sans validation de l'équipe éditoriale.</p></div></section><section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Les citations du Tanakh constituent l'un des principaux fils conducteurs de l'Alliance Renouvelée. Leur identification, leur présentation et leur explication permettent au lecteur de mieux percevoir l'unité profonde des Ketubim Qadoshim.</p><p class="conclusion-p">La présente politique s'appuie sur les fondements établis par la Charte de Traduction et le Principe Fondamental de Traduction, et constitue avec la Politique des Références Scripturaires un ensemble méthodologique indissociable.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section></main>
+<footer>La Politique des citations du Tanakh · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body></html>

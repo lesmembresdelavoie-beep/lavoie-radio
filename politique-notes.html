@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Politique éditoriale des notes — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial officiel</div>
+  <div class="couv-badge">⚜ Politique des notes éditoriales</div>
+  <h1 class="couv-h1">La Politique éditoriale des notes</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document définit les principes officiels concernant l'utilisation des notes dans les Ketubim Qadoshim — Édition La Voie. Il établit une politique éditoriale claire, uniforme et rigoureuse afin que les notes accompagnent le lecteur sans jamais prendre la place du texte lui-même.</p>
+</header>
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#objectifs">Les objectifs des notes</a></li>
+      <li><a href="#types">Les différents types de notes</a></li>
+      <li><a href="#limites">Les limites des notes</a></li>
+      <li><a href="#premieres">Les premières occurrences</a></li>
+      <li><a href="#variantes">Les variantes textuelles</a></li>
+      <li><a href="#presentation">Présentation des notes</a></li>
+      <li><a href="#conclusion">Conclusion</a></li></ol>
+  </nav>
+</div>
+<main class="contenu">
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <h2 class="section-titre">Préambule</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Dans toute édition de référence, les notes remplissent une fonction essentielle : elles accompagnent le lecteur sans jamais se substituer au texte lui-même. Leur rôle est d'éclairer, non de prescrire ; d'informer, non d'interpréter de manière autoritaire.</p><p>Dans les Ketubim Qadoshim — Édition La Voie, les notes constituent un outil destiné à faciliter la compréhension du texte. Elles ne représentent pas une interprétation officielle des Écritures et ne prétendent pas épuiser le sens d'un passage. Elles ouvrent des pistes d'étude et offrent des éclairages contextuels, en laissant toujours au lecteur la liberté d'examiner le texte par lui-même.</p></div>
+  </section>
+  <section class="section" id="objectifs">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Les objectifs des notes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les notes poursuivent les objectifs suivants :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Expliquer un terme ibri, araméen ou grec dont la compréhension est nécessaire à la lecture du texte.</span></li><li><span class="mk">·</span><span>Préciser le contexte historique d'un événement, d'une institution ou d'une pratique mentionnés dans le texte.</span></li><li><span class="mk">·</span><span>Éclairer le contexte culturel propre au monde des Yehoudim du premier siècle ou à l'univers du Tanakh.</span></li><li><span class="mk">·</span><span>Signaler une difficulté linguistique ou une ambiguïté du texte source qui a influencé le choix de traduction.</span></li><li><span class="mk">·</span><span>Indiquer une variante textuelle significative lorsque plusieurs lectures sont attestées dans les témoins disponibles.</span></li><li><span class="mk">·</span><span>Établir un lien avec un passage du Tanakh cité explicitement ou implicitement, ou avec un autre passage de l'Alliance Renouvelée.</span></li></ul></div>
+  </section>
+  <section class="section" id="types">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Les différents types de notes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie distingue les catégories de notes suivantes, chacune répondant à un objectif précis :</p></div><div class="grid-2"><div class="card"><div class="card-titre">Notes lexicales</div><div class="card-corps">Définissent le sens d'un terme ibri, araméen ou grec important, restituent son étymologie et précisent les nuances que la traduction ne peut toujours rendre pleinement.</div></div><div class="card"><div class="card-titre">Notes linguistiques</div><div class="card-corps">Signalent les difficultés de traduction, les constructions syntaxiques particulières ou les tournures de pensée ibri qui sous-tendent une expression grecque.</div></div><div class="card"><div class="card-titre">Notes historiques</div><div class="card-corps">Situent un événement, une institution, une loi ou une pratique dans leur contexte historique précis, afin d'éviter les anachronismes de lecture.</div></div><div class="card"><div class="card-titre">Notes géographiques</div><div class="card-corps">Identifient les lieux mentionnés dans le texte, précisent leur localisation et, lorsque cela est pertinent, leur signification dans le récit.</div></div><div class="card"><div class="card-titre">Notes culturelles</div><div class="card-corps">Éclairent les usages, les coutumes, les pratiques sociales ou religieuses qui constituent le cadre de vie des auteurs et de leurs contemporains.</div></div><div class="card"><div class="card-titre">Notes textuelles</div><div class="card-corps">Signalent les variantes significatives entre les principaux témoins du texte, de manière objective et sans orientation interprétative.</div></div><div class="card"><div class="card-titre">Notes chronologiques</div><div class="card-corps">Précisent les repères temporels lorsque la datation d'un événement ou d'une période peut contribuer à une meilleure compréhension du texte.</div></div><div class="card"><div class="card-titre">Renvois scripturaires</div><div class="card-corps">Établissent des liens entre le passage en cours de lecture et d'autres textes des Ketubim Qadoshim, permettant au lecteur de suivre le fil conducteur des Écritures.</div></div></div>
+  </section>
+  <section class="section" id="limites">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Les limites des notes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les notes de l'Édition La Voie ne devront jamais :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Imposer une doctrine ou une interprétation théologique officielle allant au-delà de ce que le texte lui-même affirme.</span></li><li><span class="mk">·</span><span>Remplacer le texte biblique ou en réduire l'autorité par un commentaire envahissant.</span></li><li><span class="mk">·</span><span>Multiplier inutilement les observations au point d'alourdir la lecture et de décourager l'étude.</span></li><li><span class="mk">·</span><span>Contenir des spéculations ou des affirmations dont le fondement textuel ou historique est insuffisant.</span></li><li><span class="mk">·</span><span>S'éloigner des données historiques, linguistiques et textuelles au profit d'une interprétation purement subjective.</span></li></ul></div>
+  </section>
+  <section class="section" id="premieres">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Les premières occurrences</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Conformément au Principe des Premières Occurrences adopté par l'Édition La Voie, les notes développées sont principalement rédigées lors de la première apparition d'un terme ou d'une réalité importante dans le texte. Cette note constitue la référence principale pour l'ensemble de l'édition.</p><p>Les occurrences suivantes du même terme pourront simplement renvoyer à cette première note par un système de renvoi uniforme, évitant ainsi les répétitions inutiles tout en permettant au lecteur de retrouver facilement l'information nécessaire.</p></div>
+  </section>
+  <section class="section" id="variantes">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Les variantes textuelles</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Lorsqu'une variante textuelle significative existe entre les principaux témoins disponibles, elle est signalée dans une note textuelle. Cette note présente la ou les variantes de manière objective, indique les témoins qui les attestent et, lorsque cela est pertinent, explique les raisons du choix de traduction retenu.</p><p>Les variantes textuelles sont signalées sans orientation interprétative et sans chercher à influencer artificiellement la lecture du texte. L'objectif est d'informer le lecteur, non de lui imposer une conclusion.</p></div>
+  </section>
+  <section class="section" id="presentation">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">Présentation des notes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les notes sont rédigées selon les règles suivantes :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Style rédactionnel.</strong> Les notes sont rédigées dans un style sobre, clair et académique. Elles évitent le langage familier, les formulations polémiques et les jugements de valeur non fondés sur le texte.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Longueur recommandée.</strong> Une note doit être aussi concise que possible et aussi développée que nécessaire. Elle n'excède pas la longueur requise pour atteindre son objectif. Les notes lexicales de première occurrence constituent une exception justifiée.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Ordre des informations.</strong> Une note suit généralement l'ordre suivant : contexte du terme ou du passage, données linguistiques ou historiques, choix de traduction et, le cas échéant, références scripturaires.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Système de renvois.</strong> Les renvois vers d'autres passages ou vers d'autres notes sont présentés de manière uniforme, selon le système adopté par l'équipe éditoriale.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Références scripturaires.</strong> Toute référence à un passage des Ketubim Qadoshim est présentée dans la forme standardisée retenue par l'édition.</span></li></ul></div>
+  </section>
+<section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Les notes constituent un outil d'étude destiné à accompagner le lecteur dans son examen des Ketubim Qadoshim, sans jamais se substituer au texte inspiré. Leur rôle est de servir le texte et le lecteur, avec sobriété, rigueur et respect.</p><p class="conclusion-p">Le présent document s'inscrit dans le cadre défini par la Charte de Traduction, le Principe Fondamental de Traduction et le Principe des Premières Occurrences, dont il constitue le prolongement éditorial direct.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section>
+</main>
+<footer>La Politique éditoriale des notes · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>

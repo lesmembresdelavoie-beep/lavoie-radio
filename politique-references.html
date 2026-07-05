@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Politique des références scripturaires — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial officiel</div>
+  <div class="couv-badge">⚜ Références scripturaires</div>
+  <h1 class="couv-h1">La Politique des références scripturaires</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document définit les règles officielles concernant l'utilisation, la présentation et la gestion des références scripturaires dans l'ensemble des Ketubim Qadoshim — Édition La Voie.</p>
+</header>
+<div class="toc-wrap"><nav class="toc">
+  <div class="toc-titre">Table des matières</div>
+  <ol>      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#objectifs">Objectifs</a></li>
+      <li><a href="#categories">Catégories de références</a></li>
+      <li><a href="#presentation">Présentation</a></li>
+      <li><a href="#tanakh">Références au Tanakh</a></li>
+      <li><a href="#internes">Références internes</a></li>
+      <li><a href="#notes_ref">Références dans les notes</a></li>
+      <li><a href="#numerique">Références numériques</a></li>
+      <li><a href="#uniformite">Uniformité éditoriale</a></li>
+      <li><a href="#conclusion">Conclusion</a></li></ol>
+</nav></div>
+<main class="contenu"><section class="section" id="preambule"><div class="section-header"><span class="section-num">Préambule</span><h2 class="section-titre">Préambule</h2><div class="section-ligne"></div></div><div class="corps"><p>Les Ketubim Qadoshim forment un ensemble organique et cohérent dont les différents écrits se répondent mutuellement. Les auteurs de l'Alliance Renouvelée pensaient dans les catégories du Tanakh, s'y référaient constamment, en citaient les passages et en prolongeaient les enseignements. Cette unité profonde est l'un des traits les plus significatifs des Écritures.</p><p>Les références scripturaires constituent l'outil éditorial permettant au lecteur de percevoir et de suivre cette continuité. Elles sont un instrument d'étude au service de la compréhension des Écritures dans leur unité et leur cohérence.</p></div></section><section class="section" id="objectifs"><div class="section-header"><span class="section-num">I</span><h2 class="section-titre">Objectifs des références scripturaires</h2><div class="section-ligne"></div></div><div class="corps"><p>Les références scripturaires poursuivent les objectifs suivants :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Faciliter la comparaison des passages entre eux, afin que le lecteur puisse vérifier et approfondir le sens d'un texte.</span></li><li><span class="mk">·</span><span>Mettre en évidence les liens organiques entre les différents livres des Ketubim Qadoshim.</span></li><li><span class="mk">·</span><span>Montrer la continuité entre le Tanakh et l'Alliance Renouvelée, révélant l'unité fondamentale des Écritures.</span></li><li><span class="mk">·</span><span>Encourager l'étude personnelle en fournissant au lecteur les repères nécessaires pour poursuivre ses recherches.</span></li><li><span class="mk">·</span><span>Aider le lecteur à replacer chaque passage dans son contexte scripturaire plus large.</span></li></ul></div></section><section class="section" id="categories"><div class="section-header"><span class="section-num">II</span><h2 class="section-titre">Les différentes catégories de références</h2><div class="section-ligne"></div></div><div class="corps"><p>L'Édition La Voie distingue les catégories de références suivantes :</p></div><div class="table-wrap"><table><thead><tr><th>Catégorie</th><th>Description</th></tr></thead><tbody><tr><td>Citations directes</td><td>L'auteur cite mot pour mot un passage du Tanakh ou d'un autre écrit.</td></tr><tr><td>Citations partielles</td><td>L'auteur ne cite qu'une partie d'un passage.</td></tr><tr><td>Allusions</td><td>L'auteur fait référence à un passage sans le citer explicitement.</td></tr><tr><td>Parallèles historiques</td><td>Un événement rappelle un événement similaire déjà rapporté dans les Écritures.</td></tr><tr><td>Parallèles doctrinaux</td><td>Un enseignement développe ou complète un enseignement antérieur.</td></tr><tr><td>Parallèles thématiques</td><td>Un même thème est traité dans plusieurs passages distincts.</td></tr><tr><td>Accomplissements</td><td>Un événement réalise ce qu'un passage antérieur avait annoncé.</td></tr><tr><td>Renvois thématiques</td><td>Un passage aborde le même thème qu'un autre, sans lien littéral direct.</td></tr></tbody></table></div></section><section class="section" id="presentation"><div class="section-header"><span class="section-num">III</span><h2 class="section-titre">Présentation des références</h2><div class="section-ligne"></div></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Présentation uniforme.</strong> Toutes les références sont présentées selon la forme standardisée de l'édition : Nom du livre Chapitre:Verset(s).</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Ordre des références.</strong> Les références sont présentées dans l'ordre suivant : Tanakh en premier, puis Alliance Renouvelée, dans l'ordre canonique de l'édition.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Priorité des passages les plus pertinents.</strong> Seules les références les plus directement utiles à la compréhension du passage sont retenues. Les références secondaires ou lointaines sont omises afin d'éviter la surcharge.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Limitation des références.</strong> L'accumulation excessive de références nuit à la lisibilité et à l'utilité pédagogique. Chaque renvoi doit être justifié par sa pertinence réelle pour le lecteur.</span></li></ul></div></section><section class="section" id="tanakh"><div class="section-header"><span class="section-num">IV</span><h2 class="section-titre">Références au Tanakh</h2><div class="section-ligne"></div></div><div class="corps"><p>Les renvois vers le Tanakh sont une priorité éditoriale de l'Édition La Voie. Ils permettent au lecteur de retrouver les textes auxquels les auteurs de l'Alliance Renouvelée font explicitement ou implicitement référence, révélant ainsi la profondeur de leur ancrage dans les Écritures.</p><p>Lorsqu'un auteur cite ou évoque un passage du Tanakh, la référence est indiquée de manière précise, avec le nom du livre, le numéro de chapitre et de verset. Lorsque la citation est implicite, la référence est signalée par une note explicative.</p></div></section><section class="section" id="internes"><div class="section-header"><span class="section-num">V</span><h2 class="section-titre">Références internes</h2><div class="section-ligne"></div></div><div class="corps"><p>Les renvois entre les livres de l'Alliance Renouvelée permettent de relier naturellement les passages qui développent un même sujet, une même doctrine ou un même récit.</p><p>Ces références internes respectent les mêmes règles de présentation que les références au Tanakh. Elles sont signalées avec discernement, en veillant à ne pas multiplier les renvois au détriment de la lisibilité du texte.</p></div></section><section class="section" id="notes_ref"><div class="section-header"><span class="section-num">VI</span><h2 class="section-titre">Les références dans les notes</h2><div class="section-ligne"></div></div><div class="corps"><p>Lorsqu'une référence scripturaire appelle un développement particulier, elle est intégrée dans une note. Cette note précise le lien entre le passage en cours et le texte cité ou évoqué, sans interrompre inutilement la lecture du texte principal.</p><p>Les références intégrées dans le texte courant demeurent aussi concises que possible. Les développements plus larges sont réservés aux notes.</p></div></section><section class="section" id="numerique"><div class="section-header"><span class="section-num">VII</span><h2 class="section-titre">Les références numériques</h2><div class="section-ligne"></div></div><div class="corps"><p>Dans la version numérique publiée sur lavoie.world, les références scripturaires bénéficient des fonctionnalités suivantes :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Liens interactifs.</strong> Chaque référence scripturaire est un lien actif permettant au lecteur d'accéder directement au passage correspondant.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Renvois automatiques.</strong> Les allusions et parallèles identifiés par l'équipe éditoriale sont signalés et accessibles d'un simple clic.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Liens vers le Lexique Officiel.</strong> Les termes définis dans le Lexique peuvent être consultés directement depuis le texte.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Liens vers le Milôn La Voie.</strong> Les termes ibri renvoient au Milôn pour une consultation approfondie.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Liens vers les ressources complémentaires.</strong> Cartes, chronologies et annexes sont accessibles depuis les passages concernés.</span></li></ul></div></section><section class="section" id="uniformite"><div class="section-header"><span class="section-num">VIII</span><h2 class="section-titre">Uniformité éditoriale</h2><div class="section-ligne"></div></div><div class="corps"><p>Les règles définies dans le présent document s'appliquent à l'ensemble des livres des Ketubim Qadoshim — Édition La Voie, dans toutes leurs éditions imprimées et numériques. Aucune variation non validée n'est admise dans la présentation des références scripturaires.</p></div></section><section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Les références scripturaires ne constituent pas un simple appareil technique. Elles sont un véritable outil d'étude destiné à révéler l'unité, la cohérence et la continuité des Ketubim Qadoshim, de la première page du Tanakh à la dernière page de l'Alliance Renouvelée.</p><p class="conclusion-p">Le présent document est cohérent avec la Charte de Traduction, le Principe Fondamental de Traduction, la Politique Éditoriale des Notes et l'ensemble des Constitutions éditoriales de l'Édition La Voie.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section></main>
+<footer>La Politique des références scripturaires · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>
