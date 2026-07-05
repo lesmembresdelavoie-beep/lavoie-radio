@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Déclaration de l'équipe éditoriale — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.1rem;line-height:2;}
+
+/* NAV */
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;}
+.nav-retour a:hover{opacity:1;}
+
+/* COUVERTURE */
+.couverture{
+  background:linear-gradient(175deg,#030a15 0%,#0d2347 45%,#091d3d 100%);
+  padding:6rem 1.5rem 5rem;
+  text-align:center;
+  border-bottom:1px solid rgba(201,168,76,0.18);
+  position:relative;
+  overflow:hidden;
+}
+.couverture::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 15%,rgba(201,168,76,0.07),transparent 55%);
+  pointer-events:none;
+}
+.couv-ref{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.45em;
+  color:var(--or);opacity:0.38;text-transform:uppercase;margin-bottom:3rem;
+}
+.couv-ornement-top{
+  font-size:1.2rem;color:var(--or);opacity:0.35;letter-spacing:0.8em;
+  margin-bottom:2.5rem;
+}
+.couv-h1{
+  font-family:'Cinzel',serif;
+  font-size:clamp(1.2rem,4vw,2rem);
+  font-weight:700;color:var(--or);
+  letter-spacing:0.06em;line-height:1.2;
+  max-width:640px;margin:0 auto 0.8rem;
+}
+.couv-h2{
+  font-family:'Cinzel',serif;
+  font-size:clamp(0.72rem,2vw,0.88rem);
+  color:var(--argent);letter-spacing:0.22em;opacity:0.52;
+  margin-bottom:4rem;
+}
+.couv-sep{
+  display:flex;align-items:center;justify-content:center;gap:1.5rem;
+  margin-bottom:3rem;
+}
+.couv-sep .l{flex:1;max-width:100px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.35));}
+.couv-sep .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.35));}
+.couv-sep span{font-size:0.75rem;color:var(--or);opacity:0.45;letter-spacing:0.6em;}
+
+/* CORPS DU DOCUMENT */
+.document{
+  max-width:720px;margin:0 auto;
+  padding:5rem 1.5rem 7rem;
+}
+
+/* Paragraphes */
+.document p{
+  color:rgba(245,239,224,0.88);
+  margin-bottom:1.6rem;
+  text-align:justify;
+  hyphens:auto;
+}
+.document p:last-of-type{margin-bottom:0;}
+
+/* Lettre capitale initiale */
+.initiale::first-letter{
+  font-family:'Cinzel',serif;
+  font-size:3.2rem;
+  font-weight:700;
+  color:var(--or);
+  float:left;
+  line-height:0.75;
+  margin:0.1rem 0.12rem 0 0;
+  padding-bottom:0.05rem;
+}
+
+/* Séparateur de section */
+.sep-section{
+  display:flex;align-items:center;justify-content:center;
+  gap:1.2rem;margin:3rem 0;
+}
+.sep-section .l{flex:1;height:1px;background:rgba(201,168,76,0.15);}
+.sep-section span{font-size:0.7rem;color:var(--or);opacity:0.35;letter-spacing:0.5em;}
+
+/* Citation en exergue */
+.exergue{
+  border-left:2px solid rgba(201,168,76,0.4);
+  padding:1rem 1.5rem;
+  margin:2.5rem 0;
+  font-style:italic;
+  font-size:1.05rem;
+  color:rgba(245,239,224,0.75);
+  line-height:1.8;
+}
+
+/* Engagement final */
+.engagement{
+  background:rgba(201,168,76,0.04);
+  border:1px solid rgba(201,168,76,0.16);
+  border-radius:10px;
+  padding:2rem 1.8rem;
+  margin:3rem 0;
+}
+.engagement p{
+  margin-bottom:1rem;
+  color:rgba(245,239,224,0.82);
+  font-size:1.02rem;
+}
+.engagement p:last-child{margin-bottom:0;}
+
+/* Clôture solennelle */
+.cloture{
+  text-align:center;
+  margin-top:4rem;
+  padding-top:3rem;
+  border-top:1px solid rgba(201,168,76,0.15);
+}
+.cloture-ornement{
+  font-size:0.8rem;color:var(--or);opacity:0.4;
+  letter-spacing:0.6em;margin-bottom:1.5rem;
+}
+.cloture-p{
+  font-style:italic;
+  font-size:1.05rem;
+  color:rgba(245,239,224,0.72);
+  max-width:560px;
+  margin:0 auto 1.5rem;
+  line-height:1.9;
+}
+.cloture-sig{
+  font-family:'Cinzel',serif;
+  font-size:0.7rem;
+  color:var(--or);
+  opacity:0.5;
+  letter-spacing:0.15em;
+  margin-top:1rem;
+}
+
+footer{
+  border-top:1px solid rgba(201,168,76,0.08);
+  padding:2rem 1.5rem;text-align:center;
+  font-size:0.75rem;color:var(--argent);
+  opacity:0.28;letter-spacing:0.05em;
+}
+
+@media(max-width:600px){
+  .document{padding:3rem 1rem 5rem;}
+  .couverture{padding:4.5rem 1rem 4rem;}
+  .initiale::first-letter{font-size:2.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document officiel d'ouverture</div>
+  <div class="couv-ornement-top">✦ ✦ ✦</div>
+  <h1 class="couv-h1">Déclaration de l'équipe éditoriale</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-sep">
+    <div class="l"></div><span>✦</span><div class="l lr"></div>
+  </div>
+</header>
+
+<main class="document">
+
+  <p class="initiale">Les Ketubim Qadoshim sont des écrits d'une nature singulière. Ils ont été composés par des hommes enracinés dans une langue, une culture et une histoire précises ; transmis à travers des siècles de copies, de traductions et d'interprétations ; lus, étudiés et médités par des générations de lecteurs qui y ont cherché lumière, instruction et direction. La tâche de celui qui entreprend de les traduire n'est pas une tâche ordinaire. Elle suppose une conscience aiguë de ses propres limites et une volonté sincère de servir le texte plutôt que de s'en servir.</p>
+
+  <p>C'est dans cet esprit que les Ketubim Qadoshim — Édition La Voie ont été entrepris. Non pas avec la prétention d'avoir définitivement résolu toutes les questions que pose ce texte millénaire, mais avec la conviction que chaque génération peut et doit s'efforcer de le transmettre avec davantage de fidélité, à la lumière des données disponibles en son temps.</p>
+
+  <div class="sep-section"><div class="l"></div><span>✦</span><div class="l"></div></div>
+
+  <p>Les auteurs des écrits qui composent l'Alliance Renouvelée étaient, pour leur très grande majorité, des Yehoudim profondément enracinés dans le Tanakh et dans la pensée ibri. Ils pensaient en ibri, argumentaient selon les catégories de cette pensée et s'exprimaient dans une langue chargée de résonances scripturaires. Comprendre ce qu'ils ont écrit exige que l'on se donne la peine de comprendre dans quel univers mental ils écrivaient. C'est à cet effort que l'Édition La Voie s'est astreinte.</p>
+
+  <p>Traduire n'est pas simplement transposer des mots d'une langue dans une autre. C'est tenter de transmettre un sens, dans toute sa densité et toute sa précision, à un lecteur qui ne partage pas toujours le même contexte que les premiers destinataires du texte. Chaque choix de traduction est un choix éditorial ; chaque choix éditorial engage une responsabilité.</p>
+
+  <div class="sep-section"><div class="l"></div><span>✦</span><div class="l"></div></div>
+
+  <p>L'équipe éditoriale déclare solennellement ne pas avoir ajouté au texte ce qui ne s'y trouvait pas, et ne pas en avoir retranché ce qui s'y trouvait. Là où la traduction s'écarte des conventions habituelles, c'est en raison d'une conviction fondée sur les données linguistiques, historiques et textuelles disponibles, et non par désir d'originalité ou par négligence.</p>
+
+  <p>Là où des décisions ont dû être prises en présence d'une incertitude réelle, ces décisions ont été motivées par les arguments les plus sérieux disponibles. Là où des variantes textuelles significatives existent, elles ont été signalées avec objectivité. Là où le sens d'un terme ibri résiste à toute traduction satisfaisante, ce terme a été conservé dans sa forme translittérée, dûment défini et expliqué.</p>
+
+  <div class="exergue">
+    L'équipe éditoriale n'a pas cherché à produire un texte qui lui ressemble. Elle a cherché à produire un texte qui ressemble aux Écritures.
+  </div>
+
+  <p>La rigueur linguistique n'a pas été sacrifiée à la fluidité. La précision historique n'a pas été sacrifiée à la familiarité. La fidélité à la pensée ibri des auteurs n'a pas été sacrifiée aux habitudes de lecture de notre époque. Ces exigences ne sont pas des obstacles à la compréhension : elles en sont les conditions.</p>
+
+  <div class="sep-section"><div class="l"></div><span>✦</span><div class="l"></div></div>
+
+  <p>L'équipe éditoriale reconnaît que cette édition est une œuvre humaine. À ce titre, elle n'est pas exempte de limites. Il est possible que certains passages aient été rendus avec moins de précision qu'il ne l'eût été souhaitable. Il est possible que certains choix terminologiques méritent d'être revisités à la lumière de données futures. Cette reconnaissance n'est pas une faiblesse : elle est la marque d'une démarche honnête, qui préfère l'humilité à la certitude prématurée.</p>
+
+  <p>Les améliorations futures qui seront solidement justifiées seront accueillies avec le même sérieux que les choix initiaux. Toute révision devra cependant reposer sur des arguments textuels, linguistiques ou historiques vérifiables, et non sur des préférences personnelles ou des modes passagères.</p>
+
+  <div class="sep-section"><div class="l"></div><span>✦</span><div class="l"></div></div>
+
+  <div class="engagement">
+    <p>L'équipe éditoriale s'est engagée à respecter les principes suivants tout au long de ce travail, et s'engage à les maintenir dans toutes les éditions futures :</p>
+    <p>Fidélité au texte source dans toutes ses dimensions — linguistique, historique, culturelle et scripturaire. Respect de la pensée ibri des auteurs sans la déformer ni la réduire. Transparence dans les choix de traduction, en signalant les difficultés et les variantes significatives. Uniformité terminologique dans l'ensemble des publications. Ouverture aux améliorations futures lorsqu'elles seront fondées sur des arguments sérieux. Aucun ajout au texte. Aucun retranchement du texte. Aucune modification motivée par des considérations étrangères à la fidélité aux Écritures.</p>
+  </div>
+
+  <div class="sep-section"><div class="l"></div><span>✦</span><div class="l"></div></div>
+
+  <p>Les Ketubim Qadoshim — Édition La Voie sont mis à la disposition de tous ceux qui désirent étudier les Écritures avec sérieux, humilité et discernement. Cette édition n'est pas réservée à des spécialistes. Elle s'adresse à tout lecteur qui est prêt à y consacrer l'attention et le soin qu'un texte de cette nature mérite.</p>
+
+  <p>L'équipe éditoriale encourage chaque lecteur à ne pas recevoir passivement ce texte, mais à l'examiner, à le comparer, à l'approfondir. Les notes, les références, les ressources d'accompagnement ont été conçus précisément pour cela : accompagner le lecteur dans son examen personnel des Écritures, sans jamais se substituer à cet examen.</p>
+
+  <div class="cloture">
+    <div class="cloture-ornement">✦ ✦ ✦</div>
+    <p class="cloture-p">Que cette édition soit, pour ceux qui la liront, un instrument fidèle au service des Ketubim Qadoshim — et non un obstacle entre eux et le texte qu'ils cherchent à comprendre.</p>
+    <div class="cloture-sig">L'équipe éditoriale des Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc.</div>
+  </div>
+
+</main>
+
+<footer>Déclaration de l'équipe éditoriale · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+
+</body>
+</html>

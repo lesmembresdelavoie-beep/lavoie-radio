@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Règle éditoriale — θεός et κύριος · Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+<style>
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;}
+.nav-retour a:hover{opacity:1;}
+.tableau-wrap{overflow-x:auto;margin:1.2rem 0;}
+.tableau-wrap table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+.tableau-wrap thead tr{background:rgba(201,168,76,0.1);}
+.tableau-wrap thead th{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+.tableau-wrap tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+.tableau-wrap tbody td{padding:0.7rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;line-height:1.6;}
+.tableau-wrap tbody td:first-child{color:var(--or-clair);font-family:'EB Garamond',serif;font-style:italic;font-size:1.05rem;}
+.grec{font-family:'EB Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--or-clair);}
+.arrow{color:var(--or);opacity:0.5;font-size:0.9rem;}
+.methodo{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.22);border-radius:12px;padding:1.8rem 1.6rem;margin:1.5rem 0;}
+.methodo-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.15);}
+.methodo-step{display:flex;gap:0.85rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.97rem;color:rgba(245,239,224,0.82);}
+.methodo-step:last-child{border-bottom:none;}
+.methodo-num{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);opacity:0.6;min-width:22px;margin-top:0.15rem;flex-shrink:0;}
+.resume-bloc{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:1.5rem 1.4rem;margin:1.5rem 0;}
+.resume-ligne{display:flex;align-items:flex-start;gap:0.75rem;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:1rem;}
+.resume-ligne:last-child{border-bottom:none;}
+.resume-src{font-style:italic;font-size:1.05rem;color:var(--or-clair);min-width:90px;flex-shrink:0;}
+.resume-fleche{color:var(--or);opacity:0.5;flex-shrink:0;margin-top:0.05rem;}
+.resume-cible{color:rgba(245,239,224,0.85);}
+.resume-cond{font-size:0.82rem;color:var(--argent);opacity:0.6;font-style:italic;margin-top:0.15rem;}
+</style>
+</head><body>
+<div class="nav-retour"><a href="politique-noms.html">← Politique des noms et termes</a></div>
+
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Règle éditoriale officielle</div>
+  <div class="couv-badge">⚜ Terminologie grecque officielle</div>
+  <h1 class="couv-h1">Règle éditoriale — θεός et κύριος</h1>
+  <div class="couv-h2">Traduction des termes θεός et κύριος · Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+</header>
+
+<main class="contenu">
+
+  <!-- INTRO -->
+  <section class="section" id="intro">
+    <div class="section-header"><span class="section-num">Introduction</span><div class="section-ligne"></div></div>
+    <div class="corps">
+      <p>Le texte grec des Ketubim Qadoshim emploie deux termes majeurs pour désigner Yahawah et Yahushuʿaḥ : <span class="grec">θεός</span> (Theos) et <span class="grec">κύριος</span> (Kurios). Ces deux termes ne peuvent être traduits uniformément sans une étude préalable du contexte et des sources textuelles disponibles.</p>
+      <p>La présente règle éditoriale définit, de manière officielle et contraignante, la méthode appliquée dans l'ensemble des Ketubim Qadoshim — Édition La Voie pour la traduction de ces deux termes. Elle engage l'ensemble de l'équipe éditoriale et s'applique sans exception à tous les livres de l'édition.</p>
+    </div>
+  </section>
+
+  <!-- THEOS -->
+  <section class="section" id="theos">
+    <div class="section-header"><span class="section-num">I</span><h2 class="section-titre">θεός (Theos)</h2><div class="section-ligne"></div></div>
+    <div class="corps">
+      <p><span class="grec">θεός</span> est le terme grec désignant le Créateur, le Souverain, l'Être suprême. Dans les Ketubim Qadoshim, il est employé pour désigner le Père.</p>
+    </div>
+    <div class="encadre">
+      <div style="font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">Règle officielle</div>
+      <ul class="liste">
+        <li><span class="mk">·</span><span>Chaque fois que le texte grec emploie <span class="grec">θεός</span>, l'Édition La Voie traduit systématiquement par : <strong style="color:var(--or-clair)">'Èlohim</strong>.</span></li>
+        <li><span class="mk">·</span><span><span class="grec">θεός</span> n'est jamais automatiquement remplacé par <em>Yahawah</em>, même lorsque le contexte parle du Père.</span></li>
+        <li><span class="mk">·</span><span>Le principe fondamental est de respecter le mot employé par le texte grec, sans substitution non justifiée.</span></li>
+      </ul>
+    </div>
+    <div class="tableau-wrap"><table>
+      <thead><tr><th>Terme grec</th><th>Traduction officielle</th><th>Condition</th></tr></thead>
+      <tbody>
+        <tr><td class="grec">θεός</td><td><strong>'Èlohim</strong></td><td>Toujours — sans exception</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- KURIOS -->
+  <section class="section" id="kurios">
+    <div class="section-header"><span class="section-num">II</span><h2 class="section-titre">κύριος (Kurios)</h2><div class="section-ligne"></div></div>
+    <div class="corps">
+      <p><span class="grec">κύριος</span> est un terme grec polyvalent signifiant Maître, Seigneur, Souverain. Dans les Ketubim Qadoshim, il peut désigner soit Yahushuʿaḥ, soit le Père. Son traitement exige donc une analyse contextuelle systématique.</p>
+    </div>
+
+    <div class="encadre" style="margin-bottom:1.2rem;">
+      <div style="font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">a) κύριος désigne Yahushuʿaḥ</div>
+      <ul class="liste">
+        <li><span class="mk">·</span><span>Traduction officielle : <strong style="color:var(--or-clair)">Adôn</strong></span></li>
+        <li><span class="mk">·</span><span>Exemple : <span class="grec">κύριε...</span> <span class="arrow">→</span> <strong>Adôn...</strong></span></li>
+      </ul>
+    </div>
+
+    <div class="encadre" style="margin-bottom:1.2rem;">
+      <div style="font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">b) κύριος désigne le Père — citation ou allusion au Tanakh</div>
+      <ul class="liste">
+        <li><span class="mk">·</span><span>Vérifier si le passage contient le Tétragramme <strong style="color:var(--or-clair)">יהוה</strong> dans le texte ibri (BHS/BHQ).</span></li>
+        <li><span class="mk">·</span><span>Si oui : <span class="grec">κύριος</span> est considéré comme une substitution grecque du Tétragramme → traduction : <strong style="color:var(--or-clair)">Yahawah</strong>.</span></li>
+        <li><span class="mk">·</span><span>Le Tétragramme est ainsi restauré chaque fois que le fondement textuel ibri le justifie.</span></li>
+      </ul>
+    </div>
+
+    <div class="encadre">
+      <div style="font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">c) Contexte ambigu — référence au Tétragramme incertaine</div>
+      <ul class="liste">
+        <li><span class="mk">·</span><span>Analyser le contexte du passage avec soin.</span></li>
+        <li><span class="mk">·</span><span>Consulter le texte ibri correspondant dans BHS/BHQ.</span></li>
+        <li><span class="mk">·</span><span><em>Yahawah</em> n'est introduit que lorsqu'il existe un fondement textuel suffisant et identifiable.</span></li>
+        <li><span class="mk">·</span><span>En cas de doute persistant : soumettre à l'équipe éditoriale pour validation collective.</span></li>
+      </ul>
+    </div>
+
+    <div class="tableau-wrap" style="margin-top:1.2rem;"><table>
+      <thead><tr><th>Terme grec</th><th>Contexte</th><th>Traduction officielle</th></tr></thead>
+      <tbody>
+        <tr><td class="grec">κύριος</td><td>Désigne Yahushuʿaḥ</td><td><strong>Adôn</strong></td></tr>
+        <tr><td class="grec">κύριος</td><td>Citation du Tanakh avec יהוה (YHWH) dans BHS/BHQ</td><td><strong>Yahawah</strong></td></tr>
+        <tr><td class="grec">κύριος</td><td>Désigne le Père — référence au Tétragramme incertaine</td><td><strong>Analyse contextuelle requise</strong></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- MÉTHODOLOGIE -->
+  <section class="section" id="methodo">
+    <div class="section-header"><span class="section-num">III</span><h2 class="section-titre">Méthodologie officielle</h2><div class="section-ligne"></div></div>
+    <div class="corps"><p>L'ordre de travail suivant est appliqué pour chaque occurrence de <span class="grec">θεός</span> et <span class="grec">κύριος</span> dans le texte :</p></div>
+    <div class="methodo">
+      <div class="methodo-titre">Procédure de traduction — étapes obligatoires</div>
+      <div class="methodo-step"><span class="methodo-num">1.</span><span><strong style="color:var(--or-clair)">Texte source.</strong> Identifier le terme grec dans le texte NA28 (Nestle-Aland 28e édition).</span></div>
+      <div class="methodo-step"><span class="methodo-num">2.</span><span><strong style="color:var(--or-clair)">Identification du référent.</strong> Déterminer si le terme désigne Yahushuʿaḥ, le Père, ou si le contexte est ambigu.</span></div>
+      <div class="methodo-step"><span class="methodo-num">3.</span><span><strong style="color:var(--or-clair)">Vérification dans le Tanakh.</strong> Pour <span class="grec">κύριος</span> désignant le Père : vérifier l'existence du Tétragramme יהוה dans BHS/BHQ à l'emplacement correspondant.</span></div>
+      <div class="methodo-step"><span class="methodo-num">4.</span><span><strong style="color:var(--or-clair)">Application de la terminologie officielle.</strong> Appliquer la règle définie dans le présent document.</span></div>
+      <div class="methodo-step"><span class="methodo-num">5.</span><span><strong style="color:var(--or-clair)">Traduction en français naturel.</strong> Intégrer le terme choisi dans la phrase française de manière fluide et lisible.</span></div>
+      <div class="methodo-step"><span class="methodo-num">6.</span><span><strong style="color:var(--or-clair)">Harmonisation stylistique.</strong> Vérifier la cohérence avec les passages voisins et l'ensemble du récit.</span></div>
+      <div class="methodo-step"><span class="methodo-num">7.</span><span><strong style="color:var(--or-clair)">Validation éditoriale.</strong> En cas de doute ou de passage difficile, soumettre à l'équipe éditoriale avant publication.</span></div>
+    </div>
+  </section>
+
+  <!-- RÉSUMÉ -->
+  <section class="section" id="resume">
+    <div class="section-header"><span class="section-num">IV</span><h2 class="section-titre">Résumé officiel</h2><div class="section-ligne"></div></div>
+    <div class="resume-bloc">
+      <div class="resume-ligne">
+        <span class="resume-src grec">θεός</span>
+        <span class="resume-fleche">→</span>
+        <div><div class="resume-cible"><strong style="color:var(--or-clair)">'Èlohim</strong></div><div class="resume-cond">Toujours — sans exception</div></div>
+      </div>
+      <div class="resume-ligne">
+        <span class="resume-src grec">κύριος</span>
+        <span class="resume-fleche">→</span>
+        <div><div class="resume-cible"><strong style="color:var(--or-clair)">Adôn</strong></div><div class="resume-cond">Lorsqu'il désigne Yahushuʿaḥ</div></div>
+      </div>
+      <div class="resume-ligne">
+        <span class="resume-src grec">κύριος</span>
+        <span class="resume-fleche">→</span>
+        <div><div class="resume-cible"><strong style="color:var(--or-clair)">Yahawah</strong></div><div class="resume-cond">Lorsqu'il représente clairement le Tétragramme dans une citation ou allusion au Tanakh</div></div>
+      </div>
+      <div class="resume-ligne">
+        <span class="resume-src grec">κύριος</span>
+        <span class="resume-fleche">→</span>
+        <div><div class="resume-cible"><strong style="color:var(--or-clair)">Analyse contextuelle</strong></div><div class="resume-cond">En cas de doute — le texte ibri (BHS/BHQ) sert de référence avant toute décision</div></div>
+      </div>
+    </div>
+    <div class="corps" style="margin-top:1rem;">
+      <p>Cette règle est appliquée de manière uniforme dans l'ensemble des Ketubim Qadoshim — Édition La Voie, sans exception ni variation non validée par l'équipe éditoriale.</p>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section class="section" id="conclusion">
+    <div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div>
+    <div class="conclusion-bloc">
+      <p class="conclusion-p">La règle éditoriale définie dans le présent document garantit la fidélité de l'Édition La Voie au texte grec source, à la pensée ibri des auteurs et à la Politique de Restauration des Noms et des Termes.</p>
+      <p class="conclusion-p">Elle évite toute substitution arbitraire tout en restituant, lorsque le fondement textuel l'établit, le Shem Qadosh de Yahawah là où le Tétragramme יהוה était présent dans le texte ibri original.</p>
+      <div class="conclusion-sep"></div>
+      <div class="conclusion-sig">Règle éditoriale officielle · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div>
+    </div>
+  </section>
+
+</main>
+<footer>Règle éditoriale — θεός et κύριος · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body></html>

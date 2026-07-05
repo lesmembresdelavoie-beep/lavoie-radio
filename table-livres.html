@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Table des livres — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;}
+.doc-nav{display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.doc-nav a{font-family:'Cinzel',serif;font-size:0.7rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.6;}
+.doc-nav a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:4rem 1.5rem 3rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:1.5rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:var(--or);letter-spacing:0.06em;margin-bottom:0.4rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:0.8rem;color:var(--argent);letter-spacing:0.2em;opacity:0.55;}
+.contenu{max-width:720px;margin:0 auto;padding:3rem 1.5rem 5rem;}
+
+/* Groupe */
+.groupe{margin-bottom:3.5rem;}
+.groupe-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;color:var(--or);opacity:0.55;text-transform:uppercase;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.15);margin-bottom:0;}
+
+/* Ligne livre */
+.livre{display:flex;align-items:baseline;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background 0.15s;border-radius:4px;}
+.livre:hover{background:rgba(201,168,76,0.05);padding-left:0.5rem;}
+.livre-num{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--or);opacity:0.4;min-width:22px;flex-shrink:0;}
+.livre-nom{flex:1;font-size:1.05rem;color:rgba(245,239,224,0.88);}
+.livre-ibri{font-style:italic;font-size:0.88rem;color:var(--or-clair);opacity:0.6;margin-left:0.4rem;}
+.livre-dots{flex:1;border-bottom:1px dotted rgba(201,168,76,0.2);margin:0 0.5rem;position:relative;top:-3px;}
+.livre-ref{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.45;letter-spacing:0.08em;flex-shrink:0;}
+.livre.actuel .livre-nom{color:var(--or-clair);}
+.livre.actuel .livre-ref{opacity:1;color:var(--or);}
+.livre.actuel::before{content:'►';font-size:0.55rem;color:var(--or);margin-right:0.3rem;}
+
+.note-bas{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(201,168,76,0.12);font-style:italic;font-size:0.88rem;color:var(--argent);opacity:0.5;line-height:1.7;}
+
+footer{border-top:1px solid rgba(201,168,76,0.08);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.28;}
+@media(max-width:600px){.contenu{padding:2rem 1rem 4rem;}.livre-dots{display:none;}.livre-ref{display:none;}}
+</style>
+</head>
+<body>
+<div class="doc-nav">
+  <a href="introduction-generale.html">← Introduction générale</a>
+  <a href="page-titre.html">⌂ Accueil</a>
+  <a href="mattiyahu.html">Mattiyahu →</a>
+</div>
+
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie</div>
+  <h1 class="couv-h1">Table des livres</h1>
+  <div class="couv-h2">Alliance Renouvelée · Ordre éditorial</div>
+</header>
+
+<main class="contenu">
+
+  <!-- LES BESORAH TOB -->
+  <div class="groupe">
+    <div class="groupe-titre">Les Besorah Tobah — Les Bonnes Nouvelles</div>
+    <div class="livre actuel">
+      <span class="livre-num">1</span>
+      <span class="livre-nom">Mattiyahu <span class="livre-ibri">מַתִּיתְיָהוּ</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">En préparation</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">2</span>
+      <span class="livre-nom">Marqos <span class="livre-ibri">מַרְקוֹס</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">3</span>
+      <span class="livre-nom">Luqas <span class="livre-ibri">לוּקַס</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">4</span>
+      <span class="livre-nom">Yaḥuānān <span class="livre-ibri">יְהוֹחָנָן</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+  </div>
+
+  <!-- MA'ASEI -->
+  <div class="groupe">
+    <div class="groupe-titre">Les Maʿasei — Les Actes</div>
+    <div class="livre">
+      <span class="livre-num">5</span>
+      <span class="livre-nom">Maʿasei Ha'Shaliḥim <span class="livre-ibri">מַעֲשֵׂי הַשְּׁלִיחִים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+  </div>
+
+  <!-- IGGEROT SHA'UL -->
+  <div class="groupe">
+    <div class="groupe-titre">Les Iggerot de Šāʾūl — Les Lettres de Šāʾūl</div>
+    <div class="livre">
+      <span class="livre-num">6</span>
+      <span class="livre-nom">Rômiyim <span class="livre-ibri">רוֹמִיִּים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">7</span>
+      <span class="livre-nom">Qorinthiyim Aleph <span class="livre-ibri">קוֹרִינְתִיִּים א</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">8</span>
+      <span class="livre-nom">Qorinthiyim Bet <span class="livre-ibri">קוֹרִינְתִיִּים ב</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">9</span>
+      <span class="livre-nom">Galathiyim <span class="livre-ibri">גָּלָטִיִּים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">10</span>
+      <span class="livre-nom">Ephesiyim <span class="livre-ibri">אֶפֶסִיִּים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">11</span>
+      <span class="livre-nom">Philippiyim <span class="livre-ibri">פִּילִיפִּיִּים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">12</span>
+      <span class="livre-nom">Qolossiyim <span class="livre-ibri">קוֹלוֹסִּיִּים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">13</span>
+      <span class="livre-nom">Thessalôniqiyim Aleph</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">14</span>
+      <span class="livre-nom">Thessalôniqiyim Bet</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">15</span>
+      <span class="livre-nom">Timothiyim Aleph</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">16</span>
+      <span class="livre-nom">Timothiyim Bet</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">17</span>
+      <span class="livre-nom">Titos</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">18</span>
+      <span class="livre-nom">Philemon</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+  </div>
+
+  <!-- AUTRES IGGEROT -->
+  <div class="groupe">
+    <div class="groupe-titre">Les autres Iggerot</div>
+    <div class="livre">
+      <span class="livre-num">19</span>
+      <span class="livre-nom">Ibriyim <span class="livre-ibri">עִבְרִיִּים</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">20</span>
+      <span class="livre-nom">Yaʿaqob <span class="livre-ibri">יַעֲקֹב</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">21</span>
+      <span class="livre-nom">Képha Aleph <span class="livre-ibri">כֵּיפָא א</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">22</span>
+      <span class="livre-nom">Képha Bet <span class="livre-ibri">כֵּיפָא ב</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">23</span>
+      <span class="livre-nom">Yaḥuānān Aleph</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">24</span>
+      <span class="livre-nom">Yaḥuānān Bet</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">25</span>
+      <span class="livre-nom">Yaḥuānān Guimel</span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+    <div class="livre">
+      <span class="livre-num">26</span>
+      <span class="livre-nom">Yehoudah <span class="livre-ibri">יְהוּדָה</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+  </div>
+
+  <!-- HITYALOUT -->
+  <div class="groupe">
+    <div class="groupe-titre">La Hitgalout — La Révélation</div>
+    <div class="livre">
+      <span class="livre-num">27</span>
+      <span class="livre-nom">Hitgalout Yaḥuānān <span class="livre-ibri">הִתְגַּלּוּת יְהוֹחָנָן</span></span>
+      <span class="livre-dots"></span>
+      <span class="livre-ref">À venir</span>
+    </div>
+  </div>
+
+  <div class="note-bas">
+    Les noms des livres sont présentés dans leur forme ibri translittérée adoptée par l'Édition La Voie. L'ordre éditorial retenu sera confirmé et affiné au cours de l'avancement des travaux. Les dates de publication seront mises à jour progressivement sur lavoie.world.
+  </div>
+
+</main>
+<footer>Table des livres · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>

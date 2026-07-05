@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ketubim Qadoshim — Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;min-height:100vh;display:flex;flex-direction:column;}
+.page{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:4rem 2rem;text-align:center;
+  background:linear-gradient(175deg,#030b18 0%,#0d2347 40%,#091d3d 100%);
+  position:relative;overflow:hidden;
+}
+.page::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,0.07),transparent 55%);pointer-events:none;}
+.top-ornement{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.5em;color:var(--or);opacity:0.35;text-transform:uppercase;margin-bottom:4rem;}
+.titre-collection{font-family:'Cinzel',serif;font-size:clamp(0.7rem,2vw,0.85rem);letter-spacing:0.35em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1.2rem;}
+.titre-principal{font-family:'Cinzel',serif;font-size:clamp(2rem,7vw,4.5rem);font-weight:700;color:var(--or);letter-spacing:0.06em;line-height:1.05;margin-bottom:0.3rem;}
+.titre-hébreu{font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(1rem,3vw,1.6rem);color:var(--or-clair);opacity:0.65;letter-spacing:0.1em;margin-bottom:3.5rem;}
+.sep-majeur{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:3.5rem;}
+.sep-majeur .l{width:120px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4));}
+.sep-majeur .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.4));}
+.sep-majeur span{font-size:1rem;color:var(--or);opacity:0.4;letter-spacing:0.5em;}
+.edition-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:999px;padding:0.5rem 1.5rem;font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:2rem;}
+.edition-nom{font-family:'Cinzel',serif;font-size:clamp(1rem,3vw,1.4rem);font-weight:600;color:var(--or);letter-spacing:0.12em;margin-bottom:0.4rem;}
+.edition-sous{font-size:0.9rem;color:var(--argent);opacity:0.5;letter-spacing:0.08em;font-style:italic;margin-bottom:4rem;}
+.bas-page{margin-top:auto;padding-top:3rem;border-top:1px solid rgba(201,168,76,0.12);width:100%;max-width:480px;}
+.org-nom{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.18em;color:var(--or);opacity:0.55;margin-bottom:0.3rem;}
+.org-url{font-size:0.8rem;color:var(--argent);opacity:0.35;letter-spacing:0.08em;font-style:italic;}
+nav.suite{padding:1rem 1.5rem;border-top:1px solid rgba(201,168,76,0.1);text-align:center;}
+nav.suite a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.6;margin:0 1rem;}
+nav.suite a:hover{opacity:1;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="titre-collection">Les Écrits Qadoshim</div>
+  <h1 class="titre-principal">KETUBIM<br>QADOSHIM</h1>
+  <div class="titre-hébreu">כְּתוּבִים קְדוֹשִׁים</div>
+  <div class="sep-majeur">
+    <div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div>
+  </div>
+  <div class="edition-badge">⚜ Édition de référence</div>
+  <div class="edition-nom">ÉDITION LA VOIE</div>
+  <div class="edition-sous">Traduction et édition par Les Membres de La Voie</div>
+  <div class="bas-page">
+    <div class="org-nom">La Voie Assembly, Inc. · Indianapolis, Indiana</div>
+    <div class="org-url">lavoie.world</div>
+  </div>
+</div>
+<nav class="suite">
+  <a href="declaration-editoriale.html">Déclaration éditoriale →</a>
+  <a href="avant-propos.html">Avant-Propos →</a>
+  <a href="introduction-generale.html">Introduction →</a>
+  <a href="table-livres.html">Table des livres →</a>
+</nav>
+</body>
+</html>

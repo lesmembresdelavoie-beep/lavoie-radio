@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Avant-Propos — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.1rem;line-height:2;}
+
+/* NAV */
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;}
+.nav-retour a:hover{opacity:1;}
+
+/* COUVERTURE */
+.couverture{
+  background:linear-gradient(175deg,#030a15 0%,#0d2347 45%,#091d3d 100%);
+  padding:6rem 1.5rem 5rem;
+  text-align:center;
+  border-bottom:1px solid rgba(201,168,76,0.18);
+  position:relative;
+  overflow:hidden;
+}
+.couverture::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 15%,rgba(201,168,76,0.07),transparent 55%);
+  pointer-events:none;
+}
+.couv-ref{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.45em;
+  color:var(--or);opacity:0.38;text-transform:uppercase;margin-bottom:3rem;
+}
+.couv-ornement-top{
+  font-size:1.2rem;color:var(--or);opacity:0.35;letter-spacing:0.8em;
+  margin-bottom:2.5rem;
+}
+.couv-h1{
+  font-family:'Cinzel',serif;
+  font-size:clamp(1.2rem,4vw,2rem);
+  font-weight:700;color:var(--or);
+  letter-spacing:0.06em;line-height:1.2;
+  max-width:640px;margin:0 auto 0.8rem;
+}
+.couv-h2{
+  font-family:'Cinzel',serif;
+  font-size:clamp(0.72rem,2vw,0.88rem);
+  color:var(--argent);letter-spacing:0.22em;opacity:0.52;
+  margin-bottom:4rem;
+}
+.couv-sep{
+  display:flex;align-items:center;justify-content:center;gap:1.5rem;
+  margin-bottom:3rem;
+}
+.couv-sep .l{flex:1;max-width:100px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.35));}
+.couv-sep .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.35));}
+.couv-sep span{font-size:0.75rem;color:var(--or);opacity:0.45;letter-spacing:0.6em;}
+
+/* CORPS DU DOCUMENT */
+.document{
+  max-width:720px;margin:0 auto;
+  padding:5rem 1.5rem 7rem;
+}
+
+/* Paragraphes */
+.document p{
+  color:rgba(245,239,224,0.88);
+  margin-bottom:1.6rem;
+  text-align:justify;
+  hyphens:auto;
+}
+.document p:last-of-type{margin-bottom:0;}
+
+/* Lettre capitale initiale */
+.initiale::first-letter{
+  font-family:'Cinzel',serif;
+  font-size:3.2rem;
+  font-weight:700;
+  color:var(--or);
+  float:left;
+  line-height:0.75;
+  margin:0.1rem 0.12rem 0 0;
+  padding-bottom:0.05rem;
+}
+
+/* Séparateur de section */
+.sep-section{
+  display:flex;align-items:center;justify-content:center;
+  gap:1.2rem;margin:3rem 0;
+}
+.sep-section .l{flex:1;height:1px;background:rgba(201,168,76,0.15);}
+.sep-section span{font-size:0.7rem;color:var(--or);opacity:0.35;letter-spacing:0.5em;}
+
+/* Citation en exergue */
+.exergue{
+  border-left:2px solid rgba(201,168,76,0.4);
+  padding:1rem 1.5rem;
+  margin:2.5rem 0;
+  font-style:italic;
+  font-size:1.05rem;
+  color:rgba(245,239,224,0.75);
+  line-height:1.8;
+}
+
+/* Engagement final */
+.engagement{
+  background:rgba(201,168,76,0.04);
+  border:1px solid rgba(201,168,76,0.16);
+  border-radius:10px;
+  padding:2rem 1.8rem;
+  margin:3rem 0;
+}
+.engagement p{
+  margin-bottom:1rem;
+  color:rgba(245,239,224,0.82);
+  font-size:1.02rem;
+}
+.engagement p:last-child{margin-bottom:0;}
+
+/* Clôture solennelle */
+.cloture{
+  text-align:center;
+  margin-top:4rem;
+  padding-top:3rem;
+  border-top:1px solid rgba(201,168,76,0.15);
+}
+.cloture-ornement{
+  font-size:0.8rem;color:var(--or);opacity:0.4;
+  letter-spacing:0.6em;margin-bottom:1.5rem;
+}
+.cloture-p{
+  font-style:italic;
+  font-size:1.05rem;
+  color:rgba(245,239,224,0.72);
+  max-width:560px;
+  margin:0 auto 1.5rem;
+  line-height:1.9;
+}
+.cloture-sig{
+  font-family:'Cinzel',serif;
+  font-size:0.7rem;
+  color:var(--or);
+  opacity:0.5;
+  letter-spacing:0.15em;
+  margin-top:1rem;
+}
+
+footer{
+  border-top:1px solid rgba(201,168,76,0.08);
+  padding:2rem 1.5rem;text-align:center;
+  font-size:0.75rem;color:var(--argent);
+  opacity:0.28;letter-spacing:0.05em;
+}
+
+@media(max-width:600px){
+  .document{padding:3rem 1rem 5rem;}
+  .couverture{padding:4.5rem 1rem 4rem;}
+  .initiale::first-letter{font-size:2.5rem;}
+}
+</style>
+<style>
+.doc-nav{display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.doc-nav a{font-family:'Cinzel',serif;font-size:0.7rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.6;transition:opacity 0.2s;}
+.doc-nav a:hover{opacity:1;}
+</style>
+</head><body>
+<div class="doc-nav">
+  <a href="declaration-editoriale.html">← Précédent</a>
+  <a href="page-titre.html">⌂ Accueil</a>
+  <a href="introduction-generale.html">Suivant →</a>
+</div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Préliminaires</div>
+  <div class="couv-badge">⚜ Document préliminaire</div>
+  <h1 class="couv-h1">Avant-Propos</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+</header>
+<main class="contenu" style="max-width:720px;margin:0 auto;padding:4rem 1.5rem 6rem;font-size:1.1rem;line-height:2;">
+<p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;" class="initiale">Toute édition des Écritures commence par un silence. Un silence devant la grandeur de ce qu'on s'apprête à faire ; un silence devant la fragilité inévitable de tout travail humain qui touche à ce texte. C'est dans ce silence que l'Avant-Propos des Ketubim Qadoshim — Édition La Voie prend sa source.</p><p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;">Cette édition n'est pas née d'une ambition personnelle. Elle est née d'un constat simple et d'une conviction profonde : les lecteurs qui cherchent à comprendre les écrits de l'Alliance Renouvelée dans leur profondeur authentique méritent une édition qui prenne au sérieux la pensée ibri de leurs auteurs, la richesse de leur langue et la cohérence de leur ancrage dans le Tanakh.</p><p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;">Les traductions existantes ont rendu de précieux services à de nombreuses générations. L'Édition La Voie ne les conteste pas. Elle cherche seulement à proposer une approche différente dans sa méthode : une approche qui privilégie la fidélité à la pensée ibri, la restitution des noms dans leur forme authentique et la transparence dans les choix de traduction.</p><div style="display:flex;align-items:center;gap:1.2rem;margin:2.5rem 0;"><div style="flex:1;height:1px;background:rgba(201,168,76,0.15);"></div><span style="font-size:0.7rem;color:var(--or);opacity:0.35;letter-spacing:0.5em;">✦</span><div style="flex:1;height:1px;background:rgba(201,168,76,0.15);"></div></div><p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;">Le titre que porte cette édition — Ketubim Qadoshim — est lui-même significatif. Il ne traduit pas, il désigne. Il indique la nature de ces écrits sans les réduire à une catégorie familière. Ces textes sont des écrits : ils ont un auteur, une date, un contexte, un destinataire. Ils sont qadoshim : séparés, consacrés, portant une autorité qui dépasse celle de leurs auteurs humains.</p><p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;">Cette double réalité — historique et transcendante — est au cœur de la méthode éditoriale de cette édition. Le lecteur trouvera ici un texte traduit avec le plus grand soin d'une fidélité historique et linguistique, accompagné des notes et ressources nécessaires pour approfondir sa compréhension, sans que ces outils ne prétendent jamais remplacer sa lecture personnelle et attentive du texte.</p><div style="display:flex;align-items:center;gap:1.2rem;margin:2.5rem 0;"><div style="flex:1;height:1px;background:rgba(201,168,76,0.15);"></div><span style="font-size:0.7rem;color:var(--or);opacity:0.35;letter-spacing:0.5em;">✦</span><div style="flex:1;height:1px;background:rgba(201,168,76,0.15);"></div></div><p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;">L'Édition La Voie est le fruit d'un travail collectif, conduit avec patience, rigueur et humilité. Chaque choix de traduction a été pesé. Chaque terme ibri conservé dans sa forme translittérée a été défini avec soin. Chaque note a été rédigée avec le souci de servir le texte plutôt que de s'y substituer.</p><p style="color:rgba(245,239,224,0.87);margin-bottom:1.5rem;text-align:justify;hyphens:auto;">Ce travail n'est pas achevé. Il ne le sera sans doute jamais tout à fait, car la compréhension des Écritures est un horizon qui s'élargit à mesure qu'on s'en approche. Mais ce premier fruit est offert au lecteur avec la sincère conviction qu'il pourra l'aider à s'approcher davantage du sens originel de ces écrits anciens et vivants.</p><div class="encadre" style="margin:2rem 0;font-style:italic;color:rgba(245,239,224,0.75);font-size:1.02rem;line-height:1.8;">Que Yahawah accorde à ceux qui liront ces pages la compréhension, le discernement et la persévérance nécessaires pour que leur étude soit fructueuse.</div><div style="text-align:right;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,0.12);"><div style="font-family:Cinzel,serif;font-size:0.78rem;color:var(--or-clair);letter-spacing:0.1em;">B'neiYah — Jean Wagner Guillaume</div><div style="font-size:0.85rem;color:var(--argent);opacity:0.55;font-style:italic;">Président · La Voie Assembly, Inc. · Responsable de l'Édition La Voie</div></div>
+</main>
+<footer style="border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;">
+Avant-Propos · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world
+</footer></body></html>
