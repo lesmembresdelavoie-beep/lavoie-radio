@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Les destinataires du Récit de Mattiyahu — Dossier Mattiyahu · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+<style>
+.doc-nav{display:flex;justify-content:space-between;align-items:center;padding:0.85rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);flex-wrap:wrap;gap:0.5rem;}
+.doc-nav a{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);text-decoration:none;letter-spacing:0.1em;opacity:0.6;}
+.doc-nav a:hover{opacity:1;}
+.doc-nav .centre{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--argent);opacity:0.4;letter-spacing:0.12em;}
+.tableau-wrap{overflow-x:auto;margin:1.2rem 0;}
+.tableau-wrap table{width:100%;border-collapse:collapse;font-size:0.93rem;}
+.tableau-wrap thead tr{background:rgba(201,168,76,0.1);}
+.tableau-wrap thead th{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.75rem 0.9rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+.tableau-wrap tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+.tableau-wrap tbody tr:hover{background:rgba(201,168,76,0.04);}
+.tableau-wrap tbody td{padding:0.62rem 0.9rem;color:rgba(245,239,224,0.82);vertical-align:top;line-height:1.55;}
+.tableau-wrap tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.synthese{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:1.8rem 1.6rem;margin:2rem 0;}
+.synthese-titre{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.15);}
+.synth-row{display:flex;gap:0.75rem;padding:0.45rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.95rem;color:rgba(245,239,224,0.82);}
+.synth-row:last-child{border-bottom:none;}
+.synth-label{font-family:'Cinzel',serif;font-size:0.63rem;color:var(--or);opacity:0.6;min-width:110px;flex-shrink:0;margin-top:0.15rem;text-transform:uppercase;letter-spacing:0.1em;}
+.ref-inline{font-family:'Cinzel',serif;font-size:0.7rem;color:var(--or);opacity:0.65;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:0.1rem 0.45rem;margin:0 0.15rem;white-space:nowrap;}
+</style>
+</head><body>
+<div class="doc-nav">
+  <a href="mattiyahu-identite.html">← Précédent</a>
+  <span class="centre">Dossier Mattiyahu · Chapitre II</span>
+  <a href="mattiyahu-but.html">Suivant →</a>
+</div>
+<header class="couverture">
+  <div class="couv-ref">Dossier Mattiyahu · Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-badge">⚜ Chapitre II</div>
+  <h1 class="couv-h1">Les destinataires du Récit de Mattiyahu</h1>
+  <div class="couv-h2">Étude historique, textuelle et documentaire</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+</header>
+<main class="contenu"><section class="section" id="pourquoi"><div class="section-header"><span class="section-num">I</span><h2 class="section-titre">Pourquoi identifier les destinataires ?</h2><div class="section-ligne"></div></div><div class="corps"><p>La connaissance des premiers destinataires d'un écrit est indispensable pour comprendre ses choix littéraires, son vocabulaire et ses objectifs. Un auteur adapte nécessairement son propos à ceux à qui il s'adresse : les références qu'il emploie, les explications qu'il donne ou omet, les préoccupations qu'il aborde, tout cela révèle son public.</p><p>Dans le cas du Récit de Mattiyahu, cette identification est particulièrement importante car le texte s'adresse à un public qui devait posséder une connaissance substantielle du Tanakh et de la pensée ibri.</p></div></section><section class="section" id="indices"><div class="section-header"><span class="section-num">II</span><h2 class="section-titre">Les indices fournis par le texte</h2><div class="section-ligne"></div></div><div class="corps"><p>Le texte lui-même fournit plusieurs indices permettant d'identifier son premier public :</p></div><div class="tableau-wrap"><table><thead><tr><th>Indice</th><th>Observation</th><th>Implication</th></tr></thead><tbody><tr><td>Fréquence des citations du Tanakh</td><td>Plus de 60 références directes ou indirectes</td><td>Un public familier du Tanakh est présupposé</td></tr><tr><td>Absence d'explications culturelles</td><td>Certaines pratiques ibri ne sont pas expliquées</td><td>Contrairement à Marqos, qui explique davantage</td></tr><tr><td>Usage de 'Malkuwt des Cieux'</td><td>Circumlocution évitant le Shem Qadosh</td><td>Usage courant chez les Yehoudim du premier siècle</td></tr><tr><td>Structure en cinq grands discours</td><td>Rappelle la structure de la Torah</td><td>Public connaissant la Torah</td></tr><tr><td>Généalogie d'ouverture</td><td>Part d'Avraham et Dāwīḍ</td><td>Ancrage dans l'histoire du peuple de Yisra'el</td></tr></tbody></table></div></section><section class="section" id="hypotheses"><div class="section-header"><span class="section-num">III</span><h2 class="section-titre">Les principales hypothèses</h2><div class="section-ligne"></div></div><div class="corps"><p>Les données disponibles ont conduit les historiens à proposer plusieurs hypothèses concernant les premiers destinataires :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Communauté de Yehoudim croyants.</strong> Hypothèse la plus largement défendue. Le texte présuppose une connaissance du Tanakh, des pratiques et des institutions du premier siècle. La structure du récit, ses formules caractéristiques et son vocabulaire renforcent cette hypothèse.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Communauté mixte.</strong> Certains chercheurs proposent un public comprenant à la fois des Yehoudim et des non-Yehoudim, en raison de certains passages qui semblent s'adresser à un public plus large <span class="ref-inline">Matt. 28:19</span>.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Lieu géographique.</strong> Antioche de Syrie est fréquemment proposée comme lieu de rédaction ou de destination, en raison de son importance dans les premiers rassemblements. D'autres proposent Yehoudah ou Kapernahoum.</span></li></ul></div></section><section class="section" id="contexte"><div class="section-header"><span class="section-num">IV</span><h2 class="section-titre">Leur contexte historique</h2><div class="section-ligne"></div></div><div class="corps"><p>Quel que soit le lieu précis, les premiers destinataires vivaient dans un monde marqué par la domination romaine, la présence du Beit HaMiqdash (au moins au moment des événements rapportés) et les tensions entre différents groupes au sein du peuple de Yisra'el.</p><p>Ils avaient grandi dans la lecture du Tanakh, pratiquaient le Shabbath et les Moʿadim, et connaissaient les institutions de leur époque — les Peroushim, les Tsedouqim, les Soferim. Les débats rapportés en <span class="ref-inline">Matt. 15</span> ou <span class="ref-inline">Matt. 23</span> présupposent un lecteur capable de comprendre ces réalités sans explication.</p></div></section><section class="section" id="besoins"><div class="section-header"><span class="section-num">V</span><h2 class="section-titre">Les besoins auxquels Mattiyahu répond</h2><div class="section-ligne"></div></div><div class="encadre"><div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">Principales préoccupations auxquelles le récit semble répondre</div><ul class="liste"><li><span class="mk">·</span><span>Établir la continuité entre les promesses du Tanakh et leur développement dans la venue de Yahushuʿaḥ.</span></li><li><span class="mk">·</span><span>Montrer que Yahushuʿaḥ est le Mashiaḥ annoncé par les Ketubim Qadoshim du Tanakh.</span></li><li><span class="mk">·</span><span>Transmettre les enseignements fondamentaux de Yahushuʿaḥ à des tal'midim qui doivent les mettre en pratique.</span></li><li><span class="mk">·</span><span>Répondre aux questions et aux objections qui circulaient dans les premiers rassemblements.</span></li><li><span class="mk">·</span><span>Fortifier les qehilot dans un contexte de tensions sociales et institutionnelles.</span></li></ul></div></section><section class="section" id="traduction"><div class="section-header"><span class="section-num">VI</span><h2 class="section-titre">Conséquences pour la traduction</h2><div class="section-ligne"></div></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span>Certains termes n'ont pas besoin d'être expliqués en note car les destinataires les comprenaient : Peroushim, Shabbath, Moʿed. La note de première occurrence suffit.</span></li><li><span class="mk">·</span><span>Les citations du Tanakh doivent être identifiées avec soin, car elles constituent une part essentielle du message.</span></li><li><span class="mk">·</span><span>Le vocabulaire ibri doit être restitué dans sa forme authentique, conformément à la Politique de Restauration des Noms et des Termes.</span></li><li><span class="mk">·</span><span>Le style du récit — direct, structuré, riche en enseignements — doit être respecté dans la traduction.</span></li></ul></div></section><section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">Les données disponibles permettent de conclure avec un degré raisonnable de probabilité que les premiers destinataires du Récit de Mattiyahu étaient des Yehoudim croyants en Yahushuʿaḥ Ha'Mashiaḥ, profondément enracinés dans la culture et les Écritures ibri.</p><p class="conclusion-p">Ce qui est établi : le texte présuppose une connaissance approfondie du Tanakh. Ce qui est probable : un public de Yehoudim croyants en milieu urbain. Ce qui demeure discuté : le lieu précis et la proportion éventuelle de non-Yehoudim parmi les premiers lecteurs.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Dossier Mattiyahu · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc.</div></div></section></main>
+<footer>Les destinataires du Récit de Mattiyahu · Dossier Mattiyahu · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body></html>
