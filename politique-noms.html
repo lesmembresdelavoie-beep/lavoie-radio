@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>La Politique de restauration des noms et des termes — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.6rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.9rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-ornement .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.75rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:1.8rem;}
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.2rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.7rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.6rem;margin:1.2rem 0;}
+.liste{list-style:none;padding:0;}
+.liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.liste li:last-child{border-bottom:none;}
+.liste li .mk{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.2rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.card:hover{border-color:rgba(201,168,76,0.28);}
+.card-titre{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.card-corps{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.65;}
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.5rem 1.8rem;margin:1.6rem 0;font-style:italic;color:rgba(245,239,224,0.78);font-size:1rem;line-height:1.85;}
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.82rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.68rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{color:var(--or-clair);font-style:italic;}
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.04rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.3;letter-spacing:0.05em;}
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial officiel</div>
+  <div class="couv-badge">⚜ Politique lexicale et onomastique</div>
+  <h1 class="couv-h1">La Politique de restauration des noms et des termes</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement"><div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div></div>
+  <p class="couv-intro">Le présent document définit la politique officielle de l'Édition La Voie concernant la restauration des noms propres et des termes essentiels utilisés dans les Ketubim Qadoshim. Il établit les principes linguistiques, historiques et éditoriaux qui justifient et encadrent ces choix.</p>
+</header>
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#noms">Les noms propres</a></li>
+      <li><a href="#termes">Les termes essentiels</a></li>
+      <li><a href="#criteres">Les critères de restauration</a></li>
+      <li><a href="#limites">Les limites de la restauration</a></li>
+      <li><a href="#uniformite">Uniformité dans toute l'édition</a></li>
+      <li><a href="#conclusion">Conclusion</a></li></ol>
+  </nav>
+</div>
+<main class="contenu">
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <h2 class="section-titre">Préambule</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les Ketubim Qadoshim ont été rédigés dans un contexte historique, linguistique et culturel spécifique. Au fil des siècles, de nombreuses traductions ont substitué aux noms et aux termes originels des formes grecques, latines ou issues des langues modernes qui, bien qu'historiquement répandues, peuvent éloigner le lecteur du sens et de l'identité véritables des Écritures.</p><p>L'Édition La Voie choisit de restaurer certains noms propres et certains termes essentiels afin de rapprocher le lecteur du contexte historique, linguistique et culturel dans lequel ces écrits ont vu le jour. Cette démarche n'est pas un choix arbitraire : elle procède d'une volonté de fidélité aux sources, d'honnêteté intellectuelle et de respect envers les premiers destinataires de ces écrits.</p></div>
+  </section>
+  <section class="section" id="noms">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Les noms propres</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie applique les principes suivants à la restauration des noms propres :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Respect des formes anciennes.</strong> Lorsque cela est pertinent et attesté, les noms propres sont restitués dans une forme aussi proche que possible de leur forme ibri, araméenne ou grecque originelle, plutôt que dans leurs formes latinisées ou hellénisées qui prédominent dans les traductions courantes.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Uniformité dans l'édition.</strong> Une fois la forme d'un nom propre adoptée et validée par l'équipe éditoriale, elle est appliquée de manière strictement uniforme dans l'ensemble des livres, des notes, des introductions et des annexes de l'édition.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Cohérence des translittérations.</strong> Les règles de translittération adoptées par l'Édition La Voie sont appliquées uniformément à l'ensemble des noms propres translittérés, afin de garantir une lecture cohérente et prévisible pour le lecteur.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Restauration des éléments théophores.</strong> Lorsqu'un nom propre contient un élément théophore — c'est-à-dire une référence au Nom de Yahawah — cet élément est restitué dans sa forme authentique, conformément aux données linguistiques et historiques disponibles. Ainsi, les noms contenant l'élément <em>-iah</em>, <em>-yah</em> ou <em>-el</em> sont traités avec une attention particulière.</span></li></ul></div>
+  </section>
+  <section class="section" id="termes">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Les termes essentiels</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Certains termes ibri ne possèdent pas d'équivalent français suffisamment précis pour rendre toute la richesse de leur sens. Leur traduction par un mot courant du français entraîne inévitablement une perte sémantique significative. L'Édition La Voie choisit de conserver ces termes sous leur forme translittérée, en les définissant dès leur première occurrence conformément au Principe des Premières Occurrences.</p></div><div class="table-wrap"><table>
+<thead><tr><th>Terme ibri</th><th>Forme retenue</th><th>Sens principal conservé</th></tr></thead>
+<tbody>
+<tr><td>יהוה</td><td>Yahawah</td><td>Le Nom propre du Créateur — forme jamais substituée par un titre générique</td></tr>
+<tr><td>יהושע</td><td>Yahushuʿaḥ</td><td>Nom propre du Mashiaḥ ; forme ibri authentique</td></tr>
+<tr><td>קהלה</td><td>Qehilah</td><td>Assemblée rassemblée — forme jamais substituée par un terme institutionnel étranger</td></tr>
+<tr><td>תלמיד</td><td>Tal'mid</td><td>Étudiant engagé, marchant dans les traces de son maître</td></tr>
+<tr><td>שליח</td><td>Shaliaḥ</td><td>Envoyé mandaté, porteur d'une mission précise</td></tr>
+<tr><td>רוח</td><td>Rouaḥ</td><td>Souffle, Esprit ; terme irremplaçable en ibri</td></tr>
+<tr><td>תורה</td><td>Torah</td><td>Enseignement, instruction ; pas simplement « Loi »</td></tr>
+<tr><td>שבת</td><td>Shabbath</td><td>Jour de repos institué ; identité calendaire précise</td></tr>
+<tr><td>מועד</td><td>Moʿed</td><td>Rendez-vous fixé, fête appointée par Yahawah</td></tr>
+<tr><td>טבילה</td><td>Tebilah</td><td>Immersion rituelle ; distinct du sens courant de « baptême »</td></tr>
+<tr><td>תפילה</td><td>Téfilah</td><td>Supplication, requête adressée à Yahawah</td></tr>
+<tr><td>דבר</td><td>Dabar</td><td>Parole, Verbe, Déclaration active</td></tr>
+<tr><td>מלכות</td><td>Malkuwt</td><td>Règne, royauté, dimension royale</td></tr>
+<tr><td>משיח</td><td>Mashiaḥ</td><td>Oint, Messie ; forme ibri de ce titre</td></tr>
+<tr><td>קדוש</td><td>Qadosh</td><td>Saint, séparé, consacré à Yahawah</td></tr>
+</tbody>
+</table></div>
+<div class="corps" style="margin-top:1.2rem;"><p>Cette liste constitue le noyau fondamental des termes conservés sous forme translittérée. Elle pourra être enrichie progressivement au cours de l'avancement de l'édition, selon les besoins identifiés par l'équipe éditoriale.</p></div>
+  </section>
+  <section class="section" id="criteres">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Les critères de restauration</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Toute décision de restauration d'un nom ou d'un terme repose sur les critères suivants, qui doivent être vérifiés conjointement :</p></div><div class="encadre"><ul class="liste"><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité historique.</strong> Le terme ou le nom restauré doit correspondre à une réalité historiquement attestée, fondée sur les données disponibles concernant la langue et la culture de l'époque.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité linguistique.</strong> La forme translittérée doit respecter les règles phonétiques et morphologiques de la langue source, sans déformation arbitraire.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Fidélité à la pensée ibri.</strong> La restauration doit permettre de mieux rendre la profondeur sémantique et conceptuelle du terme ibri, que la forme traduite masquait ou appauvrissait.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Compréhension par le lecteur contemporain.</strong> La forme retenue doit demeurer suffisamment accessible pour un lecteur francophone, éventuellement accompagnée d'une note de première occurrence permettant de l'identifier et de la comprendre.</span></li><li><span class="mk">·</span><span><strong style='color:var(--or-clair)'>Cohérence éditoriale.</strong> La restauration doit s'intégrer harmonieusement à l'ensemble du vocabulaire éditorial de l'Édition La Voie, sans créer de contradiction ni de rupture avec les autres termes retenus.</span></li></ul></div>
+  </section>
+  <section class="section" id="limites">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Les limites de la restauration</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>L'Édition La Voie n'a pas pour objectif de translittérer systématiquement l'intégralité du vocabulaire des Écritures. Une telle démarche rendrait le texte inintelligible pour le lecteur francophone et irait à l'encontre de l'objectif premier de cette édition, qui est de faciliter la compréhension des Ketubim Qadoshim.</p><p>Une translittération est justifiée lorsque le terme ibri ne possède pas d'équivalent français suffisamment précis, lorsque sa traduction habituelle induit une erreur d'interprétation significative, ou lorsque sa dimension culturelle, théologique ou historique mérite d'être préservée pour le lecteur.</p><p>En revanche, lorsqu'un terme français courant rend fidèlement le sens du terme ibri sans perte significative, la traduction française est préférable. La simplification n'est pas un défaut : elle est une vertu lorsqu'elle sert la clarté sans trahir le sens.</p></div>
+  </section>
+  <section class="section" id="uniformite">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Uniformité dans toute l'édition</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps"><p>Les formes retenues par l'équipe éditoriale doivent être appliquées de manière strictement uniforme dans l'ensemble des publications des Ketubim Qadoshim — Édition La Voie, sans exception ni variation non validée.</p></div><div class="encadre"><div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;">Domaines d'application</div><ul class="liste"><li><span class="mk">·</span><span>Le texte des Ketubim Qadoshim.</span></li><li><span class="mk">·</span><span>Les notes lexicales, linguistiques, historiques et textuelles.</span></li><li><span class="mk">·</span><span>Le Lexique Officiel de l'Édition La Voie.</span></li><li><span class="mk">·</span><span>Les introductions aux livres, aux chapitres et aux annexes.</span></li><li><span class="mk">·</span><span>Les annexes, chronologies, cartes et tableaux.</span></li><li><span class="mk">·</span><span>Toutes les publications officielles de La Voie : site lavoie.world, documents institutionnels, supports de formation et de rassemblement.</span></li></ul></div>
+  </section>
+<section class="section" id="conclusion"><div class="section-header"><span class="section-num">Conclusion</span><div class="section-ligne"></div></div><div class="conclusion-bloc"><p class="conclusion-p">La politique de restauration des noms et des termes définie dans ce document ne cherche pas à introduire une terminologie artificielle ou à rompre inutilement avec les conventions établies. Elle vise uniquement à restituer avec davantage de fidélité l'identité historique, linguistique et culturelle des Ketubim Qadoshim.</p><p class="conclusion-p">Chaque nom restauré, chaque terme conservé sous sa forme translittérée, est le signe d'un respect profond pour les textes sources et pour les lecteurs qui cherchent à les comprendre dans leur profondeur originelle.</p><div class="conclusion-sep"></div><div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div></div></section>
+</main>
+<footer>La Politique de restauration des noms et des termes · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+</body>
+</html>

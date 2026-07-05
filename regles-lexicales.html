@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Règles officielles de création lexicale — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.85;}
+
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+
+/* COUVERTURE */
+.couverture{background:linear-gradient(160deg,#060f1e 0%,#0d2347 55%,#0a1c38 100%);padding:5rem 1.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.07),transparent 60%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.35em;color:var(--or);opacity:0.45;text-transform:uppercase;margin-bottom:2rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.65rem;color:var(--or-clair);letter-spacing:0.18em;margin-bottom:1.5rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:680px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.78rem,2vw,0.95rem);color:var(--argent);letter-spacing:0.18em;opacity:0.6;margin-bottom:3rem;}
+.couv-sep{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:2.5rem;}
+.couv-sep .l{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.4));}
+.couv-sep .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.4));}
+.couv-sep span{font-size:0.75rem;color:var(--or);opacity:0.55;letter-spacing:0.4em;}
+.couv-intro{max-width:620px;margin:0 auto;font-style:italic;font-size:1rem;color:rgba(245,239,224,0.68);line-height:1.8;}
+
+/* TOC */
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-radius:10px;padding:1.6rem 1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.25rem 0;color:rgba(245,239,224,0.7);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.7);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+
+/* CONTENU */
+.contenu{max-width:820px;margin:0 auto;padding:3.5rem 1.5rem 6rem;}
+
+/* SECTION */
+.section{margin-bottom:4rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.25em;color:var(--or);opacity:0.55;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.15);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.92rem,2.5vw,1.1rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+
+/* CORPS */
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1rem;max-width:720px;}
+.corps p:last-child{margin-bottom:0;}
+
+/* ENCADRÉ */
+.encadre{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.4rem 1.5rem;margin-top:1.2rem;}
+
+/* PRINCIPES */
+.principes-liste{list-style:none;padding:0;margin-top:0.5rem;}
+.principes-liste li{display:flex;align-items:flex-start;gap:0.85rem;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.85);font-size:1rem;line-height:1.6;}
+.principes-liste li:last-child{border-bottom:none;}
+.principes-liste li .puce{color:var(--or);opacity:0.55;font-size:1.1rem;flex-shrink:0;margin-top:0.1rem;}
+
+/* TABLEAU EXEMPLES */
+.table-wrap{overflow-x:auto;margin-top:1rem;}
+table{width:100%;border-collapse:collapse;font-size:0.95rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+thead th{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase;padding:0.85rem 1rem;text-align:left;border-bottom:1px solid rgba(201,168,76,0.25);}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody td{padding:0.7rem 1rem;color:rgba(245,239,224,0.82);vertical-align:top;}
+tbody td:first-child{font-family:'EB Garamond',serif;font-style:italic;color:var(--or-clair);}
+.form-ibri{font-weight:600;}
+
+/* EXEMPLES PHRASES */
+.exemples-liste{list-style:none;padding:0;margin-top:0.8rem;}
+.exemples-liste li{display:flex;align-items:flex-start;gap:0.85rem;padding:0.6rem 0.8rem;margin-bottom:0.4rem;background:var(--surface);border:1px solid rgba(201,168,76,0.1);border-radius:7px;font-size:0.98rem;color:rgba(245,239,224,0.82);font-style:italic;}
+.exemples-liste li::before{content:'›';color:var(--or);opacity:0.6;font-style:normal;flex-shrink:0;font-size:1.1rem;}
+
+/* VALIDATION */
+.validation-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.22);border-radius:12px;padding:2rem 1.6rem;}
+.validation-intro{font-size:0.97rem;color:rgba(245,239,224,0.8);margin-bottom:1.2rem;font-style:italic;border-left:2px solid rgba(201,168,76,0.3);padding-left:1rem;}
+.validation-steps{list-style:none;padding:0;counter-reset:vs;}
+.validation-steps li{counter-increment:vs;display:flex;align-items:flex-start;gap:0.9rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.82);font-size:0.97rem;}
+.validation-steps li:last-child{border-bottom:none;}
+.validation-steps li::before{content:counter(vs)'.';font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);opacity:0.6;min-width:18px;margin-top:0.2rem;flex-shrink:0;}
+
+/* CONCLUSION */
+.conclusion-bloc{text-align:center;padding:2.5rem 1.5rem;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.16);border-radius:12px;}
+.conclusion-citation{font-style:italic;font-size:1.08rem;color:rgba(245,239,224,0.8);max-width:560px;margin:0 auto 1.2rem;line-height:1.8;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);letter-spacing:0.15em;opacity:0.55;}
+
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.35;letter-spacing:0.05em;}
+
+@media(max-width:600px){.contenu{padding:2rem 1rem 4rem;}.couverture{padding:3.5rem 1rem 3rem;}}
+</style>
+</head>
+<body>
+
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+
+<!-- COUVERTURE -->
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial normatif</div>
+  <div class="couv-badge">⚜ Politique lexicale officielle</div>
+  <h1 class="couv-h1">Règles officielles de création lexicale</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-sep">
+    <div class="l"></div>
+    <span>✦ ✦ ✦</span>
+    <div class="l lr"></div>
+  </div>
+  <p class="couv-intro">
+    Le présent document constitue la référence officielle concernant la création, l'adaptation et l'utilisation des termes ibri translittérés dans l'ensemble des Ketubim Qadoshim — Édition La Voie. Il définit les principes linguistiques permettant d'intégrer harmonieusement certains termes ibri dans la langue française, tout en préservant leur sens d'origine avec rigueur et fidélité.
+  </p>
+</header>
+
+<!-- TABLE DES MATIÈRES -->
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>
+      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#principes">Principes généraux</a></li>
+      <li><a href="#substantifs">Formation des substantifs</a></li>
+      <li><a href="#verbes">Formation des verbes</a></li>
+      <li><a href="#participes">Formation des participes</a></li>
+      <li><a href="#adjectifs">Formation des adjectifs</a></li>
+      <li><a href="#adverbes">Formation éventuelle des adverbes</a></li>
+      <li><a href="#expressions">Formation des expressions composées</a></li>
+      <li><a href="#exemples">Exemples d'utilisation</a></li>
+      <li><a href="#validation">Procédure de validation</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </nav>
+</div>
+
+<main class="contenu">
+
+  <!-- PRÉAMBULE -->
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Toute traduction fidèle doit parfois enrichir la langue dans laquelle elle est rédigée afin de transmettre avec précision des réalités qui ne trouvent pas toujours d'équivalent satisfaisant. Les Ketubim Qadoshim emploient de nombreux termes issus de la pensée ibri. Ces termes expriment des réalités théologiques, culturelles et spirituelles dont la profondeur ne peut être rendue fidèlement par les seules ressources du français courant.</p>
+      <p>Afin de préserver la richesse de ces termes, l'Édition La Voie adopte une <strong style="color:var(--or-clair);">politique éditoriale de néologie contrôlée</strong>. Cette démarche consiste à intégrer certains termes ibri translittérés dans la langue française en leur permettant, lorsque cela est justifié, de suivre les règles grammaticales du français.</p>
+      <p>Ces créations lexicales ne sont jamais arbitraires. Elles visent exclusivement à transmettre avec davantage de fidélité le sens des Écritures, à préserver la richesse du vocabulaire ibri et à favoriser chez le lecteur une compréhension toujours plus profonde de la pensée des Ketubim Qadoshim.</p>
+    </div>
+  </section>
+
+  <!-- PRINCIPES GÉNÉRAUX -->
+  <section class="section" id="principes">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Principes généraux</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Tout terme ibri intégré dans l'Édition La Voie doit respecter simultanément les cinq principes fondamentaux suivants :</p>
+    </div>
+    <div class="encadre">
+      <ul class="principes-liste">
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Fidélité au sens originel.</strong> Toute création lexicale doit demeurer rigoureusement fidèle au sens que le terme possède dans la langue et la pensée ibri. Le sens ne peut jamais être altéré ou réinterprété au profit d'une formulation plus commode.</span></li>
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Respect des racines ibri.</strong> Les formes créées doivent rester reconnaissables et directement rattachées à la racine ibri dont elles sont issues, afin de préserver le lien vivant entre le terme français et sa source.</span></li>
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Cohérence grammaticale française.</strong> Les termes intégrés reçoivent, lorsque cela est nécessaire, les marques grammaticales du français — genre, nombre, conjugaison, accord — à condition que leur sens originel demeure intact.</span></li>
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Uniformité dans l'ensemble de l'édition.</strong> Un terme retenu est employé de manière uniforme dans l'intégralité des Ketubim Qadoshim — Édition La Voie. Aucune variation non validée n'est admise.</span></li>
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Absence de créations arbitraires.</strong> Aucun néologisme ne peut être introduit sans validation préalable de l'équipe éditoriale. Toute proposition doit être motivée par un besoin réel de traduction et non par une simple préférence stylistique.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SUBSTANTIFS -->
+  <section class="section" id="substantifs">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">Formation des substantifs</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Les substantifs ibri sont la catégorie la mieux représentée dans l'Édition La Voie. Ils sont conservés dans leur forme translittérée afin de préserver leur charge sémantique et culturelle. Un terme français équivalent, même s'il existe, peut se révéler insuffisant ou réducteur face à la profondeur du terme ibri.</p>
+      <p>Ces substantifs suivent en français les règles d'accord en genre et en nombre lorsqu'un emploi au pluriel devient nécessaire.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Terme ibri</th><th>Forme plurielle</th><th>Sens principal</th></tr></thead>
+        <tbody>
+          <tr><td>Téfilah</td><td>Téfilot</td><td>Supplication, requête adressée à Yahawah</td></tr>
+          <tr><td>Tebilah</td><td>Tebalot</td><td>Immersion rituelle</td></tr>
+          <tr><td>Tal'mid</td><td>Tal'midim</td><td>Étudiant engagé, marchant dans les traces de Yahushuʿaḥ</td></tr>
+          <tr><td>Qehilah</td><td>Qehilot</td><td>Assemblée, communauté rassemblée</td></tr>
+          <tr><td>Shaliaḥ</td><td>Shaliḥim</td><td>Envoyé, messager mandaté</td></tr>
+          <tr><td>Moʿed</td><td>Moʿadim</td><td>Rendez-vous fixé, fête appointée</td></tr>
+          <tr><td>Dabar</td><td>Debarim</td><td>Parole, Verbe, Déclaration</td></tr>
+          <tr><td>Rouaḥ</td><td>—</td><td>Souffle, Esprit</td></tr>
+          <tr><td>Qadosh</td><td>Qedoshim</td><td>Saint, séparé, consacré</td></tr>
+          <tr><td>Berith</td><td>Beritot</td><td>Alliance</td></tr>
+          <tr><td>Emounah</td><td>—</td><td>Fidélité, foi active</td></tr>
+          <tr><td>Teshoubah</td><td>—</td><td>Retour, repentir, conversion</td></tr>
+          <tr><td>Malkuwt</td><td>—</td><td>Règne, royauté, royaume</td></tr>
+          <tr><td>Kâbôd</td><td>—</td><td>Gloire, honneur, pesanteur de Yahawah</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- VERBES -->
+  <section class="section" id="verbes">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Formation des verbes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Lorsque l'action ou le processus désigné par un terme ibri ne peut être rendu naturellement par un verbe français existant sans perte de sens significative, l'Édition La Voie admet la formation d'un verbe dérivé du terme ibri concerné.</p>
+      <p>La règle générale consiste à ajouter la terminaison verbale française <strong style="color:var(--or-clair);">-er</strong> au radical translittéré, selon le modèle du premier groupe (verbes réguliers), qui est le plus productif en français.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Terme ibri</th><th>Verbe formé</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>Tebilah</td><td class="form-ibri">thabaler</td><td>Soumettre à l'immersion rituelle. <em>Ex. : il les thabala au nom de Yahushuʿaḥ.</em></td></tr>
+          <tr><td>hitpallél</td><td class="form-ibri">hitpalléler <em>ou</em> hitpallél</td><td>Adresser une téfilah. Forme en cours de validation éditoriale.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="encadre" style="margin-top:1.2rem;">
+      <p style="color:rgba(245,239,224,0.78);font-size:0.95rem;font-style:italic;">Note : lorsque le terme ibri possède déjà une forme verbale reconnue (tel que hitpallél), l'équipe éditoriale peut décider de le conserver tel quel sans ajout de terminaison française, s'il est suffisamment intelligible et cohérent avec les règles grammaticales du contexte. Cette décision relève de la validation éditoriale.</p>
+    </div>
+  </section>
+
+  <!-- PARTICIPES -->
+  <section class="section" id="participes">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Formation des participes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Les verbes formés selon les règles définies à la section III peuvent donner naissance à des formes participiales, conformément aux règles du français.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Forme</th><th>Exemples</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>Participe passé</td><td class="form-ibri">thabalé, thabalée, thabalés, thabalées</td><td>Accord en genre et en nombre avec le sujet ou le complément selon les règles françaises.</td></tr>
+          <tr><td>Participe présent</td><td class="form-ibri">thabalant</td><td>Invariable. Exprime l'action en cours.</td></tr>
+          <tr><td>Participe passé</td><td class="form-ibri">kâbôdé, kâbôdée</td><td>Du verbe dérivé de kâbôd, lorsque validé.</td></tr>
+          <tr><td>Participe présent</td><td class="form-ibri">hitpallélant</td><td>Si la forme verbale hitpalléler est retenue.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADJECTIFS -->
+  <section class="section" id="adjectifs">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Formation des adjectifs</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Lorsqu'il est nécessaire d'exprimer une qualité ou une caractéristique rattachée à un terme ibri, l'Édition La Voie admet la formation d'adjectifs dérivés selon deux procédés principaux :</p>
+    </div>
+    <div class="encadre" style="margin-bottom:1.2rem;">
+      <ul class="principes-liste">
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Suffixe -ique</strong> : ajouté au radical du terme ibri pour former un adjectif qualificatif. C'est le procédé privilégié, car il est naturel en français et confère un registre académique approprié.</span></li>
+        <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Suffixe -aire</strong> : employé lorsque -ique est difficile à prononcer ou produit une forme peu naturelle.</span></li>
+      </ul>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Terme ibri</th><th>Adjectif formé</th><th>Exemple d'emploi</th></tr></thead>
+        <tbody>
+          <tr><td>Rouaḥ</td><td class="form-ibri">rouaḥique</td><td>Une compréhension rouaḥique des Écritures.</td></tr>
+          <tr><td>Torah</td><td class="form-ibri">torahique</td><td>Une étude torahique approfondie.</td></tr>
+          <tr><td>Mashiaḥ</td><td class="form-ibri">mashiyaḥique</td><td>L'attente mashiyaḥique du peuple.</td></tr>
+          <tr><td>Dabar</td><td class="form-ibri">dabarique</td><td>Une réflexion dabarique.</td></tr>
+          <tr><td>Berith</td><td class="form-ibri">berithique</td><td>Le cadre berithique de l'Alliance.</td></tr>
+          <tr><td>Malkuwt</td><td class="form-ibri">malkuwtique</td><td>La perspective malkuwtique des Évangiles.</td></tr>
+          <tr><td>Tal'mid</td><td class="form-ibri">tal'midique</td><td>La formation tal'midique.</td></tr>
+          <tr><td>Qehilah</td><td class="form-ibri">qehilaire</td><td>La vie qehilaire de l'assemblée.</td></tr>
+          <tr><td>Shaliaḥ</td><td class="form-ibri">shaliaḥique</td><td>La mission shaliaḥique.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADVERBES -->
+  <section class="section" id="adverbes">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">Formation éventuelle des adverbes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>La formation d'adverbes dérivés de termes ibri est <strong style="color:var(--or-clair);">admise à titre exceptionnel</strong>, uniquement lorsque l'emploi d'une locution adverbiale existante serait insuffisant ou alourdirait de manière excessive le texte.</p>
+      <p>Le procédé standard consiste à ajouter le suffixe <strong style="color:var(--or-clair);">-ment</strong> à la forme féminine de l'adjectif dérivé :</p>
+    </div>
+    <div class="encadre">
+      <ul class="principes-liste">
+        <li><span class="puce">·</span><em>rouaḥiquement</em> — d'une manière rouaḥique, selon l'Esprit.</li>
+        <li><span class="puce">·</span><em>torahiquement</em> — conformément à la Torah.</li>
+      </ul>
+      <p style="margin-top:1rem;color:rgba(245,239,224,0.65);font-size:0.9rem;font-style:italic;">Ces formes restent soumises à validation éditoriale et ne doivent pas être employées librement avant approbation.</p>
+    </div>
+  </section>
+
+  <!-- EXPRESSIONS COMPOSÉES -->
+  <section class="section" id="expressions">
+    <div class="section-header">
+      <span class="section-num">VII</span>
+      <h2 class="section-titre">Formation des expressions composées</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>L'Édition La Voie admet la formation d'expressions françaises intégrant naturellement des termes ibri translittérés. Ces expressions sont construites selon les règles syntaxiques du français et permettent d'exprimer des réalités complexes de manière fluide et précise.</p>
+      <p>Elles peuvent prendre les formes suivantes :</p>
+    </div>
+    <div class="encadre">
+      <ul class="principes-liste">
+        <li><span class="puce">·</span><strong style="color:var(--or-clair);">Syntagme nominal composé</strong> : <em>la téfilah de clôture</em>, <em>le Dabar de Yahawah</em>, <em>la tebilah au Nom de Yahushuʿaḥ</em>.</li>
+        <li><span class="puce">·</span><strong style="color:var(--or-clair);">Syntagme verbal intégrant un terme ibri</strong> : <em>adresser une téfilah</em>, <em>recevoir la tebilah</em>, <em>demeurer dans le Dabar</em>.</li>
+        <li><span class="puce">·</span><strong style="color:var(--or-clair);">Construction attributive</strong> : <em>cette assemblée est qadosh</em>, <em>il fut déclaré qadosh par Yahawah</em>.</li>
+        <li><span class="puce">·</span><strong style="color:var(--or-clair);">Construction participiale</strong> : <em>les hommes et femmes thabalés au nom de Yahushuʿaḥ</em>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EXEMPLES -->
+  <section class="section" id="exemples">
+    <div class="section-header">
+      <span class="section-num">VIII</span>
+      <h2 class="section-titre">Exemples d'utilisation</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Les exemples suivants illustrent l'application concrète des règles définies dans le présent document. Ils sont fournis à titre indicatif et ne constituent pas une liste exhaustive des formes admises.</p>
+    </div>
+    <ul class="exemples-liste">
+      <li>Ils furent thabalés, hommes et femmes, au nom de Yahushuʿaḥ Ha'Mashiaḥ.</li>
+      <li>Il s'est thabalé et fut reçu dans la qehilah.</li>
+      <li>Ils se sont hitpallél devant Yahawah, avec emounah.</li>
+      <li>Le Fils est kâbôdé par le Père.</li>
+      <li>Cette assemblée mène une activité rouaḥique fondée sur le Dabar.</li>
+      <li>Cette étude est torahique dans son fondement.</li>
+      <li>Les nouveaux tal'midim reçurent une formation tal'midique approfondie.</li>
+      <li>La vie qehilaire des Membres de La Voie est fondée sur la berith.</li>
+      <li>Ils adressèrent une téfilah de teshoubah à Yahawah.</li>
+      <li>La perspective malkuwtique des Ketubim Qadoshim est centrale dans cet enseignement.</li>
+    </ul>
+  </section>
+
+  <!-- VALIDATION -->
+  <section class="section" id="validation">
+    <div class="section-header">
+      <span class="section-num">IX</span>
+      <h2 class="section-titre">Procédure de validation</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="validation-bloc">
+      <p class="validation-intro">Toute nouvelle création lexicale devra suivre la procédure de validation suivante avant d'être introduite dans les Ketubim Qadoshim — Édition La Voie :</p>
+      <ol class="validation-steps">
+        <li>Vérifier la nécessité réelle du néologisme : un terme français existant peut-il suffire sans perte de sens ?</li>
+        <li>Identifier la racine ibri exacte du terme et s'assurer de la fidélité du radical retenu pour la translittération.</li>
+        <li>Proposer la forme lexicale selon les règles du présent document (verbe, adjectif, participe, expression composée).</li>
+        <li>Vérifier la cohérence phonétique et grammaticale avec la langue française.</li>
+        <li>Soumettre la proposition à l'équipe éditoriale pour révision et approbation.</li>
+        <li>Une fois validé, enregistrer le terme dans le glossaire officiel de l'Édition La Voie.</li>
+        <li>Appliquer le terme de manière uniforme dans l'ensemble des publications concernées.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section class="section" id="conclusion">
+    <div class="section-header">
+      <span class="section-num">X</span>
+      <h2 class="section-titre">Conclusion</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="conclusion-bloc">
+      <p class="conclusion-citation">
+        La politique de création lexicale définie dans le présent document vise uniquement à restituer avec davantage de fidélité la pensée ibri des Ketubim Qadoshim. Elle constitue l'un des fondements linguistiques de l'Édition La Voie et garantit l'uniformité du vocabulaire, la fidélité à la pensée ibri et la cohérence de l'ensemble des publications de La Voie.
+      </p>
+      <p class="conclusion-citation" style="font-size:0.95rem;margin-top:0.5rem;">
+        Chaque terme ibri intégré dans cette édition n'est pas un ornement stylistique, mais le signe d'une pensée qui cherche à transmettre les Écritures dans leur profondeur originelle, afin que le lecteur en reçoive toute la richesse.
+      </p>
+      <div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Règles officielles de création lexicale · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+
+</body>
+</html>

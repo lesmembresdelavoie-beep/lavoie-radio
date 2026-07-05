@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Le Principe fondamental de traduction — Ketubim Qadoshim · Édition La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bleu-nuit:#0d2347;--or:#c9a84c;--or-clair:#e8cb7a;--parchemin:#f5efe0;--argent:#c8d0dc;--surface:rgba(255,255,255,0.04);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bleu-nuit);color:var(--parchemin);font-family:'EB Garamond',Georgia,serif;font-size:1.07rem;line-height:1.9;}
+
+.nav-retour{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.1);}
+.nav-retour a{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--or);text-decoration:none;letter-spacing:0.12em;opacity:0.65;transition:opacity 0.2s;}
+.nav-retour a:hover{opacity:1;}
+
+/* COUVERTURE */
+.couverture{background:linear-gradient(170deg,#040c1a 0%,#0d2347 50%,#091e40 100%);padding:5.5rem 1.5rem 4.5rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;overflow:hidden;}
+.couverture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 10%,rgba(201,168,76,0.08),transparent 55%);pointer-events:none;}
+.couv-ref{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.4em;color:var(--or);opacity:0.4;text-transform:uppercase;margin-bottom:2.5rem;}
+.couv-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.22);border-radius:999px;padding:0.35rem 1.1rem;font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or-clair);letter-spacing:0.2em;margin-bottom:1.8rem;}
+.couv-h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,4.5vw,2.3rem);font-weight:700;color:var(--or);letter-spacing:0.04em;line-height:1.2;max-width:700px;margin:0 auto 0.6rem;}
+.couv-h2{font-family:'Cinzel',serif;font-size:clamp(0.75rem,2vw,0.92rem);color:var(--argent);letter-spacing:0.2em;opacity:0.55;margin-bottom:3.5rem;}
+.couv-ornement{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:3rem;}
+.couv-ornement .l{flex:1;max-width:90px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.38));}
+.couv-ornement .lr{background:linear-gradient(to left,transparent,rgba(201,168,76,0.38));}
+.couv-ornement span{font-size:0.78rem;color:var(--or);opacity:0.5;letter-spacing:0.5em;}
+.couv-intro{max-width:640px;margin:0 auto;font-style:italic;font-size:1.02rem;color:rgba(245,239,224,0.65);line-height:1.85;border-top:1px solid rgba(201,168,76,0.12);padding-top:2rem;}
+
+/* TOC */
+.toc-wrap{max-width:820px;margin:2.5rem auto 0;padding:0 1.5rem;}
+.toc{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.6rem 1.5rem;}
+.toc-titre{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or);opacity:0.55;text-transform:uppercase;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(201,168,76,0.12);}
+.toc ol{padding-left:1.5rem;}
+.toc li{padding:0.22rem 0;color:rgba(245,239,224,0.65);font-size:0.92rem;}
+.toc a{color:rgba(245,239,224,0.65);text-decoration:none;transition:color 0.2s;}
+.toc a:hover{color:var(--or-clair);}
+
+/* CONTENU */
+.contenu{max-width:820px;margin:0 auto;padding:4rem 1.5rem 6rem;}
+
+/* SECTION */
+.section{margin-bottom:4.5rem;}
+.section-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;}
+.section-num{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;color:var(--or);opacity:0.5;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:0.2rem 0.55rem;white-space:nowrap;}
+.section-ligne{flex:1;height:1px;background:rgba(201,168,76,0.13);}
+.section-titre{font-family:'Cinzel',serif;font-size:clamp(0.95rem,2.5vw,1.12rem);font-weight:600;color:var(--or-clair);letter-spacing:0.07em;}
+
+/* CORPS */
+.corps p{color:rgba(245,239,224,0.85);margin-bottom:1.1rem;max-width:740px;text-align:justify;hyphens:auto;}
+.corps p:last-child{margin-bottom:0;}
+
+/* ENCADRÉ PRINCIPES */
+.encadre-principes{background:var(--surface);border:1px solid rgba(201,168,76,0.14);border-left:3px solid rgba(201,168,76,0.45);border-radius:0 10px 10px 0;padding:1.5rem 1.6rem;margin:1.4rem 0;}
+.encadre-titre{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);opacity:0.6;text-transform:uppercase;margin-bottom:0.9rem;}
+.principes-liste{list-style:none;padding:0;}
+.principes-liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.83);font-size:1rem;line-height:1.65;}
+.principes-liste li:last-child{border-bottom:none;}
+.principes-liste li .num{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--or);opacity:0.55;min-width:18px;margin-top:0.2rem;flex-shrink:0;}
+
+/* ENCADRÉ CITATION */
+.citation-doc{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.16);border-radius:10px;padding:1.6rem 1.8rem;margin:1.8rem 0;font-style:italic;color:rgba(245,239,224,0.8);font-size:1.02rem;line-height:1.85;position:relative;}
+.citation-doc::before{content:open-quote;font-family:'EB Garamond',serif;font-size:3rem;color:var(--or);opacity:0.18;position:absolute;top:-0.5rem;left:1rem;line-height:1;}
+
+/* LANGUES */
+.langues-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.2rem;}
+.langue-card{background:var(--surface);border:1px solid rgba(201,168,76,0.13);border-radius:10px;padding:1.3rem 1.2rem;transition:border-color 0.2s;}
+.langue-card:hover{border-color:rgba(201,168,76,0.28);}
+.langue-nom{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:0.12em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.langue-desc{font-size:0.92rem;color:rgba(245,239,224,0.72);line-height:1.6;}
+
+/* TEMOINS */
+.temoins-liste{list-style:none;padding:0;margin-top:1.2rem;}
+.temoins-liste li{display:flex;align-items:flex-start;gap:0.9rem;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(245,239,224,0.82);font-size:1rem;line-height:1.65;}
+.temoins-liste li:last-child{border-bottom:none;}
+.temoins-liste li .puce{color:var(--or);opacity:0.5;font-size:1rem;flex-shrink:0;margin-top:0.15rem;}
+
+/* CONCLUSION */
+.conclusion-bloc{background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:14px;padding:2.5rem 2rem;text-align:center;}
+.conclusion-p{font-style:italic;font-size:1.05rem;color:rgba(245,239,224,0.8);max-width:620px;margin:0 auto 1rem;line-height:1.9;}
+.conclusion-sep{width:50px;height:1px;background:rgba(201,168,76,0.3);margin:1.5rem auto;}
+.conclusion-sig{font-family:'Cinzel',serif;font-size:0.7rem;color:var(--or);opacity:0.5;letter-spacing:0.15em;}
+
+footer{border-top:1px solid rgba(201,168,76,0.1);padding:2rem 1.5rem;text-align:center;font-size:0.75rem;color:var(--argent);opacity:0.32;letter-spacing:0.05em;}
+
+@media(max-width:600px){.contenu{padding:2.5rem 1rem 4rem;}.couverture{padding:4rem 1rem 3.5rem;}.langues-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="nav-retour"><a href="index.html">← Accueil</a></div>
+
+<header class="couverture">
+  <div class="couv-ref">Ketubim Qadoshim — Édition La Voie · Document éditorial et doctrinal</div>
+  <div class="couv-badge">⚜ Fondements de traduction</div>
+  <h1 class="couv-h1">Le Principe fondamental de traduction</h1>
+  <div class="couv-h2">Ketubim Qadoshim — Édition La Voie</div>
+  <div class="couv-ornement">
+    <div class="l"></div><span>✦ ✦ ✦</span><div class="l lr"></div>
+  </div>
+  <p class="couv-intro">
+    Le présent document établit le principe fondamental qui guidera l'ensemble de la traduction des Ketubim Qadoshim — Édition La Voie. Il constitue l'un des fondements doctrinaux, linguistiques et éditoriaux de cette édition. Les principes ici définis engagent toute l'équipe éditoriale et servent de référence permanente pour chaque décision de traduction.
+  </p>
+</header>
+
+<div class="toc-wrap">
+  <nav class="toc">
+    <div class="toc-titre">Table des matières</div>
+    <ol>
+      <li><a href="#preambule">Préambule</a></li>
+      <li><a href="#fidelite">Le principe de fidélité</a></li>
+      <li><a href="#pensee-ibri">La pensée ibri</a></li>
+      <li><a href="#temoins">Les témoins textuels</a></li>
+      <li><a href="#langues">Les langues</a></li>
+      <li><a href="#noms">Les noms et les termes</a></li>
+      <li><a href="#coherence">La cohérence éditoriale</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </nav>
+</div>
+
+<main class="contenu">
+
+  <!-- PRÉAMBULE -->
+  <section class="section" id="preambule">
+    <div class="section-header">
+      <span class="section-num">Préambule</span>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Toute traduction implique nécessairement des choix linguistiques. Ces choix ne sont jamais neutres : ils révèlent une conception du texte, une intention de lecture et une orientation herméneutique. La priorité absolue de l'Édition La Voie est de restituer le plus fidèlement possible le sens des Écritures, tel qu'il peut être dégagé à partir des témoins textuels disponibles, dans le respect de leur contexte historique, culturel et linguistique.</p>
+      <p>L'objectif de cette édition n'est pas simplement de transposer des mots d'une langue à une autre. Il est de transmettre un <em>message</em> — le message tel qu'il pouvait être compris par les premiers destinataires, dans leur propre langue, dans leur propre contexte, et selon les modes de pensée et d'expression qui leur étaient familiers.</p>
+      <p>Cette ambition exige du traducteur une humilité constante, une rigueur méthodologique sans concession et une écoute attentive du texte, en cherchant toujours à distinguer ce que le texte dit de ce que l'on est tenté d'y lire.</p>
+    </div>
+  </section>
+
+  <!-- FIDÉLITÉ -->
+  <section class="section" id="fidelite">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2 class="section-titre">Le principe de fidélité</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>La fidélité au texte ne saurait se réduire à une fidélité littérale mot à mot, ni se satisfaire d'une paraphrase qui privilégie la fluidité au détriment du sens. Elle s'articule autour de cinq dimensions indissociables, qui doivent être considérées simultanément dans tout acte de traduction.</p>
+    </div>
+    <div class="encadre-principes">
+      <div class="encadre-titre">Les cinq dimensions de la fidélité</div>
+      <ul class="principes-liste">
+        <li>
+          <span class="num">I.</span>
+          <span><strong style="color:var(--or-clair);">Fidélité au texte source.</strong> La traduction doit refléter avec précision le contenu du texte dans sa forme originale, sans addition, sans omission et sans atténuation du sens. Chaque terme, chaque tournure et chaque construction syntaxique doivent être pris en considération.</span>
+        </li>
+        <li>
+          <span class="num">II.</span>
+          <span><strong style="color:var(--or-clair);">Fidélité au contexte historique.</strong> Les Ketubim Qadoshim ont été rédigés dans un contexte historique précis. La traduction doit tenir compte des réalités politiques, sociales, religieuses et géographiques de l'époque, afin d'éviter les anachronismes interprétatifs.</span>
+        </li>
+        <li>
+          <span class="num">III.</span>
+          <span><strong style="color:var(--or-clair);">Fidélité au contexte culturel.</strong> Les écrits de l'Alliance Renouvelée s'inscrivent dans une culture ibri spécifique, profondément enracinée dans les pratiques, les coutumes et les modes d'expression propres au monde des Yehoudim du premier siècle. La traduction doit en tenir compte sans le masquer.</span>
+        </li>
+        <li>
+          <span class="num">IV.</span>
+          <span><strong style="color:var(--or-clair);">Fidélité au contexte linguistique.</strong> La traduction prend en considération les réalités de la langue dans laquelle les textes ont été transmis, en accordant une attention particulière aux nuances sémantiques, aux figures de style et aux constructions propres à chaque langue concernée.</span>
+        </li>
+        <li>
+          <span class="num">V.</span>
+          <span><strong style="color:var(--or-clair);">Fidélité au contexte scripturaire.</strong> Chaque passage des Ketubim Qadoshim s'inscrit dans un tissu scripturaire plus large. La traduction doit préserver et, le cas échéant, mettre en évidence les liens entre l'Alliance Renouvelée et le Tanakh, dont elle est le prolongement et l'accomplissement.</span>
+        </li>
+      </ul>
+    </div>
+    <div class="corps">
+      <p>Ces cinq dimensions ne peuvent être dissociées. Une traduction qui respecte le texte source tout en ignorant le contexte culturel produit un sens déformé. Une traduction qui privilégie la fluidité en négligeant le contexte scripturaire perd de vue la cohérence des Écritures. L'Édition La Voie s'engage à maintenir un équilibre rigoureux entre ces différentes exigences.</p>
+    </div>
+  </section>
+
+  <!-- PENSÉE IBRI -->
+  <section class="section" id="pensee-ibri">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2 class="section-titre">La pensée ibri</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>L'un des principes centraux de l'Édition La Voie est de chercher à restituer, autant que possible, la pensée ibri qui sous-tend les écrits de l'Alliance Renouvelée. Ce principe n'est pas une option éditoriale secondaire : il est consubstantiel à toute lecture fidèle de ces textes.</p>
+      <p>Les auteurs des Ketubim Qadoshim étaient, pour l'immense majorité, des Yehoudim profondément enracinés dans le Tanakh, dans la culture ibri et dans les modes d'expression qui leur étaient propres. Leur manière de raisonner, d'argumenter et de formuler leurs enseignements porte les marques distinctives de la pensée ibri : une pensée concrète, narrative, fondée sur l'expérience vécue et l'action, davantage que sur l'abstraction philosophique.</p>
+    </div>
+    <div class="citation-doc">
+      Lorsqu'un auteur de l'Alliance Renouvelée écrit en grec, il pense souvent en ibri. Sa syntaxe peut être grecque, mais ses images, ses associations d'idées et ses résonances scripturaires sont ibri. Une traduction qui ignore cette réalité risque de transmettre la lettre du texte tout en trahissant son esprit.
+    </div>
+    <div class="corps">
+      <p>Certaines expressions grecques des Ketubim Qadoshim reflètent directement des tournures de pensée ibri — ce que les spécialistes désignent parfois comme des <em>sémitismes</em>. Il convient de les identifier et d'en tenir compte dans la traduction, afin que le sens originel soit préservé dans toute sa profondeur.</p>
+      <p>C'est pourquoi l'Édition La Voie accorde une attention particulière aux parallèles entre les textes de l'Alliance Renouvelée et ceux du Tanakh, aux citations explicites ou implicites, ainsi qu'aux structures narratives et argumentatives propres à la pensée ibri.</p>
+    </div>
+  </section>
+
+  <!-- TÉMOINS TEXTUELS -->
+  <section class="section" id="temoins">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2 class="section-titre">Les témoins textuels</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Les Ketubim Qadoshim nous sont parvenus à travers un ensemble de témoins textuels d'une grande richesse. L'Édition La Voie s'appuie sur une étude comparative de ces témoins afin de rechercher la lecture la plus fidèle possible, sans s'enfermer dans une dépendance exclusive à l'égard d'une seule tradition textuelle.</p>
+    </div>
+    <ul class="temoins-liste">
+      <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Les manuscrits grecs.</strong> Ils constituent le corpus textuel principal de l'Alliance Renouvelée. L'Édition La Voie tient compte des grandes familles textuelles disponibles, en cherchant à identifier les lectures les mieux attestées et les plus cohérentes avec l'ensemble du texte scripturaire.</span></li>
+      <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Les traditions textuelles anciennes.</strong> Les versions anciennes — versions latines, syriaques, coptes et autres témoins — offrent des lectures précieuses permettant d'éclairer certaines variantes et de mieux situer l'histoire du texte.</span></li>
+      <li><span class="puce">·</span><span><strong style="color:var(--or-clair);">Les autres témoins.</strong> Les citations patristiques, les lectionnaires et d'autres témoins indirects peuvent apporter des éclairages complémentaires sur l'état du texte à des périodes et dans des régions différentes.</span></li>
+    </ul>
+    <div class="corps" style="margin-top:1.2rem;">
+      <p>Les variantes significatives seront signalées dans les notes lorsqu'elles présentent un intérêt particulier pour la compréhension du texte, sans alourdir indûment la lecture. L'objectif n'est pas de produire un apparat critique exhaustif, mais d'offrir au lecteur les éléments nécessaires à une compréhension éclairée des passages concernés.</p>
+    </div>
+  </section>
+
+  <!-- LANGUES -->
+  <section class="section" id="langues">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2 class="section-titre">Les langues</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>La traduction des Ketubim Qadoshim implique une réflexion sur les différentes réalités linguistiques qui traversent ces écrits. L'Édition La Voie prend pleinement en considération cette pluralité linguistique.</p>
+    </div>
+    <div class="langues-grid">
+      <div class="langue-card">
+        <div class="langue-nom">L'Ibri</div>
+        <div class="langue-desc">Langue du Tanakh et de la pensée fondatrice des Écritures. L'ibri constitue la matrice linguistique, culturelle et théologique de l'ensemble des Ketubim Qadoshim. Sa logique, ses racines et ses structures sémantiques éclairent de nombreux passages de l'Alliance Renouvelée.</div>
+      </div>
+      <div class="langue-card">
+        <div class="langue-nom">L'Araméen</div>
+        <div class="langue-desc">Langue commune du Proche-Orient à l'époque des auteurs de l'Alliance Renouvelée. Certains termes, noms propres et expressions araméens conservés dans les textes grecs témoignent de la réalité linguistique quotidienne des auteurs et de leur auditoire.</div>
+      </div>
+      <div class="langue-card">
+        <div class="langue-nom">Le Grec</div>
+        <div class="langue-desc">Langue dans laquelle la quasi-totalité de l'Alliance Renouvelée nous est parvenue. Le grec de ces textes est un grec du premier siècle, populaire et vivant, fortement influencé par la Septante et portant les marques de la pensée ibri de leurs auteurs.</div>
+      </div>
+    </div>
+    <div class="corps" style="margin-top:1.4rem;">
+      <p>Sans négliger aucune de ces réalités, l'Édition La Voie accorde une attention particulière aux racines, aux expressions et à la pensée ibri, qui constituent la clé herméneutique fondamentale de ces écrits. La connaissance du grec est indispensable ; la compréhension de la pensée ibri est essentielle.</p>
+    </div>
+  </section>
+
+  <!-- NOMS ET TERMES -->
+  <section class="section" id="noms">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2 class="section-titre">Les noms et les termes</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>L'Édition La Voie procède à la restauration ou à la conservation sous leur forme translittérée d'un certain nombre de noms propres et de termes dont la transcription habituelle dans les éditions françaises peut obscurcir l'identité originelle ou appauvrir le sens.</p>
+      <p>Les principes suivants guideront ces choix :</p>
+    </div>
+    <div class="encadre-principes">
+      <ul class="principes-liste">
+        <li><span class="num">·</span><span><strong style="color:var(--or-clair);">Restauration des noms divins.</strong> Le Nom de Yahawah et le nom de Yahushuʿaḥ sont restitués dans leur forme translittérée, conformément aux témoins textuels anciens et à la pensée ibri des Écritures, afin d'en préserver la signification et l'identité.</span></li>
+        <li><span class="num">·</span><span><strong style="color:var(--or-clair);">Translittération des termes ibri irremplaçables.</strong> Certains termes ibri ne possèdent pas d'équivalent français suffisamment précis. Ils sont conservés sous leur forme translittérée et définis dès leur première occurrence, conformément au Principe des Premières Occurrences de cette édition.</span></li>
+        <li><span class="num">·</span><span><strong style="color:var(--or-clair);">Cohérence des noms propres.</strong> Les noms de personnes, de lieux et de peuples sont restitués dans une forme aussi proche que possible de leur forme originelle ibri ou araméenne, selon les règles de translittération adoptées par l'équipe éditoriale.</span></li>
+        <li><span class="num">·</span><span><strong style="color:var(--or-clair);">Absence d'hellénisation systématique.</strong> L'Édition La Voie évite de substituer à des formes ibri authentiques des formes grecques ou latines qui, bien qu'historiquement répandues, s'éloignent du sens et de l'identité originels.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COHÉRENCE ÉDITORIALE -->
+  <section class="section" id="coherence">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2 class="section-titre">La cohérence éditoriale</h2>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="corps">
+      <p>Les principes définis dans le présent document s'appliquent de manière uniforme à l'ensemble des livres des Ketubim Qadoshim — Édition La Voie, quel que soit l'auteur du livre traduit, sa période de rédaction ou son genre littéraire.</p>
+      <p>Cette uniformité n'est pas une contrainte formelle : elle est la condition nécessaire pour que l'édition constitue un tout cohérent, dans lequel le lecteur retrouve les mêmes repères terminologiques, stylistiques et herméneutiques d'un livre à l'autre.</p>
+      <p>En particulier, l'uniformité terminologique garantit que le même terme ibri est rendu de la même manière dans l'ensemble de l'édition, évitant ainsi les variations susceptibles de créer des confusions doctrinales ou de masquer des liens scripturaires importants. Tout écart justifié par une particularité contextuelle sera signalé et motivé en note.</p>
+    </div>
+    <div class="citation-doc">
+      Un lecteur qui a appris le sens d'un terme dans le premier livre qu'il lit doit pouvoir retrouver ce sens, intact et cohérent, dans tous les autres livres de l'édition. La cohérence terminologique est au service de la compréhension des Écritures.
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section class="section" id="conclusion">
+    <div class="section-header">
+      <span class="section-num">Conclusion</span>
+      <div class="section-ligne"></div>
+    </div>
+    <div class="conclusion-bloc">
+      <p class="conclusion-p">L'objectif de l'Édition La Voie n'est pas de créer une nouvelle tradition, ni de proposer une interprétation originale des Écritures. Il est de permettre au lecteur de s'approcher, autant que possible, du sens original des Ketubim Qadoshim, en tenant compte de leur contexte historique, de leur réalité linguistique et de la pensée ibri qui les traverse de bout en bout.</p>
+      <p class="conclusion-p" style="font-size:0.98rem;opacity:0.9;">Cette édition se veut ainsi un instrument au service du lecteur et des Écritures — jamais au-dessus d'elles. Chaque choix de traduction, chaque note explicative, chaque terme conservé ou restauré n'a qu'un seul but : permettre au Dabar de Yahawah de parvenir au lecteur avec toute la clarté, la richesse et la profondeur qu'il portait pour ses premiers destinataires.</p>
+      <div class="conclusion-sep"></div>
+      <div class="conclusion-sig">Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Le Principe fondamental de traduction · Ketubim Qadoshim — Édition La Voie · La Voie Assembly, Inc. · lavoie.world</footer>
+
+</body>
+</html>
