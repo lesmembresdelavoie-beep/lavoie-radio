@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas — Récit de Mattiyahu · Édition La Voie</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+:root{--bleu:#0d2347;--bleu-f:#07162d;--or:#c9a84c;--or-p:#f7edcc;--arg:#b8c8dc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:#04101e;}
+body{font-family:'EB Garamond',serif;color:var(--or-p);}
+
+/* COUVERTURE */
+.cover{width:210mm;min-height:297mm;margin:0 auto 2rem;background:var(--bleu);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20mm;position:relative;page-break-after:always;}
+.cover::before{content:'';position:absolute;inset:10mm;border:1px solid rgba(201,168,76,0.25);pointer-events:none;}
+.cover-kq{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.4em;color:var(--or);opacity:0.55;margin-bottom:1.5rem;text-transform:uppercase;}
+.cover-logo{font-size:2.5rem;margin-bottom:1rem;opacity:0.8;}
+.cover-t{font-family:'Cinzel',serif;font-size:2.2rem;color:var(--or-p);letter-spacing:0.06em;margin-bottom:0.4rem;line-height:1.25;}
+.cover-s{font-family:'Cinzel',serif;font-size:0.85rem;color:var(--or);letter-spacing:0.15em;margin-bottom:2rem;opacity:0.7;}
+.div{width:70px;height:1px;background:linear-gradient(to right,transparent,var(--or),transparent);margin:1rem auto;}
+.cover-desc{font-style:italic;font-size:0.92rem;color:var(--arg);max-width:13cm;opacity:0.8;line-height:1.75;}
+.cover-n{margin-top:2.5rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--or);opacity:0.4;}
+
+/* TABLE */
+.toc{width:210mm;min-height:297mm;margin:0 auto 2rem;background:var(--bleu);padding:18mm 16mm;position:relative;page-break-after:always;}
+.toc::before{content:'';position:absolute;inset:10mm;border:1px solid rgba(201,168,76,0.2);pointer-events:none;}
+.toc-hdr{text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(201,168,76,0.2);}
+.toc-t{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--or-p);letter-spacing:0.05em;}
+.toc-s{font-style:italic;font-size:0.85rem;color:var(--arg);opacity:0.65;margin-top:0.3rem;}
+.toc-row{display:flex;align-items:baseline;gap:0.5rem;padding:0.35rem 0;border-bottom:1px solid rgba(201,168,76,0.07);}
+.toc-num{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--or);min-width:2.5rem;opacity:0.75;}
+.toc-title{font-size:0.88rem;color:var(--arg);flex:1;}
+.toc-ibri{font-size:0.8rem;color:var(--or);opacity:0.5;direction:rtl;}
+
+/* PAGES ATLAS */
+.atlas-page{width:210mm;min-height:297mm;margin:0 auto 2rem;background:#0a1a30;position:relative;page-break-after:always;overflow:hidden;}
+.atlas-page::before{content:'';position:absolute;inset:6mm;border:1px solid rgba(201,168,76,0.15);pointer-events:none;z-index:2;}
+.atlas-img{width:100%;height:100%;object-fit:contain;display:block;}
+.atlas-footer{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(7,22,45,0.95),transparent);padding:8mm 12mm 8mm;display:flex;justify-content:space-between;align-items:flex-end;z-index:3;}
+.footer-l{font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:0.2em;color:var(--or);opacity:0.4;text-transform:uppercase;}
+.footer-r{font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:0.15em;color:var(--or);opacity:0.4;}
+
+/* PRINT */
+@media print{
+  .cover,.toc,.atlas-page{margin:0;page-break-after:always;}
+  .cover::before,.toc::before,.atlas-page::before{border-color:rgba(201,168,76,0.3);}
+}
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <p class="cover-kq">✦ Ketubim Qadoshim · Édition La Voie ✦</p>
+  <div class="cover-logo">✡</div>
+  <div class="div"></div>
+  <h1 class="cover-t">ATLAS<br>du Récit de Mattiyahu</h1>
+  <p class="cover-s">מַתָּי — ATLAS GÉOGRAPHIQUE</p>
+  <div class="div"></div>
+  <p class="cover-desc">Dix-huit annexes illustrées accompagnant la traduction du Récit de la vie de Yahushuʿah selon Mattiyahu dans l'Édition La Voie — terminologie ibri restaurée, références vérifiées, identité graphique uniforme.</p>
+  <div class="div"></div>
+  <p class="cover-n">La Voie Assembly, Inc. · Indianapolis, Indiana<br>Édition La Voie · Annexes A-I à A-XVIII</p>
+</div>
+
+<!-- TABLE DES MATIÈRES -->
+<div class="toc">
+  <div class="toc-hdr">
+    <h2 class="toc-t">Table des Annexes</h2>
+    <p class="toc-s">Atlas du Récit de Mattiyahu · Édition La Voie</p>
+  </div>
+  <div class="toc-row"><span class="toc-num">A-I</span><span class="toc-title">Atlas d'Ysraʾel — Vue d'ensemble géographique</span><span class="toc-ibri">יִשְׂרָאֵל</span></div>
+  <div class="toc-row"><span class="toc-num">A-II</span><span class="toc-title">Atlas de Galilah — Province septentrionale</span><span class="toc-ibri">גָּלִיל</span></div>
+  <div class="toc-row"><span class="toc-num">A-III</span><span class="toc-title">Atlas de Yehoudah — Province méridionale</span><span class="toc-ibri">יְהוּדָה</span></div>
+  <div class="toc-row"><span class="toc-num">A-IV</span><span class="toc-title">Atlas de Shomeron — Province centrale</span><span class="toc-ibri">שֹׁמְרוֹן</span></div>
+  <div class="toc-row"><span class="toc-num">A-V</span><span class="toc-title">Atlas du Yardèn — Le fleuve de la tebilah</span><span class="toc-ibri">יַרְדֵּן</span></div>
+  <div class="toc-row"><span class="toc-num">A-VI</span><span class="toc-title">Atlas du Yam Kinnereth — Le lac de la Galilah</span><span class="toc-ibri">יָם כִּנֶּרֶת</span></div>
+  <div class="toc-row"><span class="toc-num">A-VII</span><span class="toc-title">Atlas de Yarushalayim — La Ville Qadosh</span><span class="toc-ibri">יְרוּשָׁלַיִם</span></div>
+  <div class="toc-row"><span class="toc-num">A-VIII</span><span class="toc-title">Atlas du Har haZeitim — La montagne des révélations</span><span class="toc-ibri">הַר הַזֵּיתִים</span></div>
+  <div class="toc-row"><span class="toc-num">A-IX</span><span class="toc-title">Atlas de Beit Leḥem — Lieu de la naissance</span><span class="toc-ibri">בֵּית לֶחֶם</span></div>
+  <div class="toc-row"><span class="toc-num">A-X</span><span class="toc-title">Atlas de Natsèrèt — La ville de l'enfance</span><span class="toc-ibri">נָצְרַת</span></div>
+  <div class="toc-row"><span class="toc-num">A-XI</span><span class="toc-title">Atlas de Kafar Naḥoum — La ville du ministère</span><span class="toc-ibri">כְּפַר נַחוּם</span></div>
+  <div class="toc-row"><span class="toc-num">A-XII</span><span class="toc-title">Atlas de Beit'Anyah — Village du repos</span><span class="toc-ibri">בֵּית עַנְיָה</span></div>
+  <div class="toc-row"><span class="toc-num">A-XIII</span><span class="toc-title">Atlas du Beit HaMiqdash — La Maison du Lieu Qadosh</span><span class="toc-ibri">בֵּית הַמִּקְדָּשׁ</span></div>
+  <div class="toc-row"><span class="toc-num">A-XIV</span><span class="toc-title">Atlas de Yeriḥo — La porte orientale de Yehoudah</span><span class="toc-ibri">יְרִיחוֹ</span></div>
+  <div class="toc-row"><span class="toc-num">A-XV</span><span class="toc-title">Le parcours de Yahushuʿah selon Mattiyahu</span><span class="toc-ibri">נְתִיבוֹת</span></div>
+  <div class="toc-row"><span class="toc-num">A-XVI</span><span class="toc-title">Les provinces à l'époque de Yahushuʿah</span><span class="toc-ibri">מְחוֹזוֹת</span></div>
+  <div class="toc-row"><span class="toc-num">A-XVII</span><span class="toc-title">Les voyages de Yahushuʿah selon Mattiyahu</span><span class="toc-ibri">נְסִיעוֹת</span></div>
+  <div class="toc-row"><span class="toc-num">A-XVIII</span><span class="toc-title">Les dernières journées de Yahushuʿah à Yarushalayim</span><span class="toc-ibri">יְמֵי הַקֵּץ</span></div>
+</div>
+
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a01-ysrael.jpg" alt="Annexe A-I · Atlas d'Ysraʾel" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-I · Atlas d'Ysraʾel</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a02-galilah.jpg" alt="Annexe A-II · Atlas de Galilah" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-II · Atlas de Galilah</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a03-yehoudah.jpg" alt="Annexe A-III · Atlas de Yehoudah" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-III · Atlas de Yehoudah</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a04-shomeron.jpg" alt="Annexe A-IV · Atlas de Shomeron" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-IV · Atlas de Shomeron</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a05-yarden.jpg" alt="Annexe A-V · Atlas du Yardèn" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-V · Atlas du Yardèn</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a06-kinnereth.jpg" alt="Annexe A-VI · Atlas du Yam Kinnereth" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-VI · Atlas du Yam Kinnereth</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a07-yarushalayim.jpg" alt="Annexe A-VII · Atlas de Yarushalayim" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-VII · Atlas de Yarushalayim</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a08-har-hazeitim.jpg" alt="Annexe A-VIII · Atlas du Har haZeitim" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-VIII · Atlas du Har haZeitim</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a09-beit-lehem.jpg" alt="Annexe A-IX · Atlas de Beit Leḥem" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-IX · Atlas de Beit Leḥem</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a10-natseret.jpg" alt="Annexe A-X · Atlas de Natsèrèt" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-X · Atlas de Natsèrèt</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a11-kafar-nahoum.jpg" alt="Annexe A-XI · Atlas de Kafar Naḥoum" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XI · Atlas de Kafar Naḥoum</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a12-beit-anyah.jpg" alt="Annexe A-XII · Atlas de Beit'Anyah" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XII · Atlas de Beit'Anyah</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a13-beit-miqdash.jpg" alt="Annexe A-XIII · Atlas du Beit HaMiqdash" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XIII · Atlas du Beit HaMiqdash</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a14-yeriho.jpg" alt="Annexe A-XIV · Atlas de Yeriḥo" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XIV · Atlas de Yeriḥo</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a15-parcours.jpg" alt="Annexe A-XV · Parcours de Yahushuʿah" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XV · Parcours de Yahushuʿah</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a16-provinces.jpg" alt="Annexe A-XVI · Les Provinces" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XVI · Les Provinces</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a17-voyages.jpg" alt="Annexe A-XVII · Les Voyages" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XVII · Les Voyages</span>
+  </div>
+</div>
+<div class="atlas-page">
+  <img class="atlas-img" src="atlas-a18-dernieres-journees.jpg" alt="Annexe A-XVIII · Les Dernières Journées" loading="lazy">
+  <div class="atlas-footer">
+    <span class="footer-l">Ketubim Qadoshim · Édition La Voie</span>
+    <span class="footer-r">Annexe A-XVIII · Les Dernières Journées</span>
+  </div>
+</div>
+
+</body></html>
