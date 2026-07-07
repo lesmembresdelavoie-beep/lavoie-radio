@@ -141,14 +141,14 @@ const atlas = [
 
 // Build table
 const toc = document.getElementById('toc-list');
-atlas.forEach(([num,titre,ibri,refs,img,desc]) => {
+atlas.forEach(([num,titre,ibri,refs,img,desc], index) => {
   toc.innerHTML += `<div class="toc-item"><span class="toc-n">${num}</span><span class="toc-ti">${titre}</span><span class="toc-line"></span><span class="toc-ref">${refs.split(',')[0]}</span></div>`;
 });
 
 // Build pages
 atlas.forEach(([num,titre,ibri,refs,img,desc]) => {
   const page = document.createElement('div');
-  page.className = 'page';
+  page.className = 'page'; page.id = 'atlas-a' + String(index+1).padStart(2,'0');
   page.innerHTML = `
     <div class="ann-hdr">
       <span class="ann-num">Annexe ${num} · Ketubim Qadoshim · Édition La Voie</span>
