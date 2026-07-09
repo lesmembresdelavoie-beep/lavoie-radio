@@ -2,6 +2,6 @@
   "teks": { "jou": 24, "mois": "Rebi'i", "yom": "Ereb Shabbath", "ref": "Louqas 11:9" },
   "items": [
     { "id": "intendant-emission", "titre": "🎙️ L'Intendant fidèle et avisé : ce qu'il n'est pas !", "sou": "Émission audio · La VR-TV", "url": "intendant-emission.html" },
-    { "id": "miqra-25-rebi", "titre": "📜 Miqra Qadosh — Shabbath 25 Rebiʿi", "sou": "Programme de l'ʿAbodah", "url": "miqra-25-rebi.html" }
+    { "id": "miqra-25-rebi", "titre": "📜 Miqra Qadosh — Shabbath 25 Rebiʿi", "sou": "Programme de l'ʿAbodah", "url": "miqra-qadosh.html" }
   ]
 }
