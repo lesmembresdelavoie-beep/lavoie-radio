@@ -572,7 +572,26 @@
       color: var(--or);
       opacity: 0.6;
     }
-    </style>
+    
+/* ===== NOTIFICATIONS ✦ ===== */
+#notif-btn{position:relative;background:none;border:1px solid rgba(201,168,76,.4);border-radius:50%;width:38px;height:38px;color:#c9a84c;font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#notif-btn:hover{background:rgba(201,168,76,.12)}
+#notif-badge{position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;border-radius:9px;background:linear-gradient(140deg,#e3c876,#9a7c2e);color:#0d2347;font-size:.62rem;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 4px;font-family:'Cinzel',serif;box-shadow:0 0 8px rgba(201,168,76,.7)}
+#notif-panel{display:none;position:fixed;top:64px;right:10px;left:10px;max-width:380px;margin-left:auto;z-index:700;background:linear-gradient(165deg,#10294f,#081832);border:1px solid rgba(201,168,76,.55);border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.6);overflow:hidden}
+#notif-panel.open{display:block}
+.notif-tit{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:#c9a84c;padding:.9rem 1.1rem .6rem;border-bottom:1px solid rgba(201,168,76,.25)}
+.notif-item{display:flex;align-items:flex-start;gap:.7rem;padding:.85rem 1.1rem;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.12);transition:background .15s}
+.notif-item:hover{background:rgba(201,168,76,.1)}
+.notif-item:last-child{border-bottom:none}
+.notif-dot{width:9px;height:9px;border-radius:50%;background:#c9a84c;box-shadow:0 0 8px rgba(201,168,76,.9);margin-top:.45rem;flex-shrink:0;animation:notifpuls 1.8s infinite}
+.notif-item.vu .notif-dot{background:transparent;box-shadow:none;animation:none;border:1px solid rgba(201,168,76,.3)}
+@keyframes notifpuls{0%,100%{opacity:1}50%{opacity:.35}}
+.notif-txt-t{font-family:'Cinzel',serif;font-size:.82rem;color:#f7edcc;line-height:1.35}
+.notif-item.vu .notif-txt-t{opacity:.55}
+.notif-txt-s{font-style:italic;font-size:.76rem;color:#b8c8dc;opacity:.7;margin-top:.15rem}
+.notif-vide{padding:1.2rem 1.1rem;font-style:italic;font-size:.85rem;color:#b8c8dc;opacity:.7;text-align:center}
+.prod-nouvo{position:absolute;top:8px;right:8px;width:11px;height:11px;border-radius:50%;background:#c9a84c;box-shadow:0 0 10px rgba(201,168,76,.95);animation:notifpuls 1.8s infinite;z-index:2}
+</style>
 </head>
 <body>
 
@@ -590,10 +609,16 @@
           style="width:180px;height:44px;background:transparent;border:none;overflow:hidden">
         </iframe>
       </div>
+      <button id="notif-btn" aria-label="Notifications" onclick="notifToggle(event)">🔔<span id="notif-badge"></span></button>
       <button id="menu-btn" onclick="var o=document.getElementById('menu-overlay');o.style.display=o.style.display==='flex'?'none':'flex';" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
+  </div>
+
+  <div id="notif-panel">
+    <div class="notif-tit">✦ Nouveautés</div>
+    <div id="notif-liste"></div>
   </div>
 
   <main>
@@ -658,12 +683,13 @@
           <p class="prod-type">Musique · La Voie</p>
         </div>
 
-        <div class="prod-card">
-          <div class="prod-thumb">
+        <div class="prod-card" style="position:relative" data-notif="intendant-emission" onclick="notifOuvrir('intendant-emission','intendant-emission.html')">
+          <span class="prod-nouvo" data-notif-dot="intendant-emission"></span>
+          <div class="prod-thumb" style="background-image:url('intendant-emission.jpg');background-size:cover;background-position:top center;">
             <div class="prod-play">▶</div>
           </div>
-          <p class="prod-titre">Enseignement — Ketubim</p>
-          <p class="prod-type">Enseignement · La Voie</p>
+          <p class="prod-titre">L'Intendant fidèle : ce qu'il n'est pas !</p>
+          <p class="prod-type">Émission · La VR-TV</p>
         </div>
 
         <div class="prod-card">
@@ -1711,5 +1737,60 @@ function fermerTeksAnime(){
 }
 </script>
 
+
+<script>
+/* ===== SISTÈM NOTIFIKASYON ✦ =====
+   Pou chak NOUVO kontni, ajoute yon liy nan lis NOTIF_NOUVO a:
+   { id:'yon-id-inik', titre:'Tit la', sou:'Kategori', url:'paj-la.html' }
+   Depi yon vizitè klike sou li, notifikasyon an make "vu" sou aparèy li. */
+var NOTIF_NOUVO = [
+  { id:'intendant-emission', titre:"🎙️ L'Intendant fidèle et avisé : ce qu'il n'est pas !", sou:"Émission audio · La VR-TV", url:'intendant-emission.html' },
+  { id:'miqra-25-rebi', titre:"📜 Miqra Qadosh — Shabbath 25 Rebiʿi", sou:"Programme de l'ʿAbodah", url:'miqra-25-rebi.html' }
+];
+
+function notifVuLis(){
+  try { return JSON.parse(localStorage.getItem('lavoie-notif-vu') || '[]'); } catch(e){ return []; }
+}
+function notifMakeVu(id){
+  try {
+    var v = notifVuLis();
+    if (v.indexOf(id) === -1) { v.push(id); localStorage.setItem('lavoie-notif-vu', JSON.stringify(v)); }
+  } catch(e){}
+}
+function notifRender(){
+  var vu = notifVuLis();
+  var nonVu = NOTIF_NOUVO.filter(function(n){ return vu.indexOf(n.id) === -1; });
+  var badge = document.getElementById('notif-badge');
+  if (nonVu.length > 0) { badge.style.display = 'flex'; badge.textContent = nonVu.length; }
+  else { badge.style.display = 'none'; }
+  var liste = document.getElementById('notif-liste');
+  if (NOTIF_NOUVO.length === 0) {
+    liste.innerHTML = '<div class="notif-vide">Pa gen nouvote pou kounye a ✦</div>';
+  } else {
+    liste.innerHTML = NOTIF_NOUVO.map(function(n){
+      var kls = vu.indexOf(n.id) === -1 ? '' : ' vu';
+      return '<a class="notif-item'+kls+'" href="'+n.url+'" onclick="notifMakeVu(\''+n.id+'\')">' +
+             '<span class="notif-dot"></span><span><span class="notif-txt-t">'+n.titre+'</span>' +
+             '<span class="notif-txt-s" style="display:block">'+n.sou+'</span></span></a>';
+    }).join('');
+  }
+  document.querySelectorAll('[data-notif-dot]').forEach(function(el){
+    el.style.display = vu.indexOf(el.getAttribute('data-notif-dot')) === -1 ? 'block' : 'none';
+  });
+}
+function notifToggle(ev){
+  ev.stopPropagation();
+  document.getElementById('notif-panel').classList.toggle('open');
+}
+function notifOuvrir(id, url){
+  notifMakeVu(id);
+  window.location.href = url;
+}
+document.addEventListener('click', function(ev){
+  var p = document.getElementById('notif-panel');
+  if (p.classList.contains('open') && !p.contains(ev.target)) p.classList.remove('open');
+});
+notifRender();
+</script>
 </body>
 </html>
