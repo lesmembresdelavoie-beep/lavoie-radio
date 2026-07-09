@@ -736,6 +736,19 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
+
+/* ============ REFRESH OTOMATIK JOU EBRE (minwi + 20:30) ============ */
+(function(){
+  function etaJou(){
+    const n = new Date();
+    const apSol = (n.getHours()*60 + n.getMinutes()) >= (20*60 + 30);
+    return n.getFullYear()+'-'+n.getMonth()+'-'+n.getDate()+'-'+(apSol?'S':'J');
+  }
+  let eta = etaJou();
+  setInterval(function(){
+    if (etaJou() !== eta) { location.reload(); }
+  }, 60000);
+})();
 </script>
 </body>
 </html>
