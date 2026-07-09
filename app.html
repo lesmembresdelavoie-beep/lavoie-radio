@@ -452,6 +452,18 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
     Retounen
   </button>
   <h2 class="page-titre">ANNONCES</h2>
+
+  <div style="border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:1.4rem;background:linear-gradient(150deg,rgba(201,168,76,.1),rgba(201,168,76,.02));">
+    <div style="font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a84c;margin-bottom:.4rem;">🔔 Notifikasyon</div>
+    <p style="font-size:.9rem;font-style:italic;opacity:.85;margin-bottom:.9rem;line-height:1.5;">
+      Resevwa Tèks pou Jounen an ak tout nouvote La Voie yo dirèkteman sou telefòn ou.
+    </p>
+    <button id="btn-aktive-notif" onclick="aktiveNotifikasyon()" style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#0d2347;background:linear-gradient(135deg,#e3c876,#9a7c2e);border:none;border-radius:6px;padding:.7rem 1.4rem;cursor:pointer;">
+      Aktive notifikasyon yo
+    </button>
+    <p id="notif-eta-msg" style="font-size:.82rem;font-style:italic;color:#c9a84c;margin-top:.7rem;display:none;"></p>
+  </div>
+
   <div id="liste-anons"></div>
 </section>
 
@@ -748,6 +760,47 @@ if ('serviceWorker' in navigator) {
   setInterval(function(){
     if (etaJou() !== eta) { location.reload(); }
   }, 60000);
+})();
+
+/* ============ AKTIVASYON NOTIFIKASYON ✦ ============ */
+async function aktiveNotifikasyon(){
+  var msg = document.getElementById('notif-eta-msg');
+  msg.style.display = 'block';
+  try {
+    if (!('Notification' in window)) { msg.textContent = 'Aparèy sa a pa sipòte notifikasyon yo.'; return; }
+    var perm = await Notification.requestPermission();
+    if (perm !== 'granted') { msg.textContent = 'Notifikasyon yo pa otorize. Ou ka chanje sa nan paramèt navigatè a.'; return; }
+    var reg = await navigator.serviceWorker.ready;
+    var txtSync = '';
+    if ('periodicSync' in reg) {
+      try {
+        await reg.periodicSync.register('lavoie-nouvote', { minInterval: 6*60*60*1000 });
+        txtSync = ' Telefòn ou ap tcheke nouvote yo otomatikman.';
+      } catch(e) {
+        txtSync = ' (Verifikasyon otomatik la pa disponib isit — n ap tcheke chak fwa ou louvri app la.)';
+      }
+    } else {
+      txtSync = ' (Verifikasyon otomatik la pa disponib sou aparèy sa a — n ap tcheke chak fwa ou louvri app la.)';
+    }
+    if (reg.active) reg.active.postMessage({type:'verifye-nouvote'});
+    try { localStorage.setItem('lavoie-notif-aktive','1'); } catch(e){}
+    document.getElementById('btn-aktive-notif').textContent = '✓ Notifikasyon aktive';
+    msg.textContent = 'Notifikasyon yo aktive ✦' + txtSync;
+  } catch(e) { msg.textContent = 'Yon erè rive. Eseye ankò.'; }
+}
+/* Chak fwa app la louvri: si notifikasyon aktive, tcheke nouvote yo */
+(function(){
+  try {
+    if (localStorage.getItem('lavoie-notif-aktive') === '1' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(function(reg){
+        if (Notification.permission === 'granted') {
+          document.getElementById('btn-aktive-notif').textContent = '✓ Notifikasyon aktive';
+          if ('periodicSync' in reg) { reg.periodicSync.register('lavoie-nouvote', {minInterval: 6*60*60*1000}).catch(function(){}); }
+          if (reg.active) reg.active.postMessage({type:'verifye-nouvote'});
+        }
+      });
+    }
+  } catch(e){}
 })();
 </script>
 </body>
