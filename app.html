@@ -532,10 +532,11 @@ const CONFIG = {
   },
 
   /* Annonces — ajoute / retire liy jan ou vle */
+  /* Chak anons ka gen yon "url" — sa fè kat la klikab epi mennen dirèk sou paj la. */
   annonces: [
-    { titre: "Miqra Qadosh Shabbath", texte: "Lecture audio séquencée disponible pou Shabbath la — 19 pati nan lòd litijik la." },
-    { titre: "Tèks Pou Jounen An", texte: "Nouvo tèks Rebiʿi yo ap pibliye chak jou ak ilistrasyon ak vwa." },
-    { titre: "VR-TV", texte: "Nouvo emisyon ak ansèyman disponib sou paj Rassemblements la." }
+    { titre: "Miqra Qadosh Shabbath", texte: "Lecture audio séquencée disponible pou Shabbath la — 19 pati nan lòd litijik la.", url: "miqra-shabbath-qadosh.html" },
+    { titre: "Tèks Pou Jounen An", texte: "Nouvo tèks Rebiʿi yo ap pibliye chak jou ak ilistrasyon ak vwa.", url: "teks-jounen-anime.html" },
+    { titre: "VR-TV", texte: "Nouvo emisyon ak ansèyman disponib sou paj Rassemblements la.", url: "vr-tv.html" }
   ],
 
   /* Kalandriye : 1 Rebiʿi = jou 17 jen 2026 (solèy kouche 16 jen).
@@ -735,10 +736,19 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
   const zone = document.getElementById('liste-anons');
   document.getElementById('badge-notif').textContent = CONFIG.annonces.length;
   CONFIG.annonces.forEach(a => {
-    const d = document.createElement('div');
+    const d = document.createElement(a.url ? 'a' : 'div');
     d.className = 'anons-item';
-    d.innerHTML = '<h4></h4><p></p>';
-    d.querySelector('h4').textContent = a.titre;
+    if (a.url) {
+      d.href = a.url;
+      d.style.display = 'block';
+      d.style.textDecoration = 'none';
+      d.style.cursor = 'pointer';
+      d.innerHTML = '<h4 style="display:flex;align-items:center;justify-content:space-between"><span></span><span style="color:var(--or);font-size:1.1rem">→</span></h4><p></p>';
+      d.querySelector('h4 span').textContent = a.titre;
+    } else {
+      d.innerHTML = '<h4></h4><p></p>';
+      d.querySelector('h4').textContent = a.titre;
+    }
     d.querySelector('p').textContent = a.texte;
     zone.appendChild(d);
   });
