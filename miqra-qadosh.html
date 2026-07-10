@@ -2,757 +2,89 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Miqra Qadosh — Shabbath 25 Rebiʿi · La Voie</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miqra Qadosh — Shabbath · Toutes les éditions · La Voie</title>
+<meta name="description" content="Bibliothèque des programmes Miqra Qadosh du Shabbath — Les Membres de La Voie.">
 <style>
-  :root{
-    --bleu-nuit:#0d2347;
-    --bleu-fonce:#0a1a35;
-    --or:#c9a84c;
-    --or-clair:#e8cb7a;
-    --parchemin:#f5efe2;
-    --parchemin2:#faf6ec;
-    --texte:#1a2a44;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    font-family:'Cormorant Garamond',serif;
-    background:var(--bleu-fonce);
-    overflow:hidden;
-  }
-
-  /* Scroll/swipe container */
-  .livre{
-    height:100vh;
-    width:100vw;
-    overflow-y:scroll;
-    scroll-snap-type:y mandatory;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  .page{
-    height:100vh;
-    width:100vw;
-    scroll-snap-align:start;
-    scroll-snap-stop:always;
-    display:flex;
-    flex-direction:column;
-    position:relative;
-    overflow:hidden;
-  }
-
-  /* ===== PAGE NUMBER BADGE ===== */
-  .page-num{
-    position:absolute;
-    top:1.1rem;
-    right:1.1rem;
-    width:34px;height:34px;
-    background:var(--bleu-nuit);
-    color:var(--or-clair);
-    border:1px solid var(--or);
-    font-family:'Cinzel',serif;
-    font-weight:700;
-    font-size:0.95rem;
-    display:flex;align-items:center;justify-content:center;
-    z-index:10;
-    border-radius:3px;
-  }
-
-  /* ===== SCROLL HINT ===== */
-  .scroll-hint{
-    position:absolute;
-    bottom:0.9rem;
-    left:50%;
-    transform:translateX(-50%);
-    font-family:'Cinzel',serif;
-    font-size:0.55rem;
-    letter-spacing:0.25em;
-    text-transform:uppercase;
-    color:var(--or);
-    opacity:0.55;
-    z-index:10;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:0.3rem;
-  }
-  .scroll-hint svg{ animation: bob 1.8s ease-in-out infinite; width:16px;height:16px; }
-  @keyframes bob{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
-  .page:last-child .scroll-hint{display:none}
-
-  /* =========================================================
-     PAGE 1 — COUVERTURE
-  ========================================================= */
-  .page-1{
-    background: var(--parchemin2);
-    background-image:
-      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,35,71,0.08) 0%, transparent 70%);
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:2.5rem 1.6rem;
-  }
-  .couv-cadre{
-    position:absolute;
-    inset:0.7rem;
-    border:2px solid var(--or);
-    border-radius:4px;
-    pointer-events:none;
-  }
-  .couv-cadre::before{
-    content:'';
-    position:absolute;
-    inset:6px;
-    border:1px solid rgba(201,168,76,0.4);
-    border-radius:2px;
-  }
-  .logo-img{
-    width:120px;
-    height:auto;
-    margin-bottom:1.2rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-titre{
-    font-family:'Cinzel',serif;
-    font-weight:900;
-    font-size:clamp(2.6rem,13vw,4.2rem);
-    color:var(--bleu-nuit);
-    letter-spacing:0.06em;
-    line-height:1.05;
-    position:relative;
-    z-index:1;
-  }
-  .couv-soustitre{
-    font-family:'Cinzel',serif;
-    font-weight:600;
-    font-size:clamp(1.3rem,6vw,2rem);
-    color:var(--or);
-    letter-spacing:0.1em;
-    margin-top:0.2rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-sep{
-    width:90px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--or),transparent);
-    margin:1.3rem auto;
-    position:relative;
-    z-index:1;
-  }
-  .couv-shabbath{
-    font-family:'Cinzel',serif;
-    font-size:clamp(1.2rem,5.5vw,1.6rem);
-    color:var(--bleu-nuit);
-    letter-spacing:0.08em;
-    margin-bottom:0.6rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-programme{
-    font-size:clamp(1rem,4.5vw,1.25rem);
-    color:var(--texte);
-    line-height:1.5;
-    margin-bottom:1.6rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-icone{
-    font-size:1.6rem;
-    margin-bottom:1.4rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-verset{
-    font-style:italic;
-    font-size:clamp(0.85rem,3.8vw,1.05rem);
-    color:var(--texte);
-    line-height:1.7;
-    max-width:340px;
-    margin:0 auto 0.8rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-ref{
-    font-family:'Cinzel',serif;
-    font-size:0.7rem;
-    letter-spacing:0.25em;
-    color:var(--bleu-nuit);
-    text-transform:uppercase;
-    position:relative;
-    z-index:1;
-  }
-
-  /* =========================================================
-     SHARED — section pages (2,3,4,5,6)
-  ========================================================= */
-  .page-content{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    padding:4rem 1.5rem 3.5rem;
-    overflow-y:auto;
-  }
-  .page-titre{
-    font-family:'Cinzel',serif;
-    font-weight:700;
-    font-size:clamp(1.5rem,7vw,2.1rem);
-    color:var(--bleu-nuit);
-    letter-spacing:0.04em;
-    text-align:center;
-    margin-bottom:0.3rem;
-  }
-  .page-titre-sep{
-    width:60px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--or),transparent);
-    margin:0.6rem auto 1.6rem;
-  }
-
-  /* Page 2 / 3 / 4 / 5 / 6 background */
-  .page-2,.page-3,.page-4,.page-5,.page-6,.page-7,.page-8,.page-9,.page-10{
-    background:var(--parchemin);
-  }
-
-  /* ===== PROGRAMME LIST (page 2) ===== */
-  .prog-liste{
-    display:flex;
-    flex-direction:column;
-    gap:0.9rem;
-  }
-  .prog-item{
-    display:flex;
-    align-items:flex-start;
-    gap:0.9rem;
-  }
-  .prog-num{
-    flex-shrink:0;
-    width:30px;height:30px;
-    background:var(--bleu-nuit);
-    color:var(--or-clair);
-    font-family:'Cinzel',serif;
-    font-weight:700;
-    font-size:0.95rem;
-    display:flex;align-items:center;justify-content:center;
-    border-radius:3px;
-  }
-  .prog-texte{
-    flex:1;
-    padding-bottom:0.5rem;
-    border-bottom:1px solid rgba(201,168,76,0.25);
-  }
-  .prog-titre-item{
-    font-family:'Cinzel',serif;
-    font-size:1.05rem;
-    font-weight:600;
-    color:var(--bleu-nuit);
-    line-height:1.4;
-  }
-  .prog-sous{
-    font-style:italic;
-    font-size:0.95rem;
-    color:var(--texte);
-    opacity:0.85;
-  }
-  .prog-duree{
-    font-size:0.85rem;
-    color:var(--or);
-    font-weight:600;
-    margin-top:0.15rem;
-    letter-spacing:0.02em;
-  }
-  .prog-total{
-    margin-top:1.6rem;
-    text-align:center;
-    border:1px solid var(--or);
-    border-radius:4px;
-    padding:0.9rem;
-    font-family:'Cinzel',serif;
-    font-size:0.85rem;
-    letter-spacing:0.06em;
-    color:var(--bleu-nuit);
-    background:rgba(201,168,76,0.08);
-  }
-  .prog-total b{ color:var(--or); }
-
-  /* ===== PAGE 3 — LECTURES ET THÈME ===== */
-  .lecture-bloc{
-    display:flex;
-    align-items:center;
-    gap:1rem;
-    margin-bottom:1rem;
-  }
-  .lecture-icone{
-    width:48px;height:48px;
-    flex-shrink:0;
-    border-radius:50%;
-    background:var(--bleu-nuit);
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.5rem;
-  }
-  .lecture-label{
-    font-family:'Cinzel',serif;
-    font-size:0.6rem;
-    letter-spacing:0.2em;
-    color:var(--or);
-    text-transform:uppercase;
-    margin-bottom:0.15rem;
-  }
-  .lecture-ref{
-    font-family:'Cinzel',serif;
-    font-size:1.15rem;
-    font-weight:600;
-    color:var(--bleu-nuit);
-  }
-  .theme-cadre{
-    margin-top:1.5rem;
-    border:1px solid var(--or);
-    border-radius:4px;
-    padding:1.3rem 1.2rem;
-    background:rgba(201,168,76,0.06);
-  }
-  .theme-label{
-    font-family:'Cinzel',serif;
-    font-size:0.6rem;
-    letter-spacing:0.25em;
-    color:var(--or);
-    text-transform:uppercase;
-    text-align:center;
-    margin-bottom:0.7rem;
-  }
-  .theme-citation{
-    font-style:italic;
-    font-size:1.15rem;
-    color:var(--bleu-nuit);
-    text-align:center;
-    line-height:1.6;
-    margin-bottom:1.2rem;
-    font-weight:600;
-  }
-  .theme-points{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:0.6rem;
-  }
-  .theme-points li{
-    display:flex;
-    gap:0.6rem;
-    align-items:flex-start;
-    font-size:1rem;
-    color:var(--texte);
-    line-height:1.5;
-  }
-  .theme-points li::before{
-    content:'✦';
-    color:var(--or);
-    flex-shrink:0;
-    font-size:0.85rem;
-    margin-top:0.2rem;
-  }
-
-  /* ===== PAGE 4 / 5 — QUESTIONNAIRE ===== */
-  .quest-badge{
-    display:block;
-    margin:0 auto 1.4rem;
-    text-align:center;
-    font-family:'Cinzel',serif;
-    font-size:0.65rem;
-    letter-spacing:0.25em;
-    text-transform:uppercase;
-    color:var(--or-clair);
-    background:var(--bleu-nuit);
-    padding:0.5rem 1.2rem;
-    border-radius:3px;
-    width:fit-content;
-  }
-  .quest-liste{
-    display:flex;
-    flex-direction:column;
-    gap:1.5rem;
-  }
-  .quest-item{
-    display:flex;
-    gap:0.8rem;
-  }
-  .quest-num{
-    flex-shrink:0;
-    font-family:'Cinzel',serif;
-    font-weight:700;
-    font-size:1.1rem;
-    color:var(--or);
-    min-width:1.6rem;
-  }
-  .quest-texte{
-    font-size:1.05rem;
-    line-height:1.6;
-    color:var(--texte);
-    flex:1;
-  }
-  .quest-ligne{
-    margin-top:0.6rem;
-    border-bottom:1px solid rgba(201,168,76,0.35);
-    height:1.4rem;
-  }
-  .quest-footer{
-    margin-top:1.8rem;
-    text-align:center;
-    font-style:italic;
-    font-size:0.95rem;
-    color:var(--texte);
-    opacity:0.8;
-    line-height:1.6;
-  }
-
-  /* ===== PAGE 6 — NOTES ===== */
-  .notes-zone{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    gap:1.2rem;
-  }
-  .notes-lignes{
-    display:flex;
-    flex-direction:column;
-    gap:1.6rem;
-    margin-bottom:1.5rem;
-  }
-  .notes-lignes div{
-    border-bottom:1px solid rgba(201,168,76,0.3);
-    height:1px;
-  }
-  .notes-citation{
-    margin-top:auto;
-    border:1px solid var(--or);
-    border-radius:4px;
-    padding:1.2rem;
-    text-align:center;
-    background:rgba(201,168,76,0.06);
-  }
-  .notes-citation p.texte{
-    font-style:italic;
-    font-size:1.05rem;
-    color:var(--bleu-nuit);
-    margin-bottom:0.5rem;
-    line-height:1.6;
-  }
-  .notes-citation p.ref{
-    font-family:'Cinzel',serif;
-    font-size:0.7rem;
-    letter-spacing:0.2em;
-    color:var(--or);
-    text-transform:uppercase;
-  }
-  .notes-footer{
-    margin-top:1.5rem;
-    background:var(--bleu-nuit);
-    color:var(--or-clair);
-    padding:1.4rem 1.3rem;
-    border-radius:4px;
-    display:flex;
-    align-items:center;
-    gap:1rem;
-  }
-  .notes-footer img{
-    width:50px;height:auto;
-    flex-shrink:0;
-  }
-  .notes-footer-texte p{
-    line-height:1.5;
-  }
-  .notes-footer-titre{
-    font-family:'Cinzel',serif;
-    font-size:1rem;
-    letter-spacing:0.12em;
-    color:var(--or-clair);
-    margin-bottom:0.2rem;
-  }
-  .notes-footer-sub{
-    font-size:0.85rem;
-    opacity:0.85;
-  }
-  .notes-footer-membres{
-    font-family:'Cinzel',serif;
-    font-size:0.65rem;
-    letter-spacing:0.15em;
-    color:var(--or);
-    margin-top:0.5rem;
-    text-transform:uppercase;
-  }
-  .notes-footer-droits{
-    font-size:0.75rem;
-    opacity:0.6;
-  }
-
-  @media (min-width:600px){
-    .page-content{ padding-left:3rem; padding-right:3rem; max-width:600px; margin:0 auto; width:100%; }
-  }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+:root{--nuit:#0d2347;--nuit-f:#081832;--or:#c9a84c;--or-c:#e3c876;--or-f:#9a7c2e;--creme:#f5eedc}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:linear-gradient(175deg,#050d1c 0%,var(--nuit-f) 40%,var(--nuit) 100%);color:var(--creme);min-height:100vh;line-height:1.7}
+.nav-retour{padding:1rem 1.2rem}
+.nav-retour a{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--or);opacity:.85}
+.wrap{max-width:680px;margin:0 auto;padding:0 1.1rem 4rem}
+header{text-align:center;padding:1.2rem 0 2rem}
+.logo{width:88px;height:88px;border-radius:50%;box-shadow:0 0 24px rgba(201,168,76,.35);margin-bottom:1.1rem}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.7rem,7vw,2.4rem);color:var(--creme);letter-spacing:.04em}
+.sous{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--or);margin-top:.5rem}
+.intro{font-style:italic;color:var(--creme);opacity:.75;margin-top:1rem;font-size:.98rem}
+.sep{display:flex;align-items:center;gap:1rem;margin:1.8rem auto;max-width:320px}
+.sep .l{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--or))}
+.sep .l:last-child{background:linear-gradient(90deg,var(--or),transparent)}
+.sep .e{color:var(--or)}
+.ed{display:flex;align-items:center;gap:1.1rem;text-decoration:none;border:1px solid rgba(201,168,76,.45);border-radius:14px;padding:1.15rem 1.25rem;margin-bottom:1.1rem;background:linear-gradient(150deg,rgba(201,168,76,.09),rgba(201,168,76,.02));transition:transform .15s,background .2s;position:relative}
+.ed:hover{transform:translateY(-2px);background:rgba(201,168,76,.14)}
+.ed-livre{width:52px;height:68px;flex-shrink:0;border-radius:4px 8px 8px 4px;background:linear-gradient(150deg,#12305e,var(--nuit-f));border:1px solid rgba(201,168,76,.6);border-left:4px solid var(--or);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:3px 4px 12px rgba(0,0,0,.45)}
+.ed-titre{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--creme)}
+.ed-sous{font-style:italic;font-size:.88rem;color:var(--creme);opacity:.7;margin-top:.2rem}
+.ed-fleche{margin-left:auto;color:var(--or);font-size:1.2rem}
+.badge-aktyel{position:absolute;top:-9px;right:14px;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--nuit-f);background:linear-gradient(135deg,var(--or-c),var(--or-f));border-radius:999px;padding:.25rem .8rem;box-shadow:0 3px 10px rgba(201,168,76,.4)}
+.section-t{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);margin:2rem 0 1rem;text-align:center}
+footer{text-align:center;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);opacity:.65;padding:2.4rem 1rem;border-top:1px solid rgba(201,168,76,.22);margin-top:2rem}
 </style>
 </head>
 <body>
 
-<div class="livre">
+<div class="nav-retour"><a href="rassemblements.html">← Réunions</a></div>
 
-  <!-- ============ PAGE 1 — COUVERTURE ============ -->
-  <section class="page page-1">
-    <div class="couv-cadre"></div>
-    <div class="page-num">1</div>
-    <img src="logo_la_voie.png" alt="Les Membres de La Voie" class="logo-img">
-    <h1 class="couv-titre">MIQRA<br>QADOSH</h1>
-    <p class="couv-soustitre">Shabbath 25 Rebiʿi</p>
-    <div class="couv-sep"></div>
-    <p class="couv-shabbath">Programme de l'ʿAbodah</p>
-    <p class="couv-programme">des Membres de La Voie</p>
-    <p class="couv-programme" style="font-style:italic;opacity:.75">Du 10 juillet au coucher du soleil<br>au 11 juillet au coucher du soleil</p>
-    <div class="couv-icone">📖</div>
-    <p class="couv-verset">« Devenez des pratiquants du Dabar et non de simples auditeurs, vous trompant vous-mêmes. »</p>
-    <p class="couv-ref">Yaʿaqob 1:22</p>
-    <div class="scroll-hint">
-      <span>Glisser pour continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+<div class="wrap">
+
+  <header>
+    <img src="logo_la_voie.png" alt="Les Membres de La Voie" class="logo">
+    <h1>MIQRA QADOSH</h1>
+    <p class="sous">~ Shabbath ~</p>
+    <p class="intro">« Pendant six jours on travaillera, mais le septième jour est un Shabbath de repos complet, une convocation qadosh. » — Wayiqra 23:3</p>
+    <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+    <p class="intro">Tous les programmes de l'ʿAbodah du Shabbath, réunis en un seul lieu.<br>Chaque édition demeure consultable.</p>
+  </header>
+
+  <p class="section-t">✦ Édition actuelle</p>
+
+  <!-- Pour chaque nouveau Shabbath: dupliquer un bloc <a class="ed">, le placer ici,
+       déplacer l'ancien vers "Éditions précédentes", et déplacer le badge-aktyel. -->
+  <a class="ed" href="miqra-25-rebi.html">
+    <span class="badge-aktyel">Aktyèl</span>
+    <div class="ed-livre">📖</div>
+    <div>
+      <div class="ed-titre">Shabbath 25 Rebiʿi</div>
+      <div class="ed-sous">« Le Dabar produit des actes visibles » · Yaʿaqob 1:22–25</div>
     </div>
-  </section>
+    <span class="ed-fleche">→</span>
+  </a>
 
-  <!-- ============ PAGE 2 — CITATIONS D'OUVERTURE ============ -->
-  <section class="page page-2">
-    <div class="page-num">2</div>
-    <div class="page-content">
-      <h2 class="page-titre">Citations<br>d'ouverture</h2>
-      <div class="page-titre-sep"></div>
+  <p class="section-t">Éditions précédentes</p>
 
-      <div class="theme-cadre" style="margin-bottom:1.2rem">
-        <p class="theme-citation">« Chaque Shabbath, les Ketubim de Mosheh sont lus dans les maisons de rassemblement. »</p>
-        <p class="theme-label" style="margin-top:.6rem">~ Maʿasei 15:21</p>
-      </div>
-      <div class="theme-cadre" style="margin-bottom:1.2rem">
-        <p class="theme-citation">« Il entra, selon son habitude, dans la maison de rassemblement le jour du Shabbath, et il se leva pour faire la lecture. »</p>
-        <p class="theme-label" style="margin-top:.6rem">~ Luqas 4:16–17</p>
-      </div>
-      <div class="theme-cadre">
-        <p class="theme-citation">« N'abandonnons pas notre rassemblement… »</p>
-        <p class="theme-label" style="margin-top:.6rem">~ Ibriyim 10:24–25</p>
-      </div>
+  <a class="ed" href="miqra-18-rebi.html">
+    <div class="ed-livre">📖</div>
+    <div>
+      <div class="ed-titre">Shabbath 18 Rebiʿi</div>
+      <div class="ed-sous">« Demeurer dans le Dabar » · Yaḥuānān 8:31–32</div>
     </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    <span class="ed-fleche">→</span>
+  </a>
+
+  <a class="ed" href="miqra-3-rebi.html">
+    <div class="ed-livre">📖</div>
+    <div>
+      <div class="ed-titre">Shabbath 3 Rebiʿi</div>
+      <div class="ed-sous">« Écouter ne suffit pas » · Debarim 6:4–9 · Yaʿaqob 1:22–25</div>
     </div>
-  </section>
-
-  <!-- ============ PAGE 3 — PROGRAMME DE L'ABODAH ============ -->
-  <section class="page page-3">
-    <div class="page-num">3</div>
-    <div class="page-content">
-      <h2 class="page-titre">Programme<br>de l'ʿAbodah</h2>
-      <div class="page-titre-sep"></div>
-      <div class="prog-liste">
-
-        <div class="prog-item"><div class="prog-num">1</div><div class="prog-texte"><div class="prog-titre-item">Accueil et ouverture</div></div></div>
-        <div class="prog-item"><div class="prog-num">2</div><div class="prog-texte"><div class="prog-titre-item">Chirat de Tehillah</div></div></div>
-        <div class="prog-item"><div class="prog-num">3</div><div class="prog-texte"><div class="prog-titre-item">Téfilah d'ouverture</div></div></div>
-        <div class="prog-item"><div class="prog-num">4</div><div class="prog-texte"><div class="prog-titre-item">Lecture des Ketubim</div><div class="prog-sous">Yaʿaqob 1:22–25 · Mattiyahu 7:24–27</div></div></div>
-        <div class="prog-item"><div class="prog-num">5</div><div class="prog-texte"><div class="prog-titre-item">Les Rappels de Yah</div><div class="prog-sous">Avec la participation de l'assemblée</div></div></div>
-        <div class="prog-item"><div class="prog-num">6</div><div class="prog-texte"><div class="prog-titre-item">Chirat de méditation</div></div></div>
-        <div class="prog-item"><div class="prog-num">7</div><div class="prog-texte"><div class="prog-titre-item">Enseignement principal</div><div class="prog-sous">« Le Dabar produit des actes visibles »</div></div></div>
-        <div class="prog-item"><div class="prog-num">8</div><div class="prog-texte"><div class="prog-titre-item">Chirat de clôture</div></div></div>
-        <div class="prog-item"><div class="prog-num">9</div><div class="prog-texte"><div class="prog-titre-item">Téfilah de clôture</div></div></div>
-        <div class="prog-item"><div class="prog-num">10</div><div class="prog-texte"><div class="prog-titre-item">Communications</div></div></div>
-
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 4 — LECTURES ET THÈME ============ -->
-  <section class="page page-4">
-    <div class="page-num">4</div>
-    <div class="page-content">
-      <h2 class="page-titre">Lectures<br>et Thème</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="lecture-bloc">
-        <div class="lecture-icone">📖</div>
-        <div>
-          <div class="lecture-label">Première lecture</div>
-          <div class="lecture-ref">Yaʿaqob 1:22–25</div>
-          <div class="prog-sous" style="margin-top:.25rem">Le Dabar doit être vécu et non seulement entendu.</div>
-        </div>
-      </div>
-
-      <div class="lecture-bloc">
-        <div class="lecture-icone">📖</div>
-        <div>
-          <div class="lecture-label">Lecture complémentaire</div>
-          <div class="lecture-ref">Mattiyahu 7:24–27</div>
-          <div class="prog-sous" style="margin-top:.25rem">Construire sa vie sur le Dabar de Yahawah.</div>
-        </div>
-      </div>
-
-      <div class="theme-cadre">
-        <p class="theme-label">Enseignement principal</p>
-        <p class="theme-citation">« Le Dabar produit<br>des actes visibles »</p>
-        <ul class="theme-points">
-          <li>Pourquoi Yaʿaqob avertit-il contre le simple auditeur ?</li>
-          <li>L'image du miroir.</li>
-          <li>Les deux bâtisseurs de Mattiyahu 7.</li>
-          <li>Pourquoi Yahawah regarde d'abord notre conduite.</li>
-          <li>Les fruits visibles du véritable tal'mid.</li>
-          <li>Comment devenir un pratiquant du Dabar chaque jour.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 5 — QUESTIONNAIRE (1-4) ============ -->
-  <section class="page page-5">
-    <div class="page-num">5</div>
-    <div class="page-content">
-      <h2 class="page-titre">Les Rappels<br>de Yah</h2>
-      <div class="page-titre-sep"></div>
-      <div class="quest-badge">Questionnaire officiel</div>
-      <p class="quest-footer" style="margin-bottom:1rem">Questions sur : 📖 Yaʿaqob 1:22–25 · 📖 Mattiyahu 7:24–27</p>
-
-      <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">1.</div><div class="quest-texte">Selon Yaʿaqob, pourquoi ne suffit-il pas d'écouter le Dabar ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">2.</div><div class="quest-texte">Que représente le miroir dans Yaʿaqob 1:23–24 ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">3.</div><div class="quest-texte">Pourquoi celui qui met le Dabar en pratique est-il déclaré heureux ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">4.</div><div class="quest-texte">Quelle différence Yahushuʿah établit-il entre les deux bâtisseurs de Mattiyahu 7 ?<div class="quest-ligne"></div></div></div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 6 — QUESTIONNAIRE (5-7) ============ -->
-  <section class="page page-6">
-    <div class="page-num">6</div>
-    <div class="page-content">
-      <h2 class="page-titre">Les Rappels<br>de Yah</h2>
-      <div class="page-titre-sep"></div>
-      <div class="quest-badge">Questionnaire officiel (suite)</div>
-
-      <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">5.</div><div class="quest-texte">Sur quel fondement le véritable tal'mid construit-il sa vie ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">6.</div><div class="quest-texte">Comment pouvons-nous vérifier que nous mettons réellement le Dabar en pratique dans notre vie quotidienne ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">7.</div><div class="quest-texte">Quelle résolution personnelle souhaites-tu prendre cette semaine afin que le Dabar produise davantage de fruits visibles dans ta conduite ?<div class="quest-ligne"></div></div></div>
-      </div>
-
-      <p class="quest-footer">Répondez à chaque question à la lumière des Ketubim et participez avec respect à l'édification de toute la qehilah.</p>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 7 — RÉPONSES (1-4) ============ -->
-  <section class="page page-7">
-    <div class="page-num">7</div>
-    <div class="page-content">
-      <h2 class="page-titre">Réponses aux<br>Rappels de Yah</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">1.</div><div class="quest-texte" style="font-style:italic">Écouter sans mettre le Dabar en pratique revient à se tromper soi-même. Le véritable changement commence lorsque nous vivons ce que nous avons entendu.</div></div>
-        <div class="quest-item"><div class="quest-num">2.</div><div class="quest-texte" style="font-style:italic">Le miroir représente les Ketubim Qadoshim. Ils révèlent notre véritable état et mettent en lumière les changements que nous devons apporter.</div></div>
-        <div class="quest-item"><div class="quest-num">3.</div><div class="quest-texte" style="font-style:italic">Parce que celui qui pratique le Dabar laisse Yahawah transformer sa conduite. Son bonheur vient de l'obéissance et non de la simple connaissance.</div></div>
-        <div class="quest-item"><div class="quest-num">4.</div><div class="quest-texte" style="font-style:italic">Les deux bâtisseurs entendent les mêmes paroles. La différence est que l'un les met en pratique tandis que l'autre les néglige. Le premier construit sur le roc, le second sur le sable.</div></div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 8 — RÉPONSES (5-7) ============ -->
-  <section class="page page-8">
-    <div class="page-num">8</div>
-    <div class="page-content">
-      <h2 class="page-titre">Réponses aux<br>Rappels de Yah</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">5.</div><div class="quest-texte" style="font-style:italic">Le véritable tal'mid bâtit sa vie sur le Dabar de Yahawah en lui obéissant fidèlement.</div></div>
-        <div class="quest-item"><div class="quest-num">6.</div><div class="quest-texte" style="font-style:italic">Nous le vérifions lorsque nos décisions, nos paroles, notre travail, notre vie familiale et notre comportement reflètent les enseignements des Ketubim.</div></div>
-        <div class="quest-item"><div class="quest-num">7.</div><div class="quest-texte" style="font-style:italic">(Réponse personnelle de chaque participant.)<br>Exemples : mettre immédiatement en pratique un enseignement entendu pendant cette ʿAbodah · lire quotidiennement les Ketubim · examiner chacune de ses décisions à la lumière du Dabar · chercher à ressembler davantage à Yahushuʿah dans sa conduite.</div></div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 9 — NOTES PERSONNELLES ============ -->
-  <section class="page page-9">
-    <div class="page-num">9</div>
-    <div class="page-content">
-      <h2 class="page-titre">Notes<br>personnelles</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="notes-zone">
-        <div class="notes-citation" style="margin-bottom:.8rem">
-          <p class="texte">« Écris la vision, grave-la sur des tables, afin qu'on la lise couramment. »</p>
-          <p class="ref">~ Ḥabaqquq 2:2</p>
-        </div>
-
-        <div class="notes-lignes">
-          <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-        </div>
-
-        <div class="theme-cadre" style="margin-top:1rem">
-          <p class="theme-label">Informations utiles</p>
-          <p class="quest-footer" style="margin:0.4rem 0 0">Date · prochaine rencontre · annonces importantes.</p>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 10 — CLÔTURE ============ -->
-  <section class="page page-10">
-    <div class="page-num">10</div>
-    <div class="page-content">
-      <h2 class="page-titre">Les Membres<br>de La Voie</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="theme-cadre" style="margin-bottom:1.2rem">
-        <p class="theme-label">Notre engagement</p>
-        <p class="quest-footer" style="margin:.5rem 0 0;text-align:left">En tant que Membres de La Voie, nous nous engageons à demeurer attachés au Dabar de Yahawah, à suivre l'exemple laissé par Yahushuʿah et à ne pas aller au-delà de ce qui est écrit.</p>
-        <p class="theme-label" style="margin-top:.6rem">~ 1 Qorintiyim 4:6</p>
-      </div>
-
-      <div class="notes-citation" style="margin-bottom:1.2rem">
-        <p class="texte">« Que le Dabar de Yahawah demeure dans nos cœurs et guide chacun de nos pas. »</p>
-      </div>
-
-      <div class="notes-footer">
-        <img src="logo_la_voie.png" alt="La Voie">
-        <div class="notes-footer-texte">
-          <p class="notes-footer-titre">LA VOIE</p>
-          <p class="notes-footer-sub">📱 La Voie Radio · MIQRA QADOSH · lavoie.world</p>
-          <p class="notes-footer-membres">Les Membres de La Voie</p>
-          <p class="notes-footer-droits">Tous droits réservés ®</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <span class="ed-fleche">→</span>
+  </a>
 
 </div>
+
+<footer>Miqra Qadosh · Les Membres de La Voie · lavoie.world</footer>
 
 </body>
 </html>
