@@ -44,15 +44,18 @@
   .btn-entrer:hover{background:#e8c96a;transform:scale(1.04)}
   .btn-entrer:active{transform:scale(.97)}
   .splash-note{margin-top:1.5rem;font-size:.75rem;opacity:.35;font-style:italic;font-family:'EB Garamond',serif}
+
+  .splash-affiche{width:100%;max-width:340px;border-radius:12px;border:1px solid rgba(201,168,76,.5);box-shadow:0 14px 40px rgba(0,0,0,.55);margin-bottom:1.6rem}
 </style>
 </head>
 <body>
 
 <div class="splash" id="splash">
+  <img src="miqra-shabbath-qadosh.jpg" alt="Miqra Qadosh — Shabbath 25 Rebiʿi" class="splash-affiche">
   <div class="splash-sep">✦ ✦ ✦</div>
   <h2>Miqra Qadosh</h2>
   <div class="splash-sub">Shabbath — Service d'ʿAbodah</div>
-  <div class="splash-date">18 Rebi'i · Les Membres de La Voie</div>
+  <div class="splash-date">Shabbath 25 Rebiʿi · Les Membres de La Voie</div>
   <div class="splash-line"></div>
   <button class="btn-entrer" onclick="entrerAbodah()">▶ &nbsp;Antre nan ʿAbodah</button>
   <div class="splash-note">Le service complet jouera automatiquement</div>
@@ -62,7 +65,7 @@
   <h1>Miqra Qadosh</h1>
   <div class="subtitle">Shabbath — Service d'ʿAbodah</div>
   <div class="player-card">
-    <div class="track-number" id="trackNum">— / 19</div>
+    <div class="track-number" id="trackNum">— / 20</div>
     <div class="track-name" id="trackName">Appuyez sur ▶ pour commencer le service</div>
     <div class="progress-wrap" id="progressWrap"><div class="progress-bar" id="progressBar"></div></div>
     <div class="time-display"><span id="timeCurrent">0:00</span><span id="timeTotal">0:00</span></div>
@@ -78,25 +81,26 @@
 <audio id="audioPlayer" preload="auto"></audio>
 <script>
 const tracks=[
-  {name:"Propos d'ouverture du Shabbath",src:"01_Propos_d_ouverture_du_Shabbat.mp3"},
-  {name:"An rasanble ansanm",src:"02_An_rasanble_ansanm.mp3"},
-  {name:"Remerciement pour le Chirat Tehillah d'ouverture",src:"03_Remerciement_Chirat_Tehillah_ouverture.mp3"},
+  {name:"Paroles d'introduction du président de la réunion",src:"s25-01_Introduction_president.mp3"},
+  {name:"Chirat — An rasanble ansanm",src:"02_An_rasanble_ansanm.mp3"},
+  {name:"Introduction à la Téfilah d'ouverture",src:"s25-03_Intro_Tefilah_ouverture.mp3"},
   {name:"Téfilah d'ouverture du Shabbath",src:"04_Tefilah_ouverture_Shabbath.mp3"},
-  {name:"Remerciement Téfilah et invitation à la lecture",src:"05_Remerciement_Tefilah_invitation_lecture.mp3"},
-  {name:"Invitation à la lecture des passages de la semaine",src:"06_Invitation_lecture_passages_semaine.mp3"},
-  {name:"Lecture de Tehillim 119:9-16",src:"07_Lecture_Tehillim_119_9-16.mp3"},
-  {name:"Invitation à la lecture complémentaire — Yaḥuānān 8:31-32",src:"08_Invitation_lecture_Yahuanan_8-31-32.mp3"},
-  {name:"Lecture de Yaḥuānān 8:31-32",src:"09_Lecture_Yahuanan_8-31-32.mp3"},
-  {name:"Les Rappels de Yah — Questions & Réponses",src:"10_Les_Rappels_de_Yah_Questions_Reponses.mp3"},
-  {name:"Transition vers le Chirat de méditation",src:"11_Transition_chirat_meditation.mp3"},
-  {name:"Rapèl Yah yo fèm",src:"12_Rapel_Yah_yo_fem.mp3"},
+  {name:"Introduction à la lecture des Ketubim Qadoshim",src:"s25-05_Intro_lecture_Ketubim.mp3"},
+  {name:"📖 Lecture principale — Yaʿaqob 1:22-25",src:"s25-05a_Lecture_Yaaqob_1_22-25.mp3"},
+  {name:"📖 Lecture complémentaire — Mattiyahu 7:24-27",src:"s25-05b_Lecture_Mattiyahu_7_24-27.mp3"},
+  {name:"Remerciement aux lecteurs — introduction aux Rappels de Yah",src:"s25-06_Remerciement_lecteurs_intro_Rappels.mp3"},
+  {name:"Les Rappels de Yah — Questions & Réponses",src:"s25-07_Rappels_de_Yah_QR.mp3"},
+  {name:"Remerciement et annonce du Chirat",src:"s25-08_Remerciement_annonce_Chirat.mp3"},
+  {name:"Chirat — Rapèl Yah yo fèm",src:"12_Rapel_Yah_yo_fem.mp3"},
   {name:"Introduire l'orateur du jour",src:"13_Introduire_orateur_du_jour.mp3"},
-  {name:"Demeurer dans le Dabar — La marque du véritable Tal'mid",src:"14_DEMEURER_DANS_LE_DABAR.mp3"},
-  {name:"Introduction au Chirat final",src:"15_Intro_Chirat_final.mp3"},
-  {name:"Nan ki Katégori ou ye ?",src:"16_Nan_ki_Kategori_ou_ye.mp3"},
+  {name:"🎙️ Enseignement — Le Dabar produit des actes visibles (1/3)",src:"s25-11a_Enseignement_p1.mp3"},
+  {name:"🎙️ Enseignement — Le Dabar produit des actes visibles (2/3)",src:"s25-11b_Enseignement_p2.mp3"},
+  {name:"🎙️ Enseignement — Le Dabar produit des actes visibles (3/3)",src:"s25-11c_Enseignement_suite.mp3"},
+  {name:"Remerciement à l'orateur — Chirat de clôture",src:"s25-12_Remerciement_orateur_Chirat_cloture.mp3"},
+  {name:"Chirat — Ret Fidèl Jouk Adôn nan",src:"s25-13_Chirat_Ret_Fidel_Jouk_Adon_nan.mp3"},
   {name:"Transition vers la Téfilah de clôture",src:"17_Transition_Tefilah_cloture.mp3"},
   {name:"Téfilah de clôture du Shabbath",src:"18_Tefilah_cloture_Shabbath.mp3"},
-  {name:"Communications et clôture de l'ʿAbodah",src:"19_Communications_cloture_Abodah.mp3"}
+  {name:"Propos de clôture du Shabbath",src:"s25-15_Propos_cloture_Shabbath.mp3"}
 ];
 let current=-1;
 const audio=document.getElementById('audioPlayer');
