@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Téfilot — Matin · Midi · Veille du soir · La Voie</title>
+<meta name="description" content="Les Téfilot quotidiennes des Membres de La Voie — matin (6:00), midi (12:00) et veille du soir (21:30).">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+:root{--nuit:#0d2347;--nuit-f:#081832;--or:#c9a84c;--or-c:#e8c96a;--or-fonce:#9a7c2e;--creme:#f5efe0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:linear-gradient(175deg,#050d1c,var(--nuit-f) 45%,var(--nuit));color:var(--creme);min-height:100vh;line-height:1.7}
+a{color:var(--or-c)}
+.nav-retour{padding:1rem 1.2rem}
+.nav-retour a{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--or);opacity:.85}
+.wrap{max-width:720px;margin:0 auto;padding:0 1.1rem 4rem}
+header{text-align:center;padding:.8rem 0 1.4rem}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.7rem,7vw,2.3rem);color:var(--creme);letter-spacing:.03em}
+.sous{font-family:'Cinzel',serif;font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);margin-top:.5rem}
+.horloge{font-variant-numeric:tabular-nums;font-size:.92rem;color:var(--creme);opacity:.65;margin-top:.6rem;font-style:italic}
+
+/* Onglets des 3 moments */
+.onglets{display:flex;gap:.5rem;margin:1.4rem 0 1.8rem}
+.onglet{flex:1;text-align:center;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--creme);border:1px solid rgba(201,168,76,.4);border-radius:10px;padding:.7rem .3rem;background:transparent;cursor:pointer;transition:all .2s;position:relative}
+.onglet .ico{display:block;font-size:1.3rem;margin-bottom:.3rem;opacity:.9}
+.onglet.actif{background:linear-gradient(150deg,rgba(201,168,76,.2),rgba(201,168,76,.05));border-color:var(--or);color:var(--or-c)}
+.onglet .heure{display:block;font-size:.62rem;opacity:.6;margin-top:.2rem}
+.onglet .pastille{position:absolute;top:6px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--or);box-shadow:0 0 8px var(--or);display:none;animation:puls 1.8s infinite}
+.onglet.maintenant .pastille{display:block}
+@keyframes puls{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* Affiche */
+.affiche{border:1px solid rgba(201,168,76,.5);border-radius:14px;overflow:hidden;box-shadow:0 16px 44px rgba(0,0,0,.5);margin-bottom:.2rem}
+.affiche img{display:block;width:100%;height:auto}
+.moment-titre{text-align:center;font-family:'Cinzel',serif;font-size:1.15rem;letter-spacing:.1em;color:var(--or-c);margin:1.4rem 0 .3rem}
+.moment-verset{text-align:center;font-style:italic;opacity:.8;margin-bottom:1.2rem;font-size:.98rem}
+
+/* Lecteur */
+.lecteur{background:linear-gradient(160deg,#10294f,#0b1f3f);border:1px solid rgba(201,168,76,.55);border-radius:16px;padding:1.5rem 1.3rem 1.2rem;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.piste-actuelle{text-align:center;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);margin-bottom:.3rem;min-height:1.6em}
+.piste-index{text-align:center;font-size:.78rem;opacity:.55;margin-bottom:1rem;font-variant-numeric:tabular-nums}
+.ctrl{display:flex;align-items:center;justify-content:center;gap:1.3rem}
+.btn-r{width:48px;height:48px;border-radius:50%;border:1px solid rgba(201,168,76,.5);background:rgba(201,168,76,.08);color:var(--or-c);font-size:.68rem;font-family:'Cinzel',serif;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:1}
+.btn-r:active{transform:scale(.93)}
+.btn-play{width:72px;height:72px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(150deg,var(--or-c),var(--or-fonce));color:var(--nuit-f);font-size:1.6rem;box-shadow:0 8px 24px rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center}
+.btn-play:active{transform:scale(.95)}
+.barre-wrap{margin-top:1.2rem}
+.barre{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--or) var(--prog,0%),rgba(245,239,224,.18) var(--prog,0%));outline:none;cursor:pointer}
+.barre::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:var(--or-c);border:2px solid var(--nuit-f)}
+.barre::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--or-c);border:2px solid var(--nuit-f)}
+.temps{display:flex;justify-content:space-between;font-size:.82rem;font-variant-numeric:tabular-nums;opacity:.7;margin-top:.4rem}
+
+/* Liste des pistes */
+.liste-t{font-family:'Cinzel',serif;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--or);margin:1.8rem 0 .8rem;text-align:center}
+.piste{display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;border:1px solid rgba(201,168,76,.25);border-radius:9px;margin-bottom:.5rem;cursor:pointer;transition:background .15s}
+.piste:hover{background:rgba(201,168,76,.1)}
+.piste.en-cours{background:rgba(201,168,76,.16);border-color:var(--or)}
+.piste-num{font-family:'Cinzel',serif;font-size:.85rem;color:var(--or);width:1.4rem;text-align:center;flex-shrink:0}
+.piste-nom{font-size:.95rem}
+.piste.en-cours .piste-nom{color:var(--or-c)}
+
+footer{text-align:center;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);opacity:.65;padding:2.4rem 1rem;border-top:1px solid rgba(201,168,76,.22);margin-top:2.4rem}
+</style>
+</head>
+<body>
+
+<div class="nav-retour"><a href="app.html">← Akèy</a></div>
+
+<div class="wrap">
+  <header>
+    <h1>Téfilot</h1>
+    <p class="sous">Matin · Midi · Veille du soir</p>
+    <p class="horloge" id="horloge"></p>
+  </header>
+
+  <div class="onglets" id="onglets">
+    <button class="onglet" data-m="matin"><span class="pastille"></span><span class="ico">🌅</span>Matin<span class="heure">6:00</span></button>
+    <button class="onglet" data-m="midi"><span class="pastille"></span><span class="ico">☀️</span>Midi<span class="heure">12:00</span></button>
+    <button class="onglet" data-m="soir"><span class="pastille"></span><span class="ico">🌙</span>Veille du soir<span class="heure">21:30</span></button>
+  </div>
+
+  <div class="affiche"><img id="affiche-img" src="tefilah-matin.png" alt="Téfilah"></div>
+  <div class="moment-titre" id="moment-titre">Téfilah du matin</div>
+  <div class="moment-verset" id="moment-verset"></div>
+
+  <div class="lecteur">
+    <div class="piste-actuelle" id="piste-actuelle">—</div>
+    <div class="piste-index" id="piste-index"></div>
+    <audio id="au" preload="metadata"></audio>
+    <div class="ctrl">
+      <button class="btn-r" id="prec" title="Piste précédente">⏮</button>
+      <button class="btn-play" id="play" title="Lecture / Pause">▶</button>
+      <button class="btn-r" id="suiv" title="Piste suivante">⏭</button>
+    </div>
+    <div class="barre-wrap">
+      <input type="range" class="barre" id="barre" min="0" max="100" step="0.1" value="0">
+      <div class="temps"><span id="t-cur">0:00</span><span id="t-tot">0:00</span></div>
+    </div>
+  </div>
+
+  <div class="liste-t">✦ Déroulement</div>
+  <div id="liste-pistes"></div>
+
+</div>
+
+<footer>Téfilot · Les Membres de La Voie · lavoie.world</footer>
+
+<script>
+var MOMENTS = {
+  matin: {
+    titre: "Téfilah du matin",
+    verset: "« Yahawah, dès le matin tu entends ma voix. » — Tehillim 5:4",
+    affiche: "tefilah-matin.png",
+    pistes: [
+      { nom: "Jingle des Téfilot", src: "jingle-tefilot.mp3" },
+      { nom: "Toda Rabah nan maten", src: "tefilah-matin-kantik.mp3" },
+      { nom: "Téfilah au lever du soleil", src: "tefilah-matin-priere.mp3" },
+      { nom: "Abinou Yah", src: "tefilah-matin-kantik2.mp3" }
+    ]
+  },
+  midi: {
+    titre: "Téfilah du midi",
+    verset: "« Le soir, le matin et à midi, je soupire et je gémis. » — Tehillim 55:18",
+    affiche: "tefilah-midi.png",
+    pistes: [
+      { nom: "Jingle des Téfilot", src: "jingle-tefilot.mp3" },
+      { nom: "Prélude du midi", src: "tefilah-midi-prelude.mp3" },
+      { nom: "Toda Rabah pou mitan jounen an", src: "tefilah-midi-kantik.mp3" },
+      { nom: "Téfilah du midi", src: "tefilah-midi-priere.mp3" },
+      { nom: "Papa nou ki nan shamayim yo", src: "tefilah-midi-kantik2.mp3" }
+    ]
+  },
+  soir: {
+    titre: "Téfilah de la veille du soir",
+    verset: "« Que ma prière monte devant toi comme l'encens. » — Tehillim 141:2",
+    affiche: "tefilah-soir.png",
+    pistes: [
+      { nom: "Jingle des Téfilot", src: "jingle-tefilot.mp3" },
+      { nom: "Tande Téfilah mwen", src: "tefilah-soir-kantik.mp3" },
+      { nom: "Téfilah du soir", src: "tefilah-soir-priere.mp3" },
+      { nom: "Li tande kri nou", src: "tefilah-soir-kantik2.mp3" }
+    ]
+  }
+};
+
+var au = document.getElementById('au');
+var momentActuel = null, pisteIdx = 0;
+
+function fmt(s){ s=Math.max(0,Math.floor(s||0)); var m=Math.floor(s/60), c=s%60; return m+':'+String(c).padStart(2,'0'); }
+
+/* Choisir le moment selon l'heure locale :
+   06:00–11:59 matin · 12:00–17:59 midi · sinon (18:00–05:59) veille du soir */
+function momentSelonHeure(){
+  var h = new Date().getHours();
+  if (h >= 6 && h < 12) return 'matin';
+  if (h >= 12 && h < 18) return 'midi';
+  return 'soir';
+}
+
+function chargerMoment(m, autoplay){
+  momentActuel = m; pisteIdx = 0;
+  var M = MOMENTS[m];
+  document.getElementById('affiche-img').src = M.affiche;
+  document.getElementById('moment-titre').textContent = M.titre;
+  document.getElementById('moment-verset').textContent = M.verset;
+  document.querySelectorAll('.onglet').forEach(function(o){ o.classList.toggle('actif', o.dataset.m===m); });
+  // Liste
+  var html='';
+  M.pistes.forEach(function(p,i){
+    html += '<div class="piste" data-i="'+i+'"><span class="piste-num">'+(i+1)+'</span><span class="piste-nom">'+p.nom+'</span></div>';
+  });
+  document.getElementById('liste-pistes').innerHTML = html;
+  document.querySelectorAll('.piste').forEach(function(el){
+    el.addEventListener('click', function(){ chargerPiste(parseInt(el.dataset.i), true); });
+  });
+  chargerPiste(0, autoplay);
+}
+
+function chargerPiste(i, autoplay){
+  var M = MOMENTS[momentActuel];
+  if (i < 0 || i >= M.pistes.length) return;
+  pisteIdx = i;
+  au.src = M.pistes[i].src;
+  document.getElementById('piste-actuelle').textContent = M.pistes[i].nom;
+  document.getElementById('piste-index').textContent = (i+1)+' / '+M.pistes.length;
+  document.querySelectorAll('.piste').forEach(function(el){ el.classList.toggle('en-cours', parseInt(el.dataset.i)===i); });
+  if (autoplay) au.play().catch(function(){});
+}
+
+document.querySelectorAll('.onglet').forEach(function(o){
+  o.addEventListener('click', function(){ chargerMoment(o.dataset.m, true); });
+});
+document.getElementById('play').addEventListener('click', function(){ if(au.paused) au.play(); else au.pause(); });
+au.addEventListener('play', function(){ document.getElementById('play').textContent='❚❚'; });
+au.addEventListener('pause', function(){ document.getElementById('play').textContent='▶'; });
+document.getElementById('prec').addEventListener('click', function(){ chargerPiste(pisteIdx-1, true); });
+document.getElementById('suiv').addEventListener('click', function(){ chargerPiste(pisteIdx+1, true); });
+au.addEventListener('ended', function(){
+  if (pisteIdx < MOMENTS[momentActuel].pistes.length-1) chargerPiste(pisteIdx+1, true);
+  else document.getElementById('play').textContent='▶';
+});
+au.addEventListener('loadedmetadata', function(){ document.getElementById('t-tot').textContent = fmt(au.duration); });
+au.addEventListener('timeupdate', function(){
+  if(!au.duration) return;
+  var p = au.currentTime/au.duration*100;
+  var b = document.getElementById('barre'); b.value=p; b.style.setProperty('--prog',p+'%');
+  document.getElementById('t-cur').textContent = fmt(au.currentTime);
+});
+document.getElementById('barre').addEventListener('input', function(){ if(au.duration) au.currentTime=this.value/100*au.duration; });
+
+/* Horloge + pastille "maintenant" */
+function tic(){
+  var n = new Date();
+  document.getElementById('horloge').textContent =
+    n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  var mNow = momentSelonHeure();
+  document.querySelectorAll('.onglet').forEach(function(o){ o.classList.toggle('maintenant', o.dataset.m===mNow); });
+}
+setInterval(tic, 1000); tic();
+
+/* Au chargement : ouvrir le moment correspondant à l'heure (ou celui demandé via ?m=) */
+var params = new URLSearchParams(location.search);
+var mDemande = params.get('m');
+chargerMoment((mDemande && MOMENTS[mDemande]) ? mDemande : momentSelonHeure(), false);
+</script>
+
+</body>
+</html>
