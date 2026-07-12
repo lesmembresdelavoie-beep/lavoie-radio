@@ -1,6 +1,6 @@
 /* Service Worker — La Voie PWA
    Mete kach app la ajou : chanje NIMEWO vèsyon an chak fwa ou modifye app.html */
-const CACHE = 'lavoie-app-v21';
+const CACHE = 'lavoie-app-v22';
 const FICHIERS = [
   'app.html',
   'manifest.json',
@@ -99,11 +99,11 @@ async function verifyeNouvote(){
 }
 
 self.addEventListener('periodicsync', function(ev){
-  if (ev.tag === 'lavoie-nouvote') ev.waitUntil(verifyeNouvote());
+  if (ev.tag === 'lavoie-nouvote') ev.waitUntil(Promise.all([verifyeNouvote(), verifyeTefilot()]));
 });
 self.addEventListener('message', function(ev){
   if (ev.data && ev.data.type === 'verifye-nouvote') ev.waitUntil ? null : null;
-  if (ev.data && ev.data.type === 'verifye-nouvote') verifyeNouvote();
+  if (ev.data && ev.data.type === 'verifye-nouvote') { verifyeNouvote(); verifyeTefilot(); }
 });
 /* Pare pou vrè "push" sèvè alavni (VPS) */
 self.addEventListener('push', function(ev){
@@ -125,3 +125,42 @@ self.addEventListener('notificationclick', function(ev){
     return clients.openWindow(url);
   }));
 });
+
+
+/* ============ RAPÈL TÉFILOT (maten 6:00 · midi 12:00 · aswè 21:30 — lè lokal) ============ */
+const TEFILOT = [
+  { m:'matin', h:6,  min:0,  titre:'🌅 Téfilah du matin', body:"C'est l'heure de la prière du matin ✦" },
+  { m:'midi',  h:12, min:0,  titre:'☀️ Téfilah du midi',  body:"C'est l'heure de la prière de midi ✦" },
+  { m:'soir',  h:21, min:30, titre:'🌙 Téfilah de la veille du soir', body:"C'est l'heure de la prière du soir ✦" }
+];
+const TEF_CACHE = 'lavoie-tefilot-eta';
+
+async function liTefEta(){
+  try { const c=await caches.open(TEF_CACHE); const r=await c.match('eta'); if(r) return await r.json(); } catch(e){}
+  return {};
+}
+async function sereTefEta(o){
+  try { const c=await caches.open(TEF_CACHE); await c.put('eta', new Response(JSON.stringify(o),{headers:{'Content-Type':'application/json'}})); } catch(e){}
+}
+async function verifyeTefilot(){
+  try {
+    const n = new Date();
+    const jour = n.getFullYear()+'-'+n.getMonth()+'-'+n.getDate();
+    const eta = await liTefEta();
+    const mnNow = n.getHours()*60 + n.getMinutes();
+    for (const t of TEFILOT){
+      const cible = t.h*60 + t.min;
+      // Fenêtre de déclenchement: entre l'heure cible et 90 min après, une seule fois par jour
+      const cle = jour+'-'+t.m;
+      if (mnNow >= cible && mnNow < cible+90 && eta[t.m] !== jour){
+        await self.registration.showNotification(t.titre, {
+          body: t.body, icon:'icon-192.png', badge:'icon-192.png',
+          tag:'lavoie-tefilah-'+t.m, renotify:true,
+          data:{ url:'tefilot.html?m='+t.m }
+        });
+        eta[t.m] = jour;
+      }
+    }
+    await sereTefEta(eta);
+  } catch(e){}
+}
