@@ -175,6 +175,22 @@ const resultat=jwennJounen();
 let slides=[];
 let idxActif=0;
 
+/* ===== CHÈN ODYO: prelid → vwa jounen an ===== */
+const PRELID = 'teks-jounen-prelid.mp3';
+let VWA_LIS = [], vwaIdx = 0, vwaAvanseFet = false;
+function vwaAvanse(){
+  if(vwaAvanseFet) return true;            // deja avanse pou menm evènman an
+  const av = document.getElementById('audio-vwa');
+  if(vwaIdx < VWA_LIS.length - 1){
+    vwaAvanseFet = true;
+    vwaIdx++;
+    av.src = VWA_LIS[vwaIdx];
+    av.play().then(()=>{ vwaAvanseFet=false; }).catch(()=>{ vwaAvanseFet=false; });
+    return true;
+  }
+  return false;
+}
+
 if(resultat){
   const {jounen,mois}=resultat;
   const nomJou=jwennNomJou(jounen);
@@ -188,7 +204,10 @@ if(resultat){
   const vwaFichye = VWA[mois] && VWA[mois][jounen.jour];
   if(vwaFichye){
     const av = document.getElementById('audio-vwa');
-    av.src = vwaFichye;
+    /* Prelid la jwe anvan vwa jounen an — chèn odyo */
+    VWA_LIS = [PRELID, vwaFichye];
+    vwaIdx = 0;
+    av.src = VWA_LIS[0];
     document.getElementById('btn-vwa').style.display = 'flex';
   }
 
@@ -247,6 +266,7 @@ function toggleVwa(){
 
 // Lè vwa a fini — montre bouton play ankò
 document.getElementById('audio-vwa').addEventListener('ended',()=>{
+  if(vwaAvanse()) return;
   document.getElementById('btn-vwa').textContent='🎙';
   vwaOn=false;
 });
@@ -266,6 +286,7 @@ function demarrer(){
     av.load();
     // Lè vwa fini — remonte mizik background la
     av.addEventListener('ended', ()=>{
+      if(vwaAvanse()) return;
       vwaOn=false;
       document.getElementById('btn-vwa').textContent='🎙';
       if(muzikOn){ let v=audio.volume; const fi=setInterval(()=>{v=Math.min(0.12,v+0.003);audio.volume=v;if(v>=0.12)clearInterval(fi);},100); }
