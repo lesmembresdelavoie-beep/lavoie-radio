@@ -1,12 +1,14 @@
 /* Service Worker — La Voie PWA
    Mete kach app la ajou : chanje NIMEWO vèsyon an chak fwa ou modifye app.html */
-const CACHE = 'lavoie-app-v27';
+const CACHE = 'lavoie-app-v28';
 const FICHIERS = [
   'app.html',
   'manifest.json',
   'teks-data.js',
   'icon-192.png',
-  'icon-512.png'
+  'icon-512.png',
+  'chirat-tehillah.html',
+  'couverture-sefer.jpg'
 ];
 
 self.addEventListener('install', e => {
