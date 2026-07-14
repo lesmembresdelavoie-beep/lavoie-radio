@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sefer de Mizmorim, Tehillot et de Shirim Roḥaniyim — La Voie</title>
+<meta name="description" content="Recueil de chants de La Voie — pawòl ak mizik pou chante louwanj Yahawah.">
+<meta name="theme-color" content="#0A1428">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sefer de Mizmorim, Tehillot et de Shirim Roḥaniyim">
+<meta property="og:description" content="Recueil de chants de La Voie — pawòl ak mizik pou chante louwanj Yahawah.">
+<meta property="og:image" content="https://lavoie.world/couverture-sefer.jpg">
+<meta property="og:url" content="https://lavoie.world/chirat-tehillah.html">
+<style>
+  :root{
+    --nuit:#0A1428;
+    --nuit-2:#101F3D;
+    --nuit-3:#182A52;
+    --dore:#D4AF37;
+    --dore-pal:#E8CE7E;
+    --ivoire:#F5EFDC;
+    --ivoire-sombre:#C8C0A8;
+    --ligne:rgba(212,175,55,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--nuit);
+    color:var(--ivoire);
+    font-family:Georgia,'Times New Roman',serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  /* ====== FRONTISPICE ====== */
+  .frontispice{
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:2.5rem 1.5rem;position:relative;
+  }
+  .sr-only{
+    position:absolute;width:1px;height:1px;overflow:hidden;
+    clip:rect(0 0 0 0);white-space:nowrap;
+  }
+  .ornement{color:var(--dore);letter-spacing:.6em;font-size:.9rem}
+  .kouveti{
+    display:block;width:min(24rem,88vw);height:auto;
+    border:1px solid var(--ligne);
+    box-shadow:0 24px 60px rgba(0,0,0,.65);
+  }
+  .epigraf{
+    margin-top:2.2rem;padding-top:1.6rem;
+    border-top:1px solid var(--ligne);
+    max-width:26rem;text-align:center;
+  }
+  .epigraf p{font-size:.98rem;font-style:italic;color:var(--ivoire)}
+  .epigraf cite{
+    display:block;margin-top:.8rem;font-style:normal;
+    color:var(--dore);font-size:.85rem;letter-spacing:.15em;
+  }
+  .fleche-ba{
+    margin-top:2.2rem;color:var(--dore);text-decoration:none;
+    font-size:.85rem;letter-spacing:.2em;
+  }
+
+  /* ====== ENDÈKS ====== */
+  .endeks{max-width:34rem;margin:0 auto;padding:3.5rem 1.5rem 2rem}
+  .tit-seksyon{
+    color:var(--dore);font-size:.85rem;letter-spacing:.3em;
+    text-transform:uppercase;text-align:center;margin-bottom:2rem;
+  }
+  .tit-seksyon::before,.tit-seksyon::after{content:" ✦ ";color:var(--ligne)}
+  .endeks ol{list-style:none;counter-reset:tehillah}
+  .endeks li{counter-increment:tehillah;border-bottom:1px dotted var(--ligne)}
+  .endeks a{
+    display:flex;align-items:baseline;gap:1rem;
+    padding:1rem .3rem;color:var(--ivoire);text-decoration:none;
+  }
+  .endeks a:hover,.endeks a:focus-visible{color:var(--dore-pal)}
+  .endeks a::before{
+    content:counter(tehillah,decimal-leading-zero);
+    color:var(--dore);font-size:.85rem;letter-spacing:.1em;
+  }
+
+  /* ====== CHANT ====== */
+  .chant{max-width:34rem;margin:0 auto;padding:3rem 1.5rem 5rem}
+  .chant header{text-align:center;margin-bottom:1.6rem}
+  .nimewo{
+    display:inline-block;color:var(--dore);font-size:.8rem;
+    letter-spacing:.35em;text-transform:uppercase;
+    border:1px solid var(--ligne);padding:.35rem .9rem;margin-bottom:1rem;
+  }
+  .chant h2{
+    font-weight:normal;color:var(--dore-pal);
+    font-size:clamp(1.35rem,4.5vw,1.8rem);line-height:1.4;
+  }
+
+  /* lektè odyo */
+  .lekte{
+    position:sticky;top:.6rem;z-index:10;
+    display:flex;align-items:center;gap:.8rem;
+    background:var(--nuit-3);
+    border:1px solid var(--ligne);
+    padding:.65rem .9rem;border-radius:3rem;
+    box-shadow:0 6px 18px rgba(0,0,0,.45);
+    margin-bottom:2.5rem;
+  }
+  .btn-jwe{
+    flex:none;width:2.9rem;height:2.9rem;border-radius:50%;
+    border:1px solid var(--dore);background:transparent;color:var(--dore);
+    font-size:1.05rem;cursor:pointer;line-height:1;
+  }
+  .btn-jwe:focus-visible{outline:2px solid var(--dore-pal);outline-offset:2px}
+  .baraj{flex:1;display:flex;flex-direction:column;gap:.3rem}
+  .baraj input[type=range]{
+    width:100%;accent-color:var(--dore);height:4px;cursor:pointer;
+  }
+  .tan{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ivoire-sombre);letter-spacing:.05em}
+
+  /* pawòl */
+  .pawol .etikèt{
+    color:var(--dore);font-style:italic;font-size:.9rem;
+    margin:1.9rem 0 .55rem;letter-spacing:.05em;
+  }
+  .pawol p{white-space:pre-line;font-size:1.05rem}
+  .pawol .refren p{color:var(--dore-pal)}
+
+  footer{
+    text-align:center;padding:2.5rem 1.5rem 3.5rem;
+    color:var(--ivoire-sombre);font-size:.85rem;font-style:italic;
+    border-top:1px solid var(--ligne);max-width:34rem;margin:0 auto;
+  }
+  footer .ornement{margin-bottom:1rem}
+</style>
+</head>
+<body>
+
+<!-- ============ FRONTISPICE ============ -->
+<section class="frontispice">
+  <h1 class="sr-only">Sefer de Mizmorim, Tehillot et de Shirim Roḥaniyim — Recueil de chants de La Voie</h1>
+  <img class="kouveti" src="couverture-sefer.jpg" width="1024" height="1536"
+       alt="Kouvèti Sefer a: menora doré, harp, woulo ebre ak liv La Voie sou fon bleu nuit, avèk tit la ak epigraf Éphésiens 5:19">
+  <blockquote class="epigraf">
+    <p>« Kontinye ankouraje youn lòt avèk Mizmorim, Tehillot ak Chirim Roḥaniyim. Chante, jwe mizik epi fè Yahawah louwanj ak tout kè nou. »</p>
+    <cite>— Éphésiens 5:19</cite>
+  </blockquote>
+  <a class="fleche-ba" href="#endeks">ENDÈKS ↓</a>
+</section>
+
+<!-- ============ ENDÈKS ============ -->
+<nav class="endeks" id="endeks" aria-label="Endèks chant yo">
+  <h2 class="tit-seksyon">Endèks</h2>
+  <ol>
+    <li><a href="#tehillah-01">Ret Fidèl Jouk Adôn nan Retounen</a></li>
+    <!-- Pwochen Tehillot yo ap ajoute isit la -->
+  </ol>
+</nav>
+
+<!-- ============ TEHILLAH 1 ============ -->
+<article class="chant" id="tehillah-01">
+  <header>
+    <span class="nimewo">Tehillah 1</span>
+    <h2>Ret Fidèl Jouk Adôn nan Retounen</h2>
+  </header>
+
+  <div class="lekte" data-src="audio/tehillah-01-ret-fidel.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Couplet 1</p>
+    <p>Ki moun Adôn nan va jwenn,
+Lè li vini san avèti ?
+Ki moun ki va toujou kanpé,
+Nan sèvis li té konfyé l ?
+Se pa tit lèzòm bay,
+Se pa lwanj moun ka chanté ;
+Men sé lavi ki rété dwat,
+Jouk lè Adôn nan va parèt.</p>
+
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Nou pap chèché gwo plas,
+Nou pap chèché gwo non ;
+Nou vlé sèlman rété fidèl,
+Jouk retou Adôn lan.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>Ret fidèl ! Ret fidèl !
+Jouk Adôn nan rétounen.
+Kenbé fèm ! Pa lagué !
+Jouk Adôn nan rétounen.
+Lè l vini, sé pou l jwenn
+Nou toujou ap sèvi.
+Lè l vini, sé pou l di :
+« Byennéré sèvitè sa a ! »</p>
+    </div>
+
+    <p class="etikèt">Couplet 2</p>
+    <p>Li té ban nou Dabar li a,
+Pou n patajé ak renmen ;
+Li té ban nou responsabilité,
+Pou n sèvi chak jou san pran plézi nan tèt nou.
+Se pa pou n dominé lòt,
+Ni pou n levé tèt nou wo ;
+Nou sé sèvitè devan Adôn,
+N ap tann sèlman jijman li.</p>
+
+    <p class="etikèt">Pont</p>
+    <p>Si yo ban nou anpil,
+Y ap mandé n anpil.
+Ann maché ak krent,
+Ann sèvi ak tout kè nou.
+Se Adôn lan ki va jijé,
+Se Adôn lan ki va palé.
+Li konnen tout sa nou fè,
+Anyen pa kaché devan li.</p>
+
+    <div class="refren">
+      <p class="etikèt">Dernier Refrain</p>
+      <p>Ret fidèl ! Ret fidèl !
+Jouk Adôn nan rétounen.
+Bay manjé nan tan li,
+Jan li té mandé nou.
+Lè l vini, sé pou l jwenn
+Nou toujou ap fè volonté l.
+Épi n ap tandé vwa l di :
+« Byennéré sèvitè fidèl ki prévwayan an. »</p>
+    </div>
+
+    <p class="etikèt">Final (Chœur)</p>
+    <p>Yahawah, ban nou fòs
+Pou n kenbé jouk nan fen an.
+Yahushuʿah, Adôn nou,
+Sé ou menm n ap tann.
+Ret fidèl ! Ret fidèl !
+Jouk Adôn nan rétounen.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="ornement" aria-hidden="true">✦</div>
+  Les Membres de La Voie Assembly — lavoie.world
+</footer>
+
+<script>
+// Lektè odyo pataje: yon sèl Audio, preload sèlman lè moun peze jwe (ekonomize done mobil)
+(function(){
+  var audio = null, lekteAktif = null;
+
+  function fmt(s){
+    if(!isFinite(s)) return "–:––";
+    var m = Math.floor(s/60), r = Math.floor(s%60);
+    return m + ":" + (r<10?"0":"") + r;
+  }
+
+  document.querySelectorAll(".lekte").forEach(function(lekte){
+    var btn = lekte.querySelector(".btn-jwe");
+    var bar = lekte.querySelector("input[type=range]");
+    var tKoule = lekte.querySelector(".tan-koule");
+    var tTotal = lekte.querySelector(".tan-total");
+    var src = lekte.getAttribute("data-src");
+    var kapGlise = false;
+
+    function rale(){
+      if(lekteAktif === lekte && audio) return audio;
+      if(audio){ audio.pause(); if(lekteAktif) lekteAktif.querySelector(".btn-jwe").textContent = "▶"; }
+      audio = new Audio(src);
+      audio.preload = "auto";
+      lekteAktif = lekte;
+
+      audio.addEventListener("loadedmetadata", function(){ tTotal.textContent = fmt(audio.duration); });
+      audio.addEventListener("timeupdate", function(){
+        if(kapGlise) return;
+        tKoule.textContent = fmt(audio.currentTime);
+        if(isFinite(audio.duration)) bar.value = (audio.currentTime/audio.duration)*100;
+      });
+      audio.addEventListener("ended", function(){ btn.textContent = "▶"; bar.value = 0; tKoule.textContent = "0:00"; });
+      audio.addEventListener("error", function(){ tTotal.textContent = "erè"; btn.textContent = "▶"; });
+      return audio;
+    }
+
+    btn.addEventListener("click", function(){
+      var a = rale();
+      if(a.paused){ a.play(); btn.textContent = "❚❚"; }
+      else { a.pause(); btn.textContent = "▶"; }
+    });
+
+    bar.addEventListener("input", function(){
+      kapGlise = true;
+      if(audio && lekteAktif === lekte && isFinite(audio.duration))
+        tKoule.textContent = fmt((bar.value/100)*audio.duration);
+    });
+    bar.addEventListener("change", function(){
+      var a = rale();
+      if(isFinite(a.duration)) a.currentTime = (bar.value/100)*a.duration;
+      kapGlise = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
