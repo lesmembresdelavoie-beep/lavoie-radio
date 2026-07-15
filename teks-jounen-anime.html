@@ -186,9 +186,19 @@ function vwaAvanse(){
     vwaIdx++;
     av.src = VWA_LIS[vwaIdx];
     av.play().then(()=>{ vwaAvanseFet=false; }).catch(()=>{ vwaAvanseFet=false; });
+    /* Prelid la gen pwòp mizik pa l — enstrimantal background la monte
+       sèlman lè vwa tèks la kòmanse (pou evite kakofoni). */
+    muzikMonte();
     return true;
   }
   return false;
+}
+
+/* Monte enstrimantal background la dousman jiska 0.12 */
+function muzikMonte(){
+  if(!muzikOn) return;
+  let v = audio.volume;
+  const fi = setInterval(()=>{ v = Math.min(0.12, v + 0.005); audio.volume = v; if(v >= 0.12) clearInterval(fi); }, 150);
 }
 
 if(resultat){
@@ -254,7 +264,7 @@ function naviguer(dir){const nv=idxActif+dir;if(nv<0||nv>=slides.length)return;i
 
 const audio=document.getElementById('audio');
 let muzikOn=false;
-function toggleMuzik(){if(muzikOn){audio.pause();muzikOn=false;document.getElementById('btn-muzik').textContent='🎵';}else{audio.play().catch(e=>console.log(e));muzikOn=true;document.getElementById('btn-muzik').textContent='🔇';}}
+function toggleMuzik(){if(muzikOn){audio.pause();muzikOn=false;document.getElementById('btn-muzik').textContent='🎵';}else{audio.play().catch(e=>console.log(e));muzikOn=true;if(audio.volume<0.01)audio.volume=0.12;document.getElementById('btn-muzik').textContent='🔇';}}
 
 let vwaOn=false;
 function toggleVwa(){
@@ -278,7 +288,9 @@ function demarrer(){
   audio.volume=0;
   audio.play().catch(e=>console.log(e));muzikOn=true;
   document.getElementById('btn-muzik').textContent='🔇';
-  let v=0;const fi=setInterval(()=>{v=Math.min(0.12,v+0.005);audio.volume=v;if(v>=0.12)clearInterval(fi);},150);
+  /* Si gen yon prelid, enstrimantal la rete an silans pandan l ap jwe —
+     li monte lè vwa tèks la kòmanse (gade vwaAvanse). Sinon li monte touswit. */
+  if(!(VWA_LIS.length > 1)) muzikMonte();
   // Vwa — kòmanse apre 1.5s
   // Vwa — kòmanse apre 1.5s sèlman si li deja chaje
   const av=document.getElementById('audio-vwa');
