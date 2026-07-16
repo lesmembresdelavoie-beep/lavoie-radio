@@ -557,16 +557,26 @@ const CONFIG = {
     { titre: "VR-TV", texte: "Nouvo emisyon ak ansèyman disponib sou paj Rassemblements la.", url: "vr-tv.html" }
   ],
 
-  /* Kalandriye : 1 Rebiʿi = jou 17 jen 2026 (solèy kouche 16 jen).
-     Si mwa a chanje, mete nouvo non an, nouvo dat kòmansman an
-     (ane, mwa-1, jou), kantite jou yo, ak jou Shabbath yo. */
-  kalandriye: {
-    nomMois: "Ab",
-    sousTitre: "5yèm mwa · 17 jiyè – 15 out 2026",
-    debut: new Date(2026, 6, 17),   // 1 Ab = jou 17 jiyè 2026 (solèy kouche 16 jiyè, jedi swa)
-    nbJours: 30,
-    shabbath: [2, 9, 16, 23, 30]    // jou Shabbath nan mwa a
-  }
+  /* Kalandriye : yon antre pou chak mwa. App la chwazi mwa a POUKONT LI
+     selon menm règ 20:30 la ak rès sit la — pa gen anyen pou chanje lè mwa a vire.
+     Pou ajoute yon mwa: mete non an, sousTitre a, dat 1ye jou a (ane, mwa-1, jou
+     = jou LAJOUNEN an, sa vle di landemen solèy kouche a), kantite jou, ak Shabbath yo. */
+  kalandriye: [
+    {
+      nomMois: "Rebiʿi",
+      sousTitre: "4yèm mwa · 17 jen – 16 jiyè 2026",
+      debut: new Date(2026, 5, 17),   // 1 Rebiʿi = jou 17 jen (solèy kouche 16 jen)
+      nbJours: 30,
+      shabbath: [4, 11, 18, 25]
+    },
+    {
+      nomMois: "Ab",
+      sousTitre: "5yèm mwa · 17 jiyè – 15 out 2026",
+      debut: new Date(2026, 6, 17),   // 1 Ab = jou 17 jiyè (solèy kouche 16 jiyè, jedi swa)
+      nbJours: 30,
+      shabbath: [2, 9, 16, 23, 30]
+    }
+  ]
 };
 
 /* ================== SPLASH ================== */
@@ -718,10 +728,28 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
 
 /* ================== KALANDRIYE ================== */
 (function(){
-  const K = CONFIG.kalandriye;
+  const MWA = Array.isArray(CONFIG.kalandriye) ? CONFIG.kalandriye : [CONFIG.kalandriye];
+
+  /* Jou ibri aktyèl la: apre 20:30, jou a se sa ki kòmanse aswè a,
+     epi jou LAJOUNEN li a se demen. Menm règ ak Tèks pou Jounen an. */
+  const maintenant = new Date();
+  const apSol2 = maintenant.getHours()*60 + maintenant.getMinutes() >= 20*60 + 30;
+  const jourIbri = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() + (apSol2 ? 1 : 0));
+
+  const nDe = (d, m) => Math.floor((jourIbri - new Date(m.debut.getFullYear(), m.debut.getMonth(), m.debut.getDate())) / 86400000) + 1;
+
+  // Chwazi mwa ki kenbe jou ibri a; si okenn, pran dènye a
+  let K = null, nJodi = 0;
+  for (const m of MWA) {
+    const n = nDe(jourIbri, m);
+    if (n >= 1 && n <= m.nbJours) { K = m; nJodi = n; break; }
+  }
+  if (!K) { K = MWA[MWA.length - 1]; nJodi = 0; }
+
   document.getElementById('cal-mois').textContent = K.nomMois;
   document.getElementById('cal-plage').textContent = K.sousTitre;
   const grille = document.getElementById('cal-grille');
+  grille.innerHTML = '';
 
   // Jou nan semèn nan pou 1ye jou mwa a (0 = dimanch)
   const decal = K.debut.getDay();
@@ -730,14 +758,6 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
     v.className = 'cal-case vide'; v.textContent = '·';
     grille.appendChild(v);
   }
-
-  // Jou jodi a nan mwa ebre a (jou a chanje a 20:30, tankou sou sit la)
-  const maintenant = new Date();
-  const apSol2 = maintenant.getHours()*60 + maintenant.getMinutes() >= 20*60 + 30;
-  const debutJour = new Date(K.debut.getFullYear(), K.debut.getMonth(), K.debut.getDate());
-  const aujJour = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate());
-  let nJodi = Math.floor((aujJour - debutJour) / 86400000) + 1;
-  if (apSol2) nJodi += 1;
 
   for (let j = 1; j <= K.nbJours; j++) {
     const c = document.createElement('div');
