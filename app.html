@@ -208,6 +208,104 @@ nav button{flex:1;background:none;border:none;color:var(--texte-doux);display:fl
 nav button svg{width:24px;height:24px}
 nav button.actif{color:var(--or)}
 nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3px;border-radius:0 0 3px 3px;background:var(--or)}
+
+/* ===== POPUP EREB SHABBATH / ROSH ḤODESH ===== */
+#popup-shabbath-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+#popup-shabbath-overlay.visible {
+  display: flex;
+}
+#popup-shabbath-box {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(201,168,76,0.5);
+  animation: popupFadeIn 0.5s ease;
+}
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+#popup-shabbath-box img {
+  width: 100%;
+  display: block;
+  transition: opacity .8s ease;
+}
+/* Videyo Rosh Ḥodesh — anpile sou imaj la, parèt an altènans */
+#popup-shabbath-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: none;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+#popup-shabbath-box.rosh #popup-shabbath-video { display: block; }
+#popup-shabbath-box.rosh.montre-video #popup-shabbath-video { opacity: 1; }
+#popup-shabbath-box.rosh.montre-video #popup-shabbath-img { opacity: 0; }
+#popup-shabbath-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(13,35,71,0.85);
+  color: #c9a84c;
+  border: 2px solid #c9a84c;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  line-height: 1;
+  transition: background 0.2s;
+}
+#popup-shabbath-close:hover { background: #c9a84c; color: #0d2347; }
+#popup-shabbath-timer {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  background: rgba(13,35,71,0.85);
+  color: #c9a84c;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #c9a84c;
+  letter-spacing: 0.08em;
+}
+#popup-shabbath-play {
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  background: rgba(13,35,71,0.85);
+  color: #c9a84c;
+  border: 1px solid #c9a84c;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+#popup-shabbath-play:hover { background: #c9a84c; color: #0d2347; }
+#popup-shabbath-play.jouke { display: none; }
 </style>
 </head>
 <body>
@@ -851,5 +949,136 @@ async function aktiveNotifikasyon(){
   } catch(e){}
 })();
 </script>
+
+<div id="popup-shabbath-overlay">
+  <div id="popup-shabbath-box">
+    <img src="ereb-shabbath.jpg" alt="Ereb Shabbath — La VR-TV" id="popup-shabbath-img">
+    <video id="popup-shabbath-video" src="rosh-hodesh-popup.mp4" muted loop playsinline preload="auto"></video>
+    <button id="popup-shabbath-close" onclick="fermerPopupShabbath()" title="Fermer">✕</button>
+    <div id="popup-shabbath-timer">90s</div>
+
+<script>
+(function() {
+  // Parèt Ereb Shabbath : jedi 20:30 rive vandredi 20:30
+  var kounye   = new Date();
+  var jou      = kounye.getDay();
+  var minTotal = kounye.getHours() * 60 + kounye.getMinutes();
+  var min2030  = 20 * 60 + 30;
+
+  var montrPopup = false;
+  if (jou === 4 && minTotal >= min2030) montrPopup = true; // jedi >= 20:30
+  if (jou === 5 && minTotal <  min2030) montrPopup = true; // vandredi < 20:30
+  if (!montrPopup) return;
+
+  var overlay  = document.getElementById('popup-shabbath-overlay');
+  var timerEl  = document.getElementById('popup-shabbath-timer');
+  var audio    = document.getElementById('popup-shabbath-audio');
+  var boite    = document.getElementById('popup-shabbath-box');
+  var video    = document.getElementById('popup-shabbath-video');
+  var secondes = 90;
+  var intervalle;
+
+  /* Èske jou ibri k ap kòmanse a se yon Rosh Ḥodesh (1ye jou mwa a)?
+     Si wi: afich la altène ak videyo Rosh Ḥodesh la, epi se kantik
+     "De lune en lune" ki jwe olye mizik preparasyon an. */
+  var seRoshHodesh = false;
+  try {
+    if (typeof TEKS_DATA !== 'undefined') {
+      var pad = function(n){ return String(n).padStart(2,'0'); };
+      var dGreg = kounye.getFullYear() + '-' + pad(kounye.getMonth()+1) + '-' + pad(kounye.getDate());
+      var lst = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
+      for (var a = 0; a < lst.length && !seRoshHodesh; a++) {
+        for (var b = 0; b < lst[a].jours.length; b++) {
+          var jj = lst[a].jours[b];
+          // Apre 20:30 = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
+          var matche = (jou === 4) ? (jj.soir_debut === dGreg) : (jj.soir_fin === dGreg);
+          if (matche && jj.jour === 1) { seRoshHodesh = true; break; }
+        }
+      }
+    }
+  } catch (e) {}
+
+  if (seRoshHodesh) {
+    boite.classList.add('rosh');
+    // Si kantik la poko sou sit la, tounen sou mizik preparasyon an (pou popup la pa rete bèbè)
+    audio.addEventListener('error', function(){
+      if (audio.src.indexOf('de-lune-en-lune') !== -1) {
+        audio.src = 'ereb-shabbath-music.mp3';
+        audio.play().catch(function(){});
+      }
+    });
+    audio.src = 'de-lune-en-lune.mp3';
+    if (video) { video.play().catch(function(){}); }
+    // Altène afich ⇄ videyo chak 7 segonn
+    var surVideo = false;
+    window._popupRoshAlt = setInterval(function(){
+      surVideo = !surVideo;
+      boite.classList.toggle('montre-video', surVideo);
+    }, 7000);
+    setTimeout(function(){ boite.classList.add('montre-video'); }, 3000);
+  }
+
+  overlay.classList.add('visible');
+
+  // Fade in 90 segonn (20 etap x 4500ms = 90000ms)
+  audio.volume = 0;
+  audio.play().catch(function(e) { console.log('Autoplay bloke:', e); });
+  var fadeIn = setInterval(function() {
+    if (audio.volume < 0.95) {
+      audio.volume = Math.min(1, audio.volume + 0.05);
+    } else {
+      audio.volume = 1;
+      clearInterval(fadeIn);
+    }
+  }, 4500);
+
+  intervalle = setInterval(function() {
+    secondes--;
+    timerEl.textContent = secondes + 's';
+    if (secondes <= 0) {
+      fermerPopupShabbath();
+    }
+  }, 1000);
+
+  window._popupShabbathIntervalle = intervalle;
+})();
+
+function activerSon() {
+  var audio   = document.getElementById('popup-shabbath-audio');
+  var btnPlay = document.getElementById('popup-shabbath-play');
+  audio.volume = 0;
+  audio.play().then(function() {
+    btnPlay.classList.add('jouke');
+    var fadeIn = setInterval(function() {
+      if (audio.volume < 0.95) {
+        audio.volume = Math.min(1, audio.volume + 0.05);
+      } else {
+        audio.volume = 1;
+        clearInterval(fadeIn);
+      }
+    }, 4500);
+  }).catch(function(e) { console.log('Audio error:', e); });
+}
+
+function fermerPopupShabbath() {
+  if (window._popupRoshAlt) { clearInterval(window._popupRoshAlt); window._popupRoshAlt = null; }
+  clearInterval(window._popupShabbathIntervalle);
+  var audio   = document.getElementById('popup-shabbath-audio');
+  var overlay = document.getElementById('popup-shabbath-overlay');
+  // Fade out 90 segonn (20 etap x 4500ms = 90000ms)
+  var vol = audio.volume;
+  var fade = setInterval(function() {
+    vol = Math.max(0, vol - 0.05);
+    audio.volume = vol;
+    if (vol <= 0) {
+      clearInterval(fade);
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }, 4500);
+  overlay.classList.remove('visible');
+}
+</script>
+
 </body>
 </html>
