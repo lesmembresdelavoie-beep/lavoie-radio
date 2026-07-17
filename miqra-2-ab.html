@@ -11,8 +11,8 @@
     --bleu-fonce:#0a1a35;
     --or:#c9a84c;
     --or-clair:#e8cb7a;
-    --parchemin:#f5efe2;
-    --parchemin2:#faf6ec;
+    --parchemin:#faf6ec;
+    --parchemin2:#f5efe0;
     --texte:#1a2a44;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -23,7 +23,6 @@
     overflow:hidden;
   }
 
-  /* Scroll/swipe container */
   .livre{
     height:100vh;
     width:100vw;
@@ -41,9 +40,10 @@
     flex-direction:column;
     position:relative;
     overflow:hidden;
+    background:var(--parchemin);
   }
 
-  /* ===== PAGE NUMBER BADGE ===== */
+  /* PAGE NUMBER BADGE */
   .page-num{
     position:absolute;
     top:1.1rem;
@@ -60,7 +60,7 @@
     border-radius:3px;
   }
 
-  /* ===== SCROLL HINT ===== */
+  /* SCROLL HINT */
   .scroll-hint{
     position:absolute;
     bottom:0.9rem;
@@ -82,17 +82,92 @@
   @keyframes bob{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
   .page:last-child .scroll-hint{display:none}
 
+  /* SHARED HEADER BAR (navy header with icon + title) */
+  .header-bar{
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    padding:1.4rem 1.5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-shrink:0;
+  }
+  .header-icon{
+    width:48px;height:48px;
+    border:1.5px solid var(--or);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    flex-shrink:0;
+    color:var(--or);
+  }
+  .header-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(1.05rem,5.5vw,1.5rem);
+    letter-spacing:0.04em;
+    color:#fbf6e9;
+    line-height:1.2;
+  }
+  .header-soustitre{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-top:0.2rem;
+  }
+
+  .page-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding:1.6rem 1.5rem 3.5rem;
+    overflow-y:auto;
+  }
+
+  .ornement{
+    text-align:center;
+    color:var(--or);
+    opacity:0.6;
+    font-size:0.7rem;
+    letter-spacing:0.3em;
+    margin:1rem 0;
+  }
+  .ornement-line{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin:1rem 0;
+  }
+  .ornement-line::before, .ornement-line::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+  }
+  .ornement-line span{
+    color:var(--or);
+    font-size:0.7rem;
+  }
+
+  @media (min-width:600px){
+    .page-content, .header-bar{ padding-left:2.5rem; padding-right:2.5rem; }
+    .page-content > *, .header-bar{ max-width:600px; margin-left:auto; margin-right:auto; width:100%; }
+  }
+
   /* =========================================================
      PAGE 1 — COUVERTURE
   ========================================================= */
   .page-1{
-    background: var(--parchemin2);
-    background-image:
-      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,35,71,0.08) 0%, transparent 70%);
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:2.5rem 1.6rem;
+    background: var(--parchemin2);
+    background-image:
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,35,71,0.07) 0%, transparent 70%);
   }
   .couv-cadre{
     position:absolute;
@@ -108,12 +183,22 @@
     border:1px solid rgba(201,168,76,0.4);
     border-radius:2px;
   }
-  .logo-img{
-    width:120px;
-    height:auto;
-    margin-bottom:1.2rem;
+  .couv-affiche-img{width:100%;max-width:340px;border-radius:10px;border:1.5px solid var(--or);box-shadow:0 12px 34px rgba(0,0,0,.4);margin-bottom:1.2rem;position:relative;z-index:1}
+  .logo-cercle{
+    width:130px;height:130px;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    background:rgba(201,168,76,0.04);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.3rem;
     position:relative;
     z-index:1;
+    overflow:hidden;
+  }
+  .logo-cercle img{
+    width:100%;height:100%;
+    object-fit:contain;
+    border-radius:50%;
   }
   .couv-titre{
     font-family:'Cinzel',serif;
@@ -125,43 +210,46 @@
     position:relative;
     z-index:1;
   }
-  .couv-soustitre{
+  .couv-edition{
     font-family:'Cinzel',serif;
     font-weight:600;
-    font-size:clamp(1.3rem,6vw,2rem);
+    font-size:clamp(0.7rem,3.5vw,0.95rem);
     color:var(--or);
-    letter-spacing:0.1em;
-    margin-top:0.2rem;
+    letter-spacing:0.18em;
+    margin-top:0.6rem;
+    text-transform:uppercase;
     position:relative;
     z-index:1;
   }
+  .couv-badge{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(0.95rem,4.5vw,1.3rem);
+    color:var(--or-clair);
+    background:var(--bleu-nuit);
+    padding:0.45rem 1.6rem;
+    margin-top:1rem;
+    border-radius:3px;
+    letter-spacing:0.08em;
+    position:relative;
+    z-index:1;
+  }
+  .couv-dates{
+    margin-top:1.1rem;
+    display:flex;
+    align-items:flex-start;
+    gap:0.6rem;
+    font-size:clamp(0.85rem,4vw,1.02rem);
+    color:var(--texte);
+    line-height:1.5;
+    position:relative;
+    z-index:1;
+  }
+  .couv-dates-icone{ font-size:1.2rem; margin-top:0.1rem; }
   .couv-sep{
     width:90px;height:1px;
     background:linear-gradient(90deg,transparent,var(--or),transparent);
-    margin:1.3rem auto;
-    position:relative;
-    z-index:1;
-  }
-  .couv-shabbath{
-    font-family:'Cinzel',serif;
-    font-size:clamp(1.2rem,5.5vw,1.6rem);
-    color:var(--bleu-nuit);
-    letter-spacing:0.08em;
-    margin-bottom:0.6rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-programme{
-    font-size:clamp(1rem,4.5vw,1.25rem);
-    color:var(--texte);
-    line-height:1.5;
-    margin-bottom:1.6rem;
-    position:relative;
-    z-index:1;
-  }
-  .couv-icone{
-    font-size:1.6rem;
-    margin-bottom:1.4rem;
+    margin:1.2rem auto;
     position:relative;
     z-index:1;
   }
@@ -184,175 +272,191 @@
     position:relative;
     z-index:1;
   }
+  .couv-footer{
+    margin-top:1.6rem;
+    font-family:'Cinzel',serif;
+    font-size:clamp(0.65rem,3vw,0.78rem);
+    letter-spacing:0.15em;
+    color:var(--or);
+    text-transform:uppercase;
+    line-height:1.7;
+    position:relative;
+    z-index:1;
+  }
 
   /* =========================================================
-     SHARED — section pages (2,3,4,5,6)
+     PAGE 2 — PROGRAMME
   ========================================================= */
-  .page-content{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    padding:4rem 1.5rem 3.5rem;
-    overflow-y:auto;
-  }
-  .page-titre{
-    font-family:'Cinzel',serif;
-    font-weight:700;
-    font-size:clamp(1.5rem,7vw,2.1rem);
-    color:var(--bleu-nuit);
-    letter-spacing:0.04em;
-    text-align:center;
-    margin-bottom:0.3rem;
-  }
-  .page-titre-sep{
-    width:60px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--or),transparent);
-    margin:0.6rem auto 1.6rem;
-  }
-
-  /* Page 2 / 3 / 4 / 5 / 6 background */
-  .page-2,.page-3,.page-4,.page-5,.page-6,.page-7,.page-8,.page-9,.page-10{
-    background:var(--parchemin);
-  }
-
-  /* ===== PROGRAMME LIST (page 2) ===== */
   .prog-liste{
     display:flex;
     flex-direction:column;
-    gap:0.9rem;
+    gap:1.2rem;
   }
   .prog-item{
     display:flex;
-    align-items:flex-start;
-    gap:0.9rem;
+    gap:1rem;
+  }
+  .prog-icone{
+    flex-shrink:0;
+    width:46px;height:46px;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    color:var(--or);
+    position:relative;
   }
   .prog-num{
-    flex-shrink:0;
-    width:30px;height:30px;
+    position:absolute;
+    top:-6px; left:-6px;
+    width:22px;height:22px;
     background:var(--bleu-nuit);
     color:var(--or-clair);
+    border-radius:50%;
     font-family:'Cinzel',serif;
     font-weight:700;
-    font-size:0.95rem;
+    font-size:0.7rem;
     display:flex;align-items:center;justify-content:center;
-    border-radius:3px;
   }
   .prog-texte{
     flex:1;
-    padding-bottom:0.5rem;
-    border-bottom:1px solid rgba(201,168,76,0.25);
+    padding-bottom:0.7rem;
+    border-bottom:1px dotted rgba(201,168,76,0.4);
   }
   .prog-titre-item{
     font-family:'Cinzel',serif;
-    font-size:1.05rem;
-    font-weight:600;
+    font-size:1rem;
+    font-weight:700;
     color:var(--bleu-nuit);
     line-height:1.4;
+    margin-bottom:0.2rem;
   }
-  .prog-sous{
-    font-style:italic;
+  .prog-desc{
     font-size:0.95rem;
     color:var(--texte);
+    line-height:1.45;
     opacity:0.85;
   }
+  .prog-desc ul{
+    list-style:none;
+    margin-top:0.2rem;
+  }
+  .prog-desc li{
+    position:relative;
+    padding-left:1rem;
+  }
+  .prog-desc li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--or);
+  }
   .prog-duree{
+    display:flex;
+    align-items:center;
+    gap:0.3rem;
     font-size:0.85rem;
     color:var(--or);
     font-weight:600;
-    margin-top:0.15rem;
+    margin-top:0.4rem;
     letter-spacing:0.02em;
   }
   .prog-total{
     margin-top:1.6rem;
     text-align:center;
-    border:1px solid var(--or);
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
     border-radius:4px;
     padding:0.9rem;
     font-family:'Cinzel',serif;
-    font-size:0.85rem;
-    letter-spacing:0.06em;
-    color:var(--bleu-nuit);
-    background:rgba(201,168,76,0.08);
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
   }
-  .prog-total b{ color:var(--or); }
 
-  /* ===== PAGE 3 — LECTURES ET THÈME ===== */
-  .lecture-bloc{
+  /* =========================================================
+     PAGE 3 — LECTURES DU JOUR
+  ========================================================= */
+  .lecture-card{
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     gap:1rem;
     margin-bottom:1rem;
   }
   .lecture-icone{
-    width:48px;height:48px;
+    width:64px;height:64px;
     flex-shrink:0;
-    border-radius:50%;
+    border-radius:14px;
     background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
     display:flex;align-items:center;justify-content:center;
-    font-size:1.5rem;
+    font-size:1.8rem;
+    color:var(--or-clair);
   }
   .lecture-label{
     font-family:'Cinzel',serif;
-    font-size:0.6rem;
+    font-size:0.7rem;
     letter-spacing:0.2em;
     color:var(--or);
     text-transform:uppercase;
-    margin-bottom:0.15rem;
+    margin-bottom:0.25rem;
   }
   .lecture-ref{
     font-family:'Cinzel',serif;
-    font-size:1.15rem;
-    font-weight:600;
+    font-size:1.4rem;
+    font-weight:700;
     color:var(--bleu-nuit);
+    margin-bottom:0.4rem;
+  }
+  .lecture-citation{
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--texte);
+    line-height:1.6;
+  }
+  .lecture-citation .accent{
+    color:var(--or);
+    font-weight:600;
+    font-style:normal;
   }
   .theme-cadre{
-    margin-top:1.5rem;
+    margin-top:0.8rem;
     border:1px solid var(--or);
-    border-radius:4px;
+    border-radius:6px;
     padding:1.3rem 1.2rem;
     background:rgba(201,168,76,0.06);
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+  }
+  .theme-icone{
+    width:48px;height:48px;
+    flex-shrink:0;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    color:var(--or);
   }
   .theme-label{
     font-family:'Cinzel',serif;
-    font-size:0.6rem;
+    font-size:0.65rem;
     letter-spacing:0.25em;
     color:var(--or);
     text-transform:uppercase;
-    text-align:center;
-    margin-bottom:0.7rem;
+    margin-bottom:0.6rem;
   }
   .theme-citation{
     font-style:italic;
-    font-size:1.15rem;
+    font-size:1.1rem;
     color:var(--bleu-nuit);
-    text-align:center;
     line-height:1.6;
-    margin-bottom:1.2rem;
     font-weight:600;
   }
-  .theme-points{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:0.6rem;
-  }
-  .theme-points li{
-    display:flex;
-    gap:0.6rem;
-    align-items:flex-start;
-    font-size:1rem;
-    color:var(--texte);
-    line-height:1.5;
-  }
-  .theme-points li::before{
-    content:'✦';
-    color:var(--or);
-    flex-shrink:0;
-    font-size:0.85rem;
-    margin-top:0.2rem;
-  }
 
-  /* ===== PAGE 4 / 5 — QUESTIONNAIRE ===== */
+  /* =========================================================
+     PAGE 4 — RAPPELS DE YAH (QUESTIONNAIRE)
+  ========================================================= */
   .quest-badge{
     display:block;
     margin:0 auto 1.4rem;
@@ -367,6 +471,52 @@
     border-radius:3px;
     width:fit-content;
   }
+  .lectures-recap{
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.1rem 1.2rem;
+    background:rgba(201,168,76,0.05);
+    margin-bottom:1.5rem;
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+  }
+  .lectures-recap-icone{
+    width:46px;height:46px;
+    flex-shrink:0;
+    border-radius:10px;
+    background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    color:var(--or-clair);
+  }
+  .lectures-recap-label{
+    font-family:'Cinzel',serif;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.4rem;
+  }
+  .lectures-recap ul{
+    list-style:none;
+  }
+  .lectures-recap li{
+    font-family:'Cinzel',serif;
+    font-size:1rem;
+    font-weight:600;
+    color:var(--bleu-nuit);
+    margin-bottom:0.2rem;
+    position:relative;
+    padding-left:1rem;
+  }
+  .lectures-recap li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--or);
+  }
   .quest-liste{
     display:flex;
     flex-direction:column;
@@ -378,17 +528,21 @@
   }
   .quest-num{
     flex-shrink:0;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
     font-family:'Cinzel',serif;
     font-weight:700;
-    font-size:1.1rem;
-    color:var(--or);
-    min-width:1.6rem;
+    font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
   }
   .quest-texte{
     font-size:1.05rem;
     line-height:1.6;
     color:var(--texte);
     flex:1;
+    padding-top:0.15rem;
   }
   .quest-ligne{
     margin-top:0.6rem;
@@ -403,93 +557,260 @@
     color:var(--texte);
     opacity:0.8;
     line-height:1.6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.5rem;
   }
 
-  /* ===== PAGE 6 — NOTES ===== */
+  /* =========================================================
+     PAGE 5 — NOTES & INFORMATIONS
+  ========================================================= */
   .notes-zone{
     flex:1;
     display:flex;
     flex-direction:column;
-    gap:1.2rem;
+  }
+  .notes-citation{
+    text-align:center;
+    margin-bottom:1.4rem;
+  }
+  .notes-citation p.texte{
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--bleu-nuit);
+    line-height:1.6;
+    margin-bottom:0.4rem;
+  }
+  .notes-citation p.ref{
+    font-family:'Cinzel',serif;
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
   }
   .notes-lignes{
     display:flex;
     flex-direction:column;
-    gap:1.6rem;
+    gap:1.5rem;
     margin-bottom:1.5rem;
   }
   .notes-lignes div{
     border-bottom:1px solid rgba(201,168,76,0.3);
     height:1px;
   }
-  .notes-citation{
-    margin-top:auto;
+  .info-utiles{
     border:1px solid var(--or);
-    border-radius:4px;
-    padding:1.2rem;
-    text-align:center;
+    border-radius:6px;
+    padding:1.2rem 1.2rem;
     background:rgba(201,168,76,0.06);
+    margin-top:auto;
+    margin-bottom:1.5rem;
   }
-  .notes-citation p.texte{
-    font-style:italic;
-    font-size:1.05rem;
-    color:var(--bleu-nuit);
-    margin-bottom:0.5rem;
-    line-height:1.6;
-  }
-  .notes-citation p.ref{
+  .info-utiles-titre{
     font-family:'Cinzel',serif;
-    font-size:0.7rem;
-    letter-spacing:0.2em;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--bleu-nuit);
+    letter-spacing:0.06em;
+    text-align:center;
+    margin-bottom:0.9rem;
+  }
+  .info-utiles-ligne{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    margin-bottom:0.6rem;
+  }
+  .info-utiles-icone{
+    font-size:1.1rem;
     color:var(--or);
-    text-transform:uppercase;
+    flex-shrink:0;
+  }
+  .info-utiles-bar{
+    flex:1;
+    border-bottom:1px solid rgba(201,168,76,0.3);
+    height:1.2rem;
   }
   .notes-footer{
-    margin-top:1.5rem;
     background:var(--bleu-nuit);
     color:var(--or-clair);
     padding:1.4rem 1.3rem;
-    border-radius:4px;
-    display:flex;
-    align-items:center;
-    gap:1rem;
-  }
-  .notes-footer img{
-    width:50px;height:auto;
-    flex-shrink:0;
-  }
-  .notes-footer-texte p{
-    line-height:1.5;
+    border-radius:6px;
+    text-align:center;
   }
   .notes-footer-titre{
     font-family:'Cinzel',serif;
-    font-size:1rem;
-    letter-spacing:0.12em;
-    color:var(--or-clair);
-    margin-bottom:0.2rem;
+    font-size:0.85rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.3rem;
   }
   .notes-footer-sub{
-    font-size:0.85rem;
-    opacity:0.85;
-  }
-  .notes-footer-membres{
     font-family:'Cinzel',serif;
-    font-size:0.65rem;
-    letter-spacing:0.15em;
-    color:var(--or);
-    margin-top:0.5rem;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:#f7edcc;
+    opacity:0.85;
     text-transform:uppercase;
   }
-  .notes-footer-droits{
-    font-size:0.75rem;
-    opacity:0.6;
+
+  /* =========================================================
+     BOUTON ÉCOUTER (COUVERTURE)
+  ========================================================= */
+  .couv-ecouter{
+    display:inline-block;
+    margin-top:0.9rem;
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.62rem,2.9vw,0.78rem);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--bleu-nuit);
+    background:rgba(201,168,76,0.14);
+    border:1.5px solid var(--or);
+    border-radius:999px;
+    padding:0.45rem 1.2rem;
+    text-decoration:none;
+    position:relative;
+    z-index:1;
   }
 
-  @media (min-width:600px){
-    .page-content{ padding-left:3rem; padding-right:3rem; max-width:600px; margin:0 auto; width:100%; }
+  /* =========================================================
+     PAGE 6 — SÈVIS ODYO
+  ========================================================= */
+  .orateur-bloc{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin-bottom:1.2rem;
+  }
+  .orateur-photo{
+    width:78px;height:78px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--or);
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    flex-shrink:0;
+  }
+  .orateur-label{
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.25rem;
+  }
+  .orateur-note{
+    font-size:0.95rem;
+    color:var(--texte);
+    line-height:1.5;
+    font-style:italic;
+  }
+  .player-cadre{
+    background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
+    border-radius:10px;
+    padding:1rem 1.1rem 1.15rem;
+    margin-bottom:1.2rem;
+    color:#f7edcc;
+  }
+  .player-now-label{
+    font-family:'Cinzel',serif;
+    font-size:0.62rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.3rem;
+  }
+  .player-now-titre{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:0.95rem;
+    line-height:1.4;
+    color:var(--or-clair);
+    margin-bottom:0.7rem;
+    min-height:2.1em;
+  }
+  .player-cadre audio{
+    width:100%;
+    height:40px;
+  }
+  .player-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:0.7rem;
+    gap:0.6rem;
+  }
+  .player-nav button{
+    flex:1;
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--or-clair);
+    background:rgba(201,168,76,0.12);
+    border:1px solid rgba(201,168,76,0.55);
+    border-radius:6px;
+    padding:0.55rem 0.4rem;
+    cursor:pointer;
+  }
+  .pisteliste{
+    display:flex;
+    flex-direction:column;
+    gap:0.45rem;
+    padding-bottom:1rem;
+  }
+  .piste{
+    display:flex;
+    align-items:center;
+    gap:0.75rem;
+    background:#fff;
+    border:1px solid rgba(13,35,71,0.14);
+    border-left:3px solid rgba(201,168,76,0.55);
+    border-radius:8px;
+    padding:0.6rem 0.75rem;
+    cursor:pointer;
+  }
+  .piste.active{
+    background:var(--bleu-nuit);
+    border-left-color:var(--or);
+  }
+  .piste.active .piste-titre{ color:var(--or-clair); }
+  .piste.active .piste-dur{ color:var(--or); }
+  .piste-num{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.72rem;
+    color:var(--or);
+    width:1.6rem;
+    flex-shrink:0;
+    text-align:center;
+  }
+  .piste-titre{
+    flex:1;
+    font-size:0.92rem;
+    line-height:1.35;
+    color:var(--texte);
+  }
+  .piste-dur{
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    color:rgba(26,42,68,0.65);
+    flex-shrink:0;
   }
 </style>
-</head>
+<style>
+  .repons-texte{
+    font-style:italic;
+    font-size:0.95rem;
+    line-height:1.6;
+    color:var(--texte);
+    margin-top:0.35rem;
+  }
+</style>
+
 <body>
 
 <div class="livre">
@@ -498,71 +819,155 @@
   <section class="page page-1">
     <div class="couv-cadre"></div>
     <div class="page-num">1</div>
-    <img src="logo_la_voie.png" alt="Les Membres de La Voie" class="logo-img">
+
+    <img src="miqra-2-ab.jpg" alt="Miqra Qadosh — Shabbath 2 Ab" class="couv-affiche-img" onerror="this.style.display='none'">
+
     <h1 class="couv-titre">MIQRA<br>QADOSH</h1>
-    <p class="couv-soustitre">Shabbath 2 Ab</p>
+    <p class="couv-edition">Shabbath — Édition Hebdomadaire</p>
+
+    <div class="couv-badge">Shabbath 2 Ab</div>
+
+    <div class="couv-dates">
+      <span class="couv-dates-icone">🗓️</span>
+      <span>Du 17 juillet 2026 au coucher du soleil<br>au 18 juillet 2026 au coucher du soleil</span>
+    </div>
+
     <div class="couv-sep"></div>
-    <p class="couv-shabbath">Programme de l'ʿAbodah</p>
-    <p class="couv-programme" style="font-style:italic;opacity:.8">Le dessein de Yahawah pour l'humanité : créés à Son image</p>
-    <p class="couv-programme">des Membres de La Voie</p>
-    <p class="couv-programme" style="font-style:italic;opacity:.75">Du 17 juillet au coucher du soleil<br>au 18 juillet au coucher du soleil</p>
-    <div class="couv-icone">📖</div>
-    <p class="couv-verset">« Faisons l'homme à notre image, selon notre ressemblance… »</p>
+
+    <p class="couv-verset">« Faisons l'homme à notre image, selon notre ressemblance. »</p>
     <p class="couv-ref">Bereshith 1:26</p>
+
+    <div class="couv-footer">Programme de l'ʿAbodah<br>des Membres de La Voie</div>
+
     <div class="scroll-hint">
       <span>Glisser pour continuer</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
     </div>
   </section>
 
-  <!-- ============ PAGE 2 — CITATIONS D'OUVERTURE ============ -->
+  <!-- ============ PAGE 2 — PROGRAMME DE L'ABODAH ============ -->
   <section class="page page-2">
     <div class="page-num">2</div>
-    <div class="page-content">
-      <h2 class="page-titre">Citations<br>d'ouverture</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="theme-cadre" style="margin-bottom:1.2rem">
-        <p class="theme-citation">« Chaque Shabbath, les Ketubim de Mosheh sont lus dans les maisons de rassemblement. »</p>
-        <p class="theme-label" style="margin-top:.6rem">~ Maʿasei 15:21</p>
-      </div>
-      <div class="theme-cadre" style="margin-bottom:1.2rem">
-        <p class="theme-citation">« Il entra, selon son habitude, dans la maison de rassemblement le jour du Shabbath, et il se leva pour faire la lecture. »</p>
-        <p class="theme-label" style="margin-top:.6rem">~ Luqas 4:16–17</p>
-      </div>
-      <div class="theme-cadre">
-        <p class="theme-citation">« N'abandonnons pas notre rassemblement… »</p>
-        <p class="theme-label" style="margin-top:.6rem">~ Ibriyim 10:24–25</p>
+    <div class="header-bar">
+      <div class="header-icon">📋</div>
+      <div>
+        <div class="header-titre">Programme<br>de l'Abodah</div>
       </div>
     </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 3 — PROGRAMME DE L'ABODAH ============ -->
-  <section class="page page-3">
-    <div class="page-num">3</div>
     <div class="page-content">
-      <h2 class="page-titre">Programme<br>de l'ʿAbodah</h2>
-      <div class="page-titre-sep"></div>
       <div class="prog-liste">
 
-                <div class="prog-item"><div class="prog-num">1</div><div class="prog-texte"><div class="prog-titre-item">Ouverture de la ʿAbodah</div><div class="prog-sous">Le Président de la réunion</div></div></div>
-        <div class="prog-item"><div class="prog-num">2</div><div class="prog-texte"><div class="prog-titre-item">Invitation au Chirat de Tehillah</div></div></div>
-        <div class="prog-item"><div class="prog-num">3</div><div class="prog-texte"><div class="prog-titre-item">Invitation à la Téfilah d'ouverture</div></div></div>
-        <div class="prog-item"><div class="prog-num">4</div><div class="prog-texte"><div class="prog-titre-item">Invitation à la lecture des Ketubim Qadoshim</div><div class="prog-sous">Bereshith 1:26–31 · Tehillim 8:4–9</div></div></div>
-        <div class="prog-item"><div class="prog-num">5</div><div class="prog-texte"><div class="prog-titre-item">Les Rappels de Yah</div></div></div>
-        <div class="prog-item"><div class="prog-num">6</div><div class="prog-texte"><div class="prog-titre-item">Chirat de méditation</div></div></div>
-        <div class="prog-item"><div class="prog-num">7</div><div class="prog-texte"><div class="prog-titre-item">Introduction de l'enseignement</div><div class="prog-sous">Le Président de la réunion</div></div></div>
-        <div class="prog-item"><div class="prog-num">8</div><div class="prog-texte"><div class="prog-titre-item">Enseignement principal</div><div class="prog-sous">« Le dessein de Yahawah pour l'humanité »</div></div></div>
-        <div class="prog-item"><div class="prog-num">9</div><div class="prog-texte"><div class="prog-titre-item">Informations de la Qehilah</div></div></div>
-        <div class="prog-item"><div class="prog-num">10</div><div class="prog-texte"><div class="prog-titre-item">Invitation au Chirat de clôture</div></div></div>
-        <div class="prog-item"><div class="prog-num">11</div><div class="prog-texte"><div class="prog-titre-item">Invitation à la Téfilah de clôture</div></div></div>
-        <div class="prog-item"><div class="prog-num">12</div><div class="prog-texte"><div class="prog-titre-item">Clôture officielle de la ʿAbodah</div></div></div>
+        <div class="prog-item">
+          <div class="prog-icone">👥<span class="prog-num">1</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Le Président de la réunion — Ouverture de l'ʿAbodah</div>
+            <div class="prog-desc">Mot de bienvenue et présentation du thème du Shabbath : « Le dessein de Yahawah pour l'humanité : créés à Son image ».</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎵<span class="prog-num">2</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Invitation au Chirat de Tehillah d'ouverture</div>
+            <div class="prog-desc">Chirat d'ouverture de l'ʿAbodah.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🙏<span class="prog-num">3</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Invitation à la Téfilah d'ouverture</div>
+            <div class="prog-desc">Téfilah de reconnaissance pour le Shabbath, la vie et les bienfaits de Yahawah.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">📖<span class="prog-num">4</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Invitation à la lecture des Ketubim Qadoshim</div>
+            <div class="prog-desc">Première lecture : Bereshith 1:26–31.<br>Lecture complémentaire : Tehillim 8:4–9.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">❓<span class="prog-num">5</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Les Rappels de Yah</div>
+            <div class="prog-desc">Questionnaire préparatoire sur les lectures du jour — 7 questions.</div>
+            <div class="prog-duree">⏱ 15 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎵<span class="prog-num">6</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Chirat de méditation</div>
+            <div class="prog-desc">Chirat de méditation avant l'enseignement.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎙️<span class="prog-num">7</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Introduction de l'enseignement principal</div>
+            <div class="prog-desc">Thème : « Le dessein de Yahawah pour l'humanité : créés à Son image ».</div>
+            <div class="prog-duree">⏱ 30 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">💬<span class="prog-num">8</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Les réponses aux questions</div>
+            <div class="prog-desc">Discussion collective des réponses aux Rappels de Yah.</div>
+            <div class="prog-duree">⏱ 10 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">📣<span class="prog-num">9</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Informations de la Qehilah</div>
+            <div class="prog-desc">Prochaines rencontres, prochain Miqra Qadosh, La Voie Radio, annonces diverses.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎵<span class="prog-num">10</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Invitation au Chirat de clôture</div>
+            <div class="prog-desc">Chirat de Tehillah finale.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🙏<span class="prog-num">11</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Invitation à la Téfilah de clôture</div>
+            <div class="prog-desc">Téfilah de reconnaissance et de bénédiction.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">📣<span class="prog-num">12</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Clôture de l'ʿAbodah</div>
+            <div class="prog-desc">Remerciements et clôture officielle.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
 
       </div>
+
+      <div class="prog-total">Durée totale estimée : Environ 1 heure 40 minutes</div>
     </div>
     <div class="scroll-hint">
       <span>Continuer</span>
@@ -570,43 +975,47 @@
     </div>
   </section>
 
-  <!-- ============ PAGE 4 — LECTURES ET THÈME ============ -->
-  <section class="page page-4">
-    <div class="page-num">4</div>
+  <!-- ============ PAGE 3 — LECTURES DU JOUR ============ -->
+  <section class="page page-3">
+    <div class="page-num">3</div>
+    <div class="header-bar">
+      <div class="header-icon">📖</div>
+      <div>
+        <div class="header-titre">Lectures<br>du Jour</div>
+      </div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Lectures<br>et Thème</h2>
-      <div class="page-titre-sep"></div>
 
-      <div class="lecture-bloc">
+      <div class="ornement-line"><span>◆</span></div>
+
+      <div class="lecture-card">
         <div class="lecture-icone">📖</div>
         <div>
           <div class="lecture-label">Première lecture</div>
           <div class="lecture-ref">Bereshith 1:26–31</div>
-          <div class="prog-sous" style="margin-top:.25rem">Créés à l'image et selon la ressemblance de Yahawah.</div>
+          <div class="lecture-citation">Créés à l'image et selon la ressemblance de Yahawah.</div>
         </div>
       </div>
 
-      <div class="lecture-bloc">
+      <div class="ornement-line"><span>◆</span></div>
+
+      <div class="lecture-card">
         <div class="lecture-icone">📖</div>
         <div>
           <div class="lecture-label">Lecture complémentaire</div>
           <div class="lecture-ref">Tehillim 8:4–9</div>
-          <div class="prog-sous" style="margin-top:.25rem">La place et la responsabilité de l'être humain dans la création.</div>
+          <div class="lecture-citation">La place et la responsabilité de l'être humain dans la création.</div>
         </div>
       </div>
 
       <div class="theme-cadre">
-        <p class="theme-label">Enseignement principal</p>
-        <p class="theme-citation">« Le dessein de Yahawah<br>pour l'humanité »</p>
-        <ul class="theme-points">
-          <li>I. Pourquoi Yahawah a-t-Il créé l'être humain ?</li>
-          <li>II. Que signifie être créé à Son image et à Sa ressemblance ?</li>
-          <li>III. La responsabilité confiée à l'humanité sur la création.</li>
-          <li>IV. La rupture provoquée par la désobéissance.</li>
-          <li>V. Comment Yahawah poursuit Son dessein malgré la chute.</li>
-          <li>VI. Applications pratiques pour notre vie aujourd'hui.</li>
-        </ul>
+        <div class="theme-icone">🎯</div>
+        <div>
+          <div class="theme-label">Thème du Shabbath</div>
+          <div class="theme-citation">« Le dessein de Yahawah pour l'humanité : créés à Son image »</div>
+        </div>
       </div>
+
     </div>
     <div class="scroll-hint">
       <span>Continuer</span>
@@ -614,20 +1023,82 @@
     </div>
   </section>
 
-  <!-- ============ PAGE 5 — QUESTIONNAIRE (1-4) ============ -->
+  <!-- ============ PAGE 4 — ENSEIGNEMENT PRINCIPAL ============ -->
+  <section class="page page-4">
+    <div class="page-num">4</div>
+    <div class="header-bar">
+      <div class="header-icon">🎙️</div>
+      <div>
+        <div class="header-titre">Enseignement<br>Principal</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="theme-cadre" style="margin-bottom:1.4rem">
+        <div class="theme-icone">🎯</div>
+        <div>
+          <div class="theme-label">Thème</div>
+          <div class="theme-citation">« Le dessein de Yahawah pour l'humanité : créés à Son image »</div>
+        </div>
+      </div>
+
+      <div class="quest-liste">
+        <div class="quest-item"><div class="quest-num">I</div><div class="quest-texte">Pourquoi Yahawah a-t-Il créé l'être humain ?</div></div>
+        <div class="quest-item"><div class="quest-num">II</div><div class="quest-texte">Que signifie être créé à Son image et à Sa ressemblance ?</div></div>
+        <div class="quest-item"><div class="quest-num">III</div><div class="quest-texte">La responsabilité confiée à l'humanité sur la création.</div></div>
+        <div class="quest-item"><div class="quest-num">IV</div><div class="quest-texte">La rupture provoquée par la désobéissance.</div></div>
+        <div class="quest-item"><div class="quest-num">V</div><div class="quest-texte">Comment Yahawah poursuit Son dessein malgré la chute.</div></div>
+        <div class="quest-item"><div class="quest-num">VI</div><div class="quest-texte">Applications pratiques pour notre vie aujourd'hui.</div></div>
+      </div>
+
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 5 — RAPPELS DE YAH (1-4) ============ -->
   <section class="page page-5">
     <div class="page-num">5</div>
+    <div class="header-bar">
+      <div class="header-icon">❓</div>
+      <div>
+        <div class="header-titre">Les Rappels<br>de Yah</div>
+        <div class="header-soustitre">Questionnaire officiel</div>
+      </div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Les Rappels<br>de Yah</h2>
-      <div class="page-titre-sep"></div>
-      <div class="quest-badge">Questionnaire officiel</div>
       <p class="quest-footer" style="margin-bottom:1rem">Questions sur : 📖 Bereshith 1:26–31 · 📖 Tehillim 8:4–9</p>
-
       <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">1.</div><div class="quest-texte">Selon Bereshith 1:26, quelle intention Yahawah exprime-t-Il lorsqu'Il déclare : « Faisons l'homme à notre image, selon notre ressemblance » ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">2.</div><div class="quest-texte">Quelles responsabilités Yahawah confie-t-Il à l'humanité dès sa création ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">3.</div><div class="quest-texte">Pourquoi est-il important de comprendre que l'être humain a été créé à l'image de Yahawah ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">4.</div><div class="quest-texte">Selon Tehillim 8:4–9, quelle place Yahawah a-t-Il donnée à l'être humain au sein de la création ?<div class="quest-ligne"></div></div></div>
+        <div class="quest-item">
+          <div class="quest-num">1</div>
+          <div class="quest-texte">
+            Selon Bereshith 1:26, quelle intention Yahawah exprime-t-Il lorsqu'Il déclare : « Faisons l'homme à notre image, selon notre ressemblance » ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">2</div>
+          <div class="quest-texte">
+            Quelles responsabilités Yahawah confie-t-Il à l'humanité dès sa création ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">3</div>
+          <div class="quest-texte">
+            Pourquoi est-il important de comprendre que l'être humain a été créé à l'image de Yahawah ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">4</div>
+          <div class="quest-texte">
+            Selon Tehillim 8:4–9, quelle place Yahawah a-t-Il donnée à l'être humain au sein de la création ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="scroll-hint">
@@ -636,21 +1107,41 @@
     </div>
   </section>
 
-  <!-- ============ PAGE 6 — QUESTIONNAIRE (5-7) ============ -->
+  <!-- ============ PAGE 6 — RAPPELS DE YAH (5-7) ============ -->
   <section class="page page-6">
     <div class="page-num">6</div>
-    <div class="page-content">
-      <h2 class="page-titre">Les Rappels<br>de Yah</h2>
-      <div class="page-titre-sep"></div>
-      <div class="quest-badge">Questionnaire officiel (suite)</div>
-
-      <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">5.</div><div class="quest-texte">Comment ces deux passages montrent-ils que la vie humaine possède une valeur et un but ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">6.</div><div class="quest-texte">Quelles qualités de Yahawah sommes-nous appelés à refléter dans notre conduite quotidienne ?<div class="quest-ligne"></div></div></div>
-        <div class="quest-item"><div class="quest-num">7.</div><div class="quest-texte">Quelle résolution personnelle souhaites-tu prendre cette semaine afin de mieux refléter, dans ta conduite, l'image que Yahawah désire voir en chacun de nous ?<div class="quest-ligne"></div></div></div>
+    <div class="header-bar">
+      <div class="header-icon">❓</div>
+      <div>
+        <div class="header-titre">Les Rappels<br>de Yah</div>
+        <div class="header-soustitre">Suite du questionnaire</div>
       </div>
-
-      <p class="quest-footer">Répondez à chaque question à la lumière des Ketubim et participez avec respect à l'édification de toute la qehilah.</p>
+    </div>
+    <div class="page-content">
+      <div class="quest-liste">
+        <div class="quest-item">
+          <div class="quest-num">5</div>
+          <div class="quest-texte">
+            Comment ces deux passages montrent-ils que la vie humaine possède une valeur et un but ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">6</div>
+          <div class="quest-texte">
+            Quelles qualités de Yahawah sommes-nous appelés à refléter dans notre conduite quotidienne ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">7</div>
+          <div class="quest-texte">
+            Quelle résolution personnelle souhaites-tu prendre cette semaine afin de mieux refléter, dans ta conduite, l'image que Yahawah désire voir en chacun de nous ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+      </div>
+      <p class="quest-footer"><span>📖</span> Les réponses sont discutées collectivement pendant Les Rappels de Yah.</p>
     </div>
     <div class="scroll-hint">
       <span>Continuer</span>
@@ -661,15 +1152,42 @@
   <!-- ============ PAGE 7 — RÉPONSES (1-4) ============ -->
   <section class="page page-7">
     <div class="page-num">7</div>
+    <div class="header-bar">
+      <div class="header-icon">💬</div>
+      <div>
+        <div class="header-titre">Réponses<br>Proposées</div>
+      </div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Réponses aux<br>Rappels de Yah</h2>
-      <div class="page-titre-sep"></div>
-
       <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">1.</div><div class="quest-texte" style="font-style:italic">Yahawah a créé l'être humain pour qu'il reflète Son caractère, exerce une responsabilité sur la création et vive en harmonie avec Sa volonté.</div></div>
-        <div class="quest-item"><div class="quest-num">2.</div><div class="quest-texte" style="font-style:italic">Il lui confie la responsabilité de remplir la terre, de la cultiver, d'en prendre soin et d'exercer une domination responsable sur les êtres vivants.</div></div>
-        <div class="quest-item"><div class="quest-num">3.</div><div class="quest-texte" style="font-style:italic">Parce que cela rappelle la dignité particulière de l'être humain et sa responsabilité de refléter les qualités de Yahawah dans sa conduite.</div></div>
-        <div class="quest-item"><div class="quest-num">4.</div><div class="quest-texte" style="font-style:italic">Yahawah a donné à l'être humain une place d'honneur en lui confiant la gestion de l'œuvre de Ses mains.</div></div>
+        <div class="quest-item">
+          <div class="quest-num">1</div>
+          <div class="quest-texte">
+            Selon Bereshith 1:26, quelle intention Yahawah exprime-t-Il lorsqu'Il déclare : « Faisons l'homme à notre image, selon notre ressemblance » ?
+            <div class="repons-texte">Yahawah a créé l'être humain pour qu'il reflète Son caractère, exerce une responsabilité sur la création et vive en harmonie avec Sa volonté.</div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">2</div>
+          <div class="quest-texte">
+            Quelles responsabilités Yahawah confie-t-Il à l'humanité dès sa création ?
+            <div class="repons-texte">Il lui confie la responsabilité de remplir la terre, de la cultiver, d'en prendre soin et d'exercer une domination responsable sur les êtres vivants.</div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">3</div>
+          <div class="quest-texte">
+            Pourquoi est-il important de comprendre que l'être humain a été créé à l'image de Yahawah ?
+            <div class="repons-texte">Parce que cela rappelle la dignité particulière de l'être humain et sa responsabilité de refléter les qualités de Yahawah dans sa conduite.</div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">4</div>
+          <div class="quest-texte">
+            Selon Tehillim 8:4–9, quelle place Yahawah a-t-Il donnée à l'être humain au sein de la création ?
+            <div class="repons-texte">Yahawah a donné à l'être humain une place d'honneur en lui confiant la gestion de l'œuvre de Ses mains.</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="scroll-hint">
@@ -681,14 +1199,36 @@
   <!-- ============ PAGE 8 — RÉPONSES (5-7) ============ -->
   <section class="page page-8">
     <div class="page-num">8</div>
+    <div class="header-bar">
+      <div class="header-icon">💬</div>
+      <div>
+        <div class="header-titre">Réponses<br>Proposées</div>
+        <div class="header-soustitre">Suite</div>
+      </div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Réponses aux<br>Rappels de Yah</h2>
-      <div class="page-titre-sep"></div>
-
       <div class="quest-liste">
-        <div class="quest-item"><div class="quest-num">5.</div><div class="quest-texte" style="font-style:italic">Ils montrent que la vie humaine n'est pas le fruit du hasard, mais qu'elle répond à un dessein précis de Yahawah.</div></div>
-        <div class="quest-item"><div class="quest-num">6.</div><div class="quest-texte" style="font-style:italic">La droiture, l'amour, la compassion, la justice, la fidélité, l'humilité et l'intégrité doivent se refléter dans notre manière de vivre.</div></div>
-        <div class="quest-item"><div class="quest-num">7.</div><div class="quest-texte" style="font-style:italic">(Réponse personnelle de chaque participant.)</div></div>
+        <div class="quest-item">
+          <div class="quest-num">5</div>
+          <div class="quest-texte">
+            Comment ces deux passages montrent-ils que la vie humaine possède une valeur et un but ?
+            <div class="repons-texte">Ils montrent que la vie humaine n'est pas le fruit du hasard, mais qu'elle répond à un dessein précis de Yahawah.</div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">6</div>
+          <div class="quest-texte">
+            Quelles qualités de Yahawah sommes-nous appelés à refléter dans notre conduite quotidienne ?
+            <div class="repons-texte">La droiture, l'amour, la compassion, la justice, la fidélité, l'humilité et l'intégrité doivent se refléter dans notre manière de vivre.</div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">7</div>
+          <div class="quest-texte">
+            Quelle résolution personnelle souhaites-tu prendre cette semaine afin de mieux refléter, dans ta conduite, l'image que Yahawah désire voir en chacun de nous ?
+            <div class="repons-texte">(Réponse personnelle de chaque participant.)</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="scroll-hint">
@@ -700,56 +1240,41 @@
   <!-- ============ PAGE 9 — NOTES PERSONNELLES ============ -->
   <section class="page page-9">
     <div class="page-num">9</div>
+    <div class="header-bar">
+      <div class="header-icon">✏️</div>
+      <div>
+        <div class="header-titre">Notes<br>Personnelles</div>
+      </div>
+    </div>
     <div class="page-content">
-      <h2 class="page-titre">Notes<br>personnelles</h2>
-      <div class="page-titre-sep"></div>
+
+      <div class="notes-citation">
+        <p class="texte">« Écris la vision, grave-la sur des tables, afin qu'on la lise couramment. »</p>
+        <p class="ref">Habaquq 2:2</p>
+      </div>
+
+      <div class="ornement-line"><span>◆</span></div>
 
       <div class="notes-zone">
-        <div class="notes-citation" style="margin-bottom:.8rem">
-          <p class="texte">« Écris la vision, grave-la sur des tables, afin qu'on la lise couramment. »</p>
-          <p class="ref">~ Ḥabaqquq 2:2</p>
-        </div>
-
         <div class="notes-lignes">
-          <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         </div>
 
-        <div class="theme-cadre" style="margin-top:1rem">
-          <p class="theme-label">Informations utiles</p>
-          <p class="quest-footer" style="margin:0.4rem 0 0">Date · prochaine rencontre · annonces importantes.</p>
+        <div class="info-utiles">
+          <div class="info-utiles-titre">Informations utiles</div>
+          <div class="info-utiles-ligne">
+            <span class="info-utiles-icone">🗓️</span>
+            <div class="info-utiles-bar"></div>
+          </div>
+          <div class="info-utiles-ligne">
+            <span class="info-utiles-icone">📍</span>
+            <div class="info-utiles-bar"></div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Continuer</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-    </div>
-  </section>
 
-  <!-- ============ PAGE 10 — CLÔTURE ============ -->
-  <section class="page page-10">
-    <div class="page-num">10</div>
-    <div class="page-content">
-      <h2 class="page-titre">Les Membres<br>de La Voie</h2>
-      <div class="page-titre-sep"></div>
-
-      <div class="theme-cadre" style="margin-bottom:1.2rem">
-        <p class="theme-label">Notre engagement</p>
-        <p class="quest-footer" style="margin:.5rem 0 0;text-align:left">En tant que Membres de La Voie, nous nous engageons à demeurer attachés au Dabar de Yahawah, à suivre l'exemple laissé par Yahushuʿah et à ne pas aller au-delà de ce qui est écrit.</p>
-        <p class="theme-label" style="margin-top:.6rem">~ 1 Qorintiyim 4:6</p>
-      </div>
-
-      <div class="notes-citation" style="margin-bottom:1.2rem">
-        <p class="texte">« Que le Dabar de Yahawah demeure dans nos cœurs et guide chacun de nos pas. »</p>
-      </div>
-
-      <div class="notes-footer">
-        <img src="logo_la_voie.png" alt="La Voie">
-        <div class="notes-footer-texte">
-          <p class="notes-footer-titre">LA VOIE</p>
-          <p class="notes-footer-sub">📱 La Voie Radio · MIQRA QADOSH · lavoie.world</p>
-          <p class="notes-footer-membres">Les Membres de La Voie</p>
-          <p class="notes-footer-droits">Tous droits réservés ®</p>
+        <div class="notes-footer">
+          <p class="notes-footer-titre">Les Membres de La Voie</p>
+          <p class="notes-footer-sub">Tous droits réservés 📜</p>
         </div>
       </div>
     </div>
