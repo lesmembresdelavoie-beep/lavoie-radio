@@ -1,6 +1,6 @@
 /* Service Worker — La Voie PWA
    Mete kach app la ajou : chanje NIMEWO vèsyon an chak fwa ou modifye app.html */
-const CACHE = 'lavoie-app-v33';
+const CACHE = 'lavoie-app-v34';
 const FICHIERS = [
   'app.html',
   'manifest.json',
@@ -12,7 +12,7 @@ const FICHIERS = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FICHIERS)));
+  e.waitUntil(caches.open(CACHE).then(c => Promise.all(FICHIERS.map(f => c.add(f).catch(()=>{})))));
   self.skipWaiting();
 });
 
@@ -104,8 +104,10 @@ self.addEventListener('periodicsync', function(ev){
   if (ev.tag === 'lavoie-nouvote') ev.waitUntil(Promise.all([verifyeNouvote(), verifyeTefilot()]));
 });
 self.addEventListener('message', function(ev){
-  if (ev.data && ev.data.type === 'verifye-nouvote') ev.waitUntil ? null : null;
-  if (ev.data && ev.data.type === 'verifye-nouvote') { verifyeNouvote(); verifyeTefilot(); }
+  if (ev.data && ev.data.type === 'verifye-nouvote') {
+    var travay = Promise.all([verifyeNouvote(), verifyeTefilot()]);
+    if (ev.waitUntil) ev.waitUntil(travay);
+  }
 });
 /* Pare pou vrè "push" sèvè alavni (VPS) */
 self.addEventListener('push', function(ev){

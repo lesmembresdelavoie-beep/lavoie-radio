@@ -1,9 +1,8 @@
 {
   "teks": {
-    "jou": 1,
+    "jou": "1",
     "mois": "Ab",
-    "yom": "Ereb Shabbath",
-    "ref": "Yaḥuānān 3:34"
+    "yom": "Ereb"
   },
   "items": [
     {
@@ -15,7 +14,7 @@
     {
       "id": "miqra-rosh-hodesh-2-ab",
       "titre": "🌙 Miqra Qadosh — Rosh Ḥodesh 2 Ab",
-      "sou": "Nouvo mwa a · nouvèl lin",
+      "sou": "Nouvo mwa a · ▶ sèvis odyo konplè",
       "url": "miqra-qadosh-rosh-hodesh.html"
     },
     {
