@@ -126,6 +126,18 @@
   .pawol p{white-space:pre-line;font-size:1.05rem}
   .pawol .refren p{color:var(--dore-pal)}
 
+  /* pawòl sonkwonize (tès) */
+  .pawol.sonk .seksyon{
+    opacity:.4;transition:opacity .5s ease,transform .5s ease;
+    transform:scale(.98);border-radius:.4rem;
+  }
+  .pawol.sonk .seksyon.active{
+    opacity:1;transform:scale(1);
+    background:linear-gradient(180deg,rgba(212,175,55,.08),transparent);
+  }
+  .pawol.sonk .seksyon .etikèt{opacity:.7}
+  .pawol.sonk .seksyon.active .etikèt{opacity:1}
+
   footer{
     text-align:center;padding:2.5rem 1.5rem 3.5rem;
     color:var(--ivoire-sombre);font-size:.85rem;font-style:italic;
@@ -194,7 +206,8 @@
     </div>
   </div>
 
-  <div class="pawol">
+  <div class="pawol sonk">
+    <div class="seksyon">
     <p class="etikèt">Couplet 1</p>
     <p>Ki moun Adôn nan va jwenn,
 Lè li vini san avèti ?
@@ -204,14 +217,17 @@ Se pa tit lèzòm bay,
 Se pa lwanj moun ka chanté ;
 Men sé lavi ki rété dwat,
 Jouk lè Adôn nan va parèt.</p>
+    </div>
 
+    <div class="seksyon">
     <p class="etikèt">Pré-Refrain</p>
     <p>Nou pap chèché gwo plas,
 Nou pap chèché gwo non ;
 Nou vlé sèlman rété fidèl,
 Jouk retou Adôn lan.</p>
+    </div>
 
-    <div class="refren">
+    <div class="refren seksyon">
       <p class="etikèt">Refrain</p>
       <p>Ret fidèl ! Ret fidèl !
 Jouk Adôn nan rétounen.
@@ -223,6 +239,7 @@ Lè l vini, sé pou l di :
 « Byennéré sèvitè sa a ! »</p>
     </div>
 
+    <div class="seksyon">
     <p class="etikèt">Couplet 2</p>
     <p>Li té ban nou Dabar li a,
 Pou n patajé ak renmen ;
@@ -232,7 +249,9 @@ Se pa pou n dominé lòt,
 Ni pou n levé tèt nou wo ;
 Nou sé sèvitè devan Adôn,
 N ap tann sèlman jijman li.</p>
+    </div>
 
+    <div class="seksyon">
     <p class="etikèt">Pont</p>
     <p>Si yo ban nou anpil,
 Y ap mandé n anpil.
@@ -242,8 +261,9 @@ Se Adôn lan ki va jijé,
 Se Adôn lan ki va palé.
 Li konnen tout sa nou fè,
 Anyen pa kaché devan li.</p>
+    </div>
 
-    <div class="refren">
+    <div class="refren seksyon">
       <p class="etikèt">Dernier Refrain</p>
       <p>Ret fidèl ! Ret fidèl !
 Jouk Adôn nan rétounen.
@@ -255,6 +275,7 @@ Nou toujou ap fè volonté l.
 « Byennéré sèvitè fidèl ki prévwayan an. »</p>
     </div>
 
+    <div class="seksyon">
     <p class="etikèt">Final (Chœur)</p>
     <p>Yahawah, ban nou fòs
 Pou n kenbé jouk nan fen an.
@@ -262,6 +283,7 @@ Yahushuʿah, Adôn nou,
 Sé ou menm n ap tann.
 Ret fidèl ! Ret fidèl !
 Jouk Adôn nan rétounen.</p>
+    </div>
   </div>
 </article>
 
@@ -2358,6 +2380,62 @@ Jou a ap vini !</p>
 </footer>
 
 <script>
+// Pawòl sonkwonize (tès): kalkile pwopòsyonèlman konbyen tan chak seksyon merite
+// selon longè tèks li, san okenn tan make alamen.
+(function(){
+  var kachTan = new WeakMap(); // lekte -> [{el, kòmanse}]
+  var kachMak = new WeakMap(); // lekte -> lis "aktif" aktyèl
+
+  function pwepareLekte(lekte, dire){
+    var pawol = lekte.parentElement.querySelector(".pawol.sonk");
+    if(!pawol || !isFinite(dire) || dire <= 0) return null;
+    var seksyonYo = [...pawol.querySelectorAll(".seksyon")];
+    if(!seksyonYo.length) return null;
+
+    var poids = seksyonYo.map(function(s){ return s.textContent.trim().length; });
+    var total = poids.reduce(function(a,b){return a+b;}, 0);
+    if(total <= 0) return null;
+
+    // Ti espas pou entwo/silans nan kòmansman ak nan fen (apeprè 3%)
+    var tanIti = dire * 0.03;
+    var tanItilizab = dire * 0.94;
+    var kòmanse = tanIti;
+    var lis = seksyonYo.map(function(s, i){
+      var dwaTan = (poids[i]/total) * tanItilizab;
+      var o = {el:s, kòmanse:kòmanse};
+      kòmanse += dwaTan;
+      return o;
+    });
+    return lis;
+  }
+
+  function sonkwonizeAjou(lekte, audio){
+    var lis = kachTan.get(lekte);
+    if(lis === undefined){
+      lis = isFinite(audio.duration) ? pwepareLekte(lekte, audio.duration) : null;
+      kachTan.set(lekte, lis);
+    }
+    if(!lis) return;
+
+    var aktif = null;
+    for(var i=0; i<lis.length; i++){
+      if(audio.currentTime >= lis[i].kòmanse) aktif = lis[i].el;
+      else break;
+    }
+    if(kachMak.get(lekte) === aktif) return;
+    kachMak.set(lekte, aktif);
+
+    lis.forEach(function(o){ o.el.classList.remove("active"); });
+    if(aktif){
+      aktif.classList.add("active");
+      aktif.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+  }
+
+  window.sonkwonizeAjou = sonkwonizeAjou;
+})();
+</script>
+<script>
 // Lektè odyo pataje: yon sèl Audio, preload sèlman lè moun peze jwe (ekonomize done mobil)
 (function(){
   var audio = null, lekteAktif = null;
@@ -2388,6 +2466,7 @@ Jou a ap vini !</p>
         if(kapGlise) return;
         tKoule.textContent = fmt(audio.currentTime);
         if(isFinite(audio.duration)) bar.value = (audio.currentTime/audio.duration)*100;
+        sonkwonizeAjou(lekte, audio);
       });
       audio.addEventListener("ended", function(){ btn.textContent = "▶"; bar.value = 0; tKoule.textContent = "0:00"; });
       audio.addEventListener("error", function(){ tTotal.textContent = "erè"; btn.textContent = "▶"; });
