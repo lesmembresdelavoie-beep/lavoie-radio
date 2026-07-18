@@ -827,6 +827,8 @@
 
     <div class="couv-badge">Shabbath 2 Ab</div>
 
+    <a class="couv-ecouter" href="#ecouter">🎙️ Écouter l'Abodah — service audio complet</a>
+
     <div class="couv-dates">
       <span class="couv-dates-icone">🗓️</span>
       <span>Du 17 juillet 2026 au coucher du soleil<br>au 18 juillet 2026 au coucher du soleil</span>
@@ -1278,9 +1280,98 @@
         </div>
       </div>
     </div>
+    <div class="scroll-hint">
+      <span>Écouter l'Abodah</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 10 — SÈVIS ODYO ============ -->
+  <section class="page page-10" id="ecouter">
+    <div class="page-num">10</div>
+    <div class="header-bar">
+      <div class="header-icon">🎙️</div>
+      <div>
+        <div class="header-titre">Écouter<br>l'Abodah</div>
+        <div class="header-soustitre">Service audio complet — 17 parties</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="orateur-bloc">
+        <div>
+          <div class="orateur-label">Miqra Qadosh · Shabbath 2 Ab</div>
+          <div class="orateur-note">« Le dessein de Yahawah pour l'humanité : créés à Son image » — les parties s'enchaînent automatiquement.</div>
+        </div>
+      </div>
+
+      <div class="player-cadre">
+        <div class="player-now-label">En écoute</div>
+        <div class="player-now-titre" id="s2-now">—</div>
+        <audio id="s2-audio" controls preload="none"></audio>
+        <div class="player-nav">
+          <button type="button" id="s2-prev">◀ Précédent</button>
+          <button type="button" id="s2-next">Suivant ▶</button>
+        </div>
+      </div>
+
+      <div class="pisteliste" id="s2-liste"></div>
+
+    </div>
   </section>
 
 </div>
+
+<script>
+(function(){
+  var pistes=[
+    {t:"Propos d'ouverture",f:"s2ab-01-propos-ouverture.mp3",d:"2:42"},
+    {t:"Transition vers le Chirat d'ouverture",f:"s2ab-02-transition-chirat-ouverture.mp3",d:"1:13"},
+    {t:"Chirat d'ouverture — Todah Rabah pou mitan jounen an",f:"tefilah-midi-kantik.mp3",d:"3:51"},
+    {t:"Transition vers la Téfilah d'ouverture",f:"s2ab-04-transition-tefilah-ouverture.mp3",d:"1:23"},
+    {t:"Téfilah d'ouverture",f:"s2ab-05-tefilah-ouverture.mp3",d:"2:22"},
+    {t:"Lecture principale — Bereshith 1:26–31",f:"s2ab-06-lecture-bereshith-1.mp3",d:"2:29"},
+    {t:"Lecture complémentaire — Tehillim 8:4–9",f:"s2ab-07-lecture-tehillim-8.mp3",d:"1:51"},
+    {t:"Transition vers Les Rappels de Yah",f:"s2ab-08-transition-rappels.mp3",d:"1:29"},
+    {t:"Les Rappels de Yah",f:"s2ab-09-rappels-de-yah.mp3",d:"5:26"},
+    {t:"Chirat de méditation — Ou te Kreye Nou Selon Imaj Ou",f:"tehillah-24-selon-imaj-ou.mp3",d:"6:30"},
+    {t:"Transition vers l'enseignement principal",f:"s2ab-11-transition-enseignement.mp3",d:"1:45"},
+    {t:"Enseignement — Le dessein de Yahawah pour l'humanité",f:"s2ab-12-enseignement.mp3",d:"18:20"},
+    {t:"Transition vers le Chirat final",f:"s2ab-13-transition-chirat-final.mp3",d:"1:09"},
+    {t:"Chirat final — Tout Bagay Te Bon Anpil",f:"tehillah-25-tout-bagay-te-bon.mp3",d:"5:34"},
+    {t:"Transition vers la Téfilah de clôture",f:"s2ab-14-transition-tefilah-cloture.mp3",d:"1:20"},
+    {t:"Téfilah de clôture",f:"s2ab-15-tefilah-cloture.mp3",d:"2:37"},
+    {t:"Propos de clôture",f:"s2ab-16-propos-cloture.mp3",d:"1:38"}
+  ];
+  var audio=document.getElementById('s2-audio');
+  var now=document.getElementById('s2-now');
+  var liste=document.getElementById('s2-liste');
+  var idx=-1;
+
+  pistes.forEach(function(pi,i){
+    var div=document.createElement('div');
+    div.className='piste';
+    div.innerHTML='<div class="piste-num">'+(i+1)+'</div><div class="piste-titre">'+pi.t+'</div><div class="piste-dur">'+pi.d+'</div>';
+    div.addEventListener('click',function(){jwe(i);});
+    liste.appendChild(div);
+  });
+
+  function jwe(i){
+    if(i<0||i>=pistes.length)return;
+    idx=i;
+    audio.src=pistes[i].f;
+    audio.play();
+    now.textContent=(i+1)+'. '+pistes[i].t;
+    var els=liste.children;
+    for(var k=0;k<els.length;k++){els[k].classList.toggle('active',k===i);}
+    els[i].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+
+  audio.addEventListener('ended',function(){ if(idx<pistes.length-1) jwe(idx+1); });
+  document.getElementById('s2-prev').addEventListener('click',function(){ jwe(idx<=0?0:idx-1); });
+  document.getElementById('s2-next').addEventListener('click',function(){ jwe(idx<0?0:Math.min(idx+1,pistes.length-1)); });
+})();
+</script>
 
 </body>
 </html>
