@@ -956,6 +956,10 @@ async function aktiveNotifikasyon(){
     <video id="popup-shabbath-video" src="rosh-hodesh-popup.mp4" muted loop playsinline preload="auto"></video>
     <button id="popup-shabbath-close" onclick="fermerPopupShabbath()" title="Fermer">✕</button>
     <div id="popup-shabbath-timer">90s</div>
+    <audio id="popup-shabbath-audio" src="ereb-shabbath-music.mp3" preload="auto"></audio>
+    <button id="popup-shabbath-play" onclick="activerSon()" title="Écouter">▶</button>
+  </div>
+</div>
 
 <script>
 (function() {
@@ -1061,10 +1065,15 @@ function activerSon() {
 }
 
 function fermerPopupShabbath() {
+  var overlay = document.getElementById('popup-shabbath-overlay');
+  // Kache popup la ANVAN tout lòt bagay — konsa yon erè odyo pa ka bloke fèmti a
+  if (overlay) overlay.classList.remove('visible');
   if (window._popupRoshAlt) { clearInterval(window._popupRoshAlt); window._popupRoshAlt = null; }
   clearInterval(window._popupShabbathIntervalle);
-  var audio   = document.getElementById('popup-shabbath-audio');
-  var overlay = document.getElementById('popup-shabbath-overlay');
+  var video = document.getElementById('popup-shabbath-video');
+  if (video) { try { video.pause(); } catch (e) {} }
+  var audio = document.getElementById('popup-shabbath-audio');
+  if (!audio) return;
   // Fade out 90 segonn (20 etap x 4500ms = 90000ms)
   var vol = audio.volume;
   var fade = setInterval(function() {
@@ -1076,7 +1085,6 @@ function fermerPopupShabbath() {
       audio.currentTime = 0;
     }
   }, 4500);
-  overlay.classList.remove('visible');
 }
 </script>
 
