@@ -73,6 +73,7 @@
   .tit-seksyon::before,.tit-seksyon::after{content:" ✦ ";color:var(--ligne)}
   .endeks ol{list-style:none;counter-reset:tehillah}
   .endeks li{counter-increment:tehillah;border-bottom:1px dotted var(--ligne)}
+  .endeks li.kategori-tit{counter-increment:none;border-bottom:none}
   .endeks a{
     display:flex;align-items:baseline;gap:1rem;
     padding:1rem .3rem;color:var(--ivoire);text-decoration:none;
@@ -82,8 +83,26 @@
     content:counter(tehillah,decimal-leading-zero);
     color:var(--dore);font-size:.85rem;letter-spacing:.1em;
   }
+  .kategori{
+    color:var(--dore);font-size:.72rem;letter-spacing:.28em;
+    text-transform:uppercase;text-align:center;
+    margin:2.4rem 0 .6rem;padding-top:1.4rem;
+  }
+  .kategori:first-of-type{margin-top:1rem}
+  .kategori::before,.kategori::after{content:" ✦ ";color:var(--ligne)}
 
   /* ====== CHANT ====== */
+  .gran-tit-kat{
+    max-width:34rem;margin:3.5rem auto 0;padding:2rem 1.5rem 0;
+    text-align:center;
+  }
+  .gran-tit-kat h2.kategori{
+    color:var(--dore);font-size:1rem;letter-spacing:.3em;
+    text-transform:uppercase;font-weight:normal;margin:0;
+    padding-bottom:1.2rem;border-bottom:1px solid var(--ligne);
+  }
+  .gran-tit-kat h2.kategori::before,
+  .gran-tit-kat h2.kategori::after{content:" ✦ ";color:var(--ligne)}
   .chant{max-width:34rem;margin:0 auto;padding:3rem 1.5rem 5rem}
   .chant header{text-align:center;margin-bottom:1.6rem}
   .nimewo{
@@ -164,756 +183,48 @@
 <nav class="endeks" id="endeks" aria-label="Endèks chant yo">
   <h2 class="tit-seksyon">Endèks</h2>
   <ol>
-    <li><a href="#tehillah-01">Ret Fidèl Jouk Adôn nan Retounen</a></li>
-    <li><a href="#tehillah-02">Tan Yahawah yo Se pou Li</a></li>
-    <li><a href="#tehillah-03">Rapèl Yah yo Fèm</a></li>
-    <li><a href="#tehillah-04">N ap Kanpé Ansanm</a></li>
-    <li><a href="#tehillah-05">Nou nan Moman Restorasyon an</a></li>
-    <li><a href="#tehillah-06">Egzaminé Lavérité</a></li>
-    <li><a href="#tehillah-07">Nou Swiv Ritm Malkouwt la</a></li>
-    <li><a href="#tehillah-08">De Lune en Lune, Nou Pwostèné Devan W</a></li>
+    <li class="kategori-tit"><span class="kategori">Téfilot</span></li>
     <li><a href="#tehillah-09">Toda Raba, Abba Yah</a></li>
-    <li><a href="#tehillah-10">La Vwa — Mache nan Chemen an</a></li>
+    <li><a href="#tehillah-26">Nan Mitan Jounen An</a></li>
+    <li><a href="#tehillah-29">Mèsi, Abba Yah, Pou Lanmou Ou</a></li>
+    <li><a href="#tehillah-17">Abinou ShebaShamayim</a></li>
+    <li class="kategori-tit"><span class="kategori">Thabilah</span></li>
     <li><a href="#tehillah-11">Thabalé</a></li>
     <li><a href="#tehillah-12">Nan Dlo a Nou Leve</a></li>
-    <li><a href="#tehillah-13">Chante pou Yahawah</a></li>
-    <li><a href="#tehillah-14">Nou Nan La Vwa</a></li>
-    <li><a href="#tehillah-15">Nou Tout se Tal'midim</a></li>
-    <li><a href="#tehillah-16">Chèche — Verifye</a></li>
-    <li><a href="#tehillah-17">Abinou ShebaShamayim</a></li>
-    <li><a href="#tehillah-18">HallelouYah — Leve Men Nou</a></li>
+    <li class="kategori-tit"><span class="kategori">Shabbat ak Moʿedim</span></li>
+    <li><a href="#tehillah-07">Nou Swiv Ritm Malkouwt la</a></li>
+    <li><a href="#tehillah-08">De Lune en Lune, Nou Pwostèné Devan W</a></li>
     <li><a href="#tehillah-19">Prepare Nou pou Rantre</a></li>
     <li><a href="#tehillah-20">Shabbat — yon Kado Yah Ban Nou</a></li>
     <li><a href="#tehillah-21">Shabbat — Repo Solanèl</a></li>
     <li><a href="#tehillah-22">Ann Antre nan HaHakhanah</a></li>
+    <li class="kategori-tit"><span class="kategori">Ha'Dérèkh — Idantite nou</span></li>
+    <li><a href="#tehillah-10">La Vwa — Mache nan Chemen an</a></li>
+    <li><a href="#tehillah-14">Nou Nan La Vwa</a></li>
+    <li><a href="#tehillah-15">Nou Tout se Tal'midim</a></li>
+    <li><a href="#tehillah-28">Nou Se Reparatè Brèch Yo</a></li>
+    <li class="kategori-tit"><span class="kategori">Lavérite ak Fidelite</span></li>
+    <li><a href="#tehillah-01">Ret Fidèl Jouk Adôn nan Retounen</a></li>
+    <li><a href="#tehillah-02">Tan Yahawah yo Se pou Li</a></li>
+    <li><a href="#tehillah-03">Rapèl Yah yo Fèm</a></li>
+    <li><a href="#tehillah-04">N ap Kanpé Ansanm</a></li>
+    <li><a href="#tehillah-06">Egzaminé Lavérité</a></li>
+    <li><a href="#tehillah-16">Chèche — Verifye</a></li>
+    <li class="kategori-tit"><span class="kategori">Louwanj ak Fèt</span></li>
+    <li><a href="#tehillah-13">Chante pou Yahawah</a></li>
+    <li><a href="#tehillah-18">HallelouYah — Leve Men Nou</a></li>
+    <li><a href="#tehillah-27">Tout Sa Ki Gen Souf — Fè Lwanj</a></li>
+    <li class="kategori-tit"><span class="kategori">Kreyasyon ak Restorasyon</span></li>
+    <li><a href="#tehillah-05">Nou nan Moman Restorasyon an</a></li>
     <li><a href="#tehillah-23">Jou a ap Vini</a></li>
     <li><a href="#tehillah-24">Ou te Kreye Nou Selon Imaj Ou</a></li>
     <li><a href="#tehillah-25">Tout Bagay Te Bon Anpil</a></li>
-    <li><a href="#tehillah-26">Nan Mitan Jounen An</a></li>
-    <li><a href="#tehillah-27">Tout Sa Ki Gen Souf — Fè Lwanj</a></li>
-    <li><a href="#tehillah-28">Nou Se Reparatè Brèch Yo</a></li>
-    <li><a href="#tehillah-29">Mèsi, Abba Yah, Pou Lanmou Ou</a></li>
     <li><a href="#tehillah-30">Konsekans Dezobeyisans Premye Paran Nou Yo</a></li>
-
     <!-- Pwochen Tehillot yo ap ajoute isit la -->
   </ol>
 </nav>
 
-<!-- ============ TEHILLAH 1 ============ -->
-<article class="chant" id="tehillah-01">
-  <header>
-    <span class="nimewo">Tehillah 1</span>
-    <h2>Ret Fidèl Jouk Adôn nan Retounen</h2>
-  </header>
-
-  <div class="lekte" data-src="tehillah-01-ret-fidel.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol sonk">
-    <div class="seksyon">
-    <p class="etikèt">Couplet 1</p>
-    <p>Ki moun Adôn nan va jwenn,
-Lè li vini san avèti ?
-Ki moun ki va toujou kanpé,
-Nan sèvis li té konfyé l ?
-Se pa tit lèzòm bay,
-Se pa lwanj moun ka chanté ;
-Men sé lavi ki rété dwat,
-Jouk lè Adôn nan va parèt.</p>
-    </div>
-
-    <div class="seksyon">
-    <p class="etikèt">Pré-Refrain</p>
-    <p>Nou pap chèché gwo plas,
-Nou pap chèché gwo non ;
-Nou vlé sèlman rété fidèl,
-Jouk retou Adôn lan.</p>
-    </div>
-
-    <div class="refren seksyon">
-      <p class="etikèt">Refrain</p>
-      <p>Ret fidèl ! Ret fidèl !
-Jouk Adôn nan rétounen.
-Kenbé fèm ! Pa lagué !
-Jouk Adôn nan rétounen.
-Lè l vini, sé pou l jwenn
-Nou toujou ap sèvi.
-Lè l vini, sé pou l di :
-« Byennéré sèvitè sa a ! »</p>
-    </div>
-
-    <div class="seksyon">
-    <p class="etikèt">Couplet 2</p>
-    <p>Li té ban nou Dabar li a,
-Pou n patajé ak renmen ;
-Li té ban nou responsabilité,
-Pou n sèvi chak jou san pran plézi nan tèt nou.
-Se pa pou n dominé lòt,
-Ni pou n levé tèt nou wo ;
-Nou sé sèvitè devan Adôn,
-N ap tann sèlman jijman li.</p>
-    </div>
-
-    <div class="seksyon">
-    <p class="etikèt">Pont</p>
-    <p>Si yo ban nou anpil,
-Y ap mandé n anpil.
-Ann maché ak krent,
-Ann sèvi ak tout kè nou.
-Se Adôn lan ki va jijé,
-Se Adôn lan ki va palé.
-Li konnen tout sa nou fè,
-Anyen pa kaché devan li.</p>
-    </div>
-
-    <div class="refren seksyon">
-      <p class="etikèt">Dernier Refrain</p>
-      <p>Ret fidèl ! Ret fidèl !
-Jouk Adôn nan rétounen.
-Bay manjé nan tan li,
-Jan li té mandé nou.
-Lè l vini, sé pou l jwenn
-Nou toujou ap fè volonté l.
-Épi n ap tandé vwa l di :
-« Byennéré sèvitè fidèl ki prévwayan an. »</p>
-    </div>
-
-    <div class="seksyon">
-    <p class="etikèt">Final (Chœur)</p>
-    <p>Yahawah, ban nou fòs
-Pou n kenbé jouk nan fen an.
-Yahushuʿah, Adôn nou,
-Sé ou menm n ap tann.
-Ret fidèl ! Ret fidèl !
-Jouk Adôn nan rétounen.</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 2 ============ -->
-<article class="chant" id="tehillah-02">
-  <header>
-    <span class="nimewo">Tehillah 2</span>
-    <h2>Tan Yahawah yo Se pou Li</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Mattiyahu 22:21 · Maʿasei 1:7</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-02-tan-yahawah.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro (Chœur)</p>
-    <p>Yahawah...
-Tan yo se pou Ou...
-Moʿedim Ou yo...
-Pou tout tan...</p>
-
-    <p class="etikèt">Couplet 1</p>
-    <p>Dépi Ou té kréyé shamayim yo ak tè a,
-Ou fiksé jou yo ak sézon yo.
-Ou rélé pèp Ou pou maché,
-Nan chémen Ou préparé a.
-Pa gen wa... Pa gen pouvwa...
-Ki ka chanjé sa Ou di.
-Paské tout tan yo,
-Rété nan men Ou.</p>
-
-    <p class="etikèt">Pré-Refrain</p>
-    <p>Nou levé jé nou...
-Nou chèché Dabar Ou...
-Nou kité tout chémen lèzòm...
-Pou n swiv chémen Ou.</p>
-
-    <div class="refren">
-      <p class="etikèt">Grand Refrain (Assemblée)</p>
-      <p>Tan Yahawah yo... Sé pou Li !
-Moʿedim Li yo... Sé pou Li !
-Miqra Qadosh yo... Sé pou Li !
-Nou pap chanjé... Sa Li fiksé !
-Rann a César... Sa ki pou César !
-Men sa ki pou Yahawah... Rété pou Li !
-Hé ! Hé ! Hé !</p>
-    </div>
-
-    <p class="etikèt">Couplet 2</p>
-    <p>Yahushuʿah fè nou konprann,
-Gen limit pou pouvwa moun.
-Papa a kenbé nan men Li,
-Tout tan Li té fiksé.
-Nou pap suiv... Tradisyon moun...
-Nou pap suiv... Lidé moun...
-Nou rétounen...
-Sou ansyen chemen an...
-Yahawah trasé.</p>
-
-    <p class="etikèt">Pont</p>
-    <p>Lévé vwa nou !! Lévé men nou !!
-Ann chanté !! Ann fè konnen !!
-Yahawah sèl... Mèt tan yo !!
-Yahawah sèl... Mèt Moʿedim yo !!
-Yahawah sèl... Mèt Miqra Qadosh yo !!</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain Final (Très puissant)</p>
-      <p>Tan Yahawah yo... Sé pou Li !
-Nou pap rétiré... Nou pap ajouté !
-Nou suiv Dabar Li...
-Nou suiv kalandriyé Li...
-Nou suiv Moʿedim Li...
-Nou suiv Miqra Qadosh Li...
-Paské...
-Tan Yahawah yo... SE POU LI !!</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 3 ============ -->
-<article class="chant" id="tehillah-03">
-  <header>
-    <span class="nimewo">Tehillah 3</span>
-    <h2>Rapèl Yah yo Fèm</h2>
-  </header>
-
-  <div class="lekte" data-src="12_Rapel_Yah_yo_fem.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Hmmm... Yahawah...
-Nou meté konfyans nou nan Dabar Ou...
-Hmmm...</p>
-
-    <p class="etikèt">Couplet 1</p>
-    <p>Lè chemen an sanblé fènwa
-Lè kesyon levé nan kè nou
-Nou levé jé nou bò koté Ou
-Paské Dabar Ou pa chanjé
-Pawòl moun pasé tankou van
-Men sa Ou di reté pou tout tan
-Rapèl Ou yo tankou yon limyè
-Ki kleré devan pyé nou</p>
-
-    <p class="etikèt">Pré-Refrain</p>
-    <p>Nou meté konfyans nou nan Ou
-Nou meté konfyans nou nan Dabar Ou</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain</p>
-      <p>Rapèl Yah yo fèm
-Rapèl Yah yo sèten
-Yo bay kè nou fòs
-Yo guidé lavi nou
-Rapèl Yah yo fèm
-Yo mérite konfyans
-Lè tout bagay souké
-Nou reté kanpé</p>
-    </div>
-
-    <p class="etikèt">Couplet 2</p>
-    <p>Anpil vwa palé toupatou
-Anpil lidé travèsé mond lan
-Men nou chwazi kouté Yah
-Paské se Li ki konnen chemen an
-Lè nou febli anba chay lavi
-Lè dlo jé konn desann
-Rapèl Ou yo levé kè nou
-Yo fè nou reprann fòs</p>
-
-    <p class="etikèt">Pré-Refrain</p>
-    <p>Nou meté konfyans nou nan Ou
-Nou meté konfyans nou nan Dabar Ou</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain</p>
-      <p>Rapèl Yah yo fèm
-Rapèl Yah yo sèten
-Yo bay kè nou fòs
-Yo guidé lavi nou
-Rapèl Yah yo fèm
-Yo mérite konfyans
-Lè tout bagay souké
-Nou reté kanpé</p>
-    </div>
-
-    <p class="etikèt">Pont — flûte + trompèt monte doucement</p>
-    <p>Shamayim ak tè ka pasé
-Men Dabar Ou reté fèm — pou tout tan
-Nou va maché nan limyè Li
-Jiska bout chemen an
-Menm nan nwit ki pi fènwa
-Rapèl Ou yo kleré wout la
-Nou pa pèdi espwa nou
-Paské Ou toujou la — Ou toujou la</p>
-
-    <div class="refren">
-      <p class="etikèt">Final Chorus — tout asanble — doux men solid</p>
-      <p>Rapèl Yah yo fèm
-Rapèl Yah yo sèten
-Yo bay kè nou fòs
-Yo guidé lavi nou
-Rapèl Yah yo fèm
-Yo mérite konfyans
-Lè tout bagay souké
-Nou reté kanpé</p>
-    </div>
-
-    <p class="etikèt">Outro — gita sèl, trè doux</p>
-    <p>HallelouYah...
-Nou meté konfyans nou nan Ou...
-Rapèl Ou yo fèm...
-Pou tout tan — amèn — amèn...</p>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 4 ============ -->
-<article class="chant" id="tehillah-04">
-  <header>
-    <span class="nimewo">Tehillah 4</span>
-    <h2>N ap Kanpé Ansanm</h2>
-  </header>
-
-  <div class="lekte" data-src="tehillah-04-nap-kanpe-ansanm.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Couplet 1</p>
-    <p>Lè van soufrans levé sou chemen an,
-Nou pa kouri kité akhim yo pou kont yo.
-Menm lè jouman tonbe tankou lapli,
-Nou rété fèm, nou maché men nan men.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain</p>
-      <p>N ap kanpé ansanm, nan lanmou ak kouraj,
-N ap soutni youn lòt jouk bout vwayaj la.
-Pa gen éprèv ki ka séparé nou,
-Yahawah wè fidélité nou chak jou.
-(N ap kanpé ansanm)</p>
-    </div>
-
-    <p class="etikèt">Couplet 2</p>
-    <p>Lè youn ap kriyé anba gwo chay la,
-Lòt la lonjé men san ézité.
-Nan inyon ak bonté nou kontinyé,
-Pou ankourajé tout moun ki fébli.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain</p>
-      <p>N ap kanpé ansanm, nan lanmou ak kouraj,
-N ap soutni youn lòt jouk bout vwayaj la.
-Pa gen éprèv ki ka séparé nou,
-Yahawah wè fidélité nou chak jou.
-(N ap kanpé ansanm)</p>
-    </div>
-
-    <p class="etikèt">Pont</p>
-    <p>Pa pè lè fènwa kouvri shamayim yo,
-Limyè pap janm sispann kléré.
-Ansanm n ap kenbé fèm sou chemen an,
-Jiskaské livre lan rivé.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain Final</p>
-      <p>N ap kanpé ansanm, ak yon kè ki ini,
-Nan tout éprèv nou pap lagué.
-Lanmou sensè ap rété vivan,
-Yahawah ap soutni nou chak jou.
-(N ap kanpé ansanm)</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 5 ============ -->
-<article class="chant" id="tehillah-05">
-  <header>
-    <span class="nimewo">Tehillah 5</span>
-    <h2>Nou nan Moman Restorasyon an</h2>
-  </header>
-
-  <div class="lekte" data-src="tehillah-05-restorasyon.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <div class="refren">
-      <p class="etikèt">Refren (Assemblée)</p>
-      <p>Nou retounen sou vyé chemen an,
-Yahawah louvri jé nou !
-Pa Yahushuʿah, Li fè nou wè,
-Dabar vérité a kléré !
-Ann chanté, ann levé vwa nou,
-Kè nou plen ak rekonésans.
-Nou nan restorasyon Yahawah,
-Pou tout tan, ak lajwa !</p>
-    </div>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Nou t ap chèchè nan anpil wout,
-Men Yahawah fè nou tounen.
-Li lonjé men pa Pitit Li a,
-Pou montré nou bon chemen an.
-Sa ki te krazé, Li rébati,
-Sa ki te pédi, Li rasanblé.
-Kè nou kontan, n ap chanté fò,
-Paské Li fè nou viv ankò.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Nou retounen sou vyé chemen an,
-Yahawah louvri jé nou !
-Pa Yahushuʿah, Li fè nou wè,
-Dabar vérité a kléré !
-Ann chanté, ann levé vwa nou,
-Kè nou plen ak rekonésans.
-Nou nan restorasyon Yahawah,
-Pou tout tan, ak lajwa !</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Nou rébati ansyen fondasyon yo,
-Nou levé miray ki te tonbé.
-Nou suiv chemine ki bon dépi lontan,
-Se la repo a jwenn plas li.
-Avèk inyon, avèk lanmou,
-Nou maché san gad dèyè.
-Nou se yon pèp ki kanpé fèm,
-Pou fè volonté Yahawah.</p>
-
-    <p class="etikèt">Pon</p>
-    <p>Levé men nou, chanté byen fò !
-Jodi a se yon jou lajwa !
-Vérité a kléré nan mitan nou,
-Kè nou plen ak remèsiman.
-Ann maché ansanm san dékourajé,
-Jiskaské travay la fin fèt.
-Yahawah rélé nou pou rebati,
-E nou réponn ak tout fòs nou.</p>
-
-    <div class="refren">
-      <p class="etikèt">Dènye Refren</p>
-      <p>Nou retounen sou vyé chemen an,
-Yahawah louvri jé nou !
-Pa Yahushuʿah, Li fè nou wè,
-Dabar vérité a kléré !
-Ann chanté, ann levé vwa nou,
-Kè nou plen ak rekonésans.
-Nou nan restorasyon Yahawah,
-Pou tout tan, ak lajwa !</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 6 ============ -->
-<article class="chant" id="tehillah-06">
-  <header>
-    <span class="nimewo">Tehillah 6</span>
-    <h2>Egzaminé Lavérité</h2>
-  </header>
-
-  <div class="lekte" data-src="tehillah-06-egzamine-laverite.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Hmmm...
-Ann chèche lavérité...
-Ann rété nan Dabar Yah...
-Hmmm...</p>
-
-    <p class="etikèt">Couplet 1</p>
-    <p>Gen anpil vwa nan mond lan
-Anpil Pawòl k ap sikilé
-Youn di wi — lòt la di non
-Ki chemen pou nou pran ?
-Yah pa mandé nou swiv avèg
-Ni kouri dèyè tout van
-Li ban nou Ketubim Qadoshim
-Pou kléré chemen nou</p>
-
-    <p class="etikèt">Pré-Refrain</p>
-    <p>Testé rouash yo...
-Gadé si yo soti nan Yah...
-Kenbé sa ki bon...
-Rété fèm nan lavérité...</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain</p>
-      <p>Egzaminé tout bagay !
-Kenbé sa ki bon !
-Retounen nan Ketubim yo !
-Pou wè si sa vré !
-Egzaminé tout bagay !
-Pa swiv bri moun !
-Dabar Yah rété fèm !
-Pou tout tan !</p>
-    </div>
-
-    <p class="etikèt">Couplet 2</p>
-    <p>Béréens yo te gen bon kè
-Yo te resevwa Pawòl la
-Men chak jou yo t ap vérifyé
-Nan Ketubim Qadoshim yo
-Yo pa t rejté san kouté
-Ni aksepté san egzamen
-Yo t ap chèché lavérité
-Ak tout kè yo devan Yah</p>
-
-    <p class="etikèt">Pré-Refrain</p>
-    <p>Testé rouash yo...
-Gadé si yo soti nan Yah...
-Kenbé sa ki bon...
-Rété fèm nan lavérité...</p>
-
-    <div class="refren">
-      <p class="etikèt">Refrain</p>
-      <p>Egzaminé tout bagay !
-Kenbé sa ki bon !
-Retounen nan Ketubim yo !
-Pou wè si sa vré !
-Egzaminé tout bagay !
-Pa swiv bri moun !
-Dabar Yah rété fèm !
-Pou tout tan !</p>
-    </div>
-
-    <p class="etikèt">Chevalet — saksofòn + flûte monte</p>
-    <p>Pa alé pi lwen
-Pasé sa ki ekri — non !
-Pa kité tradisyon moun
-Fè w pèdi chemen an — non !
-Ketubim Qadoshim yo
-Se limyè devan pyé nou — wi !
-Nou va mache ladan yo
-Jiska bout chemen an — wi !
-Tankou Béréens yo chak jou
-Nou verifyé — nou chèché
-Nou kenbé sa ki soti nan Yah
-E nou lagué sa ki pa vré</p>
-
-    <div class="refren">
-      <p class="etikèt">Chœur final — x2 — tout asanble</p>
-      <p>Egzaminé tout bagay !
-Kenbé sa ki bon !
-Retounen nan Ketubim yo !
-Pou wè si sa vré !
-Egzaminé tout bagay !
-Pa swiv bri moun !
-Dabar Yah rété fèm !
-Pou tout tan !</p>
-    </div>
-
-    <p class="etikèt">Outro — flûte sèl, trè dous</p>
-    <p>HallelouYah... nou renmen lavérité
-HallelouYah... nou chèché chak jou
-Ketubim Qadoshim klere nou</p>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 7 ============ -->
-<article class="chant" id="tehillah-07">
-  <header>
-    <span class="nimewo">Tehillah 7</span>
-    <h2>Nou Swiv Ritm Malkouwt la</h2>
-  </header>
-
-  <div class="lekte" data-src="tehillah-07-ritm-malkuwt.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Nou pa maché selon mond lan
-Nou pa kouri dèyè van
-Nou viv selon ritm Yahawah
-Selon tan Malkouwt la</p>
-
-    <p class="etikèt">Kouple 1 — Zikaron (14 Abib)</p>
-    <p>Lané qadosh la ap vansé
-Tankou yon kantik byen òdoné
-Premye gran randevou a rive
-Zikaron, Seʿoudat ha'Adôn
-Katòz Abib nou sonjé li
-Kopher ki louvri chemen lavi
-Nou égzaminé fon kè nou
-Avèk rékonesans devan li</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Nou viv selon ritm Malkouwt la
-Nou maché selon tan Yahawah
-Rosh Chodesh, Shabbat, gran fèt yo
-Sé chemen lavi pou pèp li a
-Nou viv selon ritm Malkouwt la
-Nou pa suiv batman mond lan
-Nou sonjé kiyès n ap sèvi
-Nou sonjé kiyès nou yé</p>
-    </div>
-
-    <p class="etikèt">Kouple 2 — Shabuʿot (6 Siban)</p>
-    <p>Shabuʿot rivé, sis Siban
-Moisson an levé nan sezon an
-Rasanbleman ak akonplisman
-Qehilah la grandi nan limyè
-Ansèyman vivan ap koulé
-Tankou dlo ki pa janm séché
-Sé tan matirité ak fòs
-Pou pèp ki kanpé nan vérité</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Nou viv selon ritm Malkouwt la
-Nou maché selon tan Yahawah
-Rosh Chodesh, Shabbat, gran fèt yo
-Sé chemen lavi pou pèp li a
-Nou viv selon ritm Malkouwt la
-Nou pa suiv batman mond lan
-Nou sonjé kiyès n ap sèvi
-Nou sonjé kiyès nou yé</p>
-    </div>
-
-    <p class="etikèt">Kouple 3 — Soukkot (Tishri)</p>
-    <p>Soukkot vini nan Tishri
-Sèt jou lajwa devan li
-Nou sonjé tant zansèt yo
-Nou sonjé men ki té guidé yo
-Abitasyon tanporè sou tè sa
-Men espérans nou pa rété la
-Yon bon sant wayòm rétabli
-Yon pèp k ap chanté ak jwa</p>
-
-    <p class="etikèt">Pon — Rosh Chodesh ak Shabbat</p>
-    <p>Chak Rosh Chodesh sé nouvo souf
-Chak Shabbat sé repo qadosh
-Setyèm Yôm fè nou sonjé byen
-Lòm pa fèt pou kouri san fen
-Kalendriye sa pa dat sèlman
-Sé yon lekòl pou tout tan
-Li di nou lévé, sonjé byen
-Kiyès ou yé, kiyès ou sèvi</p>
-
-    <div class="refren">
-      <p class="etikèt">Dènye Refren</p>
-      <p>Nou viv selon ritm Malkouwt la
-Nou maché selon tan Yahawah
-Rosh Chodesh, Shabbat, gran fèt yo
-Sé chemen lavi pou pèp li a
-Nou viv selon ritm Malkouwt la
-Nou pa suiv batman mond lan
-Nou sonjé kiyès n ap sèvi
-Nou sonjé kiyès nou yé</p>
-    </div>
-
-    <p class="etikèt">Outro</p>
-    <p>HallelouYah
-Nou viv selon Wayòm nan</p>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 8 ============ -->
-<article class="chant" id="tehillah-08">
-  <header>
-    <span class="nimewo">Tehillah 8</span>
-    <h2>De Lune en Lune, Nou Pwostèné Devan W</h2>
-  </header>
-
-  <div class="lekte" data-src="tehillah-08-de-lune-en-lune.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Kouple 1</p>
-    <p>De lune en lune,
-Nou vin devan Ou.
-Tout chair ap koubé byen ba,
-Devant fas Ou.
-De lune an lune,
-Nou rasanblé ansanm,
-Pou levé Non Ou,
-Pou ba Ou onè.</p>
-
-    <p class="etikèt">Pré-Refren</p>
-    <p>Nou kontan pwostèné devan w,
-Abba Yah, chak fwa jou sa rivé.
-Kè nou plen lajwa,
-Paské yon jou nan lakou w
-Gen plis valè pasé mil jou
-Nou pasé lòt koté.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Yon jou nan lakou w,
-Gen plis valè pase mil lòt koté.
-Yon jou devan fas Ou,
-Gen plis valè pasé tout lòt koté.
-Yon jou nan lakou w,
-Nou chwazi prezans Ou.
-Yon jou devan fas Ou,
-Nou ba Ou tout onè.</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Nou pa néglijé rasanbleman nou,
-Nou pa rété pou kont nou.
-Nou vini pou ankourajé,
-Pou levé youn lòt.
-Chak mwa ki kòmansé,
-Nou levé jé nou anlè.
-Nou sonjé Ou fidèl,
-Nou sonjé pwomès Ou.</p>
-
-    <p class="etikèt">Pon</p>
-    <p>De lune en lune,
-Nou vin adoré Ou.
-De lune en lune,
-Nou ba Ou tout onè.</p>
-
-    <div class="refren">
-      <p class="etikèt">Dènye Refren</p>
-      <p>Yon jou nan lakou w,
-Gen plis valè pasé mil lòt koté.
-Yon jou nan lakou w,
-Gen plis valè pasé mil lòt koté.</p>
-    </div>
-  </div>
-</article>
-
+<div class="gran-tit-kat"><h2 class="kategori">Téfilot</h2></div>
 <!-- ============ TEHILLAH 9 ============ -->
 <article class="chant" id="tehillah-09">
   <header>
@@ -998,15 +309,15 @@ Pou tout sa ou fè…</p>
   </div>
 </article>
 
-<!-- ============ TEHILLAH 10 ============ -->
-<article class="chant" id="tehillah-10">
+<!-- ============ TEHILLAH 26 ============ -->
+<article class="chant" id="tehillah-26">
   <header>
-    <span class="nimewo">Tehillah 10</span>
-    <h2>La Vwa — Mache nan Chemen an</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Cantique d'assemblée — Konpa</p>
+    <span class="nimewo">Tehillah 26</span>
+    <h2>Nan Mitan Jounen An</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Toda Raba, Abba Yah — Téfilah de midi</p>
   </header>
 
-  <div class="lekte" data-src="tehillah-10-vwasi-la-vwa.mp3">
+  <div class="lekte" data-src="tehillah-26-nan-mitan-jounen.mp3">
     <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
     <div class="baraj">
       <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
@@ -1015,78 +326,283 @@ Pou tout sa ou fè…</p>
   </div>
 
   <div class="pawol">
-    <p class="etikèt">Kwochè d'ouverture — x2, piano + bass dous</p>
-    <p>Vwasi La Vwa — mache ladan l
-Vwasi La Vwa — Yahawah ban nou l</p>
+    <p class="etikèt">Intro</p>
+    <p>Abba Yah…
+Nan mitan jounen an…
+Nou leve vwa nou…</p>
 
     <p class="etikèt">Kouple 1</p>
-    <p>Nou pa envante anyen, akhi
-Nou ap retrouve sa ki te la
-Ansyen fondasyon yo rele nou
-Ansyen chemen yo louvri devan nou</p>
-
-    <p class="etikèt">Pré-Refren — tout asanble antre</p>
-    <p>Se pa fòs — se pa pouvwa
-Se Rouacḥ Li — ki fè tout bagay</p>
+    <p>Nan mitan jounen an,
+Nou retounen devan ou,
+Nan bri lavi a,
+Nou chwazi chèche ou.
+Soti nan maten rive kounye a,
+Ou te kenbe nou,
+San bri, san fòse,
+Ou toujou la pou nou.</p>
 
     <div class="refren">
-      <p class="etikèt">Refren prensipal — konpa, tout moun ansanm</p>
-      <p>Nou plante — wi !
-Nou wouze — wi !
-Men se Yahawah ki fè l grandi !
-Nou fidèl — wi !
-Nou kanpe — wi !
-Pa Rouacḥ Li — nou mache — ankò !</p>
+      <p class="etikèt">Refren</p>
+      <p>Toda raba, Abba Yah,
+Pou fòs ou ban nou.
+Toda raba, Abba Yah,
+Paske ou kenbe nou.
+Toda raba, Abba Yah,
+Nan mitan jounen an,
+Nou leve vwa nou,
+Pou louwe ou ankò.</p>
     </div>
 
     <p class="etikèt">Kouple 2</p>
-    <p>Nou pa chèche gwo non ni glwa
-Nou pa bezwen aplòdisman lèzòm
-Jis jwenn nou fidèl — se sèl bagay
-Devan Yahawah — pou tout tan</p>
-
-    <p class="etikèt">Pré-Refren — tout asanble</p>
-    <p>Se pa fòs — se pa pouvwa
-Se Rouacḥ Li — ki fè tout bagay</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren — x2, pi fò</p>
-      <p>Nou plante — wi !
-Nou wouze — wi !
-Men se Yahawah ki fè l grandi !
-Nou fidèl — wi !
-Nou kanpe — wi !
-Pa Rouacḥ Li — nou mache — ankò !</p>
-    </div>
-
-    <p class="etikèt">Pon — apèl &amp; repons</p>
-    <p>Sa ki kòmanse piti
-Ap vin tounen yon milye — wi !
-Sa ki sanble piti
-Yah ka fè l tounen nasyon — wi !
-Nou pa bati anpi
-Nou ap simen Pawòl Li !
-Nou pa chèche Babèl
-Nou vle jis — jis fidèl !</p>
+    <p>Nan mitan aktivite yo,
+Nan tout sa n ap fè,
+Nou pa bliye ou,
+Nou rete devan ou.
+Pa kite nou distrè,
+Pa kite nou pèdi,
+Men kenbe nou fèm,
+Nan chemen ou mete a.</p>
 
     <div class="refren">
-      <p class="etikèt">Refren final — x3, majestueux, konpa full</p>
-      <p>Nou plante — wi !
-Nou wouze — wi !
-Men se Yahawah ki fè l grandi !
-Nou fidèl — wi !
-Nou kanpe — wi !
-Pa Rouacḥ Li — nou mache — ankò !</p>
+      <p class="etikèt">Refren</p>
+      <p>Toda raba, Abba Yah,
+Pou fòs ou ban nou.
+Toda raba, Abba Yah,
+Paske ou kenbe nou.
+Toda raba, Abba Yah,
+Nan mitan jounen an,
+Nou leve vwa nou,
+Pou louwe ou ankò.</p>
     </div>
 
-    <p class="etikèt">Outro — a cappella oswa piano sèl</p>
-    <p>Vwasi La Vwa... mache ladan l
-Vwasi La Vwa... Yahawah ban nou l
-Restaure... simen... temwaye...
-E kite Yahawah fè l grandi — amèn !</p>
+    <p class="etikèt">Pon</p>
+    <p>Lè nou bouke,
+Ou leve nou ankò.
+Lè panse nou gaye,
+Ou rasanble yo.
+Avèk Rouaḥ Ha'Qodesh ou,
+Ou gide pa nou,
+Ou mete limyè,
+Nan tout sa n ap fè.
+Nou pa pou kont nou,
+Nou mache ak ou,
+Nan chak etap nou fè,
+Ou toujou la pou nou.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Toda raba, Abba Yah,
+Pou fòs ou ban nou.
+Toda raba, Abba Yah,
+Paske ou kenbe nou.
+Toda raba, Abba Yah,
+Nan mitan jounen an,
+Nou leve vwa nou,
+Pou louwe ou ankò.</p>
+    </div>
+
+    <p class="etikèt">Dènye kouple</p>
+    <p>Nou se tal'midim,
+Nou mache nan La Voie,
+Nou se manm Kò li a,
+Qehilah li a.
+Nou pa vire dèyè,
+Nou kontinye mache,
+Jiska fen jounen an,
+Nou rete fidèl.</p>
+
+    <p class="etikèt">Outro</p>
+    <p>Toda raba… toda raba…
+Toda raba, Abba Yah…
+Nan mitan jounen an,
+Nou kontinye mache…</p>
   </div>
 </article>
 
+<!-- ============ TEHILLAH 29 ============ -->
+<article class="chant" id="tehillah-29">
+  <header>
+    <span class="nimewo">Tehillah 29</span>
+    <h2>Mèsi, Abba Yah, Pou Lanmou Ou</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">1 Yaḥuānān 4:8 · Yaḥuānān 3:16 · Romiyim 5:8</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-29-mesi-abba-yah.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro — tout dous</p>
+    <p>Abba Yah...
+Nou lévé vwa nou...
+Avèk rekonésans...
+Mèsi...</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Lè nou pa t gen éspwa,
+Ou pa t viré do ban nou.
+Lanmou Ou té chèché nou,
+Avan menm nou té chèché Ou.
+Ou rélé nou pa non nou,
+Ou louvri chémen lavi a.
+Kè nou ranpli ak rekonésans,
+Paské Ou pa janm lagué nou.</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Ki jan n ap rémèt Ou ?
+Pou tout byenfè Ou yo ?
+Nou poté yon sèl repons :
+Yon kè ki di...</p>
+
+    <div class="refren">
+      <p class="etikèt">Grand Refren — Assemblée</p>
+      <p>Mèsi, Abba Yah !
+Pou lanmou Ou !
+Mèsi, Abba Yah !
+Pou mizèrikòd Ou !
+Ou pa janm lagué nou !
+Ou toujou rélé nou !
+Avèk tout kè nou,
+Nou di :
+Mèsi, Abba Yah !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Lanmou Ou pa janm fini,
+Li pi fò pasé tout lapérèz.
+Li lévé nou lè nou tonbé,
+Li ban nou éspwa ankò.
+Ou voyé Yahushuʿah,
+Pou fè volonté Ou parèt.
+Sé nan Li nou jwenn chémen an,
+Ki mennen nou bò koté Ou.</p>
+
+    <p class="etikèt">Pon</p>
+    <p>Nou pap sispann chanté !
+Nou pap sispann rémèsyé !
+Dépi solèy lévé,
+Jiska li kouché,
+Shèm Ou mérité louwanj !</p>
+
+    <div class="refren">
+      <p class="etikèt">Dènye Refren</p>
+      <p>Mèsi, Abba Yah !
+Pou lanmou Ou !
+Mèsi, Abba Yah !
+Pou fidélité Ou !
+Tout lavi nou,
+N ap chanté pou Ou !
+Tout pèp Ou a,
+N ap lévé vwa nou !
+Mèsi, Abba Yah !
+Mèsi ! Mèsi ! Mèsi !</p>
+    </div>
+
+    <p class="etikèt">Outro — a cappella</p>
+    <p>Abba Yah...
+Nou renmen Ou...
+Paské Ou té renmen nou an prémyé.
+Mèsi...</p>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 17 ============ -->
+<article class="chant" id="tehillah-17">
+  <header>
+    <span class="nimewo">Tehillah 17</span>
+    <h2>Abinou ShebaShamayim</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Mattiyahu 6:9-13</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-17-abinou.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>Abinou ShebaShamayim
+Nou leve vwa nou ba Ou
+Ak tout kè nou
+Ak tout néfèsh nou
+Nou vini devan Ou</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Abinou ShebaShamayim
+Se pou yo rekonèt Non w ki qadosh
+Ke tout tè a rekonèt Ou
+Ke tout nasyon chante Ou
+Se pou Malkouwt Ou a vini
+Se pou volonté Ou fèt
+Sou tè a tankou anwo a
+Nan tout lavi nou</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Abinou, Abinou
+Nou rele Ou ak tout kè nou
+Abinou, Abinou
+Nou leve men nou devan Ou
+Ban nou pen pou jounen an
+Padone devyasyon nou yo
+Tankou nou menm nou padone
+Moun ki fè nou mal yo</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Pa kite nou tonbe
+Nan chemen tantasyon
+Men delivre nou toujou
+Anba men Mechan an
+Ban nou fòs pou nou mache
+Ban nou limyè pou nou wè klè
+Ban nou kalm nan kè nou
+Pou nou rete fidèl</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Abinou, Abinou
+Nou rele Ou ak tout kè nou
+Abinou, Abinou
+Nou leve men nou devan Ou
+Ban nou pen pou jounen an
+Padone devyasyon nou yo
+Tankou nou menm nou padone
+Moun ki fè nou mal yo</p>
+    </div>
+
+    <p class="etikèt">Pon — doksoloji</p>
+    <p>Paske Malkouwt la se pou Ou
+Puisans lan se pou Ou
+Kabôd la se pou Ou
+Pou tout tan, pou tout tan
+Paske Malkouwt la se pou Ou
+Puisans lan se pou Ou
+Kabôd la se pou Ou
+HallelouYah, Amèn</p>
+
+    <div class="refren">
+      <p class="etikèt">Final</p>
+      <p>Abinou, Abinou
+Nou rele Ou ak tout kè nou
+Abinou, Abinou
+Nou rete devan fas Ou
+Se pou Malkouwt Ou a vini
+Se pou volonté Ou fèt
+Se pou Non Ou rete qadosh
+Pou tout tan, Amen</p>
+    </div>
+  </div>
+</article>
+
+<div class="gran-tit-kat"><h2 class="kategori">Thabilah</h2></div>
 <!-- ============ TEHILLAH 11 ============ -->
 <article class="chant" id="tehillah-11">
   <header>
@@ -1291,115 +807,15 @@ Pou nou leve renouvle !</p>
   </div>
 </article>
 
-<!-- ============ TEHILLAH 13 ============ -->
-<article class="chant" id="tehillah-13">
+<div class="gran-tit-kat"><h2 class="kategori">Shabbat ak Moʿedim</h2></div>
+<!-- ============ TEHILLAH 7 ============ -->
+<article class="chant" id="tehillah-07">
   <header>
-    <span class="nimewo">Tehillah 13</span>
-    <h2>Chante pou Yahawah</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Tehillim 96</p>
+    <span class="nimewo">Tehillah 7</span>
+    <h2>Nou Swiv Ritm Malkouwt la</h2>
   </header>
 
-  <div class="lekte" data-src="tehillah-13-chante-pou-yahawah.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro — flûte + tanbouren</p>
-    <p>Chante pou Yahawah
-Tout tè a chante pou Li
-Leve vwa nou ansanm
-HallelouYah !</p>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Chante pou Yahawah yon chant nouvo
-Fè konnen delivrans Li chak jou
-Pami nasyon yo fè konnen Non Li
-Pami pèp yo rakonte mèvèy Li
-
-Yahawah gran, Li merite louwanj
-Pa gen tankou Li sou tout tè a
-Èlohim nasyon yo pa vo anyen
-Men Yah fè shamayim yo</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren — trè fasil</p>
-      <p>Chante ! Chante !
-Tout asanble a chante !
-Danse ! Danse !
-Devan Yahawah danse !
-
-Tanbouren sonnen
-Vyolon pran chante
-Flûte yo leve
-HallelouYah !</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Bay Yahawah kabôd ak puisans
-Pote louwanj devan Non Li
-Antre nan lakou Li ak jwa
-Vin adore Yah ansanm
-
-Se pou tè a tranble devan Li
-Paske Li ap vini pou jije
-Men Li fè sa avèk jistis
-Ak laverite pou tout pèp</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Chante ! Chante !
-Tout asanble a chante !
-Danse ! Danse !
-Devan Yahawah danse !
-
-Tanbouren sonnen
-Vyolon pran chante
-Flûte yo leve
-HallelouYah !</p>
-    </div>
-
-    <p class="etikèt">Pon — monte festif</p>
-    <p>Shamayim yo rejwi
-Tè a kontan
-Lanmè ap fè bri
-Tout bwa yo bat bravo
-
-Paske Yahawah ap vini
-Malkouwt Li ap kanpe
-Tout pèp va chante ansanm
-HallelouYah !</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren Final — eksplozif</p>
-      <p>Chante ! Chante !
-Tout asanble a chante !
-Danse ! Danse !
-Devan Yahawah danse !
-
-Tanbouren sonnen
-Vyolon pran chante
-Flûte yo leve
-HallelouYah !
-
-HallelouYah !
-Yahawah gran !</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 14 ============ -->
-<article class="chant" id="tehillah-14">
-  <header>
-    <span class="nimewo">Tehillah 14</span>
-    <h2>Nou Nan La Vwa</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Maʿasei 9:2 · 24:14</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-14-nou-nan-la-vwa.mp3">
+  <div class="lekte" data-src="tehillah-07-ritm-malkuwt.mp3">
     <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
     <div class="baraj">
       <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
@@ -1409,98 +825,101 @@ Yahawah gran !</p>
 
   <div class="pawol">
     <p class="etikèt">Intro</p>
-    <p>La Vwa !
-La Vwa !
-Nou nan La Vwa !</p>
+    <p>Nou pa maché selon mond lan
+Nou pa kouri dèyè van
+Nou viv selon ritm Yahawah
+Selon tan Malkouwt la</p>
 
-    <p class="etikèt">Kouple 1</p>
-    <p>Yo te rele nou pa non sa a,
-Depi nan premye jou yo.
-Se pa yon non moun envante,
-Se tras Li n ap swiv.
-Nan pawòl nou, nan aksyon nou,
-Nou mache jan Li te mache a.
-Sou chemen Yahushuʿaḥ a,
-Se la nou pran direksyon.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Nou nan La Vwa ! Nou nan La Vwa !
-Chemen Yahushuʿaḥ a !
-Nou nan La Vwa ! Nou nan La Vwa !
-Se Li kap dirije pa nou !
-Nou pa vin pou n inove,
-Nou retounen nan laverite !
-Nou nan La Vwa ! Nou nan La Vwa !
-Nap mache jan Li te fè a !</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Gen moun ki vire do ba li,
-Gen lòt ki pale mal de li.
-Men nou kenbe chemen an fèm,
-Nou pap janm kite l.
-Jan shilliakrim yo te mache a,
-Nou menm n ap mache konsa.
-Nou pap chanje direksyon,
-Nap rete sou tras la.</p>
+    <p class="etikèt">Kouple 1 — Zikaron (14 Abib)</p>
+    <p>Lané qadosh la ap vansé
+Tankou yon kantik byen òdoné
+Premye gran randevou a rive
+Zikaron, Seʿoudat ha'Adôn
+Katòz Abib nou sonjé li
+Kopher ki louvri chemen lavi
+Nou égzaminé fon kè nou
+Avèk rékonesans devan li</p>
 
     <div class="refren">
       <p class="etikèt">Refren</p>
-      <p>Nou nan La Vwa ! Nou nan La Vwa !
-Chemen Yahushuʿaḥ a !
-Nou nan La Vwa ! Nou nan La Vwa !
-Se Li kap dirije pa nou !
-Nou pa vin pou n inove,
-Nou retounen nan laverite !
-Nou nan La Vwa ! Nou nan La Vwa !
-Nap mache jan Li te fè a !</p>
+      <p>Nou viv selon ritm Malkouwt la
+Nou maché selon tan Yahawah
+Rosh Chodesh, Shabbat, gran fèt yo
+Sé chemen lavi pou pèp li a
+Nou viv selon ritm Malkouwt la
+Nou pa suiv batman mond lan
+Nou sonjé kiyès n ap sèvi
+Nou sonjé kiyès nou yé</p>
     </div>
 
-    <p class="etikèt">Kouple 3</p>
-    <p>Nan chak pa nou fè chak jou,
-Se modèl Li nap swiv.
-Nan sa nap di, nan sa nap fè,
-Se Li ki montre nou kijan.
-La Vwa se pa pawòl sèlman,
-Se lavi nou chak jou.
-Se mache dwat nan limyè,
-Se viv jan li te viv la.</p>
-
-    <p class="etikèt">Pon — apèl &amp; repons</p>
-    <p>Ki chemen n ap swiv ?
-La Vwa !
-Ki moun n ap swiv ?
-Yahushuʿaḥ !
-Nou pap vire !
-Nou pap sispann !
-Nou kenbe La Vwa !</p>
+    <p class="etikèt">Kouple 2 — Shabuʿot (6 Siban)</p>
+    <p>Shabuʿot rivé, sis Siban
+Moisson an levé nan sezon an
+Rasanbleman ak akonplisman
+Qehilah la grandi nan limyè
+Ansèyman vivan ap koulé
+Tankou dlo ki pa janm séché
+Sé tan matirité ak fòs
+Pou pèp ki kanpé nan vérité</p>
 
     <div class="refren">
-      <p class="etikèt">Final — tout asanble</p>
-      <p>Nou nan La Vwa !
-Nou nan La Vwa !
-Sou tout tè a n ap di :
-Nou nan La Vwa !
-Yahushuʿaḥ !
-Yahushuʿaḥ !
-Nap mache sou tras Li !
-LA VWA !!!
-LA VWA !!!
-LA VWA !!!</p>
+      <p class="etikèt">Refren</p>
+      <p>Nou viv selon ritm Malkouwt la
+Nou maché selon tan Yahawah
+Rosh Chodesh, Shabbat, gran fèt yo
+Sé chemen lavi pou pèp li a
+Nou viv selon ritm Malkouwt la
+Nou pa suiv batman mond lan
+Nou sonjé kiyès n ap sèvi
+Nou sonjé kiyès nou yé</p>
     </div>
+
+    <p class="etikèt">Kouple 3 — Soukkot (Tishri)</p>
+    <p>Soukkot vini nan Tishri
+Sèt jou lajwa devan li
+Nou sonjé tant zansèt yo
+Nou sonjé men ki té guidé yo
+Abitasyon tanporè sou tè sa
+Men espérans nou pa rété la
+Yon bon sant wayòm rétabli
+Yon pèp k ap chanté ak jwa</p>
+
+    <p class="etikèt">Pon — Rosh Chodesh ak Shabbat</p>
+    <p>Chak Rosh Chodesh sé nouvo souf
+Chak Shabbat sé repo qadosh
+Setyèm Yôm fè nou sonjé byen
+Lòm pa fèt pou kouri san fen
+Kalendriye sa pa dat sèlman
+Sé yon lekòl pou tout tan
+Li di nou lévé, sonjé byen
+Kiyès ou yé, kiyès ou sèvi</p>
+
+    <div class="refren">
+      <p class="etikèt">Dènye Refren</p>
+      <p>Nou viv selon ritm Malkouwt la
+Nou maché selon tan Yahawah
+Rosh Chodesh, Shabbat, gran fèt yo
+Sé chemen lavi pou pèp li a
+Nou viv selon ritm Malkouwt la
+Nou pa suiv batman mond lan
+Nou sonjé kiyès n ap sèvi
+Nou sonjé kiyès nou yé</p>
+    </div>
+
+    <p class="etikèt">Outro</p>
+    <p>HallelouYah
+Nou viv selon Wayòm nan</p>
   </div>
 </article>
 
-<!-- ============ TEHILLAH 15 ============ -->
-<article class="chant" id="tehillah-15">
+<!-- ============ TEHILLAH 8 ============ -->
+<article class="chant" id="tehillah-08">
   <header>
-    <span class="nimewo">Tehillah 15</span>
-    <h2>Nou Tout se Tal'midim</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Éphésiens 4:11-13</p>
+    <span class="nimewo">Tehillah 8</span>
+    <h2>De Lune en Lune, Nou Pwostèné Devan W</h2>
   </header>
 
-  <div class="lekte" data-src="tehillah-15-nou-se-talmidim.mp3">
+  <div class="lekte" data-src="tehillah-08-de-lune-en-lune.mp3">
     <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
     <div class="baraj">
       <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
@@ -1509,387 +928,59 @@ LA VWA !!!</p>
   </div>
 
   <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Nou tout se tal'midim…
-Se idantité nou…
-Nan Yahushuʿah…</p>
-
     <p class="etikèt">Kouple 1</p>
-    <p>Apre nou fin thabalé,
-Nou leve ak yon nouvèl vi.
-Nou antre nan chemen an,
-Pou nou rete ladan li.
-Se pa pou yon ti tan,
-Se pou tout lavi nou,
-Nou pote non sa a,
-Se idantité nou.</p>
+    <p>De lune en lune,
+Nou vin devan Ou.
+Tout chair ap koubé byen ba,
+Devant fas Ou.
+De lune an lune,
+Nou rasanblé ansanm,
+Pou levé Non Ou,
+Pou ba Ou onè.</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Nou kontan pwostèné devan w,
+Abba Yah, chak fwa jou sa rivé.
+Kè nou plen lajwa,
+Paské yon jou nan lakou w
+Gen plis valè pasé mil jou
+Nou pasé lòt koté.</p>
 
     <div class="refren">
       <p class="etikèt">Refren</p>
-      <p>Nou tout se tal'midim !
-Se idantité nou !
-Nou se manm Kò li a,
-Qehilah li a !
-Nap mache nan La Vwa,
-Yahushuʿah se Chemen an !
-Nou kanpe nan laverité,
-Nou pap gad dèyè !
-Nou tout se tal'midim,
-Pou tout tan !</p>
+      <p>Yon jou nan lakou w,
+Gen plis valè pase mil lòt koté.
+Yon jou devan fas Ou,
+Gen plis valè pasé tout lòt koté.
+Yon jou nan lakou w,
+Nou chwazi prezans Ou.
+Yon jou devan fas Ou,
+Nou ba Ou tout onè.</p>
     </div>
 
     <p class="etikèt">Kouple 2</p>
-    <p>Antanke tal'midim li,
-Li voye nou kòm temwen li.
-Jis nan dènye bout tè a,
-Pou nou pote pawòl li.
-Men avan tout bagay sa yo,
-Gen yon bagay ki rete klè :
-Se pa misyon an an premye,
-Se tal'midim nou ye.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Nou tout se tal'midim !
-Se idantité nou !
-Nou se manm Kò li a,
-Qehilah li a !
-Nap mache nan La Vwa,
-Yahushuʿah se Chemen an !
-Nou kanpe nan laverité,
-Nou pap gad dèyè !
-Nou tout se tal'midim,
-Pou tout tan !</p>
-    </div>
-
-    <p class="etikèt">Kouple 3</p>
-    <p>Pami tal'midim li yo,
-Li bay kèk nan nou kòm :
-Shilliaḥim ak nabī'im,
-Mebasserim tou.
-Roʿim ak melammedim,
-Chak moun nan plas yo,
-Pou leve moun ki Qadòsh yo,
-Pou bati Kò li a, Qehilah li a.</p>
+    <p>Nou pa néglijé rasanbleman nou,
+Nou pa rété pou kont nou.
+Nou vini pou ankourajé,
+Pou levé youn lòt.
+Chak mwa ki kòmansé,
+Nou levé jé nou anlè.
+Nou sonjé Ou fidèl,
+Nou sonjé pwomès Ou.</p>
 
     <p class="etikèt">Pon</p>
-    <p>Nou grandi ansanm,
-Nan émounah… nan konesans…
-Nou vin yon sèl,
-Nan Pitit 'Èlohim lan…
-Jiskaske nou rive,
-Nan nivo li ye a,
-Pou nou vin konplè,
-Menm jan avè l.</p>
+    <p>De lune en lune,
+Nou vin adoré Ou.
+De lune en lune,
+Nou ba Ou tout onè.</p>
 
     <div class="refren">
       <p class="etikèt">Dènye Refren</p>
-      <p>Nou tout se tal'midim !
-Se idantité nou !
-Nou se manm Kò li a,
-Qehilah li a !
-Nap mache nan La Vwa,
-Yahushuʿah se Chemen an !
-Nou kanpe nan laverité,
-Nou pap gad dèyè !
-Nou tout se tal'midim,
-Pou tout tan !</p>
+      <p>Yon jou nan lakou w,
+Gen plis valè pasé mil lòt koté.
+Yon jou nan lakou w,
+Gen plis valè pasé mil lòt koté.</p>
     </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 16 ============ -->
-<article class="chant" id="tehillah-16">
-  <header>
-    <span class="nimewo">Tehillah 16</span>
-    <h2>Chèche — Verifye</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Luqas 1:1-4</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-16-cheche-verifye.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro — piano + violon dous</p>
-    <p>Chèche… verifye…
-Mache nan laverite…
-Chèche… verifye…
-La Voie klere chemen an…</p>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Luqas te wè anpil récit
-Anpil moun te deja ekri
-Men li pa t swiv bri sèlman
-Li te chèche depi nan kòmansman
-Li egzamine — li verifye
-Pou l ekri bagay yo byen òdone
-Pou moun ki tande ansèyman an
-Ka konnen — se laverite</p>
-
-    <p class="etikèt">Pré-Refren</p>
-    <p>Jodi a gen anpil vwa
-Anpil pawòl k ap fè bri
-Youn di wi — lòt la di non
-Men nou pa mache avèg</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Chèche — verifye
-Egzamine avèk presizyon
-Pa swiv bri — pa swiv foul
-Kenbe sa ki bon devan Yah
-Chèche — verifye
-Retounen sou fondasyon an
-Ketubim Qadoshim klere chemen
-La Voie ap mache nan laverite</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Tal'mid Yahushuʿah yo
-Pa mache avèg nan chemen an
-Yo tcheke tout bagay ak pasyans
-Yo kenbe sa ki soti nan Yah
-Nou pap swiv tradisyon san prèv
-Nou pap swiv pawòl ki depase
-Sa ki ekri nan Ketubim yo
-Se la nou chwazi rete kanpe</p>
-
-    <p class="etikèt">Pré-Refren</p>
-    <p>Shilliaḥim yo — nabī'im yo
-Se fondasyon nou kanpe sou li
-Yahushuʿah devan chemen an
-Se vwa Li nou vle koute</p>
-
-    <div class="refren">
-      <p class="etikèt">Dènye Refren</p>
-      <p>Chèche — verifye
-Egzamine avèk presizyon
-Pa swiv bri — pa swiv foul
-Kenbe sa ki bon devan Yah
-Chèche — verifye
-Retounen sou fondasyon an
-Ketubim Qadoshim klere chemen
-La Voie ap mache nan laverite</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 17 ============ -->
-<article class="chant" id="tehillah-17">
-  <header>
-    <span class="nimewo">Tehillah 17</span>
-    <h2>Abinou ShebaShamayim</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Mattiyahu 6:9-13</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-17-abinou.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Abinou ShebaShamayim
-Nou leve vwa nou ba Ou
-Ak tout kè nou
-Ak tout néfèsh nou
-Nou vini devan Ou</p>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Abinou ShebaShamayim
-Se pou yo rekonèt Non w ki qadosh
-Ke tout tè a rekonèt Ou
-Ke tout nasyon chante Ou
-Se pou Malkouwt Ou a vini
-Se pou volonté Ou fèt
-Sou tè a tankou anwo a
-Nan tout lavi nou</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Abinou, Abinou
-Nou rele Ou ak tout kè nou
-Abinou, Abinou
-Nou leve men nou devan Ou
-Ban nou pen pou jounen an
-Padone devyasyon nou yo
-Tankou nou menm nou padone
-Moun ki fè nou mal yo</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Pa kite nou tonbe
-Nan chemen tantasyon
-Men delivre nou toujou
-Anba men Mechan an
-Ban nou fòs pou nou mache
-Ban nou limyè pou nou wè klè
-Ban nou kalm nan kè nou
-Pou nou rete fidèl</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Abinou, Abinou
-Nou rele Ou ak tout kè nou
-Abinou, Abinou
-Nou leve men nou devan Ou
-Ban nou pen pou jounen an
-Padone devyasyon nou yo
-Tankou nou menm nou padone
-Moun ki fè nou mal yo</p>
-    </div>
-
-    <p class="etikèt">Pon — doksoloji</p>
-    <p>Paske Malkouwt la se pou Ou
-Puisans lan se pou Ou
-Kabôd la se pou Ou
-Pou tout tan, pou tout tan
-Paske Malkouwt la se pou Ou
-Puisans lan se pou Ou
-Kabôd la se pou Ou
-HallelouYah, Amèn</p>
-
-    <div class="refren">
-      <p class="etikèt">Final</p>
-      <p>Abinou, Abinou
-Nou rele Ou ak tout kè nou
-Abinou, Abinou
-Nou rete devan fas Ou
-Se pou Malkouwt Ou a vini
-Se pou volonté Ou fèt
-Se pou Non Ou rete qadosh
-Pou tout tan, Amen</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 18 ============ -->
-<article class="chant" id="tehillah-18">
-  <header>
-    <span class="nimewo">Tehillah 18</span>
-    <h2>HallelouYah — Leve Men Nou</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Tehillim 118</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-18-halelouyah-leve-men.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>HallelouYah !
-Leve men nou !
-Tout asanble a chante !
-Yahawah bon — Li bon anpil !</p>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Yahawah se fòs mwen
-Li menm ki chant mwen
-Se Li menm ki delivrans mwen
-Mwen pap pè ankò
-Nan tant moun ki dwat yo
-Gen vwa lajwa k ap monte
-Men dwat Yah fè mèvèy
-Li leve — Li leve wo !</p>
-
-    <p class="etikèt">Pré-Refren</p>
-    <p>Mwen pap tonbe — non !
-Mwen pap rete anba — non !
-Mwen va pale byen fò
-Sou sa Yah fè pou mwen !</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Yahawah se fòs mwen !
-Yahawah se chante mwen !
-Li ban mwen delivrans !
-HallelouYah !
-Leve vwa nou !
-Tout pèp la chante !
-Danse devan Yah !
-Paske Li bon anpil !</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Yah korije mwen anpil
-Men Li pa kite m peri
-Li kenbe men mwen fèm
-Li fè m leve ankò
-Se jou Yah prepare pou nou
-Nou kontan — n ap danse ladan l
-Tout asanble a ap chante
-HallelouYah — wi !</p>
-
-    <p class="etikèt">Pré-Refren</p>
-    <p>Mwen pap tonbe — non !
-Mwen pap rete anba — non !
-Mwen va pale byen fò
-Sou sa Yah fè pou mwen !</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Yahawah se fòs mwen !
-Yahawah se chante mwen !
-Li ban mwen delivrans !
-HallelouYah !
-Leve vwa nou !
-Tout pèp la chante !
-Danse devan Yah !
-Paske Li bon anpil !</p>
-    </div>
-
-    <p class="etikèt">Pon — apèl &amp; repons — tout asanble</p>
-    <p>Mwen pap mouri ! — Non !
-M ap viv ! — Wi !
-Pou m rakonte zèv Yah yo !
-Mwen pap tonbe ! — Non !
-Yah kenbe m ! — Wi !
-Mwen va chante Non Li a !
-Louvri pou mwen ! — Wi !
-Pòt jistis yo ! — Wi !
-M ap antre ladan yo !
-Pou bay Yah kabôd ! — HallelouYah !</p>
-
-    <p class="etikèt">Poz salsa — tout asanble</p>
-    <p>Hé ! — Hé ! — Hé !
-Tout asanble a danse !
-Hé ! — Hé ! — Hé !
-Yahawah bon anpil !
-HallelouYah !</p>
-
-    <div class="refren">
-      <p class="etikèt">Chœur Final — x2 — gwo enèji</p>
-      <p>Yahawah se fòs mwen !
-Yahawah se chante mwen !
-Li ban mwen delivrans !
-HallelouYah !
-Leve vwa nou !
-Tout pèp la chante !
-Danse devan Yah !
-Paske Li bon anpil !
-Mwen pap mouri !
-M ap viv !
-Pou m rakonte zèv Yah yo !
-HallelouYah — Yahawah gran !</p>
-    </div>
-
-    <p class="etikèt">Outro — desann dous apre eksplozyon an</p>
-    <p>Yahawah se fòs mwen… wi…
-Yahawah se chant mwen… wi…
-Li ban mwen delivrans…
-HallelouYah — pou tout tan — amèn !</p>
   </div>
 </article>
 
@@ -2298,6 +1389,1292 @@ Todah Yahawah... Amèn.</p>
   </div>
 </article>
 
+<div class="gran-tit-kat"><h2 class="kategori">Ha'Dérèkh — Idantite nou</h2></div>
+<!-- ============ TEHILLAH 10 ============ -->
+<article class="chant" id="tehillah-10">
+  <header>
+    <span class="nimewo">Tehillah 10</span>
+    <h2>La Vwa — Mache nan Chemen an</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Cantique d'assemblée — Konpa</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-10-vwasi-la-vwa.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Kwochè d'ouverture — x2, piano + bass dous</p>
+    <p>Vwasi La Vwa — mache ladan l
+Vwasi La Vwa — Yahawah ban nou l</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Nou pa envante anyen, akhi
+Nou ap retrouve sa ki te la
+Ansyen fondasyon yo rele nou
+Ansyen chemen yo louvri devan nou</p>
+
+    <p class="etikèt">Pré-Refren — tout asanble antre</p>
+    <p>Se pa fòs — se pa pouvwa
+Se Rouacḥ Li — ki fè tout bagay</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren prensipal — konpa, tout moun ansanm</p>
+      <p>Nou plante — wi !
+Nou wouze — wi !
+Men se Yahawah ki fè l grandi !
+Nou fidèl — wi !
+Nou kanpe — wi !
+Pa Rouacḥ Li — nou mache — ankò !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Nou pa chèche gwo non ni glwa
+Nou pa bezwen aplòdisman lèzòm
+Jis jwenn nou fidèl — se sèl bagay
+Devan Yahawah — pou tout tan</p>
+
+    <p class="etikèt">Pré-Refren — tout asanble</p>
+    <p>Se pa fòs — se pa pouvwa
+Se Rouacḥ Li — ki fè tout bagay</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren — x2, pi fò</p>
+      <p>Nou plante — wi !
+Nou wouze — wi !
+Men se Yahawah ki fè l grandi !
+Nou fidèl — wi !
+Nou kanpe — wi !
+Pa Rouacḥ Li — nou mache — ankò !</p>
+    </div>
+
+    <p class="etikèt">Pon — apèl &amp; repons</p>
+    <p>Sa ki kòmanse piti
+Ap vin tounen yon milye — wi !
+Sa ki sanble piti
+Yah ka fè l tounen nasyon — wi !
+Nou pa bati anpi
+Nou ap simen Pawòl Li !
+Nou pa chèche Babèl
+Nou vle jis — jis fidèl !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren final — x3, majestueux, konpa full</p>
+      <p>Nou plante — wi !
+Nou wouze — wi !
+Men se Yahawah ki fè l grandi !
+Nou fidèl — wi !
+Nou kanpe — wi !
+Pa Rouacḥ Li — nou mache — ankò !</p>
+    </div>
+
+    <p class="etikèt">Outro — a cappella oswa piano sèl</p>
+    <p>Vwasi La Vwa... mache ladan l
+Vwasi La Vwa... Yahawah ban nou l
+Restaure... simen... temwaye...
+E kite Yahawah fè l grandi — amèn !</p>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 14 ============ -->
+<article class="chant" id="tehillah-14">
+  <header>
+    <span class="nimewo">Tehillah 14</span>
+    <h2>Nou Nan La Vwa</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Maʿasei 9:2 · 24:14</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-14-nou-nan-la-vwa.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>La Vwa !
+La Vwa !
+Nou nan La Vwa !</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Yo te rele nou pa non sa a,
+Depi nan premye jou yo.
+Se pa yon non moun envante,
+Se tras Li n ap swiv.
+Nan pawòl nou, nan aksyon nou,
+Nou mache jan Li te mache a.
+Sou chemen Yahushuʿaḥ a,
+Se la nou pran direksyon.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Nou nan La Vwa ! Nou nan La Vwa !
+Chemen Yahushuʿaḥ a !
+Nou nan La Vwa ! Nou nan La Vwa !
+Se Li kap dirije pa nou !
+Nou pa vin pou n inove,
+Nou retounen nan laverite !
+Nou nan La Vwa ! Nou nan La Vwa !
+Nap mache jan Li te fè a !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Gen moun ki vire do ba li,
+Gen lòt ki pale mal de li.
+Men nou kenbe chemen an fèm,
+Nou pap janm kite l.
+Jan shilliakrim yo te mache a,
+Nou menm n ap mache konsa.
+Nou pap chanje direksyon,
+Nap rete sou tras la.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Nou nan La Vwa ! Nou nan La Vwa !
+Chemen Yahushuʿaḥ a !
+Nou nan La Vwa ! Nou nan La Vwa !
+Se Li kap dirije pa nou !
+Nou pa vin pou n inove,
+Nou retounen nan laverite !
+Nou nan La Vwa ! Nou nan La Vwa !
+Nap mache jan Li te fè a !</p>
+    </div>
+
+    <p class="etikèt">Kouple 3</p>
+    <p>Nan chak pa nou fè chak jou,
+Se modèl Li nap swiv.
+Nan sa nap di, nan sa nap fè,
+Se Li ki montre nou kijan.
+La Vwa se pa pawòl sèlman,
+Se lavi nou chak jou.
+Se mache dwat nan limyè,
+Se viv jan li te viv la.</p>
+
+    <p class="etikèt">Pon — apèl &amp; repons</p>
+    <p>Ki chemen n ap swiv ?
+La Vwa !
+Ki moun n ap swiv ?
+Yahushuʿaḥ !
+Nou pap vire !
+Nou pap sispann !
+Nou kenbe La Vwa !</p>
+
+    <div class="refren">
+      <p class="etikèt">Final — tout asanble</p>
+      <p>Nou nan La Vwa !
+Nou nan La Vwa !
+Sou tout tè a n ap di :
+Nou nan La Vwa !
+Yahushuʿaḥ !
+Yahushuʿaḥ !
+Nap mache sou tras Li !
+LA VWA !!!
+LA VWA !!!
+LA VWA !!!</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 15 ============ -->
+<article class="chant" id="tehillah-15">
+  <header>
+    <span class="nimewo">Tehillah 15</span>
+    <h2>Nou Tout se Tal'midim</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Éphésiens 4:11-13</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-15-nou-se-talmidim.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>Nou tout se tal'midim…
+Se idantité nou…
+Nan Yahushuʿah…</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Apre nou fin thabalé,
+Nou leve ak yon nouvèl vi.
+Nou antre nan chemen an,
+Pou nou rete ladan li.
+Se pa pou yon ti tan,
+Se pou tout lavi nou,
+Nou pote non sa a,
+Se idantité nou.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Nou tout se tal'midim !
+Se idantité nou !
+Nou se manm Kò li a,
+Qehilah li a !
+Nap mache nan La Vwa,
+Yahushuʿah se Chemen an !
+Nou kanpe nan laverité,
+Nou pap gad dèyè !
+Nou tout se tal'midim,
+Pou tout tan !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Antanke tal'midim li,
+Li voye nou kòm temwen li.
+Jis nan dènye bout tè a,
+Pou nou pote pawòl li.
+Men avan tout bagay sa yo,
+Gen yon bagay ki rete klè :
+Se pa misyon an an premye,
+Se tal'midim nou ye.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Nou tout se tal'midim !
+Se idantité nou !
+Nou se manm Kò li a,
+Qehilah li a !
+Nap mache nan La Vwa,
+Yahushuʿah se Chemen an !
+Nou kanpe nan laverité,
+Nou pap gad dèyè !
+Nou tout se tal'midim,
+Pou tout tan !</p>
+    </div>
+
+    <p class="etikèt">Kouple 3</p>
+    <p>Pami tal'midim li yo,
+Li bay kèk nan nou kòm :
+Shilliaḥim ak nabī'im,
+Mebasserim tou.
+Roʿim ak melammedim,
+Chak moun nan plas yo,
+Pou leve moun ki Qadòsh yo,
+Pou bati Kò li a, Qehilah li a.</p>
+
+    <p class="etikèt">Pon</p>
+    <p>Nou grandi ansanm,
+Nan émounah… nan konesans…
+Nou vin yon sèl,
+Nan Pitit 'Èlohim lan…
+Jiskaske nou rive,
+Nan nivo li ye a,
+Pou nou vin konplè,
+Menm jan avè l.</p>
+
+    <div class="refren">
+      <p class="etikèt">Dènye Refren</p>
+      <p>Nou tout se tal'midim !
+Se idantité nou !
+Nou se manm Kò li a,
+Qehilah li a !
+Nap mache nan La Vwa,
+Yahushuʿah se Chemen an !
+Nou kanpe nan laverité,
+Nou pap gad dèyè !
+Nou tout se tal'midim,
+Pou tout tan !</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 28 ============ -->
+<article class="chant" id="tehillah-28">
+  <header>
+    <span class="nimewo">Tehillah 28</span>
+    <h2>Nou Se Reparatè Brèch Yo</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Yeshaʿeyah 58:12 · Maʿasei 9:2</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-28-reparate-brech.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Kouple 1</p>
+    <p>Yahawah rélé nou dépi byen lwen,
+Pou n lévé lavérité Li ankò.
+Nou kité tout cheminemen lèzòm,
+Pou n suiv Ha'Dérèkh Li a.
+Nou pa vin chanjé Dabar Li a,
+Nou pa vin envanté yon lòt chemen.
+Nou vini pou restaurer
+Sa Yahawah te tabli dépi nan kòmansman.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren — Tout asanble a</p>
+      <p>Nou sé réparatè brèch yo !
+Nou sé réstoratè chemen yo !
+Nou lévé pou n rébati,
+Nou lévé pou n restaurer.
+NON ! Nou pa pou refòm !
+WI ! Pou restauration !
+Yahawah rélé ! Nou réponn !
+Ha'Dérèkh ! Pou tout tan !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Nou kanpé sou ansyen fondasyon,
+Dabar Yahawah pa janm chanjé.
+N ap préparé chemin an dévan tout moun,
+Pou tout kè sensè ka rétounen.
+Pa fòs lèzòm,
+Ni pa tradisyon.
+Men avèk vérité Yahawah,
+Ki kanpé pou tout tan.</p>
+
+    <p class="etikèt">Pon</p>
+    <p>Yon sèl Dabar ! Yon sèl Chémen !
+Yon sèl Éspwa ! Yon sèl Pèp !
+Yahawah dévan nou !
+Yahushuʿah Chef nou !</p>
+
+    <div class="refren">
+      <p class="etikèt">Grand Refren Final</p>
+      <p>Nou sé réparatè brèch yo !
+Nou sé réstoratè chémen yo !
+Nou pap fè bak ! Nou pap lagué !
+Jiskaské tout bagay rétablit !
+Ha'Dérèkh ! Ha'Dérèkh ! Ha'Dérèkh !
+Pou tout tan !</p>
+    </div>
+  </div>
+</article>
+
+<div class="gran-tit-kat"><h2 class="kategori">Lavérite ak Fidelite</h2></div>
+<!-- ============ TEHILLAH 1 ============ -->
+<article class="chant" id="tehillah-01">
+  <header>
+    <span class="nimewo">Tehillah 1</span>
+    <h2>Ret Fidèl Jouk Adôn nan Retounen</h2>
+  </header>
+
+  <div class="lekte" data-src="tehillah-01-ret-fidel.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol sonk">
+    <div class="seksyon">
+    <p class="etikèt">Couplet 1</p>
+    <p>Ki moun Adôn nan va jwenn,
+Lè li vini san avèti ?
+Ki moun ki va toujou kanpé,
+Nan sèvis li té konfyé l ?
+Se pa tit lèzòm bay,
+Se pa lwanj moun ka chanté ;
+Men sé lavi ki rété dwat,
+Jouk lè Adôn nan va parèt.</p>
+    </div>
+
+    <div class="seksyon">
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Nou pap chèché gwo plas,
+Nou pap chèché gwo non ;
+Nou vlé sèlman rété fidèl,
+Jouk retou Adôn lan.</p>
+    </div>
+
+    <div class="refren seksyon">
+      <p class="etikèt">Refrain</p>
+      <p>Ret fidèl ! Ret fidèl !
+Jouk Adôn nan rétounen.
+Kenbé fèm ! Pa lagué !
+Jouk Adôn nan rétounen.
+Lè l vini, sé pou l jwenn
+Nou toujou ap sèvi.
+Lè l vini, sé pou l di :
+« Byennéré sèvitè sa a ! »</p>
+    </div>
+
+    <div class="seksyon">
+    <p class="etikèt">Couplet 2</p>
+    <p>Li té ban nou Dabar li a,
+Pou n patajé ak renmen ;
+Li té ban nou responsabilité,
+Pou n sèvi chak jou san pran plézi nan tèt nou.
+Se pa pou n dominé lòt,
+Ni pou n levé tèt nou wo ;
+Nou sé sèvitè devan Adôn,
+N ap tann sèlman jijman li.</p>
+    </div>
+
+    <div class="seksyon">
+    <p class="etikèt">Pont</p>
+    <p>Si yo ban nou anpil,
+Y ap mandé n anpil.
+Ann maché ak krent,
+Ann sèvi ak tout kè nou.
+Se Adôn lan ki va jijé,
+Se Adôn lan ki va palé.
+Li konnen tout sa nou fè,
+Anyen pa kaché devan li.</p>
+    </div>
+
+    <div class="refren seksyon">
+      <p class="etikèt">Dernier Refrain</p>
+      <p>Ret fidèl ! Ret fidèl !
+Jouk Adôn nan rétounen.
+Bay manjé nan tan li,
+Jan li té mandé nou.
+Lè l vini, sé pou l jwenn
+Nou toujou ap fè volonté l.
+Épi n ap tandé vwa l di :
+« Byennéré sèvitè fidèl ki prévwayan an. »</p>
+    </div>
+
+    <div class="seksyon">
+    <p class="etikèt">Final (Chœur)</p>
+    <p>Yahawah, ban nou fòs
+Pou n kenbé jouk nan fen an.
+Yahushuʿah, Adôn nou,
+Sé ou menm n ap tann.
+Ret fidèl ! Ret fidèl !
+Jouk Adôn nan rétounen.</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 2 ============ -->
+<article class="chant" id="tehillah-02">
+  <header>
+    <span class="nimewo">Tehillah 2</span>
+    <h2>Tan Yahawah yo Se pou Li</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Mattiyahu 22:21 · Maʿasei 1:7</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-02-tan-yahawah.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro (Chœur)</p>
+    <p>Yahawah...
+Tan yo se pou Ou...
+Moʿedim Ou yo...
+Pou tout tan...</p>
+
+    <p class="etikèt">Couplet 1</p>
+    <p>Dépi Ou té kréyé shamayim yo ak tè a,
+Ou fiksé jou yo ak sézon yo.
+Ou rélé pèp Ou pou maché,
+Nan chémen Ou préparé a.
+Pa gen wa... Pa gen pouvwa...
+Ki ka chanjé sa Ou di.
+Paské tout tan yo,
+Rété nan men Ou.</p>
+
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Nou levé jé nou...
+Nou chèché Dabar Ou...
+Nou kité tout chémen lèzòm...
+Pou n swiv chémen Ou.</p>
+
+    <div class="refren">
+      <p class="etikèt">Grand Refrain (Assemblée)</p>
+      <p>Tan Yahawah yo... Sé pou Li !
+Moʿedim Li yo... Sé pou Li !
+Miqra Qadosh yo... Sé pou Li !
+Nou pap chanjé... Sa Li fiksé !
+Rann a César... Sa ki pou César !
+Men sa ki pou Yahawah... Rété pou Li !
+Hé ! Hé ! Hé !</p>
+    </div>
+
+    <p class="etikèt">Couplet 2</p>
+    <p>Yahushuʿah fè nou konprann,
+Gen limit pou pouvwa moun.
+Papa a kenbé nan men Li,
+Tout tan Li té fiksé.
+Nou pap suiv... Tradisyon moun...
+Nou pap suiv... Lidé moun...
+Nou rétounen...
+Sou ansyen chemen an...
+Yahawah trasé.</p>
+
+    <p class="etikèt">Pont</p>
+    <p>Lévé vwa nou !! Lévé men nou !!
+Ann chanté !! Ann fè konnen !!
+Yahawah sèl... Mèt tan yo !!
+Yahawah sèl... Mèt Moʿedim yo !!
+Yahawah sèl... Mèt Miqra Qadosh yo !!</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain Final (Très puissant)</p>
+      <p>Tan Yahawah yo... Sé pou Li !
+Nou pap rétiré... Nou pap ajouté !
+Nou suiv Dabar Li...
+Nou suiv kalandriyé Li...
+Nou suiv Moʿedim Li...
+Nou suiv Miqra Qadosh Li...
+Paské...
+Tan Yahawah yo... SE POU LI !!</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 3 ============ -->
+<article class="chant" id="tehillah-03">
+  <header>
+    <span class="nimewo">Tehillah 3</span>
+    <h2>Rapèl Yah yo Fèm</h2>
+  </header>
+
+  <div class="lekte" data-src="12_Rapel_Yah_yo_fem.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>Hmmm... Yahawah...
+Nou meté konfyans nou nan Dabar Ou...
+Hmmm...</p>
+
+    <p class="etikèt">Couplet 1</p>
+    <p>Lè chemen an sanblé fènwa
+Lè kesyon levé nan kè nou
+Nou levé jé nou bò koté Ou
+Paské Dabar Ou pa chanjé
+Pawòl moun pasé tankou van
+Men sa Ou di reté pou tout tan
+Rapèl Ou yo tankou yon limyè
+Ki kleré devan pyé nou</p>
+
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Nou meté konfyans nou nan Ou
+Nou meté konfyans nou nan Dabar Ou</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>Rapèl Yah yo fèm
+Rapèl Yah yo sèten
+Yo bay kè nou fòs
+Yo guidé lavi nou
+Rapèl Yah yo fèm
+Yo mérite konfyans
+Lè tout bagay souké
+Nou reté kanpé</p>
+    </div>
+
+    <p class="etikèt">Couplet 2</p>
+    <p>Anpil vwa palé toupatou
+Anpil lidé travèsé mond lan
+Men nou chwazi kouté Yah
+Paské se Li ki konnen chemen an
+Lè nou febli anba chay lavi
+Lè dlo jé konn desann
+Rapèl Ou yo levé kè nou
+Yo fè nou reprann fòs</p>
+
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Nou meté konfyans nou nan Ou
+Nou meté konfyans nou nan Dabar Ou</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>Rapèl Yah yo fèm
+Rapèl Yah yo sèten
+Yo bay kè nou fòs
+Yo guidé lavi nou
+Rapèl Yah yo fèm
+Yo mérite konfyans
+Lè tout bagay souké
+Nou reté kanpé</p>
+    </div>
+
+    <p class="etikèt">Pont — flûte + trompèt monte doucement</p>
+    <p>Shamayim ak tè ka pasé
+Men Dabar Ou reté fèm — pou tout tan
+Nou va maché nan limyè Li
+Jiska bout chemen an
+Menm nan nwit ki pi fènwa
+Rapèl Ou yo kleré wout la
+Nou pa pèdi espwa nou
+Paské Ou toujou la — Ou toujou la</p>
+
+    <div class="refren">
+      <p class="etikèt">Final Chorus — tout asanble — doux men solid</p>
+      <p>Rapèl Yah yo fèm
+Rapèl Yah yo sèten
+Yo bay kè nou fòs
+Yo guidé lavi nou
+Rapèl Yah yo fèm
+Yo mérite konfyans
+Lè tout bagay souké
+Nou reté kanpé</p>
+    </div>
+
+    <p class="etikèt">Outro — gita sèl, trè doux</p>
+    <p>HallelouYah...
+Nou meté konfyans nou nan Ou...
+Rapèl Ou yo fèm...
+Pou tout tan — amèn — amèn...</p>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 4 ============ -->
+<article class="chant" id="tehillah-04">
+  <header>
+    <span class="nimewo">Tehillah 4</span>
+    <h2>N ap Kanpé Ansanm</h2>
+  </header>
+
+  <div class="lekte" data-src="tehillah-04-nap-kanpe-ansanm.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Couplet 1</p>
+    <p>Lè van soufrans levé sou chemen an,
+Nou pa kouri kité akhim yo pou kont yo.
+Menm lè jouman tonbe tankou lapli,
+Nou rété fèm, nou maché men nan men.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>N ap kanpé ansanm, nan lanmou ak kouraj,
+N ap soutni youn lòt jouk bout vwayaj la.
+Pa gen éprèv ki ka séparé nou,
+Yahawah wè fidélité nou chak jou.
+(N ap kanpé ansanm)</p>
+    </div>
+
+    <p class="etikèt">Couplet 2</p>
+    <p>Lè youn ap kriyé anba gwo chay la,
+Lòt la lonjé men san ézité.
+Nan inyon ak bonté nou kontinyé,
+Pou ankourajé tout moun ki fébli.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>N ap kanpé ansanm, nan lanmou ak kouraj,
+N ap soutni youn lòt jouk bout vwayaj la.
+Pa gen éprèv ki ka séparé nou,
+Yahawah wè fidélité nou chak jou.
+(N ap kanpé ansanm)</p>
+    </div>
+
+    <p class="etikèt">Pont</p>
+    <p>Pa pè lè fènwa kouvri shamayim yo,
+Limyè pap janm sispann kléré.
+Ansanm n ap kenbé fèm sou chemen an,
+Jiskaské livre lan rivé.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain Final</p>
+      <p>N ap kanpé ansanm, ak yon kè ki ini,
+Nan tout éprèv nou pap lagué.
+Lanmou sensè ap rété vivan,
+Yahawah ap soutni nou chak jou.
+(N ap kanpé ansanm)</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 6 ============ -->
+<article class="chant" id="tehillah-06">
+  <header>
+    <span class="nimewo">Tehillah 6</span>
+    <h2>Egzaminé Lavérité</h2>
+  </header>
+
+  <div class="lekte" data-src="tehillah-06-egzamine-laverite.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>Hmmm...
+Ann chèche lavérité...
+Ann rété nan Dabar Yah...
+Hmmm...</p>
+
+    <p class="etikèt">Couplet 1</p>
+    <p>Gen anpil vwa nan mond lan
+Anpil Pawòl k ap sikilé
+Youn di wi — lòt la di non
+Ki chemen pou nou pran ?
+Yah pa mandé nou swiv avèg
+Ni kouri dèyè tout van
+Li ban nou Ketubim Qadoshim
+Pou kléré chemen nou</p>
+
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Testé rouash yo...
+Gadé si yo soti nan Yah...
+Kenbé sa ki bon...
+Rété fèm nan lavérité...</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>Egzaminé tout bagay !
+Kenbé sa ki bon !
+Retounen nan Ketubim yo !
+Pou wè si sa vré !
+Egzaminé tout bagay !
+Pa swiv bri moun !
+Dabar Yah rété fèm !
+Pou tout tan !</p>
+    </div>
+
+    <p class="etikèt">Couplet 2</p>
+    <p>Béréens yo te gen bon kè
+Yo te resevwa Pawòl la
+Men chak jou yo t ap vérifyé
+Nan Ketubim Qadoshim yo
+Yo pa t rejté san kouté
+Ni aksepté san egzamen
+Yo t ap chèché lavérité
+Ak tout kè yo devan Yah</p>
+
+    <p class="etikèt">Pré-Refrain</p>
+    <p>Testé rouash yo...
+Gadé si yo soti nan Yah...
+Kenbé sa ki bon...
+Rété fèm nan lavérité...</p>
+
+    <div class="refren">
+      <p class="etikèt">Refrain</p>
+      <p>Egzaminé tout bagay !
+Kenbé sa ki bon !
+Retounen nan Ketubim yo !
+Pou wè si sa vré !
+Egzaminé tout bagay !
+Pa swiv bri moun !
+Dabar Yah rété fèm !
+Pou tout tan !</p>
+    </div>
+
+    <p class="etikèt">Chevalet — saksofòn + flûte monte</p>
+    <p>Pa alé pi lwen
+Pasé sa ki ekri — non !
+Pa kité tradisyon moun
+Fè w pèdi chemen an — non !
+Ketubim Qadoshim yo
+Se limyè devan pyé nou — wi !
+Nou va mache ladan yo
+Jiska bout chemen an — wi !
+Tankou Béréens yo chak jou
+Nou verifyé — nou chèché
+Nou kenbé sa ki soti nan Yah
+E nou lagué sa ki pa vré</p>
+
+    <div class="refren">
+      <p class="etikèt">Chœur final — x2 — tout asanble</p>
+      <p>Egzaminé tout bagay !
+Kenbé sa ki bon !
+Retounen nan Ketubim yo !
+Pou wè si sa vré !
+Egzaminé tout bagay !
+Pa swiv bri moun !
+Dabar Yah rété fèm !
+Pou tout tan !</p>
+    </div>
+
+    <p class="etikèt">Outro — flûte sèl, trè dous</p>
+    <p>HallelouYah... nou renmen lavérité
+HallelouYah... nou chèché chak jou
+Ketubim Qadoshim klere nou</p>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 16 ============ -->
+<article class="chant" id="tehillah-16">
+  <header>
+    <span class="nimewo">Tehillah 16</span>
+    <h2>Chèche — Verifye</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Luqas 1:1-4</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-16-cheche-verifye.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro — piano + violon dous</p>
+    <p>Chèche… verifye…
+Mache nan laverite…
+Chèche… verifye…
+La Voie klere chemen an…</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Luqas te wè anpil récit
+Anpil moun te deja ekri
+Men li pa t swiv bri sèlman
+Li te chèche depi nan kòmansman
+Li egzamine — li verifye
+Pou l ekri bagay yo byen òdone
+Pou moun ki tande ansèyman an
+Ka konnen — se laverite</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Jodi a gen anpil vwa
+Anpil pawòl k ap fè bri
+Youn di wi — lòt la di non
+Men nou pa mache avèg</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Chèche — verifye
+Egzamine avèk presizyon
+Pa swiv bri — pa swiv foul
+Kenbe sa ki bon devan Yah
+Chèche — verifye
+Retounen sou fondasyon an
+Ketubim Qadoshim klere chemen
+La Voie ap mache nan laverite</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Tal'mid Yahushuʿah yo
+Pa mache avèg nan chemen an
+Yo tcheke tout bagay ak pasyans
+Yo kenbe sa ki soti nan Yah
+Nou pap swiv tradisyon san prèv
+Nou pap swiv pawòl ki depase
+Sa ki ekri nan Ketubim yo
+Se la nou chwazi rete kanpe</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Shilliaḥim yo — nabī'im yo
+Se fondasyon nou kanpe sou li
+Yahushuʿah devan chemen an
+Se vwa Li nou vle koute</p>
+
+    <div class="refren">
+      <p class="etikèt">Dènye Refren</p>
+      <p>Chèche — verifye
+Egzamine avèk presizyon
+Pa swiv bri — pa swiv foul
+Kenbe sa ki bon devan Yah
+Chèche — verifye
+Retounen sou fondasyon an
+Ketubim Qadoshim klere chemen
+La Voie ap mache nan laverite</p>
+    </div>
+  </div>
+</article>
+
+<div class="gran-tit-kat"><h2 class="kategori">Louwanj ak Fèt</h2></div>
+<!-- ============ TEHILLAH 13 ============ -->
+<article class="chant" id="tehillah-13">
+  <header>
+    <span class="nimewo">Tehillah 13</span>
+    <h2>Chante pou Yahawah</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Tehillim 96</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-13-chante-pou-yahawah.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro — flûte + tanbouren</p>
+    <p>Chante pou Yahawah
+Tout tè a chante pou Li
+Leve vwa nou ansanm
+HallelouYah !</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Chante pou Yahawah yon chant nouvo
+Fè konnen delivrans Li chak jou
+Pami nasyon yo fè konnen Non Li
+Pami pèp yo rakonte mèvèy Li
+
+Yahawah gran, Li merite louwanj
+Pa gen tankou Li sou tout tè a
+Èlohim nasyon yo pa vo anyen
+Men Yah fè shamayim yo</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren — trè fasil</p>
+      <p>Chante ! Chante !
+Tout asanble a chante !
+Danse ! Danse !
+Devan Yahawah danse !
+
+Tanbouren sonnen
+Vyolon pran chante
+Flûte yo leve
+HallelouYah !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Bay Yahawah kabôd ak puisans
+Pote louwanj devan Non Li
+Antre nan lakou Li ak jwa
+Vin adore Yah ansanm
+
+Se pou tè a tranble devan Li
+Paske Li ap vini pou jije
+Men Li fè sa avèk jistis
+Ak laverite pou tout pèp</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Chante ! Chante !
+Tout asanble a chante !
+Danse ! Danse !
+Devan Yahawah danse !
+
+Tanbouren sonnen
+Vyolon pran chante
+Flûte yo leve
+HallelouYah !</p>
+    </div>
+
+    <p class="etikèt">Pon — monte festif</p>
+    <p>Shamayim yo rejwi
+Tè a kontan
+Lanmè ap fè bri
+Tout bwa yo bat bravo
+
+Paske Yahawah ap vini
+Malkouwt Li ap kanpe
+Tout pèp va chante ansanm
+HallelouYah !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren Final — eksplozif</p>
+      <p>Chante ! Chante !
+Tout asanble a chante !
+Danse ! Danse !
+Devan Yahawah danse !
+
+Tanbouren sonnen
+Vyolon pran chante
+Flûte yo leve
+HallelouYah !
+
+HallelouYah !
+Yahawah gran !</p>
+    </div>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 18 ============ -->
+<article class="chant" id="tehillah-18">
+  <header>
+    <span class="nimewo">Tehillah 18</span>
+    <h2>HallelouYah — Leve Men Nou</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Tehillim 118</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-18-halelouyah-leve-men.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>HallelouYah !
+Leve men nou !
+Tout asanble a chante !
+Yahawah bon — Li bon anpil !</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Yahawah se fòs mwen
+Li menm ki chant mwen
+Se Li menm ki delivrans mwen
+Mwen pap pè ankò
+Nan tant moun ki dwat yo
+Gen vwa lajwa k ap monte
+Men dwat Yah fè mèvèy
+Li leve — Li leve wo !</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Mwen pap tonbe — non !
+Mwen pap rete anba — non !
+Mwen va pale byen fò
+Sou sa Yah fè pou mwen !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Yahawah se fòs mwen !
+Yahawah se chante mwen !
+Li ban mwen delivrans !
+HallelouYah !
+Leve vwa nou !
+Tout pèp la chante !
+Danse devan Yah !
+Paske Li bon anpil !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Yah korije mwen anpil
+Men Li pa kite m peri
+Li kenbe men mwen fèm
+Li fè m leve ankò
+Se jou Yah prepare pou nou
+Nou kontan — n ap danse ladan l
+Tout asanble a ap chante
+HallelouYah — wi !</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Mwen pap tonbe — non !
+Mwen pap rete anba — non !
+Mwen va pale byen fò
+Sou sa Yah fè pou mwen !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Yahawah se fòs mwen !
+Yahawah se chante mwen !
+Li ban mwen delivrans !
+HallelouYah !
+Leve vwa nou !
+Tout pèp la chante !
+Danse devan Yah !
+Paske Li bon anpil !</p>
+    </div>
+
+    <p class="etikèt">Pon — apèl &amp; repons — tout asanble</p>
+    <p>Mwen pap mouri ! — Non !
+M ap viv ! — Wi !
+Pou m rakonte zèv Yah yo !
+Mwen pap tonbe ! — Non !
+Yah kenbe m ! — Wi !
+Mwen va chante Non Li a !
+Louvri pou mwen ! — Wi !
+Pòt jistis yo ! — Wi !
+M ap antre ladan yo !
+Pou bay Yah kabôd ! — HallelouYah !</p>
+
+    <p class="etikèt">Poz salsa — tout asanble</p>
+    <p>Hé ! — Hé ! — Hé !
+Tout asanble a danse !
+Hé ! — Hé ! — Hé !
+Yahawah bon anpil !
+HallelouYah !</p>
+
+    <div class="refren">
+      <p class="etikèt">Chœur Final — x2 — gwo enèji</p>
+      <p>Yahawah se fòs mwen !
+Yahawah se chante mwen !
+Li ban mwen delivrans !
+HallelouYah !
+Leve vwa nou !
+Tout pèp la chante !
+Danse devan Yah !
+Paske Li bon anpil !
+Mwen pap mouri !
+M ap viv !
+Pou m rakonte zèv Yah yo !
+HallelouYah — Yahawah gran !</p>
+    </div>
+
+    <p class="etikèt">Outro — desann dous apre eksplozyon an</p>
+    <p>Yahawah se fòs mwen… wi…
+Yahawah se chant mwen… wi…
+Li ban mwen delivrans…
+HallelouYah — pou tout tan — amèn !</p>
+  </div>
+</article>
+
+<!-- ============ TEHILLAH 27 ============ -->
+<article class="chant" id="tehillah-27">
+  <header>
+    <span class="nimewo">Tehillah 27</span>
+    <h2>Tout Sa Ki Gen Souf — Fè Lwanj</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Tehillim 150</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-27-tout-sa-ki-gen-souf.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>Fè lwanj ! Fè lwanj Yahawah !
+Tout sa ki gen souf — fè lwanj !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Fè lwanj Yahawah nan plas li ki qadosh,
+Fè lwanj li nan fòs shamayim yo !
+Pou zèv li ki pwisan,
+Pou grandè li ki san limite,
+Nou leve vwa nou ansanm !</p>
+    </div>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Tout sa ki gen souf — fè lwanj Yahawah !
+Tout sa kap viv — leve vwa yo !
+Avèk fòs, ak tout kè nou,
+Nap chante pou Non li !
+Tout sa ki gen souf — fè lwanj Yahawah !
+Pa rete an silans ankò !
+Avèk lajwa, avèk enèji,
+Nap ba li lwanj !</p>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Fè lwanj li ak son twonpèt yo,
+Ak gita, ak lyr ki chante !
+Ak tanbou ak dans ansanm,
+Ak kòd ak flit ki sonnen,
+Tout bagay ap fè bri pou li !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Tout sa ki gen souf — fè lwanj Yahawah !
+Tout sa kap viv — leve vwa yo !
+Avèk fòs, ak tout kè nou,
+Nap chante pou Non li !
+Tout sa ki gen souf — fè lwanj Yahawah !
+Pa rete an silans ankò !
+Avèk lajwa, avèk enèji,
+Nap ba li lwanj !</p>
+    </div>
+
+    <p class="etikèt">Pon</p>
+    <p>Avèk senbal ki sonnen fò !
+Avèk senbal ki fè bri !
+Tout bagay ki respire,
+Vin fè lwanj Yahawah !</p>
+
+    <div class="refren">
+      <p class="etikèt">Final — tout asanble</p>
+      <p>Tout sa ki gen souf — fè lwanj Yahawah !
+Tout sa ki gen souf — fè lwanj Yahawah !
+Leve vwa nou ! Bat men nou !
+Fè lwanj Yahawah !
+TOUT SA KI GEN SOUF !!!
+FÈ LWANJ YAH !!!</p>
+    </div>
+  </div>
+</article>
+
+<div class="gran-tit-kat"><h2 class="kategori">Kreyasyon ak Restorasyon</h2></div>
+<!-- ============ TEHILLAH 5 ============ -->
+<article class="chant" id="tehillah-05">
+  <header>
+    <span class="nimewo">Tehillah 5</span>
+    <h2>Nou nan Moman Restorasyon an</h2>
+  </header>
+
+  <div class="lekte" data-src="tehillah-05-restorasyon.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <div class="refren">
+      <p class="etikèt">Refren (Assemblée)</p>
+      <p>Nou retounen sou vyé chemen an,
+Yahawah louvri jé nou !
+Pa Yahushuʿah, Li fè nou wè,
+Dabar vérité a kléré !
+Ann chanté, ann levé vwa nou,
+Kè nou plen ak rekonésans.
+Nou nan restorasyon Yahawah,
+Pou tout tan, ak lajwa !</p>
+    </div>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Nou t ap chèchè nan anpil wout,
+Men Yahawah fè nou tounen.
+Li lonjé men pa Pitit Li a,
+Pou montré nou bon chemen an.
+Sa ki te krazé, Li rébati,
+Sa ki te pédi, Li rasanblé.
+Kè nou kontan, n ap chanté fò,
+Paské Li fè nou viv ankò.</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Nou retounen sou vyé chemen an,
+Yahawah louvri jé nou !
+Pa Yahushuʿah, Li fè nou wè,
+Dabar vérité a kléré !
+Ann chanté, ann levé vwa nou,
+Kè nou plen ak rekonésans.
+Nou nan restorasyon Yahawah,
+Pou tout tan, ak lajwa !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Nou rébati ansyen fondasyon yo,
+Nou levé miray ki te tonbé.
+Nou suiv chemine ki bon dépi lontan,
+Se la repo a jwenn plas li.
+Avèk inyon, avèk lanmou,
+Nou maché san gad dèyè.
+Nou se yon pèp ki kanpé fèm,
+Pou fè volonté Yahawah.</p>
+
+    <p class="etikèt">Pon</p>
+    <p>Levé men nou, chanté byen fò !
+Jodi a se yon jou lajwa !
+Vérité a kléré nan mitan nou,
+Kè nou plen ak remèsiman.
+Ann maché ansanm san dékourajé,
+Jiskaské travay la fin fèt.
+Yahawah rélé nou pou rebati,
+E nou réponn ak tout fòs nou.</p>
+
+    <div class="refren">
+      <p class="etikèt">Dènye Refren</p>
+      <p>Nou retounen sou vyé chemen an,
+Yahawah louvri jé nou !
+Pa Yahushuʿah, Li fè nou wè,
+Dabar vérité a kléré !
+Ann chanté, ann levé vwa nou,
+Kè nou plen ak rekonésans.
+Nou nan restorasyon Yahawah,
+Pou tout tan, ak lajwa !</p>
+    </div>
+  </div>
+</article>
+
 <!-- ============ TEHILLAH 23 ============ -->
 <article class="chant" id="tehillah-23">
   <header>
@@ -2581,351 +2958,6 @@ Sa Yah fè yo bèl !
 Tout bagay te bon anpil !
 HallelouYah ! Malkouwt la ap vini !</p>
     </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 26 ============ -->
-<article class="chant" id="tehillah-26">
-  <header>
-    <span class="nimewo">Tehillah 26</span>
-    <h2>Nan Mitan Jounen An</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Toda Raba, Abba Yah — Téfilah de midi</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-26-nan-mitan-jounen.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Abba Yah…
-Nan mitan jounen an…
-Nou leve vwa nou…</p>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Nan mitan jounen an,
-Nou retounen devan ou,
-Nan bri lavi a,
-Nou chwazi chèche ou.
-Soti nan maten rive kounye a,
-Ou te kenbe nou,
-San bri, san fòse,
-Ou toujou la pou nou.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Toda raba, Abba Yah,
-Pou fòs ou ban nou.
-Toda raba, Abba Yah,
-Paske ou kenbe nou.
-Toda raba, Abba Yah,
-Nan mitan jounen an,
-Nou leve vwa nou,
-Pou louwe ou ankò.</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Nan mitan aktivite yo,
-Nan tout sa n ap fè,
-Nou pa bliye ou,
-Nou rete devan ou.
-Pa kite nou distrè,
-Pa kite nou pèdi,
-Men kenbe nou fèm,
-Nan chemen ou mete a.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Toda raba, Abba Yah,
-Pou fòs ou ban nou.
-Toda raba, Abba Yah,
-Paske ou kenbe nou.
-Toda raba, Abba Yah,
-Nan mitan jounen an,
-Nou leve vwa nou,
-Pou louwe ou ankò.</p>
-    </div>
-
-    <p class="etikèt">Pon</p>
-    <p>Lè nou bouke,
-Ou leve nou ankò.
-Lè panse nou gaye,
-Ou rasanble yo.
-Avèk Rouaḥ Ha'Qodesh ou,
-Ou gide pa nou,
-Ou mete limyè,
-Nan tout sa n ap fè.
-Nou pa pou kont nou,
-Nou mache ak ou,
-Nan chak etap nou fè,
-Ou toujou la pou nou.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Toda raba, Abba Yah,
-Pou fòs ou ban nou.
-Toda raba, Abba Yah,
-Paske ou kenbe nou.
-Toda raba, Abba Yah,
-Nan mitan jounen an,
-Nou leve vwa nou,
-Pou louwe ou ankò.</p>
-    </div>
-
-    <p class="etikèt">Dènye kouple</p>
-    <p>Nou se tal'midim,
-Nou mache nan La Voie,
-Nou se manm Kò li a,
-Qehilah li a.
-Nou pa vire dèyè,
-Nou kontinye mache,
-Jiska fen jounen an,
-Nou rete fidèl.</p>
-
-    <p class="etikèt">Outro</p>
-    <p>Toda raba… toda raba…
-Toda raba, Abba Yah…
-Nan mitan jounen an,
-Nou kontinye mache…</p>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 27 ============ -->
-<article class="chant" id="tehillah-27">
-  <header>
-    <span class="nimewo">Tehillah 27</span>
-    <h2>Tout Sa Ki Gen Souf — Fè Lwanj</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Tehillim 150</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-27-tout-sa-ki-gen-souf.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro</p>
-    <p>Fè lwanj ! Fè lwanj Yahawah !
-Tout sa ki gen souf — fè lwanj !</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Fè lwanj Yahawah nan plas li ki qadosh,
-Fè lwanj li nan fòs shamayim yo !
-Pou zèv li ki pwisan,
-Pou grandè li ki san limite,
-Nou leve vwa nou ansanm !</p>
-    </div>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Tout sa ki gen souf — fè lwanj Yahawah !
-Tout sa kap viv — leve vwa yo !
-Avèk fòs, ak tout kè nou,
-Nap chante pou Non li !
-Tout sa ki gen souf — fè lwanj Yahawah !
-Pa rete an silans ankò !
-Avèk lajwa, avèk enèji,
-Nap ba li lwanj !</p>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Fè lwanj li ak son twonpèt yo,
-Ak gita, ak lyr ki chante !
-Ak tanbou ak dans ansanm,
-Ak kòd ak flit ki sonnen,
-Tout bagay ap fè bri pou li !</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren</p>
-      <p>Tout sa ki gen souf — fè lwanj Yahawah !
-Tout sa kap viv — leve vwa yo !
-Avèk fòs, ak tout kè nou,
-Nap chante pou Non li !
-Tout sa ki gen souf — fè lwanj Yahawah !
-Pa rete an silans ankò !
-Avèk lajwa, avèk enèji,
-Nap ba li lwanj !</p>
-    </div>
-
-    <p class="etikèt">Pon</p>
-    <p>Avèk senbal ki sonnen fò !
-Avèk senbal ki fè bri !
-Tout bagay ki respire,
-Vin fè lwanj Yahawah !</p>
-
-    <div class="refren">
-      <p class="etikèt">Final — tout asanble</p>
-      <p>Tout sa ki gen souf — fè lwanj Yahawah !
-Tout sa ki gen souf — fè lwanj Yahawah !
-Leve vwa nou ! Bat men nou !
-Fè lwanj Yahawah !
-TOUT SA KI GEN SOUF !!!
-FÈ LWANJ YAH !!!</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 28 ============ -->
-<article class="chant" id="tehillah-28">
-  <header>
-    <span class="nimewo">Tehillah 28</span>
-    <h2>Nou Se Reparatè Brèch Yo</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Yeshaʿeyah 58:12 · Maʿasei 9:2</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-28-reparate-brech.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Kouple 1</p>
-    <p>Yahawah rélé nou dépi byen lwen,
-Pou n lévé lavérité Li ankò.
-Nou kité tout cheminemen lèzòm,
-Pou n suiv Ha'Dérèkh Li a.
-Nou pa vin chanjé Dabar Li a,
-Nou pa vin envanté yon lòt chemen.
-Nou vini pou restaurer
-Sa Yahawah te tabli dépi nan kòmansman.</p>
-
-    <div class="refren">
-      <p class="etikèt">Refren — Tout asanble a</p>
-      <p>Nou sé réparatè brèch yo !
-Nou sé réstoratè chemen yo !
-Nou lévé pou n rébati,
-Nou lévé pou n restaurer.
-NON ! Nou pa pou refòm !
-WI ! Pou restauration !
-Yahawah rélé ! Nou réponn !
-Ha'Dérèkh ! Pou tout tan !</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Nou kanpé sou ansyen fondasyon,
-Dabar Yahawah pa janm chanjé.
-N ap préparé chemin an dévan tout moun,
-Pou tout kè sensè ka rétounen.
-Pa fòs lèzòm,
-Ni pa tradisyon.
-Men avèk vérité Yahawah,
-Ki kanpé pou tout tan.</p>
-
-    <p class="etikèt">Pon</p>
-    <p>Yon sèl Dabar ! Yon sèl Chémen !
-Yon sèl Éspwa ! Yon sèl Pèp !
-Yahawah dévan nou !
-Yahushuʿah Chef nou !</p>
-
-    <div class="refren">
-      <p class="etikèt">Grand Refren Final</p>
-      <p>Nou sé réparatè brèch yo !
-Nou sé réstoratè chémen yo !
-Nou pap fè bak ! Nou pap lagué !
-Jiskaské tout bagay rétablit !
-Ha'Dérèkh ! Ha'Dérèkh ! Ha'Dérèkh !
-Pou tout tan !</p>
-    </div>
-  </div>
-</article>
-
-<!-- ============ TEHILLAH 29 ============ -->
-<article class="chant" id="tehillah-29">
-  <header>
-    <span class="nimewo">Tehillah 29</span>
-    <h2>Mèsi, Abba Yah, Pou Lanmou Ou</h2>
-    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">1 Yaḥuānān 4:8 · Yaḥuānān 3:16 · Romiyim 5:8</p>
-  </header>
-
-  <div class="lekte" data-src="tehillah-29-mesi-abba-yah.mp3">
-    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
-    <div class="baraj">
-      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
-      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
-    </div>
-  </div>
-
-  <div class="pawol">
-    <p class="etikèt">Intro — tout dous</p>
-    <p>Abba Yah...
-Nou lévé vwa nou...
-Avèk rekonésans...
-Mèsi...</p>
-
-    <p class="etikèt">Kouple 1</p>
-    <p>Lè nou pa t gen éspwa,
-Ou pa t viré do ban nou.
-Lanmou Ou té chèché nou,
-Avan menm nou té chèché Ou.
-Ou rélé nou pa non nou,
-Ou louvri chémen lavi a.
-Kè nou ranpli ak rekonésans,
-Paské Ou pa janm lagué nou.</p>
-
-    <p class="etikèt">Pré-Refren</p>
-    <p>Ki jan n ap rémèt Ou ?
-Pou tout byenfè Ou yo ?
-Nou poté yon sèl repons :
-Yon kè ki di...</p>
-
-    <div class="refren">
-      <p class="etikèt">Grand Refren — Assemblée</p>
-      <p>Mèsi, Abba Yah !
-Pou lanmou Ou !
-Mèsi, Abba Yah !
-Pou mizèrikòd Ou !
-Ou pa janm lagué nou !
-Ou toujou rélé nou !
-Avèk tout kè nou,
-Nou di :
-Mèsi, Abba Yah !</p>
-    </div>
-
-    <p class="etikèt">Kouple 2</p>
-    <p>Lanmou Ou pa janm fini,
-Li pi fò pasé tout lapérèz.
-Li lévé nou lè nou tonbé,
-Li ban nou éspwa ankò.
-Ou voyé Yahushuʿah,
-Pou fè volonté Ou parèt.
-Sé nan Li nou jwenn chémen an,
-Ki mennen nou bò koté Ou.</p>
-
-    <p class="etikèt">Pon</p>
-    <p>Nou pap sispann chanté !
-Nou pap sispann rémèsyé !
-Dépi solèy lévé,
-Jiska li kouché,
-Shèm Ou mérité louwanj !</p>
-
-    <div class="refren">
-      <p class="etikèt">Dènye Refren</p>
-      <p>Mèsi, Abba Yah !
-Pou lanmou Ou !
-Mèsi, Abba Yah !
-Pou fidélité Ou !
-Tout lavi nou,
-N ap chanté pou Ou !
-Tout pèp Ou a,
-N ap lévé vwa nou !
-Mèsi, Abba Yah !
-Mèsi ! Mèsi ! Mèsi !</p>
-    </div>
-
-    <p class="etikèt">Outro — a cappella</p>
-    <p>Abba Yah...
-Nou renmen Ou...
-Paské Ou té renmen nou an prémyé.
-Mèsi...</p>
   </div>
 </article>
 
