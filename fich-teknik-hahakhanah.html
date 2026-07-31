@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fich Teknik — HaHakhanah · Prepare pou Antre nan Repo Yahawah a</title>
+<style>
+:root{
+  --parch:#f4efe4;
+  --parch-2:#ede5d4;
+  --ink:#241f18;
+  --ink-soft:#4a4234;
+  --muted:#726a58;
+  --indigo:#2f3b6b;
+  --indigo-soft:#4a5892;
+  --or:#a97e33;
+  --or-soft:#c9a34e;
+  --line:#d6cbb2;
+  --line-soft:#e4dcc8;
+  --card:#faf6ec;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  background:var(--parch);
+  color:var(--ink);
+  line-height:1.72;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- Hero imaj (enfografik) ---- */
+.hero-img-wrap{
+  width:100%;background:var(--parch-2);
+  border-bottom:1px solid var(--line);
+  text-align:center;padding:0;
+}
+.hero-img-wrap img{
+  display:block;max-width:100%;height:auto;margin:0 auto;
+}
+.hero-img-cap{
+  font-size:12.5px;color:var(--muted);font-style:italic;
+  padding:10px 22px;letter-spacing:.02em;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+
+/* ---- Bandeau lang ---- */
+.langbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,239,228,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.langbar-inner{
+  max-width:760px;margin:0 auto;padding:10px 22px;
+  display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+}
+.langbar .brand{
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--indigo);margin-right:auto;font-weight:600;
+}
+.langbtn{
+  font-family:inherit;font-size:14px;
+  padding:5px 13px;border:1px solid var(--line);
+  background:transparent;color:var(--ink-soft);
+  border-radius:2px;cursor:pointer;letter-spacing:.03em;
+  transition:all .18s ease;
+}
+.langbtn:hover{border-color:var(--or-soft);color:var(--ink)}
+.langbtn.active{
+  background:var(--indigo);color:#f4efe4;border-color:var(--indigo);
+}
+
+/* ---- En-tête ---- */
+header.hero{
+  text-align:center;
+  padding:64px 0 40px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:14px;
+}
+.hero .eyebrow{
+  font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--or);margin-bottom:20px;
+}
+.hero .derekh{
+  font-size:15px;letter-spacing:.06em;color:var(--indigo-soft);
+  font-style:italic;margin-bottom:8px;
+}
+.hero h1{
+  font-size:31px;line-height:1.28;font-weight:600;
+  color:var(--ink);max-width:19ch;margin:0 auto 22px;
+  letter-spacing:-.01em;
+}
+.hero .rule{
+  width:54px;height:2px;background:var(--or);margin:0 auto 22px;
+}
+.hero .intro{
+  font-size:16px;color:var(--ink-soft);max-width:56ch;margin:0 auto;
+  font-style:italic;
+}
+
+/* ---- Sections ---- */
+.sec{padding:34px 0;border-bottom:1px solid var(--line-soft)}
+.sec:last-of-type{border-bottom:none}
+.sec .num{
+  font-size:12px;letter-spacing:.24em;color:var(--or);
+  text-transform:uppercase;margin-bottom:12px;font-weight:600;
+}
+.sec h2{
+  font-size:22px;line-height:1.32;font-weight:600;
+  color:var(--indigo);margin-bottom:18px;letter-spacing:-.01em;
+}
+.sec p{margin-bottom:15px;color:var(--ink-soft)}
+.sec p.lead{color:var(--ink);font-size:17.5px}
+.sec strong{color:var(--ink);font-weight:600}
+.sec em{color:var(--indigo-soft)}
+
+ul.clean{list-style:none;margin:6px 0 15px}
+ul.clean li{
+  padding:5px 0 5px 22px;position:relative;color:var(--ink-soft);
+}
+ul.clean li::before{
+  content:"";position:absolute;left:2px;top:15px;
+  width:6px;height:6px;background:var(--or-soft);
+  transform:rotate(45deg);
+}
+
+ol.reasons{list-style:none;counter-reset:r;margin:8px 0 6px}
+ol.reasons li{
+  counter-increment:r;position:relative;
+  padding:12px 0 12px 46px;border-top:1px solid var(--line-soft);
+  color:var(--ink-soft);
+}
+ol.reasons li:first-child{border-top:none}
+ol.reasons li::before{
+  content:counter(r);position:absolute;left:0;top:12px;
+  width:28px;height:28px;line-height:28px;text-align:center;
+  border:1px solid var(--or-soft);color:var(--or);
+  border-radius:50%;font-size:14px;
+}
+
+/* ---- Tableaux ---- */
+.tbl{width:100%;border-collapse:collapse;margin:10px 0 8px;font-size:15.5px}
+.tbl th{
+  text-align:left;padding:9px 12px;background:var(--indigo);
+  color:#efe8d6;font-weight:600;font-size:13px;
+  letter-spacing:.04em;
+}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft)}
+.tbl tr:nth-child(even) td{background:var(--parch-2)}
+.tbl td strong{color:var(--indigo)}
+.tbl .ref{font-size:13.5px;color:var(--muted);font-style:italic}
+
+/* ---- Encadrés ---- */
+.note{
+  background:var(--card);border-left:3px solid var(--or);
+  padding:15px 18px;margin:16px 0;font-size:15.5px;color:var(--ink-soft);
+}
+.note b{color:var(--or);font-weight:600}
+.quote{
+  border-left:3px solid var(--indigo-soft);
+  padding:6px 0 6px 20px;margin:18px 0;
+  font-style:italic;color:var(--ink);font-size:17px;
+}
+.refs{font-size:14px;color:var(--muted);font-style:italic;margin-top:4px}
+
+/* ---- Sentèz ---- */
+.synth{
+  background:var(--indigo);color:#e9e2d0;
+  padding:38px 30px;margin:34px 0 10px;border-radius:3px;
+}
+.synth .num{color:var(--or-soft)}
+.synth h2{color:#f4efe4}
+.synth p{color:#ded5be}
+.synth strong{color:#fff}
+.synth em{color:var(--or-soft)}
+
+footer{
+  text-align:center;padding:40px 0 60px;
+  border-top:1px solid var(--line);margin-top:20px;
+}
+footer .org{font-size:14px;color:var(--indigo);letter-spacing:.05em}
+footer .site{font-size:13px;color:var(--muted);margin-top:4px;letter-spacing:.08em}
+
+
+.datebox{
+  background:var(--card);border-left:3px solid var(--indigo-soft);
+  padding:14px 18px;margin:16px 0 4px;font-size:15.5px;color:var(--ink-soft);
+}
+.datebox b{color:var(--indigo);font-weight:600}
+.term{font-style:italic;color:var(--indigo-soft)}
+
+[data-lang]{display:none}
+[data-lang].show{display:block}
+
+@media(max-width:520px){
+  body{font-size:16px}
+  .hero h1{font-size:26px}
+  .sec h2{font-size:20px}
+  .tbl{font-size:14px}
+  .tbl th,.tbl td{padding:7px 9px}
+}
+</style>
+<style>
+  .aud-block{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--or);
+    padding:20px 22px;
+    margin:26px 0;
+    border-radius:3px;
+  }
+  .aud-block .aud-label{
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--or);font-weight:600;margin-bottom:6px;
+  }
+  .aud-block .aud-titre{
+    font-size:17px;color:var(--ink);margin-bottom:12px;font-style:italic;
+  }
+  .aud-block audio{width:100%;height:40px;}
+</style>
+
+<body>
+
+<div class="hero-img-wrap">
+  <img src="fich-hahakhanah.jpg" alt="Fich Teknik — Yôm Shishi · Ereb Shabbath · HaHakhanah">
+  <div class="hero-img-cap">Yon sèl jou, twa rapèl enpòtan — Fich Teknik La Voie</div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Fich Teknik</div>
+    <div class="derekh">Ha'Derekh · La Voie</div>
+    <h1>Prepare pou Antre nan Repo Yahawah a</h1>
+    <div class="rule"></div>
+    <p class="intro">Sizyèm jou semèn nan pote twa non nan Ketubim Qedoshim yo — Yôm Shishi, Ereb Shabbath, HaHakhanah — youn pou kreyasyon, youn pou tan an, ak youn pou preparasyon nou. Chak non louvri yon rapèl sou fason pou n antre nan repo Yahawah a san n pa pran l pa sipriz.</p>
+  </header>
+
+  <div class="aud-block">
+    <div class="aud-label">✦ Vwa: Prepare n pou n rantre</div>
+    <div class="aud-titre">Yon meditasyon 4 min 48 s sou HaHakhanah, ak menm anbyans mizikal Tèks pou Jounen an</div>
+    <audio controls preload="none" src="fich-hahakhanah-vwa.mp3"></audio>
+  </div>
+
+  <section class="sec">
+    <div class="num">1 · Yôm Shishi</div>
+    <h2>Sizyèm jou kreyasyon an</h2>
+    <p class="lead">Yahawah te kreye lòm nan imaj Li — gason ak fi — e Li ba yo responsablite sou tè a.</p>
+    <p>Se sou jou sa a Li te fini tout kreyasyon L la, epi lè Li te gade tout sa Li te fè, deklarasyon an te klè: <em>sa te bon anpil</em>. Sizyèm jou a se pa yon jou nòmal; se jou kote Yahawah mete koulè sou tout desen L la epi Li fini l ak dignite lòm.</p>
+    <p class="refs">📖 Beré'shit 1:24–31</p>
+  </section>
+
+  <section class="sec">
+    <div class="num">2 · Ereb Shabbath</div>
+    <h2>Papòt jou repo a</h2>
+    <p class="lead">Apre sis jou travay, Yahawah repoze nan setyèm jou a, Li beni l e Li mete l apa.</p>
+    <p>Ereb Shabbath se moman transisyon: solèy la ap kouche, semèn nan ap fèmen, repo Yahawah a ap ouvè. Se pa yon fen nan konfizyon; se yon antre nan yon espas sen. Yahawah pa t rele n sèlman travay; Li rele n antre nan repo L la ak konesans sou sa n ap fè.</p>
+    <div class="quote">« Sonje jou Shabbath la pou mete l apa. »<div class="refs">— Shemôth 20:8</div></div>
+    <p class="refs">📖 Beré'shit 2:2–3</p>
+  </section>
+
+  <section class="sec">
+    <div class="num">3 · HaHakhanah</div>
+    <h2>Jou preparasyon an</h2>
+    <p class="lead">Prepare sa ki nesesè davans pou aktivite òdinè yo pa anvayi tan Yahawah mete apa a.</p>
+    <p>HaHakhanah vle di <em class="term">preparasyon</em>. Menm jan pèp la nan Ketubim Qedoshim yo te prepare pen Shabbath yo yon jou davans, se menm sa Yahawah rele n fè jodi a: pou n òganize travay nou, kwit sa n ap manje, pran swen sa ki bezwen swen, dekwa lè lè Shabbath la rive, nou lib pou n antre nan li tout antye.</p>
+    <div class="quote">Jou preparasyon an — avan Shabbath la.<div class="refs">— Marqos 15:42 · Louqas 23:54 · Yahuānān 19:31, 42</div></div>
+    <p class="refs">📖 Shemôth 16:23</p>
+  </section>
+
+  <section class="synth">
+    <div class="num">Sentèz</div>
+    <h2>Prepare pou antre nan repo Yahawah a</h2>
+    <div class="quote" style="border-left-color:var(--or-soft);color:#f4efe4">« Donk, gen yon repo Shabbath ki rete pou pèp 'Èlohim nan. »<div class="refs" style="color:#c9a34e">— Ibriyim 4:9</div></div>
+    <div class="quote" style="border-left-color:var(--or-soft);color:#f4efe4">« Shabbath la te fèt pou lòm... »<div class="refs" style="color:#c9a34e">— Marqos 2:27</div></div>
+    <p style="font-size:18px;margin-top:22px"><strong>Shabbath la pa ta dwe pran nou pa sipriz.</strong> Nou konnen li ap vinen; se poutèt sa nou prepare pou li.</p>
+    <p>Yon tal'mid ki respekte HaHakhanah, se yon tal'mid ki respekte Shabbath la anvan menm li kòmanse — paske li rekonèt tan Yahawah mete apa a merite pou n mete l apa nan lespri nou an premye.</p>
+  </section>
+
+  <footer>
+    <p class="org">Les Membres de La Voie</p>
+    <p class="site">lavoie.world · Tal'midim de Yahushuʿah</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
