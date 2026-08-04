@@ -71,17 +71,17 @@
     text-transform:uppercase;text-align:center;margin-bottom:2rem;
   }
   .tit-seksyon::before,.tit-seksyon::after{content:" ✦ ";color:var(--ligne)}
-  .endeks ol{list-style:none;counter-reset:tehillah}
-  .endeks li{counter-increment:tehillah;border-bottom:1px dotted var(--ligne)}
-  .endeks li.kategori-tit{counter-increment:none;border-bottom:none}
+  .endeks ol{list-style:none}
+  .endeks li{border-bottom:1px dotted var(--ligne)}
+  .endeks li.kategori-tit{border-bottom:none}
   .endeks a{
     display:flex;align-items:baseline;gap:1rem;
     padding:1rem .3rem;color:var(--ivoire);text-decoration:none;
   }
   .endeks a:hover,.endeks a:focus-visible{color:var(--dore-pal)}
-  .endeks a::before{
-    content:counter(tehillah,decimal-leading-zero);
+  .endeks a .num{
     color:var(--dore);font-size:.85rem;letter-spacing:.1em;
+    flex-shrink:0;
   }
   .kategori{
     color:var(--dore);font-size:.72rem;letter-spacing:.28em;
@@ -184,46 +184,46 @@
   <h2 class="tit-seksyon">Endèks</h2>
   <ol>
     <li class="kategori-tit"><span class="kategori">Téfilot</span></li>
-    <li><a href="#tehillah-09">Toda Raba, Abba Yah</a></li>
-    <li><a href="#tehillah-26">Nan Mitan Jounen An</a></li>
-    <li><a href="#tehillah-29">Mèsi, Abba Yah, Pou Lanmou Ou</a></li>
-    <li><a href="#tehillah-17">Abinou ShebaShamayim</a></li>
+    <li><a href="#tehillah-09"><span class="num">09</span>Toda Raba, Abba Yah</a></li>
+    <li><a href="#tehillah-26"><span class="num">26</span>Nan Mitan Jounen An</a></li>
+    <li><a href="#tehillah-29"><span class="num">29</span>Mèsi, Abba Yah, Pou Lanmou Ou</a></li>
+    <li><a href="#tehillah-17"><span class="num">17</span>Abinou ShebaShamayim</a></li>
     <li class="kategori-tit"><span class="kategori">Thabilah</span></li>
-    <li><a href="#tehillah-11">Thabalé</a></li>
-    <li><a href="#tehillah-12">Nan Dlo a Nou Leve</a></li>
+    <li><a href="#tehillah-11"><span class="num">11</span>Thabalé</a></li>
+    <li><a href="#tehillah-12"><span class="num">12</span>Nan Dlo a Nou Leve</a></li>
     <li class="kategori-tit"><span class="kategori">Shabbat ak Moʿedim</span></li>
-    <li><a href="#tehillah-07">Nou Swiv Ritm Malkouwt la</a></li>
-    <li><a href="#tehillah-08">De Lune en Lune, Nou Pwostèné Devan W</a></li>
-    <li><a href="#tehillah-19">Prepare Nou pou Rantre</a></li>
-    <li><a href="#tehillah-20">Shabbat — yon Kado Yah Ban Nou</a></li>
-    <li><a href="#tehillah-21">Shabbat — Repo Solanèl</a></li>
-    <li><a href="#tehillah-22">Ann Antre nan HaHakhanah</a></li>
+    <li><a href="#tehillah-07"><span class="num">07</span>Nou Swiv Ritm Malkouwt la</a></li>
+    <li><a href="#tehillah-08"><span class="num">08</span>De Lune en Lune, Nou Pwostèné Devan W</a></li>
+    <li><a href="#tehillah-19"><span class="num">19</span>Prepare Nou pou Rantre</a></li>
+    <li><a href="#tehillah-20"><span class="num">20</span>Shabbat — yon Kado Yah Ban Nou</a></li>
+    <li><a href="#tehillah-21"><span class="num">21</span>Shabbat — Repo Solanèl</a></li>
+    <li><a href="#tehillah-22"><span class="num">22</span>Ann Antre nan HaHakhanah</a></li>
     <li class="kategori-tit"><span class="kategori">Ha'Dérèkh — Idantite nou</span></li>
-    <li><a href="#tehillah-10">La Vwa — Mache nan Chemen an</a></li>
-    <li><a href="#tehillah-14">Nou Nan La Vwa</a></li>
-    <li><a href="#tehillah-15">Nou Tout se Tal'midim</a></li>
-    <li><a href="#tehillah-28">Nou Se Reparatè Brèch Yo</a></li>
+    <li><a href="#tehillah-10"><span class="num">10</span>La Vwa — Mache nan Chemen an</a></li>
+    <li><a href="#tehillah-14"><span class="num">14</span>Nou Nan La Vwa</a></li>
+    <li><a href="#tehillah-15"><span class="num">15</span>Nou Tout se Tal'midim</a></li>
+    <li><a href="#tehillah-28"><span class="num">28</span>Nou Se Reparatè Brèch Yo</a></li>
     <li class="kategori-tit"><span class="kategori">Lavérite ak Fidelite</span></li>
-    <li><a href="#tehillah-01">Ret Fidèl Jouk Adôn nan Retounen</a></li>
-    <li><a href="#tehillah-02">Tan Yahawah yo Se pou Li</a></li>
-    <li><a href="#tehillah-03">Rapèl Yah yo Fèm</a></li>
-    <li><a href="#tehillah-04">N ap Kanpé Ansanm</a></li>
-    <li><a href="#tehillah-06">Egzaminé Lavérité</a></li>
-    <li><a href="#tehillah-16">Chèche — Verifye</a></li>
-    <li><a href="#tehillah-31">Batay Sa a Se Batay Yahawah</a></li>
-    <li><a href="#tehillah-34">Nan Non Yahawah Mwen Kanpe</a></li>
+    <li><a href="#tehillah-01"><span class="num">01</span>Ret Fidèl Jouk Adôn nan Retounen</a></li>
+    <li><a href="#tehillah-02"><span class="num">02</span>Tan Yahawah yo Se pou Li</a></li>
+    <li><a href="#tehillah-03"><span class="num">03</span>Rapèl Yah yo Fèm</a></li>
+    <li><a href="#tehillah-04"><span class="num">04</span>N ap Kanpé Ansanm</a></li>
+    <li><a href="#tehillah-06"><span class="num">06</span>Egzaminé Lavérité</a></li>
+    <li><a href="#tehillah-16"><span class="num">16</span>Chèche — Verifye</a></li>
+    <li><a href="#tehillah-31"><span class="num">31</span>Batay Sa a Se Batay Yahawah</a></li>
+    <li><a href="#tehillah-34"><span class="num">34</span>Nan Non Yahawah Mwen Kanpe</a></li>
     <li class="kategori-tit"><span class="kategori">Louwanj ak Fèt</span></li>
-    <li><a href="#tehillah-13">Chante pou Yahawah</a></li>
-    <li><a href="#tehillah-18">HallelouYah — Leve Men Nou</a></li>
-    <li><a href="#tehillah-27">Tout Sa Ki Gen Souf — Fè Lwanj</a></li>
-    <li><a href="#tehillah-32">Chirat Ha'Yam — M ap Chante pou Yahawah</a></li>
-    <li><a href="#tehillah-33">Nou pap Fè Silans</a></li>
+    <li><a href="#tehillah-13"><span class="num">13</span>Chante pou Yahawah</a></li>
+    <li><a href="#tehillah-18"><span class="num">18</span>HallelouYah — Leve Men Nou</a></li>
+    <li><a href="#tehillah-27"><span class="num">27</span>Tout Sa Ki Gen Souf — Fè Lwanj</a></li>
+    <li><a href="#tehillah-32"><span class="num">32</span>Chirat Ha'Yam — M ap Chante pou Yahawah</a></li>
+    <li><a href="#tehillah-33"><span class="num">33</span>Nou pap Fè Silans</a></li>
     <li class="kategori-tit"><span class="kategori">Kreyasyon ak Restorasyon</span></li>
-    <li><a href="#tehillah-05">Nou nan Moman Restorasyon an</a></li>
-    <li><a href="#tehillah-23">Jou a ap Vini</a></li>
-    <li><a href="#tehillah-24">Ou te Kreye Nou Selon Imaj Ou</a></li>
-    <li><a href="#tehillah-25">Tout Bagay Te Bon Anpil</a></li>
-    <li><a href="#tehillah-30">Konsekans Dezobeyisans Premye Paran Nou Yo</a></li>
+    <li><a href="#tehillah-05"><span class="num">05</span>Nou nan Moman Restorasyon an</a></li>
+    <li><a href="#tehillah-23"><span class="num">23</span>Jou a ap Vini</a></li>
+    <li><a href="#tehillah-24"><span class="num">24</span>Ou te Kreye Nou Selon Imaj Ou</a></li>
+    <li><a href="#tehillah-25"><span class="num">25</span>Tout Bagay Te Bon Anpil</a></li>
+    <li><a href="#tehillah-30"><span class="num">30</span>Konsekans Dezobeyisans Premye Paran Nou Yo</a></li>
     <!-- Pwochen Tehillot yo ap ajoute isit la -->
   </ol>
 </nav>
