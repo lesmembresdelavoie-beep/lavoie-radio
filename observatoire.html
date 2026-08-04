@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observatoire de La Voie — Analyses & Statistiques</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.jpg">
+<style>
+  :root{
+    --bleu-nuit:#060d1a;
+    --bleu-fonce:#0a1428;
+    --bleu-doux:#0f1e3a;
+    --or:#c9a84c;
+    --or-clair:#e8cb7a;
+    --or-pale:#f7edcc;
+    --parchemin:#e8f0f8;
+    --gris:#8a9bb5;
+    --ligne:rgba(201,168,76,0.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:var(--bleu-nuit);
+    color:var(--parchemin);
+    line-height:1.7;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---- Navigation retour ---- */
+  .nav-back{
+    position:sticky;top:0;z-index:100;
+    background:rgba(6,13,26,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--ligne);
+    padding:0.9rem 1.4rem;
+  }
+  .nav-back a{
+    color:var(--or-clair);
+    text-decoration:none;
+    font-family:'Cinzel',serif;
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    display:inline-flex;align-items:center;gap:0.5rem;
+  }
+  .nav-back a:hover{color:var(--or-pale)}
+
+  /* ---- HERO ---- */
+  .hero{
+    text-align:center;
+    padding:3.5rem 1.5rem 2.5rem;
+    background:
+      radial-gradient(ellipse at top, rgba(201,168,76,0.10), transparent 70%),
+      var(--bleu-nuit);
+    border-bottom:1px solid var(--ligne);
+  }
+  .hero-icone{font-size:2.4rem;margin-bottom:0.6rem}
+  .hero-eyebrow{
+    font-family:'Cinzel',serif;
+    font-size:0.72rem;letter-spacing:0.28em;
+    color:var(--or);text-transform:uppercase;
+    margin-bottom:0.9rem;
+  }
+  .hero h1{
+    font-family:'Cinzel',serif;font-weight:700;
+    font-size:clamp(1.7rem, 5.5vw, 2.5rem);
+    color:var(--or-pale);letter-spacing:0.04em;
+    line-height:1.15;margin-bottom:0.7rem;
+  }
+  .hero-tagline{
+    font-style:italic;color:var(--or-clair);
+    font-size:1.05rem;margin-bottom:1.6rem;
+    letter-spacing:0.02em;
+  }
+  .hero-tagline span{
+    display:inline-block;margin:0 0.3em;
+    color:var(--or);opacity:0.7;
+  }
+  .hero-intro{
+    max-width:640px;margin:0 auto;
+    color:var(--parchemin);opacity:0.9;
+    font-size:1rem;line-height:1.75;
+  }
+
+  /* ---- Édition (mois) ---- */
+  .edition{
+    max-width:780px;margin:0 auto;
+    padding:2.4rem 1.5rem 1.4rem;
+  }
+  .edition-header{
+    text-align:center;margin-bottom:2.4rem;
+    padding-bottom:1.6rem;
+    border-bottom:1px solid var(--ligne);
+  }
+  .edition-num{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;letter-spacing:0.28em;
+    color:var(--or);text-transform:uppercase;
+  }
+  .edition-titre{
+    font-family:'Cinzel',serif;font-weight:600;
+    font-size:1.5rem;color:var(--or-pale);
+    margin-top:0.5rem;letter-spacing:0.03em;
+  }
+  .edition-periode{
+    font-style:italic;color:var(--gris);
+    font-size:0.95rem;margin-top:0.4rem;
+  }
+
+  /* ---- Carte tableau analytique ---- */
+  .tableau{
+    background:linear-gradient(180deg, var(--bleu-fonce), var(--bleu-doux));
+    border:1px solid var(--ligne);
+    border-left:3px solid var(--or);
+    border-radius:4px;
+    padding:1.8rem 1.6rem;
+    margin-bottom:2rem;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  }
+  .tableau-badge{
+    display:inline-block;
+    font-family:'Cinzel',serif;
+    font-size:0.65rem;letter-spacing:0.24em;
+    color:var(--or);text-transform:uppercase;
+    padding:0.3rem 0.75rem;
+    border:1px solid var(--or);
+    border-radius:999px;
+    margin-bottom:1rem;
+  }
+  .tableau-titre{
+    font-family:'Cinzel',serif;font-weight:600;
+    font-size:1.35rem;color:var(--or-pale);
+    letter-spacing:0.02em;line-height:1.3;
+    margin-bottom:1.2rem;
+  }
+  .tableau-img{
+    width:100%;border-radius:3px;
+    margin:0.8rem 0 1.4rem;
+    background:rgba(255,255,255,0.02);
+    border:1px dashed var(--ligne);
+    padding:2.6rem 1rem;
+    text-align:center;
+    color:var(--gris);
+    font-style:italic;font-size:0.9rem;
+  }
+  .tableau-img img{
+    width:100%;height:auto;border-radius:2px;display:block;
+    margin:-2.6rem -1rem;padding:0;
+  }
+  .tableau-txt p{
+    margin-bottom:0.9rem;
+    color:var(--parchemin);opacity:0.94;
+  }
+  .tableau-txt p:last-child{margin-bottom:0}
+  .tableau-txt strong{color:var(--or-clair);font-weight:600}
+  .tableau-txt em{color:var(--or-pale);font-style:italic}
+  .tableau-cite{
+    border-top:1px solid var(--ligne);
+    margin-top:1.2rem;padding-top:1rem;
+    font-style:italic;
+    color:var(--or-clair);
+    font-size:1.05rem;
+    text-align:center;
+  }
+
+  /* ---- Note de bas de page ---- */
+  .note-transparence{
+    max-width:780px;margin:2rem auto;
+    padding:1.4rem 1.6rem;
+    text-align:center;
+    font-style:italic;color:var(--gris);
+    font-size:0.95rem;
+    border-top:1px solid var(--ligne);
+  }
+
+  /* ---- Footer ---- */
+  footer{
+    text-align:center;padding:2.4rem 1.5rem 3rem;
+    border-top:1px solid var(--ligne);
+    margin-top:2rem;
+    background:var(--bleu-fonce);
+  }
+  footer .titre{
+    font-family:'Cinzel',serif;
+    color:var(--or-clair);font-size:0.9rem;
+    letter-spacing:0.14em;
+  }
+  footer .sous{
+    color:var(--gris);font-size:0.82rem;
+    margin-top:0.4rem;letter-spacing:0.06em;
+  }
+  footer .devise{
+    color:var(--or);font-size:0.78rem;
+    letter-spacing:0.22em;text-transform:uppercase;
+    margin-top:0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav-back">
+  <a href="index.html">← Retour à l'accueil</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-icone">📊</div>
+  <div class="hero-eyebrow">Rubrique officielle</div>
+  <h1>Observatoire<br>de La Voie</h1>
+  <p class="hero-tagline">Observer <span>·</span> Comprendre <span>·</span> Servir</p>
+  <p class="hero-intro">Chaque mois, nous publions les données ainsi que leur analyse. L'objectif n'est pas de nous glorifier, mais de mieux comprendre où le message est reçu, afin de mieux servir celles et ceux qui recherchent la vérité. Cette rubrique est un rapport vivant : chaque mois enrichit la précédente d'analyses, de comparaisons, de tendances et de projections.</p>
+</section>
+
+<div class="edition">
+
+  <div class="edition-header">
+    <div class="edition-num">Édition N° 1</div>
+    <div class="edition-titre">Août 2026</div>
+    <div class="edition-periode">Analyse des 28 derniers jours</div>
+  </div>
+
+  <!-- ========== TABLEAU N°1 ========== -->
+  <div class="tableau">
+    <div class="tableau-badge">Tableau analytique N° 1</div>
+    <h2 class="tableau-titre">Où se trouve aujourd'hui l'audience de La Voie ?</h2>
+    <div class="tableau-img">Graphique — répartition géographique (à insérer)</div>
+    <div class="tableau-txt">
+      <p>Depuis quelque temps, plusieurs personnes nous demandent : <em>où se développe La Voie ?</em></p>
+      <p>Les statistiques des 28 derniers jours montrent que <strong>plus de la moitié de notre audience se trouve en Haïti</strong>. La diaspora représente également une part importante, notamment aux <strong>États-Unis et au Canada</strong>.</p>
+      <p>Ces chiffres ne servent pas à nous glorifier. Ils nous aident à mieux comprendre où le message est reçu, afin de mieux servir celles et ceux qui recherchent la vérité.</p>
+      <p>Chaque personne représente une vie. Chaque vie représente une responsabilité.</p>
+      <div class="tableau-cite">Notre objectif n'est pas d'avoir davantage d'abonnés — notre objectif est que davantage de personnes découvrent ce que Ha-Bôre a réellement révélé.</div>
+    </div>
+  </div>
+
+  <!-- ========== TABLEAU N°2 ========== -->
+  <div class="tableau">
+    <div class="tableau-badge">Tableau analytique N° 2</div>
+    <h2 class="tableau-titre">Qui suit aujourd'hui La Voie ?</h2>
+    <div class="tableau-img">Graphique — données démographiques (à insérer)</div>
+    <div class="tableau-txt">
+      <p>Les données démographiques montrent que notre audience est principalement composée d'<strong>adultes âgés de 25 à 44 ans</strong>.</p>
+      <p>Cette tranche d'âge correspond souvent aux années où l'on construit une famille, où l'on prend des responsabilités, et où l'on recherche des fondements solides.</p>
+      <p>Les <strong>hommes sont actuellement majoritaires</strong>. Nous espérons cependant voir davantage de femmes découvrir elles aussi le message de restauration.</p>
+      <div class="tableau-cite">Notre désir est que chaque foyer puisse grandir ensemble dans la connaissance de Ha-Bôre.</div>
+    </div>
+  </div>
+
+  <!-- ========== TABLEAU N°3 ========== -->
+  <div class="tableau">
+    <div class="tableau-badge">Tableau analytique N° 3</div>
+    <h2 class="tableau-titre">Comment La Voie se développe-t-elle en Haïti ?</h2>
+    <div class="tableau-img">Graphique — répartition par villes en Haïti (à insérer)</div>
+    <div class="tableau-txt">
+      <p>La présence de notre audience n'est pas limitée à une seule ville.</p>
+      <p><strong>Port-au-Prince</strong> constitue aujourd'hui le principal pôle. Mais <strong>Cap-Haïtien</strong>, <strong>Delmas</strong> et plusieurs autres régions témoignent également d'un intérêt croissant.</p>
+      <p>Notre souhait est que cette œuvre puisse atteindre toutes les régions d'Haïti.</p>
+      <div class="tableau-cite">Car la vérité n'appartient à aucune ville — elle est destinée à tous ceux qui la recherchent.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note-transparence">
+  Cette rubrique s'enrichira chaque mois de nouveaux tableaux, d'analyses comparées, de tendances et de projections. Après une année, l'Observatoire de La Voie racontera l'histoire de la progression du message de restauration à travers les régions et les nations.
+</div>
+
+<footer>
+  <p class="titre">Les Membres de La Voie</p>
+  <p class="sous">lavoie.world · Tal'midim de Yahushuʿah</p>
+  <p class="devise">Lumière · Vérité · Vie</p>
+</footer>
+
+</body>
+</html>
