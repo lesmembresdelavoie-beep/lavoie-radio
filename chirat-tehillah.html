@@ -83,6 +83,20 @@
     color:var(--dore);font-size:.85rem;letter-spacing:.1em;
     flex-shrink:0;
   }
+  .rechèch-kad{margin-bottom:1.2rem}
+  .rechèch-chan{
+    width:100%;box-sizing:border-box;padding:.8rem 1rem;
+    background:var(--nuit-2);border:1px solid var(--ligne);
+    border-radius:6px;color:var(--ivoire);font-family:inherit;
+    font-size:1rem;
+  }
+  .rechèch-chan::placeholder{color:var(--ivoire-sombre);opacity:.6}
+  .rechèch-chan:focus{outline:none;border-color:var(--dore)}
+  .rechèch-rezilta{
+    font-size:.78rem;color:var(--ivoire-sombre);opacity:.7;
+    margin:.5rem .3rem 0;min-height:1em;
+  }
+  .endeks li.kache{display:none}
   .kategori{
     color:var(--dore);font-size:.72rem;letter-spacing:.28em;
     text-transform:uppercase;text-align:center;
@@ -182,7 +196,11 @@
 <!-- ============ ENDÈKS ============ -->
 <nav class="endeks" id="endeks" aria-label="Endèks chant yo">
   <h2 class="tit-seksyon">Endèks</h2>
-  <ol>
+  <div class="rechèch-kad">
+    <input type="search" id="rechèchChant" class="rechèch-chan" placeholder="🔍 Chèche yon chante..." aria-label="Chèche yon chante nan endèks la" autocomplete="off">
+    <p class="rechèch-rezilta" id="rechèchRezilta"></p>
+  </div>
+  <ol id="listeChant">
     <li class="kategori-tit"><span class="kategori">Téfilot</span></li>
     <li><a href="#tehillah-09"><span class="num">09</span>Toda Raba, Abba Yah</a></li>
     <li><a href="#tehillah-26"><span class="num">26</span>Nan Mitan Jounen An</a></li>
@@ -212,6 +230,7 @@
     <li><a href="#tehillah-16"><span class="num">16</span>Chèche — Verifye</a></li>
     <li><a href="#tehillah-31"><span class="num">31</span>Batay Sa a Se Batay Yahawah</a></li>
     <li><a href="#tehillah-34"><span class="num">34</span>Nan Non Yahawah Mwen Kanpe</a></li>
+    <li><a href="#tehillah-35"><span class="num">35</span>Mèsi pou Hamitzbòt Ou yo</a></li>
     <li class="kategori-tit"><span class="kategori">Louwanj ak Fèt</span></li>
     <li><a href="#tehillah-13"><span class="num">13</span>Chante pou Yahawah</a></li>
     <li><a href="#tehillah-18"><span class="num">18</span>HallelouYah — Leve Men Nou</a></li>
@@ -2473,6 +2492,118 @@ Yahawah ap mennen nou nan viktwa !</p>
   </div>
 </article>
 
+<!-- ============ TEHILLAH 35 ============ -->
+<article class="chant" id="tehillah-35">
+  <header>
+    <span class="nimewo">Tehillah 35</span>
+    <h2>Mèsi pou Hamitzbòt Ou yo</h2>
+    <p style="font-style:italic;font-size:.85rem;color:var(--dore-pal);margin-top:.4rem">Shemôth 20 · Tehillim 119</p>
+  </header>
+
+  <div class="lekte" data-src="tehillah-35-mesi-hamitzbot.mp3">
+    <button class="btn-jwe" aria-label="Jwe oswa kanpe mizik la">▶</button>
+    <div class="baraj">
+      <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan chante a">
+      <div class="tan"><span class="tan-koule">0:00</span><span class="tan-total">–:––</span></div>
+    </div>
+  </div>
+
+  <div class="pawol">
+    <p class="etikèt">Intro</p>
+    <p>HallelouYah !
+Mèsi Abinou !
+Mèsi pou Dabar Ou !
+Mèsi pou hamitzbòt Ou yo !</p>
+
+    <p class="etikèt">Kouple 1</p>
+    <p>Lè Ou te kréyé moun sou tè a
+Ou pa t kité yo san direksyon
+Nan lanmou Ou — Ou montré chemen an
+Pou lavi nou jwenn bon fondasyon
+Ou ban nou pawòl ki kléré
+Tankou yon lanp devan pyé nou
+Pou nou pa pèdi nan fènwa
+Men maché dwat devan Ou</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Mèsi Yahawah !
+Pou bonté Ou !
+Mèsi Yahawah !
+Pou hamitzbòt Ou yo !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Mèsi pou hamitzbòt Ou yo !
+Mèsi pou chemen lavi a !
+Nou renmen Dabar Ou a
+Nou vlé maché ladan l !
+Ban nou fòs — ban nou kouraj
+Pou nou swiv chemen Ou
+Jiska lavi ki pap fini an !
+HallelouYah !</p>
+    </div>
+
+    <p class="etikèt">Kouple 2</p>
+    <p>Pa touyé — pa vòlè
+Pa bay fo temwayaj
+Réspekté papa ak manman
+Sonjé jou Shabbat la
+Pa kouri dèyè lòt bagay
+Anvan Abinou Yah la
+Se Ou menm ki ban nou lavi
+Se Ou menm ki guidé pa nou</p>
+
+    <p class="etikèt">Pré-Refren</p>
+    <p>Mèsi Yahawah !
+Pou bonté Ou !
+Mèsi Yahawah !
+Pou hamitzbòt Ou yo !</p>
+
+    <div class="refren">
+      <p class="etikèt">Refren</p>
+      <p>Mèsi pou hamitzbòt Ou yo !
+Mèsi pou chemen lavi a !
+Nou renmen Dabar Ou a
+Nou vlé maché ladan l !
+Ban nou fòs — ban nou kouraj
+Pou nou swiv chemen Ou
+Jiska lavi ki pap fini an !
+HallelouYah !</p>
+    </div>
+
+    <p class="etikèt">Pon — call &amp; response — monte</p>
+    <p>Lanmou pou Yah — se obeyi Li !
+Lanmou pou Yah — se maché nan Li !
+Hamitzbòt Li yo bon — wi !
+Yo pa lou pou poté — non !
+Yo mennen nou chak jou
+Sou chemen véritab la
+Se pa chay — se kado
+Lanmou Li pou tout tan !
+Nou di mèsi — wi ! Nou di mèsi — wi !
+Pou hamitzbòt Ou yo
+Abinou Yahawah !</p>
+
+    <div class="refren">
+      <p class="etikèt">Final Chorus — x2 — tout asanble</p>
+      <p>Mèsi pou hamitzbòt Ou yo !
+Mèsi pou chemen lavi a !
+Nou renmen Dabar Ou a
+Nou vlé maché ladan l !
+Ban nou fòs — ban nou kouraj
+Pou nou swiv chemen Ou
+Jiska lavi ki pap fini an !
+HallelouYah !</p>
+    </div>
+
+    <p class="etikèt">Outro — dous, rekonesans</p>
+    <p>HallelouYah — hamitzbòt Ou yo bon !
+HallelouYah — yo pa lou pou poté !
+Mèsi Abinou Yahawah...
+Pou tout tan — amèn — amèn !</p>
+  </div>
+</article>
+
 <div class="gran-tit-kat"><h2 class="kategori">Louwanj ak Fèt</h2></div>
 <!-- ============ TEHILLAH 13 ============ -->
 <article class="chant" id="tehillah-13">
@@ -3427,6 +3558,55 @@ Jou réstorasyon an...</p>
   <div class="ornement" aria-hidden="true">✦</div>
   Les Membres de La Voie Assembly — lavoie.world
 </footer>
+
+<script>
+// Rechèch nan endèks la — filtre pa tit chante, kache kategori vid
+(function(){
+  var chan = document.getElementById('rechèchChant');
+  var rezilta = document.getElementById('rechèchRezilta');
+  var liste = document.getElementById('listeChant');
+  if(!chan || !liste) return;
+  var tout = [].slice.call(liste.querySelectorAll('li'));
+
+  function retire_aksan(txt){
+    return txt.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  chan.addEventListener('input', function(){
+    var kèk = retire_aksan(chan.value.trim());
+    var konte = 0;
+
+    if(kèk === ''){
+      tout.forEach(function(li){ li.classList.remove('kache'); });
+      rezilta.textContent = '';
+      return;
+    }
+
+    tout.forEach(function(li){
+      if(li.classList.contains('kategori-tit')) return; // trete apre
+      var tit = li.querySelector('a');
+      var match = tit && retire_aksan(tit.textContent).indexOf(kèk) !== -1;
+      li.classList.toggle('kache', !match);
+      if(match) konte++;
+    });
+
+    // Kache tit kategori si okenn chante anba li pa vizib jiska pwochen tit
+    var kategoriKouran = null, gen_chante_vizib = false;
+    tout.forEach(function(li){
+      if(li.classList.contains('kategori-tit')){
+        if(kategoriKouran) kategoriKouran.classList.toggle('kache', !gen_chante_vizib);
+        kategoriKouran = li;
+        gen_chante_vizib = false;
+      } else if(!li.classList.contains('kache')){
+        gen_chante_vizib = true;
+      }
+    });
+    if(kategoriKouran) kategoriKouran.classList.toggle('kache', !gen_chante_vizib);
+
+    rezilta.textContent = konte === 0 ? 'Pa gen chante ki matche' : (konte + ' chante jwenn');
+  });
+})();
+</script>
 
 <script>
 // Pawòl sonkwonize (tès): kalkile pwopòsyonèlman konbyen tan chak seksyon merite
