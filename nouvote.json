@@ -1,17 +1,11 @@
 {
   "teks": {
-    "jou": "20",
+    "jou": "21",
     "mois": "Ab",
-    "yom": "Yôm Rebi'i",
-    "ref": "Éphésiens 6:14"
+    "yom": "Yôm Ḥamishi",
+    "ref": "Debarim 30:11"
   },
   "items": [
-    {
-      "id": "miqra-soukkoth-5787",
-      "titre": "🌿 Miqra Qadosh de Soukkoth — 7 jours",
-      "sou": "15–21 Tishri · 27 sept – 4 oct 2026",
-      "url": "miqra-qadosh-soukkoth.html"
-    },
     {
       "id": "observatoire-aout-2026",
       "titre": "📊 Observatoire de La Voie — Édition N°1",
