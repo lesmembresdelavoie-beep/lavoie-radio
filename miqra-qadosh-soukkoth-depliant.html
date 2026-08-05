@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miqra Qadosh de Soukkoth — Programme à imprimer · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  @page{ size:A4 portrait; margin:14mm 12mm; }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{ font-family:'Cormorant Garamond',serif; color:#0d2347; }
+  body{ background:#eaeaea; padding:20px 0; }
+
+  /* BAR EN HAUT — NON ENPRIME */
+  .top-nav{
+    max-width:210mm;
+    margin:0 auto 18px;
+    background:#0d2347;color:#e8cb7a;
+    padding:14px 20px;border-radius:4px;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:12px;flex-wrap:wrap;
+    box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  }
+  .top-nav-tit{
+    font-family:'Cinzel',serif;font-weight:600;
+    font-size:0.85rem;letter-spacing:0.08em;
+  }
+  .top-nav-btns{ display:flex;gap:8px; }
+  .btn-nav{
+    background:#c9a84c;color:#0d2347;border:none;
+    padding:9px 18px;font-family:'Cinzel',serif;
+    font-weight:700;font-size:0.78rem;letter-spacing:0.1em;
+    border-radius:3px;cursor:pointer;text-transform:uppercase;
+    text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+  }
+  .btn-nav-ghost{
+    background:transparent;color:#e8cb7a;
+    border:1px solid rgba(232,203,122,0.5);
+  }
+  .btn-nav:hover{ filter:brightness(1.1); }
+
+  .conseils{
+    max-width:210mm;margin:0 auto 18px;
+    background:#faf6ec;border:1px solid rgba(201,168,76,0.35);
+    border-left:3px solid #c9a84c;
+    padding:12px 18px;border-radius:0 3px 3px 0;
+    font-size:0.85rem;line-height:1.5;
+  }
+  .conseils strong{ color:#0d2347; font-family:'Cinzel',serif; letter-spacing:0.05em; }
+
+  /* PAJ A4 */
+  .paj{
+    width:210mm;min-height:297mm;
+    background:white;margin:0 auto 15px;
+    padding:14mm 12mm;
+    box-shadow:0 3px 10px rgba(0,0,0,0.12);
+    position:relative;
+    page-break-after:always;
+    display:flex;flex-direction:column;
+  }
+  .paj:last-child{ page-break-after:auto; }
+
+  @media print{
+    body{ background:white;padding:0; }
+    .top-nav, .conseils{ display:none; }
+    .paj{
+      margin:0;padding:0;
+      min-height:auto;box-shadow:none;
+      width:100%;
+      page-break-after:always;
+    }
+    .paj:last-child{ page-break-after:auto; }
+  }
+
+  /* ================ KOUVETI ================ */
+  .kouv{
+    align-items:center;justify-content:center;
+    text-align:center;
+  }
+  .kouv-kad{
+    position:absolute;inset:8mm;
+    border:1.5px solid #c9a84c;border-radius:3px;
+    pointer-events:none;
+  }
+  .kouv-kad::before{
+    content:'';position:absolute;inset:4px;
+    border:0.5px solid rgba(201,168,76,0.4);
+    border-radius:2px;
+  }
+  .kouv-affiche{
+    width:75mm;max-width:100%;
+    border:1.2px solid #c9a84c;border-radius:4px;
+    margin-bottom:6mm;position:relative;z-index:1;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  }
+  .kouv-tit{
+    font-family:'Cinzel',serif;font-weight:900;
+    font-size:32pt;letter-spacing:0.05em;line-height:1;
+    color:#0d2347;position:relative;z-index:1;
+  }
+  .kouv-sub{
+    font-family:'Cinzel',serif;font-weight:700;
+    font-size:16pt;letter-spacing:0.15em;
+    color:#c9a84c;margin-top:3mm;
+    position:relative;z-index:1;
+  }
+  .kouv-badge{
+    font-family:'Cinzel',serif;font-weight:700;
+    background:#0d2347;color:#e8cb7a;
+    padding:3mm 12mm;margin-top:6mm;
+    font-size:12pt;letter-spacing:0.1em;border-radius:2px;
+    position:relative;z-index:1;
+  }
+  .kouv-dat{
+    margin-top:4mm;font-size:11pt;line-height:1.4;
+    position:relative;z-index:1;
+  }
+  .kouv-dat strong{ font-family:'Cinzel',serif;font-weight:600;letter-spacing:0.05em; }
+  .kouv-sep{
+    width:60mm;height:1px;
+    background:linear-gradient(90deg,transparent,#c9a84c,transparent);
+    margin:6mm auto;position:relative;z-index:1;
+  }
+  .kouv-vers{
+    font-style:italic;font-size:11pt;
+    line-height:1.55;max-width:140mm;
+    margin:0 auto 2mm;position:relative;z-index:1;
+  }
+  .kouv-ref{
+    font-family:'Cinzel',serif;font-size:8.5pt;letter-spacing:0.2em;
+    text-transform:uppercase;position:relative;z-index:1;
+  }
+  .kouv-foot{
+    margin-top:8mm;font-family:'Cinzel',serif;
+    font-size:8pt;letter-spacing:0.15em;color:#c9a84c;
+    text-transform:uppercase;line-height:1.8;
+    position:relative;z-index:1;
+  }
+
+  /* ================ INTRODUKSYON ================ */
+  .intro-tit{
+    font-family:'Cinzel',serif;font-weight:700;
+    font-size:20pt;color:#0d2347;letter-spacing:0.04em;
+    text-align:center;margin-bottom:2mm;
+  }
+  .intro-sub{
+    text-align:center;font-family:'Cinzel',serif;
+    font-size:9pt;letter-spacing:0.2em;color:#c9a84c;
+    text-transform:uppercase;margin-bottom:6mm;
+    padding-bottom:4mm;
+    border-bottom:1px solid rgba(201,168,76,0.4);
+  }
+  .intro-txt{
+    font-size:11pt;line-height:1.6;
+    text-align:justify;margin-bottom:4mm;
+  }
+  .intro-txt em{ color:#c9a84c;font-style:normal;font-weight:600; }
+  .apercu-tit{
+    font-family:'Cinzel',serif;font-weight:700;
+    font-size:10pt;letter-spacing:0.15em;color:#0d2347;
+    text-transform:uppercase;margin-top:6mm;margin-bottom:3mm;
+  }
+  .apercu-liste{
+    display:grid;grid-template-columns:1fr;gap:2mm;
+  }
+  .apercu-item{
+    display:flex;align-items:center;gap:4mm;
+    padding:2.5mm 4mm;background:#faf6ec;
+    border-left:2.5px solid #c9a84c;border-radius:0 2px 2px 0;
+  }
+  .apercu-num{
+    font-family:'Cinzel',serif;font-weight:700;
+    color:#0d2347;font-size:11pt;min-width:6mm;
+  }
+  .apercu-mot{
+    font-family:'Cinzel',serif;font-weight:700;
+    color:#c9a84c;font-size:10.5pt;letter-spacing:0.08em;
+    min-width:38mm;
+  }
+  .apercu-desc{
+    font-style:italic;font-size:9.5pt;color:#334966;
+  }
+
+  /* ================ PAJ JOU ================ */
+  .jou-header{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:2px solid #c9a84c;padding-bottom:2.5mm;
+    margin-bottom:3mm;
+  }
+  .jou-tit{
+    font-family:'Cinzel',serif;font-weight:900;
+    font-size:17pt;color:#0d2347;letter-spacing:0.03em;line-height:1;
+  }
+  .jou-tit .mot{ color:#c9a84c; }
+  .jou-dat{
+    font-family:'Cinzel',serif;font-size:7.5pt;
+    text-align:right;letter-spacing:0.05em;
+    color:#334966;line-height:1.4;
+  }
+  .jou-dat strong{ display:block;font-size:9.5pt;color:#0d2347; }
+  .jou-question{
+    font-style:italic;font-size:10pt;color:#334966;
+    margin-bottom:3mm;text-align:center;
+    padding-bottom:2mm;
+  }
+  .jou-illust{
+    width:100%;max-height:52mm;object-fit:cover;object-position:center 35%;
+    border:1px solid #c9a84c;border-radius:2px;
+    margin-bottom:3mm;display:block;
+  }
+
+  .theme-bx{
+    background:#faf6ec;border-left:3px solid #c9a84c;
+    padding:3mm 4mm;margin-bottom:3mm;border-radius:0 2px 2px 0;
+  }
+  .theme-lbl{
+    font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.2em;
+    color:#c9a84c;text-transform:uppercase;
+  }
+  .theme-vers{
+    font-style:italic;font-size:10pt;margin:1mm 0;line-height:1.45;
+  }
+  .theme-rf{
+    font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.15em;
+    color:#0d2347;
+  }
+
+  .prog-tit-lb{
+    font-family:'Cinzel',serif;font-weight:700;
+    font-size:9pt;letter-spacing:0.18em;color:#0d2347;
+    text-transform:uppercase;margin-bottom:2.5mm;
+    padding-bottom:1.5mm;border-bottom:1px solid #c9a84c;
+  }
+  .prog-lis{
+    display:grid;grid-template-columns:1fr;gap:1.2mm;
+  }
+  .prog-lin{
+    display:grid;grid-template-columns:6mm 1fr auto;
+    gap:2mm;align-items:baseline;
+    padding:1mm 0;border-bottom:0.5px dotted rgba(201,168,76,0.5);
+  }
+  .prog-lin:last-child{ border-bottom:none; }
+  .prog-num-p{
+    font-family:'Cinzel',serif;font-weight:700;
+    color:#c9a84c;font-size:8pt;
+  }
+  .prog-cont{ font-size:8pt;line-height:1.35; }
+  .prog-cont .t{
+    font-family:'Cinzel',serif;font-weight:700;
+    color:#0d2347;font-size:8.5pt;
+  }
+  .prog-cont .d{ color:#334966;font-size:7.8pt; }
+  .prog-cont .d em{ font-style:normal;color:#c9a84c;font-weight:600; }
+  .prog-tm{
+    font-family:'Cinzel',serif;font-size:7pt;
+    color:#c9a84c;font-weight:700;letter-spacing:0.05em;
+    white-space:nowrap;
+  }
+
+  .perle-bx{
+    margin-top:3mm;background:#0d2347;color:#f6ecd6;
+    padding:3.5mm 5mm;border-radius:3px;text-align:center;
+    position:relative;
+  }
+  .perle-bx::before{
+    content:'';position:absolute;inset:3px;
+    border:0.5px solid rgba(201,168,76,0.4);border-radius:2px;
+  }
+  .perle-eye{
+    font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.28em;
+    color:#c9a84c;text-transform:uppercase;position:relative;
+  }
+  .perle-mo{
+    font-family:'Cinzel',serif;font-weight:900;
+    font-size:15pt;color:#e8cb7a;letter-spacing:0.12em;
+    line-height:1.1;margin:1mm 0;position:relative;
+  }
+  .perle-vs{
+    font-style:italic;font-size:9pt;line-height:1.45;
+    margin:0 auto 1mm;max-width:140mm;position:relative;
+  }
+  .perle-rf{
+    font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.18em;
+    color:#c9a84c;position:relative;
+  }
+
+  .konkl-bx{
+    margin-top:2.5mm;
+    padding-top:2.5mm;
+    border-top:1px solid rgba(201,168,76,0.4);
+    text-align:center;
+  }
+  .konkl-mo{
+    font-family:'Cinzel',serif;font-weight:900;font-size:11pt;
+    color:#0d2347;letter-spacing:0.12em;margin-bottom:1.5mm;
+  }
+  .konkl-tx{
+    font-style:italic;font-size:9pt;line-height:1.5;
+    color:#334966;padding:0 4mm;
+  }
+
+  /* ================ PAJ RECAP ================ */
+  .recap-tit-b{
+    font-family:'Cinzel',serif;font-weight:900;
+    font-size:22pt;color:#0d2347;text-align:center;
+    letter-spacing:0.04em;margin-bottom:1mm;
+  }
+  .recap-sub-b{
+    font-family:'Cinzel',serif;font-size:9pt;letter-spacing:0.22em;
+    color:#c9a84c;text-align:center;text-transform:uppercase;
+    padding-bottom:4mm;margin-bottom:5mm;
+    border-bottom:1px solid rgba(201,168,76,0.4);
+  }
+  .recap-intro-b{
+    text-align:center;font-style:italic;font-size:10pt;
+    color:#334966;margin-bottom:5mm;line-height:1.5;
+    padding:0 5mm;
+  }
+  .recap-liste-b{
+    display:flex;flex-direction:column;gap:2.5mm;
+  }
+  .recap-item-b{
+    display:grid;grid-template-columns:8mm 42mm 1fr;
+    gap:4mm;align-items:center;
+    padding:3mm 4mm;background:#faf6ec;
+    border-left:3px solid #c9a84c;border-radius:0 3px 3px 0;
+  }
+  .recap-n{
+    font-family:'Cinzel',serif;font-weight:700;
+    color:#0d2347;font-size:12pt;text-align:center;
+  }
+  .recap-m{
+    font-family:'Cinzel',serif;font-weight:700;
+    color:#c9a84c;font-size:11pt;letter-spacing:0.08em;
+  }
+  .recap-d{
+    font-style:italic;font-size:9.5pt;color:#334966;line-height:1.4;
+  }
+  .recap-parole{
+    margin-top:6mm;background:#0d2347;color:#f6ecd6;
+    padding:5mm 6mm;border-radius:3px;text-align:center;
+    position:relative;
+  }
+  .recap-parole::before{
+    content:'';position:absolute;inset:3px;
+    border:0.5px solid rgba(201,168,76,0.4);border-radius:2px;
+  }
+  .recap-parole .lbl{
+    font-family:'Cinzel',serif;font-size:7pt;
+    letter-spacing:0.25em;color:#c9a84c;
+    text-transform:uppercase;margin-bottom:2mm;
+    position:relative;
+  }
+  .recap-parole p{
+    font-style:italic;font-size:10.5pt;line-height:1.5;
+    position:relative;
+  }
+  .signature-b{
+    margin-top:auto;padding-top:6mm;text-align:center;
+    font-family:'Cinzel',serif;font-size:8pt;letter-spacing:0.18em;
+    color:#c9a84c;text-transform:uppercase;line-height:1.7;
+  }
+</style>
+</head>
+<body>
+
+  <!-- BAR EN HAUT (non enprime) -->
+  <div class="top-nav">
+    <div class="top-nav-tit">🕯️ Miqra Qadosh de Soukkoth — Dépliant à imprimer</div>
+    <div class="top-nav-btns">
+      <button class="btn-nav" onclick="window.print()">🖨️ Imprimer</button>
+      <a class="btn-nav btn-nav-ghost" href="miqra-qadosh-soukkoth.html">← Retour au livre</a>
+    </div>
+  </div>
+
+  <div class="conseils">
+    <strong>Conseils d'impression :</strong> ce dépliant est optimisé pour du papier A4 portrait (10 pages).
+    Dans la boîte d'impression, choisissez « Couleur » pour conserver les illustrations et la mise en page bleu nuit / or,
+    ou « Noir et blanc » pour économiser l'encre. Cochez « Ajuster à la page » si votre imprimante ne respecte pas les marges par défaut.
+  </div>
+
+
+  <!-- PAJ 1 — KOUVETI -->
+  <section class="paj kouv">
+    <div class="kouv-kad"></div>
+    <img class="kouv-affiche" src="miqra-soukkoth-affiche.jpg" alt="Miqra Qadosh de Soukkoth — 15-21 Tishri" onerror="this.style.display='none'">
+    <h1 class="kouv-tit">MIQRA<br>QADOSH</h1>
+    <div class="kouv-sub">de Soukkoth</div>
+    <div class="kouv-badge">15 – 21 Tishri</div>
+    <div class="kouv-dat">
+      <strong>Du 27 septembre au 4 octobre 2026</strong><br>
+      <span style="opacity:0.75;font-size:9pt">(sept jours, du coucher du soleil au coucher du soleil)</span>
+    </div>
+    <div class="kouv-sep"></div>
+    <p class="kouv-vers">« Vous habiterez dans des soukkoth pendant sept jours… afin que vos générations sachent que J'ai fait habiter les enfants d'Ysraʾēl dans des soukkoth lorsque Je les ai fait sortir de Mitsrayim. »</p>
+    <p class="kouv-ref">Wayyiqra 23:42–43</p>
+    <div class="kouv-foot">Programme des sept jours<br>des Membres de La Voie<br>lavoie.world</div>
+  </section>
+
+  <!-- PAJ 2 — INTRODUKSYON + APERÇU -->
+  <section class="paj">
+    <h2 class="intro-tit">Introduction au Miqra Qadosh de Soukkoth</h2>
+    <div class="intro-sub">Une fête, sept jours, sept perles</div>
+
+    <p class="intro-txt">
+      Soukkoth — la Fête des Cabanes — est l'un des trois grands <em>Miqra'ei Qadoshim</em> annuels institués par Yahawah dans <em>Wayyiqra 23</em>.
+      Pendant sept jours, l'assemblée se souvient que Yahawah fit habiter les <em>Bnei-Yisraʾēl</em> dans des soukkoth
+      lorsqu'Il les délivra du pays d'Égypte, et que Sa présence les accompagnait jour et nuit dans le désert.
+    </p>
+    <p class="intro-txt">
+      Ce dépliant présente le déroulé complet des sept services de Soukkoth célébrés par Les Membres de La Voie.
+      Chaque jour porte un <em>thème général</em>, un <em>discours principal</em> et une <em>Perle</em> — un mot-clé qui condense l'enseignement du jour.
+      Ensemble, les sept Perles tracent un chemin qui va du souvenir du désert jusqu'à l'espérance du <em>Malkuwt</em>.
+    </p>
+    <p class="intro-txt">
+      Que ce petit livret vous accompagne pendant toute la semaine — pour préparer, méditer et prolonger chaque service dans votre foyer.
+    </p>
+
+    <div class="apercu-tit">Aperçu — Les Sept Perles</div>
+    <div class="apercu-liste">
+      <div class="apercu-item">
+        <div class="apercu-num">1</div>
+        <div class="apercu-mot">PRÉSENCE</div>
+        <div class="apercu-desc">Yahawah habite au milieu de Son peuple.</div>
+      </div>
+      <div class="apercu-item">
+        <div class="apercu-num">2</div>
+        <div class="apercu-mot">CONFIANCE</div>
+        <div class="apercu-desc">Apprendre à dépendre entièrement de Yahawah.</div>
+      </div>
+      <div class="apercu-item">
+        <div class="apercu-num">3</div>
+        <div class="apercu-mot">RECONNAISSANCE</div>
+        <div class="apercu-desc">Reconnaître que tout bienfait vient de Yahawah.</div>
+      </div>
+      <div class="apercu-item">
+        <div class="apercu-num">4</div>
+        <div class="apercu-mot">ESPÉRANCE</div>
+        <div class="apercu-desc">Regarder au-delà des demeures provisoires.</div>
+      </div>
+      <div class="apercu-item">
+        <div class="apercu-num">5</div>
+        <div class="apercu-mot">UNIVERSALITÉ</div>
+        <div class="apercu-desc">Le même message pour toutes les nations.</div>
+      </div>
+      <div class="apercu-item">
+        <div class="apercu-num">6</div>
+        <div class="apercu-mot">VIE</div>
+        <div class="apercu-desc">Yahawah étanche la soif de ceux qui viennent à Lui.</div>
+      </div>
+      <div class="apercu-item">
+        <div class="apercu-num">7</div>
+        <div class="apercu-mot">ACCOMPLISSEMENT</div>
+        <div class="apercu-desc">Yahawah accomplira toutes Ses promesses.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAJ 3 — JOUR 1 — 15 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 1 — <span class="mot">PRÉSENCE</span></div>
+      <div class="jou-dat"><strong>15 Tishri</strong>27 → 28 sept. 2026</div>
+    </div>
+    <div class="jou-question">Pourquoi Yahawah a-t-il institué Soukkoth ?</div>
+
+    <img class="jou-illust" src="soukkoth-jour-1.jpg" alt="Illustration Jour 1 — PRÉSENCE" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Réjouissez-vous devant Yahawah pendant sept jours. »</div>
+      <div class="theme-rf">~ Wayyiqra 23:40</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Ritm Malkuwt la »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Retire mechan an nan mitan nou. » ~ 1 Qorintiyim 5:13</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Wayyiqra 23:33–43 · <em>Première lecture</em> : Debarim 16:13–15 · <em>Lecture complémentaire</em> : Yaḥuānān 7:2–14</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Nou se manm La Voie »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— Pourquoi Yahawah a-t-Il institué Soukkoth ?</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>PRÉSENCE</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Soukkoth se lajwa »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Clôture de l'assemblée</span> <span class="d">— Président · présentation du prochain jour</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 1</div>
+      <div class="perle-mo">PRÉSENCE</div>
+      <p class="perle-vs">« J'habiterai au milieu des enfants de Yisraʾēl, et Je serai leur 'Èlohim. »</p>
+      <div class="perle-rf">~ Shemôth 29:45</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">PRÉSENCE</div>
+      <p class="konkl-tx">Que ce premier jour de Soukkoth nous rappelle que Yahawah désire demeurer au milieu de Son peuple et conduire ceux qui mettent leur confiance en Lui.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 4 — JOUR 2 — 16 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 2 — <span class="mot">CONFIANCE</span></div>
+      <div class="jou-dat"><strong>16 Tishri</strong>28 → 29 sept. 2026</div>
+    </div>
+    <div class="jou-question">Pourquoi Yahawah a-t-il conduit Son peuple dans le désert ?</div>
+
+    <img class="jou-illust" src="soukkoth-jour-2.jpg" alt="Illustration Jour 2 — CONFIANCE" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Tu te souviendras de tout le chemin par lequel Yahawah ton 'Èlohim t'a conduit. »</div>
+      <div class="theme-rf">~ Debarim 8:2</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Tout sa Yahawah te fè te bon nèt »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Mwen gen fòs pou tout bagay grasa Sila a ki ban m pisans lan. » ~ Philippiyim 4:13</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Debarim 8:1–10 · <em>Première lecture</em> : Shemôth 16:1–18 · <em>Lecture complémentaire</em> : Tehillim 121</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Mèsi, Abba Yah »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— Pourquoi Yahawah a-t-Il conduit Son peuple dans le désert ?</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>CONFIANCE</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Antre nan HaHakhanah »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Clôture de l'assemblée</span> <span class="d">— Président · présentation du prochain jour</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 2</div>
+      <div class="perle-mo">CONFIANCE</div>
+      <p class="perle-vs">« Il t'a humilié, Il t'a laissé avoir faim, puis Il t'a nourri de la manne… afin de te faire connaître que l'homme ne vit pas seulement de pain, mais de tout ce qui sort de la bouche de Yahawah. »</p>
+      <div class="perle-rf">~ Debarim 8:3</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">CONFIANCE</div>
+      <p class="konkl-tx">Que cette deuxième journée de Soukkoth nous apprenne à dépendre chaque jour de Yahawah, à Lui faire pleinement confiance et à marcher fidèlement sous Sa conduite.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 5 — JOUR 3 — 17 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 3 — <span class="mot">RECONNAISSANCE</span></div>
+      <div class="jou-dat"><strong>17 Tishri</strong>29 → 30 sept. 2026</div>
+    </div>
+    <div class="jou-question">La reconnaissance : une réponse aux bienfaits de Yahawah</div>
+
+    <img class="jou-illust" src="soukkoth-jour-3.jpg" alt="Illustration Jour 3 — RECONNAISSANCE" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Tu te réjouiras pendant ta fête… et tu ne seras que dans la joie. »</div>
+      <div class="theme-rf">~ Debarim 16:14–15</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Jou restorasyon an »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Si yon moun ap chèche pou l vin paqidh, se yon bèl travay li ta renmen fè. » ~ 1 Timotiyos 3:1</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Debarim 16:13–15 · <em>Première lecture</em> : Wayyiqra 23:39–40 · <em>Lecture complémentaire</em> : Tehillim 65:10–14</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Selon imaj Ou »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— La reconnaissance : une réponse aux bienfaits de Yahawah</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>RECONNAISSANCE</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Todah Rabah, Yahawah »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Clôture de l'assemblée</span> <span class="d">— Président · présentation du prochain jour</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 3</div>
+      <div class="perle-mo">RECONNAISSANCE</div>
+      <p class="perle-vs">« Tu te réjouiras pendant ta fête… et tu ne seras que dans la joie. »</p>
+      <div class="perle-rf">~ Debarim 16:14–15</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">RECONNAISSANCE</div>
+      <p class="konkl-tx">Que cette troisième journée de Soukkoth nous apprenne à reconnaître chaque bienfait venant de Yahawah, à cultiver un cœur rempli de gratitude et à nous réjouir continuellement devant Lui.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 6 — JOUR 4 — 18 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 4 — <span class="mot">ESPÉRANCE</span></div>
+      <div class="jou-dat"><strong>18 Tishri</strong>30 sept. → 1er oct. 2026</div>
+    </div>
+    <div class="jou-question">Des demeures provisoires qui annoncent une espérance permanente</div>
+
+    <img class="jou-illust" src="soukkoth-jour-4.jpg" alt="Illustration Jour 4 — ESPÉRANCE" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Nous n'avons pas ici de demeure permanente, mais nous recherchons celle qui est à venir. »</div>
+      <div class="theme-rf">~ ʿIvrim 13:14</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Li Bon ! Li Agréyab »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Map kontinye ret tann Yahawah. » ~ Mikhayah 7:7</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Beré'shit 33:17 · <em>Première lecture</em> : Wayyiqra 23:42–43 · <em>Lecture complémentaire</em> : ʿIvrim 11:8–10, 13–16 · <em>Lecture finale</em> : ʿIvrim 13:14</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Lòt Shamayim yo ak lòt Ha'Arets la »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— Les soukkoth : des demeures provisoires qui annoncent une espérance permanente</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>ESPÉRANCE</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Chirat Ha'Yam »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Clôture de l'assemblée</span> <span class="d">— Président · présentation du prochain jour</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 4</div>
+      <div class="perle-mo">ESPÉRANCE</div>
+      <p class="perle-vs">« Nous n'avons pas ici de demeure permanente, mais nous recherchons celle qui est à venir. »</p>
+      <div class="perle-rf">~ ʿIvrim 13:14</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">ESPÉRANCE</div>
+      <p class="konkl-tx">Que cette quatrième journée de Soukkoth nous rappelle que notre espérance ne repose pas sur les réalités passagères de ce monde, mais sur les promesses certaines de Yahawah. En attendant leur accomplissement, marchons avec fidélité, les regards tournés vers l'héritage qu'Il prépare pour Son peuple.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 7 — JOUR 5 — 19 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 5 — <span class="mot">UNIVERSALITÉ</span></div>
+      <div class="jou-dat"><strong>19 Tishri</strong>1er → 2 oct. 2026</div>
+    </div>
+    <div class="jou-question">Soukkoth : un Miqra Qadosh destiné à toutes les nations</div>
+
+    <img class="jou-illust" src="soukkoth-jour-5.jpg" alt="Illustration Jour 5 — UNIVERSALITÉ" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Toutes les nations monteront d'année en année pour se prosterner devant le Roi, Yahawah des armées, et pour célébrer Soukkoth. »</div>
+      <div class="theme-rf">~ Zekharyah 14:16</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Yahawah ouvri je nou »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Ki pa bay moun kout lang, ki pa fè pwochen l anyen ki mal, ki pa fè zanmi l wont. » ~ Tehillim 15:3</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Zekharyah 14:16–19 · <em>Première lecture</em> : Yeshaʿeyah 2:2–4 · <em>Lecture complémentaire</em> : Maʿasei 2:5–11 · <em>Lecture finale</em> : Mattiyahu 28:19–20</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Ret Fidèl Jouk Adôn lan Retounen »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— Soukkoth : un Miqra Qadosh destiné à toutes les nations</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>UNIVERSALITÉ</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Tan Yahawah yo se pou Li »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Clôture de l'assemblée</span> <span class="d">— Président · présentation du prochain jour</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 5</div>
+      <div class="perle-mo">UNIVERSALITÉ</div>
+      <p class="perle-vs">« Toutes les nations monteront d'année en année pour se prosterner devant le Roi, Yahawah des armées, et pour célébrer Soukkoth. »</p>
+      <div class="perle-rf">~ Zekharyah 14:16</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">UNIVERSALITÉ</div>
+      <p class="konkl-tx">Que cette cinquième journée de Soukkoth nous rappelle que le dessein de Yahawah embrasse toutes les nations. Puissions-nous transmettre fidèlement Son message de restauration, afin que des hommes et des femmes de toute langue et de tout peuple apprennent à marcher selon Son Dabar et à célébrer Ses Miqra'ei Qadoshim.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 8 — JOUR 6 — 20 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 6 — <span class="mot">VIE</span></div>
+      <div class="jou-dat"><strong>20 Tishri</strong>2 → 3 oct. 2026</div>
+    </div>
+    <div class="jou-question">Yahushuʿah : la source d'eau vive pour ceux qui ont soif</div>
+
+    <img class="jou-illust" src="soukkoth-jour-6.jpg" alt="Illustration Jour 6 — VIE" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Si quelqu'un a soif, qu'il vienne à Moi et qu'il boive. »</div>
+      <div class="theme-rf">~ Yaḥuānān 7:37</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Ann reyini ansanm »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Mwen gen Yahawah devan je m toutan. Piske Li sou bò dwat mwen, mwen pap janm brannen. » ~ Tehillim 16:8</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Yaḥuānān 7:37–39 · <em>Première lecture</em> : Yeshaʿeyah 12:2–3 · <em>Lecture complémentaire</em> : Yeshaʿeyah 55:1–3</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Nan ki kategori w ye »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— Yahushuʿah : la source d'eau vive annoncée pendant Soukkoth</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>VIE</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Yahushuʿah, dlo lavi a »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Clôture de l'assemblée</span> <span class="d">— Président · présentation du prochain jour</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 6</div>
+      <div class="perle-mo">VIE</div>
+      <p class="perle-vs">« Si quelqu'un a soif, qu'il vienne à Moi et qu'il boive. »</p>
+      <div class="perle-rf">~ Yaḥuānān 7:37</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">VIE</div>
+      <p class="konkl-tx">Que cette sixième journée de Soukkoth nous rappelle que Yahawah est la véritable source de la vie. Puissions-nous venir à Lui avec un cœur assoiffé, recevoir l'eau vive qu'Il offre par Yahushuʿah et demeurer fidèlement conduits par Son Rouaḥ, afin de transmettre cette espérance à ceux qui ont soif de vérité.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 9 — JOUR 7 — 21 TISHRI -->
+  <section class="paj">
+    <div class="jou-header">
+      <div class="jou-tit">JOUR 7 — <span class="mot">ACCOMPLISSEMENT</span></div>
+      <div class="jou-dat"><strong>21 Tishri</strong>3 → 4 oct. 2026</div>
+    </div>
+    <div class="jou-question">Soukkoth : de la mémoire du désert à l'espérance du Malkuwt</div>
+
+    <img class="jou-illust" src="soukkoth-jour-7.jpg" alt="Illustration Jour 7 — ACCOMPLISSEMENT" onerror="this.style.display='none'">
+
+    <div class="theme-bx">
+      <div class="theme-lbl">Thème général du jour</div>
+      <div class="theme-vers">« Réjouissez-vous devant Yahawah pendant sept jours. »</div>
+      <div class="theme-rf">~ Wayyiqra 23:40</div>
+    </div>
+
+    <div class="prog-tit-lb">Programme officiel — durée ≈ 2 h</div>
+    <div class="prog-lis">
+        <div class="prog-lin">
+          <div class="prog-num-p">1.</div>
+          <div class="prog-cont"><span class="t">Mot de bienvenue</span> <span class="d">— Président de la réunion</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">2.</div>
+          <div class="prog-cont"><span class="t">Chirat d'ouverture</span> <span class="d">— « Kominote tal'midim Yahushuʿah »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">3.</div>
+          <div class="prog-cont"><span class="t">Téfilah d'ouverture</span> <span class="d">— Reconnaissance envers Yahawah</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">4.</div>
+          <div class="prog-cont"><span class="t">Tèks pou Jounen an</span> <span class="d">— « Gen veso ki fèt pou fonn ajan e gen lòt ki fèt pou fonn lò. Men, Yahawah Li menm wè sa ki nan kè moun. » ~ Mishlé 17:3</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">5.</div>
+          <div class="prog-cont"><span class="t">Lecture des Ketubim Qadoshim</span> <span class="d">— <em>Texte directeur</em> : Wayyiqra 23:39–43 · <em>Première lecture</em> : Zekharyah 14:16–21 · <em>Lecture complémentaire</em> : Ḥazon 21:1–7 · <em>Lecture finale</em> : Ḥazon 21:22–27</span></div>
+          <div class="prog-tm">15 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">6.</div>
+          <div class="prog-cont"><span class="t">Chirat de méditation</span> <span class="d">— « Yah pa enjis »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">7.</div>
+          <div class="prog-cont"><span class="t">Discours principal</span> <span class="d">— Soukkoth : de la mémoire du désert à l'espérance du Malkuwt</span></div>
+          <div class="prog-tm">30 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">8.</div>
+          <div class="prog-cont"><span class="t">Perle de Soukkoth</span> <span class="d">— Mot-clé : <strong>ACCOMPLISSEMENT</strong></span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">9.</div>
+          <div class="prog-cont"><span class="t">Chirat de clôture</span> <span class="d">— « Nou pa sèlman oditè »</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">10.</div>
+          <div class="prog-cont"><span class="t">Téfilah de clôture</span> <span class="d">— Actions de reconnaissance</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">11.</div>
+          <div class="prog-cont"><span class="t">Récapitulation des Sept Perles</span> <span class="d">— Assemblée debout</span></div>
+          <div class="prog-tm">3 min</div>
+        </div>
+        <div class="prog-lin">
+          <div class="prog-num-p">12.</div>
+          <div class="prog-cont"><span class="t">Clôture officielle du Miqra Qadosh</span> <span class="d">— Bilan des sept jours</span></div>
+          <div class="prog-tm">5 min</div>
+        </div>
+    </div>
+
+    <div class="perle-bx">
+      <div class="perle-eye">Perle de Soukkoth · N° 7</div>
+      <div class="perle-mo">ACCOMPLISSEMENT</div>
+      <p class="perle-vs">« Voici la demeure de Yahawah avec les hommes. Il habitera avec eux, ils seront Son peuple, et Yahawah Lui-même sera avec eux. »</p>
+      <div class="perle-rf">~ Ḥazon 21:3</div>
+    </div>
+
+    <div class="konkl-bx">
+      <div class="konkl-mo">ACCOMPLISSEMENT</div>
+      <p class="konkl-tx">Que cette septième journée de Soukkoth couronne notre marche par un cœur renouvelé, prêt à demeurer fidèle jusqu'à l'accomplissement de toutes les promesses de Yahawah.</p>
+    </div>
+  </section>
+
+  <!-- PAJ 10 — RECAP 7 PERLES -->
+  <section class="paj">
+    <h2 class="recap-tit-b">Les Sept Perles</h2>
+    <div class="recap-sub-b">Récapitulation solennelle</div>
+
+    <p class="recap-intro-b">
+      Toute l'assemblée est invitée à se lever pour la récapitulation solennelle des enseignements reçus durant les sept jours de Soukkoth.
+    </p>
+
+    <div class="recap-liste-b">
+      <div class="recap-item-b">
+        <div class="recap-n">1</div>
+        <div class="recap-m">PRÉSENCE</div>
+        <div class="recap-d">Yahawah habite au milieu de Son peuple.</div>
+      </div>
+      <div class="recap-item-b">
+        <div class="recap-n">2</div>
+        <div class="recap-m">CONFIANCE</div>
+        <div class="recap-d">Apprendre à dépendre entièrement de Yahawah.</div>
+      </div>
+      <div class="recap-item-b">
+        <div class="recap-n">3</div>
+        <div class="recap-m">RECONNAISSANCE</div>
+        <div class="recap-d">Reconnaître que tout bienfait vient de Yahawah.</div>
+      </div>
+      <div class="recap-item-b">
+        <div class="recap-n">4</div>
+        <div class="recap-m">ESPÉRANCE</div>
+        <div class="recap-d">Regarder au-delà des demeures provisoires.</div>
+      </div>
+      <div class="recap-item-b">
+        <div class="recap-n">5</div>
+        <div class="recap-m">UNIVERSALITÉ</div>
+        <div class="recap-d">Le même message pour toutes les nations.</div>
+      </div>
+      <div class="recap-item-b">
+        <div class="recap-n">6</div>
+        <div class="recap-m">VIE</div>
+        <div class="recap-d">Yahawah étanche la soif de ceux qui viennent à Lui.</div>
+      </div>
+      <div class="recap-item-b">
+        <div class="recap-n">7</div>
+        <div class="recap-m">ACCOMPLISSEMENT</div>
+        <div class="recap-d">Yahawah accomplira toutes Ses promesses.</div>
+      </div>
+    </div>
+
+    <div class="recap-parole">
+      <div class="lbl">Parole du Président</div>
+      <p>« Que ces sept perles demeurent gravées dans nos cœurs et guident notre marche jusqu'au jour où Yahawah accomplira pleinement toutes Ses promesses. »</p>
+    </div>
+
+    <div class="signature-b">
+      Miqra Qadosh de Soukkoth · 15–21 Tishri<br>
+      27 septembre – 4 octobre 2026<br>
+      Les Membres de La Voie · lavoie.world
+    </div>
+  </section>
+
+</body>
+</html>
