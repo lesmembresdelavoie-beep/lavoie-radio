@@ -25,34 +25,13 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-/* Rezo dabò, kach si pa gen koneksyon — konsa app la toujou ajou.
-   Pou fichye ki mizajou souvan (index, app, teks, nouvote), n ajoute yon
-   timbre orè (chak minit) pou kraze kach CDN/navigatè yo. */
-const FICHYE_DINAMIK = [
-  'index.html', 'app.html',
-  'teks-jounen-anime.html', 'teks-data.js',
-  'nouvote.json'
-];
-function fichyeDinamik(url){
-  try {
-    const p = new URL(url).pathname;
-    return FICHYE_DINAMIK.some(f => p === '/' + f || p.endsWith('/' + f) || p === '/' && f === 'index.html');
-  } catch(e){ return false; }
-}
+/* Rezo dabò, kach si pa gen koneksyon — konsa app la toujou ajou */
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  let req = e.request;
-  if (fichyeDinamik(req.url)) {
-    // Timbre orè ki chanje chak minit → kraze kach CDN / navigatè
-    const u = new URL(req.url);
-    u.searchParams.set('_cb', Math.floor(Date.now() / 60000));
-    req = new Request(u.toString(), { method: 'GET', credentials: req.credentials, headers: req.headers, mode: 'cors', redirect: 'follow' });
-  }
   e.respondWith(
-    fetch(req)
+    fetch(e.request)
       .then(rep => {
         const copie = rep.clone();
-        // Kach sou URL orijinal la (san timbre) pou lookup toujou mache
         caches.open(CACHE).then(c => c.put(e.request, copie)).catch(()=>{});
         return rep;
       })
