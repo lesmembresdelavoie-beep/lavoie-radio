@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Croissance de l'Œuvre — La Voie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bleu-nuit:  #060d1a;
+      --bleu-royal: #0d2347;
+      --bleu-moyen: #1a3a6e;
+      --or:         #c9a84c;
+      --or-clair:   #e8cb7a;
+      --or-pale:    #f7edcc;
+      --argent:     #b8c8dc;
+      --parchemin:  #e8f0f8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background:
+        linear-gradient(rgba(6,13,26,0.93), rgba(6,13,26,0.96)),
+        url('croissance-couverture.jpg') center/cover fixed;
+      color: var(--parchemin);
+      margin: 0; padding: 0;
+      line-height: 1.7;
+    }
+
+    /* ============ COUVERTURE ============ */
+    .couverture {
+      background: linear-gradient(180deg, rgba(13,35,71,0.6) 0%, rgba(6,13,26,0.85) 100%);
+      padding: 0 0 2.25rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+    .couverture-img {
+      display: block;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .couverture-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .badge-edition {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      color: var(--or);
+      border: 1px solid var(--or);
+      padding: 0.4rem 1.1rem;
+      border-radius: 100px;
+      margin-top: 1.75rem;
+      text-transform: uppercase;
+      background: rgba(6, 13, 26, 0.55);
+      backdrop-filter: blur(4px);
+    }
+    .devise-sub {
+      max-width: 580px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--argent);
+      opacity: 0.9;
+      line-height: 1.55;
+    }
+    .devise-sub-ref {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--or);
+      opacity: 0.8;
+      margin-top: 0.3rem;
+    }
+
+    /* ============ SEKSYON ============ */
+    section {
+      padding: 2.5rem 1.5rem;
+      max-width: 920px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    }
+    h2.titre-seksyon {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--or-clair);
+      text-transform: uppercase;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.35;
+    }
+    .num-seksyon {
+      display: inline-block;
+      color: var(--or);
+      opacity: 0.55;
+      font-weight: 400;
+      margin-right: 0.5rem;
+    }
+    .description, .introduction {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1rem;
+      color: var(--parchemin);
+      opacity: 0.9;
+      margin: 0.75rem 0 0;
+    }
+
+    /* ============ KPI GRID ============ */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .kpi-card {
+      background: rgba(13, 35, 71, 0.4);
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      border-radius: 10px;
+      padding: 1rem 0.6rem;
+      text-align: center;
+    }
+    .kpi-emoji { font-size: 1.35rem; display: block; margin-bottom: 0.4rem; }
+    .kpi-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--or-clair);
+      font-weight: 700;
+      display: block;
+      line-height: 1.2;
+    }
+    .kpi-libel {
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.13em;
+      color: var(--argent);
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      display: block;
+      line-height: 1.35;
+    }
+
+    /* ============ PLACEHOLDER ============ */
+    .a-definir {
+      color: var(--or);
+      opacity: 0.5;
+      font-style: italic;
+    }
+    .kpi-num.a-definir { font-style: normal; }
+
+    /* ============ SUB-BLOCK ============ */
+    .sub-block {
+      background: rgba(13, 35, 71, 0.3);
+      border-left: 3px solid var(--or);
+      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .sub-block h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--or-clair);
+      margin: 0 0 0.65rem 0;
+      text-transform: uppercase;
+    }
+    .sub-block ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--parchemin);
+      opacity: 0.92;
+    }
+    .sub-block ul li { margin: 0.35rem 0; }
+    .sub-block p { margin: 0.35rem 0; }
+
+    /* ============ TABLEAU ÉTAT ============ */
+    .tab-wrap { overflow-x: auto; margin-top: 1.25rem; }
+    .tab-etat {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(13, 35, 71, 0.35);
+      border-radius: 8px;
+      overflow: hidden;
+      min-width: 480px;
+    }
+    .tab-etat th, .tab-etat td {
+      padding: 0.7rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    .tab-etat th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      color: var(--or);
+      text-transform: uppercase;
+      background: rgba(6, 13, 26, 0.55);
+    }
+    .tab-etat td { font-size: 0.95rem; }
+    .tab-etat td:first-child { color: var(--or-clair); font-weight: 500; }
+    .tab-etat tr:last-child td { border-bottom: 0; }
+
+    /* ============ MEBASSER CARD ============ */
+    .mebasser-card {
+      background: rgba(13, 35, 71, 0.4);
+      border: 1px solid rgba(201, 168, 76, 0.28);
+      border-radius: 10px;
+      padding: 1.15rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .mebasser-nom {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--or-clair);
+      text-transform: uppercase;
+      margin: 0 0 0.85rem 0;
+    }
+    .mebasser-ligne {
+      display: flex; gap: 0.65rem; margin: 0.4rem 0;
+      font-size: 0.95rem;
+      align-items: baseline;
+    }
+    .mebasser-ligne .em { min-width: 22px; font-size: 1rem; }
+    .mebasser-ligne strong { color: var(--argent); font-weight: 500; }
+    .mebasser-cite {
+      margin-top: 0.85rem;
+      padding: 0.5rem 0 0.5rem 0.85rem;
+      border-left: 2px solid var(--or);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--argent);
+      font-size: 1rem;
+    }
+
+    /* ============ PERSPECTIVES ============ */
+    .persp-liste {
+      list-style: none;
+      padding: 0;
+      margin-top: 1.25rem;
+    }
+    .persp-liste li {
+      background: rgba(13, 35, 71, 0.3);
+      border-left: 3px solid var(--or);
+      padding: 0.85rem 1rem;
+      margin: 0.55rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ============ RETOUR ============ */
+    .retour {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+    }
+    .retour a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--or);
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid var(--or);
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+      transition: opacity 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .retour a:hover { opacity: 0.75; background: rgba(201, 168, 76, 0.08); }
+  </style>
+</head>
+<body>
+
+<header class="couverture">
+  <div class="couverture-img">
+    <img src="croissance-couverture.jpg" alt="Croissance de l'Œuvre — Ainsi, la parole de Yahawah croissait avec puissance et se fortifiait — Maʿasei 19:20" />
+  </div>
+  <span class="badge-edition">Édition N°1 · An 5786</span>
+  <p class="devise-sub">« La parole de Yahawah continuait à croître et à se répandre. »</p>
+  <p class="devise-sub-ref">— Maʿasei 12:24</p>
+</header>
+
+<!-- ============ PRÉSENTATION ============ -->
+<section id="presentation">
+  <h2 class="titre-seksyon">Présentation</h2>
+  <p class="introduction">
+    La rubrique <em>Croissance de l'Œuvre</em> retrace les principaux progrès réalisés au cours de l'année écoulée dans l'œuvre de restauration. Elle présente, au moyen de tableaux, de graphiques, de cartes et de statistiques, les différentes étapes franchies dans la diffusion du message, le développement des ressources, les Miqra'ei Qadoshim, les publications et les projets accomplis.
+  </p>
+  <p class="introduction">
+    Au-delà des chiffres, cette rubrique met également à l'honneur les Mebasserim qui, dans différents pays, ont contribué fidèlement à l'avancement de l'œuvre au cours de l'année. Leur engagement, leur persévérance et leur disponibilité constituent un encouragement pour tous ceux qui participent à la proclamation de la Besorah Tobah du Malkuwt.
+  </p>
+  <p class="introduction">
+    Chaque édition annuelle présentera les principales réalisations, les nouveaux projets, les défis rencontrés ainsi que les perspectives pour l'année à venir, afin de rendre compte avec transparence de la progression de l'œuvre de restauration.
+  </p>
+</section>
+
+<!-- ============ 1. VUE D'ENSEMBLE ============ -->
+<section id="vue-ensemble">
+  <h2 class="titre-seksyon"><span class="num-seksyon">1.</span>Vue d'ensemble</h2>
+  <p class="description">Yon rezime ane a nan kèk chif kle.</p>
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kpi-emoji">🌍</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Pays atteints</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🏛️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Nouvelles Qehilot</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">👥</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Nouveaux tal'midim</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📚</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Publications</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📅</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Miqra'ei Qadoshim célébrés</span></div>
+  </div>
+</section>
+
+<!-- ============ 2. DÉVELOPPEMENT DES QEHILOT ============ -->
+<section id="qehilot">
+  <h2 class="titre-seksyon"><span class="num-seksyon">2.</span>Développement des Qehilot</h2>
+  <div class="sub-block">
+    <h3>Nombre total de Qehilot</h3>
+    <p class="a-definir">— à définir —</p>
+  </div>
+  <div class="sub-block">
+    <h3>Nouvelles Qehilot établies cette année</h3>
+    <ul><li class="a-definir">— à définir —</li></ul>
+  </div>
+  <div class="sub-block">
+    <h3>Pays concernés</h3>
+    <p class="a-definir">— à définir —</p>
+  </div>
+  <div class="sub-block">
+    <h3>Villes concernées</h3>
+    <p class="a-definir">— à définir —</p>
+  </div>
+</section>
+
+<!-- ============ 3. ORGANISATION DE L'ŒUVRE ============ -->
+<section id="organisation">
+  <h2 class="titre-seksyon"><span class="num-seksyon">3.</span>Organisation de l'œuvre</h2>
+  <div class="sub-block">
+    <h3>Zaqenim</h3>
+    <ul>
+      <li>Nombre total de Zaqenim : <span class="a-definir">···</span></li>
+      <li>Nouveaux Zaqenim reconnus : <span class="a-definir">···</span></li>
+    </ul>
+  </div>
+  <div class="sub-block">
+    <h3>Paqidhim</h3>
+    <ul>
+      <li>Nombre de Paqidhim nommés parmi les Zaqenim : <span class="a-definir">···</span></li>
+      <li>Domaine de responsabilité : <span class="a-definir">— à définir —</span></li>
+      <li>Qehilah : <span class="a-definir">— à définir —</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4. LES ASSISTANTS ============ -->
+<section id="assistants">
+  <h2 class="titre-seksyon"><span class="num-seksyon">4.</span>Les Assistants</h2>
+  <p class="description">Nombre d'Assistants par domaine.</p>
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kpi-emoji">🗂️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Administration</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📖</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Enseignement</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📚</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Publications</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🎵</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Musique</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🌐</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Traduction</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🎥</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Audiovisuel</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">💻</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Informatique</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📣</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Communication</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🕊️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Accueil</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🤲</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Œuvres de soutien</span></div>
+  </div>
+</section>
+
+<!-- ============ 5. DÉVELOPPEMENT DES TAL'MIDIM ============ -->
+<section id="talmidim">
+  <h2 class="titre-seksyon"><span class="num-seksyon">5.</span>Développement des tal'midim</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kpi-emoji">🌱</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Nouveaux tal'midim accompagnés</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">💧</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Ayant reçu la tebilah</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📖</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Nouveaux groupes d'étude</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📘</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Guides distribués</span></div>
+  </div>
+</section>
+
+<!-- ============ 6. LES MEBASSERIM ============ -->
+<section id="mebasserim">
+  <h2 class="titre-seksyon"><span class="num-seksyon">6.</span>Les Mebasserim</h2>
+  <p class="description">Répartition des Mebasserim par pays — nombre, principaux travaux réalisés, projets marquants.</p>
+  <div class="sub-block">
+    <h3>Pays — <span class="a-definir">à définir</span></h3>
+    <ul>
+      <li>Nombre de Mebasserim : <span class="a-definir">···</span></li>
+      <li>Principaux travaux : <span class="a-definir">— à définir —</span></li>
+      <li>Projets marquants : <span class="a-definir">— à définir —</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 7. PUBLICATIONS ============ -->
+<section id="publications">
+  <h2 class="titre-seksyon"><span class="num-seksyon">7.</span>Publications</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kpi-emoji">📄</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Fiches Techniques</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📚</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Ouvrages</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📘</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Guides</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📃</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Brochures</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🌐</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Traductions</span></div>
+  </div>
+</section>
+
+<!-- ============ 8. DIFFUSION MONDIALE ============ -->
+<section id="diffusion">
+  <h2 class="titre-seksyon"><span class="num-seksyon">8.</span>Diffusion mondiale</h2>
+  <div class="sub-block">
+    <h3>Carte du monde</h3>
+    <p class="a-definir">— carte à insérer —</p>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kpi-emoji">🌍</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Nouveaux pays</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🗣️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Nouvelles langues</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">👁️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Visiteurs</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">⬇️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Téléchargements</span></div>
+  </div>
+</section>
+
+<!-- ============ 9. PRODUCTIONS ============ -->
+<section id="productions">
+  <h2 class="titre-seksyon"><span class="num-seksyon">9.</span>Productions</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card"><span class="kpi-emoji">🎵</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Tehillot</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🎥</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Vidéos</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🖼️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Affiches</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">🎙️</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Podcasts</span></div>
+    <div class="kpi-card"><span class="kpi-emoji">📖</span><span class="kpi-num a-definir">···</span><span class="kpi-libel">Enseignements</span></div>
+  </div>
+</section>
+
+<!-- ============ 10. PERSPECTIVES ============ -->
+<section id="perspectives">
+  <h2 class="titre-seksyon"><span class="num-seksyon">10.</span>Perspectives</h2>
+  <p class="description">Les objectifs de la nouvelle année.</p>
+  <ul class="persp-liste">
+    <li class="a-definir">— objectif à définir —</li>
+    <li class="a-definir">— objectif à définir —</li>
+    <li class="a-definir">— objectif à définir —</li>
+  </ul>
+</section>
+
+<!-- ============ 🏛️ ÉTAT DE L'ŒUVRE ============ -->
+<section id="etat">
+  <h2 class="titre-seksyon">🏛️ État de l'Œuvre</h2>
+  <p class="description">Tableau comparatif de l'année précédente et de l'année en cours.</p>
+  <div class="tab-wrap">
+    <table class="tab-etat">
+      <thead>
+        <tr>
+          <th>Domaine</th>
+          <th>Année précédente</th>
+          <th>Cette année</th>
+          <th>Progression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Qehilot</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Pays atteints</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Tal'midim</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Zaqenim</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Assistants</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Mebasserim</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Publications</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Langues</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+        <tr><td>Miqra'ei Qadoshim</td><td class="a-definir">···</td><td class="a-definir">···</td><td class="a-definir">···</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 🌍 MEBASSERIM À L'HONNEUR ============ -->
+<section id="mebasserim-honneur">
+  <h2 class="titre-seksyon">🌍 Les Mebasserim à l'honneur</h2>
+  <p class="description">Pour chacun, avec son accord — pays, domaine principal, contributions durant l'année et un court témoignage ou verset d'encouragement.</p>
+
+  <div class="mebasser-card">
+    <h3 class="mebasser-nom a-definir">— Nom du Mebasser —</h3>
+    <div class="mebasser-ligne"><span class="em">📍</span><span><strong>Pays ou région :</strong> <span class="a-definir">à définir</span></span></div>
+    <div class="mebasser-ligne"><span class="em">📖</span><span><strong>Domaine principal :</strong> <span class="a-definir">à définir</span></span></div>
+    <div class="mebasser-ligne"><span class="em">📅</span><span><strong>Contributions durant l'année :</strong> <span class="a-definir">à définir</span></span></div>
+    <div class="mebasser-cite a-definir">— Témoignage ou verset d'encouragement —</div>
+  </div>
+</section>
+
+<div class="retour">
+  <a href="index.html">← Retour à l'accueil</a>
+</div>
+
+</body>
+</html>
