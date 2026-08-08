@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À qui le Malkuwt sera-t-il confié ? — Les Membres de La Voie</title>
+<meta name="description" content="Fiche technique — À quelle catégorie de personnes le Malkuwt sera-t-il confié après la disparition de tous les royaumes du monde ? Étude fondée sur les Ketubim Qedoshim.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bleu-nuit:#0b1a3a;
+  --bleu-nuit-2:#122549;
+  --bleu-nuit-3:#1a3160;
+  --or:#d4af37;
+  --or-clair:#e8c866;
+  --or-doux:#c9a55c;
+  --ivoire:#f5efdf;
+  --ivoire-doux:#ece5cf;
+  --texte:#1b2440;
+  --ombre:0 10px 30px rgba(11,26,58,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cormorant Garamond', Georgia, serif;
+  font-size:1.15rem;
+  line-height:1.75;
+  color:var(--texte);
+  background:var(--ivoire);
+  -webkit-text-size-adjust:100%;
+}
+
+/* Barre supérieure */
+.top-bar{
+  background:var(--bleu-nuit);
+  color:var(--ivoire);
+  padding:.7rem 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:2px solid var(--or);
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+.top-bar a{color:var(--or-clair);text-decoration:none;font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.05em}
+.top-bar .marque{font-family:'Cinzel',serif;font-size:.95rem;color:var(--ivoire);letter-spacing:.08em}
+
+/* Hero image */
+.hero{
+  width:100%;
+  background:var(--bleu-nuit);
+  position:relative;
+}
+.hero img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* Contenu article */
+.article{
+  max-width:760px;
+  margin:0 auto;
+  padding:2rem 1.3rem 3rem;
+}
+
+/* En-tête article */
+.categorie{
+  font-family:'Cinzel',serif;
+  font-size:.75rem;
+  letter-spacing:.25em;
+  color:var(--or-doux);
+  text-align:center;
+  margin-bottom:1rem;
+  text-transform:uppercase;
+}
+.categorie::before,.categorie::after{content:"—";margin:0 .6rem;color:var(--or-doux)}
+
+h1.titre-fiche{
+  font-family:'Cinzel',serif;
+  font-size:1.65rem;
+  font-weight:700;
+  color:var(--bleu-nuit);
+  text-align:center;
+  line-height:1.35;
+  margin-bottom:1.8rem;
+  letter-spacing:.01em;
+}
+
+/* Texte directeur */
+.texte-directeur{
+  background:linear-gradient(135deg,var(--bleu-nuit) 0%,var(--bleu-nuit-2) 100%);
+  color:var(--ivoire);
+  padding:1.8rem 1.5rem;
+  border-radius:6px;
+  border-top:3px solid var(--or);
+  border-bottom:3px solid var(--or);
+  margin:2rem 0 2.5rem;
+  box-shadow:var(--ombre);
+  position:relative;
+}
+.texte-directeur .etikèt{
+  font-family:'Cinzel',serif;
+  font-size:.7rem;
+  letter-spacing:.3em;
+  color:var(--or-clair);
+  text-align:center;
+  margin-bottom:1rem;
+  text-transform:uppercase;
+}
+.texte-directeur blockquote{
+  font-style:italic;
+  font-size:1.2rem;
+  line-height:1.6;
+  text-align:center;
+  padding:0 .5rem;
+}
+.texte-directeur cite{
+  display:block;
+  text-align:center;
+  font-style:normal;
+  font-family:'Cinzel',serif;
+  font-size:.85rem;
+  color:var(--or-clair);
+  margin-top:1rem;
+  letter-spacing:.08em;
+}
+.texte-directeur cite::before{content:"— "}
+
+/* Sections */
+h2.section{
+  font-family:'Cinzel',serif;
+  font-size:1.15rem;
+  color:var(--bleu-nuit);
+  margin:2.8rem 0 1rem;
+  padding-bottom:.6rem;
+  border-bottom:1px solid var(--or-doux);
+  line-height:1.4;
+}
+h2.section .num{
+  color:var(--or-doux);
+  margin-right:.4rem;
+  font-weight:600;
+}
+
+.article p{
+  margin-bottom:1rem;
+  text-align:justify;
+  hyphens:auto;
+}
+
+/* Citations dans le texte */
+blockquote.verset{
+  background:#faf6ea;
+  border-left:4px solid var(--or);
+  padding:1rem 1.2rem;
+  margin:1.2rem 0;
+  font-style:italic;
+  color:var(--bleu-nuit-2);
+  font-size:1.1rem;
+  line-height:1.6;
+  border-radius:0 4px 4px 0;
+}
+blockquote.verset cite{
+  display:block;
+  font-style:normal;
+  font-family:'Cinzel',serif;
+  font-size:.78rem;
+  color:var(--or-doux);
+  margin-top:.7rem;
+  letter-spacing:.06em;
+  text-align:right;
+}
+blockquote.verset cite::before{content:"— "}
+
+em{font-style:italic}
+strong{font-weight:600;color:var(--bleu-nuit)}
+
+/* Séparateur ornemental */
+.orn{
+  text-align:center;
+  margin:2.5rem 0;
+  color:var(--or-doux);
+  font-size:1.4rem;
+  letter-spacing:1rem;
+}
+
+/* Conclusion */
+.conclusion{
+  background:#faf6ea;
+  border-top:3px solid var(--or);
+  border-bottom:3px solid var(--or);
+  padding:2rem 1.5rem;
+  margin:2.5rem 0 1rem;
+  border-radius:4px;
+}
+.conclusion h2{
+  font-family:'Cinzel',serif;
+  font-size:1.1rem;
+  color:var(--bleu-nuit);
+  text-align:center;
+  margin-bottom:1.2rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.conclusion ul{
+  list-style:none;
+  padding-left:0;
+  margin:1rem 0;
+}
+.conclusion ul li{
+  padding:.5rem 0 .5rem 1.5rem;
+  position:relative;
+  border-bottom:1px dashed rgba(212,175,55,.35);
+}
+.conclusion ul li:last-child{border-bottom:none}
+.conclusion ul li::before{
+  content:"✦";
+  position:absolute;
+  left:0;
+  top:.55rem;
+  color:var(--or);
+  font-size:.85rem;
+}
+
+/* Pied signature */
+.signature{
+  text-align:center;
+  margin-top:2rem;
+  padding-top:1.5rem;
+  border-top:1px solid var(--or-doux);
+  font-family:'Cinzel',serif;
+  font-size:.85rem;
+  color:var(--bleu-nuit);
+  letter-spacing:.08em;
+}
+.signature .devise{
+  display:block;
+  margin-top:.5rem;
+  font-size:.7rem;
+  color:var(--or-doux);
+  letter-spacing:.15em;
+}
+
+/* Pied de page */
+footer.pied{
+  background:var(--bleu-nuit);
+  color:var(--ivoire-doux);
+  padding:2rem 1.3rem;
+  text-align:center;
+  border-top:2px solid var(--or);
+}
+footer.pied .nom{
+  font-family:'Cinzel',serif;
+  font-size:1rem;
+  color:var(--or-clair);
+  letter-spacing:.1em;
+  margin-bottom:.5rem;
+}
+footer.pied .sous{
+  font-size:.9rem;
+  font-style:italic;
+  margin-bottom:.8rem;
+}
+footer.pied .devise-bas{
+  font-family:'Cinzel',serif;
+  font-size:.7rem;
+  color:var(--or-doux);
+  letter-spacing:.2em;
+  margin-top:1rem;
+  padding-top:1rem;
+  border-top:1px solid rgba(212,175,55,.3);
+}
+
+/* Bouton retour haut */
+.retour-haut{
+  position:fixed;
+  right:1rem;
+  bottom:1rem;
+  background:var(--bleu-nuit);
+  color:var(--or-clair);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:1.2rem;
+  border:2px solid var(--or);
+  box-shadow:var(--ombre);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s;
+  z-index:50;
+}
+.retour-haut.actif{opacity:1;pointer-events:auto}
+
+/* Tablette et desktop */
+@media(min-width:720px){
+  body{font-size:1.2rem}
+  h1.titre-fiche{font-size:2rem}
+  h2.section{font-size:1.3rem}
+  .article{padding:3rem 2rem 4rem}
+  .texte-directeur blockquote{font-size:1.35rem}
+}
+@media print{
+  .top-bar,.retour-haut,footer.pied{display:none}
+  body{background:#fff;font-size:11pt}
+  .hero img{max-height:12cm;object-fit:cover;object-position:top}
+  .article{padding:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Barre supérieure -->
+<div class="top-bar">
+  <a href="index.html">← Akèy</a>
+  <span class="marque">LA VOIE</span>
+  <a href="rassemblements.html">Fiches</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <img src="fiche-malkuwt-qadoshim-cover.jpg" alt="À quelle catégorie de personnes le Malkuwt sera-t-il confié — illustration officielle de La Voie">
+</section>
+
+<!-- Article -->
+<article class="article">
+
+  <div class="categorie">Fiche Technique</div>
+
+  <h1 class="titre-fiche">À quelle catégorie de personnes le Malkuwt sera-t-il confié après la disparition de tous les royaumes du monde&nbsp;?</h1>
+
+  <!-- Texte directeur -->
+  <div class="texte-directeur">
+    <div class="etikèt">Texte directeur</div>
+    <blockquote>
+      «&nbsp;Le royaume, la domination et la grandeur de tous les royaumes sous tous les <em>shamayim</em> seront donnés au peuple des Qadoshim du Très-Haut. Son Malkuwt est un Malkuwt éternel, et toutes les dominations Le serviront et Lui obéiront.&nbsp;»
+    </blockquote>
+    <cite>Dānīyyēʾl 7:27</cite>
+  </div>
+
+  <!-- Introduction -->
+  <p>L'établissement du Malkuwt de Yahawah constitue l'aboutissement du dessein annoncé dans les Ketubim Qedoshim. Cependant, une question mérite un examen attentif&nbsp;: lorsque tous les royaumes humains auront disparu, à qui Yahawah confiera-t-Il ce Malkuwt&nbsp;?</p>
+
+  <p>Les Ketubim eux-mêmes répondent, et leur réponse se révèle d'une remarquable cohérence, tant dans les Nebiim que dans les paroles du Mashiaḥ et les écrits des Sheliḥim.</p>
+
+  <!-- Section I -->
+  <h2 class="section"><span class="num">I.</span> La réponse directe de Dānīyyēʾl&nbsp;: le peuple des Qadoshim</h2>
+
+  <p>Le texte directeur ne laisse place à aucune ambiguïté&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Le royaume… sera donné au peuple des Qadoshim du Très-Haut.&nbsp;»
+    <cite>Dānīyyēʾl 7:27</cite>
+  </blockquote>
+
+  <p>Le <em>nabī</em> ne dit pas «&nbsp;à toute l'humanité&nbsp;», ni «&nbsp;aux nations en général&nbsp;». Il précise&nbsp;: «&nbsp;au peuple des Qadoshim du Très-Haut&nbsp;».</p>
+
+  <p>La caractéristique première des héritiers du Malkuwt est donc établie dès l'ouverture du dossier&nbsp;: <strong>ils sont Qadoshim</strong>. Cette désignation, loin d'être isolée, traverse l'ensemble des Ketubim, comme les passages suivants vont le confirmer.</p>
+
+  <!-- Section II -->
+  <h2 class="section"><span class="num">II.</span> La confirmation de Hazon&nbsp;: Qadoshim dans la première résurrection</h2>
+
+  <p>Ce que Dānīyyēʾl annonce, Yahuānān le confirme dans Hazon&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Heureux et Qadoshim ceux qui ont part à la première résurrection&nbsp;! La seconde mort n'a pas de pouvoir sur eux&nbsp;; ils seront kohanim de Yahawah et du Mashiaḥ, et ils régneront avec Lui pendant mille ans.&nbsp;»
+    <cite>Hazon 20:6</cite>
+  </blockquote>
+
+  <p>Le texte associe cinq réalités inséparables&nbsp;: ils sont heureux, ils sont Qadoshim, ils participent à la première résurrection, ils deviennent kohanim, et ils règnent avec le Mashiaḥ. Ceux qui sont appelés à régner avec Yahushuʿah portent donc, une fois encore, la même désignation.</p>
+
+  <!-- Section III -->
+  <h2 class="section"><span class="num">III.</span> Le camp des Qadoshim à la fin du Millénaire</h2>
+
+  <p>Mille ans plus tard, Hazon décrit une dernière rébellion. Les nations rassemblées par ha-Satan attaquent un lieu bien précis&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Ils montèrent sur toute l'étendue de la terre et entourèrent le camp des Qadoshim et la ville bien-aimée.&nbsp;»
+    <cite>Hazon 20:9</cite>
+  </blockquote>
+
+  <p>L'expression est significative. Elle ne désigne pas un peuple quelconque, mais «&nbsp;<em>le camp des Qadoshim</em>&nbsp;». Aux deux extrémités du Millénaire — à son ouverture par la première résurrection et à sa clôture par cette ultime attaque — les mêmes personnes sont identifiées par le même nom.</p>
+
+  <!-- Section IV -->
+  <h2 class="section"><span class="num">IV.</span> L'entrée dans la Nouvelle Yeroushalayim n'est pas universelle</h2>
+
+  <p>Après le jugement du grand trône blanc, la Nouvelle Yeroushalayim descend du <em>shamayim</em>. Une condition d'entrée y est aussitôt rappelée&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Il n'y entrera rien d'impur… mais seulement ceux qui sont inscrits dans le Livre de Vie de l'Agneau.&nbsp;»
+    <cite>Hazon 21:27</cite>
+  </blockquote>
+
+  <p>Hazon 22:14 précise davantage&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Heureux ceux qui lavent leurs robes, afin d'avoir droit à l'arbre de vie et d'entrer par les portes dans la Ville.&nbsp;»
+    <cite>Hazon 22:14</cite>
+  </blockquote>
+
+  <p>L'accès à la Ville <em>qadoshah</em> suppose donc une condition&nbsp;: la pureté, se mettre à part.</p>
+
+  <!-- Section V -->
+  <h2 class="section"><span class="num">V.</span> La qadoshouth, condition indispensable</h2>
+
+  <p>Cette condition n'est pas propre à Hazon. Le <em>shilliaḥ</em> l'énonce avec la même clarté&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Recherchez la shalom avec tous, et la qadoshouth, sans laquelle personne ne verra l'Adôn.&nbsp;»
+    <cite>ʿIbrim 12:14</cite>
+  </blockquote>
+
+  <p>Le texte ne présente pas la qadoshouth comme un idéal réservé à quelques croyants particulièrement avancés. Il en fait, au contraire, une condition sans laquelle nul ne verra Yahawah.</p>
+
+  <p>Képha reprend cette exigence dans des termes identiques&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Mais, puisque Celui qui vous a appelés est <em>qadosh</em>, vous aussi soyez <em>qadoshim</em> dans toute votre conduite, selon qu'il est écrit&nbsp;: Soyez qadoshim, car Je suis qadosh.&nbsp;»
+    <cite>1 Kefa 1:15, 16</cite>
+  </blockquote>
+
+  <!-- Section VI -->
+  <h2 class="section"><span class="num">VI.</span> La confirmation par Yahushuʿah et les Tehillim</h2>
+
+  <p>Le Mashiaḥ Lui-même a énoncé cette exigence dans le Sermon sur la montagne&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Heureux ceux qui ont le cœur pur, car ils verront 'Èlohim.&nbsp;»
+    <cite>Mattiyahu 5:8</cite>
+  </blockquote>
+
+  <p>Dāwīḍ l'avait déjà annoncée bien avant&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Qui pourra monter à la montagne de Yahawah&nbsp;? Qui s'élèvera jusqu'à Son lieu qadosh&nbsp;? Celui qui a les mains innocentes et le cœur pur.&nbsp;»
+    <cite>Tehillim 24:3-4</cite>
+  </blockquote>
+
+  <p>Des Ketubim les plus anciens jusqu'aux paroles du Mashiaḥ, la même condition est répétée&nbsp;: <strong>la pureté du cœur</strong>.</p>
+
+  <!-- Section VII -->
+  <h2 class="section"><span class="num">VII.</span> Le Malkuwt promis aux Qadoshim dans les paroles du Mashiaḥ</h2>
+
+  <p>Yahushuʿah ne s'est pas contenté d'énoncer la condition&nbsp;; Il a également nommé les bénéficiaires. Au jour du jugement, Il déclarera&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Venez, vous qui êtes bénis de Mon Père, prenez possession du Malkuwt qui vous a été préparé dès la fondation du monde.&nbsp;»
+    <cite>Mattiyahu 25:34</cite>
+  </blockquote>
+
+  <p>À Son petit troupeau, Il avait déjà donné cette assurance&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Ne crains point, petit troupeau&nbsp;; car votre Père a trouvé bon de vous donner le Malkuwt.&nbsp;»
+    <cite>Luqas 12:32</cite>
+  </blockquote>
+
+  <p>Yaʿaqob confirme cette même destination&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;'Èlohim n'a-t-Il pas choisi les pauvres aux yeux du monde pour être riches en <em>émounah</em> et héritiers du Malkuwt qu'Il a promis à ceux qui L'aiment&nbsp;?&nbsp;»
+    <cite>Yaʿaqob 2:5</cite>
+  </blockquote>
+
+  <p>Et Yahushuʿah précise le sort final des héritiers&nbsp;:</p>
+
+  <blockquote class="verset">
+    «&nbsp;Alors les <em>tsaddiqim</em> brilleront comme le soleil dans le Malkuwt de leur Père.&nbsp;»
+    <cite>Mattiyahu 13:43</cite>
+  </blockquote>
+
+  <p>Le Malkuwt est ainsi promis à un peuple identifié&nbsp;: ceux qui sont bénis du Père, qui aiment Yahawah, qui pratiquent la <em>tsedaqah</em>, et que les Ketubim appellent Qadoshim.</p>
+
+  <div class="orn">✦ ✦ ✦</div>
+
+  <!-- Conclusion -->
+  <div class="conclusion">
+    <h2>Conclusion</h2>
+
+    <p>En rapprochant l'ensemble de ces témoignages, une même réalité se dégage. Le Malkuwt n'est pas remis indistinctement à l'humanité. Il est confié&nbsp;:</p>
+
+    <ul>
+      <li>au peuple des Qadoshim (Dānīyyēʾl 7:27)&nbsp;;</li>
+      <li>à ceux qui participent à la première résurrection, qualifiés de Qadoshim (Hazon 20:6)&nbsp;;</li>
+      <li>au camp des Qadoshim, préservé jusqu'à la dernière rébellion (Hazon 20:9)&nbsp;;</li>
+      <li>aux <em>tsaddiqim</em> que le Père a bénis dès la fondation du monde (Mattiyahu 25:34&nbsp;; 13:43).</li>
+    </ul>
+
+    <p>Et cette destination s'accompagne d'une condition invariable&nbsp;:</p>
+
+    <ul>
+      <li>rien d'impur n'entre dans la Nouvelle Yeroushalayim (Hazon 21:27)&nbsp;;</li>
+      <li>seuls ceux qui lavent leurs robes entrent par les portes (Hazon 22:14)&nbsp;;</li>
+      <li>sans qadoshouth, personne ne verra l'Adôn (ʿIbrim 12:14)&nbsp;;</li>
+      <li>seuls les cœurs purs verront 'Èlohim (Mattiyahu 5:8)&nbsp;;</li>
+      <li>«&nbsp;Soyez qadoshim, car Je suis qadosh&nbsp;» (1 Kefa 1:15-16).</li>
+    </ul>
+
+    <p>Les Ketubim Qedoshim présentent ainsi la qadoshouth non comme une qualité facultative, réservée à quelques-uns, mais comme la marque distinctive du peuple auquel Yahawah confiera Son Malkuwt éternel.</p>
+  </div>
+
+  <!-- Signature -->
+  <div class="signature">
+    Les Membres de La Voie
+    <span class="devise">Beth HaKnesset · Maison de Rassemblement des Tal'midim de Yahushuʿah</span>
+  </div>
+
+</article>
+
+<!-- Pied -->
+<footer class="pied">
+  <div class="nom">LES MEMBRES DE LA VOIE</div>
+  <div class="sous">Ha'Dérèkh — Maʿasei 9:2 · 24:14</div>
+  <div>lavoie.world</div>
+  <div class="devise-bas">Les Ketubim Qedoshim — Notre fondation, notre lumière, notre chemin</div>
+</footer>
+
+<a href="#" class="retour-haut" id="retourHaut" aria-label="Retour en haut">↑</a>
+
+<script>
+// Bouton retour haut
+(function(){
+  var btn = document.getElementById('retourHaut');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 400){ btn.classList.add('actif'); }
+    else{ btn.classList.remove('actif'); }
+  });
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+
+</body>
+</html>
