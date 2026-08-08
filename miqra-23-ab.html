@@ -800,6 +800,44 @@
     color:rgba(26,42,68,0.65);
     flex-shrink:0;
   }
+
+  /* PAGE 7 — SÈVIS ODYO (ajoute) */
+  .couv-ecouter{
+    display:inline-block;
+    margin-top:0.9rem;
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.62rem,2.9vw,0.78rem);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--bleu-nuit);
+    background:rgba(201,168,76,0.14);
+    border:1.5px solid var(--or);
+    border-radius:999px;
+    padding:0.45rem 1.2rem;
+    text-decoration:none;
+    position:relative;
+    z-index:1;
+  }
+  .orateur-bloc{ display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem; }
+  .orateur-photo{ width:78px;height:78px;border-radius:50%;object-fit:cover;border:2px solid var(--or);box-shadow:0 6px 18px rgba(0,0,0,0.25);flex-shrink:0; }
+  .orateur-label{ font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or);text-transform:uppercase;margin-bottom:0.25rem; }
+  .orateur-note{ font-size:0.95rem;color:var(--texte);line-height:1.5;font-style:italic; }
+  .player-cadre{ background:var(--bleu-nuit);border:1.5px solid var(--or);border-radius:10px;padding:1rem 1.1rem 1.15rem;margin-bottom:1.2rem;color:#f7edcc; }
+  .player-now-label{ font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.18em;color:var(--or);text-transform:uppercase;margin-bottom:0.3rem; }
+  .player-now-titre{ font-family:'Cinzel',serif;font-weight:600;font-size:0.95rem;line-height:1.4;color:var(--or-clair);margin-bottom:0.7rem;min-height:2.1em; }
+  .player-cadre audio{ width:100%;height:40px; }
+  .player-nav{ display:flex;justify-content:space-between;margin-top:0.7rem;gap:0.6rem; }
+  .player-nav button{ flex:1;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--or-clair);background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.55);border-radius:6px;padding:0.55rem 0.4rem;cursor:pointer; }
+  .pisteliste{ display:flex;flex-direction:column;gap:0.45rem;padding-bottom:1rem; }
+  .piste{ display:flex;align-items:center;gap:0.75rem;background:#fff;border:1px solid rgba(13,35,71,0.14);border-left:3px solid rgba(201,168,76,0.55);border-radius:8px;padding:0.6rem 0.75rem;cursor:pointer; }
+  .piste.active{ background:var(--bleu-nuit);border-left-color:var(--or); }
+  .piste.active .piste-titre{ color:var(--or-clair); }
+  .piste.active .piste-dur{ color:var(--or); }
+  .piste-num{ font-family:'Cinzel',serif;font-weight:700;font-size:0.72rem;color:var(--or);width:1.6rem;flex-shrink:0;text-align:center; }
+  .piste-titre{ flex:1;font-size:0.92rem;line-height:1.35;color:var(--texte); }
+  .piste-dur{ font-family:'Cinzel',serif;font-size:0.68rem;color:rgba(26,42,68,0.65);flex-shrink:0; }
+
 </style>
 <style>
   .repons-texte{
@@ -825,6 +863,8 @@
     <p class="couv-edition">Shabbath — Édition Hebdomadaire</p>
 
     <div class="couv-badge">Shabbath 23 Ab</div>
+    <a class="couv-ecouter" href="#ecouter">🎙️ Écouter l'Abodah — service audio</a>
+
 
     <div class="couv-dates">
       <span class="couv-dates-icone">🗓️</span>
@@ -1180,9 +1220,97 @@
         </div>
       </div>
     </div>
+      <div class="scroll-hint">
+      <span>Écouter l'Abodah</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+
+  <!-- ============ PAGE 7 — SÈVIS ODYO ============ -->
+  <section class="page page-7" id="ecouter">
+    <div class="page-num">7</div>
+    <div class="header-bar">
+      <div class="header-icon">🎙️</div>
+      <div>
+        <div class="header-titre">Écouter<br>l'Abodah</div>
+        <div class="header-soustitre">Service audio complet — 13 parties</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="orateur-bloc">
+        <img src="miqra-23-ab.jpg" alt="Orateur — Shabbath 23 Ab" class="orateur-photo" onerror="this.style.display='none'">
+        <div>
+          <div class="orateur-label">Miqra Qadosh · Shabbath 23 Ab</div>
+          <div class="orateur-note">« YISRAʾĒL dans le dessein de Yahawah » — les parties s'enchaînent automatiquement.</div>
+        </div>
+      </div>
+
+      <div class="player-cadre">
+        <div class="player-now-label">En écoute</div>
+        <div class="player-now-titre" id="s23-now">Sélectionne une partie pour commencer</div>
+        <audio id="s23-audio" controls preload="none"></audio>
+        <div class="player-nav">
+          <button type="button" id="s23-prev">◀ Précédent</button>
+          <button type="button" id="s23-next">Suivant ▶</button>
+        </div>
+      </div>
+
+      <div class="pisteliste" id="s23-liste"></div>
+
+    </div>
   </section>
 
 </div>
+
+
+<script>
+(function(){
+  var pistes=[
+    {t:"Chirat d'ouverture — Li Bon! Li Agréyab! (T38)",f:"tehillah-38-li-bon-li-agreyab.mp3",d:"—"},
+    {t:"Transition vers le Chirat de méditation",f:"s23ab-transition-vers-chirat-meditation.mp3",d:"2:01"},
+    {t:"Chirat de méditation — Abba Yah, Ou Kenbé Pwomès Ou (T36)",f:"tehillah-36-abba-yah-kenbe-pwomes.mp3",d:"—"},
+    {t:"Transition vers Les Rappels de Yah",f:"s23ab-transition-vers-rappels-yah.mp3",d:"2:47"},
+    {t:"Rappels de Yah — Questions",f:"s23ab-rappels-yah-questions.mp3",d:"3:29"},
+    {t:"Rappels de Yah — Réponses aux questions",f:"s23ab-rappels-yah-reponses.mp3",d:"6:37"},
+    {t:"Transition vers l'Enseignement principal",f:"s23ab-transition-vers-enseignement.mp3",d:"2:27"},
+    {t:"Enseignement — YISRAʾĒL dans le dessein de Yahawah (1ère partie)",f:"s23ab-enseignement-1.mp3",d:"22:37"},
+    {t:"Enseignement — YISRAʾĒL dans le dessein de Yahawah (2ème partie)",f:"s23ab-enseignement-2.mp3",d:"22:37"},
+    {t:"Transition vers le Chirat de clôture",f:"s23ab-transition-vers-chirat-cloture.mp3",d:"1:13"},
+    {t:"Chirat de clôture — Yerushalayim, Rétounen (T37)",f:"tehillah-37-yerushalayim-retounen.mp3",d:"—"},
+    {t:"Téfilah finale",f:"s23ab-tefilah-finale.mp3",d:"4:30"},
+    {t:"Propos de clôture",f:"s23ab-propos-cloture.mp3",d:"2:59"}
+  ];
+  var audio=document.getElementById('s23-audio');
+  var now=document.getElementById('s23-now');
+  var liste=document.getElementById('s23-liste');
+  var idx=-1;
+
+  pistes.forEach(function(pi,i){
+    var div=document.createElement('div');
+    div.className='piste';
+    div.innerHTML='<div class="piste-num">'+(i+1)+'</div><div class="piste-titre">'+pi.t+'</div><div class="piste-dur">'+pi.d+'</div>';
+    div.addEventListener('click',function(){jwe(i);});
+    liste.appendChild(div);
+  });
+
+  function jwe(i){
+    if(i<0||i>=pistes.length)return;
+    idx=i;
+    audio.src=pistes[i].f;
+    audio.play();
+    now.textContent=(i+1)+'. '+pistes[i].t;
+    var els=liste.children;
+    for(var k=0;k<els.length;k++){els[k].classList.toggle('active',k===i);}
+    els[i].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+
+  audio.addEventListener('ended',function(){ if(idx<pistes.length-1) jwe(idx+1); });
+  document.getElementById('s23-prev').addEventListener('click',function(){ jwe(idx<=0?0:idx-1); });
+  document.getElementById('s23-next').addEventListener('click',function(){ jwe(idx<0?0:Math.min(idx+1,pistes.length-1)); });
+})();
+</script>
 
 </body>
 </html>
