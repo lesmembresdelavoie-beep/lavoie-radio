@@ -1,6 +1,6 @@
 /* Service Worker — La Voie PWA
    Mete kach app la ajou : chanje NIMEWO vèsyon an chak fwa ou modifye app.html */
-const CACHE = 'lavoie-app-v72';
+const CACHE = 'lavoie-app-v73';
 const FICHIERS = [
   'app.html',
   'manifest.json',
