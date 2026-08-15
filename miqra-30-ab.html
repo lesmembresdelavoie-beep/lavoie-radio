@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Miqra Qadosh — Shabbath 30 Ab · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu-nuit:#0d2347;
+    --bleu-fonce:#0a1a35;
+    --or:#c9a84c;
+    --or-clair:#e8cb7a;
+    --parchemin:#faf6ec;
+    --parchemin2:#f5efe0;
+    --texte:#1a2a44;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:var(--bleu-fonce);
+    overflow:hidden;
+  }
+
+  .livre{
+    height:100vh;
+    width:100vw;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .page{
+    height:100vh;
+    width:100vw;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    background:var(--parchemin);
+  }
+
+  /* PAGE NUMBER BADGE */
+  .page-num{
+    position:absolute;
+    top:1.1rem;
+    right:1.1rem;
+    width:34px;height:34px;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border:1px solid var(--or);
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;align-items:center;justify-content:center;
+    z-index:10;
+    border-radius:3px;
+  }
+
+  /* SCROLL HINT */
+  .scroll-hint{
+    position:absolute;
+    bottom:0.9rem;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Cinzel',serif;
+    font-size:0.55rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--or);
+    opacity:0.55;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.3rem;
+  }
+  .scroll-hint svg{ animation: bob 1.8s ease-in-out infinite; width:16px;height:16px; }
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
+  .page:last-child .scroll-hint{display:none}
+
+  /* SHARED HEADER BAR (navy header with icon + title) */
+  .header-bar{
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    padding:1.4rem 1.5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-shrink:0;
+  }
+  .header-icon{
+    width:48px;height:48px;
+    border:1.5px solid var(--or);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    flex-shrink:0;
+    color:var(--or);
+  }
+  .header-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(1.05rem,5.5vw,1.5rem);
+    letter-spacing:0.04em;
+    color:#fbf6e9;
+    line-height:1.2;
+  }
+  .header-soustitre{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-top:0.2rem;
+  }
+
+  .page-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding:1.6rem 1.5rem 3.5rem;
+    overflow-y:auto;
+  }
+
+  .ornement{
+    text-align:center;
+    color:var(--or);
+    opacity:0.6;
+    font-size:0.7rem;
+    letter-spacing:0.3em;
+    margin:1rem 0;
+  }
+  .ornement-line{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin:1rem 0;
+  }
+  .ornement-line::before, .ornement-line::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+  }
+  .ornement-line span{
+    color:var(--or);
+    font-size:0.7rem;
+  }
+
+  @media (min-width:600px){
+    .page-content, .header-bar{ padding-left:2.5rem; padding-right:2.5rem; }
+    .page-content > *, .header-bar{ max-width:600px; margin-left:auto; margin-right:auto; width:100%; }
+  }
+
+  /* =========================================================
+     PAGE 1 — COUVERTURE
+  ========================================================= */
+  .page-1{
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2.5rem 1.6rem;
+    background: var(--parchemin2);
+    background-image:
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,35,71,0.07) 0%, transparent 70%);
+  }
+  .couv-cadre{
+    position:absolute;
+    inset:0.7rem;
+    border:2px solid var(--or);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .couv-cadre::before{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(201,168,76,0.4);
+    border-radius:2px;
+  }
+  .couv-affiche-img{width:100%;max-width:340px;border-radius:10px;border:1.5px solid var(--or);box-shadow:0 12px 34px rgba(0,0,0,.4);margin-bottom:1.2rem;position:relative;z-index:1}
+  .logo-cercle{
+    width:130px;height:130px;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    background:rgba(201,168,76,0.04);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.3rem;
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+  }
+  .logo-cercle img{
+    width:100%;height:100%;
+    object-fit:contain;
+    border-radius:50%;
+  }
+  .couv-titre{
+    font-family:'Cinzel',serif;
+    font-weight:900;
+    font-size:clamp(2.6rem,13vw,4.2rem);
+    color:var(--bleu-nuit);
+    letter-spacing:0.06em;
+    line-height:1.05;
+    position:relative;
+    z-index:1;
+  }
+  .couv-edition{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.7rem,3.5vw,0.95rem);
+    color:var(--or);
+    letter-spacing:0.18em;
+    margin-top:0.6rem;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .couv-badge{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(0.95rem,4.5vw,1.3rem);
+    color:var(--or-clair);
+    background:var(--bleu-nuit);
+    padding:0.45rem 1.6rem;
+    margin-top:1rem;
+    border-radius:3px;
+    letter-spacing:0.08em;
+    position:relative;
+    z-index:1;
+  }
+  .couv-dates{
+    margin-top:1.1rem;
+    display:flex;
+    align-items:flex-start;
+    gap:0.6rem;
+    font-size:clamp(0.85rem,4vw,1.02rem);
+    color:var(--texte);
+    line-height:1.5;
+    position:relative;
+    z-index:1;
+  }
+  .couv-dates-icone{ font-size:1.2rem; margin-top:0.1rem; }
+  .couv-sep{
+    width:90px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+    margin:1.2rem auto;
+    position:relative;
+    z-index:1;
+  }
+  .couv-verset{
+    font-style:italic;
+    font-size:clamp(0.85rem,3.8vw,1.05rem);
+    color:var(--texte);
+    line-height:1.7;
+    max-width:340px;
+    margin:0 auto 0.8rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-ref{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.25em;
+    color:var(--bleu-nuit);
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .couv-footer{
+    margin-top:1.6rem;
+    font-family:'Cinzel',serif;
+    font-size:clamp(0.65rem,3vw,0.78rem);
+    letter-spacing:0.15em;
+    color:var(--or);
+    text-transform:uppercase;
+    line-height:1.7;
+    position:relative;
+    z-index:1;
+  }
+
+  /* =========================================================
+     PAGE 2 — PROGRAMME
+  ========================================================= */
+  .prog-liste{
+    display:flex;
+    flex-direction:column;
+    gap:1.2rem;
+  }
+  .prog-item{
+    display:flex;
+    gap:1rem;
+  }
+  .prog-icone{
+    flex-shrink:0;
+    width:46px;height:46px;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    color:var(--or);
+    position:relative;
+  }
+  .prog-num{
+    position:absolute;
+    top:-6px; left:-6px;
+    width:22px;height:22px;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border-radius:50%;
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.7rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .prog-texte{
+    flex:1;
+    padding-bottom:0.7rem;
+    border-bottom:1px dotted rgba(201,168,76,0.4);
+  }
+  .prog-titre-item{
+    font-family:'Cinzel',serif;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--bleu-nuit);
+    line-height:1.4;
+    margin-bottom:0.2rem;
+  }
+  .prog-desc{
+    font-size:0.95rem;
+    color:var(--texte);
+    line-height:1.45;
+    opacity:0.85;
+  }
+  .prog-desc ul{
+    list-style:none;
+    margin-top:0.2rem;
+  }
+  .prog-desc li{
+    position:relative;
+    padding-left:1rem;
+  }
+  .prog-desc li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--or);
+  }
+  .prog-duree{
+    display:flex;
+    align-items:center;
+    gap:0.3rem;
+    font-size:0.85rem;
+    color:var(--or);
+    font-weight:600;
+    margin-top:0.4rem;
+    letter-spacing:0.02em;
+  }
+  .prog-total{
+    margin-top:1.6rem;
+    text-align:center;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border-radius:4px;
+    padding:0.9rem;
+    font-family:'Cinzel',serif;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+
+  /* =========================================================
+     PAGE 3 — LECTURES DU JOUR
+  ========================================================= */
+  .lecture-card{
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    margin-bottom:1rem;
+  }
+  .lecture-icone{
+    width:64px;height:64px;
+    flex-shrink:0;
+    border-radius:14px;
+    background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    color:var(--or-clair);
+  }
+  .lecture-label{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.25rem;
+  }
+  .lecture-ref{
+    font-family:'Cinzel',serif;
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--bleu-nuit);
+    margin-bottom:0.4rem;
+  }
+  .lecture-citation{
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--texte);
+    line-height:1.6;
+  }
+  .lecture-citation .accent{
+    color:var(--or);
+    font-weight:600;
+    font-style:normal;
+  }
+  .theme-cadre{
+    margin-top:0.8rem;
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.3rem 1.2rem;
+    background:rgba(201,168,76,0.06);
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+  }
+  .theme-icone{
+    width:48px;height:48px;
+    flex-shrink:0;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    color:var(--or);
+  }
+  .theme-label{
+    font-family:'Cinzel',serif;
+    font-size:0.65rem;
+    letter-spacing:0.25em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.6rem;
+  }
+  .theme-citation{
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--bleu-nuit);
+    line-height:1.6;
+    font-weight:600;
+  }
+
+  /* =========================================================
+     PAGE 4 — RAPPELS DE YAH (QUESTIONNAIRE)
+  ========================================================= */
+  .quest-badge{
+    display:block;
+    margin:0 auto 1.4rem;
+    text-align:center;
+    font-family:'Cinzel',serif;
+    font-size:0.65rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--or-clair);
+    background:var(--bleu-nuit);
+    padding:0.5rem 1.2rem;
+    border-radius:3px;
+    width:fit-content;
+  }
+  .lectures-recap{
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.1rem 1.2rem;
+    background:rgba(201,168,76,0.05);
+    margin-bottom:1.5rem;
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+  }
+  .lectures-recap-icone{
+    width:46px;height:46px;
+    flex-shrink:0;
+    border-radius:10px;
+    background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    color:var(--or-clair);
+  }
+  .lectures-recap-label{
+    font-family:'Cinzel',serif;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.4rem;
+  }
+  .lectures-recap ul{
+    list-style:none;
+  }
+  .lectures-recap li{
+    font-family:'Cinzel',serif;
+    font-size:1rem;
+    font-weight:600;
+    color:var(--bleu-nuit);
+    margin-bottom:0.2rem;
+    position:relative;
+    padding-left:1rem;
+  }
+  .lectures-recap li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--or);
+  }
+  .quest-liste{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+  }
+  .quest-item{
+    display:flex;
+    gap:0.8rem;
+  }
+  .quest-num{
+    flex-shrink:0;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .quest-texte{
+    font-size:1.05rem;
+    line-height:1.6;
+    color:var(--texte);
+    flex:1;
+    padding-top:0.15rem;
+  }
+  .quest-ligne{
+    margin-top:0.6rem;
+    border-bottom:1px solid rgba(201,168,76,0.35);
+    height:1.4rem;
+  }
+  .quest-footer{
+    margin-top:1.8rem;
+    text-align:center;
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--texte);
+    opacity:0.8;
+    line-height:1.6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.5rem;
+  }
+
+  /* =========================================================
+     PAGE 5 — NOTES & INFORMATIONS
+  ========================================================= */
+  .notes-zone{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .notes-citation{
+    text-align:center;
+    margin-bottom:1.4rem;
+  }
+  .notes-citation p.texte{
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--bleu-nuit);
+    line-height:1.6;
+    margin-bottom:0.4rem;
+  }
+  .notes-citation p.ref{
+    font-family:'Cinzel',serif;
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+  }
+  .notes-lignes{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+    margin-bottom:1.5rem;
+  }
+  .notes-lignes div{
+    border-bottom:1px solid rgba(201,168,76,0.3);
+    height:1px;
+  }
+  .info-utiles{
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.2rem 1.2rem;
+    background:rgba(201,168,76,0.06);
+    margin-top:auto;
+    margin-bottom:1.5rem;
+  }
+  .info-utiles-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--bleu-nuit);
+    letter-spacing:0.06em;
+    text-align:center;
+    margin-bottom:0.9rem;
+  }
+  .info-utiles-ligne{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    margin-bottom:0.6rem;
+  }
+  .info-utiles-icone{
+    font-size:1.1rem;
+    color:var(--or);
+    flex-shrink:0;
+  }
+  .info-utiles-bar{
+    flex:1;
+    border-bottom:1px solid rgba(201,168,76,0.3);
+    height:1.2rem;
+  }
+  .notes-footer{
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    padding:1.4rem 1.3rem;
+    border-radius:6px;
+    text-align:center;
+  }
+  .notes-footer-titre{
+    font-family:'Cinzel',serif;
+    font-size:0.85rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.3rem;
+  }
+  .notes-footer-sub{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:#f7edcc;
+    opacity:0.85;
+    text-transform:uppercase;
+  }
+
+  /* =========================================================
+     BOUTON ÉCOUTER (COUVERTURE)
+  ========================================================= */
+  .couv-ecouter{
+    display:inline-block;
+    margin-top:0.9rem;
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.62rem,2.9vw,0.78rem);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--bleu-nuit);
+    background:rgba(201,168,76,0.14);
+    border:1.5px solid var(--or);
+    border-radius:999px;
+    padding:0.45rem 1.2rem;
+    text-decoration:none;
+    position:relative;
+    z-index:1;
+  }
+
+  /* =========================================================
+     PAGE 6 — SÈVIS ODYO
+  ========================================================= */
+  .orateur-bloc{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin-bottom:1.2rem;
+  }
+  .orateur-photo{
+    width:78px;height:78px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--or);
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    flex-shrink:0;
+  }
+  .orateur-label{
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.25rem;
+  }
+  .orateur-note{
+    font-size:0.95rem;
+    color:var(--texte);
+    line-height:1.5;
+    font-style:italic;
+  }
+  .player-cadre{
+    background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
+    border-radius:10px;
+    padding:1rem 1.1rem 1.15rem;
+    margin-bottom:1.2rem;
+    color:#f7edcc;
+  }
+  .player-now-label{
+    font-family:'Cinzel',serif;
+    font-size:0.62rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.3rem;
+  }
+  .player-now-titre{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:0.95rem;
+    line-height:1.4;
+    color:var(--or-clair);
+    margin-bottom:0.7rem;
+    min-height:2.1em;
+  }
+  .player-cadre audio{
+    width:100%;
+    height:40px;
+  }
+  .player-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-top:0.7rem;
+    gap:0.6rem;
+  }
+  .player-nav button{
+    flex:1;
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--or-clair);
+    background:rgba(201,168,76,0.12);
+    border:1px solid rgba(201,168,76,0.55);
+    border-radius:6px;
+    padding:0.55rem 0.4rem;
+    cursor:pointer;
+  }
+  .pisteliste{
+    display:flex;
+    flex-direction:column;
+    gap:0.45rem;
+    padding-bottom:1rem;
+  }
+  .piste{
+    display:flex;
+    align-items:center;
+    gap:0.75rem;
+    background:#fff;
+    border:1px solid rgba(13,35,71,0.14);
+    border-left:3px solid rgba(201,168,76,0.55);
+    border-radius:8px;
+    padding:0.6rem 0.75rem;
+    cursor:pointer;
+  }
+  .piste.active{
+    background:var(--bleu-nuit);
+    border-left-color:var(--or);
+  }
+  .piste.active .piste-titre{ color:var(--or-clair); }
+  .piste.active .piste-dur{ color:var(--or); }
+  .piste-num{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.72rem;
+    color:var(--or);
+    width:1.6rem;
+    flex-shrink:0;
+    text-align:center;
+  }
+  .piste-titre{
+    flex:1;
+    font-size:0.92rem;
+    line-height:1.35;
+    color:var(--texte);
+  }
+  .piste-dur{
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    color:rgba(26,42,68,0.65);
+    flex-shrink:0;
+  }
+</style>
+<body>
+
+<div class="livre">
+
+  <!-- ============ PAGE 1 — COUVERTURE ============ -->
+  <section class="page page-1">
+    <div class="couv-cadre"></div>
+    <div class="page-num">1</div>
+
+    <h1 class="couv-titre">MIQRA<br>QADOSH</h1>
+    <p class="couv-edition">Shabbath — Édition Hebdomadaire</p>
+
+    <div class="couv-badge">Shabbath 30 Ab</div>
+
+    <div class="couv-dates">
+      <span class="couv-dates-icone">🗓️</span>
+      <span>Du 14 août 2026 au coucher du soleil<br>au 15 août 2026 au coucher du soleil</span>
+    </div>
+
+    <div class="couv-sep"></div>
+
+    <div style="font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.22em;color:var(--or-c);text-transform:uppercase;text-align:center;margin-bottom:0.6rem;">Série : Le dessein de Yahawah pour l'humanité</div>
+    <div style="font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.18em;color:var(--or-f);text-transform:uppercase;text-align:center;margin-bottom:1rem;padding:0.3rem 0.8rem;border:1px solid var(--or-c);border-radius:4px;display:inline-block;margin-left:auto;margin-right:auto;">5<sup>e</sup> enseignement</div>
+
+    <p class="couv-verset" style="font-size:1.25rem">« Yahawah tèlman renmen limanite, li bay sèl Pitit Li... pa pou kondane limanite, men pou limanite jwenn delivrans grasa Li. »</p>
+    <p class="couv-ref">Yaḥuānān 3:16-17</p>
+
+    <div class="couv-footer">Programme simplifié de l'ʿAbodah<br>des Membres de La Voie</div>
+
+    <div class="scroll-hint">
+      <span>Écouter l'Abodah</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 — ÉCOUTER L'ABODAH ============ -->
+  <section class="page page-2" id="ecouter">
+    <div class="page-num">2</div>
+    <div class="header-bar">
+      <div class="header-icon">🎙️</div>
+      <div>
+        <div class="header-titre">Écouter<br>l'Abodah</div>
+        <div class="header-soustitre">Programme simplifié — 2 parties</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="orateur-bloc">
+        <div>
+          <div class="orateur-label">Miqra Qadosh · Shabbath 30 Ab</div>
+          <div class="orateur-note">5<sup>e</sup> enseignement — « Yahushuʿah au centre du dessein de Yahawah : Pourquoi Yahawah a-t-Il envoyé Son Fils ? » — Yaḥuānān 3:16-17. Les parties s'enchaînent automatiquement.</div>
+        </div>
+      </div>
+
+      <div class="player-cadre">
+        <div class="player-now-label">En écoute</div>
+        <div class="player-now-titre" id="m30-now">—</div>
+        <audio id="m30-audio" controls preload="none"></audio>
+        <div class="player-nav">
+          <button type="button" id="m30-prev">◀ Précédent</button>
+          <button type="button" id="m30-next">Suivant ▶</button>
+        </div>
+      </div>
+
+      <div class="pisteliste" id="m30-liste"></div>
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var pistes=[
+    {t:"Chirat — Pou Lanmou Li (Tehillah nouvo)",f:"m30ab-chirat-pou-lanmou-li.mp3",d:"5:44"},
+    {t:"Enseignement — Yahushuʿah au centre du dessein de Yahawah",f:"m30ab-enseignement.mp3",d:"50:54"}
+  ];
+  var audio=document.getElementById('m30-audio');
+  var now=document.getElementById('m30-now');
+  var liste=document.getElementById('m30-liste');
+  var idx=-1;
+
+  pistes.forEach(function(pi,i){
+    var div=document.createElement('div');
+    div.className='piste';
+    div.innerHTML='<div class="piste-num">'+(i+1)+'</div><div class="piste-titre">'+pi.t+'</div><div class="piste-dur">'+pi.d+'</div>';
+    div.addEventListener('click',function(){jwe(i);});
+    liste.appendChild(div);
+  });
+
+  function jwe(i){
+    if(i<0||i>=pistes.length)return;
+    idx=i;
+    audio.src=pistes[i].f;
+    audio.play();
+    now.textContent=(i+1)+'. '+pistes[i].t;
+    var els=liste.children;
+    for(var k=0;k<els.length;k++){els[k].classList.toggle('active',k===i);}
+    els[i].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+
+  audio.addEventListener('ended',function(){ if(idx<pistes.length-1) jwe(idx+1); });
+  document.getElementById('m30-prev').addEventListener('click',function(){ jwe(idx<=0?0:idx-1); });
+  document.getElementById('m30-next').addEventListener('click',function(){ jwe(idx<0?0:Math.min(idx+1,pistes.length-1)); });
+})();
+</script>
+
+</body>
+</html>
