@@ -7,6 +7,12 @@
   },
   "items": [
     {
+      "id": "miqra-30-ab",
+      "titre": "📖 Miqra Qadosh — Shabbath 30 Ab",
+      "sou": "Yahushuʿah au centre du dessein · Yaḥuānān 3:16-17",
+      "url": "miqra-30-ab.html"
+    },
+    {
       "id": "croissance-5786",
       "titre": "📊 Croissance de l'Œuvre — Édition N°1",
       "sou": "Rapport annuel · An 5786",
@@ -35,12 +41,6 @@
       "titre": "⚠️ Avez-vous reconnu Yahushuʿah ?",
       "sou": "Message vidéo essentiel",
       "url": "reconnaitre-yahushua.html"
-    },
-    {
-      "id": "miqra-rosh-hodesh-2-ab",
-      "titre": "🌙 Miqra Qadosh — Rosh Ḥodesh 1er Ab",
-      "sou": "Nouvo mwa a · ▶ sèvis odyo konplè",
-      "url": "miqra-qadosh-rosh-hodesh.html"
     }
   ]
 }
