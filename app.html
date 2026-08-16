@@ -675,16 +675,30 @@ const CONFIG = {
     {
       nomMois: "Rebiʿi",
       sousTitre: "4yèm mwa · 17 jen – 16 jiyè 2026",
-      debut: new Date(2026, 5, 17),   // 1 Rebiʿi = jou 17 jen (solèy kouche 16 jen)
+      debut: new Date(2026, 5, 17),   // 1 Rebiʿi = jou 17 jen (solèy kouche 16 jen, mèkredi)
       nbJours: 30,
-      shabbath: [4, 11, 18, 25]
+      shabbath: [4, 11, 18, 25]       // Samdi gregoryen: 20 jen, 27 jen, 4 jiyè, 11 jiyè = jou lajounen Shabbath ibri
     },
     {
       nomMois: "Ab",
       sousTitre: "5yèm mwa · 17 jiyè – 15 out 2026",
-      debut: new Date(2026, 6, 17),   // 1 Ab = jou 17 jiyè (solèy kouche 16 jiyè, jedi swa)
+      debut: new Date(2026, 6, 17),   // 1 Ab = jou lajounen 17 jiyè (solèy kouche 16 jiyè, vandredi)
       nbJours: 30,
-      shabbath: [2, 9, 16, 23, 30]
+      shabbath: [2, 9, 16, 23, 30]    // Samdi gregoryen: 18 jiyè, 25 jiyè, 1 out, 8 out, 15 out
+    },
+    {
+      nomMois: "Éloul",
+      sousTitre: "6yèm mwa · 16 out – 13 sept 2026",
+      debut: new Date(2026, 7, 16),   // 1 Éloul = jou lajounen 16 out (solèy kouche 15 out, samdi)
+      nbJours: 29,
+      shabbath: [7, 14, 21, 28]       // Samdi gregoryen: 22 out, 29 out, 5 sept, 12 sept
+    },
+    {
+      nomMois: "Ethanim",
+      sousTitre: "7yèm mwa · 16 sept – 15 okt 2026",
+      debut: new Date(2026, 8, 16),   // 1 Ethanim (Tishri) = jou 16 sept (solèy kouche 15 sept, mèkredi)
+      nbJours: 30,
+      shabbath: [4, 11, 18, 25]       // Samdi gregoryen: 20 jen, 27 jen, 4 jiyè, 11 jiyè: 20 sept, 27 sept, 4 okt, 11 okt
     }
   ]
 };
@@ -861,7 +875,8 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
   const grille = document.getElementById('cal-grille');
   grille.innerHTML = '';
 
-  // Jou nan semèn nan pou 1ye jou mwa a (0 = dimanch)
+  // Griy La Voie: RISHON=Dimanch(0), SHENI=Lendi(1),..., EREB=Vandredi(5), SHABBATH=Samdi(6)
+  // getDay() dirèkteman: 0=Dim=RISHON, 5=Ven=EREB, 6=Sam=SHABBATH
   const decal = K.debut.getDay();
   for (let i = 0; i < decal; i++) {
     const v = document.createElement('div');
