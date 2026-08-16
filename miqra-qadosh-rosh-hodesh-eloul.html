@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miqra Qadosh — Rosh Ḥodesh 1er Éloul · La Voie</title>
+<meta name="description" content="Miqra Qadosh Rosh Ḥodesh — Premier jour du mois d'Éloul · Les Membres de La Voie.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+:root{--nuit:#0d2347;--nuit-f:#081832;--or:#c9a84c;--or-c:#e3c876;--or-f:#9a7c2e;--creme:#f5eedc;--bleu-rh:#4a78b0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'EB Garamond',Georgia,serif;background:linear-gradient(175deg,#050d1c 0%,var(--nuit-f) 40%,var(--nuit) 100%);color:var(--creme);min-height:100vh;line-height:1.7}
+.nav-retour{padding:1rem 1.2rem}
+.nav-retour a{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--or);opacity:.85}
+.wrap{max-width:680px;margin:0 auto;padding:0 1.1rem 4rem}
+
+/* ── COUVERTURE ── */
+.couverture{width:100%;border-radius:14px;overflow:hidden;box-shadow:0 6px 32px rgba(0,0,0,.55);margin-bottom:2rem}
+.couverture img{display:block;width:100%;height:auto}
+
+/* ── HEADER ── */
+header{text-align:center;padding:.6rem 0 1.8rem}
+.badge-rh{display:inline-block;font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#7fb0e0,var(--bleu-rh));border-radius:999px;padding:.35rem 1.1rem;margin-bottom:1rem;box-shadow:0 3px 10px rgba(120,160,220,.4)}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);color:var(--creme);letter-spacing:.04em;line-height:1.25}
+.sous{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:var(--or);margin-top:.5rem}
+.date-heb{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.18em;color:var(--or);opacity:.75;margin-top:.35rem}
+.verset{font-style:italic;color:var(--creme);opacity:.78;margin-top:1rem;font-size:.97rem;max-width:520px;margin-left:auto;margin-right:auto}
+.sep{display:flex;align-items:center;gap:1rem;margin:1.8rem auto;max-width:320px}
+.sep .l{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--or))}
+.sep .l:last-child{background:linear-gradient(90deg,var(--or),transparent)}
+.sep .e{color:var(--or)}
+
+/* ── LECTEUR ── */
+.lecteur-wrap{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.28);border-radius:14px;padding:1.4rem 1.2rem;margin-bottom:1.8rem}
+.lecteur-titre{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:1rem;text-align:center}
+.piste{display:flex;align-items:center;gap:.85rem;padding:.65rem .5rem;border-bottom:1px solid rgba(201,168,76,.1);cursor:pointer;border-radius:8px;transition:background .15s}
+.piste:last-child{border-bottom:none}
+.piste:hover,.piste.active{background:rgba(201,168,76,.12)}
+.piste-num{font-family:'Cinzel',serif;font-size:.65rem;color:var(--or);opacity:.6;min-width:1.4rem;text-align:center}
+.piste-play{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--or-c),var(--or-f));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;color:var(--nuit-f);font-weight:700;transition:transform .15s}
+.piste-play:hover{transform:scale(1.1)}
+.piste-info{flex:1}
+.piste-nom{font-family:'EB Garamond',serif;font-size:.97rem;color:var(--creme)}
+.piste-dur{font-size:.8rem;color:var(--or);opacity:.65}
+.barre-wrap{margin-top:1.1rem;padding:0 .3rem}
+.barre-prog{width:100%;height:4px;background:rgba(201,168,76,.2);border-radius:4px;cursor:pointer;appearance:none;-webkit-appearance:none}
+.barre-prog::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--or);margin-top:-5px;cursor:pointer}
+.barre-prog::-webkit-slider-runnable-track{height:4px;background:linear-gradient(90deg,var(--or) var(--p,0%),rgba(201,168,76,.2) var(--p,0%));border-radius:4px}
+.ctrl{display:flex;justify-content:center;gap:1.2rem;margin-top:.9rem;align-items:center}
+.ctrl button{background:none;border:1px solid rgba(201,168,76,.4);border-radius:8px;color:var(--or);padding:.45rem .9rem;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.1em;cursor:pointer;transition:background .15s}
+.ctrl button:hover{background:rgba(201,168,76,.12)}
+.ctrl .btn-main{background:linear-gradient(135deg,var(--or-c),var(--or-f));color:var(--nuit-f);border:none;padding:.55rem 1.4rem;font-size:.72rem;border-radius:10px}
+.tempo-affich{font-family:'Cinzel',serif;font-size:.72rem;color:var(--or);opacity:.75;text-align:center;margin-top:.6rem}
+
+/* ── PROGRAMME ── */
+.programme{background:rgba(13,35,71,.5);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:1.2rem 1.1rem;margin-bottom:1.8rem}
+.prog-titre{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem;text-align:center}
+.prog-li{display:flex;gap:.7rem;padding:.4rem 0;border-bottom:1px solid rgba(201,168,76,.08);font-size:.94rem}
+.prog-li:last-child{border-bottom:none}
+.prog-n{color:var(--or);opacity:.55;font-family:'Cinzel',serif;font-size:.72rem;min-width:1.5rem}
+.prog-tx{color:var(--creme);opacity:.88}
+
+/* ── RETOUR ── */
+.retour{text-align:center;margin-top:2.5rem}
+.retour a{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);text-decoration:none;border:1px solid rgba(201,168,76,.4);padding:.55rem 1.4rem;border-radius:999px}
+</style>
+</head>
+<body>
+
+<div class="nav-retour"><a href="miqra-qadosh.html">← Miqra Qadosh</a></div>
+
+<div class="wrap">
+
+  <div class="couverture">
+    <img src="miqra-rosh-hodesh-eloul.jpg" alt="Miqra Qadosh Rosh Ḥodesh — 1er Éloul" onerror="this.style.display='none'">
+  </div>
+
+  <header>
+    <span class="badge-rh">✦ Rosh Ḥodesh</span>
+    <h1>MIQRA QADOSH<br>Rosh Ḥodesh 1<sup>er</sup> Éloul</h1>
+    <p class="sous">Nouvelle lune · Premier jour du mois d'Éloul</p>
+    <p class="date-heb">15–16 août 2026 · An 5786</p>
+    <p class="verset">« Il a fait la lune pour marquer les temps fixés. » — Tehillim 104:19</p>
+    <div class="sep"><span class="l"></span><span class="e">🌙</span><span class="l"></span></div>
+  </header>
+
+  <!-- ── LECTEUR SÉQUENTIEL ── -->
+  <div class="lecteur-wrap" id="lecteur">
+    <p class="lecteur-titre">✦ Écouter l'ʿAbodah</p>
+
+    <div class="piste active" data-src="de-lune-en-lune.mp3">
+      <span class="piste-num">1</span>
+      <button class="piste-play" onclick="jouerPiste(0)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Chirat — « De lune en lune »</div>
+        <div class="piste-dur">2:51</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-eloul-enseignement.mp3">
+      <span class="piste-num">2</span>
+      <button class="piste-play" onclick="jouerPiste(1)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Enseignement — « Renouveler notre engagement à marcher avec Yahawah »</div>
+        <div class="piste-dur">38:17</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="nou-swiv-ritm-malkuwt-la.mp3">
+      <span class="piste-num">3</span>
+      <button class="piste-play" onclick="jouerPiste(2)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Chirat — « Nou swiv ritm Malkuwt la »</div>
+        <div class="piste-dur">4:06</div>
+      </div>
+    </div>
+
+    <!-- Barre de progression + contrôles -->
+    <div class="barre-wrap">
+      <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
+    </div>
+    <div class="ctrl">
+      <button onclick="reculer()">⏮ 15s</button>
+      <button class="btn-main" id="btnPlay" onclick="togglePlay()">▶ Jouer</button>
+      <button onclick="avancer()">15s ⏭</button>
+    </div>
+    <p class="tempo-affich" id="tempoAffich">0:00 / 0:00</p>
+  </div>
+
+  <!-- ── PROGRAMME ── -->
+  <div class="programme">
+    <p class="prog-titre">✦ Programme de l'ʿAbodah</p>
+    <div class="prog-li"><span class="prog-n">1.</span><span class="prog-tx">Chirat d'ouverture — « De lune en lune »</span></div>
+    <div class="prog-li"><span class="prog-n">2.</span><span class="prog-tx">Enseignement — « Renouveler notre engagement à marcher avec Yahawah »</span></div>
+    <div class="prog-li"><span class="prog-n">3.</span><span class="prog-tx">Chirat de clôture — « Nou swiv ritm Malkuwt la »</span></div>
+  </div>
+
+  <div class="retour"><a href="miqra-qadosh.html">← Retour à la bibliothèque</a></div>
+
+</div>
+
+<audio id="audio"></audio>
+
+<script>
+const PISTES = [
+  'de-lune-en-lune.mp3',
+  'rh-eloul-enseignement.mp3',
+  'nou-swiv-ritm-malkuwt-la.mp3'
+];
+const audio = document.getElementById('audio');
+const barre = document.getElementById('barre');
+const btnPlay = document.getElementById('btnPlay');
+const tempoAffich = document.getElementById('tempoAffich');
+const pistesEl = document.querySelectorAll('.piste');
+let idx = 0;
+
+function fmt(s){ const m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
+
+function chargerPiste(i, jouer=true){
+  idx = i;
+  audio.src = PISTES[i];
+  pistesEl.forEach((p,j) => p.classList.toggle('active', j===i));
+  barre.value = 0;
+  barre.style.setProperty('--p','0%');
+  if(jouer){ audio.play(); btnPlay.textContent='⏸ Pause'; }
+  else { btnPlay.textContent='▶ Jouer'; }
+}
+
+function jouerPiste(i){ chargerPiste(i, true); }
+
+function togglePlay(){
+  if(audio.paused){
+    if(!audio.src || audio.src===window.location.href) chargerPiste(0);
+    else audio.play();
+    btnPlay.textContent='⏸ Pause';
+  } else {
+    audio.pause();
+    btnPlay.textContent='▶ Jouer';
+  }
+}
+
+function reculer(){ audio.currentTime = Math.max(0, audio.currentTime-15); }
+function avancer(){ audio.currentTime = Math.min(audio.duration||0, audio.currentTime+15); }
+function seekTo(v){ if(audio.duration){ audio.currentTime = v/100*audio.duration; } }
+
+audio.addEventListener('timeupdate', ()=>{
+  if(!audio.duration) return;
+  const p = audio.currentTime/audio.duration*100;
+  barre.value = p;
+  barre.style.setProperty('--p', p+'%');
+  tempoAffich.textContent = fmt(audio.currentTime)+' / '+fmt(audio.duration);
+});
+
+audio.addEventListener('ended', ()=>{
+  if(idx < PISTES.length-1){ chargerPiste(idx+1, true); }
+  else { btnPlay.textContent='▶ Jouer'; barre.value=0; }
+});
+
+// Charger 1ye piste san jouer
+chargerPiste(0, false);
+</script>
+
+</body>
+</html>
