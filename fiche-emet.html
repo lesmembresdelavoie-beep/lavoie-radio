@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Technique — אֱמֶת · ʾEmet · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 2rem 0 3rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.titre-ibri {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 9vw, 3.8rem);
+  color: var(--or-c);
+  letter-spacing: .06em;
+  line-height: 1.1;
+  margin-bottom: .4rem;
+}
+.titre-translit {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  letter-spacing: .35em;
+  color: var(--or);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.references {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  color: var(--or);
+  opacity: .7;
+  text-transform: uppercase;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem auto;
+  max-width: 320px;
+}
+.sep .l {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or));
+}
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 3.2rem; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  display: block;
+  margin-bottom: .4rem;
+}
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--or-c);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+p { margin-bottom: 1rem; font-size: 1.01rem; color: var(--creme); opacity: .92; }
+p:last-child { margin-bottom: 0; }
+
+/* ── CITATION ── */
+blockquote {
+  border-left: 3px solid var(--or);
+  padding: .8rem 1.2rem;
+  margin: 1.4rem 0;
+  background: rgba(201, 168, 76, .06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--creme);
+}
+blockquote cite {
+  display: block;
+  margin-top: .5rem;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  font-style: normal;
+  opacity: .8;
+}
+
+/* ── TERME ── */
+.terme {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+}
+.terme-ibri {
+  font-size: 1.4rem;
+  letter-spacing: .04em;
+}
+
+/* ── ENCADRE ── */
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 2.4rem 0;
+}
+.encadre-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.encadre p { font-size: .97rem; }
+
+/* ── LISTE ── */
+ul.raffinement {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+ul.raffinement li {
+  padding: .45rem 0 .45rem 1.4rem;
+  position: relative;
+  font-size: .97rem;
+  color: var(--creme);
+  opacity: .9;
+  border-bottom: 1px solid rgba(201, 168, 76, .08);
+}
+ul.raffinement li:last-child { border-bottom: none; }
+ul.raffinement li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  font-size: .7rem;
+  top: .6rem;
+}
+
+/* ── POSITION TABLEAU ── */
+.position-tableau {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4rem 0;
+  font-size: .95rem;
+}
+.position-tableau th, .position-tableau td {
+  padding: .75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(201, 168, 76, .15);
+}
+.position-tableau th {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--or);
+  background: rgba(6, 13, 26, .4);
+}
+.position-tableau td:first-child { color: var(--or-c); font-weight: 500; }
+.position-tableau tr:last-child td { border-bottom: none; }
+
+/* ── FLÈCHE ── */
+.chaine {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  letter-spacing: .15em;
+  color: var(--or);
+  margin: 2rem 0;
+  line-height: 2.2;
+}
+.chaine span { display: inline-block; }
+.chaine .flèche { color: var(--or); opacity: .55; margin: 0 .4rem; }
+.chaine .terme-fin {
+  display: block;
+  font-size: 1.1rem;
+  letter-spacing: .2em;
+  color: var(--or-c);
+  margin-top: .5rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">Fiche Technique Éditoriale</span>
+  <div style="margin: 0 auto 2rem; max-width: 380px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.55);">
+    <img src="fiche-emet-couv.jpg" alt="Fiche Technique — ʾEmet · La Voie" style="display:block;width:100%;height:auto;">
+  </div>
+  <div class="titre-ibri">אֱמֶת</div>
+  <div class="titre-translit">ʾEMET</div>
+  <p class="sous-titre">Pourquoi La Voie affine son vocabulaire et écarte « Veritas / vérité »</p>
+  <p class="references">Romains 3:2 · Tsephanyah 3:9 · Mishlé 25:4 · Zekharyah 13:9 · Tehillim 66:10, 12 · Malʾakhi 3:2–3</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+
+<!-- ── 1. POINT DE DÉPART ── -->
+<section>
+  <span class="section-num">1</span>
+  <h2>Notre point de départ : la langue du dépôt</h2>
+  <blockquote>
+    « Les déclarations sacrées de ʾÈlohim leur ont été confiées. »
+    <cite>Romains 3:2</cite>
+  </blockquote>
+  <p>La Voie prend au sérieux ce dépôt confié aux Yehoudim. Lorsqu'un terme fondamental des Ketabei Qedoshim possède un ancrage ibrique identifiable, nous partons de cet ancrage. Les formes grecques, latines ou modernes ne deviennent pas automatiquement les références à partir desquelles le concept doit être défini.</p>
+  <p>La question n'est pas de rejeter une langue parce qu'elle est grecque ou latine. Elle est plus précise : lorsqu'un mot a été directement associé à une divinité ou un environnement cultuel païen, et qu'un terme ibrique permet de restituer le concept sans l'altérer, pourquoi ne pas remonter au vocabulaire du dépôt ?</p>
+  <p>Pour le concept généralement rendu en français par « vérité », La Voie retient désormais : <span class="terme terme-ibri">אֱמֶת</span> — <span class="terme">ʾemet</span>.</p>
+</section>
+
+
+<!-- ── 2. QUE PORTE ʾEMET ── -->
+<section>
+  <span class="section-num">2</span>
+  <h2>Ce que porte אֱמֶת — ʾemet</h2>
+  <p><span class="terme terme-ibri">אֱמֶת</span> appartient au champ lexical ibrique de ce qui est ferme, sûr, fiable et fidèle. Il entretient un rapport lexical avec la famille <span class="terme">א-מ-נ</span> (ʾ-M-N), à laquelle appartiennent <span class="terme">אָמֵן — ʾamen</span> et le champ d'<span class="terme">émounah</span>.</p>
+  <p>Dans les Ketabei Qedoshim, ʾemet ne se limite pas à l'exactitude intellectuelle d'une affirmation. Selon le contexte, il porte les idées d'authenticité, de fiabilité, de constance, de fidélité et de conformité à ce qui est réel. L'ʾemet n'est pas seulement quelque chose que l'on dit correctement : il caractérise également ce qui est digne de confiance, demeure ferme et résiste à l'épreuve.</p>
+</section>
+
+
+<!-- ── 3. ALĒTHEIA ── -->
+<section>
+  <span class="section-num">3</span>
+  <h2>ἀλήθεια — alētheia : une donnée textuelle conservée</h2>
+  <p>Les écrits transmis en grec emploient <span class="terme">ἀλήθεια — alētheia</span>. La Voie ne supprime ni ne dissimule ce fait textuel. Les anciennes traductions grecques des Ketubim avaient elles-mêmes employé alētheia pour rendre l'ibrique ʾemet dans de nombreux passages ; l'emploi grec doit donc être étudié dans l'environnement yahudi et scripturaire auquel ces écrits appartiennent.</p>
+  <p>Lorsque nous étudions un manuscrit grec, alētheia reste alētheia : nous l'identifions, l'analysons et expliquons son emploi. Notre travail éditorial pose cependant une autre question : quel terme La Voie choisit-elle de restituer dans son propre vocabulaire lorsqu'elle veut ramener le lecteur vers la langue du dépôt ? Notre réponse est <span class="terme">אֱמֶת — ʾemet</span>. Il ne s'agit pas d'effacer les témoins grecs, mais de ne pas faire du grec ou du latin le point d'arrivée obligé de notre vocabulaire lorsque l'ancrage ibrique peut être retrouvé.</p>
+</section>
+
+
+<!-- ── 4. VERITAS ── -->
+<section>
+  <span class="section-num">4</span>
+  <h2>Veritas et le français « vérité »</h2>
+  <p><span class="terme">Veritas</span> est le substantif latin signifiant « vérité ». Dans la culture romaine, Veritas fut également le nom de la personnification féminine de la vérité, présentée dans la tradition religieuse romaine comme une déesse. Le français « vérité » dérive historiquement de veritas.</p>
+  <p>Ces faits doivent être formulés avec précision. La Voie ne prétend pas qu'une personne qui prononce aujourd'hui « vérité » invoque la Veritas romaine. Notre position est éditoriale : dans la mesure où cela est possible, nous affinons notre vocabulaire en évitant les termes grecs ou latins déjà associés à des divinités ou des concepts cultuels païens, lorsqu'un terme ibrique issu du dépôt peut restituer le concept avec précision. Dans ce cas, nous disposons de <span class="terme">אֱמֶת — ʾemet</span>. La Voie n'a donc aucune nécessité éditoriale de conserver Veritas comme référence, ni « vérité » comme terme privilégié.</p>
+</section>
+
+
+<!-- ── ENCADRÉ LECTEUR ── -->
+<div class="encadre">
+  <p class="encadre-titre">✦ À l'attention du lecteur</p>
+  <p>Là où le lecteur avait l'habitude de lire :</p>
+  <blockquote style="margin: 1rem 0;">
+    « Vous connaîtrez la vérité, et la vérité vous rendra libres. »
+    <cite>Yaḥuānān 8:32</cite>
+  </blockquote>
+  <p>il trouvera désormais dans les textes de La Voie :</p>
+  <blockquote style="margin: 1rem 0;">
+    « Vous connaîtrez l'ʾemet, et l'ʾemet vous rendra libres. »
+  </blockquote>
+  <p>ʾEmet n'est pas une décoration ibrique ajoutée au mot « vérité » : c'est le terme que La Voie choisit désormais de restituer et d'enseigner, lorsque le contexte textuel le justifie.</p>
+</div>
+
+
+<!-- ── 5. LÈVRES PURES ── -->
+<section>
+  <span class="section-num">5</span>
+  <h2>« Des lèvres pures » : la direction recherchée</h2>
+  <blockquote>
+    « Alors je donnerai aux peuples des lèvres pures, afin qu'ils invoquent tous le nom de Yahawah et qu'ils le servent épaule contre épaule. »
+    <cite>Tsephanyah 3:9</cite>
+  </blockquote>
+  <p>La Voie ne transforme pas ce passage en traité d'étymologie. Nous retenons le principe qu'il exprime : des lèvres purifiées mises au service de Yahawah. C'est dans cet esprit que notre vocabulaire doit pouvoir être examiné.</p>
+  <p>Si nous découvrons qu'un terme hérité transporte un environnement cultuel dont nous pouvons nous passer, et qu'un terme ibrique du dépôt permet de transmettre correctement le concept, nous choisissons de l'affiner. Il ne s'agit pas d'un changement effectué en une seule fois ni d'une chasse aveugle aux mots étrangers. Chaque terme doit être identifié, documenté, examiné et comparé avant qu'une décision éditoriale soit prise.</p>
+</section>
+
+
+<!-- ── 6. MÉTHODE D'AFFINAGE ── -->
+<section>
+  <span class="section-num">6</span>
+  <h2>Retirer les scories sans altérer le métal</h2>
+  <p>Plusieurs passages scripturaires fournissent l'image qui décrit notre méthode :</p>
+  <blockquote>« Enlève les scories de l'argent, et il en sortira un vase pour l'orfèvre. »<cite>Mishlé 25:4</cite></blockquote>
+  <p>Zekharyah 13:9 parle d'affiner comme on affine l'argent ; Tehillim 66:10 reprend l'image — « tu nous as affinés comme on affine l'argent » ; Malʾakhi 3:2–3 présente celui qui s'assied pour affiner et purifier. Ces passages ne parlent pas spécifiquement d'étymologie : La Voie les emploie comme image de sa méthode éditoriale.</p>
+
+  <p>Une distinction est fondamentale :</p>
+  <blockquote>Nous n'affinons pas le Dabar comme si le Dabar contenait des scories. Nous affinons notre manière de le transmettre, de le traduire, de le nommer et d'en parler.</blockquote>
+
+  <p>Le dépôt est le métal. Les scories que nous examinons sont les couches de vocabulaire, de traditions et d'associations humaines qui ont pu s'y superposer au cours des siècles. Affiner signifie donc :</p>
+  <ul class="raffinement">
+    <li>Examiner ce que nous avons reçu</li>
+    <li>Vérifier son origine et son usage réel</li>
+    <li>Comparer avec le dépôt ibrique</li>
+    <li>Retirer ce qui peut légitimement l'être</li>
+    <li>Conserver ce qui résiste à l'examen</li>
+  </ul>
+
+  <p>Cette méthode exige de la rigueur. La simple présence d'un mot en grec ou en latin ne suffit pas pour l'écarter. La ressemblance phonétique entre deux mots ne constitue pas davantage une preuve d'origine commune. Avant qu'un terme soit remplacé dans le vocabulaire éditorial de La Voie, plusieurs questions doivent être posées :</p>
+  <ul class="raffinement">
+    <li>Quelle est son histoire linguistique réelle ?</li>
+    <li>A-t-il effectivement été associé à une divinité, une idole ou un concept cultuel ?</li>
+    <li>Cette association est-elle documentée ou simplement supposée ?</li>
+    <li>Quel terme ibrique correspond au concept dans le dépôt ?</li>
+    <li>Le remplacement conserve-t-il correctement le sens du passage ?</li>
+  </ul>
+  <p>Cette discipline protège notre travail d'un danger réel : vouloir purifier si vite que nous finirions par attribuer aux mots une histoire qu'ils n'ont jamais eue. L'affinage lui-même doit être affiné.</p>
+</section>
+
+
+<!-- ── 7. APPLICATIONS CONCRÈTES ── -->
+<section>
+  <span class="section-num">7</span>
+  <h2>Ce que change concrètement cette décision</h2>
+  <p>La décision concernant ʾemet devient une orientation éditoriale applicable à l'ensemble des textes de La Voie. Le lecteur pourra désormais rencontrer des formulations telles que :</p>
+  <ul class="raffinement">
+    <li>« connaître l'ʾemet »</li>
+    <li>« marcher dans l'ʾemet »</li>
+    <li>« parler selon l'ʾemet »</li>
+    <li>« l'ʾemet de ʾÈlohim »</li>
+    <li>« le Rouaḥ de l'ʾemet »</li>
+    <li>« adorer en rouaḥ et en ʾemet »</li>
+  </ul>
+  <p>Il ne s'agira cependant pas d'une opération automatique consistant à rechercher le mot français « vérité » et à le remplacer aveuglément. Chaque occurrence sera examinée dans son contexte. La restitution doit rester au service du Dabar, jamais l'inverse.</p>
+</section>
+
+
+<!-- ── 8. POSITION OFFICIELLE ── -->
+<section>
+  <span class="section-num">8</span>
+  <h2>Position éditoriale officielle de La Voie</h2>
+  <table class="position-tableau">
+    <thead>
+      <tr>
+        <th>Terme</th>
+        <th>Statut éditorial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="terme terme-ibri">אֱמֶת</span> — ʾemet</td>
+        <td>Terme retenu pour le concept de « vérité », lorsque le contexte le justifie</td>
+      </tr>
+      <tr>
+        <td>ἀλήθεια — alētheia</td>
+        <td>Identifié et étudié lorsqu'il appartient au texte grec examiné ; la donnée manuscrite n'est ni effacée ni falsifiée</td>
+      </tr>
+      <tr>
+        <td>Veritas / « vérité »</td>
+        <td>Non retenus comme vocabulaire privilégié de La Voie pour exprimer ce concept</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Cette décision ne constitue ni une condamnation des personnes qui utilisent ces mots, ni l'affirmation que leur simple prononciation serait un acte cultuel. Elle exprime notre propre discipline éditoriale : lorsqu'il est possible de revenir à un terme ibrique du dépôt sans altérer le sens, La Voie choisit de le faire.</p>
+</section>
+
+
+<!-- ── CONCLUSION ── -->
+<section>
+  <span class="section-num">✦</span>
+  <h2>Conclusion : une méthode, pas seulement un mot</h2>
+  <p>Cette Fiche Technique dépasse le seul cas du mot Veritas. Elle établit une méthode, résumée par quatre étapes :</p>
+
+  <div class="chaine">
+    <span>DÉPÔT</span>
+    <span class="flèche">→</span>
+    <span>EXAMEN</span>
+    <span class="flèche">→</span>
+    <span>AFFINAGE</span>
+    <span class="flèche">→</span>
+    <span>RESTITUTION</span>
+  </div>
+
+  <p>Romains 3:2 rappelle le cadre dans lequel les déclarations sacrées ont été confiées. Tsephanyah 3:9 place devant nous l'objectif de lèvres pures servant Yahawah épaule contre épaule. Mishlé 25:4, Zekharyah 13:9, Tehillim 66:10, 12 et Malʾakhi 3:2–3 fournissent l'image de l'affinage.</p>
+  <p>La Voie veut appliquer cette méthode progressivement à son vocabulaire — non pour inventer une langue artificielle, mais pour retirer, lorsque cela est possible et vérifiable, les éléments dont elle estime pouvoir se passer afin de revenir au vocabulaire ibrique du dépôt.</p>
+  <p>Pour le concept examiné dans cette fiche, le résultat est clair :</p>
+
+  <div class="chaine">
+    <span style="opacity:.5;text-decoration:line-through;">VERITAS</span>
+    <span class="flèche">→</span>
+    <span style="opacity:.5;text-decoration:line-through;">« VÉRITÉ »</span>
+    <span class="flèche">→</span>
+    <span class="terme-fin">אֱמֶת — ʾEMET</span>
+  </div>
+
+  <p>C'est ce terme que le lecteur rencontrera dans les textes de La Voie, lorsque le contexte le justifie.</p>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  Fiche Technique Éditoriale · La Voie · lavoie.world<br>
+  <span style="opacity:.5;font-size:.85em;letter-spacing:.1em;">Retour au Dabar — Examiner — Vérifier — Retenir ce qui résiste à l'examen</span>
+</footer>
+
+</body>
+</html>

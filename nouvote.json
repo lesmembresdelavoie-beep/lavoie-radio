@@ -7,6 +7,12 @@
   },
   "items": [
     {
+      "id": "fiche-emet",
+      "titre": "📄 Fiche Technique — אֱמֶת · ʾEmet",
+      "sou": "Pourquoi La Voie affine son vocabulaire et écarte « Veritas / vérité »",
+      "url": "fiche-emet.html"
+    },
+    {
       "id": "miqra-14-eloul",
       "titre": "📖 Miqra Qadosh — Shabbath 14 Éloul",
       "sou": "L'Accomplissement du dessein de Yahawah · Maʿasei 3:21",
