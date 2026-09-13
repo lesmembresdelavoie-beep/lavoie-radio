@@ -810,6 +810,7 @@
     margin-top:0.35rem;
   }
 </style>
+</head>
 <body>
 
 <div class="livre">
@@ -825,6 +826,8 @@
     <p class="couv-edition">Shabbath — Édition Hebdomadaire</p>
 
     <div class="couv-badge">Shabbath 28 Éloul</div>
+
+    <a class="couv-ecouter" href="#ecouter">🎙️ Écouter l'Abodah — service audio</a>
 
     <div class="couv-dates">
       <span class="couv-dates-icone">🗓️</span>
@@ -1297,7 +1300,7 @@
   pistes.forEach(function(pi,i){
     var div=document.createElement('div');
     div.className='piste';
-    div.innerHTML='<div class="piste-num">'+(i+1)+'</div><div class="piste-titre">'+pi.t+'</div><div class="piste-dur">'+pi.d+'</div>';
+    div.innerHTML='<div class="piste-num">'+(i+1)+'</div><div class="piste-titre">'+pi.t+'</div><div class="piste-dur">'+pi.d+'';
     div.addEventListener('click',function(){jwe(i);});
     liste.appendChild(div);
   });
