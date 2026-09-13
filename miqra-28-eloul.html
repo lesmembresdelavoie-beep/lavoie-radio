@@ -1246,5 +1246,77 @@
 
 </div>
 
+  <!-- ============ PAGE 8 — SÈVIS ODYO ============ -->
+  <section class="page page-8" id="ecouter">
+    <div class="page-num">8</div>
+    <div class="header-bar">
+      <div class="header-icon">🎙️</div>
+      <div>
+        <div class="header-titre">Écouter<br>l'Abodah</div>
+        <div class="header-soustitre">Service audio — 3 parties</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="orateur-bloc">
+        <div>
+          <div class="orateur-label">Miqra Qadosh · Shabbath 28 Éloul</div>
+          <div class="orateur-note">« Faites teshubah, car le Malkuwt arrive » — Mattiyahu 4:17</div>
+        </div>
+      </div>
+
+      <div class="player-cadre">
+        <div class="player-now-label">En écoute</div>
+        <div class="player-now-titre" id="m28e-now">—</div>
+        <audio id="m28e-audio" controls preload="none"></audio>
+        <div class="player-nav">
+          <button type="button" id="m28e-prev">◀ Précédent</button>
+          <button type="button" id="m28e-next">Suivant ▶</button>
+        </div>
+      </div>
+
+      <div class="pisteliste" id="m28e-liste"></div>
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var pistes=[
+    {t:"Chirat d'ouverture — Fè Teshubah, Malkuwt la Pwoché",f:"m28eloul-chirat-teshubah.mp3",d:"5:17"},
+    {t:"Enseignement — Faites teshubah, car le Malkuwt arrive",f:"m28eloul-enseignement.mp3",d:"52:15"},
+    {t:"Chirat de clôture — N ap Travèsé Pou Canaan",f:"m28eloul-chirat-canaan.mp3",d:"4:36"}
+  ];
+  var audio=document.getElementById('m28e-audio');
+  var now=document.getElementById('m28e-now');
+  var liste=document.getElementById('m28e-liste');
+  var idx=-1;
+
+  pistes.forEach(function(pi,i){
+    var div=document.createElement('div');
+    div.className='piste';
+    div.innerHTML='<div class="piste-num">'+(i+1)+'</div><div class="piste-titre">'+pi.t+'</div><div class="piste-dur">'+pi.d+'</div>';
+    div.addEventListener('click',function(){jwe(i);});
+    liste.appendChild(div);
+  });
+
+  function jwe(i){
+    if(i<0||i>=pistes.length)return;
+    idx=i;
+    audio.src=pistes[i].f;
+    audio.play();
+    now.textContent=(i+1)+'. '+pistes[i].t;
+    var els=liste.children;
+    for(var k=0;k<els.length;k++){els[k].classList.toggle('active',k===i);}
+  }
+
+  audio.addEventListener('ended',function(){ if(idx<pistes.length-1) jwe(idx+1); });
+  document.getElementById('m28e-prev').addEventListener('click',function(){ jwe(idx<=0?0:idx-1); });
+  document.getElementById('m28e-next').addEventListener('click',function(){ jwe(idx<0?0:Math.min(idx+1,pistes.length-1)); });
+})();
+</script>
+
 </body>
 </html>
