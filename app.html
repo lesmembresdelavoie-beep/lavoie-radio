@@ -306,6 +306,34 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
 }
 #popup-shabbath-play:hover { background: #c9a84c; color: #0d2347; }
 #popup-shabbath-play.jouke { display: none; }
+
+  .cal-case.fete{
+    background: linear-gradient(135deg, rgba(34,120,60,0.18), rgba(201,168,76,0.12));
+    border: 1.5px solid rgba(34,120,60,0.45);
+    color: #1a6b30;
+    font-weight: 700;
+  }
+  .cal-case.fete.jodia{
+    background: linear-gradient(135deg, rgba(34,120,60,0.35), rgba(201,168,76,0.25));
+    color: #fff;
+  }
+  .cal-lejann{
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-top: 0.8rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .cal-lejann-item{
+    font-size: 0.78rem;
+    color: var(--parchemin);
+    opacity: 0.85;
+  }
+  .cal-lejann-item strong{
+    color: var(--or-clair);
+  }
 </style>
 </head>
 <body>
@@ -556,6 +584,7 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
       <span>RISHON</span><span>SHENI</span><span>SHLISHI</span><span>REBI'I</span><span>ḤAMISHI</span><span>EREB</span><span class="j-shab">SHABBATH</span>
     </div>
     <div class="cal-grille" id="cal-grille"></div>
+          <div class="cal-lejann" id="cal-lejann"></div>
     <div class="cal-legende">
       <span><i class="pt bleu"></i> Shabbath</span>
       <span><i class="pt or"></i> Jodi a</span>
@@ -700,7 +729,12 @@ const CONFIG = {
       sousTitre: "7yèm mwa · 16 sept – 15 okt 2026",
       debut: new Date(2026, 8, 16),   // 1 Ethanim (Tishri) = jou 16 sept (solèy kouche 15 sept, mèkredi)
       nbJours: 30,
-      shabbath: [4, 11, 18, 25]       // Samdi gregoryen: 20 jen, 27 jen, 4 jiyè, 11 jiyè: 20 sept, 27 sept, 4 okt, 11 okt
+      shabbath: [4, 11, 18, 25],      // Samdi gregoryen: 20 sept, 27 sept, 4 okt, 11 okt
+      fetes: [
+        {jours: [1], nom: "Yôm Teruʿah", emoji: "🎺"},
+        {jours: [10], nom: "Yôm haKippurim", emoji: "📜"},
+        {jours: [15,16,17,18,19,20,21], nom: "Soukkoth", emoji: "🌿", url: "miqra-qadosh-soukkoth.html"}
+      ]
     }
   ]
 };
@@ -872,6 +906,13 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
   }
   if (!K) { K = MWA[MWA.length - 1]; nJodi = 0; }
 
+  // Montre lejann fèt si gen yo
+  var lejann = document.getElementById('cal-lejann');
+  if (lejann && K.fetes && K.fetes.length) {
+    lejann.innerHTML = K.fetes.map(function(f){ return '<span class="cal-lejann-item">' + f.emoji + ' <strong>' + f.nom + '</strong> · jou ' + (f.jours.length>1 ? f.jours[0]+'-'+f.jours[f.jours.length-1] : f.jours[0]) + '</span>'; }).join('');
+    lejann.style.display = 'flex';
+  } else if (lejann) { lejann.style.display = 'none'; }
+
   document.getElementById('cal-mois').textContent = K.nomMois;
   document.getElementById('cal-plage').textContent = K.sousTitre;
   const grille = document.getElementById('cal-grille');
@@ -892,6 +933,15 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
     c.textContent = j;
     if (K.shabbath.includes(j)) c.classList.add('shabbath');
     if (j === nJodi) c.classList.add('jodia');
+    if (K.fetes) {
+      for (var fi=0; fi<K.fetes.length; fi++) {
+        if (K.fetes[fi].jours.includes(j)) {
+          c.classList.add('fete');
+          c.title = K.fetes[fi].emoji + ' ' + K.fetes[fi].nom;
+          if (K.fetes[fi].url) { c.dataset.url = K.fetes[fi].url; c.style.cursor='pointer'; c.addEventListener('click', function(){ window.location.href=this.dataset.url; }); }
+        }
+      }
+    }
     grille.appendChild(c);
   }
 })();
