@@ -787,11 +787,30 @@ function jounenJodiA(donnees){
   const datGreg = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
   for (const mwa of liste) {
     for (const j of mwa.jours) {
-      if (j.soir_debut === datGreg && apSol)  return {jounen: j, mois: mwa.mois};
-      if (j.soir_fin === datGreg && !apSol)   return {jounen: j, mois: mwa.mois};
+      if (j.soir_debut === datGreg && apSol)  return {jounen: Object.assign({sourceJour:j.jour}, j), mois: mwa.mois};
+      if (j.soir_fin === datGreg && !apSol)   return {jounen: Object.assign({sourceJour:j.jour}, j), mois: mwa.mois};
     }
   }
-  return null;
+  // Repli: okenn jou pa gen kontni pwòp li — kontinye ak dènye tèks disponib la,
+  // men kenbe dat/jou La Voie a kòrèk (menm règ ak Tèks pou Jounen an).
+  const lastMois = liste[liste.length - 1];
+  const last = lastMois.jours[lastMois.jours.length - 1];
+  const addDaysStr = (s,n) => { const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); };
+  const diffDaysStr = (a,b) => Math.round((new Date(a+'T00:00:00Z') - new Date(b+'T00:00:00Z'))/86400000);
+  const targetSoirFin = apSol ? addDaysStr(datGreg,1) : datGreg;
+  const offset = diffDaysStr(targetSoirFin, last.soir_fin);
+  return {
+    jounen: {
+      jour: last.jour + offset,
+      sourceJour: last.jour,
+      soir_debut: addDaysStr(last.soir_debut, offset),
+      soir_fin: targetSoirFin,
+      texte: last.texte,
+      texte_kw: last.texte_kw,
+      ref: last.ref
+    },
+    mois: last.mois || lastMois.mois
+  };
 }
 (async function(){
   const donnees = await chajeDoneTeks();
