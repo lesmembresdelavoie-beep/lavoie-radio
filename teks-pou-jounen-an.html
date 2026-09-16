@@ -302,16 +302,24 @@ function renderJounen(jounen, data) {
   document.getElementById('opt-fr').classList.toggle('active', lang === 'fr');
 }
 
-(function(data) {
+(function(rawData) {
+    const liste = Array.isArray(rawData) ? rawData : [rawData];
     const { datGreg, apres_soleil } = getJourSiban();
     let jounen = null;
-    for (let i = 0; i < data.jours.length; i++) {
-      const j = data.jours[i];
-      if (j.soir_debut === datGreg && apres_soleil) { jounen = j; break; }
-      if (j.soir_fin === datGreg && !apres_soleil) { jounen = j; break; }
+    let data = liste[liste.length - 1];
+    outer:
+    for (let m = 0; m < liste.length; m++) {
+      const mwa = liste[m];
+      for (let i = 0; i < mwa.jours.length; i++) {
+        const j = mwa.jours[i];
+        if (j.soir_debut === datGreg && apres_soleil) { jounen = j; data = mwa; break outer; }
+        if (j.soir_fin === datGreg && !apres_soleil) { jounen = j; data = mwa; break outer; }
+      }
     }
     if (!jounen) {
-      const last = data.jours[data.jours.length-1];
+      const lastMois = liste[liste.length - 1];
+      const last = lastMois.jours[lastMois.jours.length - 1];
+      data = lastMois;
       const addDaysStr = (s,n) => { const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); };
       const diffDaysStr = (a,b) => Math.round((new Date(a+'T00:00:00Z') - new Date(b+'T00:00:00Z'))/86400000);
       const targetSoirFin = apres_soleil ? addDaysStr(datGreg,1) : datGreg;
