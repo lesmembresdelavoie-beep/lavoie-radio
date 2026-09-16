@@ -243,13 +243,13 @@ let currentJounen = null;
 
 function getJourSiban() {
   const now = new Date();
-  const indyStr = now.toLocaleString('en-US', {timeZone: 'America/Indiana/Indianapolis'});
-  const indy = new Date(indyStr);
-  const leHeure = indy.getHours() + indy.getMinutes() / 60;
-  const apres_soleil = leHeure >= 20.5;
-  const annee = indy.getFullYear();
-  const mois = String(indy.getMonth() + 1).padStart(2, '0');
-  const jou = String(indy.getDate()).padStart(2, '0');
+  const haitiStr = now.toLocaleString('en-US', {timeZone: 'America/Port-au-Prince'});
+  const haiti = new Date(haitiStr);
+  const leHeure = haiti.getHours() + haiti.getMinutes() / 60;
+  const apres_soleil = leHeure >= (18 + 50/60);
+  const annee = haiti.getFullYear();
+  const mois = String(haiti.getMonth() + 1).padStart(2, '0');
+  const jou = String(haiti.getDate()).padStart(2, '0');
   return { datGreg: annee + '-' + mois + '-' + jou, apres_soleil };
 }
 
@@ -257,8 +257,8 @@ function renderJounen(jounen, moisNom) {
   const lang = currentLang;
   // Nom jou ibriy selon dat
     const joursSemaine = ['Yôm Rishon','Yôm Shéni','Yôm Shlishi',"Yôm Rebi'i",'Yôm Hamishi','Ereb Shabbath','Shabbat'];
-    const _indyNow = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
-    const apSol = (_indyNow.getHours() + _indyNow.getMinutes()/60) >= 20.5;
+    const _haitiNow = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+    const apSol = (_haitiNow.getHours() + _haitiNow.getMinutes()/60) >= (18 + 50/60);
     const datRef = new Date(jounen.soir_fin + 'T12:00:00');
     const nomJou = joursSemaine[datRef.getDay()];
     document.getElementById('pg-dat').textContent = jounen.jour ? (nomJou + ' · ' + jounen.jour + ' ' + moisNom) : 'Tèks ap vini...';

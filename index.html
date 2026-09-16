@@ -1021,7 +1021,7 @@
     const now = new Date();
     const indy = new Date(now.toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
     const leH = indy.getHours() + indy.getMinutes()/60;
-    const apSol = leH >= 20.5;
+    const apSol = leH >= (18 + 50/60);
     const annee = indy.getFullYear();
     const mois = String(indy.getMonth()+1).padStart(2,'0');
     const jou = String(indy.getDate()).padStart(2,'0');

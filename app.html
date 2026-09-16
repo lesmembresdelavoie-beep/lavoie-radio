@@ -781,8 +781,8 @@ async function chajeDoneTeks(){
 function jounenJodiA(donnees){
   if (!donnees) return null;
   const liste = Array.isArray(donnees) ? donnees : [donnees];
-  const now = new Date();
-  const apSol = now.getHours()*60 + now.getMinutes() >= 20*60 + 30;
+  const now = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+  const apSol = now.getHours()*60 + now.getMinutes() >= 18*60 + 50;
   const pad = n => String(n).padStart(2,'0');
   const datGreg = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
   for (const mwa of liste) {
@@ -808,8 +808,8 @@ function jounenJodiA(donnees){
 /* Salitasyon selon jou La Voie (jou a chanje a 17:45) */
 (function(){
   const noms = ["Yôm Rishon","Yôm Sheni","Yôm Shlishi","Yôm Rebi'i","Yôm Hamishi","Ereb Shabbat","Shabbat"];
-  const now = new Date();
-  const apSol = now.getHours()*60 + now.getMinutes() >= 20*60 + 30;
+  const now = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+  const apSol = now.getHours()*60 + now.getMinutes() >= 18*60 + 50;
   let j = now.getDay();               // 0 = dimanch ... 6 = samdi
   if (apSol) j = (j + 1) % 7;         // apre 17:45, jou La Voie a chanje
   const el = document.getElementById('salut-titre');
@@ -892,8 +892,8 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
 
   /* Jou ibri aktyèl la: apre 17:45, jou a se sa ki kòmanse aswè a,
      epi jou LAJOUNEN li a se demen. Menm règ ak Tèks pou Jounen an. */
-  const maintenant = new Date();
-  const apSol2 = maintenant.getHours()*60 + maintenant.getMinutes() >= 20*60 + 30;
+  const maintenant = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+  const apSol2 = maintenant.getHours()*60 + maintenant.getMinutes() >= 18*60 + 50;
   const jourIbri = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() + (apSol2 ? 1 : 0));
 
   const nDe = (d, m) => Math.floor((jourIbri - new Date(m.debut.getFullYear(), m.debut.getMonth(), m.debut.getDate())) / 86400000) + 1;
@@ -977,8 +977,8 @@ if ('serviceWorker' in navigator) {
 /* ============ REFRESH OTOMATIK JOU EBRE (minwi + 17:45) ============ */
 (function(){
   function etaJou(){
-    const n = new Date();
-    const apSol = (n.getHours()*60 + n.getMinutes()) >= (20*60 + 30);
+    const n = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+    const apSol = (n.getHours()*60 + n.getMinutes()) >= (18*60 + 50);
     return n.getFullYear()+'-'+n.getMonth()+'-'+n.getDate()+'-'+(apSol?'S':'J');
   }
   let eta = etaJou();
