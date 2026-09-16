@@ -74,7 +74,26 @@ var TEKS_DATA = [{"mois": "Siban", "annee": 5786, "jours": [{"jour": 1, "soir_de
 <script>
 // Map ilustrasyon pa jou Rebi'i
 const ILLUSTRASYON = {
+  "Siban": {
+    1: 'illus-siban-1.jpg',
+    2: 'illus-siban-2.jpg',
+    3: 'illus-siban-3.jpg',
+    4: 'illus-siban-4.jpg',
+    5: 'illus-siban-5.jpg',
+    6: 'illus-siban-6.jpg',
+    7: 'illus-siban-7.jpg',
+    8: 'illus-siban-8.jpg',
+    9: 'illus-siban-9.jpg',
+    10: 'illus-siban-10.jpg',
+    11: 'illus-siban-11.jpg',
+    12: 'illus-siban-12.jpg',
+    13: 'illus-siban-13.jpg',
+    14: 'illus-siban-14.jpg'
+  },
   "Rebi'i": {
+    1: 'illus-rebi-1.jpg',
+    2: 'illus-rebi-2.jpg',
+    3: 'illus-rebi-3.jpg',
     4: 'illus-rebi-4.jpg',
     5: 'illus-rebi-5.png',
     6: 'illus-rebi-6.png',
@@ -82,24 +101,24 @@ const ILLUSTRASYON = {
     8: 'illus-rebi-8.png',
     9: 'illus-rebi-9.png',
     10: 'illus-rebi-10.jpg',
-    11: 'illus-rebi-11.png',
-    12: 'illus-rebi-12.png',
-    13: 'illus-rebi-13.png',
-    14: 'illus-rebi-14.png',
-    15: 'illus-rebi-15.png',
+    11: 'illus-rebi-11.jpg',
+    12: 'illus-rebi-12.jpg',
+    13: 'illus-rebi-13.jpg',
+    14: 'illus-rebi-14.jpg',
+    15: 'illus-rebi-15.jpg',
     16: 'illus-rebi-16.jpg',
-    17: 'illus-rebi-17.png',
-    18: 'illus-rebi-18.png',
+    17: 'illus-rebi-17.jpg',
+    18: 'illus-rebi-18.jpg',
     19: 'illus-rebi-19.jpg',
     20: 'illus-rebi-20.jpg',
-    21: 'illus-rebi-21.png',
+    21: 'illus-rebi-21.jpg',
     22: 'illus-rebi-22.jpg',
     23: 'illus-rebi-23.jpg',
-    24: 'illus-rebi-24.png',
+    24: 'illus-rebi-24.jpg',
     25: 'illus-rebi-25.jpg',
-    26: 'illus-rebi-26.png',
+    26: 'illus-rebi-26.jpg',
     27: 'illus-rebi-27.jpg',
-    28: 'illus-rebi-28.png',
+    28: 'illus-rebi-28.jpg',
     29: 'illus-rebi-29.jpg',
     30: 'illus-rebi-30.jpg'
   },
@@ -135,7 +154,7 @@ const ILLUSTRASYON = {
     29: 'illus-ab-29.jpg',
     30: 'illus-ab-30.jpg'
   },
-  'Éloul': {
+  "Éloul": {
     1: 'illus-eloul-1.jpg',
     2: 'illus-eloul-2.jpg',
     3: 'illus-eloul-3.jpg',
@@ -163,73 +182,41 @@ const ILLUSTRASYON = {
     27: 'illus-eloul-27.jpg',
     28: 'illus-eloul-28.jpg',
     29: 'illus-eloul-29.jpg',
-    30: 'illus-eloul-30.jpg',
-    29: 'illus-eloul-29.jpg'
-  ,
     30: 'illus-eloul-30.jpg'
-  },
-  "Éloul": {
-    1: 'illus-eloul-1.jpg',
-    2: 'illus-eloul-2.jpg',
-    3: 'illus-eloul-3.jpg',
-    4: 'illus-eloul-4.jpg',
-    5: 'illus-eloul-5.jpg',
-    6: 'illus-eloul-6.jpg',
-    7: 'illus-eloul-7.jpg',
-    8: 'illus-eloul-8.jpg',
-    9: 'illus-eloul-9.jpg',
-    10: 'illus-eloul-10.jpg',
-    11: 'illus-eloul-11.jpg',
-    12: 'illus-eloul-12.jpg',
-    13: 'illus-eloul-13.jpg',
-    14: 'illus-eloul-14.jpg',
-    16: 'illus-eloul-16.jpg',
-    18: 'illus-eloul-18.jpg',
-    19: 'illus-eloul-19.jpg',
-    20: 'illus-eloul-20.jpg',
-    21: 'illus-eloul-21.jpg',
-    22: 'illus-eloul-22.jpg',
-    23: 'illus-eloul-23.jpg',
-    24: 'illus-eloul-24.jpg',
-    25: 'illus-eloul-25.jpg',
-    26: 'illus-eloul-26.jpg',
-    27: 'illus-eloul-27.jpg',
-    28: 'illus-eloul-28.jpg'
-  ,
-    29: 'illus-eloul-29.jpg',
-    30: 'illus-eloul-30.jpg'
-  },
-  "Siban": {
-    1: 'illus-siban-1.jpg',
-    2: 'illus-siban-2.jpg',
-    3: 'illus-siban-3.jpg',
-    4: 'illus-siban-4.jpg',
-    5: 'illus-siban-5.jpg',
-    6: 'illus-siban-6.jpg',
-    7: 'illus-siban-7.jpg',
-    8: 'illus-siban-8.jpg',
-    9: 'illus-siban-9.jpg',
-    10: 'illus-siban-10.jpg',
-    11: 'illus-siban-11.jpg',
-    12: 'illus-siban-12.jpg',
-    13: 'illus-siban-13.jpg',
-    14: 'illus-siban-14.jpg'
   },
   "Ethanim": {
     1: 'illus-ethanim-1.jpg',
     2: 'illus-ethanim-2.jpg'
   }
-
-
 };
 const VWA = {
+  "Siban": {
+    1: 'vwa-siban-1.mp3',
+    2: 'vwa-siban-2.mp3',
+    3: 'vwa-siban-3.mp3',
+    4: 'vwa-siban-4.mp3',
+    5: 'vwa-siban-5.mp3',
+    6: 'vwa-siban-6.mp3',
+    7: 'vwa-siban-7.mp3',
+    8: 'vwa-siban-8.mp3',
+    9: 'vwa-siban-9.mp3',
+    10: 'vwa-siban-10.mp3',
+    11: 'vwa-siban-11.mp3',
+    12: 'vwa-siban-12.mp3',
+    13: 'vwa-siban-13.mp3',
+    14: 'vwa-siban-14.mp3'
+  },
   "Rebi'i": {
-    5: 'vwa-rebi-5.ogg',
+    1: 'vwa-rebi-1.mp3',
+    2: 'vwa-rebi-2.mp3',
+    3: 'vwa-rebi-3.mp3',
+    4: 'vwa-rebi-4.mp3',
+    5: 'vwa-rebi-5.mp3',
     6: 'vwa-rebi-6.mp3',
     7: 'vwa-rebi-7.mp3',
-    8: 'vwa-rebi-8.ogg',
-    9: 'vwa-rebi-9.ogg',
-    10: 'vwa-rebi-10.ogg',
+    8: 'vwa-rebi-8.mp3',
+    9: 'vwa-rebi-9.mp3',
+    10: 'vwa-rebi-10.mp3',
     11: 'vwa-rebi-11.mp3',
     12: 'vwa-rebi-12.mp3',
     13: 'vwa-rebi-13.mp3',
@@ -283,33 +270,6 @@ const VWA = {
     29: 'vwa-ab-29.mp3',
     30: 'vwa-ab-30.mp3'
   },
-  'Éloul': {
-    1: 'vwa-eloul-1.mp3',
-    2: 'vwa-eloul-2.mp3',
-    3: 'vwa-eloul-3.mp3',
-    4: 'vwa-eloul-4.mp3',
-    5: 'vwa-eloul-5.mp3',
-    6: 'vwa-eloul-6.mp3',
-    7: 'vwa-eloul-7.mp3',
-    8: 'vwa-eloul-8.mp3',
-    9: 'vwa-eloul-9.mp3',
-    10: 'vwa-eloul-10.mp3',
-    11: 'vwa-eloul-11.mp3',
-    12: 'vwa-eloul-12.mp3',
-    13: 'vwa-eloul-13.mp3',
-    14: 'vwa-eloul-14.mp3',
-    16: 'vwa-eloul-16.mp3',
-    18: 'vwa-eloul-18.mp3',
-    19: 'vwa-eloul-19.mp3',
-    20: 'vwa-eloul-20.mp3',
-    21: 'vwa-eloul-21.mp3',
-    22: 'vwa-eloul-22.mp3',
-    23: 'vwa-eloul-23.mp3',
-    24: 'vwa-eloul-24.mp3',
-    25: 'vwa-eloul-25.mp3',
-    26: 'vwa-eloul-26.mp3',
-    27: 'vwa-eloul-27.mp3'
-  },
   "Éloul": {
     1: 'vwa-eloul-1.mp3',
     2: 'vwa-eloul-2.mp3',
@@ -340,28 +300,10 @@ const VWA = {
     29: 'vwa-eloul-29.mp3',
     30: 'vwa-eloul-30.mp3'
   },
-  "Siban": {
-    1: 'vwa-siban-1.mp3',
-    2: 'vwa-siban-2.mp3',
-    3: 'vwa-siban-3.mp3',
-    4: 'vwa-siban-4.mp3',
-    5: 'vwa-siban-5.mp3',
-    6: 'vwa-siban-6.mp3',
-    7: 'vwa-siban-7.mp3',
-    8: 'vwa-siban-8.mp3',
-    9: 'vwa-siban-9.mp3',
-    10: 'vwa-siban-10.mp3',
-    11: 'vwa-siban-11.mp3',
-    12: 'vwa-siban-12.mp3',
-    13: 'vwa-siban-13.mp3',
-    14: 'vwa-siban-14.mp3'
-  },
   "Ethanim": {
     1: 'vwa-ethanim-1.mp3',
     2: 'vwa-ethanim-2.mp3'
   }
-
-
 };
 
 // Etoiles
