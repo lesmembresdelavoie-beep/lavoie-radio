@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miqra Qadosh — Rosh Ḥodesh 1er Ethanim · La Voie</title>
-<meta name="description" content="Miqra Qadosh Rosh Ḥodesh — Premier jour du mois d'Ethanim · Yôm Teruʿah · Les Membres de La Voie.">
+<title>Miqra Qadosh — Rosh Ḥodesh du 1er Éthanim · La Voie</title>
+<meta name="description" content="Miqra Qadosh Rosh Ḥodesh — Premier jour du mois d'Éthanim (12→13 septembre 2026) · Les Membres de La Voie.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 :root{--nuit:#0d2347;--nuit-f:#081832;--or:#c9a84c;--or-c:#e3c876;--or-f:#9a7c2e;--creme:#f5eedc;--bleu-rh:#4a78b0}
@@ -33,7 +33,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 /* ── LECTEUR ── */
 .lecteur-wrap{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.28);border-radius:14px;padding:1.4rem 1.2rem;margin-bottom:1.8rem}
 .lecteur-titre{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:1rem;text-align:center}
-.piste{display:flex;align-items:center;gap:.85rem;padding:.65rem .5rem;border-radius:8px}
+.piste{display:flex;align-items:center;gap:.85rem;padding:.65rem .5rem;border-bottom:1px solid rgba(201,168,76,.1);cursor:pointer;border-radius:8px;transition:background .15s}
+.piste:last-child{border-bottom:none}
+.piste:hover,.piste.active{background:rgba(201,168,76,.12)}
+.piste-num{font-family:'Cinzel',serif;font-size:.65rem;color:var(--or);opacity:.6;min-width:1.4rem;text-align:center}
 .piste-play{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--or-c),var(--or-f));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;color:var(--nuit-f);font-weight:700;transition:transform .15s}
 .piste-play:hover{transform:scale(1.1)}
 .piste-info{flex:1}
@@ -52,16 +55,10 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 /* ── PROGRAMME ── */
 .programme{background:rgba(13,35,71,.5);border:1px solid rgba(201,168,76,.2);border-radius:12px;padding:1.2rem 1.1rem;margin-bottom:1.8rem}
 .prog-titre{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem;text-align:center}
-.prog-item{padding:.7rem 0;border-bottom:1px solid rgba(201,168,76,.08)}
-.prog-item:last-child{border-bottom:none}
-.prog-tete{display:flex;gap:.7rem;align-items:baseline}
-.prog-n{color:var(--or);opacity:.7;font-family:'Cinzel',serif;font-size:.78rem;min-width:1.5rem}
-.prog-tit{color:var(--creme);font-weight:600}
-.prog-chirat{color:var(--or-c);font-style:italic}
-.prog-desc{color:var(--creme);opacity:.72;font-size:.92rem;margin-top:.3rem;margin-left:2.2rem}
-
-/* ── CLOTURE ── */
-.cloture{text-align:center;font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.05em;color:var(--or-c);margin-bottom:2rem}
+.prog-li{display:flex;gap:.7rem;padding:.4rem 0;border-bottom:1px solid rgba(201,168,76,.08);font-size:.94rem}
+.prog-li:last-child{border-bottom:none}
+.prog-n{color:var(--or);opacity:.55;font-family:'Cinzel',serif;font-size:.72rem;min-width:1.5rem}
+.prog-tx{color:var(--creme);opacity:.88}
 
 /* ── RETOUR ── */
 .retour{text-align:center;margin-top:2.5rem}
@@ -75,77 +72,111 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 <div class="wrap">
 
   <div class="couverture">
-    <img src="miqra-rosh-hodesh-ethanim.jpg" alt="Miqra Qadosh Rosh Ḥodesh — 1er Ethanim" onerror="this.style.display='none'">
+    <img src="miqra-rosh-hodesh-ethanim.jpg" alt="Miqra Qadosh Rosh Ḥodesh — 1er Éthanim" onerror="this.style.display='none'">
   </div>
 
   <header>
     <span class="badge-rh">✦ Rosh Ḥodesh</span>
-    <h1>MIQRA QADOSH<br>Rosh Ḥodesh 1<sup>er</sup> Ethanim</h1>
-    <p class="sous">Nouvelle lune · Premier jour du mois d'Ethanim</p>
-    <p class="date-heb">Du 12 septembre 2026 au coucher du soleil<br>au 13 septembre 2026 au coucher du soleil</p>
+    <h1>MIQRA QADOSH<br>Rosh Ḥodesh du 1<sup>er</sup> Éthanim</h1>
+    <p class="sous">Un nouveau mois · Une nouvelle grâce</p>
+    <p class="date-heb">Du 12 sept. (coucher du soleil) au 13 septembre 2026 (coucher du soleil) · An 5786</p>
     <p class="verset">« De lune en lune, et de shabbat en shabbat, toute chair viendra se prosterner devant moi, dit Yahawah. » — Yeshaʿeyah 66:23</p>
     <div class="sep"><span class="l"></span><span class="e">🌙</span><span class="l"></span></div>
   </header>
 
-  <!-- ── LECTEUR : seule piste disponible ── -->
+  <!-- ── LECTEUR SÉQUENTIEL ── -->
   <div class="lecteur-wrap" id="lecteur">
-    <p class="lecteur-titre">✦ Écouter la Chirat de clôture</p>
-    <div class="piste">
-      <button class="piste-play" id="btnPistePlay" onclick="togglePlay()">▶</button>
+    <p class="lecteur-titre">✦ Écouter l'ʿAbodah</p>
+
+    <div class="piste active" data-src="rh-ethanim-chirat-ouverture.mp3">
+      <span class="piste-num">1</span>
+      <button class="piste-play" onclick="jouerPiste(0)">▶</button>
       <div class="piste-info">
-        <div class="piste-nom">Chirat — « De lune en lune »</div>
+        <div class="piste-nom">Chirat d'ouverture — « Joyeux Rôsh Ḥodesh »</div>
+        <div class="piste-dur">2:26</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-ethanim-enseignement.mp3">
+      <span class="piste-num">2</span>
+      <button class="piste-play" onclick="jouerPiste(1)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Discours de circonstance — « Ethanim, un Ḥodesh de réjouissance et de reconnaissance »</div>
+        <div class="piste-dur">12:09</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="de-lune-en-lune.mp3">
+      <span class="piste-num">3</span>
+      <button class="piste-play" onclick="jouerPiste(2)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Chirat de clôture — « De lune en lune, nou pwostène devan w »</div>
         <div class="piste-dur">2:51</div>
       </div>
     </div>
+
+    <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
     </div>
     <div class="ctrl">
       <button onclick="reculer()">⏮ 15s</button>
+      <button class="btn-main" id="btnPlay" onclick="togglePlay()">▶ Jouer</button>
       <button onclick="avancer()">15s ⏭</button>
     </div>
     <p class="tempo-affich" id="tempoAffich">0:00 / 0:00</p>
   </div>
 
-  <!-- ── PROGRAMME SIMPLIFIÉ ── -->
+  <!-- ── PROGRAMME ── -->
   <div class="programme">
     <p class="prog-titre">✦ Programme simplifié</p>
-
-    <div class="prog-item">
-      <div class="prog-tete"><span class="prog-n">1.</span><span class="prog-tit">Chirat d'ouverture — <span class="prog-chirat">« Joyeux Rosh Ḥodesh »</span></span></div>
-      <div class="prog-desc">Chirat de réjouissance et de reconnaissance à Yahawah pour l'entrée dans un nouveau ḥodesh.</div>
-    </div>
-
-    <div class="prog-item">
-      <div class="prog-tete"><span class="prog-n">2.</span><span class="prog-tit">Discours de circonstance — 15 minutes</span></div>
-      <div class="prog-desc">Thème : « Ethanim : entrer dans un ḥodesh marqué par les rendez-vous de Yahawah » — un discours consacré au sens particulier d'Ethanim et à la disposition avec laquelle les serviteurs de Yahawah abordent ce ḥodesh.</div>
-    </div>
-
-    <div class="prog-item">
-      <div class="prog-tete"><span class="prog-n">3.</span><span class="prog-tit">Chirat de clôture — <span class="prog-chirat">« De lune en lune »</span></span></div>
-      <div class="prog-desc">Chirat final réunissant l'assemblée dans la reconnaissance et l'espérance, en harmonie avec Yeshaʿeyah 66:23.</div>
-    </div>
+    <div class="prog-li"><span class="prog-n">1.</span><span class="prog-tx">Chirat d'ouverture — « Joyeux Rôsh Ḥodesh »</span></div>
+    <div class="prog-li"><span class="prog-n">2.</span><span class="prog-tx">Discours de circonstance — « Ethanim, un Ḥodesh de réjouissance et de reconnaissance »</span></div>
+    <div class="prog-li"><span class="prog-n">3.</span><span class="prog-tx">Chirat de clôture — « De lune en lune, nou pwostène devan w »</span></div>
   </div>
-
-  <p class="cloture">✦ Joyeux Rosh Ḥodesh à tous nos akhim et akhayòt ! ✦</p>
 
   <div class="retour"><a href="miqra-qadosh.html">← Retour à la bibliothèque</a></div>
 
 </div>
 
-<audio id="audio" src="de-lune-en-lune.mp3"></audio>
+<audio id="audio"></audio>
 
 <script>
+const PISTES = [
+  'rh-ethanim-chirat-ouverture.mp3',
+  'rh-ethanim-enseignement.mp3',
+  'de-lune-en-lune.mp3'
+];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
-const btnPistePlay = document.getElementById('btnPistePlay');
+const btnPlay = document.getElementById('btnPlay');
 const tempoAffich = document.getElementById('tempoAffich');
+const pistesEl = document.querySelectorAll('.piste');
+let idx = 0;
 
 function fmt(s){ const m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
 
+function chargerPiste(i, jouer=true){
+  idx = i;
+  audio.src = PISTES[i];
+  pistesEl.forEach((p,j) => p.classList.toggle('active', j===i));
+  barre.value = 0;
+  barre.style.setProperty('--p','0%');
+  if(jouer){ audio.play(); btnPlay.textContent='⏸ Pause'; }
+  else { btnPlay.textContent='▶ Jouer'; }
+}
+
+function jouerPiste(i){ chargerPiste(i, true); }
+
 function togglePlay(){
-  if(audio.paused){ audio.play(); btnPistePlay.textContent='⏸'; }
-  else { audio.pause(); btnPistePlay.textContent='▶'; }
+  if(audio.paused){
+    if(!audio.src || audio.src===window.location.href) chargerPiste(0);
+    else audio.play();
+    btnPlay.textContent='⏸ Pause';
+  } else {
+    audio.pause();
+    btnPlay.textContent='▶ Jouer';
+  }
 }
 
 function reculer(){ audio.currentTime = Math.max(0, audio.currentTime-15); }
@@ -160,7 +191,13 @@ audio.addEventListener('timeupdate', ()=>{
   tempoAffich.textContent = fmt(audio.currentTime)+' / '+fmt(audio.duration);
 });
 
-audio.addEventListener('ended', ()=>{ btnPistePlay.textContent='▶'; barre.value=0; });
+audio.addEventListener('ended', ()=>{
+  if(idx < PISTES.length-1){ chargerPiste(idx+1, true); }
+  else { btnPlay.textContent='▶ Jouer'; barre.value=0; }
+});
+
+// Charger 1ye piste san jouer
+chargerPiste(0, false);
 </script>
 
 </body>
