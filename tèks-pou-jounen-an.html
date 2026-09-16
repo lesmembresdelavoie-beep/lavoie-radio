@@ -197,6 +197,7 @@ main{padding-top:52px}
   <div class="teks-card">
     <p class="teks-ref" id="pg-ref">...</p>
     <p class="teks-texte" id="pg-texte"></p>
+    <audio id="pg-audio" controls style="width:100%;margin-top:1.2rem;display:none"></audio>
   </div>
 
   <div class="ornement">✦ &nbsp; ✦ &nbsp; ✦</div>
@@ -241,6 +242,15 @@ const MOIS_NOM = {
 
 let currentLang = localStorage.getItem('lv-lang') || 'kw';
 let currentJounen = null;
+
+// Fichye vwa (odyo) pa mwa/jou — menm chemen ak teks-jounen-anime.html
+const VWA = {
+  "Siban": {1:'vwa-siban-1.mp3',2:'vwa-siban-2.mp3',3:'vwa-siban-3.mp3',4:'vwa-siban-4.mp3',5:'vwa-siban-5.mp3',6:'vwa-siban-6.mp3',7:'vwa-siban-7.mp3',8:'vwa-siban-8.mp3',9:'vwa-siban-9.mp3',10:'vwa-siban-10.mp3',11:'vwa-siban-11.mp3',12:'vwa-siban-12.mp3',13:'vwa-siban-13.mp3',14:'vwa-siban-14.mp3'},
+  "Rebi'i": {1:'vwa-rebi-1.mp3',2:'vwa-rebi-2.mp3',3:'vwa-rebi-3.mp3',4:'vwa-rebi-4.mp3',5:'vwa-rebi-5.mp3',6:'vwa-rebi-6.mp3',7:'vwa-rebi-7.mp3',8:'vwa-rebi-8.mp3',9:'vwa-rebi-9.mp3',10:'vwa-rebi-10.mp3',11:'vwa-rebi-11.mp3',12:'vwa-rebi-12.mp3',13:'vwa-rebi-13.mp3',14:'vwa-rebi-14.mp3',15:'vwa-rebi-15.mp3',16:'vwa-rebi-16.mp3',17:'vwa-rebi-17.mp3',18:'vwa-rebi-18.mp3',19:'vwa-rebi-19.mp3',20:'vwa-rebi-20.mp3',21:'vwa-rebi-21.mp3',22:'vwa-rebi-22.mp3',23:'vwa-rebi-23.mp3',24:'vwa-rebi-24.mp3',25:'vwa-rebi-25.mp3',26:'vwa-rebi-26.mp3',27:'vwa-rebi-27.mp3',28:'vwa-rebi-28.mp3',29:'vwa-rebi-29.mp3',30:'vwa-rebi-30.mp3'},
+  "Ab": {1:'vwa-ab-1.mp3',2:'vwa-ab-2.mp3',3:'vwa-ab-3.mp3',4:'vwa-ab-4.mp3',5:'vwa-ab-5.mp3',6:'vwa-ab-6.mp3',7:'vwa-ab-7.mp3',8:'vwa-ab-8.mp3',9:'vwa-ab-9.mp3',10:'vwa-ab-10.mp3',11:'vwa-ab-11.mp3',12:'vwa-ab-12.mp3',13:'vwa-ab-13.mp3',14:'vwa-ab-14.mp3',15:'vwa-ab-15.mp3',16:'vwa-ab-16.mp3',17:'vwa-ab-17.mp3',18:'vwa-ab-18.mp3',19:'vwa-ab-19.mp3',20:'vwa-ab-20.mp3',21:'vwa-ab-21.mp3',22:'vwa-ab-22.mp3',23:'vwa-ab-23.mp3',24:'vwa-ab-24.mp3',25:'vwa-ab-25.mp3',26:'vwa-ab-26.mp3',27:'vwa-ab-27.mp3',28:'vwa-ab-28.mp3',29:'vwa-ab-29.mp3',30:'vwa-ab-30.mp3'},
+  "Éloul": {1:'vwa-eloul-1.mp3',2:'vwa-eloul-2.mp3',3:'vwa-eloul-3.mp3',4:'vwa-eloul-4.mp3',5:'vwa-eloul-5.mp3',6:'vwa-eloul-6.mp3',7:'vwa-eloul-7.mp3',8:'vwa-eloul-8.mp3',9:'vwa-eloul-9.mp3',10:'vwa-eloul-10.mp3',11:'vwa-eloul-11.mp3',12:'vwa-eloul-12.mp3',13:'vwa-eloul-13.mp3',14:'vwa-eloul-14.mp3',16:'vwa-eloul-16.mp3',18:'vwa-eloul-18.mp3',19:'vwa-eloul-19.mp3',20:'vwa-eloul-20.mp3',21:'vwa-eloul-21.mp3',22:'vwa-eloul-22.mp3',23:'vwa-eloul-23.mp3',24:'vwa-eloul-24.mp3',25:'vwa-eloul-25.mp3',26:'vwa-eloul-26.mp3',27:'vwa-eloul-27.mp3',28:'vwa-eloul-28.mp3'},
+  "Ethanim": {1:'vwa-ethanim-1.mp3',2:'vwa-ethanim-2.mp3'}
+};
 
 function getJourSiban() {
   const now = new Date();
@@ -304,6 +314,22 @@ function renderJounen(jounen, moisNom) {
   document.getElementById('lang-label').textContent = lang === 'fr' ? 'FR' : 'KW';
   document.getElementById('opt-kw').classList.toggle('active', lang === 'kw');
   document.getElementById('opt-fr').classList.toggle('active', lang === 'fr');
+
+  // Vwa (odyo) — chèche selon mwa/jou SOUS-JASAN kontni an afiche a (pa jou afiche repli a)
+  const audioEl = document.getElementById('pg-audio');
+  const audioJour = jounen.sourceJour || jounen.jour;
+  const vwaFichye = moisNom && VWA[moisNom] && VWA[moisNom][audioJour];
+  if (vwaFichye) {
+    if (audioEl.getAttribute('data-src') !== vwaFichye) {
+      audioEl.setAttribute('data-src', vwaFichye);
+      audioEl.src = vwaFichye;
+    }
+    audioEl.style.display = 'block';
+  } else {
+    audioEl.removeAttribute('data-src');
+    audioEl.removeAttribute('src');
+    audioEl.style.display = 'none';
+  }
 }
 
 // Done yo soti nan teks-data.js (live), rechèch kwaze plizyè mwa, ak repli si okenn jou pa jwenn
@@ -317,8 +343,8 @@ function renderJounen(jounen, moisNom) {
       const mwa = liste[m];
       for (let i = 0; i < mwa.jours.length; i++) {
         const j = mwa.jours[i];
-        if (j.soir_debut === datGreg && apres_soleil) { jounen = j; moisNom = mwa.mois; break outer; }
-        if (j.soir_fin === datGreg && !apres_soleil) { jounen = j; moisNom = mwa.mois; break outer; }
+        if (j.soir_debut === datGreg && apres_soleil) { jounen = Object.assign({sourceJour: j.jour}, j); moisNom = mwa.mois; break outer; }
+        if (j.soir_fin === datGreg && !apres_soleil) { jounen = Object.assign({sourceJour: j.jour}, j); moisNom = mwa.mois; break outer; }
       }
     }
     if (!jounen) {
@@ -331,6 +357,7 @@ function renderJounen(jounen, moisNom) {
       const offset = diffDaysStr(targetSoirFin, last.soir_fin);
       jounen = {
         jour: last.jour + offset,
+        sourceJour: last.jour,
         soir_debut: addDaysStr(last.soir_debut, offset),
         soir_fin: targetSoirFin,
         texte: last.texte,
