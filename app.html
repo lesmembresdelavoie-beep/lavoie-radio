@@ -699,7 +699,7 @@ const CONFIG = {
   ],
 
   /* Kalandriye : yon antre pou chak mwa. App la chwazi mwa a POUKONT LI
-     selon menm règ 20:30 la ak rès sit la — pa gen anyen pou chanje lè mwa a vire.
+     selon menm règ 17:45 la ak rès sit la — pa gen anyen pou chanje lè mwa a vire.
      Pou ajoute yon mwa: mete non an, sousTitre a, dat 1ye jou a (ane, mwa-1, jou
      = jou LAJOUNEN an, sa vle di landemen solèy kouche a), kantite jou, ak Shabbat yo. */
   kalandriye: [
@@ -768,7 +768,7 @@ function fermerMenu(){ tiroir.classList.remove('ouvert'); voile.classList.remove
 /* ================== TÈKS POU JOUNEN AN ==================
    Sous prensipal: done yo ANNDAN teks-jounen-anime.html
    (kote B'neiYah mete yo ajou). Si sa pa mache: teks-data.js,
-   answit CONFIG. Jou a chanje a 20:30, menm règ ak sit la.  */
+   answit CONFIG. Jou a chanje a 17:45, menm règ ak sit la.  */
 async function chajeDoneTeks(){
   try {
     const r = await fetch('teks-jounen-anime.html', {cache:'no-store'});
@@ -805,13 +805,13 @@ function jounenJodiA(donnees){
   }
 })();
 
-/* Salitasyon selon jou La Voie (jou a chanje a 20:30) */
+/* Salitasyon selon jou La Voie (jou a chanje a 17:45) */
 (function(){
   const noms = ["Yôm Rishon","Yôm Sheni","Yôm Shlishi","Yôm Rebi'i","Yôm Hamishi","Ereb Shabbat","Shabbat"];
   const now = new Date();
   const apSol = now.getHours()*60 + now.getMinutes() >= 20*60 + 30;
   let j = now.getDay();               // 0 = dimanch ... 6 = samdi
-  if (apSol) j = (j + 1) % 7;         // apre 20:30, jou La Voie a chanje
+  if (apSol) j = (j + 1) % 7;         // apre 17:45, jou La Voie a chanje
   const el = document.getElementById('salut-titre');
   if (j === 6)      el.textContent = "Shabbat Shalom !";
   else if (j === 5) el.textContent = "Shalom, Ereb Shabbat !";
@@ -890,7 +890,7 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
 (function(){
   const MWA = Array.isArray(CONFIG.kalandriye) ? CONFIG.kalandriye : [CONFIG.kalandriye];
 
-  /* Jou ibri aktyèl la: apre 20:30, jou a se sa ki kòmanse aswè a,
+  /* Jou ibri aktyèl la: apre 17:45, jou a se sa ki kòmanse aswè a,
      epi jou LAJOUNEN li a se demen. Menm règ ak Tèks pou Jounen an. */
   const maintenant = new Date();
   const apSol2 = maintenant.getHours()*60 + maintenant.getMinutes() >= 20*60 + 30;
@@ -974,7 +974,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 
-/* ============ REFRESH OTOMATIK JOU EBRE (minwi + 20:30) ============ */
+/* ============ REFRESH OTOMATIK JOU EBRE (minwi + 17:45) ============ */
 (function(){
   function etaJou(){
     const n = new Date();
@@ -1042,17 +1042,17 @@ async function aktiveNotifikasyon(){
 
 <script>
 (function() {
-  // Parèt Ereb Shabbat : jedi 20:30 rive vandredi 20:30
+  // Parèt Ereb Shabbat : jedi 17:45 rive vandredi 17:45
   var kounye   = new Date();
   var jou      = kounye.getDay();
   var minTotal = kounye.getHours() * 60 + kounye.getMinutes();
-  var min2030  = 20 * 60 + 30;
+  var min2030  = 17 * 60 + 45; // Kouche solèy Tabarre, Haïti
 
   var montrPopup = false;
-  if (jou === 4 && minTotal >= min2030) montrPopup = true; // jedi >= 20:30 (Ereb Shabbat)
-  if (jou === 5 && minTotal <  min2030) montrPopup = true; // vandredi < 20:30 (Ereb Shabbat)
+  if (jou === 4 && minTotal >= min2030) montrPopup = true; // jedi >= 17:45 (Ereb Shabbat)
+  if (jou === 5 && minTotal <  min2030) montrPopup = true; // vandredi < 17:45 (Ereb Shabbat)
 
-  // Rosh Ḥodesh: popup parèt a 20:30 nenpòt jou
+  // Rosh Ḥodesh: popup parèt a 17:45 nenpòt jou
   try {
     if (!montrPopup && typeof TEKS_DATA !== 'undefined' && minTotal >= min2030) {
       var pad2 = function(n){ return String(n).padStart(2,'0'); };
@@ -1090,7 +1090,7 @@ async function aktiveNotifikasyon(){
       for (var a = 0; a < lst.length && !seRoshHodesh; a++) {
         for (var b = 0; b < lst[a].jours.length; b++) {
           var jj = lst[a].jours[b];
-          // Apre 20:30 = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
+          // Apre 17:45 = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
           var matche = apSol ? (jj.soir_debut === dGreg) : (jj.soir_fin === dGreg);
           if (matche && jj.jour === 1) { seRoshHodesh = true; break; }
         }
