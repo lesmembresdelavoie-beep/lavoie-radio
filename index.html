@@ -1019,12 +1019,40 @@
     if(typeof TEKS_DATA === 'undefined') return;
     const data = TEKS_DATA;
     const now = new Date();
-    const indy = new Date(now.toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
-    const leH = indy.getHours() + indy.getMinutes()/60;
-    const apSol = leH >= (18 + 50/60);
-    const annee = indy.getFullYear();
-    const mois = String(indy.getMonth()+1).padStart(2,'0');
-    const jou = String(indy.getDate()).padStart(2,'0');
+    // Lè solèy kouche reyèl la (pa yon lè fiks) pou Pòtoprens/Ayiti,
+    // selon fòmil astwonomik NOAA (dat ak lè solèy kouche chanje chak jou nan ane a).
+    function lèSolèyKouche(annee, mwaNo, jouNo, lat, lngEst) {
+      const debutAneUTC = Date.UTC(annee, 0, 1);
+      const jouUTC = Date.UTC(annee, mwaNo - 1, jouNo);
+      const jouNanAne = Math.round((jouUTC - debutAneUTC) / 86400000) + 1;
+      const rad = Math.PI / 180;
+      const gamma = (2 * Math.PI / 365) * (jouNanAne - 1 + 0.5);
+      const eqTime = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma)
+                     - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
+      const decl = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma)
+                   - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma)
+                   - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
+      const zenith = 90.833 * rad;
+      const latRad = lat * rad;
+      const cosHA = (Math.cos(zenith) / (Math.cos(latRad) * Math.cos(decl))) - Math.tan(latRad) * Math.tan(decl);
+      const haDeg = Math.acos(Math.max(-1, Math.min(1, cosHA))) / rad;
+      const solèyNoonUTC = 720 - 4 * lngEst - eqTime;
+      const koucheMinUTC = solèyNoonUTC + 4 * haDeg;
+      return jouUTC + koucheMinUTC * 60000;
+    }
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Port-au-Prince', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(now);
+    let annee, moisNo, jouNo;
+    parts.forEach(p => {
+      if (p.type === 'year') annee = parseInt(p.value);
+      if (p.type === 'month') moisNo = parseInt(p.value);
+      if (p.type === 'day') jouNo = parseInt(p.value);
+    });
+    const koucheInstan = lèSolèyKouche(annee, moisNo, jouNo, 18.5944, -72.3074);
+    const apSol = now.getTime() >= koucheInstan;
+    const mois = String(moisNo).padStart(2,'0');
+    const jou = String(jouNo).padStart(2,'0');
     const datGreg = annee+'-'+mois+'-'+jou;
 
     let jounen = null;

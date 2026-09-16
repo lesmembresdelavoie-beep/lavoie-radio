@@ -252,16 +252,43 @@ const VWA = {
   "Ethanim": {1:'vwa-ethanim-1.mp3',2:'vwa-ethanim-2.mp3',5:'vwa-ethanim-5.mp3'}
 };
 
+// Lè solèy kouche reyèl la (pa yon lè fiks) pou Pòtoprens/Ayiti,
+// selon fòmil astwonomik NOAA (dat ak lè solèy kouche chanje chak jou nan ane a).
+function lèSolèyKouche(annee, mwaNo, jouNo, lat, lngEst) {
+  const debutAneUTC = Date.UTC(annee, 0, 1);
+  const jouUTC = Date.UTC(annee, mwaNo - 1, jouNo);
+  const jouNanAne = Math.round((jouUTC - debutAneUTC) / 86400000) + 1;
+  const rad = Math.PI / 180;
+  const gamma = (2 * Math.PI / 365) * (jouNanAne - 1 + 0.5);
+  const eqTime = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma)
+                 - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
+  const decl = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma)
+               - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma)
+               - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
+  const zenith = 90.833 * rad;
+  const latRad = lat * rad;
+  const cosHA = (Math.cos(zenith) / (Math.cos(latRad) * Math.cos(decl))) - Math.tan(latRad) * Math.tan(decl);
+  const haDeg = Math.acos(Math.max(-1, Math.min(1, cosHA))) / rad;
+  const solèyNoonUTC = 720 - 4 * lngEst - eqTime; // minit apati minwit UTC
+  const koucheMinUTC = solèyNoonUTC + 4 * haDeg;
+  return jouUTC + koucheMinUTC * 60000; // enstan UTC egzat (timestamp)
+}
+
 function getJourSiban() {
   const now = new Date();
-  const haitiStr = now.toLocaleString('en-US', {timeZone: 'America/Port-au-Prince'});
-  const haiti = new Date(haitiStr);
-  const leHeure = haiti.getHours() + haiti.getMinutes() / 60;
-  const apres_soleil = leHeure >= (18 + 50/60);
-  const annee = haiti.getFullYear();
-  const mois = String(haiti.getMonth() + 1).padStart(2, '0');
-  const jou = String(haiti.getDate()).padStart(2, '0');
-  return { datGreg: annee + '-' + mois + '-' + jou, apres_soleil };
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Port-au-Prince', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(now);
+  let annee, mois, jou;
+  parts.forEach(p => {
+    if (p.type === 'year') annee = parseInt(p.value);
+    if (p.type === 'month') mois = parseInt(p.value);
+    if (p.type === 'day') jou = parseInt(p.value);
+  });
+  const koucheInstan = lèSolèyKouche(annee, mois, jou, 18.5944, -72.3074);
+  const apres_soleil = now.getTime() >= koucheInstan;
+  const datGreg = annee + '-' + String(mois).padStart(2, '0') + '-' + String(jou).padStart(2, '0');
+  return { datGreg, apres_soleil };
 }
 
 function renderJounen(jounen, moisNom) {
@@ -348,22 +375,23 @@ function renderJounen(jounen, moisNom) {
       }
     }
     if (!jounen) {
-      const lastMois = liste[liste.length - 1];
-      const last = lastMois.jours[lastMois.jours.length - 1];
-      moisNom = last.mois || lastMois.mois;
+      // Repli: pa gen kontni pwòp pou jodi a (jou sa a poko ekri) — kontinye
+      // ak DENYE jou ki gen kontni reyèl la, san fabrike ni jou ni tèks.
       const addDaysStr = (s,n) => { const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); };
-      const diffDaysStr = (a,b) => Math.round((new Date(a+'T00:00:00Z') - new Date(b+'T00:00:00Z'))/86400000);
       const targetSoirFin = apres_soleil ? addDaysStr(datGreg,1) : datGreg;
-      const offset = diffDaysStr(targetSoirFin, last.soir_fin);
-      jounen = {
-        jour: last.jour + offset,
-        sourceJour: last.jour,
-        soir_debut: addDaysStr(last.soir_debut, offset),
-        soir_fin: targetSoirFin,
-        texte: last.texte,
-        texte_kw: last.texte_kw,
-        ref: last.ref
-      };
+      let meilleur = null, meilleurMwa = null;
+      for (let m = 0; m < liste.length; m++) {
+        const mwa = liste[m];
+        for (let i = 0; i < mwa.jours.length; i++) {
+          const j = mwa.jours[i];
+          if (j.soir_fin <= targetSoirFin && (!meilleur || j.soir_fin > meilleur.soir_fin)) {
+            meilleur = j; meilleurMwa = mwa;
+          }
+        }
+      }
+      if (!meilleur) { meilleurMwa = liste[0]; meilleur = meilleurMwa.jours[0]; }
+      jounen = Object.assign({sourceJour: meilleur.jour}, meilleur);
+      moisNom = meilleur.mois || meilleurMwa.mois;
     }
     currentJounen = { jounen, moisNom };
     renderJounen(jounen, moisNom);
