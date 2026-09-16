@@ -1010,10 +1010,24 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
   }
 })();
 
-/* ================== ANNONCES ================== */
+/* ================== ANNONCES ==================
+   Badj la dwe montre sèlman anons ki poko li. San sa, li toujou
+   afiche kantite total la menm si itilizatè a deja li tout paj la. */
+function idAnons(a){ return (a.titre||'') + '|' + (a.url||''); }
+function anonsLiYo(){
+  try { return JSON.parse(localStorage.getItem('lavoie-anons-li') || '[]'); }
+  catch(e){ return []; }
+}
+function majBadjNotif(){
+  const li = new Set(anonsLiYo());
+  const nbNonLi = CONFIG.annonces.filter(a => !li.has(idAnons(a))).length;
+  const badgeEl = document.getElementById('badge-notif');
+  if (nbNonLi > 0) { badgeEl.textContent = nbNonLi; badgeEl.style.display = ''; }
+  else { badgeEl.style.display = 'none'; }
+}
 (function(){
   const zone = document.getElementById('liste-anons');
-  document.getElementById('badge-notif').textContent = CONFIG.annonces.length;
+  majBadjNotif();
   CONFIG.annonces.forEach(a => {
     const d = document.createElement(a.url ? 'a' : 'div');
     d.className = 'anons-item';
@@ -1032,6 +1046,11 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
     zone.appendChild(d);
   });
 })();
+/* Lè itilizatè a louvri paj Anons yo, make tout kòm li */
+document.getElementById('btn-notif').addEventListener('click', () => {
+  try { localStorage.setItem('lavoie-anons-li', JSON.stringify(CONFIG.annonces.map(idAnons))); } catch(e){}
+  majBadjNotif();
+});
 
 /* ================== SERVICE WORKER (PWA) ================== */
 if ('serviceWorker' in navigator) {
