@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Technique — Verbes ibriy francisés · La Voie</title>
+<meta name="description" content="Fiche Technique Éditoriale : méthode de La Voie pour conjuguer les verbes ibriy (hitpalléler, thaballer…) en français.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 2.4rem 0 3rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.titre-translit {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  color: var(--or-c);
+  letter-spacing: .04em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.references {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  color: var(--or);
+  opacity: .7;
+  text-transform: uppercase;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem auto;
+  max-width: 320px;
+}
+.sep .l {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or));
+}
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 3.2rem; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  display: block;
+  margin-bottom: .4rem;
+}
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--or-c);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+h3 {
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 1.8rem 0 .9rem;
+}
+p { margin-bottom: 1rem; font-size: 1.01rem; color: var(--creme); opacity: .92; }
+p:last-child { margin-bottom: 0; }
+
+/* ── CITATION ── */
+blockquote {
+  border-left: 3px solid var(--or);
+  padding: .8rem 1.2rem;
+  margin: 1.4rem 0;
+  background: rgba(201, 168, 76, .06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--creme);
+}
+blockquote cite {
+  display: block;
+  margin-top: .5rem;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  font-style: normal;
+  opacity: .8;
+}
+
+/* ── TERME ── */
+.terme {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+}
+.terme-ibri {
+  font-size: 1.2rem;
+  letter-spacing: .04em;
+}
+
+/* ── ENCADRE ── */
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 2.4rem 0;
+}
+.encadre-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.encadre p { font-size: .97rem; }
+
+/* ── LISTE ── */
+ul.raffinement {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+ul.raffinement li {
+  padding: .45rem 0 .45rem 1.4rem;
+  position: relative;
+  font-size: .97rem;
+  color: var(--creme);
+  opacity: .9;
+  border-bottom: 1px solid rgba(201, 168, 76, .08);
+}
+ul.raffinement li:last-child { border-bottom: none; }
+ul.raffinement li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  font-size: .7rem;
+  top: .6rem;
+}
+
+/* ── CONJUGAISON TABLEAU ── */
+.conj-tableau {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0 1.8rem;
+  font-size: .95rem;
+}
+.conj-tableau th, .conj-tableau td {
+  padding: .6rem .9rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(201, 168, 76, .15);
+}
+.conj-tableau th {
+  font-family: 'Cinzel', serif;
+  font-size: .56rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  background: rgba(6, 13, 26, .4);
+}
+.conj-tableau td:first-child { color: var(--argent); opacity: .8; width: 40%; }
+.conj-tableau td.forme { color: var(--or-c); font-weight: 500; }
+.conj-tableau tr:last-child td { border-bottom: none; }
+
+/* ── POSITION TABLEAU ── */
+.position-tableau {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4rem 0;
+  font-size: .93rem;
+}
+.position-tableau th, .position-tableau td {
+  padding: .7rem .9rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(201, 168, 76, .15);
+  vertical-align: top;
+}
+.position-tableau th {
+  font-family: 'Cinzel', serif;
+  font-size: .56rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  background: rgba(6, 13, 26, .4);
+}
+.position-tableau td:first-child { color: var(--or-c); font-weight: 500; white-space: nowrap; }
+.position-tableau tr:last-child td { border-bottom: none; }
+.statut-adopte { color: #8fd19e; }
+.statut-propose { color: var(--argent); opacity: .85; font-style: italic; }
+
+/* ── FLÈCHE ── */
+.chaine {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  letter-spacing: .15em;
+  color: var(--or);
+  margin: 2rem 0;
+  line-height: 2.2;
+}
+.chaine span { display: inline-block; }
+.chaine .flèche { color: var(--or); opacity: .55; margin: 0 .4rem; }
+.chaine .terme-fin {
+  display: block;
+  font-size: 1.1rem;
+  letter-spacing: .2em;
+  color: var(--or-c);
+  margin-top: .5rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+  .conj-tableau, .position-tableau { font-size: .85rem; }
+  .conj-tableau th, .conj-tableau td, .position-tableau th, .position-tableau td { padding: .5rem .6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">Fiche Technique Éditoriale</span>
+  <div class="titre-translit">Verbes ibriy francisés</div>
+  <p class="sous-titre">Comment La Voie conjugue en français les verbes issus de l'ibriy — méthode et premiers cas retenus</p>
+  <p class="references">Romains 3:2 · Maʿasei 2:38 · Mattiyahu 6:6-7</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+
+<!-- ── 1. POURQUOI ── -->
+<section>
+  <span class="section-num">1</span>
+  <h2>Pourquoi franciser des verbes ibriy</h2>
+  <p>La Voie a déjà pour pratique de restituer des substantifs ibriy dans son vocabulaire — <span class="terme">émounah</span>, <span class="terme">teshoubah</span>, <span class="terme">qehilah</span> — plutôt que de les remplacer systématiquement par leurs équivalents français. Certains de ces termes désignent cependant une action, et le français a besoin d'un verbe conjugable pour les exprimer naturellement dans une phrase : « nous prions » devient, selon le contexte, « nous hitpallélons ».</p>
+  <p>Une action religieuse rendue par un simple emprunt figé (« faire hitpallah ») reste maladroite à l'usage. La Voie choisit donc de doter certaines racines ibriy d'une conjugaison française complète, plutôt que de les laisser comme des mots étrangers invariables.</p>
+</section>
+
+
+<!-- ── 2. MÉTHODE ── -->
+<section>
+  <span class="section-num">2</span>
+  <h2>La méthode : intégrer la racine dans le 1ᵉʳ groupe</h2>
+  <p>Le français intègre naturellement ses emprunts en les transformant en verbes du <strong>1ᵉʳ groupe</strong> (infinitif en <span class="terme">-er</span>) — la classe la plus productive de la langue, celle qui accueille tous les néologismes (<em>cliquer, zapper, scanner…</em>). La Voie applique la même logique aux racines ibriy :</p>
+  <ul class="raffinement">
+    <li>La racine ibriy (translittérée selon l'usage déjà établi par La Voie) reçoit la terminaison <span class="terme">-er</span></li>
+    <li>Le verbe obtenu se conjugue ensuite comme un verbe régulier du 1ᵉʳ groupe</li>
+    <li>Lorsque la racine se termine par une syllabe accentuée (é), l'alternance é/è s'applique, comme pour <em>préférer, espérer</em></li>
+    <li>Lorsque la racine ne comporte pas cette syllabe accentuée, la conjugaison reste entièrement régulière, sans alternance</li>
+  </ul>
+  <p>Chaque verbe proposé est examiné individuellement avant adoption : la forme doit rester reconnaissable par rapport à la racine ibriy, tout en étant prononçable et conjugable sans effort par un locuteur francophone.</p>
+</section>
+
+
+<!-- ── 3. CAS ADOPTÉ : HITPALLÉLER ── -->
+<section>
+  <span class="section-num">3</span>
+  <h2>Cas retenu — <span class="terme terme-ibri">hitpalléler</span></h2>
+  <p>Issu de la racine ibriy <span class="terme">hitpallél</span> (התפלל), déjà utilisée par La Voie comme substantif dans <span class="terme">hitpallah</span> (la prière). Le verbe suit le modèle <em>préférer / espérer</em> (alternance é/è).</p>
+
+  <h3>Présent de l'indicatif</h3>
+  <table class="conj-tableau">
+    <tbody>
+      <tr><td>je</td><td class="forme">hitpallèle</td></tr>
+      <tr><td>tu</td><td class="forme">hitpallèles</td></tr>
+      <tr><td>il / elle / on</td><td class="forme">hitpallèle</td></tr>
+      <tr><td>nous</td><td class="forme">hitpallélons</td></tr>
+      <tr><td>vous</td><td class="forme">hitpallélez</td></tr>
+      <tr><td>ils / elles</td><td class="forme">hitpallèlent</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Autres temps</h3>
+  <table class="conj-tableau">
+    <tbody>
+      <tr><td>Imparfait</td><td class="forme">je hitpallélais…</td></tr>
+      <tr><td>Futur simple</td><td class="forme">je hitpallélerai…</td></tr>
+      <tr><td>Passé composé</td><td class="forme">j'ai hitpallélé…</td></tr>
+      <tr><td>Subjonctif présent</td><td class="forme">que je hitpallèle…</td></tr>
+      <tr><td>Impératif</td><td class="forme">Hitpallèle ! Hitpallélons ! Hitpallélez !</td></tr>
+      <tr><td>Participe présent</td><td class="forme">hitpallélant</td></tr>
+      <tr><td>Participe passé</td><td class="forme">hitpallélé(e)</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    « Kontinye veye e kontinye hitpallél pou nou pa tonbe nan tantasyon. »
+    <cite>Mattiyahu 26:41 — déjà en usage dans les textes kreyòl de La Voie</cite>
+  </blockquote>
+  <p>En français : « Continuez de veiller et de <strong>hitpalléler</strong> pour ne pas tomber dans la tentation. »</p>
+</section>
+
+
+<!-- ── 4. CAS ADOPTÉ : THABALLER ── -->
+<section>
+  <span class="section-num">4</span>
+  <h2>Cas retenu — <span class="terme terme-ibri">thaballer</span></h2>
+  <p>Issu de la racine ibriy <span class="terme">tabal</span> (טבל, « immerger, plonger »), déjà présente dans le vocabulaire de La Voie sous les formes <span class="terme">thabale / thabalé</span> (kreyòl) et <span class="terme">thebilah</span> (le substantif, l'immersion elle-même). Contrairement à hitpalléler, la racine ne comporte pas de syllabe finale accentuée ouvrant sur -er : la conjugaison reste donc entièrement régulière, sans alternance.</p>
+
+  <h3>Présent de l'indicatif</h3>
+  <table class="conj-tableau">
+    <tbody>
+      <tr><td>je</td><td class="forme">thaballe</td></tr>
+      <tr><td>tu</td><td class="forme">thaballes</td></tr>
+      <tr><td>il / elle / on</td><td class="forme">thaballe</td></tr>
+      <tr><td>nous</td><td class="forme">thaballons</td></tr>
+      <tr><td>vous</td><td class="forme">thaballez</td></tr>
+      <tr><td>ils / elles</td><td class="forme">thaballent</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Autres temps</h3>
+  <table class="conj-tableau">
+    <tbody>
+      <tr><td>Imparfait</td><td class="forme">je thaballais…</td></tr>
+      <tr><td>Futur simple</td><td class="forme">je thaballerai…</td></tr>
+      <tr><td>Passé composé</td><td class="forme">j'ai thaballé…</td></tr>
+      <tr><td>Subjonctif présent</td><td class="forme">que je thaballe…</td></tr>
+      <tr><td>Impératif</td><td class="forme">Thaballe ! Thaballons ! Thaballez !</td></tr>
+      <tr><td>Participe présent</td><td class="forme">thaballant</td></tr>
+      <tr><td>Participe passé</td><td class="forme">thaballé(e)</td></tr>
+    </tbody>
+  </table>
+
+  <p>Exemple d'emploi : « Après sa teshoubah, il fut <strong>thaballé</strong> au nom de Yahushuʿah » (~ Maʿasei 2:38).</p>
+</section>
+
+
+<!-- ── ENCADRÉ MÉTHODE ── -->
+<div class="encadre">
+  <p class="encadre-titre">✦ Avant qu'un verbe soit adopté</p>
+  <p>Chaque candidat passe par les mêmes étapes que celles déjà suivies pour le vocabulaire de La Voie (voir la Fiche Technique ʾEmet) :</p>
+  <ul class="raffinement">
+    <li>La racine ibriy et sa translittération sont déjà en usage établi dans les textes de La Voie</li>
+    <li>La forme francisée reste reconnaissable et prononçable</li>
+    <li>La conjugaison suit un modèle régulier existant du français (aucune forme inventée hors norme)</li>
+    <li>Le sens du passage scripturaire reste intact une fois le verbe substitué</li>
+  </ul>
+</div>
+
+
+<!-- ── 5. LEXIQUE ── -->
+<section>
+  <span class="section-num">5</span>
+  <h2>Lexique évolutif des verbes ibriy francisés</h2>
+  <table class="position-tableau">
+    <thead>
+      <tr>
+        <th>Verbe</th>
+        <th>Racine ibriy</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>hitpalléler</td>
+        <td>hitpallél (התפלל) — prier</td>
+        <td class="statut-adopte">✦ Adopté</td>
+      </tr>
+      <tr>
+        <td>thaballer</td>
+        <td>tabal (טבל) — immerger, baptiser</td>
+        <td class="statut-adopte">✦ Adopté</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Cette fiche sera mise à jour à mesure que de nouveaux verbes seront examinés et adoptés par La Voie.</p>
+</section>
+
+
+</div><!-- /wrap -->
+
+<footer>
+  Fiche Technique Éditoriale · La Voie · lavoie.world<br>
+  <span style="opacity:.5;font-size:.85em;letter-spacing:.1em;">Racine ibriy — Examen — Conjugaison — Adoption</span>
+</footer>
+
+</body>
+</html>
