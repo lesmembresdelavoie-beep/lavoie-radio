@@ -121,9 +121,18 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
       </div>
     </div>
 
-    <div class="piste" data-src="de-lune-en-lune.mp3">
+    <div class="piste" data-src="rh-ethanim-applaudissements.mp3">
       <span class="piste-num">3</span>
       <button class="piste-play" onclick="jouerPiste(2)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Applaudissements</div>
+        <div class="piste-dur">0:13</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="de-lune-en-lune.mp3">
+      <span class="piste-num">4</span>
+      <button class="piste-play" onclick="jouerPiste(3)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Chirat de clôture — « De lune en lune, nou pwostène devan w »</div>
         <div class="piste-dur">2:51</div>
@@ -147,7 +156,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
     <p class="prog-titre">✦ Programme simplifié</p>
     <div class="prog-li"><span class="prog-n">1.</span><span class="prog-tx">Chirat d'ouverture — « Joyeux Rôsh Ḥodesh »</span></div>
     <div class="prog-li"><span class="prog-n">2.</span><span class="prog-tx">Discours de circonstance — « Ethanim, un Ḥodesh de réjouissance et de reconnaissance »</span></div>
-    <div class="prog-li"><span class="prog-n">3.</span><span class="prog-tx">Chirat de clôture — « De lune en lune, nou pwostène devan w »</span></div>
+    <div class="prog-li"><span class="prog-n">3.</span><span class="prog-tx">Applaudissements</span></div>
+    <div class="prog-li"><span class="prog-n">4.</span><span class="prog-tx">Chirat de clôture — « De lune en lune, nou pwostène devan w »</span></div>
   </div>
 
   <div class="retour"><a href="miqra-qadosh.html">← Retour à la bibliothèque</a></div>
@@ -155,21 +165,42 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 </div>
 
 <audio id="audio"></audio>
+<audio id="fond" loop preload="auto" src="teks-jounen-muzik.mp3"></audio>
 
 <script>
 const PISTES = [
   'rh-ethanim-chirat-ouverture.mp3',
   'rh-ethanim-enseignement.mp3',
+  'rh-ethanim-applaudissements.mp3',
   'de-lune-en-lune.mp3'
 ];
+const IDX_DISCOURS = 1; // piste ki dwe gen ti mizik fon ba pandan l ap jwe
 const audio = document.getElementById('audio');
+const fond = document.getElementById('fond');
 const barre = document.getElementById('barre');
 const btnPlay = document.getElementById('btnPlay');
 const tempoAffich = document.getElementById('tempoAffich');
 const pistesEl = document.querySelectorAll('.piste');
 let idx = 0;
+let fondFade = null;
 
 function fmt(s){ const m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
+
+function fondMonte(){
+  if(fondFade) clearInterval(fondFade);
+  if(fond.paused){ fond.currentTime = 0; fond.volume = 0; fond.play().catch(()=>{}); }
+  fondFade = setInterval(()=>{
+    fond.volume = Math.min(0.1, fond.volume + 0.01);
+    if(fond.volume >= 0.1) clearInterval(fondFade);
+  }, 200);
+}
+function fondBese(arreter=true){
+  if(fondFade) clearInterval(fondFade);
+  fondFade = setInterval(()=>{
+    fond.volume = Math.max(0, fond.volume - 0.02);
+    if(fond.volume <= 0){ clearInterval(fondFade); if(arreter) fond.pause(); }
+  }, 100);
+}
 
 function chargerPiste(i, jouer=true){
   idx = i;
@@ -177,6 +208,7 @@ function chargerPiste(i, jouer=true){
   pistesEl.forEach((p,j) => p.classList.toggle('active', j===i));
   barre.value = 0;
   barre.style.setProperty('--p','0%');
+  if(i === IDX_DISCOURS){ if(jouer) fondMonte(); } else { fondBese(); }
   if(jouer){ audio.play(); btnPlay.textContent='⏸ Pause'; }
   else { btnPlay.textContent='▶ Jouer'; }
 }
@@ -186,10 +218,11 @@ function jouerPiste(i){ chargerPiste(i, true); }
 function togglePlay(){
   if(audio.paused){
     if(!audio.src || audio.src===window.location.href) chargerPiste(0);
-    else audio.play();
+    else { audio.play(); if(idx === IDX_DISCOURS) fondMonte(); }
     btnPlay.textContent='⏸ Pause';
   } else {
     audio.pause();
+    if(idx === IDX_DISCOURS) fondBese(false);
     btnPlay.textContent='▶ Jouer';
   }
 }

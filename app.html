@@ -444,7 +444,7 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
       <h4>QEHILAH</h4>
       <p>Anons, nouvèl, ak evènman</p>
     </a>
-    <a class="tuile" href="index.html#tefilot">
+    <a class="tuile" href="tefilot.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.5 3-4.5 5-4.5 9a4.5 4.5 0 0 0 9 0c0-4-3-6-4.5-9z"/><path d="M8 17c-1.6 1-2.5 2.4-2.5 4h13c0-1.6-.9-3-2.5-4"/></svg>
       <h4>TÉFILOT</h4>
       <p>Téfilot et témoignages</p>
@@ -537,6 +537,13 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
 <!-- ========== PAGE SIFRÎYA ========== -->
 <section class="page" id="page-biblio">
   <h2 class="page-titre">SIFRÎYA</h2>
+  <a class="livre" href="miqra-qadosh-rosh-hodesh-ethanim.html">
+    <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+    <span>
+      <h4>Miqra Qadosh — Rosh Ḥodesh 1er Éthanim</h4>
+      <p>Programme simplifié · ▶ service audio</p>
+    </span>
+  </a>
   <a class="livre" href="miqra-shabbath-qadosh.html">
     <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
     <span>
@@ -766,10 +773,46 @@ document.getElementById('btn-menu').addEventListener('click', () => {
 });
 function fermerMenu(){ tiroir.classList.remove('ouvert'); voile.classList.remove('ouvert'); }
 
+/* Lè solèy kouche reyèl la (pa yon lè fiks) pou Pòtoprens/Ayiti,
+   selon fòmil astwonomik NOAA (dat ak lè solèy kouche chanje chak jou nan ane a). */
+function lèSolèyKouche(annee, mwaNo, jouNo, lat, lngEst){
+  const debutAneUTC = Date.UTC(annee, 0, 1);
+  const jouUTC = Date.UTC(annee, mwaNo - 1, jouNo);
+  const jouNanAne = Math.round((jouUTC - debutAneUTC) / 86400000) + 1;
+  const rad = Math.PI / 180;
+  const gamma = (2 * Math.PI / 365) * (jouNanAne - 1 + 0.5);
+  const eqTime = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma)
+                 - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
+  const decl = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma)
+               - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma)
+               - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
+  const zenith = 90.833 * rad;
+  const latRad = lat * rad;
+  const cosHA = (Math.cos(zenith) / (Math.cos(latRad) * Math.cos(decl))) - Math.tan(latRad) * Math.tan(decl);
+  const haDeg = Math.acos(Math.max(-1, Math.min(1, cosHA))) / rad;
+  const solèyNoonUTC = 720 - 4 * lngEst - eqTime;
+  const koucheMinUTC = solèyNoonUTC + 4 * haDeg;
+  return jouUTC + koucheMinUTC * 60000;
+}
+/* Èske kounye a se apre solèy kouche lokal Pòtoprens la? */
+function apreSolèyKouchePAP(now){
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Port-au-Prince', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(now);
+  let annee, mois, jou;
+  parts.forEach(p => {
+    if (p.type === 'year') annee = parseInt(p.value);
+    if (p.type === 'month') mois = parseInt(p.value);
+    if (p.type === 'day') jou = parseInt(p.value);
+  });
+  const koucheInstan = lèSolèyKouche(annee, mois, jou, 18.5944, -72.3074);
+  return now.getTime() >= koucheInstan;
+}
+
 /* ================== TÈKS POU JOUNEN AN ==================
    Sous prensipal: done yo ANNDAN teks-jounen-anime.html
    (kote B'neiYah mete yo ajou). Si sa pa mache: teks-data.js,
-   answit CONFIG. Jou a chanje a 17:45, menm règ ak sit la.  */
+   answit CONFIG. Jou a chanje lè solèy la kouche lokalman, menm règ ak sit la.  */
 async function chajeDoneTeks(){
   try {
     const r = await fetch('teks-jounen-anime.html', {cache:'no-store'});
@@ -782,35 +825,42 @@ async function chajeDoneTeks(){
 function jounenJodiA(donnees){
   if (!donnees) return null;
   const liste = Array.isArray(donnees) ? donnees : [donnees];
-  const now = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
-  const apSol = now.getHours()*60 + now.getMinutes() >= 18*60 + 50;
+  const now = new Date();
+  const apSol = apreSolèyKouchePAP(now);
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Port-au-Prince', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(now);
+  let annee, moisNo, jouNo;
+  parts.forEach(p => {
+    if (p.type === 'year') annee = parseInt(p.value);
+    if (p.type === 'month') moisNo = parseInt(p.value);
+    if (p.type === 'day') jouNo = parseInt(p.value);
+  });
   const pad = n => String(n).padStart(2,'0');
-  const datGreg = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  const datGreg = `${annee}-${pad(moisNo)}-${pad(jouNo)}`;
   for (const mwa of liste) {
     for (const j of mwa.jours) {
       if (j.soir_debut === datGreg && apSol)  return {jounen: Object.assign({sourceJour:j.jour}, j), mois: mwa.mois};
       if (j.soir_fin === datGreg && !apSol)   return {jounen: Object.assign({sourceJour:j.jour}, j), mois: mwa.mois};
     }
   }
-  // Repli: okenn jou pa gen kontni pwòp li — kontinye ak dènye tèks disponib la,
-  // men kenbe dat/jou La Voie a kòrèk (menm règ ak Tèks pou Jounen an).
-  const lastMois = liste[liste.length - 1];
-  const last = lastMois.jours[lastMois.jours.length - 1];
+  // Repli: pa gen kontni pwòp pou jodi a (jou sa a poko ekri) — kontinye
+  // ak DENYE jou ki gen kontni reyèl la, san fabrike ni jou ni tèks
+  // (menm règ ak Tèks pou Jounen an).
   const addDaysStr = (s,n) => { const d=new Date(s+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); };
-  const diffDaysStr = (a,b) => Math.round((new Date(a+'T00:00:00Z') - new Date(b+'T00:00:00Z'))/86400000);
   const targetSoirFin = apSol ? addDaysStr(datGreg,1) : datGreg;
-  const offset = diffDaysStr(targetSoirFin, last.soir_fin);
+  let meilleur = null, meilleurMwa = null;
+  for (const mwa of liste) {
+    for (const j of mwa.jours) {
+      if (j.soir_fin <= targetSoirFin && (!meilleur || j.soir_fin > meilleur.soir_fin)) {
+        meilleur = j; meilleurMwa = mwa;
+      }
+    }
+  }
+  if (!meilleur) { meilleurMwa = liste[0]; meilleur = meilleurMwa.jours[0]; }
   return {
-    jounen: {
-      jour: last.jour + offset,
-      sourceJour: last.jour,
-      soir_debut: addDaysStr(last.soir_debut, offset),
-      soir_fin: targetSoirFin,
-      texte: last.texte,
-      texte_kw: last.texte_kw,
-      ref: last.ref
-    },
-    mois: last.mois || lastMois.mois
+    jounen: Object.assign({sourceJour: meilleur.jour}, meilleur),
+    mois: meilleur.mois || meilleurMwa.mois
   };
 }
 (async function(){
@@ -825,13 +875,14 @@ function jounenJodiA(donnees){
   }
 })();
 
-/* Salitasyon selon jou La Voie (jou a chanje a 17:45) */
+/* Salitasyon selon jou La Voie (jou a chanje lè solèy la kouche lokalman) */
 (function(){
   const noms = ["Yôm Rishon","Yôm Sheni","Yôm Shlishi","Yôm Rebi'i","Yôm Hamishi","Ereb Shabbat","Shabbat"];
-  const now = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
-  const apSol = now.getHours()*60 + now.getMinutes() >= 18*60 + 50;
-  let j = now.getDay();               // 0 = dimanch ... 6 = samdi
-  if (apSol) j = (j + 1) % 7;         // apre 17:45, jou La Voie a chanje
+  const now = new Date();
+  const apSol = apreSolèyKouchePAP(now);
+  const indy = new Date(now.toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+  let j = indy.getDay();               // 0 = dimanch ... 6 = samdi
+  if (apSol) j = (j + 1) % 7;         // apre solèy kouche, jou La Voie a chanje
   const el = document.getElementById('salut-titre');
   if (j === 6)      el.textContent = "Shabbat Shalom !";
   else if (j === 5) el.textContent = "Shalom, Ereb Shabbat !";
@@ -910,10 +961,11 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
 (function(){
   const MWA = Array.isArray(CONFIG.kalandriye) ? CONFIG.kalandriye : [CONFIG.kalandriye];
 
-  /* Jou ibri aktyèl la: apre 17:45, jou a se sa ki kòmanse aswè a,
+  /* Jou ibri aktyèl la: apre solèy kouche lokalman, jou a se sa ki kòmanse aswè a,
      epi jou LAJOUNEN li a se demen. Menm règ ak Tèks pou Jounen an. */
-  const maintenant = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
-  const apSol2 = maintenant.getHours()*60 + maintenant.getMinutes() >= 18*60 + 50;
+  const kounyeUTC = new Date();
+  const maintenant = new Date(kounyeUTC.toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+  const apSol2 = apreSolèyKouchePAP(kounyeUTC);
   const jourIbri = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() + (apSol2 ? 1 : 0));
 
   const nDe = (d, m) => Math.floor((jourIbri - new Date(m.debut.getFullYear(), m.debut.getMonth(), m.debut.getDate())) / 86400000) + 1;
@@ -966,10 +1018,24 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
   }
 })();
 
-/* ================== ANNONCES ================== */
+/* ================== ANNONCES ==================
+   Badj la dwe montre sèlman anons ki poko li. San sa, li toujou
+   afiche kantite total la menm si itilizatè a deja li tout paj la. */
+function idAnons(a){ return (a.titre||'') + '|' + (a.url||''); }
+function anonsLiYo(){
+  try { return JSON.parse(localStorage.getItem('lavoie-anons-li') || '[]'); }
+  catch(e){ return []; }
+}
+function majBadjNotif(){
+  const li = new Set(anonsLiYo());
+  const nbNonLi = CONFIG.annonces.filter(a => !li.has(idAnons(a))).length;
+  const badgeEl = document.getElementById('badge-notif');
+  if (nbNonLi > 0) { badgeEl.textContent = nbNonLi; badgeEl.style.display = ''; }
+  else { badgeEl.style.display = 'none'; }
+}
 (function(){
   const zone = document.getElementById('liste-anons');
-  document.getElementById('badge-notif').textContent = CONFIG.annonces.length;
+  majBadjNotif();
   CONFIG.annonces.forEach(a => {
     const d = document.createElement(a.url ? 'a' : 'div');
     d.className = 'anons-item';
@@ -988,17 +1054,23 @@ document.getElementById('lyen-paj-radio').href = CONFIG.pajRadio;
     zone.appendChild(d);
   });
 })();
+/* Lè itilizatè a louvri paj Anons yo, make tout kòm li */
+document.getElementById('btn-notif').addEventListener('click', () => {
+  try { localStorage.setItem('lavoie-anons-li', JSON.stringify(CONFIG.annonces.map(idAnons))); } catch(e){}
+  majBadjNotif();
+});
 
 /* ================== SERVICE WORKER (PWA) ================== */
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 
-/* ============ REFRESH OTOMATIK JOU EBRE (minwi + 17:45) ============ */
+/* ============ REFRESH OTOMATIK JOU EBRE (minwi + solèy kouche) ============ */
 (function(){
   function etaJou(){
-    const n = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
-    const apSol = (n.getHours()*60 + n.getMinutes()) >= (18*60 + 50);
+    const now = new Date();
+    const n = new Date(now.toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
+    const apSol = apreSolèyKouchePAP(now);
     return n.getFullYear()+'-'+n.getMonth()+'-'+n.getDate()+'-'+(apSol?'S':'J');
   }
   let eta = etaJou();
