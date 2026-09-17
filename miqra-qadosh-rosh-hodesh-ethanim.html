@@ -121,9 +121,18 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
       </div>
     </div>
 
-    <div class="piste" data-src="de-lune-en-lune.mp3">
+    <div class="piste" data-src="rh-ethanim-applaudissements.mp3">
       <span class="piste-num">3</span>
       <button class="piste-play" onclick="jouerPiste(2)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Applaudissements</div>
+        <div class="piste-dur">0:10</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="de-lune-en-lune.mp3">
+      <span class="piste-num">4</span>
+      <button class="piste-play" onclick="jouerPiste(3)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Chirat de clôture — « De lune en lune, nou pwostène devan w »</div>
         <div class="piste-dur">2:51</div>
@@ -147,7 +156,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
     <p class="prog-titre">✦ Programme simplifié</p>
     <div class="prog-li"><span class="prog-n">1.</span><span class="prog-tx">Chirat d'ouverture — « Joyeux Rôsh Ḥodesh »</span></div>
     <div class="prog-li"><span class="prog-n">2.</span><span class="prog-tx">Discours de circonstance — « Ethanim, un Ḥodesh de réjouissance et de reconnaissance »</span></div>
-    <div class="prog-li"><span class="prog-n">3.</span><span class="prog-tx">Chirat de clôture — « De lune en lune, nou pwostène devan w »</span></div>
+    <div class="prog-li"><span class="prog-n">3.</span><span class="prog-tx">Applaudissements</span></div>
+    <div class="prog-li"><span class="prog-n">4.</span><span class="prog-tx">Chirat de clôture — « De lune en lune, nou pwostène devan w »</span></div>
   </div>
 
   <div class="retour"><a href="miqra-qadosh.html">← Retour à la bibliothèque</a></div>
@@ -160,6 +170,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 const PISTES = [
   'rh-ethanim-chirat-ouverture.mp3',
   'rh-ethanim-enseignement.mp3',
+  'rh-ethanim-applaudissements.mp3',
   'de-lune-en-lune.mp3'
 ];
 const audio = document.getElementById('audio');
