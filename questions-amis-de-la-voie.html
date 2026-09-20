@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questions posées par les ami(e)s de La Voie · La Voie</title>
+<meta name="description" content="Questions posées par les ami(e)s de La Voie — réponses fondées sur les Ketubim Qadoshim, dans le vocabulaire et la démarche de La Voie.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+header { text-align: center; padding: 1.2rem 0 2.4rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.4rem;
+}
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.7rem, 7vw, 2.5rem);
+  color: var(--or-c);
+  letter-spacing: .03em;
+  line-height: 1.25;
+  margin-bottom: .6rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 1.6rem;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.6rem auto 0;
+  max-width: 320px;
+}
+.sep .l { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--or)); }
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── ANTRE KESYON ── */
+.question-bloc {
+  border: 1px solid rgba(201, 168, 76, .35);
+  border-radius: 14px;
+  padding: 1.7rem 1.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(150deg, rgba(201,168,76,.06), rgba(201,168,76,.015));
+}
+.question-date {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .7;
+  margin-bottom: .8rem;
+}
+.question-titre {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--or-c);
+  line-height: 1.45;
+  margin-bottom: 1.1rem;
+}
+.question-enonce {
+  font-style: italic;
+  font-size: .98rem;
+  color: var(--creme);
+  opacity: .92;
+  padding: .9rem 1.1rem;
+  border-left: 3px solid var(--or);
+  background: rgba(6,13,26,.35);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.3rem;
+}
+.reponse-label {
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: .8rem;
+}
+.question-bloc p { margin-bottom: 1rem; font-size: .99rem; color: var(--creme); opacity: .92; }
+.question-bloc p:last-child { margin-bottom: 0; }
+
+blockquote {
+  border-left: 3px solid var(--or);
+  padding: .7rem 1.1rem;
+  margin: 1.1rem 0;
+  background: rgba(201, 168, 76, .06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--creme);
+}
+blockquote cite {
+  display: block;
+  margin-top: .4rem;
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--or);
+  font-style: normal;
+  opacity: .8;
+}
+
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 1.3rem 0;
+}
+.encadre p { margin-bottom: 0; font-size: .95rem; }
+
+.distinction-tableau {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.3rem 0;
+  font-size: .92rem;
+}
+.distinction-tableau th, .distinction-tableau td {
+  padding: .65rem .8rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(201, 168, 76, .15);
+  vertical-align: top;
+}
+.distinction-tableau th {
+  font-family: 'Cinzel', serif;
+  font-size: .56rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--or);
+  background: rgba(6, 13, 26, .4);
+}
+.distinction-tableau td:first-child { color: var(--or-c); font-weight: 500; white-space: nowrap; }
+.distinction-tableau tr:last-child td { border-bottom: none; }
+
+.section-t {
+  font-family: 'Cinzel', serif;
+  font-size: .68rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 2.4rem 0 1.2rem;
+  text-align: center;
+  opacity: .8;
+}
+
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 1rem;
+}
+
+.envoyer {
+  display: block;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .75rem 1.4rem;
+  text-decoration: none;
+  max-width: 320px;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+  <header>
+    <span class="badge">Rubrique</span>
+    <h1>Questions posées par<br>les ami(e)s de La Voie</h1>
+    <p class="sous-titre">Des questions reçues des ami(e)s de La Voie, et les réponses que nous y apportons à partir des Ketubim Qadoshim.</p>
+    <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+  </header>
+
+  <p class="section-t">✦ Questions et réponses</p>
+
+  <!-- Pour chaque nouvelle question : dupliquer un bloc <div class="question-bloc">
+       et le placer ici, la plus récente en premier. -->
+
+  <div class="question-bloc" id="q-commemoration-naissance">
+    <div class="question-date">14 Éthanim 2026</div>
+    <div class="question-titre">Sur quelle prescription repose la commémoration du 14 Éthanim par La Voie ?</div>
+
+    <div class="question-enonce">
+      Avant son départ, Yahushuʿah donna cette instruction à ses shilliaḥim : « Enseignez-leur à observer tout ce que je vous ai commandé. » (Mattiyahu 28:20). Il leur avait notamment demandé de continuer à commémorer le dernier repas précédant sa mort korbanique : « Continuez à faire ceci en mémoire de moi. » (Luqas 22:19). Nous trouvons donc une prescription explicite concernant cet événement. Mais où Yahushuʿah a-t-il prescrit à ses tal'midim de célébrer chaque année sa naissance ? Et puisque 1 Korinthiyim 4:6 nous avertit de ne pas aller au-delà de ce qui est écrit, sur quelle prescription repose la commémoration du 14 Éthanim par La Voie ?
+    </div>
+
+    <div class="reponse-label">✦ Réponse</div>
+
+    <p>Nulle part. Les Ketubim Qadoshim ne rapportent aucune instruction de Yahushuʿah demandant à ses tal'midim d'instituer une célébration annuelle de sa naissance. Cette différence doit être reconnue clairement.</p>
+
+    <p>Concernant le repas précédant sa mort korbanique, Yahushuʿah donne un ordre :</p>
+    <blockquote>
+      « Continuez à faire ceci en mémoire de moi. »
+      <cite>Luqas 22:19</cite>
+    </blockquote>
+
+    <p>Concernant sa naissance, aucune instruction équivalente ne se trouve, disant :</p>
+    <blockquote>
+      « Célébrez chaque année le jour de ma naissance. »
+    </blockquote>
+
+    <p>La Voie ne doit donc pas transformer le 14 Éthanim en nouveau moʿed obligatoire, que ni Yahawah ni Yahushuʿah n'ont jamais prescrit.</p>
+
+    <p><strong>Alors pourquoi en parler le 14 Éthanim ?</strong> Parce qu'il existe une différence entre instituer une observance obligatoire et consacrer un enseignement à un événement rapporté dans les Ketubim. Nous pouvons étudier la naissance de Yahushuʿah, lire Luqas 1–2, examiner les Nebuʾot qui annoncent sa venue, rechercher sa période de naissance, chanter au sujet de ce que Yahawah a accompli en envoyant Son Fils, et nous en réjouir — puisque le mal'akh lui-même l'a qualifiée de « grande joie pour tout le peuple » (Luqas 2:10). Mais aucune de ces choses ne nous autorise à déclarer que Yahushuʿah a ordonné une commémoration annuelle de sa naissance. Il ne l'a pas fait. Et précisément parce que La Voie invoque 1 Korinthiyim 4:6 — « ne pas aller au-delà de ce qui est écrit » — elle doit s'appliquer ce principe à elle-même la première.</p>
+
+    <div class="encadre">
+      <p>Ce que La Voie peut dire :<br>« C'est la date que La Voie retient, après examen des indications zémaniques des Ketubim, comme date de naissance de Yahushuʿah Ha'Mashiaḥ. »</p>
+      <p style="margin-top:.9rem">Ce que La Voie ne doit pas dire :<br>« Yahawah a ordonné d'observer le 14 Éthanim comme commémoration annuelle de la naissance du Mashiaḥ. »</p>
+      <p style="margin-top:.9rem">La seconde formulation irait précisément au-delà de ce qui est écrit.</p>
+    </div>
+
+    <p>Le Miqra Qadosh de ce Shabbat a donc pour thème la naissance du Moshiaḥ pour une raison simple : le 14 Éthanim tombait cette année pendant notre Shabbat — qui revient de toute façon chaque semaine, quel qu'en soit le quantième — et cette naissance constitue un sujet légitime d'enseignement et de réjouissance.</p>
+
+    <table class="distinction-tableau">
+      <tr><th>Ce qui relève de</th><th>Repose sur</th></tr>
+      <tr><td>Le commandement</td><td>Un ordre explicite de Yahushuʿah — comme la Séʿoudah, en mémoire de sa mort korbanique.</td></tr>
+      <tr><td>L'enseignement</td><td>Un événement rapporté dans les Ketubim, étudié et présenté un Shabbat donné — sans être érigé en observance annuelle.</td></tr>
+      <tr><td>La reconstruction zémanique</td><td>Un travail de rapprochement des indications zémaniques des Ketubim — présenté comme ce qu'il est : une date retenue, non une date révélée.</td></tr>
+    </table>
+
+    <p>C'est aussi cela, réparer les brèches sans en créer de nouvelles.</p>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  Questions posées par les ami(e)s de La Voie · lavoie.world<br>
+  <span style="opacity:.5;font-size:.85em;letter-spacing:.1em;">Retour au Dabar — Examiner — Vérifier — Retenir ce qui résiste à l'examen</span>
+</footer>
+
+</body>
+</html>
