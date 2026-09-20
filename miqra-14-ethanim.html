@@ -367,21 +367,6 @@
     margin-top:0.4rem;
     letter-spacing:0.02em;
   }
-  .prog-ecouter{
-    display:inline-block;
-    margin-top:0.6rem;
-    font-family:'Cinzel',serif;
-    font-weight:600;
-    font-size:0.68rem;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--bleu-nuit);
-    background:rgba(201,168,76,0.14);
-    border:1.5px solid var(--or);
-    border-radius:999px;
-    padding:0.4rem 1rem;
-    cursor:pointer;
-  }
   .prog-total{
     margin-top:1.6rem;
     text-align:center;
@@ -689,7 +674,6 @@
             <div class="prog-titre-item">Chirat d'ouverture</div>
             <div class="prog-desc">« Il est né un Moshiaḥ » — Chirat solennelle consacrée à la naissance de Yahushuʿah Ha'Mashiaḥ. L'atmosphère doit être joyeuse, majestueuse et digne de la naissance du Melekh promis.</div>
             <div class="prog-duree">⏱ 5 min</div>
-            <button type="button" class="prog-ecouter" id="prog-chirat-btn" onclick="window.lvChiratJwe('m14eth-chirat-ouverture.mp3','Il est né un Moshiaḥ — Chirat d\'ouverture','2026-09-27T00:00:00-04:00')">▶ Écouter la Chirat</button>
           </div>
         </div>
 
@@ -1072,5 +1056,10 @@
 </div>
 
 <script src="chirat-persistant.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    window.lvChiratJwe('m14eth-chirat-ouverture.mp3', "Il est né un Moshiaḥ — Chirat d'ouverture", '2026-09-27T00:00:00-04:00');
+  });
+</script>
 </body>
 </html>

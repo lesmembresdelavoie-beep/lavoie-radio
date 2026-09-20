@@ -66,14 +66,15 @@
   }
 
   function jweEta(eta, reprann){
+    if(audio) return; // deja ap jwe — pa kreye yon dezyèm Audio()
     kreyeBawo(eta);
     audio=new Audio(eta.src);
     audio.preload='auto';
+    audio.loop=true; // kontinye bouk pou l pa sispann pandan tout jou a
     if(reprann && eta.temps) audio.currentTime = eta.temps;
 
     audio.addEventListener('play', function(){ btnPlay.textContent='❚❚'; });
     audio.addEventListener('pause', function(){ btnPlay.textContent='▶'; });
-    audio.addEventListener('ended', function(){ efaseEta(); });
 
     var dènyeSov=0;
     audio.addEventListener('timeupdate', function(){
@@ -100,8 +101,9 @@
     });
   }
 
-  // API piblik: kòmanse (oswa relanse) yon chirat
+  // API piblik: kòmanse yon chirat (si l poko ap jwe deja)
   window.lvChiratJwe = function(src, titre, expiryISO){
+    if(audio) return; // deja ap jwe (lanse otomatik oswa bouton) — pa rekòmanse
     var eta = { src: src, titre: titre, temps: 0, expire: expiryISO };
     sovEta(eta);
     jweEta(eta, false);
