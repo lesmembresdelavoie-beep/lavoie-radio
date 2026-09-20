@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Miqra Qadosh Spécial — Shabbat 14 Éthanim · Il est né un Moshiaḥ · La Voie</title>
+<meta name="description" content="Miqra Qadosh Spécial — Shabbat 14 Éthanim · « Il est né un Moshiaḥ » · Yahushuʿah Ha'Mashiaḥ, le Melekh promis · Luqas 2:10, 11 · Les Membres de La Voie.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu-nuit:#0d2347;
+    --bleu-fonce:#0a1a35;
+    --or:#c9a84c;
+    --or-clair:#e8cb7a;
+    --parchemin:#faf6ec;
+    --parchemin2:#f5efe0;
+    --texte:#1a2a44;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:var(--bleu-fonce);
+    overflow:hidden;
+  }
+
+  .livre{
+    height:100vh;
+    width:100vw;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .page{
+    height:100vh;
+    width:100vw;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    background:var(--parchemin);
+  }
+
+  /* PAGE NUMBER BADGE */
+  .page-num{
+    position:absolute;
+    top:1.1rem;
+    right:1.1rem;
+    width:34px;height:34px;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border:1px solid var(--or);
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;align-items:center;justify-content:center;
+    z-index:10;
+    border-radius:3px;
+  }
+
+  /* SCROLL HINT */
+  .scroll-hint{
+    position:absolute;
+    bottom:0.9rem;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Cinzel',serif;
+    font-size:0.55rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--or);
+    opacity:0.55;
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.3rem;
+  }
+  .scroll-hint svg{ animation: bob 1.8s ease-in-out infinite; width:16px;height:16px; }
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
+  .page:last-child .scroll-hint{display:none}
+
+  /* SHARED HEADER BAR (navy header with icon + title) */
+  .header-bar{
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    padding:1.4rem 1.5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-shrink:0;
+  }
+  .header-icon{
+    width:48px;height:48px;
+    border:1.5px solid var(--or);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    flex-shrink:0;
+    color:var(--or);
+  }
+  .header-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(1.05rem,5.5vw,1.5rem);
+    letter-spacing:0.04em;
+    color:#fbf6e9;
+    line-height:1.2;
+  }
+  .header-soustitre{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-top:0.2rem;
+  }
+
+  .page-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding:1.6rem 1.5rem 3.5rem;
+    overflow-y:auto;
+  }
+
+  .ornement{
+    text-align:center;
+    color:var(--or);
+    opacity:0.6;
+    font-size:0.7rem;
+    letter-spacing:0.3em;
+    margin:1rem 0;
+  }
+  .ornement-line{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin:1rem 0;
+  }
+  .ornement-line::before, .ornement-line::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+  }
+  .ornement-line span{
+    color:var(--or);
+    font-size:0.7rem;
+  }
+
+  @media (min-width:600px){
+    .page-content, .header-bar{ padding-left:2.5rem; padding-right:2.5rem; }
+    .page-content > *, .header-bar{ max-width:600px; margin-left:auto; margin-right:auto; width:100%; }
+  }
+
+  /* =========================================================
+     PAGE 1 — COUVERTURE
+  ========================================================= */
+  .page-1{
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2.5rem 1.6rem;
+    background: var(--parchemin2);
+    background-image:
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13,35,71,0.07) 0%, transparent 70%);
+  }
+  .couv-cadre{
+    position:absolute;
+    inset:0.7rem;
+    border:2px solid var(--or);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .couv-cadre::before{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(201,168,76,0.4);
+    border-radius:2px;
+  }
+  .couv-affiche-img{width:100%;max-width:340px;border-radius:10px;border:1.5px solid var(--or);box-shadow:0 12px 34px rgba(0,0,0,.4);margin-bottom:1.2rem;position:relative;z-index:1}
+  .couv-special{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.6rem,2.8vw,0.72rem);
+    letter-spacing:0.28em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.5rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-titre{
+    font-family:'Cinzel',serif;
+    font-weight:900;
+    font-size:clamp(2.2rem,10.5vw,3.4rem);
+    color:var(--bleu-nuit);
+    letter-spacing:0.04em;
+    line-height:1.08;
+    position:relative;
+    z-index:1;
+  }
+  .couv-edition{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.85rem,4vw,1.05rem);
+    color:var(--bleu-nuit);
+    letter-spacing:0.05em;
+    margin-top:0.5rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-sous-titre{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(0.7rem,3.5vw,0.95rem);
+    color:var(--or);
+    letter-spacing:0.1em;
+    margin-top:0.5rem;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .couv-badge{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:clamp(0.95rem,4.5vw,1.3rem);
+    color:var(--or-clair);
+    background:var(--bleu-nuit);
+    padding:0.45rem 1.6rem;
+    margin-top:1rem;
+    border-radius:3px;
+    letter-spacing:0.08em;
+    position:relative;
+    z-index:1;
+  }
+  .couv-dates{
+    margin-top:1.1rem;
+    display:flex;
+    align-items:flex-start;
+    gap:0.6rem;
+    font-size:clamp(0.85rem,4vw,1.02rem);
+    color:var(--texte);
+    line-height:1.5;
+    position:relative;
+    z-index:1;
+  }
+  .couv-dates-icone{ font-size:1.2rem; margin-top:0.1rem; }
+  .couv-sep{
+    width:90px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--or),transparent);
+    margin:1.2rem auto;
+    position:relative;
+    z-index:1;
+  }
+  .couv-verset{
+    font-style:italic;
+    font-size:clamp(0.85rem,3.8vw,1.05rem);
+    color:var(--texte);
+    line-height:1.7;
+    max-width:340px;
+    margin:0 auto 0.8rem;
+    position:relative;
+    z-index:1;
+  }
+  .couv-ref{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.25em;
+    color:var(--bleu-nuit);
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+  .couv-footer{
+    margin-top:1.6rem;
+    font-family:'Cinzel',serif;
+    font-size:clamp(0.65rem,3vw,0.78rem);
+    letter-spacing:0.15em;
+    color:var(--or);
+    text-transform:uppercase;
+    line-height:1.7;
+    position:relative;
+    z-index:1;
+  }
+
+  /* =========================================================
+     PAGE 2 — PROGRAMME
+  ========================================================= */
+  .prog-liste{
+    display:flex;
+    flex-direction:column;
+    gap:1.2rem;
+  }
+  .prog-item{
+    display:flex;
+    gap:1rem;
+  }
+  .prog-icone{
+    flex-shrink:0;
+    width:46px;height:46px;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    color:var(--or);
+    position:relative;
+  }
+  .prog-num{
+    position:absolute;
+    top:-6px; left:-6px;
+    width:22px;height:22px;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border-radius:50%;
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:0.7rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .prog-texte{
+    flex:1;
+    padding-bottom:0.7rem;
+    border-bottom:1px dotted rgba(201,168,76,0.4);
+  }
+  .prog-titre-item{
+    font-family:'Cinzel',serif;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--bleu-nuit);
+    line-height:1.4;
+    margin-bottom:0.2rem;
+  }
+  .prog-desc{
+    font-size:0.95rem;
+    color:var(--texte);
+    line-height:1.45;
+    opacity:0.85;
+  }
+  .prog-desc ul{
+    list-style:none;
+    margin-top:0.2rem;
+  }
+  .prog-desc li{
+    position:relative;
+    padding-left:1rem;
+  }
+  .prog-desc li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--or);
+  }
+  .prog-duree{
+    display:flex;
+    align-items:center;
+    gap:0.3rem;
+    font-size:0.85rem;
+    color:var(--or);
+    font-weight:600;
+    margin-top:0.4rem;
+    letter-spacing:0.02em;
+  }
+  .prog-total{
+    margin-top:1.6rem;
+    text-align:center;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    border-radius:4px;
+    padding:0.9rem;
+    font-family:'Cinzel',serif;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+
+  /* =========================================================
+     PAGE 3 — LECTURES DU JOUR
+  ========================================================= */
+  .lecture-card{
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    margin-bottom:1rem;
+  }
+  .lecture-icone{
+    width:64px;height:64px;
+    flex-shrink:0;
+    border-radius:14px;
+    background:var(--bleu-nuit);
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    color:var(--or-clair);
+  }
+  .lecture-label{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.25rem;
+  }
+  .lecture-ref{
+    font-family:'Cinzel',serif;
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--bleu-nuit);
+    margin-bottom:0.4rem;
+  }
+  .lecture-citation{
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--texte);
+    line-height:1.6;
+  }
+  .theme-cadre{
+    margin-top:0.8rem;
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.3rem 1.2rem;
+    background:rgba(201,168,76,0.06);
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+  }
+  .theme-icone{
+    width:48px;height:48px;
+    flex-shrink:0;
+    border-radius:50%;
+    border:1.5px solid var(--or);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    color:var(--or);
+  }
+  .theme-label{
+    font-family:'Cinzel',serif;
+    font-size:0.65rem;
+    letter-spacing:0.25em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.6rem;
+  }
+  .theme-citation{
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--bleu-nuit);
+    line-height:1.6;
+    font-weight:600;
+  }
+
+  /* =========================================================
+     PAGE 4 — ENSEIGNEMENT (texte suivi)
+  ========================================================= */
+  .ens-para{
+    font-size:1.02rem;
+    color:var(--texte);
+    line-height:1.7;
+    margin-bottom:1.1rem;
+  }
+  .ens-souspoint{
+    font-family:'Cinzel',serif;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.05em;
+    color:var(--bleu-nuit);
+    margin-bottom:0.3rem;
+  }
+
+  /* =========================================================
+     PAGE 5 — RAPPELS DE YAH (QUESTIONNAIRE)
+  ========================================================= */
+  .quest-liste{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+  }
+  .quest-item{
+    display:flex;
+    gap:0.8rem;
+  }
+  .quest-num{
+    flex-shrink:0;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .quest-texte{
+    font-size:1.05rem;
+    line-height:1.6;
+    color:var(--texte);
+    flex:1;
+    padding-top:0.15rem;
+  }
+  .quest-ref{
+    font-family:'Cinzel',serif;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-top:0.25rem;
+  }
+  .quest-ligne{
+    margin-top:0.6rem;
+    border-bottom:1px solid rgba(201,168,76,0.35);
+    height:1.4rem;
+  }
+  .quest-footer{
+    margin-top:1.8rem;
+    text-align:center;
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--texte);
+    opacity:0.9;
+    line-height:1.6;
+  }
+
+  /* =========================================================
+     PAGE 6 — NOTES & CLÔTURE
+  ========================================================= */
+  .notes-zone{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .notes-citation{
+    text-align:center;
+    margin-bottom:1.4rem;
+  }
+  .notes-citation p.texte{
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--bleu-nuit);
+    line-height:1.6;
+    margin-bottom:0.4rem;
+  }
+  .notes-citation p.ref{
+    font-family:'Cinzel',serif;
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    color:var(--or);
+    text-transform:uppercase;
+  }
+  .notes-lignes{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+    margin-bottom:1.5rem;
+  }
+  .notes-lignes div{
+    border-bottom:1px solid rgba(201,168,76,0.3);
+    height:1px;
+  }
+  .info-utiles{
+    border:1px solid var(--or);
+    border-radius:6px;
+    padding:1.2rem 1.2rem;
+    background:rgba(201,168,76,0.06);
+    margin-top:auto;
+    margin-bottom:1.5rem;
+    text-align:center;
+  }
+  .info-utiles-titre{
+    font-family:'Cinzel',serif;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--bleu-nuit);
+    letter-spacing:0.06em;
+    margin-bottom:0.6rem;
+  }
+  .info-utiles-texte{
+    font-style:italic;
+    font-size:0.98rem;
+    color:var(--texte);
+    line-height:1.6;
+  }
+  .notes-footer{
+    background:var(--bleu-nuit);
+    color:var(--or-clair);
+    padding:1.4rem 1.3rem;
+    border-radius:6px;
+    text-align:center;
+  }
+  .notes-footer-titre{
+    font-family:'Cinzel',serif;
+    font-size:0.85rem;
+    letter-spacing:0.18em;
+    color:var(--or);
+    text-transform:uppercase;
+    margin-bottom:0.3rem;
+  }
+  .notes-footer-sub{
+    font-family:'Cinzel',serif;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    color:#f7edcc;
+    opacity:0.85;
+    text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="livre">
+
+  <!-- ============ PAGE 1 — COUVERTURE ============ -->
+  <section class="page page-1">
+    <div class="couv-cadre"></div>
+    <div class="page-num">1</div>
+
+    <img src="miqra-14-ethanim.jpg" alt="Miqra Qadosh Spécial — Shabbat 14 Éthanim — Il est né un Moshiaḥ" class="couv-affiche-img" onerror="this.style.display='none'">
+
+    <div class="couv-special">Miqra Qadosh Spécial</div>
+
+    <h1 class="couv-titre">IL EST NÉ<br>UN MOSHIAḤ</h1>
+    <p class="couv-sous-titre">Yahushuʿah Ha'Mashiaḥ — Le Melekh promis</p>
+
+    <div class="couv-badge">Shabbat 14 Éthanim</div>
+
+    <div class="couv-dates">
+      <span class="couv-dates-icone">🗓️</span>
+      <span>Du 25 septembre 2026 au coucher du soleil<br>au 26 septembre 2026 au coucher du soleil</span>
+    </div>
+
+    <div class="couv-sep"></div>
+
+    <p class="couv-verset">« Aujourd'hui vous est né un Moshiaḥ, qui est le Mashiaḥ, l'Adôn. »</p>
+    <p class="couv-ref">Luqas 2:11</p>
+
+    <div class="couv-footer">Programme de l'ʿAbodah<br>des Membres de La Voie</div>
+
+    <div class="scroll-hint">
+      <span>Glisser pour continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 — PROGRAMME ============ -->
+  <section class="page page-2">
+    <div class="page-num">2</div>
+    <div class="header-bar">
+      <div class="header-icon">📋</div>
+      <div>
+        <div class="header-titre">Programme<br>de l'Abodah</div>
+        <div class="header-soustitre">Il est né un Moshiaḥ</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="prog-liste">
+
+        <div class="prog-item">
+          <div class="prog-icone">👥<span class="prog-num">1</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Accueil</div>
+            <div class="prog-desc">Le Président de la réunion souligne le caractère particulier de ce Shabbat 14 Éthanim : Éthanim nous donne l'occasion de porter notre attention sur la naissance de celui que Yahawah avait annoncé, Yahushuʿah Ha'Mashiaḥ. Il invite immédiatement l'assemblée à se lever pour la Chirat d'ouverture.</div>
+            <div class="prog-duree">⏱ Environ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎵<span class="prog-num">2</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Chirat d'ouverture</div>
+            <div class="prog-desc">« Il est né un Moshiaḥ » — Chirat solennelle consacrée à la naissance de Yahushuʿah Ha'Mashiaḥ. L'atmosphère doit être joyeuse, majestueuse et digne de la naissance du Melekh promis.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🙏<span class="prog-num">3</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Téfilah d'ouverture</div>
+            <div class="prog-desc">Téfilah de reconnaissance adressée à Yahawah pour l'accomplissement de Sa parole et pour avoir envoyé Son Fils.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">📖<span class="prog-num">4</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Lecture des Ketubim Qadoshim</div>
+            <div class="prog-desc">
+              <ul>
+                <li>Première lecture : Yeshaʿeyah 9:5, 6 — « Un enfant nous est né. »</li>
+                <li>Deuxième lecture : Mikhah 5:1–3 — Le lieu annoncé.</li>
+                <li>Troisième lecture : Luqas 1:30–33 — L'annonce de la naissance.</li>
+                <li>Quatrième lecture : Luqas 2:1–14 — La naissance du Moshiaḥ.</li>
+                <li>Cinquième lecture : Yaḥuānān 1:14 — Il a habité parmi nous.</li>
+              </ul>
+            </div>
+            <div class="prog-duree">⏱ Environ 15 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">💬<span class="prog-num">5</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Les Rappels de Yah</div>
+            <div class="prog-desc">Participation de l'assemblée. Exceptionnellement, un questionnaire spécial consacré aux annonces concernant la naissance du Moshiaḥ et à leur accomplissement.</div>
+            <div class="prog-duree">⏱ Environ 20 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎵<span class="prog-num">6</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Chirat de méditation</div>
+            <div class="prog-desc">« Un fils nous est donné » — Chirat inspirée de Yeshaʿeyah 9:5, 6 et Luqas 1:31–33, servant de transition vers l'enseignement principal.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎙️<span class="prog-num">7</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Enseignement principal</div>
+            <div class="prog-desc">« Il est né un Moshiaḥ » — Pourquoi sa naissance est-elle une grande joie ? Texte directeur : Luqas 2:10–11.</div>
+            <div class="prog-duree">⏱ Environ 30 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">📣<span class="prog-num">8</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Informations de la Qehilah</div>
+            <div class="prog-desc">Le mois d'Éthanim comprend également la célébration prochaine de Soukkoth — la Fête des Huttes, du 15 au 21 courant. Les informations concernant les préparatifs seront communiquées progressivement sur lavoie.world et sur le groupe Telegram officiel de La Voie.</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🎵<span class="prog-num">9</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Chirat de clôture</div>
+            <div class="prog-desc">« Entrons donc dans le repos d'Èlohim » — Chirat tournée vers l'accomplissement du dessein de Yahawah et la perspective du règne du Moshiaḥ.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">🙏<span class="prog-num">10</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Téfilah finale</div>
+            <div class="prog-desc">L'assemblée se courbe pour hitpalléler devant Yahawah, Le remercier pour l'envoi de Yahushuʿah Ha'Mashiaḥ et demander de continuer à marcher dans les traces de Son Fils.</div>
+            <div class="prog-duree">⏱ 5 min</div>
+          </div>
+        </div>
+
+        <div class="prog-item">
+          <div class="prog-icone">📣<span class="prog-num">11</span></div>
+          <div class="prog-texte">
+            <div class="prog-titre-item">Clôture</div>
+            <div class="prog-desc">Le Président de la réunion — Pensée finale reprenant Luqas 2:10, 11 : Yahawah avait promis le Moshiaḥ. Il l'a envoyé. Il est né. Et son Malkuwt n'aura pas de fin.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="prog-total">Durée totale estimée : Environ 1 heure 55 minutes</div>
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3 — LECTURES ============ -->
+  <section class="page page-3">
+    <div class="page-num">3</div>
+    <div class="header-bar">
+      <div class="header-icon">📖</div>
+      <div>
+        <div class="header-titre">Lectures<br>du Jour</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <div class="lecture-card">
+        <div class="lecture-icone">📖</div>
+        <div>
+          <div class="lecture-label">Première lecture</div>
+          <div class="lecture-ref">Yeshaʿeyah 9:5, 6</div>
+          <div class="lecture-citation">Un enfant nous est né — la promesse d'un enfant sur lequel reposera la domination.</div>
+        </div>
+      </div>
+
+      <div class="lecture-card">
+        <div class="lecture-icone">📖</div>
+        <div>
+          <div class="lecture-label">Deuxième lecture</div>
+          <div class="lecture-ref">Mikhah 5:1–3</div>
+          <div class="lecture-citation">Le lieu annoncé — la prophétie concernant Bethléḥem et celui qui devait en sortir pour gouverner Yisraʾēl.</div>
+        </div>
+      </div>
+
+      <div class="lecture-card">
+        <div class="lecture-icone">📖</div>
+        <div>
+          <div class="lecture-label">Troisième lecture</div>
+          <div class="lecture-ref">Luqas 1:30–33</div>
+          <div class="lecture-citation">L'annonce de la naissance — le mal'akh annonce à Miryam qu'elle donnera naissance à Yahushuʿah, qui recevra le trône de Dawid et dont le règne n'aura pas de fin.</div>
+        </div>
+      </div>
+
+      <div class="lecture-card">
+        <div class="lecture-icone">📖</div>
+        <div>
+          <div class="lecture-label">Quatrième lecture</div>
+          <div class="lecture-ref">Luqas 2:1–14</div>
+          <div class="lecture-citation">La naissance du Moshiaḥ — naissance de Yahushuʿah, annonce aux bergers et proclamation : « Aujourd'hui vous est né un Moshiaḥ, qui est le Mashiaḥ, l'Adôn. »</div>
+        </div>
+      </div>
+
+      <div class="lecture-card">
+        <div class="lecture-icone">📖</div>
+        <div>
+          <div class="lecture-label">Cinquième lecture</div>
+          <div class="lecture-ref">Yaḥuānān 1:14</div>
+          <div class="lecture-citation">Il a habité parmi nous — le Dabar est devenu chair et a dressé sa tente parmi les humains.</div>
+        </div>
+      </div>
+
+      <div class="theme-cadre">
+        <div class="theme-icone">🎯</div>
+        <div>
+          <div class="theme-label">Question directrice</div>
+          <div class="theme-citation">Pourquoi la naissance de Yahushuʿah Ha'Mashiaḥ constitue-t-elle une grande joie dans le dessein de Yahawah ?</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 — ENSEIGNEMENT ============ -->
+  <section class="page page-4">
+    <div class="page-num">4</div>
+    <div class="header-bar">
+      <div class="header-icon">🎙️</div>
+      <div>
+        <div class="header-titre">Enseignement<br>Principal</div>
+        <div class="header-soustitre">Il est né un Moshiaḥ</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="theme-cadre" style="margin-bottom:1.4rem">
+        <div class="theme-icone">🎯</div>
+        <div>
+          <div class="theme-label">Thème</div>
+          <div class="theme-citation">« Il est né un Moshiaḥ » — Pourquoi sa naissance est-elle une grande joie ? Luqas 2:10–11</div>
+        </div>
+      </div>
+
+      <p class="ens-souspoint">1. Yahawah avait annoncé sa venue</p>
+      <p class="ens-para">La naissance de Yahushuʿah ne surgit pas sans annonce préalable. Les Nabi'im avaient parlé de celui qui devait venir.</p>
+
+      <p class="ens-souspoint">2. « Un enfant nous est né » — Yeshaʿeyah 9:5, 6</p>
+      <p class="ens-para">L'enfant naît comme un véritable être humain, mais son rôle avait été déterminé dans le dessein de Yahawah.</p>
+
+      <p class="ens-souspoint">3. Le Melekh promis — Luqas 1:31–33</p>
+      <p class="ens-para">Le mal'akh relie directement Yahushuʿah au trône de Dawid et à un règne qui n'aura pas de fin.</p>
+
+      <p class="ens-souspoint">4. Une naissance humble — Luqas 2:1–7</p>
+      <p class="ens-para">Le futur Melekh ne naît pas au milieu du faste des dirigeants humains.</p>
+
+      <p class="ens-souspoint">5. « Une grande joie pour tout le peuple » — Luqas 2:10–11</p>
+      <p class="ens-para">Pourquoi cette naissance provoque-t-elle la joie ? Parce que le Moshiaḥ attendu est désormais né.</p>
+
+      <p class="ens-souspoint">6. Yahawah a donné Son Fils — Yaḥuānān 3:16</p>
+      <p class="ens-para">La naissance du Moshiaḥ doit être replacée dans le dessein de Yahawah en faveur des humains.</p>
+
+      <p class="ens-souspoint">7. « Il a dressé sa tente parmi nous » — Yaḥuānān 1:14</p>
+      <p class="ens-para">L'image du Dabar devenu chair et ayant habité parmi les humains est particulièrement significative pendant le mois d'Éthanim et à l'approche de Soukkoth.</p>
+
+      <p class="ens-souspoint">8. De l'enfant au Melekh</p>
+      <p class="ens-para">L'histoire ne s'arrête pas à la naissance : l'enfant de Luqas 2 est celui dont Luqas 1:32, 33 annonce la domination.</p>
+
+      <p class="ens-souspoint">9. Pourquoi cette naissance nous concerne aujourd'hui</p>
+      <p class="ens-para">Notre joie ne repose pas sur une scène sentimentale autour d'un nouveau-né. Elle repose sur l'identité de celui qui est né et sur ce que Yahawah accomplira par lui.</p>
+
+      <div class="theme-cadre">
+        <div class="theme-icone">💎</div>
+        <div>
+          <div class="theme-label">Question centrale</div>
+          <div class="theme-citation">« Pourquoi suis-je heureux que Yahawah nous ait donné le Moshiaḥ ? »</div>
+        </div>
+      </div>
+
+      <p class="ens-para" style="margin-top:1.2rem;text-align:center;font-style:italic">« Aujourd'hui vous est né un Sauveur, qui est le Moshiaḥ, l'Adôn. »<br><span style="font-style:normal;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;color:var(--or);text-transform:uppercase">— Luqas 2:11</span></p>
+
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 5 — RAPPELS DE YAH ============ -->
+  <section class="page page-5">
+    <div class="page-num">5</div>
+    <div class="header-bar">
+      <div class="header-icon">💬</div>
+      <div>
+        <div class="header-titre">Les Rappels<br>de Yah</div>
+        <div class="header-soustitre">Questionnaire spécial — La naissance du Moshiaḥ</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <p class="quest-footer" style="margin-bottom:1rem;margin-top:0">Exceptionnellement, puisque ce Miqra Qadosh est consacré à la naissance du Moshiaḥ, l'assemblée reviendra sur les annonces concernant sa naissance et leur accomplissement.</p>
+
+      <div class="quest-liste">
+        <div class="quest-item">
+          <div class="quest-num">1</div>
+          <div class="quest-texte">Bien avant la naissance de Yahushuʿah, qu'avait annoncé Yeshaʿeyah concernant la venue d'un enfant et la domination qui reposerait sur lui ?
+            <div class="quest-ref">Yeshaʿeyah 9:5–6</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">2</div>
+          <div class="quest-texte">Quel Nabi avait annoncé le lieu d'où sortirait celui qui devait gouverner Yisraʾēl ?
+            <div class="quest-ref">Mikhah 5:1–3</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">3</div>
+          <div class="quest-texte">Quel nom le mal'akh demanda-t-il à Miryam de donner à son fils ?
+            <div class="quest-ref">Luqas 1:31</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">4</div>
+          <div class="quest-texte">Que déclara le mal'akh concernant le trône et le règne de Yahushuʿah ?
+            <div class="quest-ref">Luqas 1:32–33</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">5</div>
+          <div class="quest-texte">Dans quelles circonstances Yahushuʿah est-il né ?
+            <div class="quest-ref">Luqas 2:1–7</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">6</div>
+          <div class="quest-texte">À qui l'annonce de sa naissance fut-elle faite dans la région ?
+            <div class="quest-ref">Luqas 2:8–9</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">7</div>
+          <div class="quest-texte">Pourquoi le mal'akh présente-t-il cette naissance comme une « grande joie pour tout le peuple » ?
+            <div class="quest-ref">Luqas 2:10–11</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">8</div>
+          <div class="quest-texte">Quels trois éléments d'identification apparaissent dans l'annonce de Luqas 2:11 concernant l'enfant qui venait de naître ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">9</div>
+          <div class="quest-texte">Quelle relation existe entre l'enfant annoncé en Yeshaʿeyah 9 et le Melekh annoncé à Miryam en Luqas 1 ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">10</div>
+          <div class="quest-texte">Que signifie la déclaration de Yaḥuānān 1:14 selon laquelle le Dabar est devenu chair et a « habité » parmi nous ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">11</div>
+          <div class="quest-texte">Pourquoi la naissance de Yahushuʿah ne doit-elle pas être considérée comme un événement isolé, mais comme une étape du dessein de Yahawah ?
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+        <div class="quest-item">
+          <div class="quest-num">12</div>
+          <div class="quest-texte">Pourquoi pouvons-nous personnellement nous réjouir que Yahawah ait donné le Moshiaḥ ?
+            <div class="quest-ref">Yaḥuānān 3:16</div>
+            <div class="quest-ligne"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="quest-footer"><strong>Question de transition :</strong><br>« Si Yahawah avait annoncé ce Moshiaḥ longtemps avant sa naissance, que nous révèle l'accomplissement de ces annonces sur la place de Yahushuʿah dans Son dessein ? »</p>
+
+    </div>
+    <div class="scroll-hint">
+      <span>Continuer</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 6 — NOTES & CLÔTURE ============ -->
+  <section class="page page-6">
+    <div class="page-num">6</div>
+    <div class="header-bar">
+      <div class="header-icon">✏️</div>
+      <div>
+        <div class="header-titre">Notes<br>Personnelles</div>
+      </div>
+    </div>
+    <div class="page-content">
+
+      <div class="notes-citation">
+        <p class="texte">« Aujourd'hui vous est né un Moshiaḥ, qui est le Mashiaḥ, l'Adôn. »</p>
+        <p class="ref">Luqas 2:11</p>
+      </div>
+
+      <div class="ornement-line"><span>◆</span></div>
+
+      <div class="notes-zone">
+        <div class="notes-lignes">
+          <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+
+        <div class="info-utiles">
+          <div class="info-utiles-titre">Clôture</div>
+          <div class="info-utiles-texte">Yahawah avait promis le Moshiaḥ. Il l'a envoyé. Il est né. Et son Malkuwt n'aura pas de fin.</div>
+        </div>
+
+        <div class="notes-footer">
+          <p class="notes-footer-titre">Les Membres de La Voie</p>
+          <p class="notes-footer-sub">Tous droits réservés 📜</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
