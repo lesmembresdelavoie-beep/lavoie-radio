@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le sang et la Torah — LVNA001 · La Voie</title>
+<meta name="description" content="Position de La Voie face aux ajustements 2026 du Collège Central des Témoins de Jéhovah sur le sang — analyse documentée des Ketubim Qadoshim.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .15em;
+  text-transform: uppercase; text-decoration: none; color: var(--or); opacity: .85;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+header { text-align: center; padding: 1.2rem 0 2.2rem; }
+.badge {
+  display: inline-block; font-family: 'Cinzel', serif; font-size: .58rem;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px; padding: .35rem 1.1rem; margin-bottom: 1.2rem;
+}
+h1 {
+  font-family: 'Cinzel Decorative', serif; font-size: clamp(1.7rem, 6.5vw, 2.5rem);
+  color: var(--or-c); letter-spacing: .02em; line-height: 1.25; margin-bottom: .7rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.02rem;
+  color: var(--creme); opacity: .88; max-width: 560px; margin: 0 auto 1.1rem;
+}
+.byline {
+  font-family: 'Cinzel', serif; font-size: .68rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--or); opacity: .8;
+}
+.sep { display: flex; align-items: center; gap: 1rem; margin: 1.6rem auto 0; max-width: 320px; }
+.sep .l { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--or)); }
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+section { margin-bottom: 2.6rem; }
+.partie-t {
+  font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--or); opacity: .75; text-align: center;
+  margin: 2.6rem 0 1.4rem; padding-top: 1.6rem; border-top: 1px solid rgba(201,168,76,.18);
+}
+.partie-t:first-of-type{ border-top:none; padding-top:0; }
+h2 {
+  font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .05em;
+  color: var(--or-c); margin-bottom: 1rem; line-height: 1.4;
+}
+h3 {
+  font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .04em;
+  color: var(--or); text-transform: uppercase; margin: 1.6rem 0 .8rem;
+}
+p { margin-bottom: 1rem; font-size: 1rem; color: var(--creme); opacity: .93; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--or-c); font-weight: 600; }
+a.src { color: var(--or-c); text-decoration: underline; text-decoration-color: rgba(201,168,76,.4); }
+
+blockquote {
+  border-left: 3px solid var(--or); padding: .8rem 1.1rem; margin: 1.2rem 0;
+  background: rgba(201, 168, 76, .06); border-radius: 0 6px 6px 0;
+  font-style: italic; color: var(--creme); font-size: .97rem;
+}
+blockquote cite {
+  display: block; margin-top: .5rem; font-family: 'Cinzel', serif; font-size: .6rem;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--or);
+  font-style: normal; opacity: .8;
+}
+
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45); border-radius: 10px;
+  padding: 1.2rem 1.3rem; background: rgba(201, 168, 76, .05); margin: 1.4rem 0;
+}
+.encadre p:last-child{ margin-bottom:0; }
+.encadre-titre {
+  font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--or); margin-bottom: .7rem;
+}
+
+table.cmp {
+  width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: .88rem;
+}
+table.cmp th, table.cmp td {
+  padding: .7rem .8rem; text-align: left; border-bottom: 1px solid rgba(201,168,76,.15);
+  vertical-align: top;
+}
+table.cmp th {
+  font-family: 'Cinzel', serif; font-size: .55rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--or); background: rgba(6,13,26,.4);
+}
+table.cmp tr:last-child td{ border-bottom:none; }
+table.cmp td:first-child{ color: var(--argent); font-weight:500; white-space:nowrap; }
+
+.opposition { display: flex; flex-direction: column; gap: 1rem; margin: 1.3rem 0; }
+.opposition .col {
+  border: 1px solid rgba(201,168,76,.3); border-radius: 10px; padding: 1.1rem 1.2rem;
+}
+.opposition .col.dit{ background: rgba(201,168,76,.07); }
+.opposition .col.demontrer{ background: rgba(184,200,220,.05); }
+.opposition .col-t {
+  font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--or); margin-bottom: .6rem;
+}
+.opposition .col.demontrer .col-t{ color: var(--argent); }
+.opposition .col p{ font-size: .95rem; margin-bottom: 0; }
+
+ul.notes { list-style: none; margin: .8rem 0; }
+ul.notes li { position: relative; padding: .4rem 0 .4rem 1.3rem; font-size: .95rem; opacity: .92; }
+ul.notes li::before { content: '✦'; position: absolute; left: 0; color: var(--or); font-size: .65rem; top: .65rem; }
+
+.sources-liste { list-style: none; margin-top: .6rem; }
+.sources-liste li { font-size: .82rem; padding: .35rem 0; opacity: .85; }
+
+footer {
+  text-align: center; font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--or); opacity: .6; padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2); margin-top: 1rem;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">LVNA001 · Actualité</span>
+  <h1>Le sang et la Torah</h1>
+  <p class="sous-titre">Position de La Voie face aux ajustements 2026 du Collège Central des Témoins de Jéhovah</p>
+  <p class="byline">20 septembre 2026 · @B'neiYah</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+<section>
+<h2>Introduction — Contexte et enjeu</h2>
+<p>En l'espace de six mois — de mars à septembre 2026 — le Collège Central des Témoins de Jéhovah a procédé à deux révisions successives de sa doctrine sur le sang. Ces deux mises à jour modifient un enseignement que l'organisation avait maintenu pendant plus de sept décennies comme une règle religieuse contraignante.</p>
+<p>Ces événements ne sont pas anodins pour La Voie. Ils interpellent directement toute communauté qui se réclame des Ketubim Qadoshim comme autorité suprême. La question se pose avec acuité : que disent effectivement les Ketubim Qadoshim sur le sang ? Et comment La Voie et ses Tal'midim doivent-ils se positionner face à ces ajustements, au regard strict du Dabar de Yahawah ?</p>
+<p>Cet article documente les deux ajustements à partir des sources disponibles, examine ce que les Ketubim Qadoshim disent — et ne disent pas — sur le sang, puis expose le positionnement de La Voie. Chaque affirmation importante est accompagnée de sa référence ; les faits documentés, les interprétations et la position éditoriale de La Voie sont distingués tout au long du texte.</p>
+</section>
+
+<p class="partie-t">✦ Partie I — Les deux ajustements de 2026</p>
+
+<section>
+<h2>A. 20 mars 2026 — Governing Body Update #2 : l'autotransfusion (don autologue)</h2>
+<p>Le 20 mars 2026, le Collège Central a publié la <strong>Governing Body Update #2</strong>, présentée par le membre du Collège Central Gerrit Lösch. Cette mise à jour reclasse le prélèvement, la conservation et la réinjection ultérieure du propre sang d'un patient — auparavant interdits — en une affaire de conscience personnelle.</p>
+
+<table class="cmp">
+<tr><th>Ancienne position officielle</th><th>Nouvelle position (Update #2)</th></tr>
+<tr><td>Le 15 octobre 2000, La Tour de Garde excluait explicitement le don de sang et le prélèvement anticipé du propre sang d'un patient pour réinjection ultérieure ; le sang sorti du corps devait être « versé ».</td><td>Chaque Témoin peut désormais décider librement de faire prélever, conserver puis réinjecter son propre sang lors d'un acte médical ou chirurgical.</td></tr>
+<tr><td>En 2021 encore, la documentation officielle qualifiait le don de son propre sang pour un usage ultérieur de pratique « non acceptable pour les chrétiens ».</td><td>Motif avancé : « la Bible ne se prononce pas sur l'usage du sang d'une personne dans les soins médicaux et chirurgicaux. »</td></tr>
+</table>
+
+<p>Ce qui demeure inchangé à ce stade : la transfusion de sang entier provenant d'un donneur, ainsi que celle des quatre composantes principales (globules rouges, globules blancs, plaquettes, plasma), reste interdite — cette seconde interdiction ne sera révisée que six mois plus tard.</p>
+</section>
+
+<section>
+<h2>B. 18 septembre 2026 — Governing Body Update #6 : les quatre composantes du sang</h2>
+<p>Le 18 septembre 2026, le Collège Central a annoncé, dans la <strong>Governing Body Update #6</strong>, que la décision d'accepter les globules rouges, les globules blancs, le plasma ou les plaquettes provenant du sang d'une autre personne relève désormais de la conscience individuelle. La même liberté est accordée pour le don de sang destiné à la production de ces composantes.</p>
+
+<table class="cmp">
+<tr><th>Ce qui devient affaire de conscience</th><th>Ce qui demeure interdit</th></tr>
+<tr><td>Recevoir l'une des quatre composantes principales (globules rouges, globules blancs, plaquettes, plasma) issues du sang d'un donneur.</td><td>La transfusion de <strong>sang entier</strong> provenant d'un donneur demeure refusée pour motif religieux.</td></tr>
+<tr><td>Donner son sang dans le but exprès d'en fournir les composantes à un tiers.</td><td>La congrégation ne s'implique pas dans la décision individuelle ; elle reste une affaire de conscience personnelle, non de discipline religieuse.</td></tr>
+</table>
+
+<p>Le communiqué officiel de l'organisation a été publié sous le titre : <em>« Jehovah's Witnesses: Each Witness Now Decides Whether to Accept or Donate Main Blood Components »</em> — confirmant que la même logique déjà appliquée à l'autotransfusion (Update #2) est désormais étendue aux quatre composantes du sang d'autrui.</p>
+</section>
+
+<section>
+<h2>C. Un délai possible dans la documentation en ligne</h2>
+<p>Au 20 septembre 2026, deux jours après la publication de l'Update #6, certaines pages plus anciennes du site officiel — notamment celles intitulées « God's View of Blood » et « Blood Fractions and Surgical Procedures » — demeurent accessibles avec un langage antérieur à la mise à jour. Cette situation peut simplement refléter le délai nécessaire à la mise à jour de l'ensemble du corpus numérique, et ne constitue pas, en l'état, une contradiction permanente dans l'enseignement de l'organisation.</p>
+</section>
+
+<p class="partie-t">✦ Partie II — Le contexte dans lequel interviennent ces révisions</p>
+
+<section>
+<p>Nous ne disposons pas de documents internes du Collège Central permettant d'établir avec certitude les motifs exacts de ces décisions. Plusieurs éléments de contexte documentés peuvent néanmoins être posés, sans être transformés en motifs certains.</p>
+
+<h3>Le contexte démographique</h3>
+<p>L'organisation revendique une moyenne d'environ 9 millions de proclamateurs actifs, avec un pic autour de 9,2 millions. Le nombre de baptêmes rapporté pour 2025 (environ 304 500) est le plus bas depuis 1982, et l'augmentation nette du nombre de proclamateurs ne représente qu'environ la moitié du nombre de baptêmes — ce qui traduit un taux de renouvellement élevé par rapport à d'autres confessions. Ces chiffres documentent une tension démographique réelle ; ils ne permettent pas, à eux seuls, d'établir un lien de causalité direct avec les révisions doctrinales sur le sang.</p>
+
+<h3>Le contexte juridique et médical</h3>
+<p>Plusieurs juridictions ont, ces dernières années, renforcé l'encadrement légal des refus de traitement pouvant engager le pronostic vital de mineurs ou de personnes vulnérables. Des travaux médicaux indépendants (voir Partie III) documentent par ailleurs une surmortalité mesurable liée au refus de transfusion dans certaines situations cliniques. Ces éléments constituent un contexte extérieur documenté ; ils ne permettent pas d'affirmer que le Collège Central a modifié sa doctrine dans le but spécifique de réduire une exposition juridique, faute de source interne l'établissant.</p>
+</section>
+
+<p class="partie-t">✦ Partie III — Le mécanisme de la « nouvelle lumière »</p>
+
+<section>
+<p>L'organisation explique elle-même ses révisions doctrinales par la notion de <strong>révélation progressive</strong> : le Collège Central se présente comme le canal par lequel une compréhension plus complète du dessein divin est communiquée avec le temps. Ces ajustements sont qualifiés de « nouvelle lumière », en référence à Mishlé (Proverbes) 4:18 — l'image d'une lumière qui grandit progressivement, du point du jour jusqu'au plein midi. Dans ce cadre officiel, un changement doctrinal n'est pas présenté comme la correction d'une erreur, mais comme une étape d'un éclairement continu.</p>
+
+<p>Cette explication mérite d'être présentée fidèlement avant tout examen critique. La question que La Voie pose n'est pas une accusation d'intention, mais une question de fond :</p>
+
+<div class="encadre">
+<p><strong>Lorsqu'une interprétation susceptible d'engager la vie d'un patient est ultérieurement reconnue comme n'étant pas explicitement énoncée dans les Ketubim, quelle autorité avait permis d'en faire auparavant une règle obligatoire ?</strong></p>
+</div>
+
+<p>Documenter la place que les publications officielles accordent au Collège Central et à l'obéissance organisationnelle permet au lecteur de mesurer lui-même la portée de cette question, sans qu'il soit nécessaire d'attribuer un état psychologique à des millions de membres.</p>
+</section>
+
+<p class="partie-t">✦ Partie IV — Ce que les Ketubim Qadoshim disent réellement sur le sang</p>
+
+<section>
+<h3>1. Beréʾshit 9:4 — l'alliance noaḥique</h3>
+<blockquote>« Seulement vous ne mangerez pas la chair avec son âme, c'est-à-dire son sang. » <cite>Beréʾshit 9:4</cite></blockquote>
+<p><strong>Ce que le texte dit :</strong> après le déluge, Yahawah autorise Noaḥ et sa descendance à consommer de la viande animale, à une condition explicite : ne pas consommer la chair avec son sang.</p>
+<p><strong>Ce que le texte ne dit pas :</strong> le verset ne mentionne ni transfusion, ni usage médical, ni catégorie distincte entre sang « alimentaire » et sang « thérapeutique ». Il légifère sur un acte précis : consommer la chair avec le sang qu'elle contient.</p>
+</section>
+
+<section>
+<h3>2. Wayyiqra 17:10-14 — abattage, ʿabodah et interdiction alimentaire</h3>
+<blockquote>« Car la vie (néfèsh) de toute chair, c'est son sang. » <cite>Wayyiqra 17:11, 14</cite></blockquote>
+<p>Le contexte de ce passage concerne l'abattage des animaux, l'usage du sang dans la ʿabodah offerte à l'autel, et l'interdiction de le consommer. Wayyiqra 17:11 donne explicitement au sang une fonction rattachée à l'autel — « c'est le sang qui fait expiation, à cause de la vie (néfèsh) qu'il contient » — avant que le verset 14 n'en tire la conséquence alimentaire : la chair ne doit pas être mangée avec son sang.</p>
+<p>Les actions concrètement interdites ou prescrites par le texte sont précises : <strong>ne pas manger</strong> le sang de l'animal abattu ; <strong>verser</strong> son sang et le <strong>couvrir</strong> de terre (v. 13). Le passage légifère sur l'abattage, l'usage cultuel du sang et sa consommation — pas sur un usage médical, absent de son horizon.</p>
+</section>
+
+<section>
+<h3>3. Maʿasei 15:28-29 — le décret de Yerushalayim</h3>
+<blockquote>« L'Esprit Qadosh et nous-mêmes avons décidé de ne vous imposer aucun fardeau, sinon ces choses nécessaires : vous abstenir des idolâtries, du sang, des animaux étouffés, et de l'immoralité sexuelle. » <cite>Maʿasei 15:28-29</cite></blockquote>
+<p><strong>Ce que le texte dit explicitement :</strong> les Shilliaḥim et les anciens réunis à Yerushalayim demandent aux nations une abstention de quatre choses : les idolâtries, le sang, les animaux étouffés et l'immoralité sexuelle.</p>
+<p><strong>Contexte immédiat :</strong> Maʿasei 15:21 précède immédiatement la conclusion du décret : « Depuis les générations anciennes, Mosheh a, dans chaque ville, des prédicateurs qui le lisent dans les synagogues chaque Shabbat. » Ce verset relie le décret à la présence continue de la Torah de Mosheh lue chaque Shabbat parmi les Yehoudim de la diaspora — un rappel du cadre yehoudi dans lequel les quatre abstentions sont formulées, plutôt qu'une justification isolée.</p>
+<p><strong>Les principales lectures académiques :</strong> l'interprétation exacte du décret fait l'objet de discussions parmi les chercheurs. Une lecture rattache les quatre interdictions aux lois données à « l'étranger séjournant » en Wayyiqra 17-18, elles-mêmes rapprochées par certains des lois noaḥiques rabbiniques ultérieures — bien que cette hypothèse noaḥique présente des faiblesses reconnues, les listes rabbiniques ne mentionnant pas directement le sang ni les animaux étouffés parmi les lois noaḥiques. D'autres chercheurs (Flusser, Safrai) ont proposé que le terme « sang » désigne ici le meurtre plutôt que sa consommation — lecture minoritaire et contestée.</p>
+<p><strong>Position de La Voie sur ce point :</strong> compte tenu du lien du décret avec Wayyiqra 17-18 (abstention du sang consommé, des animaux étouffés, et des pratiques associées à l'idolâtrie) et de la mention de la Torah lue chaque Shabbat en Maʿasei 15:21, La Voie retient que l'abstention du sang visée ici concerne sa consommation et les pratiques cultuelles qui y sont associées. Cette conclusion s'appuie sur le texte et son contexte immédiat ; elle n'est pas présentée comme la seule lecture académique existante.</p>
+</section>
+
+<section>
+<h3>Distinction fondamentale</h3>
+<table class="cmp">
+<tr><th>Domaine</th><th>Enseignement des Ketubim Qadoshim</th><th>Fondement textuel</th></tr>
+<tr><td>Consommer le sang</td><td>Interdit — principe constant, avant et après la Besorah</td><td>Beréʾshit 9:4 · Wayyiqra 17:10-14 · Maʿasei 15:28-29</td></tr>
+<tr><td>Pratiques associées à l'idolâtrie</td><td>Interdit — rupture avec les cultes environnants</td><td>Maʿasei 15:28-29, contexte</td></tr>
+<tr><td>Transfusion médicale moderne</td><td>Non traité explicitement</td><td>Réalité médicale absente du monde biblique</td></tr>
+</table>
+<p>La transfusion sanguine, comme pratique thérapeutique, n'existait pas dans le contexte historique d'aucun des trois textes examinés : les premières transfusions humaines documentées datent du XVIIᵉ siècle de notre ère. Il faut donc distinguer <strong>l'application d'un principe biblique constant</strong> (l'interdiction de consommer le sang) de <strong>la création d'un commandement nouveau</strong> non formulé par le texte (interdire la réception médicale du sang).</p>
+</section>
+
+<p class="partie-t">✦ Partie V — Position officielle de La Voie</p>
+
+<section>
+<h3>A. La règle alimentaire : ferme et permanente</h3>
+<p>La Voie maintient sans équivoque l'interdiction de consommer le sang sous toute forme alimentaire, fondée sur les trois corpus scripturaires examinés ci-dessus. Les Tal'midim de La Voie s'abstiennent donc de consommer le sang directement, des aliments préparés avec du sang, et de toute participation à des pratiques cultuelles impliquant sa consommation. Cette position repose sur le caractère de Yahawah, qui déclare que la néfèsh — la vie — Lui appartient.</p>
+
+<h3>B. Le champ médical : discernement, non commandement nouveau</h3>
+<p>Les Ketubim Qadoshim n'ayant pas traité la médecine transfusionnelle, La Voie considère qu'il serait malhonnête, sur le plan herméneutique, de construire sur ce silence une doctrine engageant la vie de ses membres.</p>
+<div class="encadre">
+<p class="encadre-titre">✦ Position formulée avec précision</p>
+<p>La Voie ne trouve actuellement, dans les Ketubim Qadoshim, aucun commandement permettant de déclarer qu'un Tal'mid viole la Torah de Yahawah du seul fait qu'il accepte une transfusion médicale. Elle maintient, en revanche, pleinement l'interdiction kétoubique de consommer le sang.</p>
+</div>
+<p>La Voie n'ordonne ni la transfusion médicale ni son refus. Face à une décision médicale, le Tal'mid doit pouvoir examiner sa situation avec discernement, obtenir les informations médicales nécessaires, considérer les alternatives disponibles, et prendre sa décision sans qu'une règle humaine soit élevée au rang de commandement de Yahawah.</p>
+
+<h3>C. Ne pas aller au-delà de ce qui est écrit</h3>
+<p>Ce positionnement s'appuie directement sur deux avertissements kétoubiques :</p>
+<blockquote>« Afin qu'en vous nous apprenions à ne pas aller au-delà de ce qui est écrit. » <cite>1 Qorintiyim 4:6</cite></blockquote>
+<blockquote>« Quiconque va plus loin et ne demeure pas dans l'enseignement du Mashiaḥ n'a pas Yahawah. » <cite>2 Yaḥuānān 9</cite></blockquote>
+<p>Ces deux textes correspondent directement au principe défendu ici : une qehilah ne doit pas transformer une inférence humaine en commandement engageant la vie de ses membres. La Voie retient également, dans le même sens, Dabarim 4:2, Maʿasei 17:11 et Mattiyahu 15:3-9. Une précision s'impose concernant Ḥazon 22:18-19 : ce passage concerne explicitement le livre de Ḥazon lui-même, et La Voie évite de l'ériger en règle générale sur toute interprétation scripturaire — le principe qu'il illustre (ne rien ajouter à ce que Yahawah a dit) demeure pertinent, mais son contexte immédiat doit être respecté.</p>
+
+<h3>D. Ce que le texte dit — ce qu'il faudrait démontrer avant de l'imposer</h3>
+<div class="opposition">
+  <div class="col dit">
+    <div class="col-t">Ce que le texte dit</div>
+    <p>« Abstenez-vous du sang » — à interpréter dans son contexte kétoubique, notamment à la lumière de Beréʾshit 9, Wayyiqra 17 et Maʿasei 15.</p>
+  </div>
+  <div class="col demontrer">
+    <div class="col-t">Ce qu'il faudrait démontrer avant de l'imposer</div>
+    <p>Que cette prescription constitue également une interdiction de recevoir du sang par voie intraveineuse dans un traitement médical moderne.</p>
+  </div>
+</div>
+<p>La question demeure ouverte et doit être posée directement : <strong>où les Ketubim Qadoshim établissent-ils explicitement cette extension ?</strong> L'examen des textes fondateurs, mené en Partie IV, ne l'établit pas.</p>
+</section>
+
+<section>
+<h3>Sur la mortalité liée au refus de transfusion</h3>
+<p>Des travaux médicaux indépendants documentent une surmortalité mesurable dans certaines situations cliniques où une transfusion indiquée est refusée : une étude portant sur des patients chirurgicaux ayant refusé la transfusion a rapporté une mortalité dépassant 60 % lorsque l'hémoglobine préopératoire descendait sous 6 g/dL ; plusieurs séries obstétricales (États-Unis, Royaume-Uni, Pays-Bas, Japon) estiment une mortalité maternelle multipliée par 44 à 160 chez les patientes refusant la transfusion. D'autres études, notamment sur les hémorragies digestives, ne montrent pas de différence de mortalité à 30 jours entre patients ayant refusé ou accepté une transfusion. Le nombre cumulé de décès directement imputables, à l'échelle mondiale, à la politique historique de refus des Témoins de Jéhovah demeure toutefois difficile à établir avec précision : aucune donnée de mortalité officielle n'a été publiée par l'organisation, et les estimations disponibles reposent sur des extrapolations épidémiologiques dont la méthode et les limites doivent être gardées à l'esprit.</p>
+</section>
+
+<p class="partie-t">✦ Conclusion</p>
+
+<section>
+<p>Les deux révisions doctrinales du Collège Central en 2026 ne concernent pas seulement l'organisation qui les a formulées. Elles constituent un rappel pour toute communauté qui se réclame des Ketubim Qadoshim : une règle qui engage la vie et la mort de ses membres doit pouvoir être montrée dans le texte, et non seulement dans la tradition cumulée d'une autorité humaine.</p>
+<p>La Voie tient son témoignage non en ajoutant aux Ketubim Qadoshim, mais en refusant de les dépasser. <strong>La Voie interdit ce que les Ketubim interdisent. Elle n'élève pas au rang de commandement ce qu'ils n'énoncent pas comme commandement. Lorsqu'une question moderne n'est pas directement traitée, elle recherche les principes applicables sans aller au-delà de ce qui est écrit</strong> (1 Qorintiyim 4:6), et sans quitter l'enseignement du Mashiaḥ (2 Yaḥuānān 9).</p>
+<p>La Voie ne trouve actuellement dans les Ketubim Qadoshim aucun commandement permettant de déclarer qu'un Tal'mid viole la Torah de Yahawah du seul fait qu'il accepte une transfusion médicale. Elle maintient en revanche pleinement l'interdiction kétoubique de consommer le sang.</p>
+</section>
+
+<section>
+<h3>Sources</h3>
+<ul class="sources-liste">
+<li><a class="src" href="https://www.jw.org/en/news/region/global/2026-Governing-Body-Update-2/" target="_blank" rel="noopener">2026 Governing Body Update #2 — jw.org</a></li>
+<li><a class="src" href="https://www.jw.org/en/global-communications/country/global-news/Jehovahs-Witnesses-Each-Witness-Now-Decides-Whether-to-Accept-or-Donate-Main-Blood-Components/" target="_blank" rel="noopener">2026 Governing Body Update #6 — jw.org</a></li>
+<li><a class="src" href="https://www.aabb.org/news-resources/news/article/2026/03/24/jehovah-s-witnesses-to-permit-autologous-blood-transfusion" target="_blank" rel="noopener">AABB — Jehovah's Witnesses to Permit Autologous Blood Transfusion</a></li>
+<li><a class="src" href="https://transfusionnews.com/2026/04/23/jehovahs-witness-governing-body-allows-autologous-transfusions/" target="_blank" rel="noopener">Transfusion News — Governing Body Allows Autologous Transfusions</a></li>
+<li><a class="src" href="https://www.ajwrb.org/the-2026-autologous-pivot-a-victory-for-conscience-a-failure-of-accountability" target="_blank" rel="noopener">AJWRB — The 2026 Autologous Pivot</a></li>
+<li><a class="src" href="https://www.ajwrb.org/estimating-mortality-epidemiological-extrapolations-of-the-blood-prohibition" target="_blank" rel="noopener">AJWRB — Estimating Mortality: Epidemiological Extrapolations</a></li>
+<li><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/42549805/" target="_blank" rel="noopener">PubMed — Thirty-day Mortality Among Jehovah's Witness Patients with GI Bleeding</a></li>
+<li><a class="src" href="https://en.wikipedia.org/wiki/Jehovah's_Witnesses_and_blood_transfusions" target="_blank" rel="noopener">Wikipedia — Jehovah's Witnesses and blood transfusions</a></li>
+<li><a class="src" href="https://www.jwfacts.com/watchtower/blood-transfusions.php" target="_blank" rel="noopener">jwfacts.com — The Watchtower's changing stance on blood transfusions</a></li>
+<li><a class="src" href="https://en.wikipedia.org/wiki/Development_of_Jehovah's_Witnesses_doctrine" target="_blank" rel="noopener">Wikipedia — Development of Jehovah's Witnesses doctrine (« new light »)</a></li>
+<li><a class="src" href="https://www.ajwrb.org/bible/acts-15-and-the-apostolic-decree" target="_blank" rel="noopener">AJWRB — Acts 15 and the Apostolic Decree</a></li>
+<li><a class="src" href="https://www.jerusalemperspective.com/11082/" target="_blank" rel="noopener">Jerusalem Perspective — On « Blood » in the Apostolic Decree</a></li>
+<li><a class="src" href="https://en.wikipedia.org/wiki/Demographics_of_Jehovah's_Witnesses" target="_blank" rel="noopener">Wikipedia — Demographics of Jehovah's Witnesses</a></li>
+</ul>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  LVNA001 · Actualité · La Voie · lavoie.world<br>
+  <span style="opacity:.5;font-size:.85em;letter-spacing:.1em;">Ne rien ajouter, ne rien retrancher — Debarim 4:2</span>
+</footer>
+
+</body>
+</html>
