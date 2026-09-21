@@ -189,6 +189,9 @@ main{padding:18px 16px 8px;max-width:560px;margin:0 auto}
 .anons-item{background:var(--carte);border:1px solid var(--bordure-faible);border-left:3px solid var(--or);border-radius:12px;padding:14px 16px;margin-bottom:12px}
 .anons-item h4{font-weight:600;color:var(--or-clair);font-size:1.02rem}
 .anons-item p{color:var(--texte-doux);font-size:.94rem;margin-top:4px;line-height:1.4}
+.anons-corps{display:flex;gap:12px;align-items:flex-start}
+.anons-vignette{width:64px;height:64px;flex-shrink:0;border-radius:8px;object-fit:cover;border:1px solid var(--bordure-faible)}
+.anons-texte{flex:1;min-width:0}
 .retour{display:inline-flex;align-items:center;gap:6px;color:var(--or);background:none;border:none;font-family:'EB Garamond';font-size:1rem;cursor:pointer;margin-bottom:14px}
 .retour svg{width:20px;height:20px}
 
@@ -711,23 +714,23 @@ const CONFIG = {
   /* Annonces — ajoute / retire liy jan ou vle */
   /* Chak anons ka gen yon "url" — sa fè kat la klikab epi mennen dirèk sou paj la. */
   annonces: [
-    { titre: "📰 LVNA001 — Le sang et la Torah", texte: "Position de La Voie face aux ajustements 2026 du Collège Central des Témoins de Jéhovah sur le sang.", url: "actualite-lvna001-sang-et-torah.html" },
-    { titre: "💬 Nouvelle rubrique — Questions des ami(e)s de La Voie", texte: "Sur quelle prescription repose la commémoration du 14 Éthanim par La Voie ? Une réponse fondée sur les Ketubim.", url: "questions-amis-de-la-voie.html" },
-    { titre: "✨ Miqra Qadosh Spécial — Shabbat 14 Éthanim", texte: "Il est né un Moshiaḥ · Yahushuʿah Ha'Mashiaḥ, le Melekh promis · Luqas 2:10, 11", url: "miqra-14-ethanim.html" },
-    { titre: "📄 Nouvelle publication — Naissance de Yahushuʿah", texte: "Fiche Technique : une reconstruction zémanique de la date de naissance de Yahushuʿah Ha'Mashiaḥ, fondée sur les Ketubim, l'histoire et le kalandriye.", url: "fiche-naissance-yahushuah.html" },
-    { titre: "📖 Miqra Qadosh — Shabbat 7 Éthanim", texte: "Produisez donc du fruit digne de la teshubah · Mattiyahu 3:8", url: "miqra-7-ethanim.html" },
-    { titre: "🌙 Miqra Qadosh — Rosh Ḥodesh du 1er Éthanim", texte: "Un nouveau mois, une nouvelle grâce · Programme simplifié — chirim de circonstance ak diskou. ▶ service audio.", url: "miqra-qadosh-rosh-hodesh-ethanim.html" },
+    { titre: "📰 LVNA001 — Le sang et la Torah", texte: "Position de La Voie face aux ajustements 2026 du Collège Central des Témoins de Jéhovah sur le sang.", url: "actualite-lvna001-sang-et-torah.html", img: "actualite-lvna001-cover.jpg" },
+    { titre: "💬 Nouvelle rubrique — Questions des ami(e)s de La Voie", texte: "Sur quelle prescription repose la commémoration du 14 Éthanim par La Voie ? Une réponse fondée sur les Ketubim.", url: "questions-amis-de-la-voie.html", img: "questions-amis-de-la-voie-cover.jpg" },
+    { titre: "✨ Miqra Qadosh Spécial — Shabbat 14 Éthanim", texte: "Il est né un Moshiaḥ · Yahushuʿah Ha'Mashiaḥ, le Melekh promis · Luqas 2:10, 11", url: "miqra-14-ethanim.html", img: "miqra-14-ethanim.jpg" },
+    { titre: "📄 Nouvelle publication — Naissance de Yahushuʿah", texte: "Fiche Technique : une reconstruction zémanique de la date de naissance de Yahushuʿah Ha'Mashiaḥ, fondée sur les Ketubim, l'histoire et le kalandriye.", url: "fiche-naissance-yahushuah.html", img: "fiche-naissance-yahushuah-cover.jpg" },
+    { titre: "📖 Miqra Qadosh — Shabbat 7 Éthanim", texte: "Produisez donc du fruit digne de la teshubah · Mattiyahu 3:8", url: "miqra-7-ethanim.html", img: "miqra-7-ethanim.jpg" },
+    { titre: "🌙 Miqra Qadosh — Rosh Ḥodesh du 1er Éthanim", texte: "Un nouveau mois, une nouvelle grâce · Programme simplifié — chirim de circonstance ak diskou. ▶ service audio.", url: "miqra-qadosh-rosh-hodesh-ethanim.html", img: "miqra-rosh-hodesh-ethanim.jpg" },
     { titre: "⚠️ Avez-vous reconnu Yahushuʿah ?", texte: "Message vidéo essentiel — koute mizik la epi li mesaj la selon Ketabim Qedoshim yo.", url: "reconnaitre-yahushua.html" },
-    { titre: "📖 Miqra Qadosh — Shabbat 23 Ab", texte: "Yisraʾēl dans le dessein de Yahawah · Shemoth 19:6 · service audio complet 13 parties.", url: "miqra-23-ab.html" },
-    { titre: "🌿 Miqra Qadosh de Soukkoth — 7 jours", texte: "Programme complet des 7 jours · 15–21 Tishri (26 sept – 3 oct 2026). Livre du service + illustrations par jour + dépliant à imprimer.", url: "miqra-qadosh-soukkoth.html" },
+    { titre: "📖 Miqra Qadosh — Shabbat 23 Ab", texte: "Yisraʾēl dans le dessein de Yahawah · Shemoth 19:6 · service audio complet 13 parties.", url: "miqra-23-ab.html", img: "miqra-23-ab.jpg" },
+    { titre: "🌿 Miqra Qadosh de Soukkoth — 7 jours", texte: "Programme complet des 7 jours · 15–21 Tishri (26 sept – 3 oct 2026). Livre du service + illustrations par jour + dépliant à imprimer.", url: "miqra-qadosh-soukkoth.html", img: "miqra-soukkoth-affiche.jpg" },
     { titre: "📄 Nouvelle publication — Verbes ibriy francisés", texte: "Fiche Technique Éditoriale : comment La Voie conjugue en français les verbes ibriy — hitpalléler, thaballer…", url: "fiche-verbes-ibriy.html" },
-    { titre: "📄 Nouvelle publication — אֱמֶת · ʾEmet", texte: "Fiche Technique Éditoriale : pourquoi La Voie affine son vocabulaire et écarte Veritas / vérité au profit du terme ibrique du dépôt.", url: "fiche-emet.html" },
-    { titre: "📖 Miqra Qadosh — Shabbat 14 Éloul", texte: "7ᵉ et dernier enseignement : L'Accomplissement du dessein de Yahawah — Le rétablissement de toutes choses · Maʿasei 3:21", url: "miqra-14-eloul.html" },
-    { titre: "📖 Miqra Qadosh — Shabbat 2 Ab", texte: "« Créés à Son image » — Bereshith 1:26. Tout edisyon yo nan bibliyotèk la.", url: "miqra-qadosh.html" },
-    { titre: "🕊️ Téfilot — Matin · Midi · Soir", texte: "Les prières quotidiennes : 6:00, 12:00 et 21:30 (heure locale).", url: "tefilot.html" },
-    { titre: "▶ ʿAbodah Shabbat 25 Rebiʿi", texte: "Écouter le service complet — 20 pati k ap woule youn dèyè lòt.", url: "miqra-shabbath-qadosh.html" },
+    { titre: "📄 Nouvelle publication — אֱמֶת · ʾEmet", texte: "Fiche Technique Éditoriale : pourquoi La Voie affine son vocabulaire et écarte Veritas / vérité au profit du terme ibrique du dépôt.", url: "fiche-emet.html", img: "fiche-emet-couv.jpg" },
+    { titre: "📖 Miqra Qadosh — Shabbat 14 Éloul", texte: "7ᵉ et dernier enseignement : L'Accomplissement du dessein de Yahawah — Le rétablissement de toutes choses · Maʿasei 3:21", url: "miqra-14-eloul.html", img: "miqra-14-eloul-couv.jpg" },
+    { titre: "📖 Miqra Qadosh — Shabbat 2 Ab", texte: "« Créés à Son image » — Bereshith 1:26. Tout edisyon yo nan bibliyotèk la.", url: "miqra-qadosh.html", img: "logo_la_voie.png" },
+    { titre: "🕊️ Téfilot — Matin · Midi · Soir", texte: "Les prières quotidiennes : 6:00, 12:00 et 21:30 (heure locale).", url: "tefilot.html", img: "tefilah-matin.png" },
+    { titre: "▶ ʿAbodah Shabbat 25 Rebiʿi", texte: "Écouter le service complet — 20 pati k ap woule youn dèyè lòt.", url: "miqra-shabbath-qadosh.html", img: "miqra-shabbath-qadosh.jpg" },
     { titre: "Tèks Pou Jounen An", texte: "Nouvo tèks Rebiʿi yo ap pibliye chak jou ak ilistrasyon ak vwa.", url: "teks-jounen-anime.html" },
-    { titre: "VR-TV", texte: "Nouvo emisyon ak ansèyman disponib sou paj Rassemblements la.", url: "vr-tv.html" }
+    { titre: "VR-TV", texte: "Nouvo emisyon ak ansèyman disponib sou paj Rassemblements la.", url: "vr-tv.html", img: "logo-site.jpg" }
   ],
 
   /* Kalandriye : yon antre pou chak mwa. App la chwazi mwa a POUKONT LI
@@ -1064,15 +1067,16 @@ function majBadjNotif(){
   CONFIG.annonces.forEach(a => {
     const d = document.createElement(a.url ? 'a' : 'div');
     d.className = 'anons-item';
+    const vignette = a.img ? '<img class="anons-vignette" src="'+a.img+'" alt="" onerror="this.remove()">' : '';
     if (a.url) {
       d.href = a.url;
       d.style.display = 'block';
       d.style.textDecoration = 'none';
       d.style.cursor = 'pointer';
-      d.innerHTML = '<h4 style="display:flex;align-items:center;justify-content:space-between"><span></span><span style="color:var(--or);font-size:1.1rem">→</span></h4><p></p>';
+      d.innerHTML = '<div class="anons-corps">'+vignette+'<div class="anons-texte"><h4 style="display:flex;align-items:center;justify-content:space-between"><span></span><span style="color:var(--or);font-size:1.1rem">→</span></h4><p></p></div></div>';
       d.querySelector('h4 span').textContent = a.titre;
     } else {
-      d.innerHTML = '<h4></h4><p></p>';
+      d.innerHTML = '<div class="anons-corps">'+vignette+'<div class="anons-texte"><h4></h4><p></p></div></div>';
       d.querySelector('h4').textContent = a.titre;
     }
     d.querySelector('p').textContent = a.texte;
