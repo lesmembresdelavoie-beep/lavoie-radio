@@ -159,6 +159,8 @@ main{padding:18px 16px 8px;max-width:560px;margin:0 auto}
 .vignette h4{font-size:.9rem;font-weight:600;padding:10px 12px 12px;line-height:1.3;color:var(--texte)}
 
 /* ---------- SIFRÎYA ---------- */
+.sifriya-groupe{font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--or);opacity:0.75;margin:1.4rem 0 0.7rem;padding-top:0.9rem;border-top:1px solid var(--bordure-faible)}
+.sifriya-groupe:first-of-type{border-top:none;padding-top:0;margin-top:0}
 .livre{display:flex;gap:15px;background:var(--carte);border:1px solid var(--bordure-faible);border-radius:16px;padding:15px;margin-bottom:12px;text-decoration:none;color:var(--texte);cursor:pointer;align-items:center}
 .livre .couverture{width:56px;height:76px;border-radius:6px;flex-shrink:0;border:1px solid var(--bordure);display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#241c0b,#141006)}
 .livre .couverture svg{width:28px;height:28px;color:var(--or)}
@@ -545,6 +547,8 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
 <!-- ========== PAGE SIFRÎYA ========== -->
 <section class="page" id="page-biblio">
   <h2 class="page-titre">SIFRÎYA</h2>
+
+  <p class="sifriya-groupe">✦ 1. Shabbat — Hebdomadaire</p>
   <a class="livre" href="miqra-14-ethanim.html">
     <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
     <span>
@@ -559,13 +563,6 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
       <p>Produisez donc du fruit digne de la teshubah · Mattiyahu 3:8</p>
     </span>
   </a>
-  <a class="livre" href="miqra-qadosh-rosh-hodesh-ethanim.html">
-    <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
-    <span>
-      <h4>Miqra Qadosh — Rosh Ḥodesh 1er Éthanim</h4>
-      <p>Programme simplifié · ▶ service audio</p>
-    </span>
-  </a>
   <a class="livre" href="miqra-shabbath-qadosh.html">
     <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
     <span>
@@ -573,6 +570,40 @@ nav button.actif::before{content:"";position:absolute;top:0;width:34px;height:3p
       <p>Lecture audio séquencée pou Shabbat la</p>
     </span>
   </a>
+  <a class="livre" href="miqra-qadosh.html">
+    <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/></svg></span>
+    <span>
+      <h4>Toutes les éditions Shabbat</h4>
+      <p>Bibliothèque complète des Miqra Qadosh hebdomadaires</p>
+    </span>
+  </a>
+
+  <p class="sifriya-groupe">✦ 2. Rosh Ḥodesh — Mensuel</p>
+  <a class="livre" href="miqra-qadosh-rosh-hodesh-ethanim.html">
+    <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+    <span>
+      <h4>Miqra Qadosh — Rosh Ḥodesh 1er Éthanim</h4>
+      <p>Programme simplifié · ▶ service audio</p>
+    </span>
+  </a>
+
+  <p class="sifriya-groupe">✦ 3. Moʿadim annuels — Seʿoudat ha'Adôn · Shabuʿot · Soukkoth</p>
+  <a class="livre" href="miqra-qadosh-seoudat-haadon.html">
+    <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M8 8h8l2 12H6z"/></svg></span>
+    <span>
+      <h4>Miqra Qadosh — Seʿoudat ha'Adôn</h4>
+      <p>Le repas de l'Adôn · commémoration annuelle</p>
+    </span>
+  </a>
+  <a class="livre" href="miqra-qadosh-soukkoth.html">
+    <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-2 3-2 5 0 8-2 3-2 5 0 8M6 6c1 2 1 4 0 6M18 6c-1 2-1 4 0 6"/></svg></span>
+    <span>
+      <h4>Miqra Qadosh de Soukkoth — 7 jours</h4>
+      <p>15–21 Tishri (26 sept – 3 oct 2026) · programme complet</p>
+    </span>
+  </a>
+
+  <p class="sifriya-groupe">✦ Autres publications</p>
   <a class="livre" href="lintendant-fidele.html">
     <span class="couverture"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h13"/></svg></span>
     <span>
