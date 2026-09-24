@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playlist Roḥanit — La Voie</title>
+<meta name="description" content="Playlist mizik roḥanit La Voie — pou prélude, interlude, poz ak klotu pandan Shabbat, Rosh Ḥodesh ak moʿadim yo.">
+<meta name="theme-color" content="#0A1428">
+<style>
+  :root{
+    --nuit:#0A1428;
+    --nuit-2:#101F3D;
+    --nuit-3:#182A52;
+    --dore:#D4AF37;
+    --dore-pal:#E8CE7E;
+    --ivoire:#F5EFDC;
+    --ivoire-sombre:#C8C0A8;
+    --ligne:rgba(212,175,55,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--nuit);
+    color:var(--ivoire);
+    font-family:Georgia,'Times New Roman',serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:110px;
+  }
+  .nav{padding:1rem 1.2rem}
+  .nav a{font-family:Georgia,serif;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--dore);opacity:.85}
+
+  header{text-align:center;padding:1rem 1.5rem 1.6rem}
+  h1{font-size:clamp(1.6rem,7vw,2.3rem);color:var(--dore-pal);letter-spacing:.03em;margin-bottom:.5rem}
+  .sous-titre{font-style:italic;color:var(--ivoire-sombre);font-size:.98rem;max-width:34rem;margin:0 auto}
+  .sep{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--dore),transparent);margin:1.1rem auto}
+
+  .wrap{max-width:38rem;margin:0 auto;padding:0 1.2rem}
+
+  .note{
+    border:1px solid var(--ligne);border-radius:10px;padding:1rem 1.1rem;
+    background:rgba(212,175,55,.05);font-size:.9rem;color:var(--ivoire-sombre);margin-bottom:1.6rem;
+  }
+  .note b{color:var(--dore-pal)}
+
+  .filtre-groupe{margin-bottom:1rem}
+  .filtre-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dore);opacity:.8;margin-bottom:.5rem}
+  .filtre-rangee{display:flex;flex-wrap:wrap;gap:.5rem}
+  .filtre-btn{
+    font-family:Georgia,serif;font-size:.78rem;padding:.4rem .9rem;border-radius:999px;
+    border:1px solid var(--ligne);background:transparent;color:var(--ivoire-sombre);cursor:pointer;
+  }
+  .filtre-btn.aktif{background:var(--dore);color:var(--nuit);border-color:var(--dore);font-weight:700}
+
+  .player-cadre{
+    background:var(--nuit-2);border:1px solid var(--ligne);border-radius:12px;
+    padding:1rem 1.1rem 1.2rem;margin:1.4rem 0;
+  }
+  .player-now-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dore);margin-bottom:.3rem}
+  .player-now-titre{font-weight:700;color:var(--dore-pal);font-size:1rem;line-height:1.4;margin-bottom:.7rem;min-height:2.1em}
+  .player-cadre audio{width:100%;height:38px}
+  .player-nav{display:flex;justify-content:space-between;gap:.6rem;margin-top:.7rem}
+  .player-nav button{
+    flex:1;font-family:Georgia,serif;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--dore-pal);background:rgba(212,175,55,.1);border:1px solid var(--ligne);
+    border-radius:6px;padding:.55rem .3rem;cursor:pointer;
+  }
+  .player-toggles{display:flex;gap:.6rem;margin-top:.6rem}
+  .player-toggles button{
+    flex:1;font-family:Georgia,serif;font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--ivoire-sombre);background:transparent;border:1px solid var(--ligne);
+    border-radius:6px;padding:.45rem .3rem;cursor:pointer;
+  }
+  .player-toggles button.aktif{color:var(--nuit);background:var(--dore-pal);border-color:var(--dore-pal);font-weight:700}
+
+  .pisteliste{display:flex;flex-direction:column;gap:.4rem;padding-bottom:1rem}
+  .piste{
+    display:flex;align-items:center;gap:.7rem;background:rgba(255,255,255,.02);
+    border:1px solid rgba(212,175,55,.15);border-left:3px solid var(--ligne);
+    border-radius:8px;padding:.55rem .7rem;cursor:pointer;
+  }
+  .piste.active{background:rgba(212,175,55,.12);border-left-color:var(--dore)}
+  .piste.active .piste-titre{color:var(--dore-pal)}
+  .piste-num{font-size:.68rem;color:var(--dore);width:1.6rem;flex-shrink:0;text-align:center}
+  .piste-titre{flex:1;font-size:.9rem;line-height:1.3}
+  .piste-tags{display:flex;gap:.3rem;flex-shrink:0}
+  .piste-tag{font-size:.58rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ivoire-sombre);opacity:.7;border:1px solid var(--ligne);border-radius:999px;padding:.1rem .45rem}
+  .piste.hide{display:none}
+
+  footer{text-align:center;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dore);opacity:.6;padding:2rem 1rem;border-top:1px solid var(--ligne);margin-top:1rem}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a> &nbsp;·&nbsp; <a href="chirat-tehillah.html">Sefer conplè (pawòl)</a></div>
+
+<header>
+  <h1>Playlist Roḥanit</h1>
+  <p class="sous-titre">Mizik pou prélude, interlude, poz ak klotu — pandan Shabbat, Rosh Ḥodesh ak moʿadim yo (Soukkoth, Thabale, elatriye).</p>
+  <div class="sep"></div>
+</header>
+
+<div class="wrap">
+
+  <div class="note">
+    <b>Kijan pou itilize l :</b> chwazi yon moman (Prélude, Interlude, Poz, Klotu) ak/oswa yon okazyon (Shabbat, Rosh Ḥodesh, Thabale, Soukkoth), epi kite playlist la jwe an kontinyèl. Klasman mizik yo se yon premye pwopozisyon — nou ka ajiste tag yo nenpòt lè selon eksperyans reyèl yo nan Qehilah a.
+  </div>
+
+  <div class="filtre-groupe">
+    <div class="filtre-label">Moman</div>
+    <div class="filtre-rangee" id="filtre-moman">
+      <button class="filtre-btn aktif" data-m="tout">Tout</button>
+      <button class="filtre-btn" data-m="prelude">Prélude</button>
+      <button class="filtre-btn" data-m="interlude">Interlude</button>
+      <button class="filtre-btn" data-m="pause">Poz</button>
+      <button class="filtre-btn" data-m="cloture">Klotu</button>
+    </div>
+  </div>
+
+  <div class="filtre-groupe">
+    <div class="filtre-label">Okazyon</div>
+    <div class="filtre-rangee" id="filtre-okazyon">
+      <button class="filtre-btn aktif" data-o="tout">Tout</button>
+      <button class="filtre-btn" data-o="general">Jeneral</button>
+      <button class="filtre-btn" data-o="shabbat">Shabbat</button>
+      <button class="filtre-btn" data-o="roshhodesh">Rosh Ḥodesh</button>
+      <button class="filtre-btn" data-o="thabale">Thabale</button>
+      <button class="filtre-btn" data-o="soukkoth">Soukkoth</button>
+    </div>
+  </div>
+
+  <div class="player-cadre">
+    <div class="player-now-label">K ap jwe kounye a</div>
+    <div class="player-now-titre" id="pl-now">—</div>
+    <audio id="pl-audio" controls preload="none"></audio>
+    <div class="player-nav">
+      <button type="button" id="pl-prev">◀ Anvan</button>
+      <button type="button" id="pl-next">Apre ▶</button>
+    </div>
+    <div class="player-toggles">
+      <button type="button" id="pl-shuffle">🔀 Mèlanje</button>
+      <button type="button" id="pl-repeat" class="aktif">🔁 Kontinyèl</button>
+    </div>
+  </div>
+
+  <div class="pisteliste" id="pl-liste"></div>
+
+</div>
+
+<footer>Les Membres de La Voie · lavoie.world</footer>
+
+<script>
+(function(){
+  var pistes=[
+    {n:1,t:'Ret Fidèl Jouk Adôn nan Retounen',f:'tehillah-01-ret-fidel.mp3',m:'cloture',o:'general'},
+    {n:2,t:'Tan Yahawah yo Se pou Li',f:'tehillah-02-tan-yahawah.mp3',m:'prelude',o:'general'},
+    {n:3,t:'Rapèl Yah yo Fèm',f:'12_Rapel_Yah_yo_fem.mp3',m:'interlude',o:'general'},
+    {n:4,t:'N ap Kanpé Ansanm',f:'tehillah-04-nap-kanpe-ansanm.mp3',m:'prelude',o:'general'},
+    {n:5,t:'Nou nan Moman Restorasyon an',f:'tehillah-05-restorasyon.mp3',m:'interlude',o:'general'},
+    {n:6,t:'Egzaminé Lavérité',f:'tehillah-06-egzamine-laverite.mp3',m:'interlude',o:'general'},
+    {n:7,t:'Nou Swiv Ritm Malkouwt la',f:'tehillah-07-ritm-malkuwt.mp3',m:'interlude',o:'general'},
+    {n:8,t:'De Lune en Lune, Nou Pwostèné Devan W',f:'tehillah-08-de-lune-en-lune.mp3',m:'prelude',o:'roshhodesh'},
+    {n:9,t:'Toda Raba, Abba Yah',f:'tefilah-matin-kantik.mp3',m:'prelude',o:'general'},
+    {n:10,t:'La Vwa — Mache nan Chemen an',f:'tehillah-10-vwasi-la-vwa.mp3',m:'interlude',o:'general'},
+    {n:11,t:'Thabalé',f:'tehillah-11-thabale.mp3',m:'interlude',o:'thabale'},
+    {n:12,t:'Nan Dlo a Nou Leve',f:'tehillah-12-nan-dlo-a.mp3',m:'interlude',o:'thabale'},
+    {n:13,t:'Chante pou Yahawah',f:'tehillah-13-chante-pou-yahawah.mp3',m:'interlude',o:'general'},
+    {n:14,t:'Nou Nan La Vwa',f:'tehillah-14-nou-nan-la-vwa.mp3',m:'interlude',o:'general'},
+    {n:15,t:'Nou Tout se Tal\'midim',f:'tehillah-15-nou-se-talmidim.mp3',m:'interlude',o:'general'},
+    {n:16,t:'Chèche — Verifye',f:'tehillah-16-cheche-verifye.mp3',m:'interlude',o:'general'},
+    {n:17,t:'Abinou ShebaShamayim',f:'tehillah-17-abinou.mp3',m:'prelude',o:'general'},
+    {n:18,t:'HallelouYah — Leve Men Nou',f:'tehillah-18-halelouyah-leve-men.mp3',m:'interlude',o:'general'},
+    {n:19,t:'Prepare Nou pou Rantre',f:'tehillah-19-prepare-nou.mp3',m:'prelude',o:'general'},
+    {n:20,t:'Shabbat — yon Kado Yah Ban Nou',f:'tehillah-20-shabbat-kado.mp3',m:'prelude',o:'shabbat'},
+    {n:21,t:'Shabbat — Repo Solanèl',f:'tehillah-21-shabbat-repo-solanel.mp3',m:'pause',o:'shabbat'},
+    {n:22,t:'Ann Antre nan HaHakhanah',f:'tehillah-22-hahakhanah.mp3',m:'prelude',o:'shabbat'},
+    {n:23,t:'Jou a ap Vini',f:'tehillah-23-jou-a-ap-vini.mp3',m:'cloture',o:'general'},
+    {n:24,t:'Ou te Kreye Nou Selon Imaj Ou',f:'tehillah-24-selon-imaj-ou.mp3',m:'interlude',o:'general'},
+    {n:25,t:'Tout Bagay Te Bon Anpil',f:'tehillah-25-tout-bagay-te-bon.mp3',m:'interlude',o:'general'},
+    {n:26,t:'Nan Mitan Jounen An',f:'tehillah-26-nan-mitan-jounen.mp3',m:'pause',o:'general'},
+    {n:27,t:'Tout Sa Ki Gen Souf — Fè Lwanj',f:'tehillah-27-tout-sa-ki-gen-souf.mp3',m:'interlude',o:'general'},
+    {n:28,t:'Nou Se Reparatè Brèch Yo',f:'tehillah-28-reparate-brech.mp3',m:'interlude',o:'general'},
+    {n:29,t:'Mèsi, Abba Yah, Pou Lanmou Ou',f:'tehillah-29-mesi-abba-yah.mp3',m:'pause',o:'general'},
+    {n:30,t:'Konsekans Dezobeyisans Premye Paran Nou Yo',f:'tehillah-30-konsekans-dezobeyisans.mp3',m:'interlude',o:'general'},
+    {n:31,t:'Batay Sa a Se Batay Yahawah',f:'tehillah-31-batay-yahawah.mp3',m:'interlude',o:'general'},
+    {n:32,t:'Chirat Ha\'Yam — M ap Chante pou Yahawah',f:'tehillah-32-chirat-ha-yam.mp3',m:'interlude',o:'general'},
+    {n:33,t:'Nou pap Fè Silans',f:'tehillah-33-nou-pap-fe-silans (1).mp3',m:'interlude',o:'general'},
+    {n:34,t:'Nan Non Yahawah Mwen Kanpe',f:'tehillah-34-nan-non-yahawah.mp3',m:'interlude',o:'general'},
+    {n:36,t:'Abba Yah, Ou Kenbé Pwomès Ou',f:'tehillah-36-abba-yah-kenbe-pwomes.mp3',m:'cloture',o:'general'},
+    {n:37,t:'Yerushalayim, Rétounen',f:'tehillah-37-yerushalayim-retounen.mp3',m:'interlude',o:'soukkoth'},
+    {n:38,t:'Li Bon! Li Agreyab!',f:'tehillah-38-li-bon-li-agreyab.mp3',m:'prelude',o:'soukkoth'},
+    {n:39,t:'Sèl Lanmou K Ap Rété',f:'tehillah-39-sel-lanmou-k-ap-rete.mp3',m:'cloture',o:'general'}
+  ];
+
+  var etikMoman={prelude:'Prélude',interlude:'Interlude',pause:'Poz',cloture:'Klotu'};
+  var etikOkazyon={general:'Jeneral',shabbat:'Shabbat',roshhodesh:'Rosh Ḥodesh',thabale:'Thabale',soukkoth:'Soukkoth'};
+
+  var audio=document.getElementById('pl-audio');
+  var now=document.getElementById('pl-now');
+  var liste=document.getElementById('pl-liste');
+  var mActif='tout', oActif='tout';
+  var idx=-1;
+  var meleAktif=false;
+  var repeteAktif=true;
+  var lisFiltre=pistes.slice();
+
+  function filtreAplike(){
+    lisFiltre=pistes.filter(function(pi){
+      return (mActif==='tout'||pi.m===mActif) && (oActif==='tout'||pi.o===oActif);
+    });
+    if(meleAktif){
+      for(var i=lisFiltre.length-1;i>0;i--){
+        var j=Math.floor(Math.random()*(i+1));
+        var tmp=lisFiltre[i]; lisFiltre[i]=lisFiltre[j]; lisFiltre[j]=tmp;
+      }
+    }
+    rannLis();
+  }
+
+  function rannLis(){
+    liste.innerHTML='';
+    lisFiltre.forEach(function(pi,i){
+      var div=document.createElement('div');
+      div.className='piste';
+      div.innerHTML='<div class="piste-num">'+(i+1)+'</div>'+
+        '<div class="piste-titre">'+pi.t+'</div>'+
+        '<div class="piste-tags"><span class="piste-tag">'+etikMoman[pi.m]+'</span><span class="piste-tag">'+etikOkazyon[pi.o]+'</span></div>';
+      div.addEventListener('click',function(){ jwe(i); });
+      liste.appendChild(div);
+    });
+  }
+
+  function jwe(i){
+    if(i<0||i>=lisFiltre.length) return;
+    idx=i;
+    audio.src=lisFiltre[i].f;
+    audio.play().catch(function(){});
+    now.textContent=(i+1)+'. '+lisFiltre[i].t;
+    var els=liste.children;
+    for(var k=0;k<els.length;k++){ els[k].classList.toggle('active', k===i); }
+  }
+
+  audio.addEventListener('ended', function(){
+    if(idx<lisFiltre.length-1){ jwe(idx+1); }
+    else if(repeteAktif && lisFiltre.length>0){ jwe(0); }
+  });
+  document.getElementById('pl-prev').addEventListener('click', function(){ jwe(idx<=0?0:idx-1); });
+  document.getElementById('pl-next').addEventListener('click', function(){ jwe(idx<0?0:Math.min(idx+1,lisFiltre.length-1)); });
+
+  document.getElementById('pl-shuffle').addEventListener('click', function(){
+    meleAktif=!meleAktif;
+    this.classList.toggle('aktif', meleAktif);
+    filtreAplike();
+  });
+  document.getElementById('pl-repeat').addEventListener('click', function(){
+    repeteAktif=!repeteAktif;
+    this.classList.toggle('aktif', repeteAktif);
+  });
+
+  document.querySelectorAll('#filtre-moman .filtre-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('#filtre-moman .filtre-btn').forEach(function(b){ b.classList.remove('aktif'); });
+      btn.classList.add('aktif');
+      mActif=btn.getAttribute('data-m');
+      filtreAplike();
+    });
+  });
+  document.querySelectorAll('#filtre-okazyon .filtre-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('#filtre-okazyon .filtre-btn').forEach(function(b){ b.classList.remove('aktif'); });
+      btn.classList.add('aktif');
+      oActif=btn.getAttribute('data-o');
+      filtreAplike();
+    });
+  });
+
+  filtreAplike();
+})();
+</script>
+
+</body>
+</html>
