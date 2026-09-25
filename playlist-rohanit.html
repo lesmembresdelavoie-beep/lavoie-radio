@@ -125,6 +125,7 @@
       <button class="filtre-btn" data-o="roshhodesh">Rosh Ḥodesh</button>
       <button class="filtre-btn" data-o="thabale">Thabale</button>
       <button class="filtre-btn" data-o="soukkoth">Soukkoth</button>
+      <button class="filtre-btn" data-o="seoudat">Seʿoudat ha'Adôn</button>
     </div>
   </div>
 
@@ -153,7 +154,7 @@
   var pistes=[
     {n:1,t:'Ret Fidèl Jouk Adôn nan Retounen',f:'tehillah-01-ret-fidel.mp3',m:'cloture',o:'general'},
     {n:2,t:'Tan Yahawah yo Se pou Li',f:'tehillah-02-tan-yahawah.mp3',m:'prelude',o:'general'},
-    {n:3,t:'Rapèl Yah yo Fèm',f:'12_Rapel_Yah_yo_fem.mp3',m:'interlude',o:'general'},
+    {n:3,t:'Chirat de méditation',f:'12_Rapel_Yah_yo_fem.mp3',m:'pause',o:'general'},
     {n:4,t:'N ap Kanpé Ansanm',f:'tehillah-04-nap-kanpe-ansanm.mp3',m:'prelude',o:'general'},
     {n:5,t:'Nou nan Moman Restorasyon an',f:'tehillah-05-restorasyon.mp3',m:'interlude',o:'general'},
     {n:6,t:'Egzaminé Lavérité',f:'tehillah-06-egzamine-laverite.mp3',m:'interlude',o:'general'},
@@ -188,11 +189,25 @@
     {n:36,t:'Abba Yah, Ou Kenbé Pwomès Ou',f:'tehillah-36-abba-yah-kenbe-pwomes.mp3',m:'cloture',o:'general'},
     {n:37,t:'Yerushalayim, Rétounen',f:'tehillah-37-yerushalayim-retounen.mp3',m:'interlude',o:'soukkoth'},
     {n:38,t:'Li Bon! Li Agreyab!',f:'tehillah-38-li-bon-li-agreyab.mp3',m:'prelude',o:'soukkoth'},
-    {n:39,t:'Sèl Lanmou K Ap Rété',f:'tehillah-39-sel-lanmou-k-ap-rete.mp3',m:'cloture',o:'general'}
+    {n:39,t:'Sèl Lanmou K Ap Rété',f:'tehillah-39-sel-lanmou-k-ap-rete.mp3',m:'cloture',o:'general'},
+    {n:40,t:'Yon Moshiaḥ Fèt',f:'m14eth-chirat-ouverture.mp3',m:'prelude',o:'general'},
+    {n:41,t:"Chirat d'ouverture — Joyeux Rôsh Ḥodesh",f:'rh-ethanim-chirat-ouverture.mp3',m:'prelude',o:'roshhodesh'},
+    {n:42,t:'An Rasanble Ansanm',f:'s7ethanim-chirat-ouverture.mp3',m:'prelude',o:'general'},
+    {n:43,t:'Retounen Vin Jwenn Yahawah',f:'s7ethanim-chirat-cloture.mp3',m:'cloture',o:'general'},
+    {n:44,t:'Incence Circuit (mizik enstriman)',f:'s7ethanim-musique-fond.mp3',m:'pause',o:'general'},
+    {n:45,t:'Fè Teshubah, Malkuwt la Pwoché',f:'m28eloul-chirat-teshubah.mp3',m:'prelude',o:'general'},
+    {n:46,t:'N ap Travèsé Pou Canaan',f:'m28eloul-chirat-canaan.mp3',m:'cloture',o:'general'},
+    {n:47,t:'Pou Lanmou Li (Tehillah Nouvo)',f:'m30ab-chirat-pou-lanmou-li.mp3',m:'interlude',o:'general'},
+    {n:48,t:"Kopher — Pri Lavi a",f:'m7el-chirat-ouverture.mp3',m:'prelude',o:'seoudat'},
+    {n:49,t:'Li Vivan Pou Toutan',f:'m7el-chirat-cloture.mp3',m:'cloture',o:'seoudat'},
+    {n:50,t:'Mizik pou Tèks Pou Jounen An (enstriman)',f:'teks-jounen-muzik.mp3',m:'pause',o:'general'},
+    {n:51,t:'Abinou Yah',f:'tefilah-matin-kantik2.mp3',m:'pause',o:'general'},
+    {n:52,t:'Tande Téfilah Mwen',f:'tefilah-soir-kantik.mp3',m:'pause',o:'general'},
+    {n:53,t:'Li Tande Kri Nou',f:'tefilah-soir-kantik2.mp3',m:'pause',o:'general'}
   ];
 
   var etikMoman={prelude:'Prélude',interlude:'Interlude',pause:'Poz',cloture:'Klotu'};
-  var etikOkazyon={general:'Jeneral',shabbat:'Shabbat',roshhodesh:'Rosh Ḥodesh',thabale:'Thabale',soukkoth:'Soukkoth'};
+  var etikOkazyon={general:'Jeneral',shabbat:'Shabbat',roshhodesh:'Rosh Ḥodesh',thabale:'Thabale',soukkoth:'Soukkoth',seoudat:"Seʿoudat ha'Adôn"};
 
   var audio=document.getElementById('pl-audio');
   var now=document.getElementById('pl-now');
