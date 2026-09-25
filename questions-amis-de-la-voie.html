@@ -128,6 +128,23 @@ h1 {
 .question-bloc p { margin-bottom: 1rem; font-size: .99rem; color: var(--creme); opacity: .92; }
 .question-bloc p:last-child { margin-bottom: 0; }
 
+.lekte-q {
+  display: flex; align-items: center; gap: .8rem;
+  background: rgba(6,13,26,.4);
+  border: 1px solid rgba(201,168,76,.35);
+  padding: .6rem .9rem; border-radius: 3rem;
+  margin-bottom: 1.3rem;
+}
+.lekte-q .btn-jwe-q {
+  flex: none; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 1px solid var(--or); background: transparent; color: var(--or-c);
+  font-size: .95rem; cursor: pointer; line-height: 1;
+}
+.lekte-q .btn-jwe-q:focus-visible { outline: 2px solid var(--or-c); outline-offset: 2px; }
+.lekte-q .baraj-q { flex: 1; display: flex; flex-direction: column; gap: .3rem; }
+.lekte-q .baraj-q input[type=range] { width: 100%; accent-color: var(--or); height: 4px; cursor: pointer; }
+.lekte-q .tan-q { display: flex; justify-content: space-between; font-size: .68rem; color: var(--argent); letter-spacing: .05em; }
+
 blockquote {
   border-left: 3px solid var(--or);
   padding: .7rem 1.1rem;
@@ -247,6 +264,14 @@ footer {
     <div class="question-date">25 septembre 2026</div>
     <div class="question-titre">Le devoir conjugal (1 Qorintiyim 7:3-6) : réciprocité, contrainte et durée de l'abstinence</div>
 
+    <div class="lekte-q" data-src="vwa-question-devoir-conjugal.mp3">
+      <button class="btn-jwe-q" aria-label="Jwe oswa kanpe repons lan an odyo">▶</button>
+      <div class="baraj-q">
+        <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan odyo a">
+        <div class="tan-q"><span class="tan-koule-q">0:00</span><span class="tan-total-q">–:––</span></div>
+      </div>
+    </div>
+
     <div class="question-enonce">
       Peut-on évoquer la notion de « viol conjugal » entre deux personnes mariées, toutes deux tal'midim de Yahushuʿah et Mashiyḥim, lorsqu'on se réfère aux principes de 1 Qorintiyim 7:3-6 ? Et quelle peut être la durée du « temps déterminé » pendant lequel les époux peuvent s'abstenir afin de se consacrer à la téfilah ?
     </div>
@@ -348,6 +373,14 @@ footer {
     <div class="question-date">25 septembre 2026</div>
     <div class="question-titre">« Réjouissez-vous avec ceux qui se réjouissent » peut-il s'appliquer au deuil et à l'anniversaire de naissance ?</div>
 
+    <div class="lekte-q" data-src="vwa-question-deuil-anniversaire.mp3">
+      <button class="btn-jwe-q" aria-label="Jwe oswa kanpe repons lan an odyo">▶</button>
+      <div class="baraj-q">
+        <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan odyo a">
+        <div class="tan-q"><span class="tan-koule-q">0:00</span><span class="tan-total-q">–:––</span></div>
+      </div>
+    </div>
+
     <div class="question-enonce">
       Akh Šāʾūl recommande aux Mashiyḥim de Rome : « Réjouissez-vous avec ceux qui se réjouissent ; pleurez avec ceux qui pleurent. » (Romiyim 12:15). Ce principe peut-il s'appliquer concrètement à deux circonstances de la vie : accompagner une personne dans son deuil, et partager la joie de quelqu'un à l'occasion de l'anniversaire de sa naissance ?
     </div>
@@ -395,6 +428,14 @@ footer {
   <div class="question-bloc" id="q-commemoration-naissance">
     <div class="question-date">14 Éthanim 2026</div>
     <div class="question-titre">Sur quelle prescription repose la commémoration du 14 Éthanim par La Voie ?</div>
+
+    <div class="lekte-q" data-src="vwa-question-commemoration-naissance.mp3">
+      <button class="btn-jwe-q" aria-label="Jwe oswa kanpe repons lan an odyo">▶</button>
+      <div class="baraj-q">
+        <input type="range" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan odyo a">
+        <div class="tan-q"><span class="tan-koule-q">0:00</span><span class="tan-total-q">–:––</span></div>
+      </div>
+    </div>
 
     <div class="question-enonce">
       Avant son départ, Yahushuʿah donna cette instruction à ses shilliaḥim : « Enseignez-leur à observer tout ce que je vous ai commandé. » (Mattiyahu 28:20). Il leur avait notamment demandé de continuer à commémorer le dernier repas précédant sa mort korbanique : « Continuez à faire ceci en mémoire de moi. » (Luqas 22:19). Nous trouvons donc une prescription explicite concernant cet événement. Mais où Yahushuʿah a-t-il prescrit à ses tal'midim de célébrer chaque année sa naissance ? Et puisque 1 Korinthiyim 4:6 nous avertit de ne pas aller au-delà de ce qui est écrit, sur quelle prescription repose la commémoration du 14 Éthanim par La Voie ?
@@ -444,5 +485,60 @@ footer {
   <span style="opacity:.5;font-size:.85em;letter-spacing:.1em;">Retour au Dabar — Examiner — Vérifier — Retenir ce qui résiste à l'examen</span>
 </footer>
 
+<script>
+(function(){
+  var audio = null, lekteAktif = null;
+
+  function fmt(s){
+    if(!isFinite(s)) return "–:––";
+    var m = Math.floor(s/60), r = Math.floor(s%60);
+    return m + ":" + (r<10?"0":"") + r;
+  }
+
+  document.querySelectorAll(".lekte-q").forEach(function(lekte){
+    var btn = lekte.querySelector(".btn-jwe-q");
+    var bar = lekte.querySelector("input[type=range]");
+    var tKoule = lekte.querySelector(".tan-koule-q");
+    var tTotal = lekte.querySelector(".tan-total-q");
+    var src = lekte.getAttribute("data-src");
+    var kapGlise = false;
+
+    function rale(){
+      if(lekteAktif === lekte && audio) return audio;
+      if(audio){ audio.pause(); if(lekteAktif) lekteAktif.querySelector(".btn-jwe-q").textContent = "▶"; }
+      audio = new Audio(src);
+      audio.preload = "auto";
+      lekteAktif = lekte;
+
+      audio.addEventListener("loadedmetadata", function(){ tTotal.textContent = fmt(audio.duration); });
+      audio.addEventListener("timeupdate", function(){
+        if(kapGlise) return;
+        tKoule.textContent = fmt(audio.currentTime);
+        if(isFinite(audio.duration)) bar.value = (audio.currentTime/audio.duration)*100;
+      });
+      audio.addEventListener("ended", function(){ btn.textContent = "▶"; bar.value = 0; tKoule.textContent = "0:00"; });
+      audio.addEventListener("error", function(){ tTotal.textContent = "erè"; btn.textContent = "▶"; });
+      return audio;
+    }
+
+    btn.addEventListener("click", function(){
+      var a = rale();
+      if(a.paused){ a.play(); btn.textContent = "❚❚"; }
+      else { a.pause(); btn.textContent = "▶"; }
+    });
+
+    bar.addEventListener("input", function(){
+      kapGlise = true;
+      if(audio && lekteAktif === lekte && isFinite(audio.duration))
+        tKoule.textContent = fmt((bar.value/100)*audio.duration);
+    });
+    bar.addEventListener("change", function(){
+      var a = rale();
+      if(isFinite(a.duration)) a.currentTime = (bar.value/100)*a.duration;
+      kapGlise = false;
+    });
+  });
+})();
+</script>
 </body>
 </html>
