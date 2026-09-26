@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discours spécial — Il est né un Moshiaḥ · Shabbat 14 Éthanim · La Voie</title>
+<meta name="description" content="Discours spécial du Shabbat 14 Éthanim — « Il est né un Moshiaḥ » — Yahushuʿah Ha'Mashiaḥ, le Melekh promis, avec illustrations synchronisées.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bleu-nuit:#0d2347;
+    --bleu-fonce:#0a1a35;
+    --or:#c9a84c;
+    --or-clair:#e8cb7a;
+    --parchemin:#faf6ec;
+    --creme:#f5eedc;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:linear-gradient(175deg,#050d1c 0%,var(--bleu-fonce) 40%,var(--bleu-nuit) 100%);
+    color:var(--creme);
+    min-height:100vh;
+  }
+  .nav{padding:1rem 1.2rem}
+  .nav a{
+    font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.15em;
+    text-transform:uppercase;text-decoration:none;color:var(--or);opacity:.85;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 1.2rem 4rem}
+  header{text-align:center;padding:1rem 0 1.8rem}
+  .badge{
+    display:inline-block;font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--bleu-fonce);
+    background:linear-gradient(135deg,var(--or-clair),var(--or));
+    border-radius:999px;padding:.35rem 1.1rem;margin-bottom:1.2rem;
+  }
+  h1{
+    font-family:'Cinzel',serif;font-size:clamp(1.6rem,6.5vw,2.3rem);
+    color:var(--or-clair);letter-spacing:.02em;line-height:1.3;margin-bottom:.5rem;
+  }
+  .sous-titre{font-style:italic;color:var(--creme);opacity:.85;font-size:1.05rem}
+
+  .scene{
+    position:relative;width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;
+    border:1px solid rgba(201,168,76,.4);background:#04101f;
+    box-shadow:0 12px 34px rgba(0,0,0,.5);margin-bottom:1.4rem;
+  }
+  .scene img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity 1s ease;
+  }
+  .scene img.active{opacity:1}
+
+  .lekteur{
+    display:flex;align-items:center;gap:1rem;
+    background:rgba(6,13,26,.5);border:1px solid rgba(201,168,76,.4);
+    padding:.8rem 1.1rem;border-radius:3rem;margin-bottom:1.6rem;
+  }
+  .btn-jwe-d{
+    flex:none;width:3.2rem;height:3.2rem;border-radius:50%;
+    border:1px solid var(--or);background:transparent;color:var(--or-clair);
+    font-size:1.1rem;cursor:pointer;line-height:1;
+  }
+  .baraj-d{flex:1;display:flex;flex-direction:column;gap:.35rem}
+  .baraj-d input[type=range]{width:100%;accent-color:var(--or);height:4px;cursor:pointer}
+  .tan-d{display:flex;justify-content:space-between;font-size:.72rem;color:#b8c8dc;letter-spacing:.05em}
+
+  .etat{
+    text-align:center;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--or);opacity:.75;margin-bottom:2rem;
+  }
+
+  footer{
+    text-align:center;padding:2rem 1.5rem 3rem;color:#b8c8dc;font-size:.85rem;
+    font-style:italic;border-top:1px solid rgba(201,168,76,.25);max-width:34rem;margin:0 auto;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav"><a href="miqra-14-ethanim.html">← Retour au Miqra Qadosh</a></nav>
+
+<div class="wrap">
+  <header>
+    <div class="badge">Discours de circonstance</div>
+    <h1>IL EST NÉ UN MOSHIAḤ</h1>
+    <p class="sous-titre">Yahushuʿah Ha'Mashiaḥ — le Melekh promis · Shabbat 14 Éthanim</p>
+  </header>
+
+  <div class="scene" id="scene">
+    <img src="miqra-14-ethanim.jpg" class="active" data-i="-1" alt="Il est né un Moshiaḥ">
+    <img src="discours14eth-10-gabriel-non-yahushuah.webp" data-i="0" alt="Gabriʾel annonce à Miryam le nom Yahushuʿah — Luqas 1:31">
+    <img src="discours14eth-01-zekharyah-division-abiyah.jpg" data-i="1" alt="Zekharyah, de la division d'Abiyah — Luqas 1:5">
+    <img src="discours14eth-02-zekharyah-lansan-tanp.jpg" data-i="2" alt="Zekharyah offre l'encens dans le Temple — Luqas 1:8-10">
+    <img src="discours14eth-03-malakh-anonse.jpg" data-i="3" alt="Le mal'akh annonce la nouvelle — Luqas 1:11-20">
+    <img src="discours14eth-04-fen-shabbat-kite-tanp.jpg" data-i="4" alt="Fin de son service, il quitte le Temple — Luqas 1:23">
+    <img src="discours14eth-05-tounen-lakay-yehudah.jpg" data-i="5" alt="Il rentre chez lui, dans la montagne de Yehudah — Luqas 1:23-24">
+    <img src="discours14eth-06-al-jwenn-elisheba.jpg" data-i="6" alt="Il retrouve Élisheba, son épouse — Luqas 1:24-25">
+    <img src="discours14eth-07-lign-tan-recap-ziw.jpg" data-i="7" alt="Ligne du temps récapitulative — dernière semaine du ḥodesh Ziw">
+    <img src="discours14eth-09-chronologie-age-yahushuah.jpg" data-i="8" alt="Chronologie et âge de Yahushuʿah — 70 semaines de Dāniyyēʾl 9:24-27 et Luqas 3:23">
+    <img src="discours14eth-08-terre-jardin-eden-hazon21.jpg" data-i="9" alt="La terre deviendra le Jardin d'Éden sous le règne du Mèl'ekh Yahushuʿah — Ḥazon 21:1-5">
+  </div>
+
+  <div class="lekteur">
+    <button class="btn-jwe-d" id="btnJwe" aria-label="Jwe oswa kanpe diskou a">▶</button>
+    <div class="baraj-d">
+      <input type="range" id="barD" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan diskou a">
+      <div class="tan-d"><span id="tKouleD">0:00</span><span id="tTotalD">–:––</span></div>
+    </div>
+  </div>
+
+  <p class="etat" id="etatDiskou">Peze ▶ pou koute diskou a</p>
+</div>
+
+<footer>
+  Discours de circonstance · Shabbat 14 Éthanim · lavoie.world<br>
+  <span style="opacity:.6">Cette reconstruction zémanique n'engage que La Voie et son travail d'examen des Ketubim.</span>
+</footer>
+
+<audio id="audioDiskou" preload="none" src="discours-il-est-ne-un-moshiah.mp3"></audio>
+<audio id="audioAplodisman" preload="none" src="rh-ethanim-applaudissements.mp3"></audio>
+
+<script>
+(function(){
+  var audio = document.getElementById('audioDiskou');
+  var aplodisman = document.getElementById('audioAplodisman');
+  var btn = document.getElementById('btnJwe');
+  var bar = document.getElementById('barD');
+  var tKoule = document.getElementById('tKouleD');
+  var tTotal = document.getElementById('tTotalD');
+  var etat = document.getElementById('etatDiskou');
+  var imgs = document.querySelectorAll('#scene img');
+  var kapGlise = false;
+
+  // [tan an segonn, endèks imaj (data-i)]
+  var repè = [
+    [0,      -1],
+    [591.6,   0],
+    [885.3,   1],
+    [921.5,   2],
+    [957.8,   3],
+    [994.0,   4],
+    [1030.2,  5],
+    [1066.5,  6],
+    [1102.7,  7],
+    [1139.0,  8],
+    [1629.5, -1],
+    [1984.5,  9],
+    [2335.2, -1]
+  ];
+  var iAktyèl = -2;
+
+  function fmt(s){
+    if(!isFinite(s)) return "–:––";
+    var m = Math.floor(s/60), r = Math.floor(s%60);
+    return m + ":" + (r<10?"0":"") + r;
+  }
+
+  function montreImaj(idx){
+    if(idx === iAktyèl) return;
+    iAktyèl = idx;
+    imgs.forEach(function(im){
+      im.classList.toggle('active', parseInt(im.getAttribute('data-i'),10) === idx);
+    });
+  }
+
+  function jwenRepè(t){
+    var idx = -1;
+    for(var i=0;i<repè.length;i++){
+      if(t >= repè[i][0]) idx = repè[i][1];
+      else break;
+    }
+    return idx;
+  }
+
+  audio.addEventListener('loadedmetadata', function(){ tTotal.textContent = fmt(audio.duration); });
+  audio.addEventListener('timeupdate', function(){
+    if(!kapGlise){
+      tKoule.textContent = fmt(audio.currentTime);
+      if(isFinite(audio.duration)) bar.value = (audio.currentTime/audio.duration)*100;
+    }
+    montreImaj(jwenRepè(audio.currentTime));
+  });
+  audio.addEventListener('ended', function(){
+    btn.textContent = "▶";
+    bar.value = 100;
+    montreImaj(-1);
+    etat.textContent = "Diskou a fini";
+    aplodisman.currentTime = 0;
+    aplodisman.play().catch(function(){});
+  });
+  audio.addEventListener('error', function(){ etat.textContent = "Erè pandan chajman odyo a"; });
+
+  btn.addEventListener('click', function(){
+    if(audio.paused){
+      audio.play();
+      btn.textContent = "❚❚";
+      etat.textContent = "Diskou a ap koule";
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
+      etat.textContent = "An poz";
+    }
+  });
+
+  bar.addEventListener('input', function(){
+    kapGlise = true;
+    if(isFinite(audio.duration)) tKoule.textContent = fmt((bar.value/100)*audio.duration);
+  });
+  bar.addEventListener('change', function(){
+    if(isFinite(audio.duration)) audio.currentTime = (bar.value/100)*audio.duration;
+    kapGlise = false;
+  });
+})();
+</script>
+</body>
+</html>
