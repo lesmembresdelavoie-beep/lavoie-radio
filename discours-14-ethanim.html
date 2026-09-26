@@ -102,15 +102,17 @@
     <img src="discours14eth-08-terre-jardin-eden-hazon21.jpg" data-i="9" alt="La terre deviendra le Jardin d'Éden sous le règne du Mèl'ekh Yahushuʿah — Ḥazon 21:1-5">
   </div>
 
+  <p class="etat" id="pisteNom" style="margin-bottom:.6rem">1/3 — Propos d'ouverture du président</p>
+
   <div class="lekteur">
-    <button class="btn-jwe-d" id="btnJwe" aria-label="Jwe oswa kanpe diskou a">▶</button>
+    <button class="btn-jwe-d" id="btnJwe" aria-label="Jwe oswa kanpe pwogram nan">▶</button>
     <div class="baraj-d">
-      <input type="range" id="barD" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan diskou a">
+      <input type="range" id="barD" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon nan pyès la">
       <div class="tan-d"><span id="tKouleD">0:00</span><span id="tTotalD">–:––</span></div>
     </div>
   </div>
 
-  <p class="etat" id="etatDiskou">Peze ▶ pou koute diskou a</p>
+  <p class="etat" id="etatDiskou">Peze ▶ pou kòmanse pwogram nan</p>
 </div>
 
 <footer>
@@ -118,7 +120,7 @@
   <span style="opacity:.6">Cette reconstruction zémanique n'engage que La Voie et son travail d'examen des Ketubim.</span>
 </footer>
 
-<audio id="audioDiskou" preload="none" src="discours-il-est-ne-un-moshiah.mp3"></audio>
+<audio id="audioDiskou" preload="none"></audio>
 <audio id="audioAplodisman" preload="none" src="rh-ethanim-applaudissements.mp3"></audio>
 <audio id="audioFond" loop preload="none" src="s7ethanim-musique-fond.mp3"></audio>
 
@@ -131,10 +133,19 @@
   var tKoule = document.getElementById('tKouleD');
   var tTotal = document.getElementById('tTotalD');
   var etat = document.getElementById('etatDiskou');
+  var pisteNom = document.getElementById('pisteNom');
   var imgs = document.querySelectorAll('#scene img');
   var fond = document.getElementById('audioFond');
   var fondFade = null;
   var kapGlise = false;
+
+  var pistes = [
+    {t:"Propos d'ouverture du président", f:"discours14eth-propos-ouverture-president.mp3"},
+    {t:"Chirat d'ouverture — Yon Moshiah fèt", f:"m14eth-chirat-ouverture.mp3"},
+    {t:"Discours — Il est né un Moshiaḥ", f:"discours-il-est-ne-un-moshiah.mp3"}
+  ];
+  var idxPiste = -1;
+  var IDX_DISKOU = 2;
 
   function fondMonte(){
     if(fondFade) clearInterval(fondFade);
@@ -193,36 +204,51 @@
     return idx;
   }
 
+  function jwe(i){
+    if(i >= pistes.length){
+      btn.textContent = "▶";
+      bar.value = 100;
+      montreImaj(-1);
+      etat.textContent = "Pwogram nan fini";
+      if(idxPiste === IDX_DISKOU) fondBese();
+      aplodisman.currentTime = 0;
+      aplodisman.play().catch(function(){});
+      return;
+    }
+    idxPiste = i;
+    pisteNom.textContent = (i+1) + "/" + pistes.length + " — " + pistes[i].t;
+    montreImaj(-1);
+    audio.src = pistes[i].f;
+    audio.play();
+    btn.textContent = "❚❚";
+    etat.textContent = "Ap koule…";
+    if(idxPiste === IDX_DISKOU) fondMonte();
+    else fondBese();
+  }
+
   audio.addEventListener('loadedmetadata', function(){ tTotal.textContent = fmt(audio.duration); });
   audio.addEventListener('timeupdate', function(){
     if(!kapGlise){
       tKoule.textContent = fmt(audio.currentTime);
       if(isFinite(audio.duration)) bar.value = (audio.currentTime/audio.duration)*100;
     }
-    montreImaj(jwenRepè(audio.currentTime));
+    if(idxPiste === IDX_DISKOU) montreImaj(jwenRepè(audio.currentTime));
   });
-  audio.addEventListener('ended', function(){
-    btn.textContent = "▶";
-    bar.value = 100;
-    montreImaj(-1);
-    etat.textContent = "Diskou a fini";
-    fondBese();
-    aplodisman.currentTime = 0;
-    aplodisman.play().catch(function(){});
-  });
+  audio.addEventListener('ended', function(){ jwe(idxPiste + 1); });
   audio.addEventListener('error', function(){ etat.textContent = "Erè pandan chajman odyo a"; });
 
   btn.addEventListener('click', function(){
+    if(idxPiste === -1){ jwe(0); return; }
     if(audio.paused){
       audio.play();
-      fondMonte();
       btn.textContent = "❚❚";
-      etat.textContent = "Diskou a ap koule";
+      etat.textContent = "Ap koule…";
+      if(idxPiste === IDX_DISKOU) fondMonte();
     } else {
       audio.pause();
-      fondBese();
       btn.textContent = "▶";
       etat.textContent = "An poz";
+      if(idxPiste === IDX_DISKOU) fondBese();
     }
   });
 
