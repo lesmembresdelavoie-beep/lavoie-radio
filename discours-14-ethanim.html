@@ -120,6 +120,7 @@
 
 <audio id="audioDiskou" preload="none" src="discours-il-est-ne-un-moshiah.mp3"></audio>
 <audio id="audioAplodisman" preload="none" src="rh-ethanim-applaudissements.mp3"></audio>
+<audio id="audioFond" loop preload="none" src="s7ethanim-musique-fond.mp3"></audio>
 
 <script>
 (function(){
@@ -131,7 +132,25 @@
   var tTotal = document.getElementById('tTotalD');
   var etat = document.getElementById('etatDiskou');
   var imgs = document.querySelectorAll('#scene img');
+  var fond = document.getElementById('audioFond');
+  var fondFade = null;
   var kapGlise = false;
+
+  function fondMonte(){
+    if(fondFade) clearInterval(fondFade);
+    if(fond.paused){ fond.currentTime = 0; fond.volume = 0; fond.play().catch(function(){}); }
+    fondFade = setInterval(function(){
+      fond.volume = Math.min(0.1, fond.volume + 0.01);
+      if(fond.volume >= 0.1) clearInterval(fondFade);
+    }, 200);
+  }
+  function fondBese(){
+    if(fondFade) clearInterval(fondFade);
+    fondFade = setInterval(function(){
+      fond.volume = Math.max(0, fond.volume - 0.02);
+      if(fond.volume <= 0){ clearInterval(fondFade); fond.pause(); }
+    }, 100);
+  }
 
   // [tan an segonn, endèks imaj (data-i)]
   var repè = [
@@ -187,6 +206,7 @@
     bar.value = 100;
     montreImaj(-1);
     etat.textContent = "Diskou a fini";
+    fondBese();
     aplodisman.currentTime = 0;
     aplodisman.play().catch(function(){});
   });
@@ -195,10 +215,12 @@
   btn.addEventListener('click', function(){
     if(audio.paused){
       audio.play();
+      fondMonte();
       btn.textContent = "❚❚";
       etat.textContent = "Diskou a ap koule";
     } else {
       audio.pause();
+      fondBese();
       btn.textContent = "▶";
       etat.textContent = "An poz";
     }
