@@ -151,11 +151,12 @@
     {t:"Cinquième lecture", f:"discours14eth-lecture-5.mp3"},
     {t:"Transition vers Les Rappels de Yah", f:"discours14eth-transition-rappels-yah.mp3"},
     {t:"Les Rappels de Yah", f:"discours14eth-rappels-de-yah.mp3"},
-    {t:"Discours — Il est né un Moshiaḥ", f:"discours-il-est-ne-un-moshiah.mp3"}
+    {t:"Discours — Il est né un Moshiaḥ", f:"discours-il-est-ne-un-moshiah.mp3"},
+    {t:"Chirat de clôture — Entrons dans le repos d'Èlohim", f:"discours14eth-chirat-cloture.mp3"}
   ];
   var idxPiste = -1;
   var IDX_DISKOU = 11;
-  var pisteAvèkFond = [0, 2, 3, 9, 10, 11]; // tout eksepte chirat (1) ak lekti yo (4,5,6,7,8)
+  var pisteAvèkFond = [0, 2, 3, 9, 10, 11]; // tout eksepte chirat yo (1, 12) ak lekti yo (4,5,6,7,8)
   function avekFond(i){ return pisteAvèkFond.indexOf(i) !== -1; }
 
   function fondMonte(){
@@ -223,8 +224,6 @@
       montreImaj(-1);
       etat.textContent = "Pwogram nan fini";
       if(avekFond(idxPiste)) fondBese();
-      aplodisman.currentTime = 0;
-      aplodisman.play().catch(function(){});
       return;
     }
     idxPiste = i;
@@ -246,7 +245,13 @@
     }
     if(idxPiste === IDX_DISKOU) montreImaj(jwenRepè(audio.currentTime));
   });
-  audio.addEventListener('ended', function(){ jwe(idxPiste + 1); });
+  audio.addEventListener('ended', function(){
+    if(idxPiste === IDX_DISKOU){
+      aplodisman.currentTime = 0;
+      aplodisman.play().catch(function(){});
+    }
+    jwe(idxPiste + 1);
+  });
   audio.addEventListener('error', function(){ etat.textContent = "Erè pandan chajman odyo a"; });
 
   btn.addEventListener('click', function(){
