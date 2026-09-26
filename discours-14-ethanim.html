@@ -71,6 +71,28 @@
     text-transform:uppercase;color:var(--or);opacity:.75;margin-bottom:2rem;
   }
 
+  .paroles{
+    display:none;
+    border:1px solid rgba(201,168,76,.4);border-radius:14px;
+    background:rgba(6,13,26,.5);
+    padding:1.3rem 1.4rem;margin-bottom:1.6rem;
+    max-height:60vh;overflow-y:auto;
+  }
+  .paroles.active{display:block}
+  .paroles-titre{
+    text-align:center;font-family:'Cinzel',serif;color:var(--or-clair);
+    font-size:1.15rem;letter-spacing:.03em;margin-bottom:.2rem;
+  }
+  .paroles-soustitre{text-align:center;font-style:italic;color:var(--creme);opacity:.85;margin-bottom:.2rem}
+  .paroles-refs{text-align:center;font-size:.72rem;color:var(--or);opacity:.75;letter-spacing:.04em;margin-bottom:1.1rem}
+  .paroles .etikèt{
+    color:var(--or);font-style:italic;font-size:.85rem;
+    margin:1.3rem 0 .4rem;letter-spacing:.05em;
+  }
+  .paroles .kle{color:var(--or-clair);font-style:italic;font-size:.85rem;display:block;margin:.5rem 0 .2rem}
+  .paroles p{white-space:pre-line;font-size:1rem;line-height:1.6;color:var(--creme)}
+  .paroles .refren{color:var(--or-clair);font-weight:600}
+
   footer{
     text-align:center;padding:2rem 1.5rem 3rem;color:#b8c8dc;font-size:.85rem;
     font-style:italic;border-top:1px solid rgba(201,168,76,.25);max-width:34rem;margin:0 auto;
@@ -87,6 +109,134 @@
     <h1>IL EST NÉ UN MOSHIAḤ</h1>
     <p class="sous-titre">Yahushuʿah Ha'Mashiaḥ — le Melekh promis · Shabbat 14 Éthanim</p>
   </header>
+
+  <div class="paroles" id="paroles">
+    <p class="paroles-titre">🎶 YON MOSHIAḤ FÈT!</p>
+    <p class="paroles-soustitre">Yahushuʿah Ha'Mashiaḥ — Melekh pwomès la</p>
+    <p class="paroles-refs">Louqas 2:10-11 · Yaḥuānān 1:14; 3:16 · Yeshaʿeyah 9:6-7 · Louqas 1:31-33</p>
+
+    <p class="etikèt">Intro — dousman, solanèl</p>
+    <p><span class="kle">Yon vwa:</span>Nou pa bézwen pè…
+Paské gen yon bòn nouvèl,
+Yon nouvèl kap poté gwo kè kontan
+Pou tout pèp la:
+Jodi a…
+yon Moshiakḥ fèt.</p>
+    <p><span class="kle">Asanble, dousman:</span>Yahushuʿah Ha'Mashiakḥ…</p>
+
+    <p class="etikèt">Couplet 1</p>
+    <p>Éthanim té wè yon bèl jou,
+Yon timoun té antré nan monn nan;
+Mal'akh la poté bòn nouvèl la,
+Yon nouvèl pou fè kè pèp la kontan.
+Yon Pitit Gason té fèt,
+Yo té ban nou yon timoun ;
+Dominasyon an va sou zèpòl Li,
+Malkuwt Li a pap janm fini.
+Yahawah sonjé pwomès Li,
+Dabar Li a pa t tonbé atè;
+Moshiakḥ Li té pwomèt la vini:
+Yahushuʿah, Mélèkh nou an!</p>
+
+    <p class="etikèt refren">Refren</p>
+    <p class="refren">YON MOSHIAKḤ FÈT!
+YON MÉLÈKH VINI!
+YAHUSHUʿAH HA'MASHIAḤ!
+Se yon nouvèl kè kontan
+Pou tout pèp la!
+YON PITIT GASON FÈT!
+YO BAN NOU YON TIMOUN!
+Yahawah montré lanmou Li,
+Li ban nou Moshiakḥ La !
+HallélouYah!
+HallélouYah!
+Mélèkh la vini!</p>
+
+    <p class="etikèt">Couplet 2</p>
+    <p>Dabar la té vin chè,
+Li tabli tant Li nan mitan nou;
+Yahawah, atravè Pitit Gason Li,
+Te vin rété nan mitan lèzòm.
+Tankou Soukkoth poté lajwa,
+Lè pèp la rété dévan Yahawah,
+Jou sa a poté gwo kè kontan:
+Moshiakḥ la nan mitan nou!
+Yahawah tèlman renmen limanité,
+Li ban nou Pitit Gason Li a,
+Pou tout moun ki egzèse émounah nan Li
+Ka jwenn lavi ki pap janm fini an.</p>
+
+    <p class="etikèt refren">Refren</p>
+    <p class="refren">YON MOSHIAḤ FÈT!
+YON MÉLÈKH VINI!
+YAHUSHUʿAH HA'MASHIAḤ!
+Sé yon nouvèl kè kontan
+Pou tout pèp la!
+YON PITIT GASON FÈT!
+YO BAN NOU YON TIMOUN!
+Yahawah montré lanmou Li,
+Li ban nou Moshiakḥ La!
+HallélouYah!
+HallélouYah!
+Mélèkh la vini!</p>
+
+    <p class="etikèt">Pont — call and response</p>
+    <p><span class="kle">Dirijan:</span>Kisa mal'akh la té anonsé?</p>
+    <p><span class="kle">Asanble:</span><span class="refren">YON BÒN NOUVÈL!</span></p>
+    <p><span class="kle">Dirijan:</span>Pou kiyès nouvèl sa a yé?</p>
+    <p><span class="kle">Asanble:</span><span class="refren">POU TOUT PÈP LA!</span></p>
+    <p><span class="kle">Dirijan:</span>Kiyès ki fèt?</p>
+    <p><span class="kle">Asanble:</span><span class="refren">YON MOSHIAḤ!</span></p>
+    <p><span class="kle">Dirijan:</span>Ki non Li?</p>
+    <p><span class="kle">Asanble:</span><span class="refren">YAHUSHUʿAH!</span></p>
+    <p><span class="kle">Dirijan:</span>Kiyès Li yé?</p>
+    <p><span class="kle">Tout asanble a:</span><span class="refren">YAHUSHUʿAH HA'MASHIAKḤ!
+MÉLÈKH PWOMÈS LA!</span></p>
+
+    <p class="etikèt">Montée</p>
+    <p>Yon Pitit Gason fèt!
+HallélouYah!
+Yo ban nou yon timoun!
+HallélouYah!
+Dominasyon an sou zèpòl Li!
+HallélouYah!
+Malkuwt Li a pap janm fini!
+HallélouYah!
+Yahawah té pwomèt Li…
+É LI VINI!</p>
+
+    <p class="etikèt refren">Gran refren final</p>
+    <p class="refren">YON MOSHIAKḤ FÈT!
+YON GRAN MÉLÈKH VINI!
+YAHUSHUʿAH!
+YAHUSHUʿAH!
+YAHUSHUʿAH HA'MASHIAKḤ!
+Éthanim poté bon nouvèl la,
+Yon nouvèl pou fè tout pèp kontan!
+Yahawah montré lanmou Li,
+Li ban nou Pitit Gason Li a !
+Yon Pitit Gason fèt!
+Yo ban nou yon timoun!
+Dominasyon an sou zèpòl Li,
+Malkuwt Li a pap janm fini!
+Mélèkh la vini!
+Moshiakḥ la vini!</p>
+
+    <p><span class="kle">Tout pèp la, lévé vwa nou:</span><span class="refren">HALLÉLOUYAH!
+YAHUSHUʿAH HA'MASHIAKḤ!
+MÉLÈKH PWOMÈS LA!</span></p>
+
+    <p class="etikèt">Outro — majestueux, dousman</p>
+    <p>Éthanim…
+Ḥodèsh ki poté mémwa
+Yon nouvèl kè kontan…
+Yon Moshiaḥ fèt.
+Yahawah ban nou
+Pitit Gason Li.
+Yahushuʿah Ha'Mashiakḥ…
+Mélèkh la.
+HallélouYah.</p>
+  </div>
 
   <div class="scene" id="scene">
     <img src="miqra-14-ethanim.jpg" class="active" data-i="-1" alt="Il est né un Moshiaḥ">
@@ -134,6 +284,8 @@
   var tTotal = document.getElementById('tTotalD');
   var etat = document.getElementById('etatDiskou');
   var pisteNom = document.getElementById('pisteNom');
+  var paroles = document.getElementById('paroles');
+  var pisteAvèkParol = [1, 12]; // chirat d'ouverture, chirat de méditation
   var imgs = document.querySelectorAll('#scene img');
   var fond = document.getElementById('audioFond');
   var fondFade = null;
@@ -228,6 +380,7 @@
       btn.textContent = "▶";
       bar.value = 100;
       montreImaj(-1);
+      paroles.classList.remove('active');
       etat.textContent = "Pwogram nan fini";
       if(avekFond(idxPiste)) fondBese();
       return;
@@ -235,6 +388,7 @@
     idxPiste = i;
     pisteNom.textContent = (i+1) + "/" + pistes.length + " — " + pistes[i].t;
     montreImaj(-1);
+    paroles.classList.toggle('active', pisteAvèkParol.indexOf(idxPiste) !== -1);
     audio.src = pistes[i].f;
     audio.play();
     btn.textContent = "❚❚";
