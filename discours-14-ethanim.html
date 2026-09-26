@@ -147,6 +147,8 @@
   ];
   var idxPiste = -1;
   var IDX_DISKOU = 3;
+  var pisteAvèkFond = [0, 2, 3]; // propos, téfilah, diskou — pa chirat (endèks 1)
+  function avekFond(i){ return pisteAvèkFond.indexOf(i) !== -1; }
 
   function fondMonte(){
     if(fondFade) clearInterval(fondFade);
@@ -212,7 +214,7 @@
       bar.value = 100;
       montreImaj(-1);
       etat.textContent = "Pwogram nan fini";
-      if(idxPiste === IDX_DISKOU) fondBese();
+      if(avekFond(idxPiste)) fondBese();
       aplodisman.currentTime = 0;
       aplodisman.play().catch(function(){});
       return;
@@ -224,7 +226,7 @@
     audio.play();
     btn.textContent = "❚❚";
     etat.textContent = "Ap koule…";
-    if(idxPiste === IDX_DISKOU) fondMonte();
+    if(avekFond(idxPiste)) fondMonte();
     else fondBese();
   }
 
@@ -245,12 +247,12 @@
       audio.play();
       btn.textContent = "❚❚";
       etat.textContent = "Ap koule…";
-      if(idxPiste === IDX_DISKOU) fondMonte();
+      if(avekFond(idxPiste)) fondMonte();
     } else {
       audio.pause();
       btn.textContent = "▶";
       etat.textContent = "An poz";
-      if(idxPiste === IDX_DISKOU) fondBese();
+      if(avekFond(idxPiste)) fondBese();
     }
   });
 
