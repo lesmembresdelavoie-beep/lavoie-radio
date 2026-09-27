@@ -469,6 +469,7 @@
       </div>
       <div class="header-odyo">
         <button class="header-odyo-btn" id="odyoBtnJ1" aria-label="Jwe oswa kanpe">▶</button>
+        <button class="header-odyo-btn" id="odyoNextJ1" aria-label="Pase nan pwochen pyès la">⏭</button>
         <div class="header-odyo-info">
           <div class="header-odyo-nom" id="odyoNomJ1">🎧 Écouter le Miqra Qadosh</div>
           <div class="header-odyo-etat" id="odyoEtatJ1">Peze ▶ pou kòmanse</div>
@@ -1648,6 +1649,7 @@ function fondSoukkothBese(){
 function creyeLekteJou(sfx, pistes, pisteAvèkFond){
   var audio = document.getElementById('odyoAudio' + sfx);
   var btn = document.getElementById('odyoBtn' + sfx);
+  var next = document.getElementById('odyoNext' + sfx);
   var bar = document.getElementById('odyoBar' + sfx);
   var tKoule = document.getElementById('odyoKoule' + sfx);
   var tTotal = document.getElementById('odyoTotal' + sfx);
@@ -1705,6 +1707,10 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond){
       etat.textContent = "An poz";
       if(avekFond(idxPiste)) fondSoukkothBese();
     }
+  });
+
+  if(next) next.addEventListener('click', function(){
+    jwe(idxPiste === -1 ? 0 : idxPiste + 1);
   });
 
   if(!bar) return;
