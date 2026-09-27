@@ -468,6 +468,7 @@
         <div class="header-soustitre">26 → 27 septembre 2026</div>
       </div>
       <div class="header-odyo">
+        <button class="header-odyo-btn" id="odyoPrevJ1" aria-label="Tounen nan pyès anvan an">⏮</button>
         <button class="header-odyo-btn" id="odyoBtnJ1" aria-label="Jwe oswa kanpe">▶</button>
         <button class="header-odyo-btn" id="odyoNextJ1" aria-label="Pase nan pwochen pyès la">⏭</button>
         <div class="header-odyo-info">
@@ -1650,6 +1651,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond){
   var audio = document.getElementById('odyoAudio' + sfx);
   var btn = document.getElementById('odyoBtn' + sfx);
   var next = document.getElementById('odyoNext' + sfx);
+  var prev = document.getElementById('odyoPrev' + sfx);
   var bar = document.getElementById('odyoBar' + sfx);
   var tKoule = document.getElementById('odyoKoule' + sfx);
   var tTotal = document.getElementById('odyoTotal' + sfx);
@@ -1711,6 +1713,9 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond){
 
   if(next) next.addEventListener('click', function(){
     jwe(idxPiste === -1 ? 0 : idxPiste + 1);
+  });
+  if(prev) prev.addEventListener('click', function(){
+    jwe(Math.max(0, idxPiste - 1));
   });
 
   if(!bar) return;
