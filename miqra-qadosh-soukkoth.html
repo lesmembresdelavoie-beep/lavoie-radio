@@ -312,6 +312,45 @@
     line-height:1.55;font-style:italic;
   }
 
+  /* LEKTÈ ODYO JOU */
+  .odyo-bloc{
+    margin-top:1.4rem;
+    background:linear-gradient(135deg, #0d2347, #172d54);
+    color:var(--parchemin);
+    border-radius:6px;padding:1.1rem 1rem;
+    position:relative;overflow:hidden;
+    box-shadow:0 6px 22px rgba(13,35,71,0.25);
+  }
+  .odyo-bloc::before{
+    content:'';position:absolute;inset:6px;
+    border:1px solid rgba(201,168,76,0.35);
+    border-radius:4px;pointer-events:none;
+  }
+  .odyo-eyebrow{
+    font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;
+    color:var(--or);text-transform:uppercase;text-align:center;
+    margin-bottom:0.6rem;position:relative;
+  }
+  .odyo-piste-nom{
+    text-align:center;font-size:0.85rem;color:var(--or-pale);
+    margin-bottom:0.7rem;position:relative;min-height:1.2em;
+  }
+  .odyo-lekteur{
+    display:flex;align-items:center;gap:0.7rem;position:relative;
+  }
+  .odyo-btn{
+    flex:none;width:2.6rem;height:2.6rem;border-radius:50%;
+    border:1px solid var(--or);background:transparent;color:var(--or-pale);
+    font-size:0.95rem;cursor:pointer;line-height:1;
+  }
+  .odyo-baraj{flex:1;display:flex;flex-direction:column;gap:0.3rem}
+  .odyo-baraj input[type=range]{width:100%;accent-color:var(--or);height:4px;cursor:pointer}
+  .odyo-tan{display:flex;justify-content:space-between;font-size:0.65rem;color:#cdd8e8;letter-spacing:0.04em}
+  .odyo-etat{
+    text-align:center;font-size:0.68rem;color:var(--or);opacity:0.75;
+    margin-top:0.6rem;position:relative;letter-spacing:0.05em;
+  }
+
   /* ILLUSTRATION JOU */
   .jour-illust{
     flex-shrink:0;
@@ -573,6 +612,20 @@
         <p class="conclusion-txt">Que ce premier jour de Soukkoth nous rappelle que Yahawah désire demeurer au milieu de Son peuple et conduire ceux qui mettent leur confiance en Lui.</p>
       </div>
 
+      <div class="odyo-bloc">
+        <div class="odyo-eyebrow">🎧 Écouter le Miqra Qadosh</div>
+        <div class="odyo-piste-nom" id="odyoNomJ1">1/4 — Prélude</div>
+        <div class="odyo-lekteur">
+          <button class="odyo-btn" id="odyoBtnJ1" aria-label="Jwe oswa kanpe">▶</button>
+          <div class="odyo-baraj">
+            <input type="range" id="odyoBarJ1" min="0" max="100" value="0" step="0.1" aria-label="Pozisyon">
+            <div class="odyo-tan"><span id="odyoKouleJ1">0:00</span><span id="odyoTotalJ1">–:––</span></div>
+          </div>
+        </div>
+        <div class="odyo-etat" id="odyoEtatJ1">Peze ▶ pou kòmanse</div>
+      </div>
+
+      <audio id="odyoAudioJ1" preload="none"></audio>
     </div>
 
     <div class="scroll-hint">
@@ -1588,5 +1641,80 @@
 
 
 </div>
+
+<script>
+// Lektè odyo pou chak jou — kreye yon enstans separe pou chak jou ki gen id sifiks (pa egzanp "J1")
+function creyeLekteJou(sfx, pistes){
+  var audio = document.getElementById('odyoAudio' + sfx);
+  var btn = document.getElementById('odyoBtn' + sfx);
+  var bar = document.getElementById('odyoBar' + sfx);
+  var tKoule = document.getElementById('odyoKoule' + sfx);
+  var tTotal = document.getElementById('odyoTotal' + sfx);
+  var etat = document.getElementById('odyoEtat' + sfx);
+  var pisteNom = document.getElementById('odyoNom' + sfx);
+  var idxPiste = -1;
+  var kapGlise = false;
+
+  function fmt(s){
+    if(!isFinite(s)) return "–:––";
+    var m = Math.floor(s/60), r = Math.floor(s%60);
+    return m + ":" + (r<10?"0":"") + r;
+  }
+
+  function jwe(i){
+    if(i >= pistes.length){
+      btn.textContent = "▶";
+      bar.value = 100;
+      etat.textContent = "Pwogram nan fini";
+      return;
+    }
+    idxPiste = i;
+    pisteNom.textContent = (i+1) + "/" + pistes.length + " — " + pistes[i].t;
+    audio.src = pistes[i].f;
+    audio.play();
+    btn.textContent = "❚❚";
+    etat.textContent = "Ap koule…";
+  }
+
+  audio.addEventListener('loadedmetadata', function(){ tTotal.textContent = fmt(audio.duration); });
+  audio.addEventListener('timeupdate', function(){
+    if(!kapGlise){
+      tKoule.textContent = fmt(audio.currentTime);
+      if(isFinite(audio.duration)) bar.value = (audio.currentTime/audio.duration)*100;
+    }
+  });
+  audio.addEventListener('ended', function(){ jwe(idxPiste + 1); });
+  audio.addEventListener('error', function(){ etat.textContent = "Erè pandan chajman odyo a"; });
+
+  btn.addEventListener('click', function(){
+    if(idxPiste === -1){ jwe(0); return; }
+    if(audio.paused){
+      audio.play();
+      btn.textContent = "❚❚";
+      etat.textContent = "Ap koule…";
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
+      etat.textContent = "An poz";
+    }
+  });
+
+  bar.addEventListener('input', function(){
+    kapGlise = true;
+    if(isFinite(audio.duration)) tKoule.textContent = fmt((bar.value/100)*audio.duration);
+  });
+  bar.addEventListener('change', function(){
+    if(isFinite(audio.duration)) audio.currentTime = (bar.value/100)*audio.duration;
+    kapGlise = false;
+  });
+}
+
+creyeLekteJou('J1', [
+  {t:"Prélude — Le Grand Miqra Qadosh", f:"discours14eth-prelude-soukkoth.mp3"},
+  {t:"Propos d'ouverture du président", f:"discours14eth-propos-premier-jour-soukkoth.mp3"},
+  {t:"Chirat d'ouverture — Ritm Malkuwt la", f:"tehillah-07-ritm-malkuwt.mp3"},
+  {t:"Tèks pou jounen an — Présence", f:"discours14eth-teks-jounen-soukkoth-presence.mp3"}
+]);
+</script>
 </body>
 </html>
