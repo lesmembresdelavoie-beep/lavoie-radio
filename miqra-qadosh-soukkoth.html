@@ -333,6 +333,46 @@
     text-transform:uppercase;color:var(--or-clair);
   }
   .header-odyo-etat{ font-size:0.65rem;color:var(--or);opacity:0.8; }
+
+  /* PAWÒL CHIRAT — parèt anba header-bar la pandan yon Chirat ap jwe */
+  .chirat-pawol{
+    flex:1;min-height:0;display:none;flex-direction:column;
+    background:var(--bleu-fonce);color:var(--parchemin);
+  }
+  .page.ak-pawol .chirat-pawol{display:flex}
+  .page.ak-pawol .page-content{display:none}
+  .chirat-pawol-tet{
+    display:flex;align-items:center;gap:0.8rem;
+    padding:0.7rem 1.3rem;border-bottom:1px solid rgba(201,168,76,0.3);
+    flex-shrink:0;
+  }
+  .chirat-pawol-tit{
+    flex:1;min-width:0;font-family:'Cinzel',serif;font-weight:700;
+    font-size:0.9rem;letter-spacing:0.05em;color:var(--or-clair);
+  }
+  .chirat-pawol-ref{font-style:italic;font-size:0.8rem;color:var(--or);margin-top:0.15rem;font-family:'Cormorant Garamond',serif;font-weight:400}
+  .chirat-pawol-femen{
+    flex:none;border:1px solid var(--or);background:transparent;color:var(--or-clair);
+    border-radius:1rem;padding:0.3rem 0.8rem;font-size:0.8rem;cursor:pointer;font-family:inherit;
+  }
+  .chirat-pawol-kò{
+    flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:0.6rem 1.3rem 3.5rem;text-align:center;
+  }
+  .chirat-pawol-kò .etikèt{
+    color:var(--or);font-style:italic;font-size:0.9rem;
+    margin:1.4rem 0 0.4rem;letter-spacing:0.05em;
+  }
+  .chirat-pawol-kò p{white-space:pre-line;font-size:1.15rem;line-height:1.6}
+  .chirat-pawol-kò .refren p{color:var(--or-pale);font-weight:600}
+  .chirat-pawol-kò .refren p.etikèt{font-weight:400}
+  .chirat-pawol-mesaj{font-style:italic;color:var(--or);margin-top:2rem}
+  .header-odyo-btn.btn-pawol{display:none}
+  .page.gen-pawol:not(.ak-pawol) .header-odyo-btn.btn-pawol{display:block}
+  @media (min-width:600px){
+    .chirat-pawol-tet, .chirat-pawol-kò{ padding-left:2.5rem; padding-right:2.5rem; }
+    .chirat-pawol-kò > *{ max-width:600px; margin-left:auto; margin-right:auto; }
+  }
   @media (max-width:420px){
     .header-odyo-info{ display:none; }
   }
@@ -471,12 +511,21 @@
         <button class="header-odyo-btn" id="odyoPrevJ1" aria-label="Tounen nan pyès anvan an">⏮</button>
         <button class="header-odyo-btn" id="odyoBtnJ1" aria-label="Jwe oswa kanpe">▶</button>
         <button class="header-odyo-btn" id="odyoNextJ1" aria-label="Pase nan pwochen pyès la">⏭</button>
+        <button class="header-odyo-btn btn-pawol" id="odyoPawolBtnJ1" aria-label="Montre pawòl Chirat la">🎶</button>
         <div class="header-odyo-info">
           <div class="header-odyo-nom" id="odyoNomJ1">🎧 Écouter le Miqra Qadosh</div>
           <div class="header-odyo-etat" id="odyoEtatJ1">Peze ▶ pou kòmanse</div>
         </div>
       </div>
       <audio id="odyoAudioJ1" preload="none"></audio>
+    </div>
+
+    <div class="chirat-pawol" id="odyoPawolJ1" aria-live="polite">
+      <div class="chirat-pawol-tet">
+        <div class="chirat-pawol-tit"></div>
+        <button class="chirat-pawol-femen" type="button" aria-label="Kache pawòl yo">✕ Fèmen</button>
+      </div>
+      <div class="chirat-pawol-kò"></div>
     </div>
 
     <div class="page-content">
@@ -630,12 +679,21 @@
         <button class="header-odyo-btn" id="odyoPrevJ2" aria-label="Tounen nan pyès anvan an">⏮</button>
         <button class="header-odyo-btn" id="odyoBtnJ2" aria-label="Jwe oswa kanpe">▶</button>
         <button class="header-odyo-btn" id="odyoNextJ2" aria-label="Pase nan pwochen pyès la">⏭</button>
+        <button class="header-odyo-btn btn-pawol" id="odyoPawolBtnJ2" aria-label="Montre pawòl Chirat la">🎶</button>
         <div class="header-odyo-info">
           <div class="header-odyo-nom" id="odyoNomJ2">🎧 Écouter le Miqra Qadosh</div>
           <div class="header-odyo-etat" id="odyoEtatJ2">Peze ▶ pou kòmanse</div>
         </div>
       </div>
       <audio id="odyoAudioJ2" preload="none"></audio>
+    </div>
+
+    <div class="chirat-pawol" id="odyoPawolJ2" aria-live="polite">
+      <div class="chirat-pawol-tet">
+        <div class="chirat-pawol-tit"></div>
+        <button class="chirat-pawol-femen" type="button" aria-label="Kache pawòl yo">✕ Fèmen</button>
+      </div>
+      <div class="chirat-pawol-kò"></div>
     </div>
 
     <div class="page-content">
@@ -1656,6 +1714,19 @@ function fondSoukkothBese(){
   }, 100);
 }
 
+// Pawòl Chirat yo — pran dirèkteman nan Sefer a (chirat-tehillah.html) pou yo toujou menm jan,
+// selon non fichye odyo a (data-src). Yon sèl chajman pou tout jou yo.
+var sefeChiratPwomès = null;
+function chajeSefeChirat(){
+  if(!sefeChiratPwomès){
+    sefeChiratPwomès = fetch('chirat-tehillah.html')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(html){ return new DOMParser().parseFromString(html, 'text/html'); })
+      .catch(function(e){ sefeChiratPwomès = null; throw e; });
+  }
+  return sefeChiratPwomès;
+}
+
 // Lektè odyo pou chak jou — kreye yon enstans separe pou chak jou ki gen id sifiks (pa egzanp "J1")
 // preludPistes (opsyonèl) : lis mizik ki jwe youn apre lòt an boukle anvan pwogram nan kòmanse.
 function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
@@ -1676,6 +1747,60 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
   var idxPrelud = -1;
   function avekFond(i){ return pisteAvèkFond.indexOf(i) !== -1; }
 
+  // Panno pawòl Chirat la
+  var paj = audio.closest('.page');
+  var pawol = document.getElementById('odyoPawol' + sfx);
+  var pawolTit = pawol ? pawol.querySelector('.chirat-pawol-tit') : null;
+  var pawolKò = pawol ? pawol.querySelector('.chirat-pawol-kò') : null;
+  var pawolBtn = document.getElementById('odyoPawolBtn' + sfx);
+  var pawolFichye = null;
+  function kachePawol(){
+    pawolFichye = null;
+    if(paj) paj.classList.remove('ak-pawol', 'gen-pawol');
+  }
+  function montrePawol(fichye){
+    if(!pawol) return;
+    kachePawol();
+    pawolFichye = fichye;
+    chajeSefeChirat().then(function(doc){
+      if(pawolFichye !== fichye) return; // pyès la chanje pandan chajman an
+      var lekte = doc.querySelector('.lekte[data-src="' + fichye + '"]');
+      var chant = lekte ? lekte.closest('.chant') : null;
+      var kò = chant ? chant.querySelector('.pawol') : null;
+      if(!kò) return; // Chirat sa a poko gen pawòl nan Sefer a
+      var h2 = chant.querySelector('header h2');
+      var ref = chant.querySelector('header p');
+      pawolTit.textContent = '🎶 ' + (h2 ? h2.textContent : '');
+      if(ref){
+        var r = document.createElement('div');
+        r.className = 'chirat-pawol-ref';
+        r.textContent = ref.textContent;
+        pawolTit.appendChild(r);
+      }
+      pawolKò.innerHTML = '';
+      Array.prototype.forEach.call(kò.children, function(el){
+        pawolKò.appendChild(document.importNode(el, true));
+      });
+      var lyen = document.createElement('p');
+      lyen.className = 'chirat-pawol-mesaj';
+      lyen.innerHTML = '<a href="chirat-tehillah.html#' + chant.id + '" style="color:inherit">Wè chante a nan Sefer a →</a>';
+      pawolKò.appendChild(lyen);
+      pawolKò.scrollTop = 0;
+      paj.classList.add('gen-pawol', 'ak-pawol');
+    }).catch(function(){});
+  }
+  function pawolPouPiste(i){
+    if(/^Chirat/.test(pistes[i].t)) montrePawol(pistes[i].f);
+    else kachePawol();
+  }
+  if(pawol) pawol.querySelector('.chirat-pawol-femen').addEventListener('click', function(){
+    paj.classList.remove('ak-pawol');
+  });
+  if(pawolBtn) pawolBtn.addEventListener('click', function(){
+    paj.classList.add('ak-pawol');
+    pawolKò.scrollTop = 0;
+  });
+
   function fmt(s){
     if(!isFinite(s)) return "–:––";
     var m = Math.floor(s/60), r = Math.floor(s%60);
@@ -1690,6 +1815,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
     audio.play();
     btn.textContent = "❚❚";
     etat.textContent = "Peze ⏭ pou kòmanse pwogram nan";
+    kachePawol();
   }
 
   function jwe(i){
@@ -1699,10 +1825,12 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
       if(bar) bar.value = 100;
       etat.textContent = "Pwogram nan fini";
       if(avekFond(idxPiste)) fondSoukkothBese();
+      kachePawol();
       return;
     }
     idxPiste = i;
     pisteNom.textContent = (i+1) + "/" + pistes.length + " — " + pistes[i].t;
+    pawolPouPiste(i);
     audio.src = pistes[i].f;
     audio.play();
     btn.textContent = "❚❚";
