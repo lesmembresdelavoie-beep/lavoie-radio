@@ -471,6 +471,7 @@
         <button class="header-odyo-btn" id="odyoPrevJ1" aria-label="Tounen nan pyès anvan an">⏮</button>
         <button class="header-odyo-btn" id="odyoBtnJ1" aria-label="Jwe oswa kanpe">▶</button>
         <button class="header-odyo-btn" id="odyoNextJ1" aria-label="Pase nan pwochen pyès la">⏭</button>
+        <a class="header-odyo-btn" id="odyoParolJ1" href="#" target="_blank" rel="noopener" aria-label="Wè pawòl chirat la" style="display:none;text-decoration:none;">📜</a>
         <div class="header-odyo-info">
           <div class="header-odyo-nom" id="odyoNomJ1">🎧 Écouter le Miqra Qadosh</div>
           <div class="header-odyo-etat" id="odyoEtatJ1">Peze ▶ pou kòmanse</div>
@@ -630,6 +631,7 @@
         <button class="header-odyo-btn" id="odyoPrevJ2" aria-label="Tounen nan pyès anvan an">⏮</button>
         <button class="header-odyo-btn" id="odyoBtnJ2" aria-label="Jwe oswa kanpe">▶</button>
         <button class="header-odyo-btn" id="odyoNextJ2" aria-label="Pase nan pwochen pyès la">⏭</button>
+        <a class="header-odyo-btn" id="odyoParolJ2" href="#" target="_blank" rel="noopener" aria-label="Wè pawòl chirat la" style="display:none;text-decoration:none;">📜</a>
         <div class="header-odyo-info">
           <div class="header-odyo-nom" id="odyoNomJ2">🎧 Écouter le Miqra Qadosh</div>
           <div class="header-odyo-etat" id="odyoEtatJ2">Peze ▶ pou kòmanse</div>
@@ -1668,6 +1670,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
   var tTotal = document.getElementById('odyoTotal' + sfx);
   var etat = document.getElementById('odyoEtat' + sfx);
   var pisteNom = document.getElementById('odyoNom' + sfx);
+  var parolLyen = document.getElementById('odyoParol' + sfx);
   var idxPiste = -1;
   var kapGlise = false;
   pisteAvèkFond = pisteAvèkFond || [];
@@ -1682,6 +1685,16 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
     return m + ":" + (r<10?"0":"") + r;
   }
 
+  function montreParol(ly){
+    if(!parolLyen) return;
+    if(ly){
+      parolLyen.href = "chirat-tehillah.html#" + ly;
+      parolLyen.style.display = "";
+    } else {
+      parolLyen.style.display = "none";
+    }
+  }
+
   function jwePrelud(i){
     nanPrelud = true;
     idxPrelud = (i + preludPistes.length) % preludPistes.length;
@@ -1690,6 +1703,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
     audio.play();
     btn.textContent = "❚❚";
     etat.textContent = "Peze ⏭ pou kòmanse pwogram nan";
+    montreParol(preludPistes[idxPrelud].ly);
   }
 
   function jwe(i){
@@ -1699,6 +1713,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
       if(bar) bar.value = 100;
       etat.textContent = "Pwogram nan fini";
       if(avekFond(idxPiste)) fondSoukkothBese();
+      montreParol(null);
       return;
     }
     idxPiste = i;
@@ -1709,6 +1724,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
     etat.textContent = "Ap koule…";
     if(avekFond(idxPiste)) fondSoukkothMonte();
     else fondSoukkothBese();
+    montreParol(pistes[i].ly);
   }
 
   audio.addEventListener('loadedmetadata', function(){ if(tTotal) tTotal.textContent = fmt(audio.duration); });
@@ -1767,7 +1783,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
 creyeLekteJou('J1', [
   {t:"Prélude — Le Grand Miqra Qadosh", f:"discours14eth-prelude-soukkoth.mp3"},
   {t:"Propos d'ouverture du président", f:"discours14eth-propos-premier-jour-soukkoth.mp3"},
-  {t:"Chirat d'ouverture — Ritm Malkuwt la", f:"tehillah-07-ritm-malkuwt.mp3"},
+  {t:"Chirat d'ouverture — Ritm Malkuwt la", f:"tehillah-07-ritm-malkuwt.mp3", ly:"tehillah-07"},
   {t:"Téfilah d'ouverture", f:"discours14eth-tefilah-ouverture-soukkoth.mp3"},
   {t:"Transition vers le discours de circonstance", f:"discours14eth-transition-discours-circonstance-soukkoth.mp3"},
   {t:"Discours de circonstance — Il est né un Moshiaḥ", f:"discours-il-est-ne-un-moshiah.mp3"},
@@ -1794,7 +1810,7 @@ creyeLekteJou('J1', [
 // pandan y ap tann (peze ⏭ pou kòmanse pwogram nan lè pyès yo ajoute pi ta).
 creyeLekteJou('J2', [
   {t:"Propos d'ouverture", f:"discours14eth-j2-propos-ouverture.mp3"},
-  {t:"Chirat d'ouverture — Tout sa Yahawah te fè te bon nèt", f:"tehillah-25-tout-bagay-te-bon.mp3"},
+  {t:"Chirat d'ouverture — Tout sa Yahawah te fè te bon nèt", f:"tehillah-25-tout-bagay-te-bon.mp3", ly:"tehillah-25"},
   {t:"Transition vers la Téfilah d'ouverture", f:"discours14eth-j2-transition-tefilah-ouverture.mp3"},
   {t:"Téfilah d'ouverture", f:"discours14eth-j2-tefilah-ouverture.mp3"},
   {t:"Transition vers le texte de la journée", f:"discours14eth-j2-transition-teks-jounen.mp3"},
@@ -1803,11 +1819,11 @@ creyeLekteJou('J2', [
   {t:"Première lecture", f:"discours14eth-j2-premiere-lecture.mp3"},
   {t:"Lecture complémentaire", f:"discours14eth-j2-lecture-complementaire.mp3"},
   {t:"Transition vers le Chirat de méditation", f:"discours14eth-j2-transition-chirat-meditation.mp3"},
-  {t:"Chirat de méditation — Mèsi, Abba Yah", f:"tehillah-29-mesi-abba-yah.mp3"},
+  {t:"Chirat de méditation — Mèsi, Abba Yah", f:"tehillah-29-mesi-abba-yah.mp3", ly:"tehillah-29"},
   {t:"Transition vers le discours principal", f:"discours14eth-j2-transition-discours-principal.mp3"},
   {t:"Discours principal — Pourquoi Yahawah a-t-Il conduit Son peuple dans le désert ?", f:"discours14eth-j2-discours-principal.mp3"},
   {t:"Perle de Soukkoth et transition vers le Chirat de clôture", f:"discours14eth-j2-perle-transition-chirat-cloture.mp3"},
-  {t:"Chirat de clôture — Antre nan HaHakhanah", f:"tehillah-22-hahakhanah.mp3"},
+  {t:"Chirat de clôture — Antre nan HaHakhanah", f:"tehillah-22-hahakhanah.mp3", ly:"tehillah-22"},
   {t:"Transition vers la Téfilah de clôture", f:"discours14eth-j2-transition-tefilah-cloture.mp3"},
   {t:"Téfilah de clôture", f:"discours14eth-j2-tefilah-cloture.mp3"},
   {t:"Propos de clôture — Clôture de l'assemblée", f:"discours14eth-j2-propos-cloture.mp3"}
