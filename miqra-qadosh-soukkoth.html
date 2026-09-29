@@ -1654,8 +1654,9 @@
 var fondSoukkoth = document.getElementById('audioFondSoukkoth');
 var fondSoukkothFade = null;
 var FOND_SOUKKOTH_DEFO = 's7ethanim-musique-fond.mp3';
-function fondSoukkothMonte(src){
+function fondSoukkothMonte(src, volMaks){
   src = src || FOND_SOUKKOTH_DEFO;
+  volMaks = (volMaks === undefined || volMaks === null) ? 0.1 : volMaks;
   if(fondSoukkothFade) clearInterval(fondSoukkothFade);
   if(fondSoukkoth.getAttribute('src') !== src){
     fondSoukkoth.pause();
@@ -1663,8 +1664,8 @@ function fondSoukkothMonte(src){
   }
   if(fondSoukkoth.paused){ fondSoukkoth.currentTime = 0; fondSoukkoth.volume = 0; fondSoukkoth.play().catch(function(){}); }
   fondSoukkothFade = setInterval(function(){
-    fondSoukkoth.volume = Math.min(0.1, fondSoukkoth.volume + 0.01);
-    if(fondSoukkoth.volume >= 0.1) clearInterval(fondSoukkothFade);
+    fondSoukkoth.volume = Math.min(volMaks, fondSoukkoth.volume + 0.01);
+    if(fondSoukkoth.volume >= volMaks) clearInterval(fondSoukkothFade);
   }, 200);
 }
 function fondSoukkothBese(){
@@ -1739,7 +1740,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes, fondSrc){
     audio.play();
     btn.textContent = "❚❚";
     etat.textContent = "Ap koule…";
-    if(avekFond(idxPiste)) fondSoukkothMonte(fondSrc);
+    if(avekFond(idxPiste)) fondSoukkothMonte(fondSrc, pistes[idxPiste].fondVol);
     else fondSoukkothBese();
     montreParol(pistes[i].ly);
   }
@@ -1767,7 +1768,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes, fondSrc){
       audio.play();
       btn.textContent = "❚❚";
       etat.textContent = nanPrelud ? "Peze ⏭ pou kòmanse pwogram nan" : "Ap koule…";
-      if(!nanPrelud && avekFond(idxPiste)) fondSoukkothMonte(fondSrc);
+      if(!nanPrelud && avekFond(idxPiste)) fondSoukkothMonte(fondSrc, pistes[idxPiste].fondVol);
     } else {
       audio.pause();
       btn.textContent = "▶";
@@ -1870,7 +1871,7 @@ creyeLekteJou('J3', [
   {t:"Transition vers le Chirat de méditation", f:"discours14eth-j3-transition-chirat-meditation.mp3"},
   {t:"Chirat de méditation — Selon Imaj Ou", f:"tehillah-24-selon-imaj-ou.mp3", ly:"tehillah-24"},
   {t:"Transition vers le discours principal", f:"discours14eth-j3-transition-discours-principal.mp3"},
-  {t:"Discours principal — La Reconnaissance : Une réponse aux bienfaits de Yahawah", f:"discours14eth-j3-discours-principal.mp3"},
+  {t:"Discours principal — La Reconnaissance : Une réponse aux bienfaits de Yahawah", f:"discours14eth-j3-discours-principal.mp3", fondVol:0.06},
   {t:"Applaudissements", f:"rh-ethanim-applaudissements.mp3"},
   {t:"Perle du jour et transition vers le Chirat de clôture", f:"discours14eth-j3-perle-transition-chirat-cloture.mp3"},
   {t:"Chirat de clôture — Todah Rabah, Yahawah", f:"discours14eth-j3-chirat-cloture-todah-rabah-yahawah.mp3"},
