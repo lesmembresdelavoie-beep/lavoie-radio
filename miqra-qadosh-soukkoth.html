@@ -1653,8 +1653,14 @@
 // Mizik fon pataje pou tout jou yo (yon sèl enstans, paske yon sèl jou ka ap jwe alafwa)
 var fondSoukkoth = document.getElementById('audioFondSoukkoth');
 var fondSoukkothFade = null;
-function fondSoukkothMonte(){
+var FOND_SOUKKOTH_DEFO = 's7ethanim-musique-fond.mp3';
+function fondSoukkothMonte(src){
+  src = src || FOND_SOUKKOTH_DEFO;
   if(fondSoukkothFade) clearInterval(fondSoukkothFade);
+  if(fondSoukkoth.getAttribute('src') !== src){
+    fondSoukkoth.pause();
+    fondSoukkoth.src = src;
+  }
   if(fondSoukkoth.paused){ fondSoukkoth.currentTime = 0; fondSoukkoth.volume = 0; fondSoukkoth.play().catch(function(){}); }
   fondSoukkothFade = setInterval(function(){
     fondSoukkoth.volume = Math.min(0.1, fondSoukkoth.volume + 0.01);
@@ -1671,7 +1677,7 @@ function fondSoukkothBese(){
 
 // Lektè odyo pou chak jou — kreye yon enstans separe pou chak jou ki gen id sifiks (pa egzanp "J1")
 // preludPistes (opsyonèl) : lis mizik ki jwe youn apre lòt an boukle anvan pwogram nan kòmanse.
-function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
+function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes, fondSrc){
   var audio = document.getElementById('odyoAudio' + sfx);
   var btn = document.getElementById('odyoBtn' + sfx);
   var next = document.getElementById('odyoNext' + sfx);
@@ -1733,7 +1739,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
     audio.play();
     btn.textContent = "❚❚";
     etat.textContent = "Ap koule…";
-    if(avekFond(idxPiste)) fondSoukkothMonte();
+    if(avekFond(idxPiste)) fondSoukkothMonte(fondSrc);
     else fondSoukkothBese();
     montreParol(pistes[i].ly);
   }
@@ -1761,7 +1767,7 @@ function creyeLekteJou(sfx, pistes, pisteAvèkFond, preludPistes){
       audio.play();
       btn.textContent = "❚❚";
       etat.textContent = nanPrelud ? "Peze ⏭ pou kòmanse pwogram nan" : "Ap koule…";
-      if(!nanPrelud && avekFond(idxPiste)) fondSoukkothMonte();
+      if(!nanPrelud && avekFond(idxPiste)) fondSoukkothMonte(fondSrc);
     } else {
       audio.pause();
       btn.textContent = "▶";
@@ -1858,7 +1864,7 @@ creyeLekteJou('J3', [
   {t:"Harvest of Blessings", f:"discours14eth-j3-prelude-harvest-of-blessings.mp3"},
   {t:"Sous la Conduite de Yahawah", f:"discours14eth-j3-prelude-sous-conduite-yahawah.mp3"},
   {t:"Sous la Conduite de Yahawah (2)", f:"discours14eth-j3-prelude-sous-conduite-yahawah-2.mp3"}
-]);
+], "discours14eth-j3-prelude-sous-conduite-yahawah.mp3");
 </script>
 </body>
 </html>
