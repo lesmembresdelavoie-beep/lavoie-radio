@@ -358,6 +358,25 @@
     }
   }
 
+  /* VIDÉO ANONS */
+  .video-bloc{
+    margin:0 0 1.2rem;
+    border:1px solid rgba(201,168,76,0.4);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(13,35,71,0.18);
+    background:#000;
+  }
+  .video-bloc video{
+    width:100%;height:auto;display:block;
+  }
+  .video-bloc-tit{
+    font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--or-clair);
+    background:rgba(13,35,71,0.9);
+    padding:0.5rem 0.9rem;text-align:center;
+  }
+
   /* =========================================================
      PAGE 9 — RÉCAP 7 PERLES
   ========================================================= */
@@ -948,6 +967,14 @@
 
       <div class="jour-illust">
         <img src="soukkoth-jour-4.jpg" alt="Jour 4 · Espérance" loading="lazy">
+      </div>
+
+      <div class="video-bloc">
+        <div class="video-bloc-tit">📹 Vidéo — Annonce Jour 4</div>
+        <video controls preload="none" poster="soukkoth-jour-4.jpg">
+          <source src="discours14eth-j4-annonce-video.webm" type="video/webm">
+          <source src="discours14eth-j4-annonce-video.mp4" type="video/mp4">
+        </video>
       </div>
 
       <div class="theme-bloc">
@@ -1898,7 +1925,9 @@ creyeLekteJou('J3', [
 // Jou 4 — menm jan ak lòt jou yo : lektè a pare, tann rès mizik prélude ak pyès pwogram yo.
 creyeLekteJou('J4', [
 ], [], [
-  {t:"Annonce — Jour 4 Soukkoth", f:"discours14eth-j4-prelude-annonce.mp3"}
+  {t:"Annonce — Jour 4 Soukkoth", f:"discours14eth-j4-prelude-annonce.mp3"},
+  {t:"Beyond the Temporary Dwelling — Jour 4", f:"discours14eth-j4-prelude-beyond-the-temporary-dwelling-4eme-jour.mp3"},
+  {t:"Beyond the Temporary Dwelling", f:"discours14eth-j4-prelude-beyond-the-temporary-dwelling.mp3"}
 ]);
 </script>
 </body>
