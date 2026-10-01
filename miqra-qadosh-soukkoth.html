@@ -1262,6 +1262,17 @@
         <div class="header-titre">Jour 6 — 20 Ethanim</div>
         <div class="header-soustitre">1er → 2 octobre 2026</div>
       </div>
+      <div class="header-odyo">
+        <button class="header-odyo-btn" id="odyoPrevJ6" aria-label="Tounen nan pyès anvan an">⏮</button>
+        <button class="header-odyo-btn" id="odyoBtnJ6" aria-label="Jwe oswa kanpe">▶</button>
+        <button class="header-odyo-btn" id="odyoNextJ6" aria-label="Pase nan pwochen pyès la">⏭</button>
+        <a class="header-odyo-btn" id="odyoParolJ6" href="#" target="_blank" rel="noopener" aria-label="Wè pawòl chirat la" style="display:none;text-decoration:none;">📜</a>
+        <div class="header-odyo-info">
+          <div class="header-odyo-nom" id="odyoNomJ6">🎧 Écouter le Miqra Qadosh</div>
+          <div class="header-odyo-etat" id="odyoEtatJ6">Peze ▶ pou kòmanse</div>
+        </div>
+      </div>
+      <audio id="odyoAudioJ6" preload="none"></audio>
     </div>
 
     <div class="page-content">
@@ -1989,6 +2000,13 @@ creyeLekteJou('J5', [
   {t:"Universal Sukkot Procession", f:"discours14eth-j5-prelude-universal-sukkot-procession.mp3"},
   {t:"Au-delà des habitations (2)", f:"discours14eth-j4-prelude-au-dela-des-habitations-2.mp3"}
 ], "discours14eth-j5-prelude-universal-sukkot-procession.mp3");
+
+// Jou 6 — menm jan ak lòt jou yo : lektè a pare, tann rès mizik prélude ak pyès pwogram yo.
+creyeLekteJou('J6', [
+], [], [
+  {t:"Annonce — Jour 6 Soukkoth", f:"discours14eth-j6-prelude-annonce.mp3"},
+  {t:"Eaux de Vie", f:"discours14eth-j6-prelude-eaux-de-vie.mp3"}
+]);
 </script>
 </body>
 </html>
