@@ -1414,6 +1414,17 @@
         <div class="header-titre">Jour 7 — 21 Ethanim</div>
         <div class="header-soustitre">2 → 3 octobre 2026</div>
       </div>
+      <div class="header-odyo">
+        <button class="header-odyo-btn" id="odyoPrevJ7" aria-label="Tounen nan pyès anvan an">⏮</button>
+        <button class="header-odyo-btn" id="odyoBtnJ7" aria-label="Jwe oswa kanpe">▶</button>
+        <button class="header-odyo-btn" id="odyoNextJ7" aria-label="Pase nan pwochen pyès la">⏭</button>
+        <a class="header-odyo-btn" id="odyoParolJ7" href="#" target="_blank" rel="noopener" aria-label="Wè pawòl chirat la" style="display:none;text-decoration:none;">📜</a>
+        <div class="header-odyo-info">
+          <div class="header-odyo-nom" id="odyoNomJ7">🎧 Écouter le Miqra Qadosh</div>
+          <div class="header-odyo-etat" id="odyoEtatJ7">Peze ▶ pou kòmanse</div>
+        </div>
+      </div>
+      <audio id="odyoAudioJ7" preload="none"></audio>
     </div>
 
     <div class="page-content">
@@ -2024,6 +2035,10 @@ creyeLekteJou('J6', [
   {t:"Eaux de Vie", f:"discours14eth-j6-prelude-eaux-de-vie.mp3"},
   {t:"An Rasanblé Ansanm", f:"discours14eth-j6-chirat-ouverture-an-rasanble-ansanm.mp3"}
 ]);
+
+// Jou 7 — menm jan ak lòt jou yo : lektè a pare, tann rès pyès pwogram yo.
+creyeLekteJou('J7', [
+], [], []);
 </script>
 </body>
 </html>
