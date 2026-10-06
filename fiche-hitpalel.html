@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Interne — Comment Hitpalel · La Voie</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 2rem 0 3rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.titre-ibri {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  color: var(--or-c);
+  letter-spacing: .04em;
+  line-height: 1.1;
+  margin-bottom: .4rem;
+}
+.titre-translit {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(.95rem, 3.5vw, 1.2rem);
+  letter-spacing: .25em;
+  color: var(--or);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.references {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  color: var(--or);
+  opacity: .7;
+  text-transform: uppercase;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem auto;
+  max-width: 320px;
+}
+.sep .l {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or));
+}
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 3.2rem; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  display: block;
+  margin-bottom: .4rem;
+}
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--or-c);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+p { margin-bottom: 1rem; font-size: 1.01rem; color: var(--creme); opacity: .92; }
+p:last-child { margin-bottom: 0; }
+
+/* ── CITATION ── */
+blockquote {
+  border-left: 3px solid var(--or);
+  padding: .8rem 1.2rem;
+  margin: 1.4rem 0;
+  background: rgba(201, 168, 76, .06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--creme);
+}
+blockquote cite {
+  display: block;
+  margin-top: .5rem;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  font-style: normal;
+  opacity: .8;
+}
+
+/* ── TERME ── */
+.terme {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+}
+
+/* ── ENCADRE ── */
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 2.4rem 0;
+}
+.encadre-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.encadre p { font-size: .97rem; }
+.encadre.attention { border-color: rgba(201, 84, 76, .5); background: rgba(201, 84, 76, .06); }
+.encadre.attention .encadre-titre { color: #e3a876; }
+
+/* ── LISTE ── */
+ul.raffinement {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+ul.raffinement li {
+  padding: .45rem 0 .45rem 1.4rem;
+  position: relative;
+  font-size: .97rem;
+  color: var(--creme);
+  opacity: .9;
+  border-bottom: 1px solid rgba(201, 168, 76, .08);
+}
+ul.raffinement li:last-child { border-bottom: none; }
+ul.raffinement li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  font-size: .7rem;
+  top: .6rem;
+}
+
+/* ── POINT NUMÉROTÉ ── */
+.point {
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid rgba(201, 168, 76, .12);
+}
+.point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.point-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  color: var(--or-c);
+  margin-bottom: .5rem;
+}
+.point-num {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, .15);
+  color: var(--or-c);
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  margin-right: .5rem;
+}
+.point p { font-size: .97rem; }
+
+/* ── CONCLUSION ── */
+.conclusion-ligne {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+  margin: .5rem 0;
+}
+.flamme {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--or-c);
+  font-style: italic;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">Fiche Interne</span>
+  <div style="margin: 0 auto 2rem; max-width: 380px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.55);">
+    <img src="fiche-hitpalel-couv.jpg" alt="Comment Hitpalel — La Voie" style="display:block;width:100%;height:auto;">
+  </div>
+  <div class="titre-ibri">Comment Hitpalel</div>
+  <div class="titre-translit">Parler à Yahawah</div>
+  <p class="sous-titre">Avec respect, sincérité et humilité</p>
+  <p class="references">Luqas 11:1-4 · Mattiyahu 6:5-13 · Tehillim 111:10 · 1 Thessalonikiyim 5:17 · Yaʿaqob 1:6 · Marqos 11:25</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+<blockquote>
+  « Adôn, montre-nous comment hitpalel, comme Yaḥuānān HaMatbil avait aussi enseigné ses tal'midim. »
+  <cite>Luqas 11:1</cite>
+</blockquote>
+
+<section>
+  <span class="section-num">I</span>
+  <h2>Un enseignement à transmettre</h2>
+  <p>Twouve, Yahushuʿaḥ te yon kote li t ap hitpalel. Lè li fini, youn nan tal'midim li yo di li : « Adôn, montre-nous comment hitpalel, comme Yaḥuānān HaMatbil avait aussi enseigné ses tal'midim. »</p>
+  <p>Ce passage montre quelque chose de très important : hitpalel n'est pas seulement un élan spontané. C'est aussi quelque chose qui s'apprend. Même les premiers tal'midim ont demandé à être enseignés. Il n'est donc ni étrange ni mauvais que les nouveaux tal'midim apprennent comment hitpalel. Au contraire, cela fait partie de la marche.</p>
+</section>
+
+<section>
+  <span class="section-num">II</span>
+  <h2>Hitpalel : parler à Yahawah</h2>
+  <p>Le Téfilah n'est pas un spectacle, ni une répétition vide, ni une performance religieuse. Hitpalel, c'est parler à Yahawah avec respect, sincérité, humilité et <span class="terme">émet</span>, par l'intermédiaire de Son Fils Yahushuʿaḥ Ha'Mashiaḥ.</p>
+  <blockquote>« Ne multipliez pas les paroles vides… »<cite>Mattiyahu 6:7</cite></blockquote>
+  <blockquote>« Demandez au Père en mon Nom… »<cite>Yaḥuānān 14:13</cite></blockquote>
+  <p>Le cœur compte plus que la longueur.</p>
+</section>
+
+<section>
+  <span class="section-num">III</span>
+  <h2>Ce que Yahushuʿaḥ a enseigné</h2>
+  <p>Quand les tal'midim ont demandé comment hitpalel, Yahushuʿaḥ leur a donné un modèle.</p>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Luqas 11:2-4 · Mattiyahu 6:9-13</p>
+  <p>Ce n'était pas une formule magique à répéter mécaniquement, mais un modèle d'esprit et d'ordre. On y retrouve :</p>
+  <ul class="raffinement">
+    <li>honorer le Nom de Yahawah</li>
+    <li>rechercher Son Malkuwt</li>
+    <li>demander le pain nécessaire</li>
+    <li>demander le pardon</li>
+    <li>pardonner aux autres</li>
+    <li>demander protection et direction</li>
+  </ul>
+  <p>Le modèle commence par Yahawah, pas par nous-mêmes. Ça aussi, ça corrige beaucoup de choses.</p>
+</section>
+
+<section>
+  <span class="section-num">IV</span>
+  <h2>Comment hitpalel</h2>
+  <div class="point">
+    <p class="point-titre"><span class="point-num">1</span>Avec respect</p>
+    <p>Nous parlons au Créateur, pas à un camarade. Il y a place pour l'amour, mais aussi pour la crainte juste.</p>
+    <p class="references" style="text-align:left; opacity:.85;">Tehillim 111:10</p>
+  </div>
+  <div class="point">
+    <p class="point-titre"><span class="point-num">2</span>Avec sincérité</p>
+    <p>Pas pour être vu. Pas pour impressionner. Le Téfilah caché vaut mieux que le théâtre public.</p>
+    <p class="references" style="text-align:left; opacity:.85;">Mattiyahu 6:5-6</p>
+  </div>
+  <div class="point">
+    <p class="point-titre"><span class="point-num">3</span>Avec régularité</p>
+    <p>Le tal'mid ne hitpalel pas seulement quand tout brûle. Il marche dans le Téfilah.</p>
+    <blockquote style="margin: .8rem 0;">« Hitpalel sans cesse. »<cite>1 Thessalonikiyim 5:17</cite></blockquote>
+  </div>
+  <div class="point">
+    <p class="point-titre"><span class="point-num">4</span>Avec confiance</p>
+    <p>Sans confiance réelle en Yahawah, les mots deviennent vides.</p>
+    <p class="references" style="text-align:left; opacity:.85;">Yaʿaqob 1:6</p>
+  </div>
+  <div class="point">
+    <p class="point-titre"><span class="point-num">5</span>Avec pureté de cœur</p>
+    <p>Le pardon, la droiture et la tranquillité intérieure influencent aussi le Téfilah.</p>
+    <p class="references" style="text-align:left; opacity:.85;">Marqos 11:25</p>
+  </div>
+</section>
+
+<section>
+  <span class="section-num">V</span>
+  <h2>Ce que les anciens doivent faire</h2>
+  <p>Comme Yaḥuānān HaMatbil et Yahushuʿaḥ l'ont fait, les anciens doivent aussi enseigner cela aux nouveaux. On ne laisse pas un nouveau tal'mid marcher seul dans le brouillard. On lui montre :</p>
+  <ul class="raffinement">
+    <li>comment parler à Yahawah</li>
+    <li>comment remercier</li>
+    <li>comment demander</li>
+    <li>comment confesser</li>
+    <li>comment intercéder</li>
+    <li>comment rester constant</li>
+  </ul>
+  <p>La Qehilah transmet aussi cela.</p>
+</section>
+
+<div class="encadre attention">
+  <p class="encadre-titre">⚠ Attention</p>
+  <p>Hitpalel ne consiste pas à copier la voix des autres. Le but n'est pas de « sonner autrement ». Le but est d'être vrai devant Yahawah. Même un Téfilah simple, court et sincère vaut plus qu'un discours religieux vide. Yahawah écoute le cœur.</p>
+</div>
+
+<section>
+  <span class="section-num">VI</span>
+  <h2>Conclusion</h2>
+  <p class="conclusion-ligne">Un tal'mid apprend à marcher.</p>
+  <p class="conclusion-ligne">Un tal'mid apprend à servir.</p>
+  <p class="conclusion-ligne">Et un tal'mid apprend aussi à hitpalel.</p>
+  <p style="text-align:center; margin-top: 1.4rem;">Personne ne naît sachant tout. Même les premiers tal'midim ont demandé : « Adôn, montre-nous comment hitpalel. » Alors nous aussi, nous apprenons.</p>
+  <p class="conclusion-ligne" style="margin-top: 1.4rem;">Avec humilité.</p>
+  <p class="conclusion-ligne">Avec sincérité.</p>
+  <p class="conclusion-ligne">Avec fidélité.</p>
+  <div class="flamme">🔥 Hitpalel n'est pas un spectacle.<br>C'est une relation. 🔥</div>
+</section>
+
+</div>
+
+<footer>Les Tal'midim de Yahushuʿaḥ ® — Tous droits réservés</footer>
+
+</body>
+</html>
