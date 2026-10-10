@@ -239,6 +239,24 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
       </div>
     </div>
 
+    <div class="piste" data-src="shabbat28eth-tefilah-cloture.mp3">
+      <span class="piste-num">15</span>
+      <button class="piste-play" onclick="jouerPiste(14)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Téfilah finale — « Gardons notre cœur »</div>
+        <div class="piste-dur">3:58</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="shabbat28eth-propos-cloture.mp3">
+      <span class="piste-num">16</span>
+      <button class="piste-play" onclick="jouerPiste(15)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Clôture — Propos du président</div>
+        <div class="piste-dur">0:46</div>
+      </div>
+    </div>
+
     <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
@@ -382,7 +400,9 @@ const PISTES = [
   'shabbat28eth-discours-complet.mp3',
   'shabbat28eth-transition-chirat-cloture.mp3',
   'tehillah-40-sonde-ke-nou.mp3',
-  'shabbat28eth-transition-tefilah-cloture.mp3'
+  'shabbat28eth-transition-tefilah-cloture.mp3',
+  'shabbat28eth-tefilah-cloture.mp3',
+  'shabbat28eth-propos-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
