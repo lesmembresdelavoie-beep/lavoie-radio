@@ -131,6 +131,33 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
       </div>
     </div>
 
+    <div class="piste" data-src="shabbat28eth-discours-p1.mp3">
+      <span class="piste-num">3</span>
+      <button class="piste-play" onclick="jouerPiste(2)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Enseignement principal — Garde ton cœur plus que toute autre chose (1ère partie)</div>
+        <div class="piste-dur">6:15</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="shabbat28eth-discours-p2.mp3">
+      <span class="piste-num">4</span>
+      <button class="piste-play" onclick="jouerPiste(3)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Enseignement principal — Garde ton cœur plus que toute autre chose (2ème partie)</div>
+        <div class="piste-dur">7:02</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="shabbat28eth-discours-p3.mp3">
+      <span class="piste-num">5</span>
+      <button class="piste-play" onclick="jouerPiste(4)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Enseignement principal — Garde ton cœur plus que toute autre chose (3ème partie)</div>
+        <div class="piste-dur">5:31</div>
+      </div>
+    </div>
+
     <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
@@ -262,7 +289,10 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
 <script>
 const PISTES = [
   'shabbat28eth-accueil-president.mp3',
-  'tehillah-42-ki-moun-ki-ka-konnen-ke-a.mp3'
+  'tehillah-42-ki-moun-ki-ka-konnen-ke-a.mp3',
+  'shabbat28eth-discours-p1.mp3',
+  'shabbat28eth-discours-p2.mp3',
+  'shabbat28eth-discours-p3.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
