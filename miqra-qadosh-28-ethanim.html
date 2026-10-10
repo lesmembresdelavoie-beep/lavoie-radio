@@ -149,9 +149,18 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
       </div>
     </div>
 
-    <div class="piste" data-src="shabbat28eth-discours-complet.mp3">
+    <div class="piste" data-src="shabbat28eth-lecture-ketubim.mp3">
       <span class="piste-num">5</span>
       <button class="piste-play" onclick="jouerPiste(4)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Lecture des Ketubim Qadoshim</div>
+        <div class="piste-dur">2:32</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="shabbat28eth-discours-complet.mp3">
+      <span class="piste-num">6</span>
+      <button class="piste-play" onclick="jouerPiste(5)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Enseignement principal — Garde ton cœur plus que toute autre chose</div>
         <div class="piste-dur">19:08</div>
@@ -292,6 +301,7 @@ const PISTES = [
   'tehillah-42-ki-moun-ki-ka-konnen-ke-a.mp3',
   'shabbat28eth-transition-tefilah-ouverture.mp3',
   'shabbat28eth-transition-lecture-ketubim.mp3',
+  'shabbat28eth-lecture-ketubim.mp3',
   'shabbat28eth-discours-complet.mp3'
 ];
 const audio = document.getElementById('audio');
