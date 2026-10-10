@@ -74,13 +74,15 @@ body{background:#0a1628;color:#e8e0d0;font-family:'Roboto',sans-serif;min-height
 .leg-item{display:flex;align-items:center;gap:0.4rem;}
 .leg-dot{width:10px;height:10px;border-radius:50%;}
 
-/* Articles */
-.articles-section{padding:1.2rem 1.5rem 2.5rem;border-top:1px solid rgba(201,168,76,0.15);margin-top:1rem;}
-.articles-titre{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.15em;color:var(--or-pale);opacity:0.7;margin-bottom:1rem;}
-.article-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--or);border-radius:0 10px 10px 0;padding:1.1rem 1.2rem;margin-bottom:1rem;}
-.article-pays{font-family:'Cinzel',serif;font-size:0.95rem;color:var(--or);letter-spacing:0.08em;margin-bottom:0.3rem;}
-.article-date{font-size:0.75rem;color:rgba(232,208,138,0.5);margin-bottom:0.7rem;}
-.article-texte{font-size:0.9rem;line-height:1.7;color:rgba(245,240,232,0.85);}
+/* Articles — À la une */
+.articles-section{padding:0 0 1.5rem;border-bottom:1px solid rgba(201,168,76,0.25);margin-bottom:0.5rem;background:linear-gradient(180deg,rgba(201,168,76,0.08),transparent);}
+.articles-titre{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--rouge);background:rgba(231,76,60,0.12);display:inline-block;padding:0.3rem 1rem;margin:1rem 1.5rem 0;border-radius:999px;}
+.article-card{margin:0;}
+.article-card img{width:100%;display:block;max-height:320px;object-fit:cover;}
+.article-card-body{padding:1.1rem 1.5rem 0.3rem;}
+.article-pays{font-family:'Cinzel',serif;font-size:1.25rem;font-weight:700;color:var(--or);letter-spacing:0.03em;margin-bottom:0.35rem;line-height:1.3;}
+.article-date{font-size:0.75rem;color:rgba(232,208,138,0.5);margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:0.08em;}
+.article-texte{font-size:0.98rem;line-height:1.75;color:rgba(245,240,232,0.9);}
 </style>
 </head>
 <body>
@@ -89,6 +91,19 @@ body{background:#0a1628;color:#e8e0d0;font-family:'Roboto',sans-serif;min-height
   <a href="index.html" class="header-back">← La Voie</a>
   <div class="header-title">🌍 SÉISMES</div>
   <div style="font-size:0.65rem;color:rgba(232,208,138,0.4);" id="last-update">Chargement...</div>
+</div>
+
+<div class="articles-section">
+  <p class="articles-titre">🔴 À LA UNE</p>
+
+  <div class="article-card">
+    <img src="seismes-panama-couv.jpg" alt="Journal Séismes — Un puissant séisme frappe le Panama"/>
+    <div class="article-card-body">
+      <div class="article-pays">Un puissant séisme frappe le Panama</div>
+      <div class="article-date">🇵🇦 Panama · Vendredi 9 octobre 2026</div>
+      <div class="article-texte">Un important tremblement de terre a frappé le Panama le 9 octobre 2026, causant de vives inquiétudes au sein de la population. Plusieurs bâtiments ont subi des dommages, des familles ont dû quitter leur domicile et des personnes ont été blessées. Les autorités locales suivent la situation de près face au risque de répliques. La Voie exprime sa solidarité au peuple panaméen — <a href="achaba.html" style="color:var(--or-pale);">voir le message de solidarité</a>.</div>
+    </div>
+  </div>
 </div>
 
 <div class="stats-bar">
@@ -138,17 +153,6 @@ body{background:#0a1628;color:#e8e0d0;font-family:'Roboto',sans-serif;min-height
     <div class="loading-dot"></div>
     <div class="loading-dot"></div>
     <p style="margin-top:1rem;font-size:0.85rem;">Chargement des données USGS...</p>
-  </div>
-</div>
-
-<div class="articles-section">
-  <p class="articles-titre">✦ ARTICLES — ÉVÉNEMENTS SISMIQUES RÉCENTS</p>
-
-  <div class="article-card">
-    <img src="seismes-panama-couv.jpg" alt="Journal Séismes — Un puissant séisme frappe le Panama" style="width:100%;display:block;border-radius:6px;margin-bottom:0.8rem;"/>
-    <div class="article-pays">🇵🇦 Panama</div>
-    <div class="article-date">Vendredi 9 octobre 2026</div>
-    <div class="article-texte">Un important tremblement de terre a frappé le Panama le 9 octobre 2026, causant de vives inquiétudes au sein de la population. Plusieurs bâtiments ont subi des dommages, des familles ont dû quitter leur domicile et des personnes ont été blessées. Les autorités locales suivent la situation de près face au risque de répliques. La Voie exprime sa solidarité au peuple panaméen — <a href="achaba.html" style="color:var(--or-pale);">voir le message de solidarité</a>.</div>
   </div>
 </div>
 
