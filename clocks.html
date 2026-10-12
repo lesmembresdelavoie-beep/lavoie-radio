@@ -23,7 +23,7 @@ body{
   <span class="time" id="jer">--:--</span>
 </div>
 <div class="c">
-  <span class="city">Indianapolis</span>
+  <span class="city">Ayiti · Tabarre</span>
   <span class="time" id="ind">--:--</span>
 </div>
 <script>
@@ -32,7 +32,7 @@ function tick(){
   var now=new Date();
   try{
     var j=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Jerusalem'}));
-    var i=new Date(now.toLocaleString('en-US',{timeZone:'America/Indiana/Indianapolis'}));
+    var i=new Date(now.toLocaleString('en-US',{timeZone:'America/Port-au-Prince'}));
     document.getElementById('jer').textContent=pad(j.getHours())+':'+pad(j.getMinutes());
     document.getElementById('ind').textContent=pad(i.getHours())+':'+pad(i.getMinutes());
   }catch(e){
