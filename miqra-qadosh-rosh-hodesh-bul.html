@@ -116,9 +116,18 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
       </div>
     </div>
 
-    <div class="piste" data-src="rh-bul-chirat-cloture.mp3">
+    <div class="piste" data-src="rh-bul-tefilah-ouverture.mp3">
       <span class="piste-num">2</span>
       <button class="piste-play" onclick="jouerPiste(1)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Transition et Téfilah d'ouverture</div>
+        <div class="piste-dur">4:03</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-bul-chirat-cloture.mp3">
+      <span class="piste-num">3</span>
+      <button class="piste-play" onclick="jouerPiste(2)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Chirat de clôture — « Chaque jour, plus près de toi, Yahawah »</div>
         <div class="piste-dur">5:48</div>
@@ -201,6 +210,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 <script>
 const PISTES = [
   'rh-bul-chirat-ouverture.mp3',
+  'rh-bul-tefilah-ouverture.mp3',
   'rh-bul-chirat-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
