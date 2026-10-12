@@ -10,25 +10,29 @@
       "id": "rosh-hodesh-bul",
       "titre": "🌙 Miqra Qadosh — Rosh Ḥodesh du 1er Bûl",
       "sou": "« Un nouveau mois pour marcher plus près de Yahawah » · Huitième mois de l'année · 1 Melakhim 6:38",
-      "url": "miqra-qadosh-rosh-hodesh-bul.html"
+      "url": "miqra-qadosh-rosh-hodesh-bul.html",
+      "date": "2026-10-12"
     },
     {
       "id": "seismes-panama",
       "titre": "🌍 Journal Séismes — Panama",
       "sou": "Un puissant séisme de magnitude 7,7 ébranle le Panama · bilan officiel et message de solidarité de La Voie.",
-      "url": "seismes.html"
+      "url": "seismes.html",
+      "date": "2026-10-10"
     },
     {
       "id": "miqra-28-ethanim",
       "titre": "📖 Miqra Qadosh — Shabbat 28 Éthanim",
       "sou": "« Garde ton cœur plus que toute autre chose » · Mishlé 4:23 · Programme officiel complet.",
-      "url": "miqra-qadosh-28-ethanim.html"
+      "url": "miqra-qadosh-28-ethanim.html",
+      "date": "2026-10-08"
     },
     {
       "id": "fiche-hitpalel",
       "titre": "📄 Nouvelle publication — Comment Hitpalel",
       "sou": "Fiche Interne : parler à Yahawah avec respect, sincérité, humilité et émet · Luqas 11:1-4",
-      "url": "fiche-hitpalel.html"
+      "url": "fiche-hitpalel.html",
+      "date": "2026-10-06"
     }
   ]
 }
