@@ -1,46 +1,52 @@
 {
   "teks": {
-    "jou": "11",
-    "mois": "Ethanim",
-    "yom": "Yôm Rebi'i",
-    "ref": "Mishlé 15:22"
+    "jou": "1",
+    "mois": "Bul",
+    "yom": "Yôm Sheni",
+    "ref": "Galates 2:16"
   },
   "items": [
     {
-      "id": "miqra-28-eloul",
-      "titre": "📖 Miqra Qadosh — Shabbath 28 Éloul",
-      "sou": "Faites teshubah, car le Malkuwt arrive · Mattiyahu 4:17",
-      "url": "miqra-28-eloul.html"
+      "id": "rosh-hodesh-bul",
+      "titre": "🌙 Miqra Qadosh — Rosh Ḥodesh du 1er Bûl",
+      "sou": "« Un nouveau mois pour marcher plus près de Yahawah » · Huitième mois de l'année · 1 Melakhim 6:38",
+      "url": "miqra-qadosh-rosh-hodesh-bul.html"
     },
     {
-      "id": "fiche-emet",
-      "titre": "📄 Fiche Technique — אֱמֶת · ʾEmet",
-      "sou": "Pourquoi La Voie affine son vocabulaire et écarte « Veritas / vérité »",
-      "url": "fiche-emet.html"
+      "id": "seismes-panama",
+      "titre": "🌍 Journal Séismes — Panama",
+      "sou": "Un puissant séisme de magnitude 7,7 ébranle le Panama · bilan officiel et message de solidarité de La Voie.",
+      "url": "seismes.html"
     },
     {
-      "id": "miqra-14-eloul",
-      "titre": "📖 Miqra Qadosh — Shabbath 14 Éloul",
-      "sou": "L'Accomplissement du dessein de Yahawah · Maʿasei 3:21",
-      "url": "miqra-14-eloul.html"
+      "id": "miqra-28-ethanim",
+      "titre": "📖 Miqra Qadosh — Shabbat 28 Éthanim",
+      "sou": "« Garde ton cœur plus que toute autre chose » · Mishlé 4:23 · Programme officiel complet.",
+      "url": "miqra-qadosh-28-ethanim.html"
     },
     {
-      "id": "miqra-7-eloul",
-      "titre": "📖 Miqra Qadosh — Shabbath 7 Éloul",
-      "sou": "Le Kopher dans le dessein de Yahawah · Mattiyahu 20:28",
-      "url": "miqra-7-eloul.html"
+      "id": "fiche-hitpalel",
+      "titre": "📄 Nouvelle publication — Comment Hitpalel",
+      "sou": "Fiche Interne : parler à Yahawah avec respect, sincérité, humilité et émet · Luqas 11:1-4",
+      "url": "fiche-hitpalel.html"
     },
     {
-      "id": "rosh-hodesh-eloul",
-      "titre": "🌙 Miqra Qadosh — Rosh Ḥodesh 1er Éloul",
-      "sou": "Un nouveau mois, une nouvelle occasion de marcher avec Yahawah",
-      "url": "miqra-qadosh-rosh-hodesh-eloul.html"
+      "id": "lvna001-sang-torah",
+      "titre": "📰 LVNA001 — Le sang et la Torah",
+      "sou": "Position de La Voie face aux ajustements 2026 du Collège Central des Témoins de Jéhovah sur le sang.",
+      "url": "actualite-lvna001-sang-et-torah.html"
     },
     {
-      "id": "croissance-5786",
-      "titre": "📊 Croissance de l'Œuvre — Édition N°1",
-      "sou": "Rapport annuel · An 5786",
-      "url": "croissance.html"
+      "id": "miqra-14-ethanim",
+      "titre": "✨ Miqra Qadosh Spécial — Shabbat 14 Éthanim",
+      "sou": "Il est né un Moshiaḥ · Yahushuʿah Ha'Mashiaḥ, le Melekh promis · Luqas 2:10, 11",
+      "url": "miqra-14-ethanim.html"
+    },
+    {
+      "id": "miqra-qadosh-soukkoth",
+      "titre": "🌿 Miqra Qadosh de Soukkoth — 7 jours",
+      "sou": "Programme complet des 7 jours · 15–21 Tishri. Livre du service + illustrations par jour + dépliant à imprimer.",
+      "url": "miqra-qadosh-soukkoth.html"
     }
   ]
 }
