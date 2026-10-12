@@ -116,6 +116,15 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
       </div>
     </div>
 
+    <div class="piste" data-src="rh-bul-chirat-cloture.mp3">
+      <span class="piste-num">2</span>
+      <button class="piste-play" onclick="jouerPiste(1)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Chirat de clôture — « Chaque jour, plus près de toi, Yahawah »</div>
+        <div class="piste-dur">5:48</div>
+      </div>
+    </div>
+
     <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
@@ -191,7 +200,8 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 
 <script>
 const PISTES = [
-  'rh-bul-chirat-ouverture.mp3'
+  'rh-bul-chirat-ouverture.mp3',
+  'rh-bul-chirat-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
