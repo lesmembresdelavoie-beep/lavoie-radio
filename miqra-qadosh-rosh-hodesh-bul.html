@@ -179,6 +179,15 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
       </div>
     </div>
 
+    <div class="piste" data-src="rh-bul-tefilah-cloture.mp3">
+      <span class="piste-num">9</span>
+      <button class="piste-play" onclick="jouerPiste(8)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Téfilah de clôture — « Todah Rabah, Papa Chéri »</div>
+        <div class="piste-dur">4:38</div>
+      </div>
+    </div>
+
     <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
@@ -261,7 +270,8 @@ const PISTES = [
   'rh-bul-discours-complet.mp3',
   'rh-bul-transition-chirat-cloture.mp3',
   'rh-bul-chirat-cloture.mp3',
-  'rh-bul-transition-tefilah-cloture.mp3'
+  'rh-bul-transition-tefilah-cloture.mp3',
+  'rh-bul-tefilah-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
