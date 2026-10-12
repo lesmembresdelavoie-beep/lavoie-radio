@@ -858,6 +858,15 @@ function allerPage(nom){
 }
 document.getElementById('btn-notif').addEventListener('click', () => allerPage('anons'));
 
+/* Si yo rive sou app.html#yon-paj (egz. app.html#kalandriye),
+   louvri paj sa a dirèkteman olye paj Akèy la pa defo. */
+(function(){
+  var h = (location.hash || '').replace('#', '');
+  if (h && document.getElementById('page-' + h)) {
+    try { allerPage(h); } catch(e) {}
+  }
+})();
+
 /* Menu lateral */
 const tiroir = document.getElementById('tiroir'), voile = document.getElementById('voile');
 document.getElementById('btn-menu').addEventListener('click', () => {
