@@ -1429,15 +1429,41 @@
 
 <script>
 (function() {
-  // Parèt Ereb Shabbath : jedi 17:45 rive vandredi 17:45
-  var kounye   = new Date();
-  var jou      = kounye.getDay();
-  var minTotal = kounye.getHours() * 60 + kounye.getMinutes();
-  var min2030 = 17*60+45;
+  // Tout detèksyon jou/lè fèt selon lè Ayiti (Pòtoprens/Tabarre) —
+  // JAMAIS lè lokal aparèy la, pou popup la pa deklannche nan move moman.
+  var kounye = new Date();
+  var htParts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Port-au-Prince', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short'
+  }).formatToParts(kounye);
+  var htVals = {};
+  htParts.forEach(function(p){ htVals[p.type] = p.value; });
+  var joursAbr = {Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6};
+  var jou      = joursAbr[htVals.weekday];
+  var minTotal = parseInt(htVals.hour, 10) * 60 + parseInt(htVals.minute, 10);
+  var min2030  = 17 * 60 + 45; // Kouche solèy Tabarre, Haïti
+  var dG       = htVals.year + '-' + htVals.month + '-' + htVals.day;
+  var apSol    = minTotal >= min2030;
 
   var montrPopup = false;
   if (jou === 4 && minTotal >= min2030) montrPopup = true; // jedi >= 17:45
   if (jou === 5 && minTotal <  min2030) montrPopup = true; // vandredi < 17:45
+
+  // Rosh Ḥodesh: popup parèt a 17:45 nenpòt jou, SÈLMAN pou dat ki koresponn
+  // ak jodi a (lè Ayiti).
+  try {
+    if (!montrPopup && typeof TEKS_DATA !== 'undefined' && minTotal >= min2030) {
+      var lstChk = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
+      for (var mc = 0; mc < lstChk.length; mc++) {
+        for (var jc = 0; jc < lstChk[mc].jours.length; jc++) {
+          if (lstChk[mc].jours[jc].jour === 1 && lstChk[mc].jours[jc].soir_debut === dG) {
+            montrPopup = true; break;
+          }
+        }
+        if (montrPopup) break;
+      }
+    }
+  } catch(e3) {}
   if (!montrPopup) return;
 
   var overlay  = document.getElementById('popup-shabbath-overlay');
@@ -1449,19 +1475,17 @@
   var intervalle;
 
   /* Èske jou ibri k ap kòmanse a se yon Rosh Ḥodesh (1ye jou mwa a)?
-     Si wi: afich la altène ak videyo Rosh Ḥodesh la, epi se kantik
-     "De lune en lune" ki jwe olye mizik preparasyon an. */
+     Si wi: afich la altène ak videyo Rosh Ḥodesh la, epi se mizik
+     "Joyeux Rosh Ḥodesh" ki jwe olye mizik preparasyon Ereb Shabbath la. */
   var seRoshHodesh = false;
   try {
     if (typeof TEKS_DATA !== 'undefined') {
-      var pad = function(n){ return String(n).padStart(2,'0'); };
-      var dGreg = kounye.getFullYear() + '-' + pad(kounye.getMonth()+1) + '-' + pad(kounye.getDate());
       var lst = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
       for (var a = 0; a < lst.length && !seRoshHodesh; a++) {
         for (var b = 0; b < lst[a].jours.length; b++) {
           var jj = lst[a].jours[b];
-          // Apre 17:45 = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
-          var matche = (jou === 4) ? (jj.soir_debut === dGreg) : (jj.soir_fin === dGreg);
+          // Apre 17:45 lè Ayiti = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
+          var matche = apSol ? (jj.soir_debut === dG) : (jj.soir_fin === dG);
           if (matche && jj.jour === 1) { seRoshHodesh = true; break; }
         }
       }
@@ -1470,14 +1494,16 @@
 
   if (seRoshHodesh) {
     boite.classList.add('rosh');
-    // Si kantik la poko sou sit la, tounen sou mizik preparasyon an (pou popup la pa rete bèbè)
+    var imgEl = document.getElementById('popup-shabbath-img');
+    if (imgEl) imgEl.src = 'rosh-hodesh-joyeux.jpg';
+    // Si mizik Rosh Ḥodesh la poko sou sit la, tounen sou mizik preparasyon an (pou popup la pa rete bèbè)
     audio.addEventListener('error', function(){
-      if (audio.src.indexOf('de-lune-en-lune') !== -1) {
+      if (audio.src.indexOf('rosh-hodesh-joyeux-music') !== -1) {
         audio.src = 'ereb-shabbath-music.mp3';
         audio.play().catch(function(){});
       }
     });
-    audio.src = 'de-lune-en-lune.mp3';
+    audio.src = 'rosh-hodesh-joyeux-music.mp3';
     if (video) { video.play().catch(function(){}); }
     // Altène afich ⇄ videyo chak 7 segonn
     var surVideo = false;

@@ -1288,14 +1288,12 @@ async function aktiveNotifikasyon(){
   var seRoshHodesh = false;
   try {
     if (typeof TEKS_DATA !== 'undefined') {
-      var pad = function(n){ return String(n).padStart(2,'0'); };
-      var dGreg = kounye.getFullYear() + '-' + pad(kounye.getMonth()+1) + '-' + pad(kounye.getDate());
       var lst = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
       for (var a = 0; a < lst.length && !seRoshHodesh; a++) {
         for (var b = 0; b < lst[a].jours.length; b++) {
           var jj = lst[a].jours[b];
-          // Apre 17:45 = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
-          var matche = apSol ? (jj.soir_debut === dGreg) : (jj.soir_fin === dGreg);
+          // Apre 17:45 lè Ayiti = jou ki kòmanse aswè a ; anvan = jou ki fini jodi a
+          var matche = apSol ? (jj.soir_debut === dG) : (jj.soir_fin === dG);
           if (matche && jj.jour === 1) { seRoshHodesh = true; break; }
         }
       }
@@ -1304,14 +1302,16 @@ async function aktiveNotifikasyon(){
 
   if (seRoshHodesh) {
     boite.classList.add('rosh');
-    // Si kantik la poko sou sit la, tounen sou mizik preparasyon an (pou popup la pa rete bèbè)
+    var imgEl = document.getElementById('popup-shabbath-img');
+    if (imgEl) imgEl.src = 'rosh-hodesh-joyeux.jpg';
+    // Si mizik Rosh Ḥodesh la poko sou sit la, tounen sou mizik preparasyon an (pou popup la pa rete bèbè)
     audio.addEventListener('error', function(){
-      if (audio.src.indexOf('de-lune-en-lune') !== -1) {
+      if (audio.src.indexOf('rosh-hodesh-joyeux-music') !== -1) {
         audio.src = 'ereb-shabbath-music.mp3';
         audio.play().catch(function(){});
       }
     });
-    audio.src = 'de-lune-en-lune.mp3';
+    audio.src = 'rosh-hodesh-joyeux-music.mp3';
     if (video) { video.play().catch(function(){}); }
     // Altène afich ⇄ videyo chak 7 segonn
     var surVideo = false;
