@@ -107,9 +107,18 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
   <div class="lecteur-wrap" id="lecteur">
     <p class="lecteur-titre">✦ Écouter l'ʿAbodah</p>
 
-    <div class="piste active" data-src="rh-bul-chirat-ouverture.mp3">
+    <div class="piste active" data-src="rh-bul-propos-ouverture.mp3">
       <span class="piste-num">1</span>
       <button class="piste-play" onclick="jouerPiste(0)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Propos d'ouverture</div>
+        <div class="piste-dur">0:36</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-bul-chirat-ouverture.mp3">
+      <span class="piste-num">2</span>
+      <button class="piste-play" onclick="jouerPiste(1)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Chirat d'ouverture — « Yahawah, accompagne nos pas »</div>
         <div class="piste-dur">4:04</div>
@@ -117,17 +126,44 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
     </div>
 
     <div class="piste" data-src="rh-bul-tefilah-ouverture.mp3">
-      <span class="piste-num">2</span>
-      <button class="piste-play" onclick="jouerPiste(1)">▶</button>
+      <span class="piste-num">3</span>
+      <button class="piste-play" onclick="jouerPiste(2)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Transition et Téfilah d'ouverture</div>
         <div class="piste-dur">4:03</div>
       </div>
     </div>
 
+    <div class="piste" data-src="rh-bul-transition-discours.mp3">
+      <span class="piste-num">4</span>
+      <button class="piste-play" onclick="jouerPiste(3)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Transition vers le discours de circonstance</div>
+        <div class="piste-dur">0:39</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-bul-discours-complet.mp3">
+      <span class="piste-num">5</span>
+      <button class="piste-play" onclick="jouerPiste(4)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Discours de circonstance — « Bûl, un nouveau mois pour renouveler notre engagement envers Yahawah »</div>
+        <div class="piste-dur">11:13</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-bul-transition-chirat-cloture.mp3">
+      <span class="piste-num">6</span>
+      <button class="piste-play" onclick="jouerPiste(5)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Transition vers le Chirat de clôture</div>
+        <div class="piste-dur">0:34</div>
+      </div>
+    </div>
+
     <div class="piste" data-src="rh-bul-chirat-cloture.mp3">
-      <span class="piste-num">3</span>
-      <button class="piste-play" onclick="jouerPiste(2)">▶</button>
+      <span class="piste-num">7</span>
+      <button class="piste-play" onclick="jouerPiste(6)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Chirat de clôture — « Chaque jour, plus près de toi, Yahawah »</div>
         <div class="piste-dur">5:48</div>
@@ -209,8 +245,12 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 
 <script>
 const PISTES = [
+  'rh-bul-propos-ouverture.mp3',
   'rh-bul-chirat-ouverture.mp3',
   'rh-bul-tefilah-ouverture.mp3',
+  'rh-bul-transition-discours.mp3',
+  'rh-bul-discours-complet.mp3',
+  'rh-bul-transition-chirat-cloture.mp3',
   'rh-bul-chirat-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
