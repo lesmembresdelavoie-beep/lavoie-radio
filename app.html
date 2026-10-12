@@ -1227,21 +1227,31 @@ async function aktiveNotifikasyon(){
 
 <script>
 (function() {
-  // Parèt Ereb Shabbat : jedi 17:45 rive vandredi 17:45
-  var kounye   = new Date();
-  var jou      = kounye.getDay();
-  var minTotal = kounye.getHours() * 60 + kounye.getMinutes();
+  // Tout detèksyon jou/lè fèt selon lè Ayiti (Pòtoprens/Tabarre) —
+  // JAMAIS lè lokal aparèy la, pou popup la pa deklannche nan move moman
+  // si telefòn moun nan reglè sou yon lòt zòn orè.
+  var kounye = new Date();
+  var htParts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Port-au-Prince', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short'
+  }).formatToParts(kounye);
+  var htVals = {};
+  htParts.forEach(function(p){ htVals[p.type] = p.value; });
+  var joursAbr = {Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6};
+  var jou      = joursAbr[htVals.weekday];
+  var minTotal = parseInt(htVals.hour, 10) * 60 + parseInt(htVals.minute, 10);
   var min2030  = 17 * 60 + 45; // Kouche solèy Tabarre, Haïti
+  var dG       = htVals.year + '-' + htVals.month + '-' + htVals.day;
+  var apSol    = (typeof apreSolèyKouchePAP === 'function') ? apreSolèyKouchePAP(kounye) : (minTotal >= min2030);
 
   var montrPopup = false;
   if (jou === 4 && minTotal >= min2030) montrPopup = true; // jedi >= 17:45 (Ereb Shabbat)
   if (jou === 5 && minTotal <  min2030) montrPopup = true; // vandredi < 17:45 (Ereb Shabbat)
 
-  // Rosh Ḥodesh: popup parèt a 17:45 nenpòt jou
+  // Rosh Ḥodesh: popup parèt a 17:45 nenpòt jou, SÈLMAN pou dat ki koresponn
+  // ak jodi a (lè Ayiti), pou l pa rete deklannche pou yon lòt jou apre.
   try {
     if (!montrPopup && typeof TEKS_DATA !== 'undefined' && minTotal >= min2030) {
-      var pad2 = function(n){ return String(n).padStart(2,'0'); };
-      var dG = kounye.getFullYear() + '-' + pad2(kounye.getMonth()+1) + '-' + pad2(kounye.getDate());
       var lst2 = Array.isArray(TEKS_DATA) ? TEKS_DATA : [TEKS_DATA];
       for (var m2 = 0; m2 < lst2.length; m2++) {
         for (var j2 = 0; j2 < lst2[m2].jours.length; j2++) {
