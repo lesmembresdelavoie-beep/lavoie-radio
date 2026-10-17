@@ -213,6 +213,15 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
       </div>
     </div>
 
+    <div class="piste" data-src="shabbat6bul-discours-2.mp3">
+      <span class="piste-num">12</span>
+      <button class="piste-play" onclick="jouerPiste(11)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Enseignement principal — « Que votre amour soit sincère » (2ème partie)</div>
+        <div class="piste-dur">7:33</div>
+      </div>
+    </div>
+
     <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
@@ -354,7 +363,8 @@ const PISTES = [
   'shabbat6bul-transition-chirat-meditation.mp3',
   'shabbat6bul-chirat-meditation.mp3',
   'shabbat6bul-transition-discours.mp3',
-  'shabbat6bul-discours-1.mp3'
+  'shabbat6bul-discours-1.mp3',
+  'shabbat6bul-discours-2.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
