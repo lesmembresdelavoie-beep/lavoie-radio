@@ -110,6 +110,31 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
     <p class="theme-question"><b>Question centrale —</b> Comment montrer un amour sincère envers Yahawah et envers les autres, non seulement par nos paroles, mais aussi par nos actions ?</p>
   </div>
 
+  <!-- ── LECTEUR SÉQUENTIEL ── -->
+  <div class="lecteur-wrap" id="lecteur">
+    <p class="lecteur-titre">✦ Écouter l'ʿAbodah</p>
+
+    <div class="piste active" data-src="shabbat6bul-propos-ouverture.mp3">
+      <span class="piste-num">1</span>
+      <button class="piste-play" onclick="jouerPiste(0)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Propos d'ouverture et transition vers le Chirat d'ouverture</div>
+        <div class="piste-dur">0:46</div>
+      </div>
+    </div>
+
+    <!-- Barre de progression + contrôles -->
+    <div class="barre-wrap">
+      <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
+    </div>
+    <div class="ctrl">
+      <button onclick="reculer()">⏮ 15s</button>
+      <button class="btn-main" id="btnPlay" onclick="togglePlay()">▶ Jouer</button>
+      <button onclick="avancer()">15s ⏭</button>
+    </div>
+    <p class="tempo-affich" id="tempoAffich">0:00 / 0:00</p>
+  </div>
+
   <!-- ── PROGRAMME ── -->
   <div class="programme">
     <p class="prog-titre">✦ Déroulement officiel</p>
@@ -224,6 +249,65 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
 </div>
 
 <footer>La Voie — Plus près de l'ʾEmet</footer>
+
+<audio id="audio"></audio>
+
+<script>
+const PISTES = [
+  'shabbat6bul-propos-ouverture.mp3'
+];
+const audio = document.getElementById('audio');
+const barre = document.getElementById('barre');
+const btnPlay = document.getElementById('btnPlay');
+const tempoAffich = document.getElementById('tempoAffich');
+const pistesEl = document.querySelectorAll('.piste');
+let idx = 0;
+
+function fmt(s){ const m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
+
+function chargerPiste(i, jouer=true){
+  idx = i;
+  audio.src = PISTES[i];
+  pistesEl.forEach((p,j) => p.classList.toggle('active', j===i));
+  barre.value = 0;
+  barre.style.setProperty('--p','0%');
+  if(jouer){ audio.play(); btnPlay.textContent='⏸ Pause'; }
+  else { btnPlay.textContent='▶ Jouer'; }
+}
+
+function jouerPiste(i){ chargerPiste(i, true); }
+
+function togglePlay(){
+  if(audio.paused){
+    if(!audio.src || audio.src===window.location.href) chargerPiste(0);
+    else { audio.play(); }
+    btnPlay.textContent='⏸ Pause';
+  } else {
+    audio.pause();
+    btnPlay.textContent='▶ Jouer';
+  }
+}
+
+function reculer(){ audio.currentTime = Math.max(0, audio.currentTime-15); }
+function avancer(){ audio.currentTime = Math.min(audio.duration||0, audio.currentTime+15); }
+function seekTo(v){ if(audio.duration){ audio.currentTime = v/100*audio.duration; } }
+
+audio.addEventListener('timeupdate', ()=>{
+  if(!audio.duration) return;
+  const p = audio.currentTime/audio.duration*100;
+  barre.value = p;
+  barre.style.setProperty('--p', p+'%');
+  tempoAffich.textContent = fmt(audio.currentTime)+' / '+fmt(audio.duration);
+});
+
+audio.addEventListener('ended', ()=>{
+  if(idx < PISTES.length-1){ chargerPiste(idx+1, true); }
+  else { btnPlay.textContent='▶ Jouer'; barre.value=0; }
+});
+
+// Charger 1ye piste san jouer
+chargerPiste(0, false);
+</script>
 
 </body>
 </html>
