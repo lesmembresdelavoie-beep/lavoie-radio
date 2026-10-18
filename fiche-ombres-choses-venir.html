@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Technique — Les Ombres des Choses à Venir · La Voie</title>
+<meta name="description" content="Fiche technique d'enseignement roḥanit — Les Ombres des Choses à Venir · Pessaḥ, Shabuʿot, Soukkoth et la restauration de toutes choses · Les Membres de La Voie.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 2rem 0 3rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.titre-ibri {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  color: var(--or-c);
+  letter-spacing: .03em;
+  line-height: 1.2;
+  margin-bottom: .4rem;
+}
+.titre-translit {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(.8rem, 3vw, 1rem);
+  letter-spacing: .18em;
+  color: var(--or);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.references {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  color: var(--or);
+  opacity: .7;
+  text-transform: uppercase;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem auto;
+  max-width: 320px;
+}
+.sep .l {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or));
+}
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 3.2rem; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  display: block;
+  margin-bottom: .4rem;
+}
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--or-c);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+p { margin-bottom: 1rem; font-size: 1.01rem; color: var(--creme); opacity: .92; }
+p:last-child { margin-bottom: 0; }
+
+/* ── CITATION ── */
+blockquote {
+  border-left: 3px solid var(--or);
+  padding: .8rem 1.2rem;
+  margin: 1.4rem 0;
+  background: rgba(201, 168, 76, .06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--creme);
+}
+blockquote cite {
+  display: block;
+  margin-top: .5rem;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  font-style: normal;
+  opacity: .8;
+}
+
+/* ── TERME ── */
+.terme {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+}
+
+/* ── ENCADRE ── */
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 2.4rem 0;
+}
+.encadre-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.encadre p { font-size: .97rem; }
+.encadre.attention { border-color: rgba(201, 84, 76, .5); background: rgba(201, 84, 76, .06); }
+.encadre.attention .encadre-titre { color: #e3a876; }
+
+/* ── LISTE ── */
+ul.raffinement {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+ul.raffinement li {
+  padding: .45rem 0 .45rem 1.4rem;
+  position: relative;
+  font-size: .97rem;
+  color: var(--creme);
+  opacity: .9;
+  border-bottom: 1px solid rgba(201, 168, 76, .08);
+}
+ul.raffinement li:last-child { border-bottom: none; }
+ul.raffinement li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  font-size: .7rem;
+  top: .6rem;
+}
+
+/* ── CARTES FÊTES ── */
+.cartes-fetes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: .8rem;
+  margin: 1.6rem 0;
+}
+.carte-fete {
+  background: rgba(201, 168, 76, .06);
+  border: 1px solid rgba(201, 168, 76, .25);
+  border-radius: 10px;
+  padding: 1rem .8rem;
+  text-align: center;
+}
+.carte-fete .nom {
+  font-family: 'Cinzel', serif;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  color: var(--or-c);
+  margin-bottom: .3rem;
+}
+.carte-fete .sens {
+  font-size: .82rem;
+  color: var(--creme);
+  opacity: .8;
+  font-style: italic;
+}
+
+/* ── POINT NUMÉROTÉ ── */
+.point {
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid rgba(201, 168, 76, .12);
+}
+.point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.point-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  color: var(--or-c);
+  margin-bottom: .5rem;
+}
+.point-num {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, .15);
+  color: var(--or-c);
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  margin-right: .5rem;
+}
+.point p { font-size: .97rem; }
+
+/* ── CONCLUSION ── */
+.conclusion-ligne {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+  margin: .5rem 0;
+}
+.flamme {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--or-c);
+  font-style: italic;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">Fiche Technique d'Enseignement Roḥanit</span>
+  <div style="margin: 0 auto 2rem; max-width: 380px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.55);">
+    <img src="fiche-ombres-choses-venir-couv.jpg" alt="Les Ombres des Choses à Venir — La Voie" style="display:block;width:100%;height:auto;">
+  </div>
+  <div class="titre-ibri">Les Ombres des Choses à Venir</div>
+  <p class="sous-titre">Des instruments de formation pour la restauration de toutes choses ?</p>
+  <p class="references">Qolosiyim 2:16-17 · Ibriym 8:5 · 10:1 · 4:9-11 · Wayiqra 23 · Zekharyah 14:16-19 · Maʿasei 3:19-21 · Yeshayahu 2:2-4</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+<blockquote>
+  « Que personne donc ne vous juge au sujet du manger ou du boire, ou d'une fête, d'une nouvelle lune ou d'un Shabbat : ces choses ne sont que l'ombre des choses à venir, mais le corps en est en Mashiaḥ. »
+  <cite>Qolosiyim 2:16-17</cite>
+</blockquote>
+
+<p style="text-align:center; font-style:italic; opacity:.85; margin-bottom:2rem;">Question centrale — Les dispositions données comme « ombres des choses à venir » peuvent-elles servir à apprendre et à se préparer à vivre sous le Malkuwt de Yahawah, lors de la restauration de toutes choses ?</p>
+
+<section>
+  <span class="section-num">I</span>
+  <h2>Comprendre le mot « ombre »</h2>
+  <p>Dans Qolosiyim 2:16-17, Šāʾūl parle de la nourriture, de la boisson, des fêtes, des nouvelles lunes et du Shabbat. Il dit que tout cela est « une ombre des choses à venir », tandis que le corps, la réalité, se trouve en Mashiaḥ.</p>
+  <p>Une ombre n'a pas besoin d'être une chose vide ou sans valeur. Elle annonce, elle illustre, elle montre la direction vers une réalité plus grande qu'elle.</p>
+  <p><span class="terme">Principe :</span> pour comprendre la valeur d'une chose qui prépare, il faut regarder la réalité vers laquelle elle conduit.</p>
+</section>
+
+<section>
+  <span class="section-num">II</span>
+  <h2>Une école pour former le peuple</h2>
+  <p>Les dispositions données à Yisra'el avaient pour but d'organiser la vie du peuple, de transmettre un enseignement et de garder le souvenir de ce que Yahawah avait fait pour eux.</p>
+  <p>Elles pouvaient former le peuple à :</p>
+  <ul class="raffinement">
+    <li>l'obéissance et la fidélité</li>
+    <li>la maîtrise de soi et la discipline</li>
+    <li>la solidarité et la responsabilité envers les autres</li>
+    <li>la reconnaissance envers Yahawah</li>
+    <li>l'espérance de ce qui a été promis</li>
+  </ul>
+  <p>Devarim 6:6-9 montre que les enseignements de Yahawah devaient être transmis chaque jour, jusque dans la famille.</p>
+  <p>Ainsi, répéter une pratique peut devenir un vrai moyen de formation — à condition de la comprendre et de s'y engager avec le cœur.</p>
+</section>
+
+<section>
+  <span class="section-num">III</span>
+  <h2>Le Shabbat : une préparation au repos promis</h2>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Beré'shit 2:2-3 · Shemot 20:8-11 · Ibriym 4:9-11</p>
+  <p>Le Shabbat enseigne que la vie ne se résume pas au travail, à la production et aux soucis matériels.</p>
+  <p>Il donne un temps mis à part pour se reposer, apprendre, réfléchir et se rapprocher de Yahawah.</p>
+  <blockquote>« Il reste donc un repos de Shabbat pour le peuple de Yahawah. »<cite>Ibriym 4:9</cite></blockquote>
+  <p><span class="terme">Application :</span> le Shabbat peut être vu comme un entraînement pratique à la confiance, à la disponibilité roḥanit et à l'espérance du repos promis.</p>
+  <p>Il faut cependant rester prudent : le passage d'Ibriym ne parle pas seulement d'un repos futur. Il parle aussi d'entrer, dès maintenant, dans le repos de Yahawah par l'écoute et la fidélité.</p>
+</section>
+
+<section>
+  <span class="section-num">IV</span>
+  <h2>Les rendez-vous de Yah : mémoire et espérance</h2>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Wayiqra 23</p>
+  <div class="cartes-fetes">
+    <div class="carte-fete"><div class="nom">Pessaḥ</div><div class="sens">La délivrance</div></div>
+    <div class="carte-fete"><div class="nom">Shabuʿot</div><div class="sens">La consécration</div></div>
+    <div class="carte-fete"><div class="nom">Soukkoth</div><div class="sens">La dépendance</div></div>
+  </div>
+  <p><span class="terme">Pessaḥ</span> rappelle la délivrance, et aide à comprendre l'œuvre de Yahushuʿaḥ Ha'Mashiaḥ.</p>
+  <p><span class="terme">Shabuʿot</span> rappelle l'offrande des prémices. Elle peut nourrir une réflexion sur la consécration, la reconnaissance envers Yahawah, et ce qui s'est accompli en Maʿasei 2.</p>
+  <p><span class="terme">Soukkoth</span> rappelle la condition du peuple pendant son séjour au désert, et sa dépendance envers Yahawah. Zekharyah 14:16-19 montre aussi Soukkoth dans une vision prophétique concernant les nations.</p>
+  <p>Ces rendez-vous peuvent donc s'étudier à trois niveaux :</p>
+  <ul class="raffinement">
+    <li><span class="terme">Historique</span> — ce qu'ils rappellent</li>
+    <li><span class="terme">Pédagogique</span> — ce qu'ils enseignent</li>
+    <li><span class="terme">Prophétique</span> — ce qu'ils peuvent annoncer</li>
+  </ul>
+  <p>Il faut toutefois distinguer ce que les Ketubim Qadoshim affirment clairement de ce qui reste un rapprochement proposé pour l'étude.</p>
+</section>
+
+<section>
+  <span class="section-num">V</span>
+  <h2>La restauration de toutes choses</h2>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Maʿasei 3:19-21 · Yeshayahu 2:2-4 · 11:6-9</p>
+  <p>Maʿasei 3:21 parle des temps de restauration de toutes choses, annoncés par les Nabi de Yahawah.</p>
+  <p>Yeshayahu 2:2-4 montre les nations recevant un enseignement, et apprenant à renoncer à la guerre.</p>
+  <p>Ces passages permettent de voir la restauration comme une transformation complète — pas seulement des conditions de vie, mais aussi des comportements, des relations entre les personnes, et de la connaissance de Yahawah.</p>
+  <p><span class="terme">Hypothèse d'étude :</span> les enseignements transmis aujourd'hui à travers les dispositions de Yahawah peuvent préparer les personnes à vivre selon les valeurs du Malkuwt.</p>
+  <p>Cette hypothèse s'accorde avec plusieurs thèmes des Ketubim Qadoshim, sans affirmer que toutes les pratiques anciennes seront reproduites à l'identique lors de la restauration.</p>
+</section>
+
+<section>
+  <span class="section-num">VI</span>
+  <h2>La place centrale de Yahushuʿaḥ Ha'Mashiaḥ</h2>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Qolosiyim 2:17 · Ibriym 10:1 · Mattiyahu 5:17</p>
+  <p>Puisque l'ombre n'est pas la réalité, ces dispositions préparatoires ne doivent jamais être prises comme un but en elles-mêmes.</p>
+  <p>Yahushuʿaḥ Ha'Mashiaḥ tient la place centrale pour comprendre leur vraie portée.</p>
+  <p>Observer une pratique seulement en apparence, sans discernement, sans justice, sans compassion et sans fidélité, ne suffit pas à atteindre le but de cette formation.</p>
+  <p>Se préparer au Malkuwt demande donc une transformation du cœur et de la conduite — pas seulement la répétition de cérémonies.</p>
+</section>
+
+<section>
+  <span class="section-num">VII</span>
+  <h2>Application pour la Qehilah La Voie</h2>
+  <p>Chaque rendez-vous consacré à Yahawah peut devenir une occasion :</p>
+  <ul class="raffinement">
+    <li>d'approfondir la connaissance des Ketubim Qadoshim</li>
+    <li>d'enseigner aux enfants le sens des dispositions de Yahawah</li>
+    <li>de renforcer la solidarité entre akhayottes et akhim</li>
+    <li>de pratiquer la justice, la compassion et l'entraide</li>
+    <li>de cultiver une émounah active</li>
+    <li>de se préparer à vivre selon les principes du Malkuwt</li>
+  </ul>
+  <p>Une pratique comprise et vécue devient une vraie formation. Une pratique répétée sans compréhension risque de perdre tout son sens.</p>
+</section>
+
+<div class="encadre attention">
+  <p class="encadre-titre">⚠ Attention</p>
+  <p>Les « ombres des choses à venir » ne sont pas des réalités séparées de Yahushuʿaḥ Ha'Mashiaḥ. Mais elles ne sont pas non plus forcément inutiles une fois accomplies. Selon leur nature et selon l'enseignement des Ketubim Qadoshim, elles peuvent garder une valeur historique, pédagogique et prophétique.</p>
+</div>
+
+<section>
+  <span class="section-num">VIII</span>
+  <h2>Conclusion</h2>
+  <p>La Voie propose donc d'étudier ces dispositions comme de possibles instruments de préparation à la vie sous le Malkuwt de Yahawah.</p>
+  <div class="flamme">« Les ombres ne sont pas la réalité finale. Mais, comprises correctement à la lumière de Yahushuʿaḥ Ha'Mashiaḥ, elles peuvent devenir une école de formation — un tremplin vers les valeurs et les réalités de la restauration de toutes choses. »</div>
+  <p style="text-align:center; font-style:italic; margin-top:1.4rem;">Si nous espérons vivre un jour dans un monde restauré, où la justice, la connaissance de Yahawah et la solidarité régneront, ne devons-nous pas commencer dès maintenant à apprendre et à pratiquer ces valeurs ?</p>
+  <blockquote style="margin-top:1.8rem;">« Examinez toutes choses ; retenez ce qui est bon. »<cite>1 Thessalonikiyim 5:21</cite></blockquote>
+</section>
+
+</div>
+
+<footer>Les Tal'midim de Yahushuʿaḥ ® — Tous droits réservés</footer>
+
+</body>
+</html>

@@ -1,11 +1,18 @@
 {
   "teks": {
-    "jou": "1",
+    "jou": "7",
     "mois": "Bul",
-    "yom": "Yôm Sheni",
-    "ref": "Galates 2:16"
+    "yom": "Yôm Rishon",
+    "ref": "Mattiyahu 6:9"
   },
   "items": [
+    {
+      "id": "fiche-ombres-venir",
+      "titre": "📄 Nouvelle publication — Les Ombres des Choses à Venir",
+      "sou": "Fiche Technique d'Enseignement Roḥanit : Pessaḥ, Shabuʿot, Soukkoth et la restauration de toutes choses · Qolosiyim 2:16-17",
+      "url": "fiche-ombres-choses-venir.html",
+      "date": "2026-10-18"
+    },
     {
       "id": "miqra-6-bul",
       "titre": "📖 Miqra Qadosh — Shabbat 6 Bûl",
@@ -19,27 +26,6 @@
       "sou": "« Un nouveau mois pour marcher plus près de Yahawah » · Huitième mois de l'année · 1 Melakhim 6:38",
       "url": "miqra-qadosh-rosh-hodesh-bul.html",
       "date": "2026-10-12"
-    },
-    {
-      "id": "seismes-panama",
-      "titre": "🌍 Journal Séismes — Panama",
-      "sou": "Un puissant séisme de magnitude 7,7 ébranle le Panama · bilan officiel et message de solidarité de La Voie.",
-      "url": "seismes.html",
-      "date": "2026-10-10"
-    },
-    {
-      "id": "miqra-28-ethanim",
-      "titre": "📖 Miqra Qadosh — Shabbat 28 Éthanim",
-      "sou": "« Garde ton cœur plus que toute autre chose » · Mishlé 4:23 · Programme officiel complet.",
-      "url": "miqra-qadosh-28-ethanim.html",
-      "date": "2026-10-08"
-    },
-    {
-      "id": "fiche-hitpalel",
-      "titre": "📄 Nouvelle publication — Comment Hitpalel",
-      "sou": "Fiche Interne : parler à Yahawah avec respect, sincérité, humilité et émet · Luqas 11:1-4",
-      "url": "fiche-hitpalel.html",
-      "date": "2026-10-06"
     }
   ]
 }
