@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Technique — L'Arche sur les Épaules, et non sur un Chariot · La Voie</title>
+<meta name="description" content="Fiche technique d'enseignement roḥanit — L'Arche sur les épaules, et non sur un chariot · Ce que cela nous enseigne sur notre manière de servir Yahawah · Les Membres de La Voie.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 2rem 0 3rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.titre-ibri {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+  color: var(--or-c);
+  letter-spacing: .03em;
+  line-height: 1.25;
+  margin-bottom: .4rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.references {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .14em;
+  color: var(--or);
+  opacity: .7;
+  text-transform: uppercase;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem auto;
+  max-width: 320px;
+}
+.sep .l {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or));
+}
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── THÈME / OBJECTIF ── */
+.theme-bloc {
+  background: rgba(245, 238, 220, .06);
+  border: 1px solid rgba(201, 168, 76, .3);
+  border-radius: 12px;
+  padding: 1.4rem 1.3rem;
+  margin-bottom: 2rem;
+}
+.theme-ligne { margin-bottom: .9rem; }
+.theme-ligne:last-child { margin-bottom: 0; }
+.theme-label {
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .8;
+  display: block;
+  margin-bottom: .3rem;
+}
+.theme-ligne p { font-size: .95rem; opacity: .92; margin: 0; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 3rem; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  display: block;
+  margin-bottom: .4rem;
+}
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--or-c);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+h3 {
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  letter-spacing: .06em;
+  color: var(--or-c);
+  margin: 1.4rem 0 .7rem;
+}
+p { margin-bottom: 1rem; font-size: 1.01rem; color: var(--creme); opacity: .92; }
+p:last-child { margin-bottom: 0; }
+
+/* ── CITATION ── */
+blockquote {
+  border-left: 3px solid var(--or);
+  padding: .8rem 1.2rem;
+  margin: 1.4rem 0;
+  background: rgba(201, 168, 76, .06);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--creme);
+}
+blockquote cite {
+  display: block;
+  margin-top: .5rem;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--or);
+  font-style: normal;
+  opacity: .8;
+}
+
+/* ── TERME ── */
+.terme {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+}
+
+/* ── ENCADRE ── */
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 2.4rem 0;
+}
+.encadre-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.encadre p { font-size: .97rem; }
+
+/* ── LISTE ── */
+ul.raffinement {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+ul.raffinement li {
+  padding: .45rem 0 .45rem 1.4rem;
+  position: relative;
+  font-size: .97rem;
+  color: var(--creme);
+  opacity: .9;
+  border-bottom: 1px solid rgba(201, 168, 76, .08);
+}
+ul.raffinement li:last-child { border-bottom: none; }
+ul.raffinement li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  font-size: .7rem;
+  top: .6rem;
+}
+
+/* ── POINT NUMÉROTÉ (Questions) ── */
+.point {
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(201, 168, 76, .12);
+}
+.point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.point-num {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, .15);
+  color: var(--or-c);
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  margin-right: .6rem;
+}
+.point p { font-size: .97rem; display: inline; }
+
+/* ── CONCLUSION ── */
+.conclusion-ligne {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  color: var(--or-c);
+  margin: .5rem 0;
+}
+.flamme {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--or-c);
+  font-style: italic;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">Fiche Technique d'Enseignement Roḥanit</span>
+  <div style="margin: 0 auto 2rem; max-width: 380px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.55);">
+    <img src="fiche-arche-epaules-couv.jpg" alt="L'Arche sur les épaules, et non sur un chariot — La Voie" style="display:block;width:100%;height:auto;">
+  </div>
+  <div class="titre-ibri">L'Arche sur les Épaules,<br>et non sur un Chariot</div>
+  <p class="sous-titre">Ce que cet événement nous enseigne sur notre manière de servir Yahawah, et de marcher comme Yahushuʿaḥ a marché.</p>
+  <p class="references">Shemot 25:12-15 · Bamidbar 4:15 · 7:9 · 1 Dibre haYamim 13:7-10 · 15:2, 13-15 · Mattiyahu 26:39 · 1 Yaḥuānān 2:6</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+<div class="theme-bloc">
+  <div class="theme-ligne">
+    <span class="theme-label">Thème central</span>
+    <p>La volonté du Créateur doit prévaloir sur nos préférences, nos traditions et nos initiatives personnelles.</p>
+  </div>
+  <div class="theme-ligne">
+    <span class="theme-label">Objectif pédagogique</span>
+    <p>Amener chaque membre de La Voie à examiner sa manière de servir Yahawah, à distinguer ses instructions des traditions humaines, et à prendre Yahushuʿaḥ comme modèle d'obéissance.</p>
+  </div>
+</div>
+
+<section>
+  <span class="section-num">I</span>
+  <h2>Une question qui nous concerne tous</h2>
+  <p>Imaginez une communauté qui veut accomplir une œuvre honorable pour Yahawah. Elle mobilise ses membres, organise les activités, prépare les moyens nécessaires, et agit avec enthousiasme.</p>
+  <p>Mais au moment d'exécuter cette œuvre, elle choisit une méthode différente de celle que Yahawah a prescrite. Peut-elle considérer son initiative comme acceptable, simplement parce que son intention est bonne ?</p>
+  <p>Cette question nous conduit à un événement instructif : le transport de l'Arche de l'Alliance sous Dāwīd. Il nous apprend une distinction fondamentale — vouloir accomplir la volonté de Yahawah, et l'accomplir conformément à ses instructions, ne sont pas toujours la même chose.</p>
+</section>
+
+<section>
+  <span class="section-num">II</span>
+  <h2>Yah avait donné des instructions précises</h2>
+  <p>Dans Shemot 25:12-15, Yahawah ordonna que l'Arche soit munie de quatre anneaux d'or et de deux barres destinées à son transport. Les barres devaient demeurer en place : le transport de l'Arche était prévu dès sa fabrication.</p>
+  <p>Bamidbar 7:9 ajoute une précision : les fils de Qehath ne reçurent aucun chariot, car leur responsabilité consistait à porter les objets qadoshim sur leurs épaules. Ce transport relevait donc d'une charge précise, confiée à des personnes désignées, selon des instructions déterminées.</p>
+  <p>Les Ketubim Qadoshim ne donnent pas toutes les raisons de ce choix, et nous devons éviter d'inventer une explication que le texte ne fournit pas. Mais un principe ressort clairement : Yahawah avait défini la méthode à respecter, et aucune autre méthode — même plus pratique en apparence — ne pouvait la remplacer.</p>
+</section>
+
+<section>
+  <span class="section-num">III</span>
+  <h2>Le chariot neuf : une bonne initiative qui s'écarte de l'instruction</h2>
+  <p>Selon 1 Dibre haYamim 13:7-10, Dāwīd entreprit de faire transporter l'Arche pour lui redonner une place centrale dans la vie du peuple. Mais elle fut placée sur un chariot neuf, tiré par des bœufs.</p>
+  <p>Au cours du déplacement, les bœufs trébuchèrent. Ouzza étendit la main vers l'Arche pour la retenir, et mourut à la suite de cet acte. Le récit est grave et doit être abordé avec respect : il ne nous permet pas de connaître toutes les pensées d'Ouzza, mais il montre que cette manière de transporter l'Arche n'était pas conforme aux dispositions prescrites.</p>
+  <p>Dans 1 Dibre haYamim 15:13, Dāwīd reconnut que l'Arche n'avait pas été transportée selon la règle. Au verset 15, les Lévites la portèrent sur leurs épaules, à l'aide des barres, conformément à l'instruction transmise par Mosheh.</p>
+  <p>Dāwīd a montré ici une qualité essentielle : il a accepté de corriger une pratique non conforme, sans chercher à défendre le chariot sous prétexte qu'il était neuf, efficace, ou déjà utilisé. Il est simplement revenu à l'instruction.</p>
+  <p><span class="terme">Première grande leçon :</span> la sincérité ne dispense pas de l'obéissance, et l'habitude ne transforme pas une pratique humaine en instruction de Yahawah. Une organisation peut disposer de moyens impressionnants et de personnes sincèrement engagées — mais lorsque Yahawah a donné une instruction explicite, aucun avantage pratique ne justifie de la remplacer.</p>
+</section>
+
+<section>
+  <span class="section-num">IV</span>
+  <h2>Yahushuʿaḥ : « Non pas comme je veux, mais comme tu veux »</h2>
+  <p>Dans Mattiyahu 26:39, Yahushuʿaḥ, confronté à une épreuve particulièrement douloureuse, adressa cette demande à son Abba :</p>
+  <blockquote>« Toutefois, non pas comme je veux, mais comme tu veux. »<cite>Mattiyahu 26:39</cite></blockquote>
+  <p>C'est l'un des enseignements les plus profonds sur le service rendu à Yahawah. Yahushuʿaḥ n'a pas placé sa préférence au-dessus de la volonté de son Abba ; il a montré une disposition intérieure d'obéissance, même dans une situation extrêmement difficile.</p>
+  <p>Le même principe apparaît dans Yaḥuānān 6:38, où Yahushuʿaḥ explique être venu pour accomplir la volonté de Celui qui l'a envoyé, et non la sienne.</p>
+  <p>Un même fil relie l'Arche et Yahushuʿaḥ : pour l'Arche, il fallait respecter la manière prescrite par Yahawah ; pour Yahushuʿaḥ, il fallait accomplir la volonté de son Abba plutôt que sa propre volonté. Pour nous, il faut apprendre à soumettre nos choix, nos habitudes et notre manière de servir aux enseignements que nous avons reçus.</p>
+</section>
+
+<section>
+  <span class="section-num">V</span>
+  <h2>« Marcher comme lui-même a marché »</h2>
+  <blockquote>« Celui qui dit demeurer en lui doit aussi marcher comme lui-même a marché. »<cite>1 Yaḥuānān 2:6</cite></blockquote>
+  <p>Cette déclaration ne nous demande pas seulement d'admirer Yahushuʿaḥ. Elle nous demande de suivre son exemple.</p>
+  <h3>Reconnaître HaDerekh ne suffit pas</h3>
+  <p>Dans Yaḥuānān 14:6, Yahushuʿaḥ déclare :</p>
+  <blockquote>« Je suis HaDerekh, HaʾÉmet et HaḤayyim. Nul ne vient au Père si ce n'est par moi. »<cite>Yaḥuānān 14:6</cite></blockquote>
+  <p>Et dans Maʿasei 9:2, les premiers adhérents au mouvement de Yahushuʿaḥ sont désignés comme appartenant à « la Voie ». Yahushuʿaḥ est HaDerekh ; nous sommes Anashé haDerekh, ceux qui marchent sur la Voie qu'il a révélée pour aller vers Abba Yahawah. Mais cette identité porte une responsabilité : on ne peut pas affirmer marcher sur HaDerekh tout en refusant de suivre le modèle de celui qui est HaDerekh.</p>
+  <h3>Comment Yahushuʿaḥ a-t-il marché ?</h3>
+  <ul class="raffinement">
+    <li><span class="terme">L'obéissance</span> — il recherchait la volonté de son Abba plutôt que la sienne (Yaḥuānān 6:38).</li>
+    <li><span class="terme">L'humilité</span> — il enseignait à servir les autres plutôt qu'à rechercher la première place (Marqos 10:42-45).</li>
+    <li><span class="terme">La fidélité</span> — il demeura attaché à sa mission malgré les oppositions et les épreuves.</li>
+    <li><span class="terme">L'amour</span> — il enseigna à aimer les autres par des actes concrets (Yaḥuānān 13:34-35).</li>
+    <li><span class="terme">L'attachement à l'ʾÉmet</span> — il dénonça les traditions humaines lorsqu'elles annulaient les instructions de Yahawah (Marqos 7:6-13).</li>
+  </ul>
+</section>
+
+<section>
+  <span class="section-num">VI</span>
+  <h2>Nos traditions peuvent-elles devenir nos chariots ?</h2>
+  <p>Dans Marqos 7:8-9, Yahushuʿaḥ reprocha à certains responsables de mettre de côté les instructions de Yahawah tout en conservant leurs traditions. Au verset 13, il dénonça le fait de rendre la parole de Yahawah sans effet par des traditions transmises.</p>
+  <p>Le rapprochement avec l'Arche est instructif. Le problème n'est pas l'existence de toute tradition ou de toute méthode d'organisation — certaines habitudes peuvent faciliter le fonctionnement d'une Qehilah. Le problème apparaît lorsqu'une pratique humaine contredit une instruction claire, ou lorsqu'on lui accorde une autorité qu'elle ne possède pas.</p>
+  <p>Aujourd'hui, nos « chariots » pourraient symboliser :</p>
+  <ul class="raffinement">
+    <li>des traditions que nous maintenons sans jamais les examiner</li>
+    <li>des pratiques organisationnelles que nous considérons comme intouchables</li>
+    <li>des interprétations humaines présentées comme des instructions explicites de Yahawah</li>
+    <li>des méthodes que nous refusons de corriger, même lorsque les Ketubim Qadoshim nous invitent à les réexaminer</li>
+  </ul>
+  <p>Cette application reste une analogie pédagogique : le récit de l'Arche ne signifie pas que chaque méthode moderne constitue une désobéissance. Il nous invite plutôt à exercer le discernement.</p>
+</section>
+
+<section>
+  <span class="section-num">VII</span>
+  <h2>La Voie doit elle-même accepter cet examen</h2>
+  <p>Il serait facile d'appliquer cet enseignement uniquement aux autres communautés ou institutions. Mais l'exemple de Dāwīd nous impose d'abord de nous examiner nous-mêmes. Au sein de La Voie, nous pouvons poser ces questions :</p>
+  <ul class="raffinement">
+    <li><span class="terme">Nos enseignements</span> — distinguons-nous clairement ce que disent les Ketubim Qadoshim de nos propres interprétations ?</li>
+    <li><span class="terme">Nos pratiques</span> — sommes-nous disposés à modifier une habitude lorsqu'elle contredit une instruction explicite ?</li>
+    <li><span class="terme">Nos responsables</span> — montrent-ils l'exemple par l'humilité et l'acceptation des corrections ?</li>
+    <li><span class="terme">Notre assemblée</span> — encourageons-nous chacun à examiner les enseignements avec discernement ?</li>
+    <li><span class="terme">Notre identité</span> — le nom Anashé haDerekh correspond-il réellement à notre manière de marcher ?</li>
+  </ul>
+  <p>Une Qehilah fidèle ne doit pas craindre l'examen. Elle doit craindre davantage de s'attacher à ses habitudes au point de ne plus reconnaître ses erreurs.</p>
+</section>
+
+<section>
+  <span class="section-num">VIII</span>
+  <h2>Questions pour la participation de l'assemblée</h2>
+  <div class="point"><span class="point-num">1</span><p>Pourquoi Yahawah avait-il prévu des barres pour transporter l'Arche, et qu'indique Bamidbar 7:9 ?</p></div>
+  <div class="point"><span class="point-num">2</span><p>Qu'est-ce que le chariot neuf nous apprend sur la différence entre une bonne intention et le respect d'une instruction ?</p></div>
+  <div class="point"><span class="point-num">3</span><p>Quelle qualité Dāwīd a-t-il manifestée lorsqu'il a corrigé la manière de transporter l'Arche ?</p></div>
+  <div class="point"><span class="point-num">4</span><p>Que révèle la déclaration de Yahushuʿaḥ : « Non pas comme je veux, mais comme tu veux » ?</p></div>
+  <div class="point"><span class="point-num">5</span><p>Que signifie concrètement marcher comme Yahushuʿaḥ a marché, selon 1 Yaḥuānān 2:6 ?</p></div>
+  <div class="point"><span class="point-num">6</span><p>Comment La Voie peut-elle s'assurer que ses propres traditions ne prennent jamais la place des instructions de Yahawah ?</p></div>
+</section>
+
+<section>
+  <span class="section-num">IX</span>
+  <h2>Conclusion — porter l'Arche comme Yah l'a demandé, marcher comme Yahushuʿaḥ a marché</h2>
+  <p>L'Arche ne devait pas simplement arriver à destination : elle devait être transportée selon les instructions de Yahawah. De même, notre objectif ne doit pas seulement être d'accomplir de nombreuses activités en son honneur — nous devons chercher à le servir conformément à sa volonté.</p>
+  <p>L'exemple de Dāwīd nous enseigne à reconnaître et à corriger nos erreurs. L'exemple de Yahushuʿaḥ nous enseigne à soumettre notre volonté à celle de notre Abba. Et 1 Yaḥuānān 2:6 nous rappelle que suivre Yahushuʿaḥ signifie marcher comme lui-même a marché.</p>
+</section>
+
+<div class="encadre">
+  <p class="encadre-titre">✦ La grande leçon à retenir</p>
+  <p style="text-align:center;">« Ne remplaçons pas les instructions de Yahawah par nos préférences. Ne prétendons pas suivre HaDerekh sans marcher comme Yahushuʿaḥ a marché. »</p>
+  <blockquote style="margin-top:1.2rem;">« Non pas comme je veux, mais comme tu veux. »<cite>Mattiyahu 26:39</cite></blockquote>
+  <blockquote>« Celui qui dit demeurer en lui doit aussi marcher comme lui-même a marché. »<cite>1 Yaḥuānān 2:6</cite></blockquote>
+</div>
+
+<section>
+  <p class="conclusion-ligne">Interpellation finale</p>
+  <p style="text-align:center; font-style:italic;">Si Yahushuʿaḥ examinait aujourd'hui notre manière de servir Yahawah, reconnaîtrait-il dans nos pratiques, nos décisions et notre conduite l'exemple qu'il nous a lui-même laissé ?</p>
+  <div class="flamme">« Examinez toutes choses ; retenez ce qui est bon. »<br>1 Thessalonikiyim 5:21</div>
+</section>
+
+</div>
+
+<footer>Les Tal'midim de Yahushuʿaḥ ® — Tous droits réservés</footer>
+
+</body>
+</html>
