@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche Technique — 144 000 yo ak Gwo Foul la · La Voie</title>
+<meta name="description" content="Fiche Technique d'Étude FT-HZ-001 — 144 000 yo ak Gwo Foul la nan akonplisman dessein orijinal Yahawah · Hazon 7:1-17 ; 14:1-5 · Les Membres de La Voie.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nuit:    #0d2347;
+  --nuit-f:  #081832;
+  --or:      #c9a84c;
+  --or-c:    #e3c876;
+  --or-f:    #9a7c2e;
+  --creme:   #f5eedc;
+  --argent:  #b8c8dc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: linear-gradient(175deg, #050d1c 0%, var(--nuit-f) 40%, var(--nuit) 100%);
+  color: var(--creme);
+  min-height: 100vh;
+  line-height: 1.8;
+}
+
+/* ── NAV ── */
+.nav { padding: 1rem 1.2rem; }
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--or);
+  opacity: .85;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 1.2rem 5rem; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 2rem 0 3rem; }
+.badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--nuit-f);
+  background: linear-gradient(135deg, var(--or-c), var(--or-f));
+  border-radius: 999px;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.titre-ibri {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+  color: var(--or-c);
+  letter-spacing: .03em;
+  line-height: 1.25;
+  margin-bottom: .4rem;
+}
+.sous-titre {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--creme);
+  opacity: .85;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+.references {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .14em;
+  color: var(--or);
+  opacity: .7;
+  text-transform: uppercase;
+}
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem auto;
+  max-width: 320px;
+}
+.sep .l {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or));
+}
+.sep .l:last-child { background: linear-gradient(90deg, var(--or), transparent); }
+.sep .e { color: var(--or); font-size: .9rem; }
+
+/* ── ESTATI ── */
+.estati-bloc {
+  background: rgba(245, 238, 220, .06);
+  border: 1px solid rgba(201, 168, 76, .3);
+  border-radius: 12px;
+  padding: 1.2rem 1.3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.estati-bloc p { font-size: .9rem; font-style: italic; opacity: .85; margin: 0; }
+
+/* ── SECTIONS ── */
+section { margin-bottom: 3rem; }
+.section-num {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  display: block;
+  margin-bottom: .4rem;
+}
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--or-c);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+p { margin-bottom: 1rem; font-size: 1.01rem; color: var(--creme); opacity: .92; }
+p:last-child { margin-bottom: 0; }
+
+/* ── TERME ── */
+.terme {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  letter-spacing: .1em;
+  color: var(--or-c);
+  font-style: normal;
+}
+
+/* ── ENCADRE ── */
+.encadre {
+  border: 1px solid rgba(201, 168, 76, .45);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  background: rgba(201, 168, 76, .05);
+  margin: 1.6rem 0;
+}
+.encadre-titre {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+}
+.encadre p { font-size: .95rem; }
+.encadre p:last-child { margin-bottom: 0; }
+
+/* ── LISTE ── */
+ul.raffinement {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+ul.raffinement li {
+  padding: .45rem 0 .45rem 1.4rem;
+  position: relative;
+  font-size: .97rem;
+  color: var(--creme);
+  opacity: .9;
+  border-bottom: 1px solid rgba(201, 168, 76, .08);
+}
+ul.raffinement li:last-child { border-bottom: none; }
+ul.raffinement li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--or);
+  font-size: .7rem;
+  top: .6rem;
+}
+
+/* ── TABLEAU ── */
+.tableau-wrap { overflow-x: auto; margin: 1.4rem 0; }
+table.compare {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+table.compare th {
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--or);
+  text-align: left;
+  padding: .6rem .7rem;
+  border-bottom: 1px solid rgba(201, 168, 76, .35);
+}
+table.compare td {
+  padding: .6rem .7rem;
+  border-bottom: 1px solid rgba(201, 168, 76, .1);
+  color: var(--creme);
+  opacity: .9;
+}
+table.compare tr:last-child td { border-bottom: none; }
+
+/* ── CONCLUSION ── */
+.flamme {
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--or-c);
+  font-style: italic;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: .6;
+  padding: 2.5rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, .2);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="index.html">← Accueil</a></div>
+
+<div class="wrap">
+
+<header>
+  <span class="badge">Fiche Technique d'Étude · FT-HZ-001</span>
+  <div style="margin: 0 auto 2rem; max-width: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.55);">
+    <img src="fiche-144000-gwo-foul-couv.jpg" alt="144 000 yo ak Gwo Foul la — La Voie" style="display:block;width:100%;height:auto;">
+  </div>
+  <div class="titre-ibri">Les 144 000 et la Grande Foule</div>
+  <p class="sous-titre">Dans l'accomplissement du dessein originel de Yahawah</p>
+  <p class="references">Hazon 7:1-17 · 14:1-5 · Beré'shit 3:15 · 22:15-18 · 26:4 · 28:14 · Galatim 3:16, 29 · 1 Qorintiyim 2:10 · 13:9-12 · Dānīyyēʾl 12:1-4 · Titos 1:2 · Ibrim 6:18</p>
+  <div class="sep"><span class="l"></span><span class="e">✦</span><span class="l"></span></div>
+</header>
+
+<div class="estati-bloc">
+  <p>Dokiman refleksyon ak etid — vèsyon preliminè pou egzamen Qehilah La Voie.</p>
+</div>
+
+<section>
+  <span class="section-num">I</span>
+  <h2>Objektif fich la</h2>
+  <p>Fich sa a prezante fason La Voie konprann relasyon ant 144 000 yo ak Gwo Foul Yaḥuānān te wè nan Hazon chapit 7.</p>
+  <p>Prensip ki gide refleksyon an senp : 144 000 yo reprezante senbolikman mwayen Yahawah itilize pou akonpli dessein li ; Gwo Foul la reprezante aboutisman benediksyon li te pwomèt pou tout nasyon. De gwoup sa yo pa de pèp ki gen de chemen opoze — nan vizyon an, toude mare ak Yahawah ak Yahushuʿah Ha'Mashiaḥ.</p>
+  <p>Sa se yon entèpretasyon ki rete ouvè pou egzamen apwofondi Ketubim Qadoshim yo, pa yon deklarasyon final.</p>
+</section>
+
+<section>
+  <span class="section-num">II</span>
+  <h2>Dessein orijinal Yahawah</h2>
+  <p>Depi nan jaden Éden an, Yahawah te deja gen yon plan. Apre dezobeyisans lan, Li anonse yon Desandans ki pral kraze tèt sèpan an (Beré'shit 3:15) — premye siy lan montre rebelyon an pa t anile objektif Kreyatè a.</p>
+  <p>Pwomès sa a kontinye grandi ak Abraham : tout nasyon sou tè a pral jwenn benediksyon atravè Desandans li (Beré'shit 22:18). Liy lan trase konsa — Abraham → Yitsḥaq → Yaʿaqob → Ysraʾel → Yehudah → Dāwīd → Yahushuʿah Ha'Mashiaḥ — san sa vle di tout douz tribi yo se zansèt dirèk li.</p>
+  <p>Šāʾūl idantifye kiyès ki Desandans sa a : se Mashiaḥ la (Galatim 3:16). Se poutèt sa Yahushuʿah Ha'Mashiaḥ okipe plas santral nan akonplisman pwomès Yahawah yo, epi tout moun ki pou Mashiaḥ la vin eritye pwomès Abraham nan tou (Galatim 3:29).</p>
+</section>
+
+<section>
+  <span class="section-num">III</span>
+  <h2>144 000 yo selon La Voie</h2>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Hazon 7:4-8 · 14:1-5</p>
+  <p>Nan vizyon Yaḥuānān nan, 144 000 yo òganize dapre douz tribi, 12 000 pou chak. La Voie li chif sa a kòm senbòl, olye li konsidere l kòm yon limit aritmetik rijid. Estrikti 12 × 12 × 1 000 lan sijere yon totalite òganize, nan langaj pwòp a Hazon — men tèks la pa bay okenn eksplikasyon matematik dirèk sou sa.</p>
+  <p>Nan Hazon 14:1-5, moun sa yo dekri konsa : yo pou Ti Mouton an, yo suiv li kèlkeswa kote li ale, yo rete san manti nan bouch yo, yo prezante san defo, epi yo gen yon relasyon espesyal avèk Ti Mouton an ak Papa li. Karakteristik sa yo pentire fidelite, <span class="terme">qadoshah</span>, atachman ak <span class="terme">'èmet</span>, ak yon separasyon klè ak sistèm ki kontamine lèzòm.</p>
+  <p><span class="terme">Konklizyon :</span> 144 000 yo reprezante senbolikman Mashiyḥim ki pou Yahushuʿah Ha'Mashiaḥ, asosye avèk li nan akonplisman dessein Yahawah — san sa vle di chak detay nan vizyon an gen deja yon repons definitif.</p>
+</section>
+
+<section>
+  <span class="section-num">IV</span>
+  <h2>Gwo Foul la — aboutisman pwomès la</h2>
+  <p class="references" style="text-align:left; opacity:.85; margin-bottom: 1rem;">Hazon 7:9-17</p>
+  <p>Yaḥuānān wè yon gwo foul pèsonn pa ka konte, ki soti nan tout nasyon, tout tribi, tout pèp ak tout lang. Yo kanpe devan twòn nan ak devan Ti Mouton an, yo rekonèt se nan Yahawah ak Ti Mouton an delivrans yo soti. Vèsè 14 la montre se moun sa yo ki soti nan gwo tribilasyon an ; vèsè 15 la montre se yo k ap sèvi Yahawah devan twòn li.</p>
+  <p>Pou La Voie, Gwo Foul la se dènye etap pwomès Abraham nan : moun ki soti nan tout nasyon jwenn delivrans epi reyini nan sèvis Yahawah ak Yahushuʿah. Pwomès la pa t janm rete fèmen sou yon sèl fanmi oswa yon sèl nasyon.</p>
+</section>
+
+<section>
+  <span class="section-num">V</span>
+  <h2>Relasyon ant 144 000 yo ak Gwo Foul la</h2>
+  <div class="tableau-wrap">
+    <table class="compare">
+      <tr><th>144 000 yo</th><th>Gwo Foul la</th></tr>
+      <tr><td>Chif konprann senbolikman</td><td>Foul pèsonn pa ka konte</td></tr>
+      <tr><td>Yo pou Ti Mouton an</td><td>Yo devan Ti Mouton an</td></tr>
+      <tr><td>Yo suiv li</td><td>Yo rekonèt delivrans lan atravè li</td></tr>
+      <tr><td>Mwayen an</td><td>Aboutisman an</td></tr>
+    </table>
+  </div>
+  <p>Mwayen an pa egziste pou tèt li — li sèvi akonplisman dessein Yahawah. Aboutisman an pa separe ak mwayen an — li temwaye fidelite Yahawah anvè pwomès li. Toude jwenn inite yo nan Yahawah ak Yahushuʿah Ha'Mashiaḥ.</p>
+</section>
+
+<section>
+  <span class="section-num">VI</span>
+  <h2>Kesyon datasyon Hazon an</h2>
+  <p>Respekte lòd istorik ekriti yo enpòtan pou nenpòt etid konsa. Pifò lèt Šāʾūl yo plase nan mitan premye syèk la, sitou ane 50-60 yo. Hazon, li menm, jeneralman date anviwon 95-96, nan fen rèy Domisyen — kwak gen chèchè ki defann yon dat pi bonè, nan ane 60 yo.</p>
+  <p>Nou pa gen okenn prèv Šāʾūl te li Hazon 7 oswa 14, ni li te konnen vizyon sa yo lè l t ap ekri Galatim. Konsa nou pa dwe aji tankou si Šāʾūl t ap eksplike chif 144 000 lan lè l ekri Galatim 3:16 oswa 3:29. Nou kapab mete pasaj yo kòt a kòt nan yon etid tematik — men fòk nou distenge sa ak yon relasyon istorik ki ta deja pwouve.</p>
+</section>
+
+<section>
+  <span class="section-num">VII</span>
+  <h2>Konesans pasyèl, revelasyon pwogresif</h2>
+  <p>Šāʾūl li menm rekonèt konesans li, menm jan ak tout moun nan epòk li, te pasyèl — li konpare sa ak yon glas ki bay yon refleksyon pa totalman klè (1 Qorintiyim 13:9-12). Sa raple nou limit konpreyansyon imen, menm lè n ap sonde bagay roḥanit.</p>
+  <p>Dānīyyēʾl 12:1-4 pale de yon tan pawòl yo rete kache jiskaske lè fikse a rive, ak yon konesans k ap ogmante. La Voie ka wè nan sa yon ankourajman pou kontinye chèche — san nou pa aplike chak detay otomatikman ak tout dekouvèt modèn.</p>
+  <p>Šāʾūl esplike tou se Rouaḥ ha'Qodesh ki sonde menm bagay pwofon 'Èlohim yo (1 Qorintiyim 2:10). Nou konte sou Yahawah, atravè Yahushuʿah, pou Rouaḥ ha'Qodesh gide egzamen nou — men konviksyon pèsonèl yon moun, pou li menm, pa sifi pou tabli yon entèpretasyon kòm verite ki pa ka korije.</p>
+</section>
+
+<section>
+  <span class="section-num">VIII</span>
+  <h2>Rezèv metodolojik La Voie</h2>
+  <p>Pou kenbe entegrite rechèch la, men distenksyon nou respekte :</p>
+  <div class="encadre">
+    <p class="encadre-titre">✦ Sa tèks yo di dirèkteman</p>
+    <p>Hazon prezante 144 000 moun make ak yon so, epi yon gwo foul ki soti nan tout nasyon ; Hazon 14 dekri fidelite moun ki pou Ti Mouton an.</p>
+  </div>
+  <div class="encadre">
+    <p class="encadre-titre">✦ Sa La Voie pwopoze kòm konpreyansyon</p>
+    <p>Chif 144 000 lan senbolik ; gwoup la se mwayen Yahawah itilize ak Yahushuʿah, Gwo Foul la se aboutisman pwomès Abraham nan.</p>
+  </div>
+  <p><span class="terme">Sa ki rete pou egzamine :</span></p>
+  <ul class="raffinement">
+    <li>Siyifikasyon egzak douz tribi yo ak kantite 12 000 yo</li>
+    <li>Rapò ant 144 000 yo nan Hazon 7 ak Hazon 14</li>
+    <li>Siyifikasyon senbolik vyèjte yo</li>
+    <li>Rapò ant Gwo Foul la, gwo tribilasyon an ak lòt vizyon Hazon yo</li>
+    <li>Nan ki sans 144 000 yo patisipe nan akonplisman pwomès la</li>
+  </ul>
+  <p>Nou pa dwe konfonn yon ipotèz enteresan, yon entèpretasyon byen soutni, ak yon deklarasyon eksplisit Ketubim Qadoshim yo.</p>
+</section>
+
+<section>
+  <span class="section-num">IX</span>
+  <h2>'Èmet ak fidelite Yahawah</h2>
+  <p>Yahawah pa bay manti — se enposib pou 'Èlohim bay manti (Titos 1:2 ; Ibrim 6:18). Sa bay yon fondasyon solid pou konfyans nou nan pwomès li yo.</p>
+  <p>Men fidelite Yahawah pa vle di tout entèpretasyon lèzòm fè sou pwomès sa yo otomatikman kòrèk. Se poutèt sa La Voie dwe toujou egzamine sa li konprann, rete dispoze korije sa ki bezwen korije, epi kontinye chèche 'èmet.</p>
+</section>
+
+<section>
+  <span class="section-num">X</span>
+  <h2>Konklizyon jeneral</h2>
+  <p>Hazon chapit 7 se yon etap enpòtan nan revelasyon akonplisman dessein orijinal Yahawah — yon pwomès ki kòmanse nan Éden, konfime bay Abraham, jwenn Desandans prensipal li nan Yahushuʿah Ha'Mashiaḥ, epi rive jwenn tout nasyon.</p>
+  <p>144 000 yo reprezante senbolikman mwayen ki asosye ak Ha'Mashiaḥ la ; Gwo Foul la reprezante aboutisman benediksyon pwomèt la ; tout ini nan sèvis Yahawah ak Yahushuʿah.</p>
+  <div class="flamme">Nou gen konfyans nan fidelite Yahawah. Nou pa pretann nou fin konprann tout pwofondè dessein li. Se avèk imilite, egzamen Ketubim Qadoshim yo, lanmou pou 'èmet ak èd Rouaḥ ha'Qodesh nou vle kontinye avanse.</div>
+  <p style="text-align:center; font-style:italic; opacity:.85;">Dokiman preliminè — pou egzamen, diskisyon ak apwofondisman nan Qehilah La Voie.</p>
+</section>
+
+</div>
+
+<footer>Les Tal'midim de Yahushuʿaḥ ® — Tous droits réservés</footer>
+
+</body>
+</html>
