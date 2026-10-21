@@ -1,11 +1,18 @@
 {
   "teks": {
-    "jou": "7",
+    "jou": "10",
     "mois": "Bul",
-    "yom": "Yôm Rishon",
-    "ref": "Mattiyahu 6:9"
+    "yom": "Yôm Rebi'i",
+    "ref": "Hazon 7:9"
   },
   "items": [
+    {
+      "id": "fiche-144000-gwo-foul",
+      "titre": "📄 Nouvelle publication — 144 000 yo ak Gwo Foul la",
+      "sou": "Fiche Technique d'Étude FT-HZ-001 : dans l'accomplissement du dessein originel de Yahawah · Hazon 7:1-17 ; 14:1-5",
+      "url": "fiche-144000-gwo-foul.html",
+      "date": "2026-10-21"
+    },
     {
       "id": "fiche-arche-epaules",
       "titre": "📄 Nouvelle publication — L'Arche sur les Épaules, et non sur un Chariot",
@@ -26,20 +33,6 @@
       "sou": "Fiche Technique d'Enseignement Roḥanit : Pessaḥ, Shabuʿot, Soukkoth et la restauration de toutes choses · Qolosiyim 2:16-17",
       "url": "fiche-ombres-choses-venir.html",
       "date": "2026-10-18"
-    },
-    {
-      "id": "miqra-6-bul",
-      "titre": "📖 Miqra Qadosh — Shabbat 6 Bûl",
-      "sou": "« Que votre amour soit sincère » · Romiyim 12:9 · Programme officiel complet.",
-      "url": "miqra-qadosh-6-bul.html",
-      "date": "2026-10-12"
-    },
-    {
-      "id": "rosh-hodesh-bul",
-      "titre": "🌙 Miqra Qadosh — Rosh Ḥodesh du 1er Bûl",
-      "sou": "« Un nouveau mois pour marcher plus près de Yahawah » · Huitième mois de l'année · 1 Melakhim 6:38",
-      "url": "miqra-qadosh-rosh-hodesh-bul.html",
-      "date": "2026-10-12"
     }
   ]
 }
