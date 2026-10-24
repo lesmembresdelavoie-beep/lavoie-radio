@@ -1,11 +1,18 @@
 {
   "teks": {
-    "jou": "10",
+    "jou": "13",
     "mois": "Bul",
-    "yom": "Yôm Rebi'i",
-    "ref": "Hazon 7:9"
+    "yom": "Shabbath",
+    "ref": "2 Dibrei 15:7"
   },
   "items": [
+    {
+      "id": "fiche-144000-p2",
+      "titre": "📄 Deuxième étude — Les 144 000 dans Ḥazon : littéral ou symbolique ?",
+      "sou": "Fiche Technique d'Étude FT-HZ-002 : la croissance des premiers tal'midim, la permanence de la Qehilah et la portée des signes dans Ḥazon.",
+      "url": "fiche-144000-litteral-ou-symbolique.html",
+      "date": "2026-10-24"
+    },
     {
       "id": "fiche-144000-gwo-foul",
       "titre": "📄 Nouvelle publication — Les 144 000 et la Grande Foule",
@@ -18,20 +25,6 @@
       "titre": "📄 Nouvelle publication — L'Arche sur les Épaules, et non sur un Chariot",
       "sou": "Fiche Technique d'Enseignement Roḥanit : ce que cela nous enseigne sur notre manière de servir Yahawah · 1 Dibre haYamim 13:7-10",
       "url": "fiche-arche-epaules.html",
-      "date": "2026-10-18"
-    },
-    {
-      "id": "miqra-13-bul",
-      "titre": "📖 Miqra Qadosh — Shabbat 13 Bûl",
-      "sou": "« L'ombre des choses à venir » · Qolosiyim 2:16-17 · Programme officiel complet.",
-      "url": "miqra-qadosh-13-bul.html",
-      "date": "2026-10-18"
-    },
-    {
-      "id": "fiche-ombres-venir",
-      "titre": "📄 Nouvelle publication — Les Ombres des Choses à Venir",
-      "sou": "Fiche Technique d'Enseignement Roḥanit : Pessaḥ, Shabuʿot, Soukkoth et la restauration de toutes choses · Qolosiyim 2:16-17",
-      "url": "fiche-ombres-choses-venir.html",
       "date": "2026-10-18"
     }
   ]
