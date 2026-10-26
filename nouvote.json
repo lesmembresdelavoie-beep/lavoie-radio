@@ -1,11 +1,18 @@
 {
   "teks": {
-    "jou": "13",
+    "jou": "15",
     "mois": "Bul",
-    "yom": "Shabbath",
-    "ref": "2 Dibrei 15:7"
+    "yom": "Yôm Sheni",
+    "ref": "2 Corinthiens 5:7"
   },
   "items": [
+    {
+      "id": "fiche-144000-p3",
+      "titre": "📄 Troisième étude — Les 144 000 dans Ḥazon : le sceau de Yahawah",
+      "sou": "Fiche Technique d'Étude FT-HZ-003 : qui sont les personnes scellées, par qui et pendant combien de temps ? Ḥazon 7:1-8 ; 14:1-5.",
+      "url": "fiche-144000-sceau.html",
+      "date": "2026-10-26"
+    },
     {
       "id": "fiche-144000-p2",
       "titre": "📄 Deuxième étude — Les 144 000 dans Ḥazon : littéral ou symbolique ?",
@@ -19,13 +26,6 @@
       "sou": "Fiche Technique d'Étude FT-HZ-001 : dans l'accomplissement du dessein originel de Yahawah · Hazon 7:1-17 ; 14:1-5",
       "url": "fiche-144000-gwo-foul.html",
       "date": "2026-10-21"
-    },
-    {
-      "id": "fiche-arche-epaules",
-      "titre": "📄 Nouvelle publication — L'Arche sur les Épaules, et non sur un Chariot",
-      "sou": "Fiche Technique d'Enseignement Roḥanit : ce que cela nous enseigne sur notre manière de servir Yahawah · 1 Dibre haYamim 13:7-10",
-      "url": "fiche-arche-epaules.html",
-      "date": "2026-10-18"
     }
   ]
 }
