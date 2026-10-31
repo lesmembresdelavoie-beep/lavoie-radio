@@ -231,6 +231,24 @@ footer{text-align:center;font-family:'Cinzel',serif;font-size:.62rem;letter-spac
       </div>
     </div>
 
+    <div class="piste" data-src="shabbat20bul-transition-tefilah-cloture.mp3">
+      <span class="piste-num">14</span>
+      <button class="piste-play" onclick="jouerPiste(13)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Transition vers la Téfilah de clôture</div>
+        <div class="piste-dur">0:37</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="shabbat20bul-tefilah-cloture.mp3">
+      <span class="piste-num">15</span>
+      <button class="piste-play" onclick="jouerPiste(14)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Téfilah de clôture</div>
+        <div class="piste-dur">3:54</div>
+      </div>
+    </div>
+
     <!-- Barre de progression + contrôles -->
     <div class="barre-wrap">
       <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
@@ -377,7 +395,9 @@ const PISTES = [
   'shabbat20bul-discours-partie1.mp3',
   'shabbat20bul-discours-partie2.mp3',
   'shabbat20bul-transition-chirat-cloture.mp3',
-  'shabbat20bul-chirat-cloture.mp3'
+  'shabbat20bul-chirat-cloture.mp3',
+  'shabbat20bul-transition-tefilah-cloture.mp3',
+  'shabbat20bul-tefilah-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
