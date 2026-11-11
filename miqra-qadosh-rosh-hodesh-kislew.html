@@ -107,6 +107,25 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
   <div class="lecteur-wrap" id="lecteur">
     <p class="lecteur-titre">✦ Écouter l'ʿAbodah</p>
 
+    <div class="piste active" data-src="rh-kislew-shofar.mp3">
+      <span class="piste-num">1</span>
+      <button class="piste-play" onclick="jouerPiste(0)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Sonnerie du Shofar — Bemidbar 10:10</div>
+        <div class="piste-dur">2:31</div>
+      </div>
+    </div>
+
+    <!-- Barre de progression + contrôles -->
+    <div class="barre-wrap">
+      <input type="range" class="barre-prog" id="barre" min="0" max="100" value="0" step="0.1" oninput="seekTo(this.value)">
+    </div>
+    <div class="ctrl">
+      <button onclick="reculer()">⏮ 15s</button>
+      <button class="btn-main" id="btnPlay" onclick="togglePlay()">▶ Jouer</button>
+      <button onclick="avancer()">15s ⏭</button>
+    </div>
+    <p class="tempo-affich" id="tempoAffich">0:00 / 0:00</p>
   </div>
 
   <!-- ── PROGRAMME ── -->
@@ -180,6 +199,7 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
 
 <script>
 const PISTES = [
+  'rh-kislew-shofar.mp3'
 ];
 const audio = document.getElementById('audio');
 const barre = document.getElementById('barre');
