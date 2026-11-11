@@ -143,9 +143,18 @@ h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,6vw,2.1rem);colo
       </div>
     </div>
 
-    <div class="piste" data-src="rh-kislew-chirat-cloture.mp3">
+    <div class="piste" data-src="rh-kislew-transition-discours.mp3">
       <span class="piste-num">5</span>
       <button class="piste-play" onclick="jouerPiste(4)">▶</button>
+      <div class="piste-info">
+        <div class="piste-nom">Transition vers le discours du jour</div>
+        <div class="piste-dur">0:32</div>
+      </div>
+    </div>
+
+    <div class="piste" data-src="rh-kislew-chirat-cloture.mp3">
+      <span class="piste-num">6</span>
+      <button class="piste-play" onclick="jouerPiste(5)">▶</button>
       <div class="piste-info">
         <div class="piste-nom">Chirat de clôture — « Conduis nos pas, Abba Yahawah »</div>
         <div class="piste-dur">5:15</div>
@@ -239,6 +248,7 @@ const PISTES = [
   'rh-kislew-propos-ouverture.mp3',
   'rh-kislew-chirat-ouverture.mp3',
   'rh-kislew-tefilah-ouverture.mp3',
+  'rh-kislew-transition-discours.mp3',
   'rh-kislew-chirat-cloture.mp3'
 ];
 const audio = document.getElementById('audio');
